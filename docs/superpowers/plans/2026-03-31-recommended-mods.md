@@ -44,17 +44,17 @@ EU5 MOD情報（8 MOD）:
 7. **Beyond the Cape** — 作者: Stami / 2,832購読 / 最終更新: 2026-03-28 / 探検・海軍オーバーホール。新船種5タイプ、海峡通行料、地図窃盗メカニクス。新規ゲーム開始が必要。Steam: https://steamcommunity.com/sharedfiles/filedetails/?id=3599889968
 8. **Xorme - AI** — 作者: xorme / 6,278購読 / 最終更新: 2026-02-03 / EU4同名MOD後継。AIの請求権取得、議会利用、複数戦争管理等を改善。Steam: https://steamcommunity.com/sharedfiles/filedetails/?id=3599552939
 
-- [ ] **Step 1: localization-reference.md を読み、EU5固有の用語（召集軍、支配度、進歩 等）を確認する**
+- [x] **Step 1: localization-reference.md を読み、EU5固有の用語（召集軍、支配度、進歩 等）を確認する**
 
 Read: `eu5/localization-reference.md`
 目的: 記事で使うゲーム内用語の正式日本語名を把握する
 
-- [ ] **Step 2: eu5-hungary-guide.md の冒頭30行を読み、メタデータ・トーンを確認する**
+- [x] **Step 2: eu5-hungary-guide.md の冒頭30行を読み、メタデータ・トーンを確認する**
 
 Read: `eu5/eu5-hungary-guide.md` (lines 1-30)
 目的: 既存ガイドのメタデータ形式・文体に揃える
 
-- [ ] **Step 3: eu5-recommended-mods.md を作成する**
+- [x] **Step 3: eu5-recommended-mods.md を作成する**
 
 Write: `eu5/eu5-recommended-mods.md`
 
@@ -111,12 +111,12 @@ Write: `eu5/eu5-recommended-mods.md`
   - [Steam Workshop: EU5](https://steamcommunity.com/app/3450310/workshop/)
 ```
 
-- [ ] **Step 4: 作成したファイルを読み返し、テーブルの整合性（列数の一致、Markdown構文）を確認する**
+- [x] **Step 4: 作成したファイルを読み返し、テーブルの整合性（列数の一致、Markdown構文）を確認する**
 
 Read: `eu5/eu5-recommended-mods.md`
 確認項目: テーブル列数が全行で一致、リンク構文、パッチ番号の整合性
 
-- [ ] **Step 5: コミットする**
+- [x] **Step 5: コミットする**
 
 ```bash
 git add eu5/eu5-recommended-mods.md
@@ -145,11 +145,11 @@ VIC3 MOD情報（7 MOD）:
 6. **Advanced Cheat Menu ++** — 作者: Craveirusko / 約26,195購読 / 最終更新: 2025-12-11 / 国家・キャラクター・利益団体の修正GUI。カスタムキャラクタースポーン、ゴールド増減、権威修正。Steam: https://steamcommunity.com/sharedfiles/filedetails/?id=3032469528
 7. **Community Mod Framework (CMF)** — 作者: Victoria 3 Modding Co-op / 1.12確認 / MOD間の互換性向上ユーティリティ。GUI、政治運動フレームワーク、政党システム、MOD検出機能。複数フレーバーMODの前提依存。Steam: https://steamcommunity.com/sharedfiles/filedetails/?id=3385002128
 
-- [ ] **Step 1: localization-reference.md を読み、VIC3固有の用語（利益団体、法律、生産方式 等）を確認する**
+- [x] **Step 1: localization-reference.md を読み、VIC3固有の用語（利益団体、法律、生産方式 等）を確認する**
 
 Read: `vic3/localization-reference.md`
 
-- [ ] **Step 2: vic3-recommended-mods.md を作成する**
+- [x] **Step 2: vic3-recommended-mods.md を作成する**
 
 Write: `vic3/vic3-recommended-mods.md`
 
@@ -205,11 +205,11 @@ Write: `vic3/vic3-recommended-mods.md`
   - [Steam Workshop: Victoria 3](https://steamcommunity.com/app/529340/workshop/)
 ```
 
-- [ ] **Step 3: 作成したファイルを読み返し、テーブルの整合性を確認する**
+- [x] **Step 3: 作成したファイルを読み返し、テーブルの整合性を確認する**
 
 Read: `vic3/vic3-recommended-mods.md`
 
-- [ ] **Step 4: コミットする**
+- [x] **Step 4: コミットする**
 
 ```bash
 git add vic3/vic3-recommended-mods.md
@@ -240,11 +240,11 @@ CK3 MOD情報（10 MOD）:
 8. **Princes of Darkness** — 作者: Morkeoth他 / 192,900購読 / 最終更新: 2026-03-12 (Blood & Silk) / World of Darkness系。ヴァンパイア、ハンター、ウェアウルフとして1230年のプリンス戦争を体験。Steam: https://steamcommunity.com/sharedfiles/filedetails/?id=2216659254
 9. **Elder Kings 2** — 作者: コミュニティチーム / 最終更新: v0.18.0.1 (CK3 1.18.3.1対応) / Elder Scrolls世界への変換。ファンタジー種族、魔法ライフスタイル、吸血鬼システム。Steam/Nexus Modsで配布。
 
-- [ ] **Step 1: localization-reference.md を読み、CK3固有の用語（封臣、直轄領、ライフスタイル 等）を確認する**
+- [x] **Step 1: localization-reference.md を読み、CK3固有の用語（封臣、直轄領、ライフスタイル 等）を確認する**
 
 Read: `ck3/localization-reference.md`
 
-- [ ] **Step 2: ck3-recommended-mods.md を作成する**
+- [x] **Step 2: ck3-recommended-mods.md を作成する**
 
 Write: `ck3/ck3-recommended-mods.md`
 
@@ -314,11 +314,11 @@ Write: `ck3/ck3-recommended-mods.md`
   - [Steam Workshop: CK3](https://steamcommunity.com/app/1158310/workshop/)
 ```
 
-- [ ] **Step 3: 作成したファイルを読み返し、テーブルの整合性を確認する**
+- [x] **Step 3: 作成したファイルを読み返し、テーブルの整合性を確認する**
 
 Read: `ck3/ck3-recommended-mods.md`
 
-- [ ] **Step 4: コミットする**
+- [x] **Step 4: コミットする**
 
 ```bash
 git add ck3/ck3-recommended-mods.md
@@ -332,13 +332,13 @@ git commit -m "追加: CK3 おすすめMODガイド（10 MOD / 6カテゴリ）"
 **Files:**
 - Read: `eu5/eu5-recommended-mods.md`, `vic3/vic3-recommended-mods.md`, `ck3/ck3-recommended-mods.md`
 
-- [ ] **Step 1: 3ファイルの存在を確認する**
+- [x] **Step 1: 3ファイルの存在を確認する**
 
 ```bash
 ls -la eu5/eu5-recommended-mods.md vic3/vic3-recommended-mods.md ck3/ck3-recommended-mods.md
 ```
 
-- [ ] **Step 2: 各ファイルの行数・構造を確認する**
+- [x] **Step 2: 各ファイルの行数・構造を確認する**
 
 ```bash
 wc -l eu5/eu5-recommended-mods.md vic3/vic3-recommended-mods.md ck3/ck3-recommended-mods.md
@@ -346,7 +346,7 @@ wc -l eu5/eu5-recommended-mods.md vic3/vic3-recommended-mods.md ck3/ck3-recommen
 
 各ファイルの想定行数: 50-80行
 
-- [ ] **Step 3: テンプレート一貫性を確認する**
+- [x] **Step 3: テンプレート一貫性を確認する**
 
 3ファイル全てに以下が含まれていることを確認:
 - 冒頭の信頼性マーカー blockquote
@@ -354,7 +354,7 @@ wc -l eu5/eu5-recommended-mods.md vic3/vic3-recommended-mods.md ck3/ck3-recommen
 - カテゴリ別テーブル（6列: MOD名 / 作者 / 概要 / おすすめ理由 / 注意点 / 対応パッチ）
 - 出典セクション
 
-- [ ] **Step 4: git status で未コミットファイルがないことを確認する**
+- [x] **Step 4: git status で未コミットファイルがないことを確認する**
 
 ```bash
 git status
