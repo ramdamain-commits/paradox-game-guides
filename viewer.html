@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ガイド — Paradox攻略ガイド</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:           #0f172a;
+      --surface:      #1e293b;
+      --surface-alt:  #283548;
+      --accent:       #fb923c;
+      --accent-dim:   rgba(251, 146, 60, 0.15);
+      --text:         #f1f5f9;
+      --text-muted:   #94a3b8;
+      --border:       #334155;
+      --code-bg:      #0d1117;
+      --radius:       8px;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* ===== ナビ ===== */
+    .topnav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1.5rem;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .topnav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+    .topnav a:hover { color: var(--accent); }
+    .topnav__sep { color: var(--border); }
+    .topnav__current {
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.85rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ===== メインコンテンツ ===== */
+    .content {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+    }
+
+    /* ===== Markdown レンダリング ===== */
+    .content h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 0.75rem;
+    }
+    .content h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-top: 2.5rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .content h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-top: 1.75rem;
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+    .content h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .content p {
+      margin-bottom: 1rem;
+    }
+
+    .content blockquote {
+      border-left: 3px solid var(--accent);
+      background: var(--accent-dim);
+      padding: 0.75rem 1rem;
+      margin: 1rem 0;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      color: var(--text-muted);
+    }
+    .content blockquote p { margin-bottom: 0.25rem; }
+    .content blockquote p:last-child { margin-bottom: 0; }
+
+    .content ul, .content ol {
+      margin: 0.75rem 0 1rem 1.5rem;
+    }
+    .content ul { list-style: disc; }
+    .content ol { list-style: decimal; }
+    .content li { margin-bottom: 0.35rem; }
+    .content li > ul, .content li > ol { margin-top: 0.25rem; margin-bottom: 0; }
+
+    .content hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    .content strong { color: #fbbf24; font-weight: 600; }
+    .content em { color: var(--text-muted); }
+
+    .content a {
+      color: #60a5fa;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .content a:hover { color: var(--accent); }
+
+    /* テーブル */
+    .content table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 1.5rem;
+      font-size: 0.9rem;
+    }
+    .content thead th {
+      background: var(--surface-alt);
+      color: var(--accent);
+      font-weight: 600;
+      text-align: left;
+      padding: 0.6rem 0.75rem;
+      border-bottom: 2px solid var(--border);
+      white-space: nowrap;
+    }
+    .content tbody td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .content tbody tr:hover { background: rgba(251, 146, 60, 0.05); }
+
+    /* コード */
+    .content code {
+      background: var(--code-bg);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.85em;
+      font-family: 'Cascadia Code', 'Fira Code', Consolas, monospace;
+      color: #e2e8f0;
+    }
+    .content pre {
+      background: var(--code-bg);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      overflow-x: auto;
+      margin: 1rem 0 1.5rem;
+    }
+    .content pre code {
+      background: none;
+      padding: 0;
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+
+    /* 目次ボタン */
+    .toc-toggle {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 200;
+      background: var(--accent);
+      color: #0f172a;
+      border: none;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s;
+    }
+    .toc-toggle:hover { transform: scale(1.1); }
+
+    /* 目次パネル */
+    .toc-panel {
+      display: none;
+      position: fixed;
+      bottom: 5rem;
+      right: 1.5rem;
+      z-index: 200;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+      max-height: 60vh;
+      overflow-y: auto;
+      width: 300px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    .toc-panel.is-open { display: block; }
+    .toc-panel h3 {
+      font-size: 0.85rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .toc-panel ul { list-style: none; margin: 0; padding: 0; }
+    .toc-panel li { margin-bottom: 0.25rem; }
+    .toc-panel a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      display: block;
+      padding: 0.2rem 0;
+      transition: color 0.2s;
+    }
+    .toc-panel a:hover { color: var(--accent); }
+    .toc-panel .toc-h3 { padding-left: 1rem; }
+
+    /* ローディング */
+    .loading {
+      text-align: center;
+      padding: 4rem 1rem;
+      color: var(--text-muted);
+    }
+    .loading__spinner {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      border: 3px solid var(--border);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* トップへ戻る */
+    .scroll-top {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 5rem;
+      z-index: 200;
+      background: var(--surface);
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .scroll-top:hover { color: var(--accent); border-color: var(--accent); }
+    .scroll-top.is-visible { display: flex; }
+
+    /* レスポンシブ */
+    @media (max-width: 600px) {
+      .content { padding: 1.5rem 1rem 3rem; }
+      .content h1 { font-size: 1.4rem; }
+      .content h2 { font-size: 1.15rem; }
+      .content table { font-size: 0.8rem; }
+      .content thead th, .content tbody td { padding: 0.4rem 0.5rem; }
+      .toc-panel { width: calc(100vw - 3rem); right: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="topnav">
+    <a href="https://ramdamain-commits.github.io/portal/">&larr; Portal</a>
+    <span class="topnav__sep">/</span>
+    <a href="./">ガイド一覧</a>
+    <span class="topnav__sep">/</span>
+    <span class="topnav__current" id="nav-title">読込中…</span>
+  </nav>
+
+  <article class="content" id="content">
+    <div class="loading">
+      <div class="loading__spinner"></div>
+      <p style="margin-top:1rem;">ガイドを読込中…</p>
+    </div>
+  </article>
+
+  <button class="toc-toggle" id="toc-toggle" aria-label="目次">&#9776;</button>
+  <div class="toc-panel" id="toc-panel">
+    <h3>目次</h3>
+    <ul id="toc-list"></ul>
+  </div>
+
+  <button class="scroll-top" id="scroll-top" aria-label="トップへ戻る">&uarr;</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked@15/marked.min.js"></script>
+  <script>
+    (function() {
+      var params = new URLSearchParams(location.search);
+      var file = params.get('file');
+
+      if (!file || !/^[a-z0-9\/_-]+\.md$/i.test(file)) {
+        document.getElementById('content').innerHTML =
+          '<p style="text-align:center;padding:4rem 1rem;color:#94a3b8;">ファイルが指定されていません。<br><a href="./" style="color:#fb923c;">ガイド一覧に戻る</a></p>';
+        return;
+      }
+
+      fetch(file)
+        .then(function(r) {
+          if (!r.ok) throw new Error(r.status);
+          return r.text();
+        })
+        .then(function(md) {
+          document.getElementById('content').innerHTML = marked.parse(md);
+
+          // タイトル抽出
+          var h1 = document.querySelector('.content h1');
+          if (h1) {
+            document.getElementById('nav-title').textContent = h1.textContent;
+            document.title = h1.textContent + ' — Paradox攻略ガイド';
+          }
+
+          // 目次生成
+          buildToc();
+        })
+        .catch(function() {
+          document.getElementById('content').innerHTML =
+            '<p style="text-align:center;padding:4rem 1rem;color:#94a3b8;">ガイドの読込に失敗しました。<br><a href="./" style="color:#fb923c;">ガイド一覧に戻る</a></p>';
+        });
+
+      function buildToc() {
+        var headings = document.querySelectorAll('.content h2, .content h3');
+        var list = document.getElementById('toc-list');
+        headings.forEach(function(h, i) {
+          var id = 'sec-' + i;
+          h.id = id;
+          var li = document.createElement('li');
+          var a = document.createElement('a');
+          a.href = '#' + id;
+          a.textContent = h.textContent;
+          if (h.tagName === 'H3') a.className = 'toc-h3';
+          a.addEventListener('click', function() {
+            document.getElementById('toc-panel').classList.remove('is-open');
+          });
+          li.appendChild(a);
+          list.appendChild(li);
+        });
+      }
+
+      // 目次トグル
+      document.getElementById('toc-toggle').addEventListener('click', function() {
+        document.getElementById('toc-panel').classList.toggle('is-open');
+      });
+
+      // スクロールトップ
+      var scrollBtn = document.getElementById('scroll-top');
+      window.addEventListener('scroll', function() {
+        scrollBtn.classList.toggle('is-visible', window.scrollY > 400);
+      });
+      scrollBtn.addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+
+      // パネル外クリックで閉じる
+      document.addEventListener('click', function(e) {
+        var panel = document.getElementById('toc-panel');
+        var toggle = document.getElementById('toc-toggle');
+        if (!panel.contains(e.target) && e.target !== toggle) {
+          panel.classList.remove('is-open');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
