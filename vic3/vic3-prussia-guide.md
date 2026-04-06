@@ -33,7 +33,7 @@
 | 主要文化 | 北ドイツ（North German） |
 | 国教 | プロテスタント |
 | 識字率（Literacy） | 高い（ドイツ圏最高水準） |
-| 主要利益団体（IG） | 地主（Landowners）、軍部（Armed Forces）が強力 |
+| 主要利益団体（IG） | 地主（Landowners）、軍部（Armed Forces）が強力 [src: interest_groups_l_japanese.yml, ig_landowners / ig_armed_forces] |
 | 従属国 | なし |
 | 経済圏 | プロイセン関税同盟（Zollverein）のリーダー |
 
@@ -76,6 +76,33 @@
 
 ---
 
+## 時系列戦略
+
+### 序盤（1836〜1860）: 経済基盤の構築
+
+| 時期 | 目標 |
+|------|------|
+| 1836-1840 | 建設局の拡張、鉄鋼・工具の生産基盤構築 |
+| 1840-1850 | 関税同盟の拡大。技術で先行。法律改正を開始 |
+| 1850-1860 | 対デンマーク戦争（シュレスヴィヒ問題）。北ドイツ連邦の布石 |
+
+### 中盤（1860〜1880）: ドイツ統一戦争
+
+| 時期 | 目標 |
+|------|------|
+| 1860-1866 | 北ドイツ連邦を形成。対オーストリア戦争 |
+| 1866-1871 | 普仏戦争。ドイツ帝国を宣言 |
+| 1871-1880 | 統一後の内政安定化。法律改正の推進 |
+
+### 終盤（1880〜1936）: 列強としての運営
+
+- 植民地獲得（アフリカ分割）
+- 海軍の拡張（1.13 で仕様変更予定に注意）
+- 社会制度の整備（社会保障、教育、医療）
+- 大戦への備えまたは回避
+
+---
+
 ## 内政・経済
 
 > VIC3 は経済がゲームの中心。軍事・外交より先にこのセクションを固める。
@@ -84,21 +111,21 @@
 
 | 順位 | 施設（Building） | 理由 |
 |------|-----------------|------|
-| 1 | 建設局（Construction Sector） | 建設速度の基盤。最優先（コミュニティ知見） |
-| 2 | 鉄鋼関連（Iron Mine, Steel Mills） | 資材と商品の供給。プロイセンの資源を活用 |
-| 3 | 工具工場（Tool Workshops） | 全施設の建設に必要な工具を生産 |
+| 1 | 建設局（Construction Sector）[src: buildings_l_japanese.yml, building_construction_sector] | 建設速度の基盤。最優先（コミュニティ知見） |
+| 2 | 鉄鋼関連（Iron Mine, Steel Mills）[src: buildings_l_japanese.yml, building_iron_mine / building_steel_mill] | 資材と商品の供給。プロイセンの資源を活用 |
+| 3 | 工具工場（Tool Workshops）[src: buildings_l_japanese.yml, building_tooling_workshop] | 全施設の建設に必要な工具を生産 |
 | 4 | 織物工場系 | 人口の消費需要を満たし GDP を伸ばす |
-| 5 | 大学（Universities） | 革新（Innovation）を加速。識字率を維持 |
+| 5 | 大学（Universities）[src: buildings_l_japanese.yml, building_university] | 革新（Innovation）を加速。識字率を維持 |
 
 ### 利益団体（IG）管理
 
 | IG | 序盤の戦略 |
 |----|-----------|
-| 地主（Landowners） | 初期は強すぎる。法律改正で徐々に弱体化させるが、急ぎすぎると内戦リスク |
-| 軍部（Armed Forces） | 味方につけておく。統一戦争で必要 |
-| 実業家（Industrialists） | 工業化で自然に影響力が伸びる。支持する |
-| 知識人（Intelligentsia） | 法律改正の推進力。影響力を育てたい |
-| 労働組合（Trade Unions） | 中盤以降に台頭。急進化させない程度に配慮 |
+| 地主（Landowners） [src: 00_landowners.txt, ig_landowners] | 初期は強すぎる。法律改正で徐々に弱体化させるが、急ぎすぎると内戦リスク |
+| 軍部（Armed Forces） [src: 00_armed_forces.txt, ig_armed_forces] | 味方につけておく。統一戦争で必要 |
+| 実業家（Industrialists） [src: 00_industrialists.txt, ig_industrialists] | 工業化で自然に影響力が伸びる。支持する |
+| 知識人（Intelligentsia） [src: 00_intelligentsia.txt, ig_intelligentsia] | 法律改正の推進力。影響力を育てたい |
+| 労働組合（Trade Unions） [src: 00_trade_unions.txt, ig_trade_unions] | 中盤以降に台頭。急進化させない程度に配慮 |
 
 ### 法律改正ロードマップ（コミュニティ知見）
 
@@ -106,8 +133,8 @@
 
 | 優先度 | 法律 | 理由 |
 |--------|------|------|
-| 高 | 徴兵法の改正 | 統一戦争に備えて動員力を確保 |
-| 高 | 教育制度の拡充 | 識字率を維持し革新を加速 |
+| 高 | 徴兵法の改正（職業軍人→大規模徴兵）[src: laws_l_japanese.yml, law_professional_army / law_mass_conscription] | 統一戦争に備えて動員力を確保 |
+| 高 | 教育制度の拡充（民間学校→公共学校）[src: laws_l_japanese.yml, law_private_schools / law_public_schools] | 識字率を維持し革新を加速 |
 | 中 | 経済法の自由化 | 実業家の影響力を伸ばし地主を弱体化 |
 | 中 | 労働法の改善 | 急進派の抑制と生活水準の向上 |
 | 低 | 選挙法の改正 | 終盤の政治安定に寄与。急ぐ必要はない |
@@ -165,47 +192,22 @@
 
 ---
 
-## 時系列戦略
-
-### 序盤（1836〜1860）: 経済基盤の構築
-
-| 時期 | 目標 |
-|------|------|
-| 1836-1840 | 建設局の拡張、鉄鋼・工具の生産基盤構築 |
-| 1840-1850 | 関税同盟の拡大。技術で先行。法律改正を開始 |
-| 1850-1860 | 対デンマーク戦争（シュレスヴィヒ問題）。北ドイツ連邦の布石 |
-
-### 中盤（1860〜1880）: ドイツ統一戦争
-
-| 時期 | 目標 |
-|------|------|
-| 1860-1866 | 北ドイツ連邦を形成。対オーストリア戦争 |
-| 1866-1871 | 普仏戦争。ドイツ帝国を宣言 |
-| 1871-1880 | 統一後の内政安定化。法律改正の推進 |
-
-### 終盤（1880〜1936）: 列強としての運営
-
-- 植民地獲得（アフリカ分割）
-- 海軍の拡張（1.13 で仕様変更予定に注意）
-- 社会制度の整備（社会保障、教育、医療）
-- 大戦への備えまたは回避
-
----
-
 ## 固有イベント時系列
 
 > プロイセン固有イベントの詳細はゲームスクリプト `events/` で確認可能。以下は主要なもの。
 
-| イベント名 | 時期 | 条件 | 推奨選択 |
-|------------|------|------|----------|
-| ツォルフェライン（関税同盟）イベント | 序盤 | ドイツ小国との関係 | 加盟国を増やす選択肢を優先 |
-| シュレスヴィヒ＝ホルシュタイン危機 | 1848-1860頃 | デンマークとの関係 | 戦争準備が整い次第、請求を主張 |
-| 北ドイツ連邦の形成 | 中盤 | 十分な影響力 | 積極的に形成する |
-| 普墺戦争イベント | 中盤 | オーストリアとの対立 | 戦争を選択（準備が整っていれば） |
-| ドイツ帝国宣言 | 1870前後 | 北ドイツ連邦 + 対フランス戦勝 | 帝国を宣言 |
-| ビスマルクの社会立法 | 1880以降 | ドイツ統一後 | 社会保障を導入（急進派の抑制）（コミュニティ知見） |
+| イベント名 | ID | 発生期間/条件 | 推奨選択 | 効果 |
+|-----------|-----|--------------|---------|------|
+| ドイツの国民意識 | german_unification.5 | 北ドイツまたは南ドイツ文化の国が je_german_unification_idea を完了したとき | a: 「ただならぬ時代がやって来る」 — JEを進める | 北/南ドイツ連邦JEをジャーナルに追加 [src: german_unification.txt, german_unification.5] |
+| ドイツのリーダーシップ | german_unification.1 | je_north_german_unification または je_south_german_unification 完了時 | a: 「責任ある政治家は国民的英雄である」— NGF/SGFに改名 | 統一候補小国が自動的に合流または german_unification.2 を受け取る [src: german_unification.txt, german_unification.1] |
+| …との連合（小国合流） | german_unification.2 | german_unification.1 で小国が拒否しなかった場合 | a: 「ドイツのために！」— 合流を受け入れる | 拒否すると関係-50 + 請求権が付与される [src: german_unification.txt, german_unification.2] |
+| 鉄血宰相 | german_unification.3 | PRU_otto_von_bismarck キャラクタースポーン時（クールダウンあり） | a: 「ビスマルクを首相に任命せよ」— realpolitik モディファイア獲得 | b 選択で germany_aggressive_expansion モディファイア付与 [src: german_unification.txt, german_unification.3] |
+| ドイツ統一 | german_unification.4 | je_german_unification 完了時（GER 形成） | a: 「[元首称号]万歳」— special_character_german_unifier_ruler トレイト付与 | b 選択でドイツ文化に忠誠心+10% [src: german_unification.txt, german_unification.4] |
+| シュレスヴィヒ＝ホルシュタイン問題（JE） | je_schleswig_holstein_question | ゲーム開始〜中盤。北/南ドイツ文化が前提条件 | STATE_SCHLESWIG_HOLSTEIN をドイツ系が支配するか HOL/SCH が独立 | 完了すると schleswig_holstein_question_solver モディファイアを取得。北ドイツ連邦JEの前提条件 [src: 00_german_unification.txt, je_schleswig_holstein_question] |
+| ツォルフェライン（関税同盟）イベント | — | ドイツ小国との関係（コミュニティ知見） | 加盟国を増やす選択肢を優先 | 専用イベントファイル未確認 |
+| ビスマルクの社会立法 | — | ドイツ統一後（1880以降）（コミュニティ知見） | 社会保障を導入（急進派の抑制） | 専用イベントファイル未確認 |
 
-> **注記**: 上記イベントの正確な発火条件はスクリプトで確認する必要がある。推奨選択はコミュニティ知見ベース。
+> **注記**: `[src:]` マーカーが付いた項目はスクリプトで確認済み。ID が `—` の項目はコミュニティ知見ベースで一次情報での裏取りが未完了。
 
 ---
 
@@ -216,8 +218,8 @@
 | Era | 優先分野 | 理由 |
 |-----|---------|------|
 | Era 1 | 産業系（工業化） | 経済基盤の構築が最優先 |
-| Era 2 | 軍事系 | 統一戦争に備える |
-| Era 3 | 産業 + 社会系 | 統一後の内政安定化 |
+| Era 2 | 軍事系 + 民族主義（Nationalism）[src: 30_society.txt, nationalism] | 統一戦争に備える。北ドイツ連邦JEの完了条件に nationalism 研究が必要 |
+| Era 3 | 産業 + 社会系 + 汎民族主義（Pan-nationalism）[src: 30_society.txt, pan-nationalism] | 統一後の内政安定化。je_german_unification の完了条件に pan-nationalism 研究が必要 |
 | Era 4-5 | バランスよく | 列強として全方位の発展 |
 
 ---
@@ -231,7 +233,7 @@
 | 建設局を後回しにする | 経済発展が致命的に遅れる |
 | 地主を急激に弱体化させる | 内戦（Civil War）リスク。段階的に進める |
 | オーストリアより先にフランスと戦う | 順序を間違えると統一が頓挫する |
-| 悪名（Infamy）を無視して拡張する | 包囲網を招き、統一どころか防衛戦になる |
+| 悪名（Infamy）を無視して拡張���る | 包囲網を招き、統一どころか防衛戦になる |
 | 海軍に大量投資する | プロイセンの強みは陸軍。海軍はコスパが悪い |
 | ロシアを敵に回す | 二正面作戦は致命的 |
 
@@ -274,7 +276,7 @@
 | 時代 | Era | 技術の時代区分 |
 | 陸軍 | Army | 地上軍 |
 | 将軍 | General | 陸軍指揮官 |
-| 外交戦 | Diplomatic Play | 戦争前の外交的駆け引き |
+| 外交戦 | Diplomatic Play | 戦争前の外交的駆���引き |
 | 戦争目標 | War Goal | 戦争で達成すべき目標 |
 | 同盟 | Alliance | 軍事同盟 |
 | 関税同盟 | Customs Union | 経済統合 |
@@ -287,7 +289,21 @@
 ### 一次情報（ゲームスクリプト・公式）
 
 - ローカルのゲームスクリプトと日本語ローカライズを照合
-  - `localization/japanese/` 配下 — ゲーム内用語の日本語訳
+  - `events/german_unification.txt` — ドイツ統一イベント（german_unification.1〜5）
+  - `common/journal_entries/00_german_unification.txt` — ジャーナルエントリー（je_schleswig_holstein_question, je_german_unification_idea, je_north_german_unification, je_south_german_unification, je_german_unification）
+  - `common/interest_groups/00_armed_forces.txt` — 軍部（ig_armed_forces）
+  - `common/interest_groups/00_landowners.txt` — 地主（ig_landowners）
+  - `common/interest_groups/00_industrialists.txt` — 実業家（ig_industrialists）
+  - `common/interest_groups/00_intelligentsia.txt` — 知識人（ig_intelligentsia）
+  - `common/interest_groups/00_trade_unions.txt` — 労働組合（ig_trade_unions）
+  - `common/technology/technologies/30_society.txt` — nationalism / pan-nationalism
+  - `events/law_events/education_laws.txt` — プロイセン教育修正案（amendment_prussian_education）
+  - `localization/japanese/interest_groups/interest_groups_l_japanese.yml` — IG 日本語名
+  - `localization/japanese/buildings_l_japanese.yml` — 建造物日本語名
+  - `localization/japanese/laws_l_japanese.yml` — 法律日本語名
+  - `localization/japanese/inventions_l_japanese.yml` — 技術日本語名（nationalism=民族主義, pan-nationalism=汎民族主義）
+  - `localization/japanese/amendments_ip4_l_japanese.yml` — 修正案日本語名（amendment_prussian_education=プロイセン教育）
+  - `localization/japanese/content_1_l_japanese.yml` — イベント・JE 日本語名（german_unification.1〜5, je_*）
 - [Patches - Victoria 3 Wiki](https://vic3.paradoxwikis.com/Patches)
 - [Patch 1.12.X - Victoria 3 Wiki](https://vic3.paradoxwikis.com/Patch_1.12.X)
 - [Prussia - Victoria 3 Wiki](https://vic3.paradoxwikis.com/Prussia)

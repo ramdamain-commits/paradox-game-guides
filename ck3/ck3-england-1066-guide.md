@@ -57,7 +57,7 @@
 ### キャラクター設定
 
 1. **ライフスタイルを軍事（Martial）に設定**
-   - 方針は「戦略方針（Strategy Focus）」を推奨（コミュニティ知見）
+   - 方針は「戦略方針（Strategy Focus）」を推奨（コミュニティ知見） [src: focuses_l_japanese.yml, martial_strategy_focus]
    - 開幕の戦争を生き残るために軍事パークが最優先
 
 2. **評議会（Council）を確認・配置**
@@ -98,7 +98,7 @@
 
 #### 内政の安定化
 
-- **継承法を意識する**: 分割連合相続制のまま死亡すると領土が分散する
+- **継承法を意識する**: 分割連合相続制（confederate_partition_succession_law）のまま死亡すると領土が分散する [src: succession_laws_l_japanese.yml, confederate_partition_succession_law]
 - **婚姻で後継者を確保**: ハロルドの子供が少ない場合は早めに婚姻
 - **封臣（Vassal）の好感度（Opinion）管理**: 戦争直後は不満が溜まりやすい
 - **請求権（Claim）の整理**: ウェールズ、スコットランドへの請求権を確認
@@ -122,8 +122,8 @@
 
 #### 相続対策
 
-- **長子相続制（Primogeniture）への移行を目指す**
-  - 文化の革新性（Innovation）で解放される
+- **長子相続制（Primogeniture）への移行を目指す** [src: succession_laws_l_japanese.yml, single_heir_succession_law]
+  - 革新性「長子相続（innovation_primogeniture）」で解放される [src: cultural_innovations_l_japanese.yml, innovation_primogeniture]
   - アングロサクソン文化の革新速度に注意
 - **次男以降への対策**: 公爵領を意図的に作成し、分割の影響を制御する
 
@@ -150,17 +150,17 @@
 | 兵種 | 方針 |
 |------|------|
 | 徴募兵（Levies） | 主力の数合わせ。封臣からの動員が大半 |
-| 常備軍（Men-at-Arms） | 精鋭。ハスカール（重歩兵）が序盤の主力 |
+| 常備軍（Men-at-Arms） | 精鋭。ハスカール（重歩兵）が序盤の主力 [src: 00_maa_types.txt, 00_cultural_maa_types.txt] |
 | 騎士（Knight） | 個人戦闘力が高い。優秀な廷臣を騎士に任命 |
 | 傭兵（Mercenary） | 金があるときの緊急戦力。開幕の二正面戦争で有用 |
 
-### 常備軍の推奨兵種（コミュニティ知見）
+### 常備軍の推奨兵種
 
 | 兵種 | 理由 |
 |------|------|
-| ハスカール（Huscarls） | アングロサクソン固有の重歩兵。序盤最強クラス |
-| 弓兵（Archers） | 安くて効果的。防衛戦に強い |
-| 騎兵（Cavalry） | 追撃戦に有効。中盤以降に拡充 |
+| ハスカール（Huscarls） | アングロサクソン固有の重歩兵。damage=40、toughness=26。槍兵・弓兵・民兵に有利。文化伝統「ハード（tradition_hird）」で解放 [src: 00_cultural_maa_types.txt, huscarl; 00_west_germanic.txt, anglo_saxon] |
+| 弓兵（Archers） | damage=25、toughness=10。丘陵・森林ボーナスあり。斥候兵に有利（コミュニティ知見：防衛戦に有効） [src: 00_maa_types.txt, bowmen] |
+| 重装騎兵（Armored Horsemen） | damage=100、toughness=35。平原で大幅ボーナス。弓兵・火薬に有利。鐙（innovation_arched_saddle）が必要 [src: 00_maa_types.txt, armored_horsemen] |
 
 ---
 
@@ -205,14 +205,17 @@
 
 ## 固有イベント時系列
 
-| イベント名 | 時期 | 条件 | 推奨選択 |
-|------------|------|------|----------|
-| ノルマン侵攻 | 1066 開幕 | 開始直後に発火 | 全力で迎撃。ハロルド戦死を防ぐ |
-| ヴァイキング侵攻 | 1066 開幕 | 開始直後に発火 | 北で先に撃退してから南へ転進 |
-| 戴冠イベント | 序盤 | 戦争勝利後 | 威信点を獲得。正統性の強化 |
-| 封臣の不満イベント | 初代〜 | 戦争後の不安定期 | 懐柔策を優先（好感度維持） |
+| イベント名 | ID | 発生期間/条件 | 推奨選択 | 効果 |
+|------------|-----|--------------|----------|------|
+| ヴァイキング侵攻（ハーラル）戦争開始 | CB: `norwegian_invasion_cb` | 1066.8.1〜（歴史的戦争として自動開始） | 全軍北上で先に撃退 | イングランド王位 (k_england) 防衛戦 [src: history/wars/00_wars.txt, war_1066_Harald_Invasion] |
+| ノルマン征服（ウィリアム）戦争開始 | CB: `norman_conquest_cb` | 1066.9.8〜（歴史的戦争として自動開始） | 全力で迎撃。ハロルド戦死を防ぐ | イングランド王位 (k_england) 防衛戦 [src: history/wars/00_wars.txt, war_1066_Norman_Conquest] |
+| 戦闘：スタンフォード・ブリッジ（ハロルド勝利） | `game_rule.1101` | ハーラル侵攻戦争中、「ノルマン征服の結果」ゲームルールが「ハロルド勝利」に設定されている場合 | 選択肢A: イングランドはヴァイキングの支配から解放される | ハーラル撃退。ゲームルール依存で発火 [src: game_rule_events.txt, game_rule.1101] |
+| 戦闘：ヘイスティングス（ハロルド勝利） | `game_rule.1103` | ウィリアム征服戦争中、「ハロルド勝利」ルール有効時 | 選択肢A: 庶子の僭称者に勝利した！ | ウィリアム撃退 [src: game_rule_events.txt, game_rule.1103] |
+| 戦闘（ウィリアム勝利/ハロルド敗北） | `game_rule.1121` | ウィリアム征服戦争中、「ウィリアム勝利」ルール有効時 | — | ハロルド敗北イベント。選択肢: 「身の程を知れ、簒奪者め。」 [src: game_rule_events.txt, game_rule.1121] |
+| 戦闘（ハーラル勝利/ハロルド敗北） | `game_rule.1111` | ハーラル侵攻戦争中、「ハーラル勝利」ルール有効時 | — | ハロルド敗北 [src: game_rule_events.txt, game_rule.1111] |
+| 封臣の不満イベント | — | 初代〜 / 戦争後の不安定期 | 懐柔策を優先（好感度維持）（コミュニティ知見） | 汎用イベントのため固有IDなし |
 
-> **注記**: CK3 のイベントはキャラクター・状況依存で発火が動的。上記は 1066 イングランドで典型的に発生するもの。正確な発火条件はゲームスクリプト `events/` で確認が必要。
+> **注記**: `game_rule.1101` 〜 `game_rule.1122` 系は「ノルマン征服の結果（rule_historicity_norman_conquest）」ゲームルールが「システム的（デフォルト）」以外に設定されている場合のみ発火する決定論的イベント。デフォルト設定では戦争はゲームシステムで決定され、これらのイベントは発火しない。発火起点は `on_action/army_on_actions.txt` 経由で `game_rule.1021` が戦闘ごとに評価する。[src: game_rule_events.txt, game_rule.1021; common/on_action/game_start.txt]
 
 ---
 
@@ -222,9 +225,9 @@
 
 | 世代 | 推奨 | 理由 |
 |------|------|------|
-| 初代（ハロルド） | 軍事（Martial）→ 戦略方針 | 開幕の戦争を生き残る |
-| 2代目 | 管理（Stewardship）→ 直轄領方針 or 富方針 | 経済基盤の構築。直轄領収入の最大化 |
-| 3代目 | 外交（Diplomacy）→ 外政方針 | ブリタニア帝国形成に向けた外交 |
+| 初代（ハロルド） | 軍事（Martial）→ 戦略方針 [src: focuses_l_japanese.yml, martial_strategy_focus] | 開幕の戦争を生き残る |
+| 2代目 | 管理（Stewardship）→ 直轄領方針 or 富方針 [src: focuses_l_japanese.yml, stewardship_domain_focus / stewardship_wealth_focus] | 経済基盤の構築。直轄領収入の最大化 |
+| 3代目 | 外交（Diplomacy）→ 外政方針 [src: focuses_l_japanese.yml, diplomacy_foreign_affairs_focus] | ブリタニア帝国形成に向けた外交 |
 
 ### 文化の革新性（Innovation）
 
@@ -321,6 +324,20 @@
   - `localization/japanese/game_concepts_l_japanese.yml` — 基本用語
   - `localization/japanese/succession_laws_l_japanese.yml` — 相続法
   - `localization/japanese/focuses_l_japanese.yml` — ライフスタイル方針名
+  - `localization/japanese/game_rules_l_japanese.yml` — ノルマン征服ゲームルール・戦闘イベント名
+  - `localization/japanese/regiment_l_japanese.yml` — 兵種名（ハスカール等）
+  - `localization/japanese/culture/cultural_innovations_l_japanese.yml` — 文化革新性名
+  - `localization/japanese/culture/cultural_maa_innovations_l_japanese.yml` — 兵種解放伝統名
+  - `localization/japanese/culture/traditions/cultural_traditions_l_japanese.yml` — 文化伝統名
+  - `common/men_at_arms_types/00_maa_types.txt` — 基本兵種ステータス（bowmen, armored_horsemen 等）
+  - `common/men_at_arms_types/00_cultural_maa_types.txt` — 文化固有兵種（huscarl ステータス）
+  - `common/culture/cultures/00_west_germanic.txt` — アングロサクソン文化定義（tradition_hird 保有確認）
+  - `common/script_values/00_men_at_arms_values.txt` — 兵種コスト値
+  - `common/laws/00_succession_laws.txt` — 継承法定義
+  - `history/wars/00_wars.txt` — 1066 年歴史的戦争定義（開始日・CB）
+  - `events/game_rule_events.txt` — ノルマン征服決定論的イベント（game_rule.1021, 1031, 1032, 1041, 1042, 1051, 1101〜1122）
+  - `common/on_action/game_start.txt` — ゲーム開始時の決定論的征服セットアップ
+  - `common/casus_belli_types/00_event_war.txt` — norman_conquest_cb / norwegian_invasion_cb 定義
 - [Patch 1.18.X - CK3 Wiki](https://ck3.paradoxwikis.com/Patch_1.18.X)
 - [England - CK3 Wiki](https://ck3.paradoxwikis.com/England)
 - [1066 Bookmark - CK3 Wiki](https://ck3.paradoxwikis.com/1066)
