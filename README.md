@@ -11,6 +11,7 @@ Paradox Interactive のグランドストラテジーゲーム攻略メモ集。
 | ブランデンブルク | [eu5/eu5-brandenburg-guide.md](eu5/eu5-brandenburg-guide.md) | 中級〜上級 | 1.1.10 |
 | ハンガリー | [eu5/eu5-hungary-guide.md](eu5/eu5-hungary-guide.md) | 初級〜中級 | 1.1.10 |
 | オスマン帝国 | [eu5/eu5-ottoman-guide.md](eu5/eu5-ottoman-guide.md) | 初級〜中級 | 1.1.10 |
+| カスティーリャ | [eu5/eu5-castile-guide.md](eu5/eu5-castile-guide.md) | 初級〜中級 | 1.1.10 |
 
 **おすすめMOD**: [eu5/eu5-recommended-mods.md](eu5/eu5-recommended-mods.md)（1.1.10 時点）
 
