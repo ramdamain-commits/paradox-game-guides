@@ -23,15 +23,15 @@
 
 | 項目 | 値 |
 |------|-----|
-| キャラクター | ハロルド・ゴドウィンソン（Harold Godwinson） |
-| 爵位 | イングランド王（Kingdom of England） |
-| 王朝 | ゴドウィン家 |
+| キャラクター | ハロルド・ゴドウィンソン（Harold Godwinson、character:122） [src: history/characters/anglo_saxon.txt:122] |
+| 爵位 | イングランド王（Kingdom of England、k_england） [src: history/titles/k_england.txt:1066.1.5] |
+| 王朝 | ゴドウィン家（dynasty:756） [src: history/characters/anglo_saxon.txt:122] |
 | 政体 | 封建政体（Feudal） |
-| 宗派（Faith） | カトリック |
-| 文化 | アングロサクソン |
-| 継承法 | 分割連合相続制（Confederate Partition） |
+| 宗派（Faith） | カトリック [src: history/characters/anglo_saxon.txt:122] |
+| 文化 | アングロサクソン（culture:anglo_saxon） [src: history/characters/anglo_saxon.txt:122] |
+| 継承法 | ウィテナゲモット選挙制（saxon_elective_succession_law） [src: history/titles/k_england.txt:927.7.12; common/laws/01_title_succession_laws.txt:saxon_elective_succession_law] |
 | 直轄領（Domain） | ウェセックス周辺 |
-| 主要能力 | 軍事（Martial）が高い |
+| 主要能力 | 外交6・管理6・謀略5・軍事4（教育：軍事Lv3）[src: history/characters/anglo_saxon.txt:122] |
 
 ### 開幕の脅威
 
@@ -98,7 +98,7 @@
 
 #### 内政の安定化
 
-- **継承法を意識する**: 分割連合相続制（confederate_partition_succession_law）のまま死亡すると領土が分散する [src: succession_laws_l_japanese.yml, confederate_partition_succession_law]
+- **継承法を意識する**: 1066開始時の継承法はウィテナゲモット選挙制（saxon_elective_succession_law）。封臣の選挙で後継者が決まるため、封臣の好感度が重要 [src: history/titles/k_england.txt:927.7.12; common/laws/01_title_succession_laws.txt:saxon_elective_succession_law]。ゲームが進むと分割連合相続制（confederate_partition_succession_law）に変更されるリスクがあるため要確認 [src: succession_laws_l_japanese.yml, confederate_partition_succession_law]
 - **婚姻で後継者を確保**: ハロルドの子供が少ない場合は早めに婚姻
 - **封臣（Vassal）の好感度（Opinion）管理**: 戦争直後は不満が溜まりやすい
 - **請求権（Claim）の整理**: ウェールズ、スコットランドへの請求権を確認
@@ -129,8 +129,8 @@
 
 ### 3代目以降: ブリタニア帝国の形成
 
-- **ブリタニア帝国（Empire of Britannia）の形成条件を確認**
-  - 必要な王国称号（イングランド + スコットランド + ウェールズ等）
+- **ブリタニア帝国（Empire of Britannia、e_britannia）の形成条件を確認** [src: common/landed_titles/00_landed_titles.txt:e_britannia; common/scripted_triggers/00_game_rule_triggers.txt:rule_title_creation_imperial_power_projection_title_creation_trigger]
+  - de jure 称号に k_england・k_wales・k_scotland・k_ireland・k_cornwall・k_mann_the_isles が含まれる（ただし建国の直接条件は `can_create` のゲームルール設定による）
   - 十分な威信点（Prestige）
 
 - **大陸進出**
@@ -179,7 +179,7 @@
 
 - ハロルドの子供を有力な王家と婚姻させ、同盟を確保
 - 2代目以降は請求権獲得のための戦略的婚姻を重視
-- **王朝の栄誉点（Renown）を意識**: 格下との婚姻は栄誉点が少ない
+- **王朝の威信点（Prestige）を意識**: 格下との婚姻は威信点がマイナス（最低 -100）になる。格上との婚姻ほど高い威信点が得られる（最大 +900） [src: common/defines/00_defines.txt:NDynasty:MARRIAGE_PRESTIGE]（「栄誉点」ではなく「威信点」が正確）
 
 ---
 
@@ -189,7 +189,7 @@
 
 | 優先事項 | 内容 |
 |----------|------|
-| 直轄領上限の確認 | 管理スキルで上限が決まる。超えると収入減 |
+| 直轄領上限の確認 | 管理スキル6ごとに上限+1（base: 称号ティアに応じて伯爵2・公爵2・王3・皇帝4）。超えると収入・徴募兵が最大-100% [src: common/defines/00_defines.txt:NDomain:STEWARDSHIP_SKILL_FOR_DOMAIN_LIMIT_INCREASE; common/modifiers/00_basic_modifiers.txt:king_modifier] |
 | 開発度の高い伯爵領を直轄に | ウェセックス、ロンドン周辺が候補 |
 | 建造物の建設 | 収入と徴募兵を増やす建造物を優先 |
 
@@ -246,6 +246,8 @@
 ---
 
 ## よくあるミス
+
+（コミュニティ知見）
 
 ### イングランド 1066 固有
 
@@ -338,6 +340,14 @@
   - `events/game_rule_events.txt` — ノルマン征服決定論的イベント（game_rule.1021, 1031, 1032, 1041, 1042, 1051, 1101〜1122）
   - `common/on_action/game_start.txt` — ゲーム開始時の決定論的征服セットアップ
   - `common/casus_belli_types/00_event_war.txt` — norman_conquest_cb / norwegian_invasion_cb 定義
+  - `history/characters/anglo_saxon.txt` — Harold Godwinson (character:122) の初期スキル・特性・出生死亡日
+  - `history/titles/k_england.txt` — k_england の1066保持者・継承法（saxon_elective_succession_law）設定
+  - `common/laws/01_title_succession_laws.txt` — saxon_elective_succession_law 定義（ウィテナゲモット選挙制）
+  - `common/landed_titles/00_landed_titles.txt` — e_britannia de jure 定義・can_create 条件
+  - `common/scripted_triggers/00_game_rule_triggers.txt` — rule_title_creation_imperial_power_projection_title_creation_trigger 定義
+  - `common/defines/00_defines.txt:NDomain` — STEWARDSHIP_SKILL_FOR_DOMAIN_LIMIT_INCREASE=6（直轄領上限計算式）
+  - `common/defines/00_defines.txt:NDynasty` — MARRIAGE_PRESTIGE 配列（婚姻による威信点増減）
+  - `common/modifiers/00_basic_modifiers.txt` — 称号ティア別 domain_limit ボーナス（count/duke/king/emperor）
 - [Patch 1.18.X - CK3 Wiki](https://ck3.paradoxwikis.com/Patch_1.18.X)
 - [England - CK3 Wiki](https://ck3.paradoxwikis.com/England)
 - [1066 Bookmark - CK3 Wiki](https://ck3.paradoxwikis.com/1066)

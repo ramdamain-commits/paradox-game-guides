@@ -8,14 +8,14 @@
 
 ## パッチ 1.12 / 1.12.4 でのプロイセン関連変更点
 
-1.12 はイベリア半島が主題。プロイセン固有の変更は確認されていない。
+1.12 はイベリア半島が主題。プロイセン固有の変更は確認されていない。[src: https://vic3.paradoxwikis.com/Patch_1.12.X]
 
 | 変更 | 内容 |
 |------|------|
-| GDP 再投資乗数の削除 | 外国投資の実装に伴い、世界 GDP 成長が緩やかに。プロイセンの経済優位は序盤に集中しやすくなった |
-| 百姓（Peasants）の早期消滅緩和 | 農業国との経済差が縮小。工業化の相対優位はやや低下 |
-| 封鎖必要海軍力の調整 | 海軍戦略に影響（プロイセンは陸軍主体なので間接的） |
-| AI 外交戦の陣営切替修正 | 外交戦（Diplomatic Play）で敵味方が安定しやすくなった |
+| GDP 再投資乗数の削除 | 外国投資の実装に伴い、世界 GDP 成長が緩やかに。プロイセンの経済優位は序盤に集中しやすくなった [src: https://vic3.paradoxwikis.com/Patch_1.12.X] |
+| 百姓（Peasants）の早期消滅緩和 | 農業国との経済差が縮小。工業化の相対優位はやや低下 [src: https://vic3.paradoxwikis.com/Patch_1.12.X] |
+| 封鎖必要海軍力の調整 | 海軍戦略に影響（プロイセンは陸軍主体なので間接的） [src: https://vic3.paradoxwikis.com/Patch_1.12.X] |
+| AI 外交戦の陣営切替修正 | 外交戦（Diplomatic Play）で敵味方が安定しやすくなった [src: https://vic3.paradoxwikis.com/Patch_1.12.X] |
 
 ### 次期パッチ 1.13（2026-04-28 予定）
 
@@ -76,7 +76,7 @@
 
 ---
 
-## 時系列戦略
+## 時系列戦略（コミュニティ知見）
 
 ### 序盤（1836〜1860）: 経済基盤の構築
 
@@ -143,7 +143,7 @@
 
 ## 外交・同盟
 
-### 必須外交
+### 必須外交（コミュニティ知見）
 
 | 対象 | 行動 | 理由 |
 |------|------|------|
@@ -152,13 +152,13 @@
 | オーストリア | 対決準備 | ドイツ統一のためにいずれ排除する |
 | イギリス | 中立維持 | 海戦で勝てない。敵に回さない |
 
-### ドイツ統一の外交ルート
+### ドイツ統一の外交ルート（コミュニティ知見）
 
 ドイツ統一は「北ドイツ連邦（North German Federation）→ ドイツ帝国（Germany）」のルートで達成する。
 
 1. 関税同盟を拡大し、ドイツ小国を経済的に囲い込む
 2. シュレスヴィヒ＝ホルシュタイン問題で対デンマーク戦争（序盤〜中盤）
-3. 北ドイツ連邦を形成（外交戦 or 戦争）
+3. 北ドイツ連邦を形成（外交戦 or 戦争）[src: 00_diplomatic_plays.txt, dp_conquer_state / dp_return_state]
 4. 対オーストリア戦争でドイツ圏の主導権を確保
 5. 対フランス戦争（普仏戦争）でドイツ帝国を宣言
 
@@ -172,9 +172,9 @@
 
 | 兵種 | 方針 |
 |------|------|
-| 歩兵 | 主力。技術でアップグレードを優先 |
-| 砲兵 | 重要。技術が進むほど有利 |
-| 騎兵 | 序盤は有用。中盤以降は比重低下 |
+| 歩兵（戦列歩兵/散兵 等）[src: 00_land_combat_unit_types.txt, combat_unit_type_line_infantry / combat_unit_type_skirmish_infantry] | 主力。技術でアップグレードを優先 |
+| 砲兵（カノン砲/榴散弾砲 等）[src: 00_land_combat_unit_types.txt, combat_unit_type_cannon_artillery / combat_unit_type_shrapnel_artillery] | 重要。技術が進むほど有利 |
+| 騎兵（軽騎兵/竜騎兵 等）[src: 00_land_combat_unit_types.txt, combat_unit_type_hussars / combat_unit_type_dragoons] | 序盤は有用。中盤以降は比重低下 |
 | 海軍 | 最低限。海戦は避ける方針 |
 
 ### 将軍の選び方
@@ -304,6 +304,9 @@
   - `localization/japanese/inventions_l_japanese.yml` — 技術日本語名（nationalism=民族主義, pan-nationalism=汎民族主義）
   - `localization/japanese/amendments_ip4_l_japanese.yml` — 修正案日本語名（amendment_prussian_education=プロイセン教育）
   - `localization/japanese/content_1_l_japanese.yml` — イベント・JE 日本語名（german_unification.1〜5, je_*）
+  - `common/combat_unit_types/00_land_combat_unit_types.txt` — 陸軍ユニット種別（combat_unit_type_line_infantry, combat_unit_type_skirmish_infantry, combat_unit_type_cannon_artillery, combat_unit_type_shrapnel_artillery, combat_unit_type_hussars, combat_unit_type_dragoons 等）
+  - `localization/japanese/interfaces_l_japanese.yml` — ユニット種別日本語名（戦列歩兵, 散兵, カノン砲, 榴散弾砲, 軽騎兵, 竜騎兵 等）
+  - `common/diplomatic_plays/00_diplomatic_plays.txt` — 外交戦定義（dp_conquer_state, dp_return_state）
 - [Patches - Victoria 3 Wiki](https://vic3.paradoxwikis.com/Patches)
 - [Patch 1.12.X - Victoria 3 Wiki](https://vic3.paradoxwikis.com/Patch_1.12.X)
 - [Prussia - Victoria 3 Wiki](https://vic3.paradoxwikis.com/Prussia)
