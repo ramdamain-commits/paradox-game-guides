@@ -262,3 +262,96 @@
 | 文化発展 | 学識 | イノベーション加速 + domain_limit |
 
 ---
+
+## その他 1.19 変更点
+
+### 遊牧連合（Confederation）
+
+遊牧政体の新しい政治単位。遊牧連合に加入・脱退するとメンバー全員に通知される。加入直後の3年間は「新規連合員」フラグが付き、5年間は連合メンバー補正が適用される。[src: 00_confederation_types.txt, nomadic_confederation]
+
+（DLC: Roads to Power 必要）
+
+### 徴税スロット（Tax Slot）
+
+氏族政体の徴税管理を再設計したシステム。1スロットあたり封臣12名を管理できる。徴税官（Tax Collector）を任命し、異なる税制（義務）を適用する。[src: 00_tax_slot_types.txt, clan_tax_slot]
+
+- 徴税官の条件: 成人、投獄されていない、無能力でない
+- 性別制限: 宗派の教義（男性優位等）に従う
+- 宰相（Vizier）を任命すると追加の徴税管轄を獲得（DLC: Roads to Power 必要）
+
+### 台帳（Ledger）イノベーション
+
+部族時代の文化イノベーション。所有物の記録管理を可能にする。[src: cultural_innovations_l_japanese.yml, innovation_ledger]
+
+---
+
+## よくある誤解（1.19版）
+
+| 誤解 | 実際 |
+|------|------|
+| 「管理（Stewardship）を上げれば直轄領が増える」 | 1.19 では管理スキル200ごとに +1（事実上無効）。教育特性レベルで決まる [src: 00_defines.txt, STEWARDSHIP_SKILL_FOR_DOMAIN_LIMIT_INCREASE = 200] |
+| 「教育の系統は好みで選んでいい」 | 1.19 では全系統が同じ domain_limit パターン（Lv1: -1, Lv5: +3）のため、系統自体よりレベルが重要 [src: 00_traits.txt] |
+| 「正統性は威信点（Prestige）と同じようなもの」 | 正統性は独立したリソース。威信点とは別に管理が必要。低い正統性は婚姻・同盟・臣従の受諾率を直接下げる [src: 00_legitimacy.txt] |
+| 「戴冠式は1回やれば十分」 | 新しい統治者になるたびに戴冠式が必要。代替わりごとの必須イベント |
+| 「叙勲は騎士が強いときだけ意味がある」 | 叙勲ランクは封臣管理やスキルボーナスにも影響。軍事以外の価値も大きい |
+
+---
+
+## 用語対照表
+
+> 完全版は [localization-reference.md](localization-reference.md) を参照。以下はこのガイドで使う用語の抜粋。
+
+| 日本語 | 英語 | 補足 |
+|--------|------|------|
+| 正統性 | Legitimacy | 統治者の支配権の正当性 |
+| 正統性レベル | Legitimacy Level | 6段階 |
+| 正統性への期待 | Legitimacy Expectations | 封臣が主君に要求する水準 |
+| 戴冠式 | Coronation | 正統性を獲得する活動 |
+| 誓約 | Oath | 戴冠式での方針宣言 |
+| 直轄領上限 | Domain Limit | 保持できる直轄領の数 |
+| 叙勲 | Accolade | 騎士への栄誉 |
+| 栄光 | Glory | 叙勲の成長リソース |
+| 封臣のスタンス | Vassal Stance | 封臣の態度分類 |
+| 礼節 | Courtly | 封臣スタンスの一種 |
+| 地方主義 | Parochial | 封臣スタンスの一種 |
+| 名誉追求者 | Glory Hound | 封臣スタンスの一種 |
+| 狂信 | Zealot | 封臣スタンスの一種 |
+| 少数派 | Minority | 封臣スタンスの一種 |
+| 弱小地主 | Barons and Minor Landholders | 封臣スタンスの一種 |
+| 好戦的 | Belligerent | 封臣スタンスの一種 |
+| 権力の秤 | Scales of Power | 統治者と摂政の権力バランス |
+| 徴税スロット | Tax Slot | 氏族政体の徴税管理 |
+| 徴税官 | Tax Collector | 徴税スロットの管理者 |
+| 遊牧連合 | Confederation | 遊牧政体の政治単位 |
+| 台帳 | Ledger | 文化イノベーション |
+| 教育 | Education | 子供時代の育成結果 |
+
+---
+
+## 出典
+
+### 一次情報（ゲームスクリプト・公式）
+
+- ローカルのゲームスクリプトと日本語ローカライズを照合
+  - `common/legitimacy/00_legitimacy.txt` — 正統性レベル定義・閾値・効果
+  - `common/defines/00_defines.txt:NDomain` — STEWARDSHIP_SKILL_FOR_DOMAIN_LIMIT_INCREASE = 200
+  - `common/traits/00_traits.txt` — 教育特性の domain_limit 値（全5系統×5レベル）
+  - `common/modifiers/00_basic_modifiers.txt` — 称号ティア別 domain_limit ボーナス
+  - `common/accolade_types/00_accolade_categories.txt` — 叙勲種別カテゴリ定義
+  - `common/confederation_types/00_confederation_types.txt` — 遊牧連合定義
+  - `common/tax_slots/types/00_tax_slot_types.txt` — 徴税スロット定義
+  - `localization/japanese/game_concepts_l_japanese.yml` — 正統性、封臣スタンス、権力の秤
+  - `localization/japanese/vassal_stances_l_japanese.yml` — 封臣スタンス名
+  - `localization/japanese/traits_l_japanese.yml` — 教育特性名
+  - `localization/japanese/accolades/accolades_l_japanese.yml` — 叙勲用語
+  - `localization/japanese/activities/coronation_activity_l_japanese.yml` — 戴冠式・誓約
+  - `localization/japanese/culture/cultural_innovations_l_japanese.yml` — 台帳イノベーション
+- [Patch 1.19 Scribe - CK3 Wiki](https://ck3.paradoxwikis.com/Patches)
+
+### コミュニティ情報（補足知見）
+
+プレイ報告・体感ベースの情報。条件の裏取りには一次情報を参照のこと。
+
+- 教育系統の選択指針は経験則ベース
+- 相続対策チェックリストはコミュニティで広く共有される知見
+- 叙勲の戦略的意義はプレイ報告ベース
