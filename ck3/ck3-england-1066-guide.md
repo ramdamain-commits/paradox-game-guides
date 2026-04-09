@@ -17,6 +17,9 @@
 | Accolades の改良（1.18.3〜） | 騎士（Knight）の育成システムが刷新予定（次期パッチで本格導入） |
 | Creator Pack 3種追加（1.18.4） | 外見カスタマイズのみ。ゲームプレイに影響なし |
 
+<!-- 1.19更新候補: 正統性・直轄領上限・封臣のスタンス・叙勲の反映 -->
+> **1.19 更新メモ**: このガイド本体は 1.18.4 基準のまま。Patch 1.19.0.1（Scribe）では正統性、直轄領上限、叙勲、封臣のスタンスが大きく変わったため、該当箇所に更新候補マーカーを付けた。現行仕様の横断整理は [CK3 汎用システムガイド](ck3-systems-guide.md) を参照。
+
 ---
 
 ## 開始状況（1066年）
@@ -32,6 +35,9 @@
 | 継承法 | ウィテナゲモット選挙制（saxon_elective_succession_law） [src: history/titles/k_england.txt:927.7.12; common/laws/01_title_succession_laws.txt:saxon_elective_succession_law] |
 | 直轄領（Domain） | ウェセックス周辺 |
 | 主要能力 | 外交6・管理6・謀略5・軍事4（教育：軍事Lv3）[src: history/characters/anglo_saxon.txt:122] |
+
+<!-- 1.19更新候補: ハロルドの教育特性と直轄領上限の関係を反映 -->
+> **1.19 補足**: ハロルドは `education_martial_3` を持つため、1.19 では教育特性ボーナスで直轄領上限 +1。管理スキル値そのものではなく教育結果を見る。[src: history/characters/anglo_saxon.txt:122; common/traits/00_traits.txt:education_martial_3; common/defines/00_defines.txt:NDomain]
 
 ### 開幕の脅威
 
@@ -98,9 +104,11 @@
 
 #### 内政の安定化
 
-- **継承法を意識する**: 1066開始時の継承法はウィテナゲモット選挙制（saxon_elective_succession_law）。封臣の選挙で後継者が決まるため、封臣の好感度が重要 [src: history/titles/k_england.txt:927.7.12; common/laws/01_title_succession_laws.txt:saxon_elective_succession_law]。ゲームが進むと分割連合相続制（confederate_partition_succession_law）に変更されるリスクがあるため要確認 [src: succession_laws_l_japanese.yml, confederate_partition_succession_law]
+<!-- 1.19更新候補: 正統性と封臣のスタンスの継承安定度への影響を反映 -->
+- **継承法を意識する**: 1066開始時の継承法はウィテナゲモット選挙制（saxon_elective_succession_law）。封臣の選挙で後継者が決まるため、封臣の好感度が重要 [src: history/titles/k_england.txt:927.7.12; common/laws/01_title_succession_laws.txt:saxon_elective_succession_law]。ゲームが進むと分割連合相続制（confederate_partition_succession_law）に変更されるリスクがあるため要確認 [src: succession_laws_l_japanese.yml, confederate_partition_succession_law]。1.19 以降はこれに正統性と封臣のスタンスが重なり、継承直後の安定度は「誰が継ぐか」だけでなく「誰に支持されるか」でも変わる。[src: game_concepts_l_japanese.yml, game_concept_legitimacy / game_concept_vassal_stance]
 - **婚姻で後継者を確保**: ハロルドの子供が少ない場合は早めに婚姻
 - **封臣（Vassal）の好感度（Opinion）管理**: 戦争直後は不満が溜まりやすい
+- **即位直後の正統性回復を意識する**: 1.19 以降は戴冠式（Coronation）と誓約（Oath）が代替わり直後の立て直し手段になる。継承前から金を残しておくと事故が減る。[src: coronation_activity_l_japanese.yml, activity_coronation_host_desc]
 - **請求権（Claim）の整理**: ウェールズ、スコットランドへの請求権を確認
 
 ### 2代目（1090〜1130頃）: 島内統一とブリタニアへの布石
@@ -122,9 +130,12 @@
 
 #### 相続対策
 
+<!-- 1.19更新候補: 後継者教育と戴冠式を相続対策に追加 -->
 - **長子相続制（Primogeniture）への移行を目指す** [src: succession_laws_l_japanese.yml, single_heir_succession_law]
   - 革新性「長子相続（innovation_primogeniture）」で解放される [src: cultural_innovations_l_japanese.yml, innovation_primogeniture]
   - アングロサクソン文化の革新速度に注意
+- **後継者の教育を優先する**: 1.19 以降は教育特性 Lv3 以上が直轄領上限に直結する。管理スキルを後から伸ばしても補いにくいため、後見人選びの優先度が上がる。[src: common/traits/00_traits.txt; common/defines/00_defines.txt:NDomain]
+- **即位後の戴冠式資金を残す**: 1.19 以降は戴冠式で正統性を回復し、封臣の期待値を下げやすい。戦争直後でも現金を使い切らない方が安定する。[src: coronation_activity_l_japanese.yml, activity_coronation_host_desc]
 - **次男以降への対策**: 公爵領を意図的に作成し、分割の影響を制御する
 
 ### 3代目以降: ブリタニア帝国の形成
@@ -185,19 +196,23 @@
 
 ## 内政・経済
 
+<!-- 1.19更新候補: 直轄領上限の計算式を教育特性依存へ差し替え -->
 ### 直轄領管理
 
 | 優先事項 | 内容 |
 |----------|------|
-| 直轄領上限の確認 | 管理スキル6ごとに上限+1（base: 称号ティアに応じて伯爵2・公爵2・王3・皇帝4）。超えると収入・徴募兵が最大-100% [src: common/defines/00_defines.txt:NDomain:STEWARDSHIP_SKILL_FOR_DOMAIN_LIMIT_INCREASE; common/modifiers/00_basic_modifiers.txt:king_modifier] |
+| 直轄領上限の確認 | このガイドは 1.18.4 基準のため直轄領上限の説明は旧仕様寄り。1.19 以降は管理スキルではなく教育特性レベルが主要因で、ハロルド級の Lv3 教育なら +1 が目安。超えると収入・徴募兵が最大-100%。現行仕様は [CK3 汎用システムガイド](ck3-systems-guide.md) を参照 [src: common/defines/00_defines.txt:NDomain; common/modifiers/00_basic_modifiers.txt:king_modifier; common/traits/00_traits.txt] |
 | 開発度の高い伯爵領を直轄に | ウェセックス、ロンドン周辺が候補 |
 | 建造物の建設 | 収入と徴募兵を増やす建造物を優先 |
 
+<!-- 1.19更新候補: 正統性と封臣のスタンスを封臣管理に反映 -->
 ### 封臣管理
 
 | 対策 | 方法 |
 |------|------|
 | 好感度（Opinion）を維持 | 恩赦、祝宴、贈り物で管理 |
+| 正統性を維持 | 1.19 以降は低正統性で婚姻・同盟・派閥管理が悪化する。継承直後ほど祝宴・戦争勝利・戴冠式で立て直したい。[src: common/legitimacy/00_legitimacy.txt:legitimacy_level_1; coronation_activity_l_japanese.yml, activity_coronation_host_desc] |
+| 封臣のスタンスを確認 | 1.19 以降は各封臣のスタンスが継承直後の期待値と後継者支持に影響する。強力な封臣だけでなく「礼節」「名誉追求者」「地方主義」などの傾向も見る。[src: game_concepts_l_japanese.yml, game_concept_vassal_stance; vassal_stances_l_japanese.yml] |
 | 強力な封臣を牽制 | フック（Hook）の活用、封臣契約の見直し |
 | 派閥（Faction）を監視 | 不満が溜まると反乱。恐怖（Dread）で抑制も可 |
 
@@ -221,12 +236,13 @@
 
 ## ライフスタイル・革新性
 
+<!-- 1.19更新候補: 管理ライフスタイルと直轄領上限の関係を補足 -->
 ### 推奨ライフスタイル（世代別）（コミュニティ知見）
 
 | 世代 | 推奨 | 理由 |
 |------|------|------|
 | 初代（ハロルド） | 軍事（Martial）→ 戦略方針 [src: focuses_l_japanese.yml, martial_strategy_focus] | 開幕の戦争を生き残る |
-| 2代目 | 管理（Stewardship）→ 直轄領方針 or 富方針 [src: focuses_l_japanese.yml, stewardship_domain_focus / stewardship_wealth_focus] | 経済基盤の構築。直轄領収入の最大化 |
+| 2代目 | 管理（Stewardship）→ 直轄領方針 or 富方針 [src: focuses_l_japanese.yml, stewardship_domain_focus / stewardship_wealth_focus] | 経済基盤の構築。1.19 以降も収入系パークは強いが、直轄領上限自体は教育特性レベルで決まる |
 | 3代目 | 外交（Diplomacy）→ 外政方針 [src: focuses_l_japanese.yml, diplomacy_foreign_affairs_focus] | ブリタニア帝国形成に向けた外交 |
 
 ### 文化の革新性（Innovation）
@@ -345,10 +361,16 @@
   - `common/laws/01_title_succession_laws.txt` — saxon_elective_succession_law 定義（ウィテナゲモット選挙制）
   - `common/landed_titles/00_landed_titles.txt` — e_britannia de jure 定義・can_create 条件
   - `common/scripted_triggers/00_game_rule_triggers.txt` — rule_title_creation_imperial_power_projection_title_creation_trigger 定義
-  - `common/defines/00_defines.txt:NDomain` — STEWARDSHIP_SKILL_FOR_DOMAIN_LIMIT_INCREASE=6（直轄領上限計算式）
+  - `common/defines/00_defines.txt:NDomain` — 現行ローカル環境では STEWARDSHIP_SKILL_FOR_DOMAIN_LIMIT_INCREASE=200（1.19 直轄領上限差分確認用）
+  - `common/traits/00_traits.txt` — 教育特性の domain_limit 値（1.19 差分確認用）
+  - `common/legitimacy/00_legitimacy.txt` — 正統性レベル・効果（1.19 差分確認用）
   - `common/defines/00_defines.txt:NDynasty` — MARRIAGE_PRESTIGE 配列（婚姻による威信点増減）
   - `common/modifiers/00_basic_modifiers.txt` — 称号ティア別 domain_limit ボーナス（count/duke/king/emperor）
+  - `localization/japanese/game_concepts_l_japanese.yml` — 正統性、封臣のスタンス
+  - `localization/japanese/activities/coronation_activity_l_japanese.yml` — 戴冠式・誓約
+  - `localization/japanese/vassal_stances_l_japanese.yml` — 封臣のスタンス名
 - [Patch 1.18.X - CK3 Wiki](https://ck3.paradoxwikis.com/Patch_1.18.X)
+- [Patch 1.19 Scribe - CK3 Wiki](https://ck3.paradoxwikis.com/Patches)
 - [England - CK3 Wiki](https://ck3.paradoxwikis.com/England)
 - [1066 Bookmark - CK3 Wiki](https://ck3.paradoxwikis.com/1066)
 
