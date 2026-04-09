@@ -1,24 +1,22 @@
-# CK3 イングランド 1066 攻略ガイド（Patch 1.18.4 時点）
+# CK3 イングランド 1066 攻略ガイド（Patch 1.19.0.1 時点）
 
 > ハロルド・ゴドウィンソン → ノルマン撃退からブリタニア帝国を狙う初代から3代目以降までの整理。
-> 2026-03-31 確認時点の最新パッチ 1.18.4（Crane）に合わせて更新。
+> 2026-04-09 確認時点の最新パッチ 1.19.0.1（Scribe）に合わせて更新。
 > 日本語は原則としてゲーム内ローカライズ準拠。未翻訳の箇所は英語を併記する。
 
 ---
 
-## パッチ 1.18 / 1.18.4 でのイングランド関連変更点
+## パッチ 1.19 / 1.19.0.1 でのイングランド関連変更点
 
-1.18「Crane」はアジア（中国）が主題。イングランド固有の変更は確認されていない。
+1.19「Scribe」はイングランド固有イベントよりも、統治システム刷新の影響が大きい。ハロルド 1066 は「開幕の連戦で正統性を稼ぎやすいが、代替わりで崩れやすい」シナリオになった。
 
 | 変更 | 内容 |
 |------|------|
-| 常備軍（Men-at-Arms）の指揮構造改編 | 個人兵力と称号兵力の編成選択が可能に。イングランドの軍編成に影響 |
-| 農民派閥の挙動修正 | 伯爵領が派閥間を行き来する問題が解消 |
-| Accolades の改良（1.18.3〜） | 騎士（Knight）の育成システムが刷新予定（次期パッチで本格導入） |
-| Creator Pack 3種追加（1.18.4） | 外見カスタマイズのみ。ゲームプレイに影響なし |
-
-<!-- 1.19更新候補: 正統性・直轄領上限・封臣のスタンス・叙勲の反映 -->
-> **1.19 更新メモ**: このガイド本体は 1.18.4 基準のまま。Patch 1.19.0.1（Scribe）では正統性、直轄領上限、叙勲、封臣のスタンスが大きく変わったため、該当箇所に更新候補マーカーを付けた。現行仕様の横断整理は [CK3 汎用システムガイド](ck3-systems-guide.md) を参照。
+| 正統性（Legitimacy）新設 | 開幕2戦の勝敗と即位後の立て直しが直結。敗戦や継承失敗の痛手が大きい |
+| 直轄領上限の計算式変更 | 管理スキル依存から教育特性依存へ。ハロルド本人は軍事Lv3で扱いやすいが、後継者の教育差が大きい |
+| 封臣のスタンス導入 | ウィテナゲモット選挙制に加えて、封臣の期待値と後継者の相性も見る必要がある |
+| 戴冠式（Coronation）と誓約（Oath） | ノルマン撃退後の安定化手段。戦後に金を使い切ると立て直しが遅れる |
+| 叙勲（Accolade）刷新 | 優秀な騎士を中長期で育てる価値が上昇。初代の戦後再編に影響 |
 
 ---
 
@@ -34,10 +32,7 @@
 | 文化 | アングロサクソン（culture:anglo_saxon） [src: history/characters/anglo_saxon.txt:122] |
 | 継承法 | ウィテナゲモット選挙制（saxon_elective_succession_law） [src: history/titles/k_england.txt:927.7.12; common/laws/01_title_succession_laws.txt:saxon_elective_succession_law] |
 | 直轄領（Domain） | ウェセックス周辺 |
-| 主要能力 | 外交6・管理6・謀略5・軍事4（教育：軍事Lv3）[src: history/characters/anglo_saxon.txt:122] |
-
-<!-- 1.19更新候補: ハロルドの教育特性と直轄領上限の関係を反映 -->
-> **1.19 補足**: ハロルドは `education_martial_3` を持つため、1.19 では教育特性ボーナスで直轄領上限 +1。管理スキル値そのものではなく教育結果を見る。[src: history/characters/anglo_saxon.txt:122; common/traits/00_traits.txt:education_martial_3; common/defines/00_defines.txt:NDomain]
+| 主要能力 | 外交6・管理6・謀略5・軍事4（教育：軍事Lv3。1.19 では直轄領上限 +1 の基礎） [src: history/characters/anglo_saxon.txt:122; common/traits/00_traits.txt:education_martial_3] |
 
 ### 開幕の脅威
 
@@ -52,9 +47,9 @@
 | 強み | 弱み |
 |------|------|
 | イングランド王位で大量の徴募兵（Levies）を動員可能 | 二正面作戦の開幕が確定 |
-| ハロルドの軍事スキルが高い | 分割連合相続制で領土が分散するリスク |
+| 開幕2戦に勝てば正統性を一気に稼げる | 分割連合相続制で領土が分散するリスク |
 | 島国の地理的優位（大陸からの侵攻は限定的） | ハロルドに後継者問題あり（兄弟に領地が流れる） |
-| 封臣が比較的多く経済基盤がある | ノルマン征服イベントの処理に失敗すると致命的 |
+| ハロルド本人は軍事Lv3教育で直轄領上限を維持しやすい | 1.19 では代替わりで正統性・封臣の期待・直轄領上限が同時に崩れやすい |
 
 ---
 
@@ -80,6 +75,7 @@
 
 5. **傭兵団（Mercenary Company）の雇用を検討**
    - 金（Gold）に余裕があれば傭兵で兵力を補強
+   - ただし 1.19 では戦後の戴冠式資金も必要。使い切らない
 
 6. **同盟を確認**
    - 婚姻（Marriage）で同盟を組めるなら組む。ただし開幕は時間がないため、既存の関係を活用
@@ -104,10 +100,9 @@
 
 #### 内政の安定化
 
-<!-- 1.19更新候補: 正統性と封臣のスタンスの継承安定度への影響を反映 -->
 - **継承法を意識する**: 1066開始時の継承法はウィテナゲモット選挙制（saxon_elective_succession_law）。封臣の選挙で後継者が決まるため、封臣の好感度が重要 [src: history/titles/k_england.txt:927.7.12; common/laws/01_title_succession_laws.txt:saxon_elective_succession_law]。ゲームが進むと分割連合相続制（confederate_partition_succession_law）に変更されるリスクがあるため要確認 [src: succession_laws_l_japanese.yml, confederate_partition_succession_law]。1.19 以降はこれに正統性と封臣のスタンスが重なり、継承直後の安定度は「誰が継ぐか」だけでなく「誰に支持されるか」でも変わる。[src: game_concepts_l_japanese.yml, game_concept_legitimacy / game_concept_vassal_stance]
 - **婚姻で後継者を確保**: ハロルドの子供が少ない場合は早めに婚姻
-- **封臣（Vassal）の好感度（Opinion）管理**: 戦争直後は不満が溜まりやすい
+- **封臣（Vassal）の好感度とスタンスを管理**: 戦争直後は不満が溜まりやすい。1.19 では封臣のスタンスが継承時の期待値にも触るため、強力な封臣の性向を見ておく
 - **即位直後の正統性回復を意識する**: 1.19 以降は戴冠式（Coronation）と誓約（Oath）が代替わり直後の立て直し手段になる。継承前から金を残しておくと事故が減る。[src: coronation_activity_l_japanese.yml, activity_coronation_host_desc]
 - **請求権（Claim）の整理**: ウェールズ、スコットランドへの請求権を確認
 
@@ -115,9 +110,10 @@
 
 #### 新キャラクターの初動
 
+- **戴冠式と祝宴で正統性を立て直す**
 - **ライフスタイルを選び直す**（管理 or 外交が安定）
 - **評議会を再配置**
-- **封臣契約（Vassal Contract）を見直す**
+- **封臣契約（Vassal Contract）と封臣のスタンスを見直す**
 - **前代の借金や同盟を整理する**
 
 #### 拡張目標
@@ -130,12 +126,12 @@
 
 #### 相続対策
 
-<!-- 1.19更新候補: 後継者教育と戴冠式を相続対策に追加 -->
 - **長子相続制（Primogeniture）への移行を目指す** [src: succession_laws_l_japanese.yml, single_heir_succession_law]
   - 革新性「長子相続（innovation_primogeniture）」で解放される [src: cultural_innovations_l_japanese.yml, innovation_primogeniture]
   - アングロサクソン文化の革新速度に注意
 - **後継者の教育を優先する**: 1.19 以降は教育特性 Lv3 以上が直轄領上限に直結する。管理スキルを後から伸ばしても補いにくいため、後見人選びの優先度が上がる。[src: common/traits/00_traits.txt; common/defines/00_defines.txt:NDomain]
 - **即位後の戴冠式資金を残す**: 1.19 以降は戴冠式で正統性を回復し、封臣の期待値を下げやすい。戦争直後でも現金を使い切らない方が安定する。[src: coronation_activity_l_japanese.yml, activity_coronation_host_desc]
+- **選挙と封臣のスタンスを両方見る**: ウィテナゲモット選挙制では、主要封臣が支持しやすい後継者を育てると継承事故を減らしやすい [src: history/titles/k_england.txt:927.7.12; game_concepts_l_japanese.yml, game_concept_vassal_stance]
 - **次男以降への対策**: 公爵領を意図的に作成し、分割の影響を制御する
 
 ### 3代目以降: ブリタニア帝国の形成
@@ -162,7 +158,7 @@
 |------|------|
 | 徴募兵（Levies） | 主力の数合わせ。封臣からの動員が大半 |
 | 常備軍（Men-at-Arms） | 精鋭。ハスカール（重歩兵）が序盤の主力 [src: 00_maa_types.txt, 00_cultural_maa_types.txt] |
-| 騎士（Knight） | 個人戦闘力が高い。優秀な廷臣を騎士に任命 |
+| 騎士（Knight） | 個人戦闘力が高い。1.19 以降は優秀な騎士を叙勲候補として育てる価値も高い |
 | 傭兵（Mercenary） | 金があるときの緊急戦力。開幕の二正面戦争で有用 |
 
 ### 常備軍の推奨兵種
@@ -191,21 +187,21 @@
 - ハロルドの子供を有力な王家と婚姻させ、同盟を確保
 - 2代目以降は請求権獲得のための戦略的婚姻を重視
 - **王朝の威信点（Prestige）を意識**: 格下との婚姻は威信点がマイナス（最低 -100）になる。格上との婚姻ほど高い威信点が得られる（最大 +900） [src: common/defines/00_defines.txt:NDynasty:MARRIAGE_PRESTIGE]（「栄誉点」ではなく「威信点」が正確）
+- **低正統性の時期は婚姻受諾が落ちる**: 代替わり直後や敗戦直後は、先に正統性を立て直してから大型婚姻を狙う方が通しやすい [src: game_concepts_l_japanese.yml, game_concept_legitimacy]
 
 ---
 
 ## 内政・経済
 
-<!-- 1.19更新候補: 直轄領上限の計算式を教育特性依存へ差し替え -->
 ### 直轄領管理
 
 | 優先事項 | 内容 |
 |----------|------|
-| 直轄領上限の確認 | このガイドは 1.18.4 基準のため直轄領上限の説明は旧仕様寄り。1.19 以降は管理スキルではなく教育特性レベルが主要因で、ハロルド級の Lv3 教育なら +1 が目安。超えると収入・徴募兵が最大-100%。現行仕様は [CK3 汎用システムガイド](ck3-systems-guide.md) を参照 [src: common/defines/00_defines.txt:NDomain; common/modifiers/00_basic_modifiers.txt:king_modifier; common/traits/00_traits.txt] |
+| 直轄領上限の確認 | 1.19 では管理スキルではなく教育特性レベルが主要因。ハロルドは軍事Lv3で直轄領上限 +1 を持つため、王位ベース3と合わせて直轄領4前後を基準に見やすい。後継者の教育が低いと即座に超過しやすい [src: common/defines/00_defines.txt:NDomain; common/modifiers/00_basic_modifiers.txt:king_modifier; common/traits/00_traits.txt:education_martial_3; history/characters/anglo_saxon.txt:122] |
 | 開発度の高い伯爵領を直轄に | ウェセックス、ロンドン周辺が候補 |
+| 戴冠式資金を確保 | 代替わり直後の戴冠式・祝宴のため、拡張前に現金を残す |
 | 建造物の建設 | 収入と徴募兵を増やす建造物を優先 |
 
-<!-- 1.19更新候補: 正統性と封臣のスタンスを封臣管理に反映 -->
 ### 封臣管理
 
 | 対策 | 方法 |
@@ -236,7 +232,6 @@
 
 ## ライフスタイル・革新性
 
-<!-- 1.19更新候補: 管理ライフスタイルと直轄領上限の関係を補足 -->
 ### 推奨ライフスタイル（世代別）（コミュニティ知見）
 
 | 世代 | 推奨 | 理由 |
@@ -271,8 +266,9 @@
 |---------|------|
 | ハロルドを最前線に立たせる | 戦死するとゲーム終了に近い。指揮官にしない or 後方配置を検討 |
 | 南のウィリアムを先に攻撃する | 北のハーラルが暴れて領土を荒らされる。北を先に処理 |
-| 相続対策を怠る | 分割連合相続制で 2 代目にイングランドが分裂する |
-| 封臣の不満を放置する | 戦争直後の反乱は致命的 |
+| 戴冠式資金まで使い切る | 1.19 では継承直後の正統性回復が遅れ、封臣管理が苦しくなる |
+| 相続対策を怠る | 分割連合相続制に加え、2代目で正統性と直轄領上限も崩れやすい |
+| 封臣の不満とスタンスを放置する | 戦争直後や継承直後の反乱・選挙事故が起きやすい |
 | 大陸領を優先する | 防衛困難。まず島内を統一してから |
 
 ### CK3 全般
@@ -280,10 +276,10 @@
 | NG 行動 | 理由 |
 |---------|------|
 | ストレス（Stress）を無視する | 精神崩壊イベントでキャラクターが弱体化 |
-| 直轄領上限を超える | 収入と好感度が大幅低下 |
+| 直轄領上限を超える | 収入と好感度が大幅低下。1.19 では教育の低い後継者で突然超過しやすい |
 | 暴政（Tyranny）を溜める | 封臣が一斉に反乱 |
 | 同盟なしで大国に宣戦する | 兵力差で蹂躙される |
-| 後継者の教育を放置する | 2 代目の能力が低いと全てが崩壊 |
+| 後継者の教育を放置する | 2代目の能力だけでなく直轄領上限まで落ちる |
 
 ---
 
@@ -295,6 +291,9 @@
 |--------|------|------|
 | 金 | Gold | 通貨 |
 | 威信点 | Prestige | 外交・軍事行動に使うリソース |
+| 正統性 | Legitimacy | 統治者の支配権の正当性 |
+| 戴冠式 | Coronation | 正統性を獲得する活動 |
+| 誓約 | Oath | 戴冠式で宣言する統治方針 |
 | 敬虔点 | Piety | 宗教行動に使うリソース |
 | 栄誉点 | Renown | 王朝全体のリソース |
 | ストレス | Stress | キャラクターの精神負荷 |
@@ -312,11 +311,13 @@
 | 騎士 | Knight | 個人戦闘力の高い廷臣 |
 | 傭兵 | Mercenary | 金で雇う軍 |
 | 封臣 | Vassal | 臣従する領主 |
+| 封臣のスタンス | Vassal Stance | 封臣の態度分類 |
 | 主君 | Liege | 封臣の上位者 |
 | 好感度 | Opinion | キャラクター間の関係値 |
 | フック | Hook | 交渉に使える弱み |
 | 暴政 | Tyranny | 不当な行為への反発値 |
 | 直轄領 | Domain | 自分で直接支配する領地 |
+| 叙勲 | Accolade | 騎士への栄誉 |
 | 継承 | Succession | 称号の引き継ぎ |
 | 分割連合相続制 | Confederate Partition | 最も分散する相続法 |
 | 長子相続制 | Primogeniture | 長子が全て継承 |
@@ -339,14 +340,21 @@
 ### 一次情報（ゲームスクリプト・公式）
 
 - ローカルのゲームスクリプトと日本語ローカライズを照合
+  - `common/legitimacy/00_legitimacy.txt` — 正統性レベル・効果
+  - `common/defines/00_defines.txt:NDomain` — STEWARDSHIP_SKILL_FOR_DOMAIN_LIMIT_INCREASE=200（1.19 直轄領上限）
+  - `common/traits/00_traits.txt` — 教育特性の domain_limit 値
+  - `common/accolade_types/00_accolade_categories.txt` — 叙勲カテゴリ
   - `localization/japanese/game_concepts_l_japanese.yml` — 基本用語
   - `localization/japanese/succession_laws_l_japanese.yml` — 相続法
   - `localization/japanese/focuses_l_japanese.yml` — ライフスタイル方針名
   - `localization/japanese/game_rules_l_japanese.yml` — ノルマン征服ゲームルール・戦闘イベント名
   - `localization/japanese/regiment_l_japanese.yml` — 兵種名（ハスカール等）
+  - `localization/japanese/accolades/accolades_l_japanese.yml` — 叙勲用語
   - `localization/japanese/culture/cultural_innovations_l_japanese.yml` — 文化革新性名
   - `localization/japanese/culture/cultural_maa_innovations_l_japanese.yml` — 兵種解放伝統名
   - `localization/japanese/culture/traditions/cultural_traditions_l_japanese.yml` — 文化伝統名
+  - `localization/japanese/activities/coronation_activity_l_japanese.yml` — 戴冠式・誓約
+  - `localization/japanese/vassal_stances_l_japanese.yml` — 封臣のスタンス名
   - `common/men_at_arms_types/00_maa_types.txt` — 基本兵種ステータス（bowmen, armored_horsemen 等）
   - `common/men_at_arms_types/00_cultural_maa_types.txt` — 文化固有兵種（huscarl ステータス）
   - `common/culture/cultures/00_west_germanic.txt` — アングロサクソン文化定義（tradition_hird 保有確認）
@@ -361,15 +369,8 @@
   - `common/laws/01_title_succession_laws.txt` — saxon_elective_succession_law 定義（ウィテナゲモット選挙制）
   - `common/landed_titles/00_landed_titles.txt` — e_britannia de jure 定義・can_create 条件
   - `common/scripted_triggers/00_game_rule_triggers.txt` — rule_title_creation_imperial_power_projection_title_creation_trigger 定義
-  - `common/defines/00_defines.txt:NDomain` — 現行ローカル環境では STEWARDSHIP_SKILL_FOR_DOMAIN_LIMIT_INCREASE=200（1.19 直轄領上限差分確認用）
-  - `common/traits/00_traits.txt` — 教育特性の domain_limit 値（1.19 差分確認用）
-  - `common/legitimacy/00_legitimacy.txt` — 正統性レベル・効果（1.19 差分確認用）
   - `common/defines/00_defines.txt:NDynasty` — MARRIAGE_PRESTIGE 配列（婚姻による威信点増減）
   - `common/modifiers/00_basic_modifiers.txt` — 称号ティア別 domain_limit ボーナス（count/duke/king/emperor）
-  - `localization/japanese/game_concepts_l_japanese.yml` — 正統性、封臣のスタンス
-  - `localization/japanese/activities/coronation_activity_l_japanese.yml` — 戴冠式・誓約
-  - `localization/japanese/vassal_stances_l_japanese.yml` — 封臣のスタンス名
-- [Patch 1.18.X - CK3 Wiki](https://ck3.paradoxwikis.com/Patch_1.18.X)
 - [Patch 1.19 Scribe - CK3 Wiki](https://ck3.paradoxwikis.com/Patches)
 - [England - CK3 Wiki](https://ck3.paradoxwikis.com/England)
 - [1066 Bookmark - CK3 Wiki](https://ck3.paradoxwikis.com/1066)
