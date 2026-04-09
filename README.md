@@ -30,7 +30,7 @@ Paradox Interactive のグランドストラテジーゲーム攻略メモ集。
 | 汎用システム | [ck3/ck3-systems-guide.md](ck3/ck3-systems-guide.md) | 初級〜上級 | 1.19.0.1 |
 | イングランド 1066 | [ck3/ck3-england-1066-guide.md](ck3/ck3-england-1066-guide.md) | 中級 | 1.19.0.1 |
 
-**おすすめMOD**: [ck3/ck3-recommended-mods.md](ck3/ck3-recommended-mods.md)（1.18.4 時点）
+**おすすめMOD**: [ck3/ck3-recommended-mods.md](ck3/ck3-recommended-mods.md)（1.19.0.1 時点）
 
 ## 構成
 
