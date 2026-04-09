@@ -2,7 +2,7 @@
 
 > ゲーム内日本語表示の正本。攻略ガイドの用語はこのファイルを参照して統一する。
 > 出典: `C:\Program Files (x86)\Steam\steamapps\common\Crusader Kings III\game\localization\japanese\` 配下の各 `.yml` ファイル
-> 確認パッチ: **1.18.4**（2026-03-31 確認）
+> 確認パッチ: **1.19.0.1**（2026-04-09 確認）
 
 ---
 
@@ -321,6 +321,33 @@
 | Go Hunting | 狩猟会を催す | 威信点獲得 |
 | Borrow from Holy Order | 聖戦騎士団から金を借り入れる | 緊急資金調達 |
 | Escape from Prison | 脱獄する | 拘禁時のみ |
+
+## 正統性
+
+| 英語 | ゲーム内日本語 | 補足 |
+|------|---------------|------|
+| Legitimacy | 正統性 | 統治者の支配権の正当性（1.19新設） |
+| Legitimacy Level | 正統性レベル | 5段階 + 非正統の計6段階 |
+| Legitimacy Expectations | 正統性への期待 | 封臣が主君に要求する正統性の水準 |
+| Initial Legitimacy | 初期正統性 | 統治者就任時に計算される初期値 |
+| Coronation | 戴冠式 | 正統性を大幅に獲得する活動 |
+| Oath | 誓約 | 戴冠式で宣言する統治方針 |
+| Scales of Power | 権力の秤 | 統治者と共同統治者の権力バランス |
+| Diarch | 共同統治者 | 権力を共有する相手 |
+| Diarchy | 権力の共有 | 統治者が封臣/廷臣と権限を共有する状態 |
+
+## 封臣スタンス
+
+| 英語 | ゲーム内日本語 | 補足 |
+|------|---------------|------|
+| Vassal Stance | 封臣のスタンス | 封臣の態度・傾向 |
+| Courtly | 礼節 | 宮廷の華やかさを重視 |
+| Parochial | 地方主義 | 地域の自治を重視 |
+| Glory Hound | 名誉追求者 | 戦争の勝利を重視 |
+| Zealot | 狂信 | 宗教的純粋さを重視 |
+| Minority | 少数派 | 文化的少数派の権利を重視 |
+| Barons and Minor Landholders | 弱小地主 | 低い税と自由を重視 |
+| Belligerent | 好戦的 | 積極的な拡張を重視 |
 
 ## その他
 
