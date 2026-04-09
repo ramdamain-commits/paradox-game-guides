@@ -3,12 +3,13 @@
 > 5つの政府タイプ（君主制・共和国・神権制・ステップ遊牧民・部族）の特性と運用方針を整理したリファレンス。
 > 2026-04-08 確認時点の最新パッチ 1.1.10 に合わせて更新。
 > 日本語は原則としてゲーム内ローカライズ準拠。未翻訳の箇所は英語を併記する。
+> 基本メカニクスは [汎用攻略ガイド](eu5-universal-guide.md) を参照。
 
 ---
 
 ## 概要：5タイプ比較表
 
-| 政府タイプ | 権力リソース | デフォルト身分 | 主な特徴 | 向いているプレイ志向 |
+| 政府タイプ | 権力リソース | デフォルト階級 | 主な特徴 | 向いているプレイ志向 |
 |-----------|------------|--------------|---------|-------------------|
 | 君主制（Monarchy） | 正統性（Legitimacy） | 貴族（Nobles） | 王朝婚姻・同君連合（PU）が可能 | 外交・王朝拡大・大国化 |
 | 共和国（Republic） | 共和的伝統（Republican Tradition） | 商人（Burghers） | 選挙で安定した統治者を獲得できる | 経済・貿易・都市国家的プレイ |
@@ -27,7 +28,7 @@
 | 項目 | 値 / 内容 |
 |------|---------|
 | 権力リソース | 正統性（Legitimacy） `[src: government_types/00_default.txt:27]` |
-| デフォルト身分 | 貴族身分（Nobles Estate） `[src: government_types/00_default.txt:31]` |
+| デフォルト階級 | 貴族階級（Nobles Estate） `[src: government_types/00_default.txt:31]` |
 | 継承システム | 長子相続・サリカ法典・分割相続など多数 |
 | 宮廷言語ボーナス | なし（基本） |
 | 革命的対立（Revolutionary Antagonism） | 20 `[src: government_types/00_default.txt:29]` |
@@ -39,7 +40,7 @@
 |------|------|
 | 王朝婚姻・同君連合（PU） | 他国と婚姻を結んで後継者を共有し、継承による同君連合を狙える |
 | 継承パスの多様性 | 長子相続・選挙制・サリカ法典など状況に合わせた継承法を選択可能 |
-| 貴族身分の強力な召集軍 | Patch 1.1 で Noble Levies の召集量 +50% に上方修正 |
+| 貴族階級の強力な召集軍 | Patch 1.1 で Noble Levies の召集量 +50% に上方修正 |
 | 政府改革の豊富さ | 封建制・中央集権・絶対王政など多数の改革パスが存在 |
 
 ### 弱み
@@ -62,14 +63,14 @@
 
 1. 後継者を確保する（婚姻・継承法の確認）
 2. 正統性を安定域（50以上が目安）に保つ（コミュニティ知見）
-3. 貴族身分の権力バランスをチェック。序盤は貴族が強すぎると拡張が鈍化する
+3. 貴族階級の権力バランスをチェック。序盤は貴族が強すぎると拡張が鈍化する
 4. 同君連合の候補国を早期に特定し、王朝婚姻を仕込む
 
-### エステート（身分）管理の注意点
+### 階級（Estate）管理の注意点
 
-- 君主制の標準身分は **貴族（Nobles）**。貴族の権力が高すぎると召集軍は増えるが内政コスト増
+- 君主制の標準階級は **貴族（Nobles）**。貴族の権力が高すぎると召集軍は増えるが内政コスト増
 - 聖職者・商人との三角バランスを崩さない（コミュニティ知見）
-- Patch 1.1 より建造物は貴族が建てられなくなったため、建造物は王領または別身分に発注する
+- Patch 1.1 より建造物は貴族が建てられなくなったため、建造物は王領または別階級に発注する
 
 ### おすすめ国家
 
@@ -92,7 +93,7 @@
 | 項目 | 値 / 内容 |
 |------|---------|
 | 権力リソース | 共和的伝統（Republican Tradition） `[src: government_types/00_default.txt:58]` |
-| デフォルト身分 | 商人身分（Burghers Estate） `[src: government_types/00_default.txt:60]` |
+| デフォルト階級 | 商人階級（Burghers Estate） `[src: government_types/00_default.txt:60]` |
 | 継承システム | 2年/4年任期選挙・ドージェ選挙・籤引き選挙など |
 | 宮廷言語ボーナス | 市場言語が宮廷言語の場合に重要度ボーナス（+1） `[src: government_types/00_default.txt:63]` |
 
@@ -101,7 +102,7 @@
 | 強み | 詳細 |
 |------|------|
 | 選挙による統治者更新 | 数年ごとに優秀なキャラクターを選出できる。継承危機が発生しない |
-| 商人身分のデフォルト強化 | 商人身分がデフォルトで強くなるため、貿易収入が安定しやすい |
+| 商人階級のデフォルト強化 | 商人階級がデフォルトで強くなるため、貿易収入が安定しやすい |
 | 宮廷言語と市場言語の連携 | 市場言語が宮廷言語と一致している場合のボーナス効果 |
 | 商人共和国（Merchant Republic）改革 | 商人容量 +50%・貿易収入 +25%・商人維持費 -25% `[src: government_reforms/republic.txt:28]` |
 
@@ -127,7 +128,7 @@
 
 1. 最初の選挙で最高スコアの候補者を選ぶ習慣をつける
 2. 共和的伝統を高い水準（50〜70 以上推奨）で維持する（コミュニティ知見）
-3. 商人身分の権力を適切に維持し、貿易収入を最大化する
+3. 商人階級の権力を適切に維持し、貿易収入を最大化する
 4. 貿易中心地への投資を序盤から進める
 
 ### 選挙の活用法
@@ -156,7 +157,7 @@
 | 項目 | 値 / 内容 |
 |------|---------|
 | 権力リソース | 献身（Devotion） `[src: government_types/00_default.txt:82]` |
-| デフォルト身分 | 聖職者身分（Clergy Estate） `[src: government_types/00_default.txt:84]` |
+| デフォルト階級 | 聖職者階級（Clergy Estate） `[src: government_types/00_default.txt:84]` |
 | 継承システム | 司教選挙・神権選挙・大修道院長選挙など |
 | 改宗ボーナス | 従属国を自動的に自国の宗教に改宗させる `[src: government_types/00_default.txt:87]` |
 | 典礼言語ボーナス | 典礼言語が宮廷言語の場合に重要度 +10 `[src: government_types/00_default.txt:88]` |
@@ -167,7 +168,7 @@
 |------|------|
 | 自動改宗 | 従属国を強制的に自国の宗教へ改宗（force_convert_created_subjects） `[src: government_types/00_default.txt:87]` |
 | 典礼言語ボーナス | 典礼言語が宮廷言語と一致する場合に外交・文化面で有利 |
-| 聖職者身分のデフォルト強化 | 宗教インフラへの投資効率が高い |
+| 聖職者階級のデフォルト強化 | 宗教インフラへの投資効率が高い |
 | 宗教的影響力の高さ | 月次宗教的影響力ボーナスが得やすい |
 
 ### 弱み
@@ -190,7 +191,7 @@
 ### 序盤の優先事項
 
 1. 献身の状態を確認し、宗教的な政策・政府改革で安定させる
-2. 聖職者身分の満足度を高めて、宗教的影響力を最大化する
+2. 聖職者階級の満足度を高めて、宗教的影響力を最大化する
 3. 宗教改革が始まる前に自国の宗教的統一を固める（コミュニティ知見）
 4. 典礼言語と宮廷言語の一致を目指す
 
@@ -211,7 +212,7 @@
 | 項目 | 値 / 内容 |
 |------|---------|
 | 権力リソース | 遊牧民の結束（Horde Unity） `[src: government_types/00_default.txt:99]` |
-| デフォルト身分 | 貴族身分（Nobles Estate） `[src: government_types/00_default.txt:101]` |
+| デフォルト階級 | 貴族階級（Nobles Estate） `[src: government_types/00_default.txt:101]` |
 | 統治者死亡ペナルティ | 遊牧民の結束 -50 `[src: government_types/00_default.txt:105]` |
 | 無名戦争コスト修正 | -50%（無名開戦コスト半減） `[src: government_types/00_default.txt:106]` |
 | 略奪量修正 | +33% `[src: government_types/00_default.txt:107]` |
@@ -279,7 +280,7 @@
 | 項目 | 値 / 内容 |
 |------|---------|
 | 権力リソース | 部族の団結（Tribal Cohesion） `[src: government_types/00_default.txt:127]` |
-| デフォルト身分 | 貴族身分（Nobles Estate） `[src: government_types/00_default.txt:129]` |
+| デフォルト階級 | 貴族階級（Nobles Estate） `[src: government_types/00_default.txt:129]` |
 | 農村集落降格コスト | -50% `[src: government_types/00_default.txt:133]` |
 | 貴族の食料消費 | -25%（維持コスト削減） `[src: government_types/00_default.txt:134]` |
 | 外交維持費修正 | -75%（外交スロットの維持コストが大幅に安い） `[src: government_types/00_default.txt:135]` |
@@ -306,7 +307,7 @@
 
 | 改革名 | 効果概要 | 備考 |
 |--------|---------|------|
-| ハウデノサニー氏族母たち（Haudenosaunee Clan Mothers） | 全身分満足度ボーナス・文化的伝統 +0.1 | ハウデノサニー文化圏専用・部族の団結 80 以上で使用可 `[src: government_reforms/country_specific.txt:1592]` |
+| ハウデノサニー氏族母たち（Haudenosaunee Clan Mothers） | 全階級満足度ボーナス・文化的伝統 +0.1 | ハウデノサニー文化圏専用・部族の団結 80 以上で使用可 `[src: government_reforms/country_specific.txt:1592]` |
 
 ### 序盤の優先事項
 
@@ -353,7 +354,7 @@
 |------|--------------|
 | 部族 → 君主制 | 農耕地帯が中心になり、内政インフラの充実が必要になったとき |
 | ステップ遊牧民 → 君主制 | 騎馬遊牧のメリットが薄れ、定住化した領土が多くなったとき（移行に 15 年） |
-| 君主制 → 共和国 | 貴族身分が弱く、商人・貿易中心の国家運営をしたいとき |
+| 君主制 → 共和国 | 貴族階級が弱く、商人・貿易中心の国家運営をしたいとき |
 | 君主制 → 神権制 | 宗教的一体化・改宗戦略を主軸にした場合 |
 
 ### 変更しない方がいい場合
@@ -399,10 +400,10 @@
 | 政府タイプ変更 | Change Government Type | — |
 | 安定度 | Stability | — |
 | 同君連合 | Personal Union (PU) | — |
-| 身分 | Estate | — |
-| 貴族身分 | Nobles Estate | — |
-| 商人身分 | Burghers Estate | — |
-| 聖職者身分 | Clergy Estate | — |
+| 階級 | Estate | — |
+| 貴族階級 | Nobles Estate | — |
+| 商人階級 | Burghers Estate | — |
+| 聖職者階級 | Clergy Estate | — |
 | 宮廷言語 | Court Language | — |
 | 典礼言語 | Liturgical Language | — |
 | 無名戦争 | War with No CB | CB = 開戦事由（Casus Belli） |
@@ -415,7 +416,7 @@
 
 | ファイル | 内容 |
 |--------|------|
-| `in_game/common/government_types/00_default.txt` | 各政府タイプの権力リソース・デフォルト身分・固有モディファイア |
+| `in_game/common/government_types/00_default.txt` | 各政府タイプの権力リソース・デフォルト階級・固有モディファイア |
 | `in_game/common/government_reforms/monarchy.txt` | 君主制の政府改革定義 |
 | `in_game/common/government_reforms/republic.txt` | 共和国の政府改革定義 |
 | `in_game/common/government_reforms/theocracy.txt` | 神権制の政府改革定義 |

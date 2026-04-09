@@ -5,6 +5,7 @@
 > 2026-04-08 確認。スクリプト照合対象: `in_game/common/religions/`・`religious_aspects/`・`religious_schools/`・`building_types/religion_buildings.txt`
 > 日本語は原則としてゲーム内ローカライズ準拠。未翻訳箇所は英語を併記する。
 
+> 基本メカニクスは [汎用攻略ガイド](eu5-universal-guide.md) を参照。
 ---
 
 ## 概要：宗教グループ一覧
@@ -26,7 +27,7 @@
 
 ## キリスト教グループ
 
-### キリスト教共通メカニクス：Religious Influence（信仰的影響力）
+### キリスト教共通メカニクス：Religious Influence（宗教的影響力）
 
 ほぼすべてのキリスト教宗教は `has_religious_influence = yes` を持つ。
 
@@ -675,7 +676,7 @@ EU4 の宣教師システムは廃止され、EU5 では異なるメカニクス
 
 | 日本語 | 英語（ゲーム内） | 備考 |
 |--------|--------------|------|
-| 信仰的影響力 | Religious Influence | プロテスタント系・正教系で使用 |
+| 宗教的影響力 | Religious Influence | プロテスタント系・正教系で使用 |
 | カルマ | Karma | 仏教・ジャイナ教 |
 | 純粋さ | Purity | 神道固有 |
 | 名誉 | Honor | 神道固有 |
