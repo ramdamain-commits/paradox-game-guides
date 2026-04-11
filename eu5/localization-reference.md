@@ -162,8 +162,15 @@
 | 英語キー | ゲーム内日本語 | 補足 |
 |----------|---------------|------|
 | Holy Roman Empire | 神聖ローマ帝国 | 略称 HRE |
-| Emperor | 皇帝 | HRE の首長 |
-| Elector | 選帝侯 | 皇帝選挙の投票権者 |
+| Emperor | 皇帝 | HRE の首長。選帝侯の投票で選出される |
+| Elector | 選帝侯 | 皇帝選挙の投票権者。最大 7 名 |
+| Imperial Authority | 帝国の権威 | 略称 IA。皇帝権力の強さを示す 0〜100 の指標 |
+| Imperial Reform | 帝国改革 | IA を消費して HRE の制度を強化するアクション |
+| Landfriede | ラント平和令 | HRE 内の諸侯間戦争を禁じる帝国法 |
+| Golden Bull | 金印勅書 | 神聖ローマ帝国の基本法。選帝侯の権限を規定 |
+| Imperial Diet | 帝国議会 | HRE の立法機関。帝国改革の審議の場 |
+| Imperial Succession | 帝位継承 | 皇帝死亡時の選帝侯投票による後継者選出 |
+| Demand Unlawful Territory | 不法領土の返還要求 | 非 HRE 国が保有する帝国領を取り返す外交アクション |
 
 ## カスティーリャ / スペイン固有
 
