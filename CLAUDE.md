@@ -300,6 +300,69 @@ Steam デフォルト: C:\Program Files (x86)\Steam\steamapps\common\
 
 ---
 
+## 新規国別ガイド追加の手順（定型パターン）
+
+新しい国の攻略ガイドを追加するとき、ブレスト→Spec→Plan の儀式は不要。以下の手順で即実行する。
+
+### 1. ファイル探索（5分）
+
+```bash
+EU5_ROOT="C:\Program Files (x86)\Steam\steamapps\common\Europa Universalis V\game"
+TAG=XXX  # 国タグ（HAB, TUR, BRA 等）
+
+# 固有イベント
+ls "${EU5_ROOT}/in_game/events/DHE/" | grep -i "flavor_${TAG}"
+wc -l "${EU5_ROOT}/in_game/events/DHE/flavor_${TAG}"*.txt
+
+# 固有進歩
+ls "${EU5_ROOT}/in_game/common/advances/" | grep -i "country_${TAG}"
+wc -l "${EU5_ROOT}/in_game/common/advances/country_${TAG}"*.txt
+
+# ローカライズ
+ls "${EU5_ROOT}/main_menu/localization/japanese/events/DHE/" | grep -i "flavor_${TAG}"
+
+# 汎用メカニクス（国による：HRE, 宗教, 地域等）
+# → 必要なものだけ追加調査
+```
+
+### 2. Plan 生成
+
+`docs/templates/country-guide-plan-template.md` の変数を埋める:
+- `${TAG}`, `${COUNTRY_JA}`, `${COUNTRY_EN}`
+- `${EVENT_FILES}`, `${EVENT_LINES}`, `${ADVANCE_FILES}`
+- `${EXTRA_SECTIONS}` — 10.5 の追加セクション（HRE, 宗教改革等。なければ空）
+- `${EXTRA_SCRIPTS}` — 汎用メカニクスの追加調査対象
+
+Plan をコミットしたら即 subagent-driven-development で実行。
+
+### 3. 調査フェーズ（サブエージェント並列）
+
+- flavor_XXX.txt が **3000行以上** → 3000行ごとに分割して並列起動
+- flavor_XXX.txt が **3000行未満** → 単体で処理
+- 固有進歩・汎用メカニクスは独立タスクとして並列起動
+- 中間データは `eu5/data/` に Markdown テーブルで出力
+
+### 4. 執筆フェーズ
+
+- テンプレート（本ファイルのセクション構成）に従い、中間データを元に執筆
+- 模範例: `eu5/eu5-ottoman-guide.md`, `eu5/eu5-hungary-guide.md`
+
+### 5. 付随更新
+
+- `index.html` にカード追加
+- `localization-reference.md` に新規用語追加
+- 既存ガイドとの相互リンク追加（双方向）
+
+### ブレスト・Spec が必要になるケース
+
+- 国固有の大規模メカニクスがあり、追加セクション（10.5）の設計判断が必要な場合
+- 既存テンプレートに収まらない特殊な国（遊牧民、植民地国家等）
+- ユーザーが特定の切り口（軍事特化、外交特化等）を求めた場合
+
+上記に該当しなければ、ブレスト・Spec をスキップして Plan テンプレートから即実行する。
+
+---
+
 ## エージェント作業ルール
 
 - ガイドのリバイズ（構造変更）は sed/Edit の差分編集を優先し、全書き直しは最終手段にする（トークン節約）
