@@ -171,6 +171,9 @@
 | Imperial Diet | 帝国議会 | HRE の立法機関。帝国改革の審議の場 |
 | Imperial Succession | 帝位継承 | 皇帝死亡時の選帝侯投票による後継者選出 |
 | Demand Unlawful Territory | 不法領土の返還要求 | 非 HRE 国が保有する帝国領を取り返す外交アクション |
+| Renovatio Imperii | 帝国の復活 | 帝国統一の最終段階 |
+| Marriage Union | 婚姻連合 | 王室婚姻による共同防衛 |
+| Privilegium Maius | 大特許状 | ハプスブルク特権文書 |
 
 ## カスティーリャ / スペイン固有
 
