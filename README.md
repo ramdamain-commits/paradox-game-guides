@@ -13,6 +13,15 @@ Paradox Interactive のグランドストラテジーゲーム攻略メモ集。
 | オスマン帝国 | [eu5/eu5-ottoman-guide.md](eu5/eu5-ottoman-guide.md) | 初級〜中級 | 1.1.10 |
 | カスティーリャ | [eu5/eu5-castile-guide.md](eu5/eu5-castile-guide.md) | 初級〜中級 | 1.1.10 |
 
+#### 共通システム
+
+| テーマ | ファイル | 概要 | 対応パッチ |
+|--------|----------|------|-----------|
+| 汎用攻略 | [eu5/eu5-universal-guide.md](eu5/eu5-universal-guide.md) | 国家共通の序盤運営・拡張指針 | 1.1.10 |
+| 政体 | [eu5/eu5-government-guide.md](eu5/eu5-government-guide.md) | 君主制・共和国・神権制などの違い | 1.1.10 |
+| 宗教 | [eu5/eu5-religion-guide.md](eu5/eu5-religion-guide.md) | 宗教グループ別の固有メカニクス | 1.1.10 |
+| 地域 | [eu5/eu5-regional-guide.md](eu5/eu5-regional-guide.md) | 地域別の難易度とおすすめ国家 | 1.1.10 |
+
 **おすすめMOD**: [eu5/eu5-recommended-mods.md](eu5/eu5-recommended-mods.md)（1.1.10 時点）
 
 ### Victoria 3
@@ -32,12 +41,21 @@ Paradox Interactive のグランドストラテジーゲーム攻略メモ集。
 
 **おすすめMOD**: [ck3/ck3-recommended-mods.md](ck3/ck3-recommended-mods.md)（1.19.0.1 時点）
 
+## GitHub Pages
+
+- `index.html` — ゲーム別のガイド一覧トップ
+- `viewer.html` — Markdown をブラウザで読むためのビューア
+- 公開先: `https://ramdamain-commits.github.io/paradox-game-guides/`
+
 ## 構成
 
 ```
 eu5/          … Europa Universalis V 攻略（勢力ガイド + おすすめMOD）
 vic3/         … Victoria 3 攻略（勢力ガイド + おすすめMOD）
 ck3/          … Crusader Kings III 攻略（勢力ガイド + おすすめMOD）
+index.html    … GitHub Pages トップ
+viewer.html   … Markdown ビューア
+docs/         … 内部計画・設計メモ
 CLAUDE.md     … 攻略ガイド作成ルール・テンプレート
 ```
 

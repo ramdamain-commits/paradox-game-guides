@@ -1,5 +1,7 @@
 # CK3 汎用システムガイド + ローカライズ対照表 1.19 拡充 実装計画
 
+> 状態: 2026-04-10 時点で `ck3/ck3-systems-guide.md` と `index.html` への反映は完了済み。本文の checkbox は実装履歴として残し、成果物側を正本とする。
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** CK3 1.19 Scribe のローカライズ対照表拡充と汎用システムガイドを作成する
