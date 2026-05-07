@@ -16,10 +16,8 @@
 | 砲撃外交（Gunboat Diplomacy）の追加 | 沿岸国相手のみ使える新外交アクション。プロイセンも条件次第で利用可能 [src: https://vic3.paradoxwikis.com/Patch_1.13] |
 | 戦略的関心度（Strategic Interest）のティアド化 | 列強の介入閾値が見えやすくなる。統一戦争の外交プレイで第三国の動向を予測しやすい [src: https://vic3.paradoxwikis.com/Patch_1.13] |
 | クーデター扇動（外交アクション追加） | ドイツ統一の小国取り込み戦略で補助手段になり得る [src: https://vic3.paradoxwikis.com/Patch_1.13] |
-| 指揮官の単一化（複数指揮官制 → 単一指揮官制） | 統一戦争で複数方面に将軍を分散する従来戦術が変わる。本ガイドの「将軍の選び方」「統一戦争での注意」記述は次回更新で見直し予定 [src: https://vic3.paradoxwikis.com/Patch_1.13] |
-| プロミネンス（政治人物の影響力）導入 | 利益団体管理で個別の政治家プロミネンスを意識する余地が増える [src: https://vic3.paradoxwikis.com/Patch_1.13] |
-
-> **注記**: 1.13 のプロイセン本文（軍事ドクトリン・統一戦争セクション）は今回最小差分で据え置き。指揮官単一化に伴う戦術詳細の見直しは次回更新で対応する。
+| 指揮官の単一化（複数指揮官制 → 単一指揮官制） | 軍編成あたり指揮官1名に変更。少数精鋭の将軍運用が基本。詳細は「軍事ドクトリン > 将軍の選び方」参照 [src: https://vic3.paradoxwikis.com/Patch_1.13] |
+| プロミネンス（政治人物の影響力）導入 | IG 指導者選出の主因が Popularity から Prominence に変更。詳細は「内政・経済 > 利益団体管理 > プロミネンスの活用」参照 [src: https://vic3.paradoxwikis.com/Patch_1.13] |
 
 ---
 
@@ -97,7 +95,7 @@
 ### 終盤（1880〜1936）: 列強としての運営
 
 - 植民地獲得（アフリカ分割）
-- 海軍の拡張（1.13 で仕様変更予定に注意）
+- **海軍の整備（1.13 仕様）**: 艦船デザイナー（Ship Designer）で装甲・武装・推進力・補給能力をカスタマイズ。プロイセン/ドイツは陸軍主体だが、植民地維持と通商保護のため最低限の主力艦に **旗艦（Flagship）** を1隻指定して威信獲得を狙う [src: https://vic3.paradoxwikis.com/Patch_1.13]
 - 社会制度の整備（社会保障、教育、医療）
 - 大戦への備えまたは回避
 
@@ -126,6 +124,14 @@
 | 実業家（Industrialists） [src: 00_industrialists.txt, ig_industrialists] | 工業化で自然に影響力が伸びる。支持する |
 | 知識人（Intelligentsia） [src: 00_intelligentsia.txt, ig_intelligentsia] | 法律改正の推進力。影響力を育てたい |
 | 労働組合（Trade Unions） [src: 00_trade_unions.txt, ig_trade_unions] | 中盤以降に台頭。急進化させない程度に配慮 |
+
+#### プロミネンス（Prominence）の活用（1.13）
+
+1.13 で各政治家に **Prominence** ステータスが追加された。これは大衆人気（Popularity）とは別で、IG 内の政治力寄与度と次期指導者の選出確率に直接影響する。[src: https://vic3.paradoxwikis.com/Patch_1.13]
+
+- 軍部や実業家の指導者を狙った人物に交代させたい場合、Prominence の高い候補をキャストプール（national character pool）から登用する
+- 任務のない政治家も自動消滅せずプールに残るため、「将来の指導者候補」をストックできる
+- プロイセンでは **ビスマルクを地主 IG の中で台頭させる** ことが現実的な目標。彼の Prominence と特性で realpolitik イベントの選択肢が活きる
 
 ### 法律改正ロードマップ（コミュニティ知見）
 
@@ -162,6 +168,15 @@
 4. 対オーストリア戦争でドイツ圏の主導権を確保
 5. 対フランス戦争（普仏戦争）でドイツ帝国を宣言
 
+### 1.13 で増えた外交手段の活用
+
+| 手段 | プロイセンでの使い道 |
+|------|---------------------|
+| **戦略的関心度（Strategic Interest）のティアド化** | 列強の介入閾値が階層化された。北ドイツ圏に対する英仏墺の関心度ティアを確認し、低い時期を狙って外交戦を起こす [src: https://vic3.paradoxwikis.com/Patch_1.13] |
+| **クーデター扇動（Orchestrate Coup）** | 友好的なロビー（Lobby）を持つ弱小ドイツ小国に対して、政体ごと親プロイセン政権に挿げ替える補助手段。直接戦争・外交戦より悪名コストが低い場合がある [src: https://vic3.paradoxwikis.com/Patch_1.13] |
+| **砲撃外交（Gunboat Diplomacy）** | デンマーク等の沿岸国相手に条約交渉時の脅迫オプションとして利用可能。180日間の海上敵対行動が許可される。プロイセンは海軍が弱いため過信は禁物 [src: https://vic3.paradoxwikis.com/Patch_1.13] |
+| **条約システム強化** | Ship Transfer / Straits / Piracy 系の条約が追加。北海・バルト海の通行料管理に間接的に影響する可能性 [src: https://vic3.paradoxwikis.com/Patch_1.13] |
+
 ---
 
 ## 軍事ドクトリン
@@ -175,20 +190,25 @@
 | 歩兵（戦列歩兵/散兵 等）[src: 00_land_combat_unit_types.txt, combat_unit_type_line_infantry / combat_unit_type_skirmish_infantry] | 主力。技術でアップグレードを優先 |
 | 砲兵（カノン砲/榴散弾砲 等）[src: 00_land_combat_unit_types.txt, combat_unit_type_cannon_artillery / combat_unit_type_shrapnel_artillery] | 重要。技術が進むほど有利 |
 | 騎兵（軽騎兵/竜騎兵 等）[src: 00_land_combat_unit_types.txt, combat_unit_type_hussars / combat_unit_type_dragoons] | 序盤は有用。中盤以降は比重低下 |
-| 海軍 | 最低限。海戦は避ける方針 |
+| 海軍 | 最低限。海戦は避ける方針。1.13 では艦船デザイナーで装甲・武装をカスタマイズ可能だが、プロイセンの優先は陸軍にある [src: https://vic3.paradoxwikis.com/Patch_1.13] |
 
-### 将軍の選び方
+### 将軍の選び方（1.13 単一指揮官制）
 
-- 軍事スキルの高い将軍を優先
+1.13 で軍編成（Military Formation）あたりの指揮官は **1名のみ**になった。階級（Commander Rank）の指揮限界が技術で拡張されるため、**少数精鋭の将軍を昇進させて運用するのが基本**。[src: https://vic3.paradoxwikis.com/Patch_1.13]
+
+- 軍事スキル + 特性（trait）の質を最優先。多数の凡庸な将軍より、優秀な将軍1〜2名のほうが効果的
 - 利益団体との繋がりも確認（軍部出身が安定）
-- 統一戦争では複数方面の将軍が必要
+- 不必要な昇進は軍部 IG の承認低下ペナルティを招くので、必要になってから階級を上げる [src: https://vic3.paradoxwikis.com/Patch_1.13]
+- **指揮官は編成間で再配置可能だが移動に時間がかかる**。移動中は階級分の指揮限界しか提供せず、特性ボーナスは失われる点に注意 [src: https://vic3.paradoxwikis.com/Patch_1.13]
 
-### 統一戦争での注意（コミュニティ知見）
+### 統一戦争での注意（1.13 単一指揮官制対応）
 
 - オーストリア戦は**単独 or ロシアと共闘**で挑む
 - フランス戦は**オーストリアとの講和後に速やかに**
 - 外交戦（Diplomatic Play）で味方を増やしてから開戦する
 - 悪名（Infamy）管理に注意。包囲網を招くとドイツ統一が頓挫する
+- **複数前線になる場合は編成を分け、各編成に専任の優秀な将軍を割り当てる**（将軍の途中移動はボーナス喪失で損失大） [src: https://vic3.paradoxwikis.com/Patch_1.13]
+- 同時攻撃可能な州数は将軍の階級と距離に依存する。前線が広い場合は階級の高い将軍を主戦場に置く [src: https://vic3.paradoxwikis.com/Patch_1.13]
 
 ---
 
