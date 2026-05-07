@@ -1,25 +1,25 @@
-# VIC3 プロイセン攻略ガイド（Patch 1.12.4 時点）
+# VIC3 プロイセン攻略ガイド（Patch 1.13 時点）
 
 > プロイセン → ドイツ統一を狙う序盤から列強化までの整理。
-> 2026-03-31 確認時点の最新パッチ 1.12.4（Iberian Twilight）に合わせて更新。
+> 2026-05-08 確認時点の最新パッチ 1.13（Matcha、2026-04-28 リリース）に合わせて更新。
 > 日本語は原則としてゲーム内ローカライズ準拠。未翻訳の箇所は英語を併記する。
 
 ---
 
-## パッチ 1.12 / 1.12.4 でのプロイセン関連変更点
+## パッチ 1.13（Matcha）でのプロイセン関連変更点
 
-1.12 はイベリア半島が主題。プロイセン固有の変更は確認されていない。[src: https://vic3.paradoxwikis.com/Patch_1.12.X]
+1.13 は海軍刷新と日本（The Great Wave DLC）が主題。プロイセン固有のコンテンツ追加はないが、外交・指揮官系の仕様変更が統一戦争の進め方に影響する。[src: https://vic3.paradoxwikis.com/Patch_1.13]
 
-| 変更 | 内容 |
+| 変更 | プロイセンへの影響 |
 |------|------|
-| GDP 再投資乗数の削除 | 外国投資の実装に伴い、世界 GDP 成長が緩やかに。プロイセンの経済優位は序盤に集中しやすくなった [src: https://vic3.paradoxwikis.com/Patch_1.12.X] |
-| 百姓（Peasants）の早期消滅緩和 | 農業国との経済差が縮小。工業化の相対優位はやや低下 [src: https://vic3.paradoxwikis.com/Patch_1.12.X] |
-| 封鎖必要海軍力の調整 | 海軍戦略に影響（プロイセンは陸軍主体なので間接的） [src: https://vic3.paradoxwikis.com/Patch_1.12.X] |
-| AI 外交戦の陣営切替修正 | 外交戦（Diplomatic Play）で敵味方が安定しやすくなった [src: https://vic3.paradoxwikis.com/Patch_1.12.X] |
+| 海軍刷新（艦船デザイナー、旗艦、海戦システム改編、新型艦20種） | プロイセンは陸軍主体のため直接の影響は小。ただし英仏墺の海軍が強化されるため、海軍最低限方針は維持しつつ封鎖・砲撃外交への対処は要確認 [src: https://vic3.paradoxwikis.com/Patch_1.13] |
+| 砲撃外交（Gunboat Diplomacy）の追加 | 沿岸国相手のみ使える新外交アクション。プロイセンも条件次第で利用可能 [src: https://vic3.paradoxwikis.com/Patch_1.13] |
+| 戦略的関心度（Strategic Interest）のティアド化 | 列強の介入閾値が見えやすくなる。統一戦争の外交プレイで第三国の動向を予測しやすい [src: https://vic3.paradoxwikis.com/Patch_1.13] |
+| クーデター扇動（外交アクション追加） | ドイツ統一の小国取り込み戦略で補助手段になり得る [src: https://vic3.paradoxwikis.com/Patch_1.13] |
+| 指揮官の単一化（複数指揮官制 → 単一指揮官制） | 統一戦争で複数方面に将軍を分散する従来戦術が変わる。本ガイドの「将軍の選び方」「統一戦争での注意」記述は次回更新で見直し予定 [src: https://vic3.paradoxwikis.com/Patch_1.13] |
+| プロミネンス（政治人物の影響力）導入 | 利益団体管理で個別の政治家プロミネンスを意識する余地が増える [src: https://vic3.paradoxwikis.com/Patch_1.13] |
 
-### 次期パッチ 1.13（2026-04-28 予定）
-
-海軍の全面刷新が予告されている。プロイセンの海軍戦略に大きな影響が出る可能性あり。本ガイドは 1.12.4 時点の内容。
+> **注記**: 1.13 のプロイセン本文（軍事ドクトリン・統一戦争セクション）は今回最小差分で据え置き。指揮官単一化に伴う戦術詳細の見直しは次回更新で対応する。
 
 ---
 
@@ -309,6 +309,7 @@
   - `common/diplomatic_plays/00_diplomatic_plays.txt` — 外交戦定義（dp_conquer_state, dp_return_state）
 - [Patches - Victoria 3 Wiki](https://vic3.paradoxwikis.com/Patches)
 - [Patch 1.12.X - Victoria 3 Wiki](https://vic3.paradoxwikis.com/Patch_1.12.X)
+- [Patch 1.13 - Victoria 3 Wiki](https://vic3.paradoxwikis.com/Patch_1.13)
 - [Prussia - Victoria 3 Wiki](https://vic3.paradoxwikis.com/Prussia)
 
 ### コミュニティ情報（補足知見）
