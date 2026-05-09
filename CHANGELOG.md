@@ -1,5 +1,52 @@
 # Changelog
 
+## 2026-05-09
+
+### Changed
+- EU5 汎用攻略ガイド（`eu5/eu5-universal-guide.md`）を Patch 1.2「Echinades」（2026-05-06 リリース）ベースに全面更新
+  - ヘッダ・確認日を 1.2「Echinades」（2026-05-06 リリース）に更新
+  - パッチ差分セクションを 1.2 主要変更 12 項目（HRE 大幅オーバーホール・Papal Authority・Heavy/Light 兵科分類・兵站厳格化・Coalition→Superiority War・Enforce Peace 双方合意・Claim Throne CB 制限・貿易改修・Urban Rights/Megalopolis・正教オーバーホール・ギリシャバルカン新規）に書き換え
+  - 「⚠ 1.2 更新候補」マーカー 6 箇所を確定情報に置換（官僚制関連は「1.2 では実装されなかった」明記）
+  - 軍事セクションに「兵科の Heavy/Light 分類（1.2）」節追加（要塞駐屯 Heavy Infantry 限定・独立アップグレードツリー）
+  - 外交セクションに「1.2 の外交変更」節追加（Coalition War / Enforce Peace / Claim Throne / Belligerent）
+  - 新セクション「貿易・都市システム（1.2 改修）」追加
+  - よくあるミスに 1.2 関連 4 項目追加
+  - 用語対照表に 12 項目追加（帝国議会・帝国兵器庫・教皇権威・軽装/重装歩兵・軽装/重装騎兵・優位性戦争・都市特権・メガロポリス・プロノイア・ローマ国境回復 CB）
+- EU5 オーストリア攻略ガイド（`eu5/eu5-austria-guide.md`）を Patch 1.2「Echinades」（2026-05-06 リリース）ベースに更新
+  - ヘッダ・確認日を 1.2 に更新
+  - パッチ差分セクションを 1.2 確定情報に書き換え。「オーストリアプレイヤーが特に注意すべき破壊的変更」サブ節を新設（GP Score 250→50・Free Cities 自動参戦廃止・Claim Throne CB 制限・Golden Bull 1400 離脱条件）
+  - HRE 運営セクション: 皇帝アクション表に「Imperial Armories 建造（1.2 新規）」追加。帝国法ロードマップ前に Imperial Diet 投票システム刷新の注記。選帝侯管理に Diet UI タブ化・同一王朝再選 +5 IA。帝国防衛フローに「1.2 重要な変更」節（Free Cities 自動参戦廃止・指揮権自動取得廃止）
+  - ハプスブルク婚姻外交: Claim Throne CB 制限注記・王朝力上限 200→300 注記を追加
+  - 軍事ドクトリン: 「### 1.2 兵科分類とオーストリアの編成」節を新設（4 兵科特性表）。帝国防衛軍の補給線管理注記
+  - 宗教改革: 「### Papal Authority（1.2 新システム）の活用」節を新設
+  - よくあるミスに 1.2 関連 5 項目追加
+  - 用語対照表に 13 項目追加
+- EU5 宗教グループ別攻略ガイド（`eu5/eu5-religion-guide.md`）を Patch 1.2「Echinades」（2026-05-06 リリース）ベースに更新
+  - ヘッダ・確認日を 1.2 に更新
+  - 「⚠ 1.2 更新候補」マーカー 2 箇所を確定情報に置換
+  - カトリック節に 2 小節追加（Papal Authority 新システム・十字軍 CB 変更）
+  - 正教節を 3 部構成に再編（1.2 オーバーホール破壊的変更・1.1 系旧メカニクス参考情報・上位概要）
+  - 用語対照表に 5 項目追加（教皇権威・外交破門・総主教・儀式力（廃止）・列聖コスト更新）
+  - 出典に Patch 1.2 wiki マーカー対照表を追加
+- EU5 政府タイプ別攻略ガイド（`eu5/eu5-government-guide.md`）を Patch 1.2「Echinades」（2026-05-06 リリース）ベースに更新
+  - ヘッダ・確認日を 1.2「Echinades」（2026-05-06 リリース）に更新
+  - 君主制: 「⚠ 1.2 更新候補」（官僚制）を HRE オーバーホール確定情報に置換。「### 1.2 君主制への影響」節を新設（Imperial Diet・Armories・GP Score 250→50・王朝力上限 200→300・Free Cities 自動参戦廃止・Claim Throne CB 制限等）
+  - 共和国: 「⚠ 1.2 更新候補」を確定情報に置換。「### 1.2 共和国への影響」節を新設（貿易改修・Urban Rights・Megalopolis・Heavy/Light 兵科分類）
+  - 神権制: 「⚠ 1.2 更新候補」を正教オーバーホール確定情報（破壊的）に置換。「### 1.2 神権制への影響」節を新設（Papal Authority コスト半減・Papal States 制限・Patriarch キャラクター実装・Rite Power 廃止）
+  - ステップ遊牧民・部族: 「⚠ 1.2 更新候補」を確定情報に置換。「### 1.2 ホード/部族への影響」節を新設（ロジスティクス距離 50→30・食料消費 10 倍・Light Cavalry 分類）
+  - 「1.2 更新候補まとめ」セクションを「Patch 1.2 政府タイプ別変更まとめ」に更新。官僚制を「1.2 では実装されなかった」と明記
+  - 「## 1.2 新規用語（政府タイプ別ガイド範囲）」節を新設（9 用語追加：Imperial Diet・Imperial Armories・Papal Authority・Dynastic Power・Restore Roman Borders CB・Urban Rights・Megalopolis・Pronoia・Katepanata）
+  - 出典セクションに Patch 1.2・Holy Roman Empire・Fate of the Phoenix の各 Wiki URL を追加
+- EU5 地域別攻略ガイド（`eu5/eu5-regional-guide.md`）を Patch 1.2「Echinades」（2026-05-06 リリース）ベースに全面更新
+  - ヘッダ・確認日を 1.2 に更新
+  - 西欧セクション: 官僚制「1.2 更新候補」を削除し、貿易改修（海上ルートコスト 1/10・Maritime Presence 反映）に置換。「### 1.2 貿易改修と海洋国家」節を新設
+  - HRE セクション: 「1.2 更新候補」を確定情報に格上げ（Imperial Diet・GP Score 250→50・Free Cities 自動参戦廃止等）。「### 1.2 HRE オーバーホール（地域影響）」節を新設
+  - 東欧セクション: セルビア欄の「1.2 更新候補」を正教オーバーホール確定情報に置換。東欧サマリーを確定情報に格上げ。「### 1.2 ビザンツ復興とバルカン新コンテンツ」節を新設（Pronoia・Katepanata・Restore Roman Borders・Greek Fire 等 DLC Fate of the Phoenix 内容含む）
+  - 東アジア・ステップ・アフリカの「⚠ 1.2 更新候補」を「1.2 確認: 変更なし」形式に更新（「オープンベータ」語を除去）
+  - 用語対照表: 官僚制エントリを「1.2 で実装されず」に修正
+  - 「## 1.2 新規用語（地域別ガイド範囲）」節を新設（13 用語追加）
+  - 出典セクションに Patch 1.2・Fate of the Phoenix・Holy Roman Empire・Byzantine content の各 Wiki URL を追加
+
 ## 2026-05-08
 
 ### Fixed

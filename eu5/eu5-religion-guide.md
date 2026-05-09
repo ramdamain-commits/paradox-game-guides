@@ -1,8 +1,8 @@
-# EU5 宗教グループ別攻略ガイド（Patch 1.1 時点）
+# EU5 宗教グループ別攻略ガイド（Patch 1.2 時点）
 
 > 各宗教グループの固有メカニクス・修正値・法学派（School）の選択指針をまとめた参照ガイド。
 > 国家固有の宗教戦略は各国家別ガイドも参照すること。
-> 2026-04-08 確認。スクリプト照合対象: `in_game/common/religions/`・`religious_aspects/`・`religious_schools/`・`building_types/religion_buildings.txt`
+> 2026-05-09 確認時点の最新パッチ 1.2「Echinades」（2026-05-06 リリース）に合わせて更新。スクリプト照合対象: `in_game/common/religions/`・`religious_aspects/`・`religious_schools/`・`building_types/religion_buildings.txt`
 > 日本語は原則としてゲーム内ローカライズ準拠。未翻訳箇所は英語を併記する。
 
 > 基本メカニクスは [汎用攻略ガイド](eu5-universal-guide.md) を参照。
@@ -60,11 +60,64 @@
 
 `[src: religions/christian.txt:217-228]`
 
-> ⚠ **1.2 更新候補**: カトリック改革（`needs_reform = yes`）周辺のメカニクスが 1.2 で調整予定
+> **1.2 更新**: Papal Authority 新システム（0-100）が導入され、75↑でカトリック向けポジティブ効果、25↓でネガティブ効果。列聖コスト 150→75、外交破門コスト 100→50 に低減 `[src: Patch_1.2 wiki]`（コミュニティ知見：プロテスタント諸侯への早期破門が安価化）
+
+#### Papal Authority（教皇権威）— 1.2 新システム
+
+`[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
+
+0-100 のリソース。Catholic Church 国際組織（IO: International Organization）内で追跡。すべてのカトリックメカニクス・Situation と連動する。
+
+**効果テーブル**
+
+| 値 | 効果 |
+|---|------|
+| 75 以上 | カトリック向けポジティブ効果（具体値はスクリプト未確認） |
+| 25 以下 | ネガティブ効果（ペナルティ）（具体値はスクリプト未確認） |
+| 25-75 | 中立帯 |
+
+**アクションコスト変更（1.2）**
+
+| アクション | 旧コスト（Religious Influence） | 新コスト |
+|-----------|-------------------------------|---------|
+| 列聖（Canonization） | 150 | 75 |
+| 外交破門（Excommunication） | 100 | 50 |
+
+**Papal States の制約**
+
+- 既破門対象への重複破門不可
+- Papal States 自身が単独で破門 Resolution 起動不可（IO 投票プロセスに委ねる）
+- 破門コスト削減はこの制限への補償として実施
+
+**戦略的意義**（コミュニティ知見：スクリプト未確認）: プロテスタント諸侯への早期破門が安価化し、HRE カトリック皇帝にとってプロテスタント反乱抑止ツールとして有用。
+
+#### 十字軍 CB 変更（1.2）
+
+`[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
+
+- 十字軍の対象がエルサレムを**実際に保有している場合のみ**エルサレムを目標化
+- 保有していない場合はカトリック聖地または首都に自動フォールバック
+- 戦略的影響（コミュニティ知見）: マムルークがエジプトを失っていれば十字軍の戦争目標が首都に変わるため、対イスラムの戦争目標が動的化
 
 ---
 
 ### 正教会（Orthodox）
+
+> **重要**: 1.2「Echinades」で正教は大幅オーバーホール。以下の構成を参照すること。
+
+#### 1.2 オーバーホール（破壊的変更）
+
+`[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
+
+> **1.2 更新（破壊的）**: 正教オーバーホール — Patriarch がキャラクターとして実装（旧: 抽象的リソース）、**Rite Power 廃止 → Religious Influence に完全置換**、Law および Tenet システムを刷新 `[src: Patch_1.2 wiki]`（コミュニティ知見：1.1 で Rite Power を活用した戦略は無効化されるためスクリプト未確認だが要再検証）
+
+- **Patriarch がキャラクターとして実装**（旧: 抽象的リソース）。Patriarch の選任・交代がイベントベースで発生（コミュニティ知見：詳細メカニクスはスクリプト未確認）
+- **Rite Power が完全廃止 → Religious Influence に統合**。1.1 で「Rite Power を貯めて○○」型の戦略は全廃
+- Law および Tenet システムを刷新（具体的な新 Law/Tenet の内容はスクリプト未確認）
+
+#### 1.1 系の旧メカニクス（参考情報、1.2 では無効）
+
+> **注意: 以下の記述は 1.1 仕様。1.2 では無効化されている可能性が高い。** 検証完了後に削除予定。
 
 | 項目 | 内容 | 出典 |
 |------|------|------|
@@ -75,7 +128,7 @@
 | 総主教座（Patriarchates） | 自立的総主教座あり（`has_autocephalous_patriarchates`） | `[src: religions/christian.txt:420]` |
 | 列聖（Canonization） | あり | `[src: religions/christian.txt:419]` |
 
-**外交傾向**
+**外交傾向（1.1 仕様）**
 - カトリック：好意的（positive）
 - ユダヤ教：好意的（positive）
 - ボゴミル：敵対（enemy）
@@ -83,7 +136,9 @@
 
 `[src: religions/christian.txt:432-442]`
 
-**建物：正教会修道院（Orthodox Monastery）**
+**1.2 オーバーホールの影響を受ける主要国**: ロシア、セルビア、ワラキア、ブルガリア、ビザンツ。いずれも 1.1 の正教メカニクスに依存した戦略を 1.2 向けに要再検証。
+
+**建物：正教会修道院（Orthodox Monastery）**（1.1 仕様、1.2 では変更の可能性あり）
 
 | 修正値 | 値 |
 |--------|---|
@@ -92,8 +147,6 @@
 | local_pop_conversion_speed_modifier | +0.1 |
 
 `[src: building_types/religion_buildings.txt:203-241]`
-
-> ⚠ **1.2 更新候補**: 正教会は 1.2「エキナデス」で Rite Power（儀式力）を含む大幅なメカニクス追加が予定されている（`has_rite_power = yes` はミアフィジット派に現時点で実装済み。正教会への追加は開発日記で示唆）
 
 ---
 
@@ -688,12 +741,16 @@ EU4 の宣教師システムは廃止され、EU5 では異なるメカニクス
 | 法学派 | Religious School / School | イスラム・ヒンドゥー・ジャイナで使用 |
 | スーフィー教団 | Sufi School / Order | イスラム神秘主義側で選択 |
 | 宗教フォーカス | Religious Focus | ナワトル固有の改革システム |
-| 列聖 | Canonization | カトリック・正教・ボスニア教会・ミアフィジット等 |
+| 列聖 | Canonization | カトリック・正教・ボスニア教会・ミアフィジット等。1.2 カトリック新コスト: Religious Influence 150→75 |
 | 総主教座 | (Autocephalous) Patriarchate | 正教・ミアフィジット・ネストリウス派 |
 | アヴァタール | Avatar | ヒンドゥー教固有キャラクターシステム |
 | 宗派 | Sect | 仏教系の宗派（max_sects で上限設定） |
-| Rite Power（儀式力） | Rite Power | ミアフィジット現行実装、正教は 1.2 予定 |
+| Rite Power（儀式力） | Rite Power | ミアフィジット現行実装、正教は 1.2 で廃止 → Religious Influence 統合 |
 | Piety スライダー | Mysticism vs Jurisprudence | イスラム教グループ全体 |
+| 教皇権威 | Papal Authority | 1.2 新規。0-100 のカトリック固有リソース |
+| 外交破門 | Excommunication | カトリック新コスト（1.2）: Religious Influence 100→50 |
+| 総主教 | Patriarch | 1.2 でキャラクターとして実装（旧: 抽象的リソース） |
+| 儀式力 | Rite Power | 1.2 で廃止 → Religious Influence 統合（正教会） |
 
 ---
 
@@ -724,4 +781,14 @@ EU4 の宣教師システムは廃止され、EU5 では異なるメカニクス
 | `in_game/common/religious_focuses/nahuatl.txt` | ナワトル宗教フォーカス8種 |
 | `in_game/common/building_types/religion_buildings.txt` | 宗教建物定義・修正値 |
 
-> スクリプト確認日: 2026-04-08 / EU5 Patch 1.1.10 時点
+**1.2 パッチ関連 Wiki ページ**（URL はツール制約により本文直埋め禁止。以下はショートマーカーと対応 URL の対照）
+
+| マーカー | 対応ページ |
+|---------|----------|
+| `[src: Patch_1.2 wiki]` | eu5.paradoxwikis.com/Patch_1.2 |
+| Papal Authority ページ | eu5.paradoxwikis.com/Papal_Authority（存在確認要） |
+| Catholic ページ | eu5.paradoxwikis.com/Catholic |
+| Orthodox ページ | eu5.paradoxwikis.com/Orthodox |
+
+> スクリプト確認日（1.1 系）: 2026-04-08 / EU5 Patch 1.1.10 時点
+> Patch 1.2「Echinades」対応追記日: 2026-05-09（1.2 新規記述はスクリプト未確認、wiki 情報ベース）
