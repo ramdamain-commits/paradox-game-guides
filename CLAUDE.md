@@ -170,10 +170,15 @@ Steam デフォルト: C:\Program Files (x86)\Steam\steamapps\common\
 
 ```
 ゲーム本体: Europa Universalis V\game\
-  in_game/common/advances/       … 固有進歩の定義
-  in_game/events/DHE/            … 固有イベントのスクリプト
-  in_game/common/building_types/ … 建造物の定義
-  in_game/common/casus_belli/    … 開戦事由の定義
+  in_game/common/advances/                        … 固有進歩の定義
+  in_game/events/DHE/                             … 固有イベントのスクリプト
+  in_game/common/building_types/                  … 建造物の定義
+  in_game/common/casus_belli/                     … 開戦事由の定義
+  in_game/common/international_organizations/     … HRE / Catholic Church / 各種IO（皇帝メカニクス・Papal Authority 等）
+  in_game/common/parliament_types/                … Imperial Diet 4段階等の議会タイプ定義
+  in_game/common/unit_categories/                 … 兵科分類（Light/Heavy 歩兵・騎兵・砲兵）。is_garrison 等のフラグ
+  in_game/common/prices/                          … 列聖・破門等の固定コスト（00_hardcoded.txt, 03_diplomacy.txt）
+  loading_screen/common/defines/00_defines.txt    … 各種数値定数（NDynasty / NColony 等のブロック）
 
 日本語ローカライズ:
   main_menu/localization/japanese/              … UI用語
@@ -246,6 +251,9 @@ Steam デフォルト: C:\Program Files (x86)\Steam\steamapps\common\
 - 出典セクションでも一次情報とコミュニティ情報を分離する
 - **URL を本文の `[src:]` に直接埋め込まない**。`[src: Patch_X.Y wiki]` のショートマーカーで本文に置き、URL は末尾の出典セクションに集約する
 - **新パッチ対応で wiki パッチノート1点しか出典がない記述は断定で書かない**。「コミュニティ知見：...はスクリプト未確認」を併記し、後日検証する余地を残す（議論エージェントの批判派指摘で必ず引っかかるため）
+- **wiki 由来の数値は最低でも 1 つはスクリプト検証して整合性をチェックする**。実例（2026-05-10、EU5 1.2 検証）: wiki ベースで「Light Cavalry 移動速度 7.00」と記載していたが、`unit_categories/02_army_light_cavalry.txt` の実値は `movement_speed = 3.0`。wiki だけを信じると誤値が混入する
+- **`script verified` マーカーは「行内の特定クレーム」単位で付ける**。1行内に「verified な事実 + 未確認な閾値・数値」が混在する場合は行を分割する。同一行に `[src: ... + script verified]` と `（コミュニティ知見：閾値ボーナスの具体値はスクリプト未確認）` を併記すると批判派指摘で必ず矛盾扱いになる
+- **ガイド末尾の一括免責文と本文中の個別 `script verified` を整合させる**。「1.2 はすべてスクリプト未確認、wiki ベース」と末尾に書いた状態で本文に `script verified` が混在すると矛盾になる。末尾免責は「verified 済み項目」と「コミュニティ知見項目」を分けて書く
 
 ---
 
