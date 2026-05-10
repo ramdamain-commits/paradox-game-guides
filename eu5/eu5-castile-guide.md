@@ -33,9 +33,10 @@
 
 | 変更 | 内容 | 出典 |
 |------|------|------|
-| Papal Authority（教皇権威）新システム | 0-100 リソース。75↑でポジティブ、25↓でネガティブ | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| 列聖コスト削減 | 150 → 75 に低減 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| 外交破門コスト削減 | 100 → 50 に低減 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| Papal Authority（教皇権威）新システム（0-100 範囲） | 0-100 のリソースとして導入 `[src: Patch_1.2 wiki + script verified]` |
+| Papal Authority 閾値効果 | 75↑でポジティブ、25↓でネガティブ | `[src: Patch_1.2 wiki]`（コミュニティ知見：75/25 閾値ボーナスの具体値はスクリプト未確認） |
+| 列聖コスト削減 | 150 → 75 に低減 | `[src: Patch_1.2 wiki + script verified]` |
+| 外交破門コスト削減 | 100 → 50 に低減 | `[src: Patch_1.2 wiki + script verified]` |
 | 十字軍 CB 変更 | エルサレム未保有時はカトリック聖地・首都にフォールバック | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | Papal States 制限 | 重複破門不可・単独 Resolution 起動不可 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 
@@ -45,8 +46,8 @@
 |------|------|------|
 | Coalition War の Superiority Wargoal 化 | 対連合戦争の戦争目標が優位性戦争（Superiority War）形式に変更 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | Enforce Peace 双方合意必須 | 和平強制に両当事者の合意が必要に | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| Claim Throne CB 制限 | 請求者が既に統治している場合に不発 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| 要塞駐屯 Heavy Infantry 限定 | 駐屯可能兵科が Heavy Infantry（重装歩兵）のみに | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| Claim Throne CB 制限 | 請求者が既に統治している場合に不発 | `[src: Patch_1.2 wiki + script verified]` |
+| 要塞駐屯 Heavy Infantry 限定 | 駐屯可能兵科が Heavy Infantry（重装歩兵）のみに | `[src: Patch_1.2 wiki + script verified]` |
 | Heavy/Light 独立アップグレードツリー | 重装・軽装兵科が独立した技術ツリーを持つ | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | ロジスティクス距離 50→30 | 補給線の有効距離が短縮 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | 食料消費 10倍 | 遠征時の食料消費量が大幅増加 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
@@ -61,8 +62,8 @@
 - **海上ルートコスト 1/10** → 大西洋・地中海貿易の収益性が劇的に向上（最大メリット）`[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
 - **Papal Authority（教皇権威）新システム** → カトリック超大国として積極的な宗教外交が可能に `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
 - **Megalopolis（メガロポリス）** → 首都人口40万超でマドリードの戦略的価値が拡大 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
-- **Claim Throne CB 制限** → アラゴン継承・PU戦略の前提条件を事前確認すること `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
-- **要塞駐屯 Heavy Infantry 限定** → テルシオ系統の守備配置を見直す必要あり `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
+- **Claim Throne CB 制限** → アラゴン継承・PU戦略の前提条件を事前確認すること `[src: Patch_1.2 wiki + script verified]`
+- **要塞駐屯 Heavy Infantry 限定** → テルシオ系統の守備配置を見直す必要あり `[src: Patch_1.2 wiki + script verified]`
 
 ---
 
@@ -365,9 +366,9 @@ Patch 1.2 で Heavy Infantry（重装歩兵）と Light Infantry（軽装歩兵�
 
 | 兵科 | 特性 | 備考 |
 |------|------|------|
-| Heavy Infantry（重装歩兵） | 要塞駐屯可能 | テルシオ系統。主力歩兵 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| Light Cavalry（軽装騎兵） | 移動速度 7.00 | ヒネテ起源の軽騎兵系統。機動戦に有利 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| Heavy Cavalry（重装騎兵） | Morale 被ダメ -10% | 正面突破・打撃力 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| Heavy Infantry（重装歩兵） | 要塞駐屯可能 | テルシオ系統。主力歩兵 `[src: Patch_1.2 wiki + script verified]` |
+| Light Cavalry（軽装騎兵） | 移動速度 3.0・フランキング 210%・被モラルダメ +10% | ヒネテ起源の軽騎兵系統。機動戦に有利 `[src: Patch_1.2 wiki + script verified]` |
+| Heavy Cavalry（重装騎兵） | 標準モラル耐性（Light Cavalry は被モラルダメ +10%） | 正面突破・打撃力 `[src: Patch_1.2 wiki + script verified]` |
 
 **補給線管理（1.2 必須）**
 
@@ -617,7 +618,7 @@ Patch 1.2 で Heavy Infantry（重装歩兵）と Light Infantry（軽装歩兵�
 |------|------|
 | スンニ派住民 | 異端審問ルートなら強制改宗（`flavor_cas.1002`）。寛容ルートなら自然同化を待つ |
 | アンダルシ文化 | 文化伝統を上げて受容文化に追加するか、カスティーリャ文化への同化を促す |
-| アルプハラの反乱 | 審問所ルートでは 2〜10 年後に必ず発火（`flavor_cas.1003`）。軍を南部に配置しておく |
+| アルプハラの反乱 | 審問所ルートでは 2〜10 年後に高確率で発火（`flavor_cas.1003`、確率分岐スクリプト未確認）。軍を南部に配置しておく |
 | 再入植 | `cas_repoblaciones` で移住速度 +10%。征服地に市場・街道を優先建設 |
 
 ---

@@ -84,7 +84,7 @@
 
 > HRE 運営の詳細は [オーストリアガイド](eu5-austria-guide.md) を参照。
 
-> **1.2 更新**: 君主制特有の HRE 関連変更が大量。皇帝（君主制限定）の Great Power Score 貢献 250→50、王朝力上限 200→300、Imperial Diet 投票システム、Free Cities 自動参戦廃止、Imperial Armories 新建造物 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）。Claim Throne CB は請求者が既統治の場合不発（PU 継承戦略に影響）
+> **1.2 更新**: 君主制特有の HRE 関連変更が大量。皇帝（君主制限定）の Great Power Score 貢献 250→50 `[src: Patch_1.2 wiki + script verified]`、王朝力上限 200→300、Imperial Diet 投票システム、Free Cities 自動参戦廃止、Imperial Armories 新建造物 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）。Claim Throne CB は請求者が既統治の場合不発 `[src: Patch_1.2 wiki + script verified]`（PU 継承戦略に影響）
 
 ### 1.2 君主制への影響
 
@@ -92,8 +92,8 @@
 
 | 変更内容 | 詳細 |
 |---------|------|
-| Imperial Diet 投票システム | Diet 発展段階（Court Assembly → Early Diet → Bicamerial → Tricamerial）ごとに投票権重テーブルが異なる `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| 皇帝の Great Power Score 貢献 250→50 | 大幅な弱体化。帝位保持による Great Power 維持戦略を見直す必要あり `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| Imperial Diet 投票システム | Diet 4段階（Court Assembly → Early Diet → Bicamerial → Tricamerial）`[src: Patch_1.2 wiki + script verified]`。各段階の投票権重テーブル数値はコミュニティ知見（スクリプト未確認） |
+| 皇帝の Great Power Score 貢献 250→50 | 大幅な弱体化。帝位保持による Great Power 維持戦略を見直す必要あり `[src: Patch_1.2 wiki + script verified]` |
 | 王朝力（Dynastic Power）上限 200→300 | 王朝外交の継続選択肢が増加 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | Imperial Armories（帝国兵器庫） | 皇帝が HRE 構成員領土に建造可能な新建造物。Manpower を提供し、皇帝交代時に移転する `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | Free Cities 自動参戦廃止 | 皇帝は自由都市の戦争に自動参戦しなくなった `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
@@ -105,8 +105,8 @@
 
 #### Claim Throne CB 制限
 
-- 請求者（ruler または heir）が既に対象国を統治中の場合、Claim Throne CB が使用不可になった（コミュニティ知見：スクリプト未確認）
-- 同君連合（PU）獲得を Claim Throne で狙うルートは要戦略見直し `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
+- 請求者（ruler または heir）が既に対象国を統治中の場合、Claim Throne CB が使用不可になった `[src: Patch_1.2 wiki + script verified]`
+- 同君連合（PU）獲得を Claim Throne で狙うルートは要戦略見直し `[src: Patch_1.2 wiki + script verified]`
 
 > HRE 運営の 1.2 詳細は [eu5-austria-guide.md](eu5-austria-guide.md) を参照。
 
@@ -244,8 +244,8 @@
 
 | 変更内容 | 詳細 |
 |---------|------|
-| 列聖コスト 150→75 | Papal Authority 消費コストが半減。聖人候補の推進が容易に `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| 外交破門コスト 100→50 | 破門のコストが半減。対抗手段として使いやすくなった `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| 列聖コスト 150→75 | Papal Authority 消費コストが半減。聖人候補の推進が容易に `[src: Patch_1.2 wiki + script verified]` |
+| 外交破門コスト 100→50 | 破門のコストが半減。対抗手段として使いやすくなった `[src: Patch_1.2 wiki + script verified]` |
 | Papal States の制限 | 既に破門された対象への重複破門不可、単独での Resolution 起動不可 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 
 #### 正教神権制（コンスタンティノープル総主教国等）
@@ -438,7 +438,7 @@ Patch 1.2（2026-05-06 リリース）で確認された政府タイプ関連の
 | 神権制（カトリック） | Papal Authority コスト半減（列聖 150→75、破門 100→50）、Papal States 制限追加 |
 | 神権制（正教） | 正教オーバーホール（Patriarch キャラクター実装、Rite Power 廃止） |
 | ステップ遊牧民・部族 | ロジスティクス距離 50→30・食料消費 10 倍で大規模軍運用難化 |
-| 全政府タイプ | 官僚制（Bureaucracies）— **1.2 では実装されなかった**（将来パッチ検討候補） |
+| 全政府タイプ | 官僚制（Bureaucracies）— 1.2 では実装されなかった（コミュニティ知見：将来パッチでの実装可能性は未確定） |
 
 > 情報元: EU5 Wiki パッチノート（Patch 1.2「Echinades」、2026-05-06）
 
@@ -454,7 +454,7 @@ Patch 1.2 で追加・変更された政府タイプ関連の用語。完全版�
 | 帝国兵器庫 | Imperial Armories | 1.2 新規建造物。皇帝が HRE 構成員領土に建造。Manpower 提供、皇帝交代時に移転 |
 | 教皇権威 | Papal Authority | 神権制カトリック国に影響。1.2 でコスト変更（列聖 150→75、破門 100→50） |
 | 王朝力 | Dynastic Power | 上限が 1.2 で 200→300 に拡大 |
-| ローマ国境回復 CB | Restore Roman Borders | 1.2 新規ビザンツ用 CB（コミュニティ知見：スクリプト未確認） |
+| ローマ国境回復 CB | Restore Roman Borders | 1.2 新規ビザンツ用 CB `[src: Patch_1.2 wiki + script verified]` |
 | 都市特権 | Urban Rights | 1.2 新規。共和国・首都育成に影響 |
 | メガロポリス | Megalopolis | 1.2 新規。首都人口 40 万超で昇格。人口容量・建造物レベルが倍増 |
 | プロノイア | Pronoia | 1.2 新規ビザンツ用サブジェクト。君主制下位互換の従属形態 |
@@ -507,6 +507,10 @@ Patch 1.2 で追加・変更された政府タイプ関連の用語。完全版�
 | `in_game/common/government_reforms/country_specific.txt` | 国家固有の政府改革（部族改革含む） |
 | `in_game/common/prices/00_hardcoded.txt:1101-1104` | 政府タイプ変更コスト（安定度 -50、正統性 -25） |
 | `in_game/common/prices/00_hardcoded.txt:64-67` | 政府改革削除コスト（安定度 -20、義 -10） |
+| `in_game/common/international_organizations/hre.txt` | 皇帝 Great Power Score 免除閾値（`great_power_score_exempt_from_forfeit = 50`） |
+| `in_game/common/casus_belli/claim_throne.txt` | Claim Throne CB 発動制限（`not = { this = scope:target.ruler }`） |
+| `in_game/common/parliament_types/01_international_organization.txt` | Imperial Diet 4段階定義（Court Assembly → Early Diet → Bicamerial → Tricamerial） |
+| `in_game/common/casus_belli/D008_restore_roman_borders.txt` | Restore Roman Borders CB 定義 |
 | `main_menu/localization/japanese/government_l_japanese.yml` | 権力リソース・継承システムの日本語ローカライズ |
 | `main_menu/localization/japanese/government_names_l_japanese.yml` | 政府タイプ名の日本語ローカライズ |
 | `main_menu/localization/japanese/game_concepts_l_japanese.yml` | 権力リソースの説明テキスト |

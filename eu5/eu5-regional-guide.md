@@ -195,7 +195,7 @@ DLC「Fate of the Phoenix」同梱のギリシャ・バルカン新コンテン�
 | Advances / DHE | 300+ の新 Advances、140+ の新 Dynamic Historical Events |
 | 新サブジェクト | ビザンツ向け Pronoia（プロノイア）が追加 |
 | 新政体 | Katepanata（カテパナタ）が追加 |
-| 新 CB | Restore Roman Borders（ローマ国境回復）。オスマン・ハンガリーへの新たな脅威 |
+| 新 CB | Restore Roman Borders（ローマ国境回復）`[src: Patch_1.2 wiki + script verified]`。オスマン・ハンガリーへの新たな脅威 |
 | 文化ムーブメント | Latin Culture Movement が追加 |
 | 新ユニット | Legionaries（レギオナリウス）・Cataphracts（カタフラクトス）・Greek Fire（ギリシャ火） |
 | 新3Dモニュメント | Hagia Sophia（アヤソフィア）・Theodosian Walls（テオドシウスの城壁）等 |
@@ -404,7 +404,7 @@ DLC「Fate of the Phoenix」同梱のギリシャ・バルカン新コンテン�
 | 定住化 | Settle Down | ホードから定住型への転換 |
 | 制度 | Institution | 技術伝播システム |
 | 進歩 | Advance | 技術・固有ツリー |
-| 官僚制 | Bureaucracies | 1.2 で実装されず（予定から削除） |
+| 官僚制 | Bureaucracies | 1.2 では実装されなかった（コミュニティ知見：将来パッチでの実装可能性は未確定） |
 | 朝貢 | Tributary / Suzerainty | 中華 IO の核心 |
 | 同君連合 | Personal Union | 同一君主を戴く連合 |
 | 選挙制君主制 | Elective Monarchy | ポーランド・ハンガリー等 |

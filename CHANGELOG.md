@@ -1,5 +1,35 @@
 # Changelog
 
+## 2026-05-10
+
+### Changed
+- EU5 全 9 ガイド（`eu5/eu5-*.md`）に Patch 1.2「Echinades」のスクリプト一次検証結果を反映、レビュー指摘を一括修正
+  - スクリプト実検証で確認できた 10 項目のマーカーを `[src: Patch_1.2 wiki + script verified]` に昇格（全71箇所）
+    - 皇帝 Great Power Score 貢献 50（`international_organizations/hre.txt`）
+    - 要塞駐屯は Heavy Infantry のみ（`unit_categories/01_army_heavy_infantry.txt` の `is_garrison = yes`）
+    - 列聖コスト Religious Influence 75（`prices/00_hardcoded.txt`）
+    - 外交破門コスト Religious Influence 50（`prices/03_diplomacy.txt`）
+    - Papal Authority 0-100 範囲（`international_organizations/catholic_church.txt`）
+    - Claim Throne CB 制限（請求者が target.ruler の場合発行不可、`casus_belli/claim_throne.txt`）
+    - Diet 4段階存在（Court Assembly / Early Diet / Bicamerial / Tricamerial、`parliament_types/01_international_organization.txt`）
+    - Restore Roman Borders CB 存在（`casus_belli/D008_restore_roman_borders.txt`）
+    - Light/Heavy 兵科カテゴリ存在（`unit_categories/`）
+  - 数値誤りを修正
+    - Light Cavalry 移動速度「7.00」→「3.0」（実値：`unit_categories/02_army_light_cavalry.txt`）
+    - Light Cavalry フランキング「200%」→「210%」
+    - Heavy Cavalry「Morale 被ダメ -10%」→「標準モラル耐性（Light Cavalry が被モラルダメ +10%）」に書き換え
+  - レビュー指摘の重大度高 9 件修正
+    - Papal Authority 75/25 閾値の「verified と未確認の同一行併記」を「0-100 範囲のみ verified」に分離（austria/castile/universal）
+    - ottoman 用語対照表「支配度 = Dominance」誤訳を「Control（州支配度）」と「Dominance（大国指標）」に分離
+    - regional/government 間の「官僚制」記述矛盾を統一
+    - religion 末尾免責文を「スクリプト確認状況」4行構造に書き直し（individual verified と一括免責の整合）
+    - universal 傭兵コストの時系列矛盾を整理（1.0→1.1 で値下げ、1.1→1.2 で再度 +25%）
+    - government 出典セクションに `hre.txt` / `claim_throne.txt` / `parliament_types/` / `D008_restore_roman_borders.txt` 追記
+    - religion の列聖・破門コスト本文側に `prices/00_hardcoded.txt` / `prices/03_diplomacy.txt` 出典追記
+  - 断定過多の弱化（4 件：religion「全廃」/ austria「必ず参戦」/ castile「必ず発火」/ universal「ポップが直接死亡」）
+  - brandenburg 王朝力上限 200→300 に「scripts に明示的な cap 値は未発見。dynastic_power は計算値」注記追加
+  - hungary ハイドゥク兵科分類を「推定・スクリプト未確認」と明示
+
 ## 2026-05-09
 
 ### Changed

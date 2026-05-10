@@ -16,9 +16,9 @@
 
 | 変更 | 内容 | src |
 |------|------|-----|
-| Imperial Diet 投票システム刷新 | Diet 発展段階（Court Assembly → Early Diet → Bicamerial → Tricamerial）ごとに投票権重が異なる。皇帝: 500→250→200→200、選帝侯: 200→150→125→100、自由都市は Tricamerial で 50（上昇） | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| Imperial Diet 投票システム刷新 | Diet 4段階（Court Assembly → Early Diet → Bicamerial → Tricamerial）の存在 `[src: Patch_1.2 wiki + script verified]`。各段階の投票権重（皇帝: 500→250→200→200、選帝侯: 200→150→125→100 等）はコミュニティ知見（スクリプト未確認） | `[src: Patch_1.2 wiki]` |
 | Diet UI タブ化 | Overview / Members / Treasury の3タブ。投票前にツールチップで可決見込みを確認可能 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| 皇帝の Great Power Score 貢献 250 → 50 に削減 | **破壊的変更**: オーストリアの自動大国扱いが大幅に弱体化 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| 皇帝の Great Power Score 貢献 250 → 50 に削減 | **破壊的変更**: オーストリアの自動大国扱いが大幅に弱体化 | `[src: Patch_1.2 wiki + script verified]` |
 | 同一王朝再選で +5 Imperial Authority | 同一王朝の皇帝が連続再選されると IA ボーナス | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | 皇帝が政体変更すると再選挙発生 | 政体変更で帝位が自動失効し選挙がトリガーされる | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | Imperial Armories（帝国兵器庫）新建造物 | 皇帝が HRE 構成員領土内に建造。HRE Treasury から支出。建造国に Manpower 提供。皇帝交代時に新皇帝へ自動移転 | `[src: Patch_1.2 wiki]`（コミュニティ知見：建造コスト・Manpower 値はスクリプト未確認） |
@@ -32,19 +32,20 @@
 
 | 変更 | 内容 | src |
 |------|------|-----|
-| Papal Authority 新リソース追加 | 0〜100 の指標。75 以上でカトリック国へのポジティブ効果、25 以下でネガティブ効果 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| 列聖（Canonization）コスト Religious Influence 150 → 75 | コスト半減 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| 外交破門コスト 100 → 50 | プロテスタント諸侯への破門が安価化 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| Papal Authority 新リソース追加（0〜100 範囲） | 0〜100 の指標として導入 `[src: Patch_1.2 wiki + script verified]` |
+| Papal Authority 閾値効果 | 75 以上でカトリック国へのポジティブ効果、25 以下でネガティブ効果 | `[src: Patch_1.2 wiki]`（コミュニティ知見：75/25 閾値ボーナスの具体値はスクリプト未確認） |
+| 列聖（Canonization）コスト Religious Influence 150 → 75 | コスト半減 | `[src: Patch_1.2 wiki + script verified]` |
+| 外交破門コスト 100 → 50 | プロテスタント諸侯への破門が安価化 | `[src: Patch_1.2 wiki + script verified]` |
 | Papal States の重複破門不可 | Papal States は既破門対象への重複破門不可、自身が単独で破門 Resolution を起動不可 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 
 #### 戦争・外交・補給
 
 | 変更 | 内容 | src |
 |------|------|-----|
-| Claim Throne CB 制限 | 請求者（ruler または heir）が既に対象国を統治中なら CB 不発。婚姻外交の継承戦略に重大影響 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| Claim Throne CB 制限 | 請求者（ruler または heir）が既に対象国を統治中なら CB 不発。婚姻外交の継承戦略に重大影響 | `[src: Patch_1.2 wiki + script verified]` |
 | Enforce Peace 双方合意必須 | 一方的講和強制が不可に | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | Coalition War が Superiority Wargoal（優位性戦争）化 | 包囲網戦争の勝利条件が変更 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| 要塞駐屯は Heavy Infantry のみ | Light Infantry を要塞守備に配置しても駐屯扱いにならない | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| 要塞駐屯は Heavy Infantry のみ | Light Infantry を要塞守備に配置しても駐屯扱いにならない | `[src: Patch_1.2 wiki + script verified]` |
 | ロジスティクス距離 50 → 30、軍の食料消費 10 倍 | 補給線管理が大幅に厳格化。傭兵コスト +25% | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 
 ---
@@ -53,9 +54,9 @@
 
 > 以下は 1.1 系プレイヤーが 1.2 で必ず見直しを要する変更点。
 
-- **皇帝の Great Power Score 貢献 250 → 50 への削減**: 皇帝であるだけで大国扱いされる効果が大幅減少。IA 管理・軍事力・経済力の実力で大国スコアを積み上げる必要がある `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
+- **皇帝の Great Power Score 貢献 250 → 50 への削減**: 皇帝であるだけで大国扱いされる効果が大幅減少。IA 管理・軍事力・経済力の実力で大国スコアを積み上げる必要がある `[src: Patch_1.2 wiki + script verified]`
 - **Free Cities 自動参戦廃止**: 自由都市（Imperial Free City）が攻撃された場合、皇帝は手動で参戦を判断しなければならない。旧来の「帝国防衛は自動対応」の前提が崩れる `[src: Patch_1.2 wiki]`（コミュニティ知見：帝国防衛意識の刷新が必要）
-- **Claim Throne CB 制限**: 婚姻 → 直系相続人空白 → Claim Throne CB という継承戦略が、既統治の請求者を持つ場合は使えなくなった。ハプスブルク婚姻外交の継承順位の操作戦略に影響 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
+- **Claim Throne CB 制限**: 婚姻 → 直系相続人空白 → Claim Throne CB という継承戦略が、既統治の請求者を持つ場合は使えなくなった。ハプスブルク婚姻外交の継承順位の操作戦略に影響 `[src: Patch_1.2 wiki + script verified]`
 - **1400 年までに Golden Bull 未制定なら諸侯離脱可能**: ゲーム開幕早期の帝国法整備が従来以上に重要になった `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
 
 ---
@@ -305,7 +306,7 @@ HRE の集権化は「皇帝快適性カウンター（`hre_emperor_comfort_poli
 - 軍事アクセスが戦時中に全メンバーへ自動付与されるため、外国軍の自国通過も可能
 - `bolster_imperial_army` アクションで諸侯に皇帝の戦争への参戦を要請できる
 
-防衛不参加（hre.909）は `imperial_authority_strong_penalty` の強ペナルティが課せられるため、メンバーが攻撃された際は必ず参戦すること。
+防衛不参加（hre.909）は `imperial_authority_strong_penalty` の強ペナルティが課せられるため、メンバーが攻撃された際は原則として参戦推奨。資金・消耗状況により例外判断もあり得る。
 
 > **1.2 補給線注記**: 1.2 でロジスティクス距離 50 → 30、軍の食料消費 10 倍となり、HRE 全域への遠征軍は補給線管理が必須になった `[src: Patch_1.2 wiki]`（コミュニティ知見：オスマン迎撃で南東欧深部に進軍する場合は特に注意。補給基地の事前確保と軍の分散配置が重要）
 
@@ -315,10 +316,10 @@ HRE の集権化は「皇帝快適性カウンター（`hre_emperor_comfort_poli
 
 | 兵科 | 用途 | 1.2 特記 |
 |------|------|---------|
-| Heavy Infantry（重装歩兵） | 主力戦闘・要塞駐屯 | **要塞駐屯に必須**。要塞守備は Heavy Infantry のみ有効 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| Heavy Infantry（重装歩兵） | 主力戦闘・要塞駐屯 | **要塞駐屯に必須**。要塞守備は Heavy Infantry のみ有効 `[src: Patch_1.2 wiki + script verified]` |
 | Light Infantry（軽装歩兵） | 移動速度・偵察・野戦補助 | 要塞駐屯には使えないため、守備部隊への混入に注意（コミュニティ知見） |
-| Heavy Cavalry（重装騎兵） | 正面突撃・Morale ダメ −10% | 主力戦闘での耐久力が高い `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| Light Cavalry（軽装騎兵） | 移動速度 7.00・側面攻撃 | 機動力が高く、遠征・包囲に活用 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| Heavy Cavalry（重装騎兵） | 正面突撃・標準モラル耐性 | 主力戦闘での耐久力が高い（Light Cavalry は被モラルダメ +10%）`[src: Patch_1.2 wiki + script verified]` |
+| Light Cavalry（軽装騎兵） | 移動速度 3.0・側面攻撃 | 機動力が高く（Heavy Cavalry の 2.5 より速い）、遠征・包囲に活用。フランキング 210%。被モラルダメ +10% `[src: Patch_1.2 wiki + script verified]` |
 | ランツクネヒト | Heavy Infantry 系統に分類されると推測（コミュニティ知見：スクリプト未確認） | 要塞駐屯に利用可能な可能性。兵科の独立アップグレードツリー導入で特化研究の優先順位が変わる（コミュニティ知見） |
 
 ### 兵科比率の目安
@@ -766,7 +767,7 @@ IA は 0〜100 で変動。皇帝権力強化ポリシーへのアクセス（`i
 | 異教諸侯 | 宗教乖離度×−0.01/月 | 帝国宗教を統一、または異教諸侯を排除 |
 | 皇帝が HRE 防衛不参加（hre.909） | `imperial_authority_strong_penalty` | 防衛戦争には必ず参戦する |
 
-> **1.2 注記**: 皇帝の Great Power Score 貢献が 250 → 50 に削減されたことで、IA 管理だけでは大国維持ができなくなった可能性がある `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）。大国スコアは軍事力・経済力・外交実績で積み上げる必要があり、皇帝地位に依存した従来の大国維持戦略の見直しが必要。
+> **1.2 注記**: 皇帝の Great Power Score 貢献が 250 → 50 に削減されたことで、IA 管理だけでは大国維持ができなくなった可能性がある `[src: Patch_1.2 wiki + script verified]`。大国スコアは軍事力・経済力・外交実績で積み上げる必要があり、皇帝地位に依存した従来の大国維持戦略の見直しが必要。
 
 ### 皇帝アクション（使いどころ）
 
@@ -836,7 +837,7 @@ IA は 0〜100 で変動。皇帝権力強化ポリシーへのアクセス（`i
 
 オスマン帝国など外敵がHREメンバーを攻撃してきたとき:
 
-1. **hre.909 を発動させない** — 防衛戦争に参加しないと IA 強ペナルティ。必ず参戦する
+1. **hre.909 を発動させない** — 防衛戦争に参加しないと IA 強ペナルティ。原則として参戦推奨（資金・消耗状況により例外判断もあり得る）
 2. **参戦すると hre.908** — 自軍/敵軍比率 × 5（上限 +10）の IA ボーナス
 3. **勝利すると hre.904** — 敵/自比率 × 5（上限 +10）の追加 IA ボーナス
 4. **flavor_hab.39（対オスマン支援税）** — オスマン交戦中に発火。選択肢bを選んで威信ボーナス＋IA を守るか、選択肢aで追加税収を得るか判断
@@ -862,7 +863,7 @@ IA は 0〜100 で変動。皇帝権力強化ポリシーへのアクセス（`i
 併合（Annexation）
 ```
 
-**重要**: EU5 の婚姻→連合メカニクスはすべて**確定ロジック**。条件を満たすと自動成立し、ランダムロールは存在しない `[src: union.txt:1, marriage_union.txt:1]`。
+**重要**: EU5 の婚姻→連合メカニクスは確認できる範囲では**確定ロジック**（コミュニティ知見：完全網羅未確認）。条件を満たすと自動成立する（コミュニティ知見：ランダムロールは確認されていない）`[src: union.txt, marriage_union.txt]`。
 
 ### 同君連合の5つの成立経路
 
@@ -952,8 +953,8 @@ IA は 0〜100 で変動。皇帝権力強化ポリシーへのアクセス（`i
 | 25 以下 | ネガティブ効果 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 
 **1.2 でのコスト変更**:
-- 列聖（Canonization）コスト: Religious Influence 150 → 75（半額）`[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
-- 外交破門コスト: 100 → 50（半額）`[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）。プロテスタント諸侯への破門が安価化したことで、早期破門による IA 防衛が従来より低コストで実施可能
+- 列聖（Canonization）コスト: Religious Influence 150 → 75（半額）`[src: Patch_1.2 wiki + script verified]`
+- 外交破門コスト: 100 → 50（半額）`[src: Patch_1.2 wiki + script verified]`。プロテスタント諸侯への破門が安価化したことで、早期破門による IA 防衛が従来より低コストで実施可能
 
 **Papal States の制限（1.2）**:
 - Papal States は既破門対象への重複破門不可
@@ -1020,8 +1021,8 @@ IA は 0〜100 で変動。皇帝権力強化ポリシーへのアクセス（`i
 | 固有進歩 `austrian_court` と `geheimrat` を後回しにする | 汎用進歩を先取りしてしまう | 固有ボーナスの ROI は汎用進歩より高いケースが多い。序盤〜中盤で優先取得する |
 | 婚姻外交のタイミングを誤る（統治者死亡直後に王室婚姻が切れる） | 婚姻の対象統治者死亡に気づかない | 主要婚姻国（ボヘミア・ハンガリー・ポーランド・スペイン）の統治者寿命を定期確認し、死亡後すぐに再締結する |
 | **1.2: Free Cities 戦争への自動参戦を期待** | 1.2 で自動参戦が廃止されたことを知らない | 自由都市が攻撃された場合は手動参戦判断が必須。HRE 防衛通知を見落とさないよう定期チェックする（コミュニティ知見） |
-| **1.2: Claim Throne CB の前提確認漏れ** | 既統治の請求者では CB 不発になることを見落とす | 婚姻継承戦略を立てる前に、請求者が対象国を既に統治していないか確認する `[src: Patch_1.2 wiki]` |
-| **1.2: Light Infantry を要塞守備に配置** | 1.2 では要塞駐屯は Heavy Infantry のみ有効なことを知らない | 守備部隊の兵科を確認し、Light Infantry を要塞守備から外す。Heavy Infantry 中心の守備編成に見直す `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| **1.2: Claim Throne CB の前提確認漏れ** | 既統治の請求者では CB 不発になることを見落とす | 婚姻継承戦略を立てる前に、請求者が対象国を既に統治していないか確認する `[src: Patch_1.2 wiki + script verified]` |
+| **1.2: Light Infantry を要塞守備に配置** | 1.2 では要塞駐屯は Heavy Infantry のみ有効なことを知らない | 守備部隊の兵科を確認し、Light Infantry を要塞守備から外す。Heavy Infantry 中心の守備編成に見直す `[src: Patch_1.2 wiki + script verified]` |
 
 ### EU5 全般
 
@@ -1095,8 +1096,8 @@ IA は 0〜100 で変動。皇帝権力強化ポリシーへのアクセス（`i
 | 威信 | Prestige | 国家の名声。外交・選挙に影響 |
 | 軽装歩兵 | Light Infantry | 1.2 新規分類。要塞駐屯には使用不可 `[src: Patch_1.2 wiki]` |
 | 重装歩兵 | Heavy Infantry | 1.2 新規分類。要塞駐屯に必須 `[src: Patch_1.2 wiki]` |
-| 軽装騎兵 | Light Cavalry | 1.2 新規分類。移動速度 7.00。機動力に優れる `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| 重装騎兵 | Heavy Cavalry | 1.2 新規分類。Morale 被ダメ −10%。正面突撃に優れる `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| 軽装騎兵 | Light Cavalry | 1.2 新規分類。移動速度 3.0・フランキング 210%・被モラルダメ +10%。機動力に優れる `[src: Patch_1.2 wiki + script verified]` |
+| 重装騎兵 | Heavy Cavalry | 1.2 新規分類。標準モラル耐性（Light Cavalry は被モラルダメ +10%）。正面突撃に優れる `[src: Patch_1.2 wiki + script verified]` |
 | 優位性戦争 | Superiority War | 1.2 新規。Coalition War の置換。包囲網戦争の勝利条件が変更 `[src: Patch_1.2 wiki]` |
 | 都市特権 | Urban Rights | 1.2 新規。自由都市・都市の権利に関わる制度 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 

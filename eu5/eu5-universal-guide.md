@@ -14,18 +14,18 @@
 
 | 変更 | 内容 |
 |------|------|
-| HRE 大幅オーバーホール | Imperial Diet（帝国議会）投票システム導入、皇帝選挙重み付け変更（皇帝の Great Power Score 貢献 250→50）、Imperial Armories（帝国兵器庫）建造物追加、王朝力上限 200→300 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| Papal Authority（教皇権威）新システム | 0–100 のリソースとして追跡。75 以上でカトリック向けポジティブ効果、25 以下でネガティブ効果。列聖コスト 150→75、外交破門コスト 100→50 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| 兵科の Heavy/Light 分類（**破壊的変更**） | 歩兵・騎兵がそれぞれ重装（Heavy）/軽装（Light）に分類。**要塞駐屯は Heavy Infantry のみ**。Light Infantry はイニシアティブ +6.00 でフランキング 100%、Heavy Cavalry は Morale ダメージ被 -10% 等、独立した特性差あり `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| HRE 大幅オーバーホール | Imperial Diet（帝国議会）投票システム導入・4段階（Court Assembly → Early Diet → Bicamerial → Tricamerial）`[src: Patch_1.2 wiki + script verified]`、皇帝選挙重み付け変更（皇帝の Great Power Score 貢献 250→50）`[src: Patch_1.2 wiki + script verified]`、Imperial Armories（帝国兵器庫）建造物追加、王朝力上限 200→300 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）。投票権重数値（500/250/200 等）はコミュニティ知見 |
+| Papal Authority（教皇権威）新システム（0–100 範囲） | 0–100 のリソースとして導入 `[src: Patch_1.2 wiki + script verified]`。列聖コスト 150→75、外交破門コスト 100→50 `[src: Patch_1.2 wiki + script verified]`。75 以上でカトリック向けポジティブ効果、25 以下でネガティブ効果 `[src: Patch_1.2 wiki]`（コミュニティ知見：75/25 閾値ボーナスの具体値はスクリプト未確認） |
+| 兵科の Heavy/Light 分類（**破壊的変更**） | 歩兵・騎兵がそれぞれ重装（Heavy）/軽装（Light）に分類。**要塞駐屯は Heavy Infantry のみ** `[src: Patch_1.2 wiki + script verified]`。Light Infantry はイニシアティブ +6.00 でフランキング 100%、Heavy Cavalry は標準モラル耐性（Light Cavalry は被モラルダメ +10%）等、独立した特性差あり `[src: Patch_1.2 wiki + script verified]` |
 | 兵站大幅厳格化 | ロジスティクス距離 50→30、将軍補正半減、軍の食料消費 10倍、傭兵コスト +25% `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | Coalition War が Superiority War（優位性戦争）化 | 首都占領ベースの勝敗判定 → 軍事的優位ベースに変更。連合側の防衛が強化 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | Enforce Peace 双方合意必須 | 一方的講和強制不可に。Unconditional Surrender オプション新規追加 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| Claim Throne CB 制限 | 請求者がすでに対象国を統治中なら CB 不発 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| Claim Throne CB 制限 | 請求者がすでに対象国を統治中なら CB 不発 `[src: Patch_1.2 wiki + script verified]` |
 | Belligerent / Conciliatory 修正 | 要塞数超過時の判定バグ修正。年間減衰 4→5 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | 貿易システム改修 | 海上ルートコスト 1/10、距離影響 50%、Maritime Presence が経路コストに反映、Trade Capacity コスト全体削減 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | Urban Rights（都市特権）/ Megalopolis（メガロポリス） | 都市に法的特権スロット（町1/市2）。首都人口40万超で Megalopolis 昇格、人口容量・建造物レベル倍増 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | 正教オーバーホール | Patriarch（総主教）がキャラクター実装、Rite Power 廃止 → Religious Influence（宗教的影響力）統合 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| ギリシャ・バルカン新規コンテンツ | 300+ Advances、140+ DHE。ビザンツ復興・Restore Roman Borders CB（ローマ国境回復 CB）追加 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| ギリシャ・バルカン新規コンテンツ | 300+ Advances、140+ DHE。ビザンツ復興・Restore Roman Borders CB（ローマ国境回復 CB）追加 `[src: Patch_1.2 wiki + script verified]` |
 
 ### 1.1→1.2 移行で旧戦略が無効化される事項（移行注意）
 
@@ -206,8 +206,8 @@ EU5 の軍隊は精鋭軍と徴兵の 2 系統で構成される。
 |------|---------|
 | Heavy Infantry（重装歩兵） | **要塞駐屯可能**（Light Infantry は駐屯不可）。防衛戦・要塞戦に必須 |
 | Light Infantry（軽装歩兵） | イニシアティブ +6.00、フランキング成功率 100%。機動力に優れる |
-| Heavy Cavalry（重装騎兵） | Morale ダメージ被 -10%。耐久力重視の突撃向き |
-| Light Cavalry（軽装騎兵） | 高い機動力・追撃向き |
+| Heavy Cavalry（重装騎兵） | 移動速度 2.5、フランキング 200%、標準モラル耐性。耐久力重視の突撃向き `[src: Patch_1.2 wiki + script verified]` |
+| Light Cavalry（軽装騎兵） | 移動速度 3.0、フランキング 210%、被モラルダメ +10%。高い機動力・追撃向き `[src: Patch_1.2 wiki + script verified]` |
 
 各兵科は独立したアップグレードツリーを持ち、育成方針を兵科ごとに選択できる `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）。
 
@@ -215,9 +215,9 @@ EU5 の軍隊は精鋭軍と徴兵の 2 系統で構成される。
 
 ### 傭兵の活用
 
-1.1 で傭兵コストが大幅に値下げされた。雇用プレミアムはユニットコストの 25% `[src: prices/00_hardcoded.txt:176-178, hire_mercenary_premium = 0.25]`。
+1.0→1.1 で傭兵コストが値下げされ、雇用プレミアムはユニットコストの 25% に設定された（コミュニティ知見：値下げの具体的な変更幅はスクリプト未確認）`[src: prices/00_hardcoded.txt:176-178, hire_mercenary_premium = 0.25]`。1.1→1.2 で再度 +25% 引き上げ（最終水準はスクリプト未確認）。
 
-> 1.2 で傭兵コスト +25% に上昇 `[src: Patch_1.2 wiki]`（コミュニティ知見：プレミアムとは別の追加コストか上書きかスクリプト未確認）
+> 1.2 で傭兵コスト +25% が引き上げられた `[src: Patch_1.2 wiki]`（コミュニティ知見：プレミアムへの上乗せか、別軸の追加コストかはスクリプト未確認）
 
 - **序盤の兵力不足を補う** — 自国軍だけで戦力が足りないとき、傭兵で即戦力を確保
 - **使い捨てに注意** — 傭兵は戦争終了後に解雇しないと維持費が嵩む
@@ -244,7 +244,7 @@ EU5 の軍隊は精鋭軍と徴兵の 2 系統で構成される。
 ### 兵站と補給
 
 - 部隊は補給線（Supply Line）を通じて食料・物資を受け取る
-- 補給が途絶すると士気が急落し、**ポップが直接死亡する**（単なるペナルティではない）
+- 補給が途絶すると士気が急落し、**ポップが死亡する場合がある**（具体的な条件はスクリプト未確認）
 - 敵地での長期作戦は補給ルートを確保してから行うこと
 - 冬季（Winter）は補給消費が増加する。冬季攻勢は慎重に
 
@@ -429,10 +429,10 @@ EU5 では時代（Age）ごとに進歩を選択する。国家固有の進歩�
 | 自動化への過信 | 特に政治・外交の自動化は AI の判断が最適でないことが多い。手動管理推奨 |
 | 文化・宗教の無視 | 異文化・異宗教の州は反乱リスクが高い。同化政策や改宗を計画的に行う |
 | 建造物の乱建設 | 序盤は市場・工房に集中投資。散発的な建設は効果が薄い |
-| Light Infantry を要塞守備に置く（1.2） | 1.2 では要塞駐屯は Heavy Infantry のみ。Light Infantry のみの守備隊は要塞として機能しない `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| Light Infantry を要塞守備に置く（1.2） | 1.2 では要塞駐屯は Heavy Infantry のみ。Light Infantry のみの守備隊は要塞として機能しない `[src: Patch_1.2 wiki + script verified]` |
 | 大軍団の補給線管理を怠る（1.2） | 1.2 でロジスティクス距離 50→30・食料消費 10倍に変更。長距離遠征で補給切れが一気に悪化する `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | Enforce Peace で一方的講和を期待する（1.2） | 1.2 から双方合意必須。第三者に強制停戦を依頼する戦術は機能しない `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| Claim Throne CB を既統治対象に使おうとする（1.2） | 請求者がすでに対象国を統治している場合、CB が発生しない `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| Claim Throne CB を既統治対象に使おうとする（1.2） | 請求者がすでに対象国を統治している場合、CB が発生しない `[src: Patch_1.2 wiki + script verified]` |
 
 ---
 
@@ -465,7 +465,7 @@ EU5 では時代（Age）ごとに進歩を選択する。国家固有の進歩�
 | 軽装歩兵 | Light Infantry | 1.2 分類。イニシアティブ +6.00、フランキング 100%。要塞駐屯不可 |
 | 重装歩兵 | Heavy Infantry | 1.2 分類。要塞駐屯可能 |
 | 軽装騎兵 | Light Cavalry | 1.2 分類。機動力・追撃向き |
-| 重装騎兵 | Heavy Cavalry | 1.2 分類。Morale ダメージ被 -10%。耐久力重視 |
+| 重装騎兵 | Heavy Cavalry | 1.2 分類。標準モラル耐性（Light Cavalry は被モラルダメ +10%）。耐久力重視 `[src: Patch_1.2 wiki + script verified]` |
 | 優位性戦争 | Superiority War | 1.2 の Coalition War の勝敗判定方式。軍事的優位で決まる |
 | 都市特権 | Urban Rights | 1.2 新規。町1/市2 の法的特権スロット制 |
 | メガロポリス | Megalopolis | 1.2 新規。首都人口40万超で昇格。人口容量・建造物レベル倍増 |

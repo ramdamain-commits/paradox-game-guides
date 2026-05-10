@@ -60,11 +60,11 @@
 
 `[src: religions/christian.txt:217-228]`
 
-> **1.2 更新**: Papal Authority 新システム（0-100）が導入され、75↑でカトリック向けポジティブ効果、25↓でネガティブ効果。列聖コスト 150→75、外交破門コスト 100→50 に低減 `[src: Patch_1.2 wiki]`（コミュニティ知見：プロテスタント諸侯への早期破門が安価化）
+> **1.2 更新**: Papal Authority 新システム（0-100）が導入され `[src: Patch_1.2 wiki + script verified]`、75↑でカトリック向けポジティブ効果、25↓でネガティブ効果（コミュニティ知見：75/25 閾値ボーナスの具体値はスクリプト未確認）。列聖コスト 150→75 `[src: prices/00_hardcoded.txt]`、外交破門コスト 100→50 `[src: prices/03_diplomacy.txt]`（コミュニティ知見：プロテスタント諸侯への早期破門が安価化）
 
 #### Papal Authority（教皇権威）— 1.2 新システム
 
-`[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
+`[src: Patch_1.2 wiki + script verified]`（0-100 範囲・初期値 60 はスクリプト確認済み。75/25 閾値ボーナスの具体値はスクリプト未確認）
 
 0-100 のリソース。Catholic Church 国際組織（IO: International Organization）内で追跡。すべてのカトリックメカニクス・Situation と連動する。
 
@@ -112,7 +112,7 @@
 > **1.2 更新（破壊的）**: 正教オーバーホール — Patriarch がキャラクターとして実装（旧: 抽象的リソース）、**Rite Power 廃止 → Religious Influence に完全置換**、Law および Tenet システムを刷新 `[src: Patch_1.2 wiki]`（コミュニティ知見：1.1 で Rite Power を活用した戦略は無効化されるためスクリプト未確認だが要再検証）
 
 - **Patriarch がキャラクターとして実装**（旧: 抽象的リソース）。Patriarch の選任・交代がイベントベースで発生（コミュニティ知見：詳細メカニクスはスクリプト未確認）
-- **Rite Power が完全廃止 → Religious Influence に統合**。1.1 で「Rite Power を貯めて○○」型の戦略は全廃
+- **Rite Power が廃止された可能性が高い → Religious Influence に統合**（スクリプト未確認）。1.1 で「Rite Power を貯めて○○」型の戦略は機能しなくなる可能性がある
 - Law および Tenet システムを刷新（具体的な新 Law/Tenet の内容はスクリプト未確認）
 
 #### 1.1 系の旧メカニクス（参考情報、1.2 では無効）
@@ -790,5 +790,8 @@ EU4 の宣教師システムは廃止され、EU5 では異なるメカニクス
 | Catholic ページ | eu5.paradoxwikis.com/Catholic |
 | Orthodox ページ | eu5.paradoxwikis.com/Orthodox |
 
-> スクリプト確認日（1.1 系）: 2026-04-08 / EU5 Patch 1.1.10 時点
-> Patch 1.2「Echinades」対応追記日: 2026-05-09（1.2 新規記述はスクリプト未確認、wiki 情報ベース）
+> スクリプト確認状況:
+> - 1.1 系: 2026-04-08 / EU5 Patch 1.1.10 時点
+> - 1.2「Echinades」対応: 2026-05-09
+> - 1.2 で script verified 済: 列聖コスト 75（`prices/00_hardcoded.txt`）、外交破門コスト 50（`prices/03_diplomacy.txt`）、Papal Authority 0-100 範囲（`international_organizations/catholic_church.txt`）
+> - 1.2 で wiki 情報ベース（コミュニティ知見・スクリプト未確認）: 75/25 閾値ボーナスの具体値、Papal States 重複破門不可、Rite Power 廃止 など

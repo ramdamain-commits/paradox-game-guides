@@ -19,7 +19,7 @@
 | 変更 | 内容 |
 |------|------|
 | 新 Advances 300+ / 新 DHE 140+ | バルカン関連フレーバーが大幅拡充。セルビア・ブルガリア・ヴァラキア情勢が動的化 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| Restore Roman Borders CB 新登場 | ビザンツがオスマンのバルカン・アナトリア領土を復興 CB で奪取する最大の脅威 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| Restore Roman Borders CB 新登場 | ビザンツがオスマンのバルカン・アナトリア領土を復興 CB で奪取する最大の脅威 `[src: Patch_1.2 wiki + script verified]` |
 | 新サブジェクト Pronoia | ビザンツ用新封臣制度。バルカン支配の対抗勢力として機能 `[src: Fate_of_the_Phoenix wiki]`（コミュニティ知見：スクリプト未確認） |
 | 新政体 Katepanata | ビザンツ用新総督府政体 `[src: Fate_of_the_Phoenix wiki]`（コミュニティ知見：スクリプト未確認） |
 | ギリシャ火再発見 | Greek Fire Ships、Greek Fire Infantry がビザンツ軍に追加 `[src: Fate_of_the_Phoenix wiki]`（コミュニティ知見：スクリプト未確認） |
@@ -34,14 +34,14 @@
 | Coalition War が Superiority War 化 | 対オスマン連合が首都占領なしに優位性戦争目標（Superiority Wargoal）で勝利可能に `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | Enforce Peace 双方合意必須 | 一方的な講和強制不可に変更 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | Belligerent / Conciliatory 修正 | 拡張オスマンは要塞数超過で Belligerent 蓄積しやすい `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| Claim Throne CB 制限 | 請求者がすでに対象国を統治中なら CB 不発 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| Claim Throne CB 制限 | 請求者がすでに対象国を統治中なら CB 不発 `[src: Patch_1.2 wiki + script verified]` |
 
 #### 軍事
 
 | 変更 | 内容 |
 |------|------|
-| 要塞駐屯 Heavy Infantry のみ | 騎兵は要塞守備不可。イェニチェリ（Heavy Infantry 系統推測）への依存度上昇 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| 兵科 Heavy / Light 分類 | アクンジュ（Light Cavalry）vs シパーヒー・カピクル騎兵（Heavy Cavalry）の明確な役割分担 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| 要塞駐屯 Heavy Infantry のみ | 騎兵は要塞守備不可。イェニチェリ（Heavy Infantry 系統推測）への依存度上昇 `[src: Patch_1.2 wiki + script verified]` |
+| 兵科 Heavy / Light 分類 | Light Cavalry / Heavy Cavalry カテゴリの存在 `[src: Patch_1.2 wiki + script verified]`。アクンジュ = Light Cavalry、シパーヒー・カピクル騎兵 = Heavy Cavalry の分類はコミュニティ知見（スクリプト未確認） |
 | 独立アップグレードツリー | 兵科ごとの独立強化ツリーが追加 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | ロジ距離 50→30 / 食料消費 10倍 / 傭兵 +25% | バルカン・アナトリア・北アフリカ遠征の補給線管理が必須に `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 
@@ -254,7 +254,7 @@ TUR 以外のベイリクがシチュエーションを制した場合、ルー�
 
 ### イェニチェリ運用
 
-イェニチェリ（Janissaries）は Age 2〜6 にまたがる 5 段階の進歩（`janissaries_advance` 系列）で順次強化される固有歩兵。最大の強みは被ダメージ -10%（強度・士気の両方）で、正面衝突での生存率が大幅に上がる。特に守勢側での篭城戦と正規軍との真正面からの激突に強い。
+イェニチェリ（Janissaries）は Age 2〜6 にまたがる 5 段階の進歩（`janissaries_advance` 系列）で順次強化される固有歩兵。最大の強みは被ダメージ -10%（強度・士気の両方）`[src: unit_types/3_janissaries.txt]` で、正面衝突での生存率が大幅に上がる。特に守勢側での篭城戦と正規軍との真正面からの激突に強い。
 
 数量制限（Cap）があるため全軍をイェニチェリで埋めることはできない。イェニチェリ兵舎（`janissary_barracks`）は奴隷人口を参照してキャップを拡張し、建設した町・都市の地域人的資源（Manpower）を +2.5% 増加させる副効果もある。主要都市（コンスタンティノープル・カイロ・バグダード等）に優先的に建設し、キャップ上限まで徴募してから通常歩兵で補完する運用が基本。
 
@@ -279,8 +279,8 @@ Patch 1.2 で兵科が Heavy / Light に明確分類され、オスマン軍の�
 | 兵科 | 分類 | 主な役割 | 備考 |
 |------|------|---------|------|
 | イェニチェリ | Heavy Infantry（推測） | 要塞駐屯・正面会戦 | 1.2 で要塞駐屯可能な唯一の実質的主力 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| アクンジュ | Light Cavalry | 略奪・先導・側面 | 移動力と側面攻撃（フランキング）が強みだが要塞駐屯不可 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| シパーヒー・カピクル騎兵 | Heavy Cavalry | 主力会戦 | Morale 被ダメ -10% 等の耐久ボーナス（推測） `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| アクンジュ | Light Cavalry | 略奪・先導・側面 | 移動速度 3.0、フランキング 210%、被モラルダメ +10%。要塞駐屯不可 `[src: Patch_1.2 wiki + script verified]` |
+| シパーヒー・カピクル騎兵 | Heavy Cavalry | 主力会戦 | 標準モラル耐性（Light Cavalry は被モラルダメ +10%）`[src: Patch_1.2 wiki + script verified]` |
 
 **1.2 における兵科特化の方針:**
 
@@ -577,7 +577,8 @@ DLC Fate of the Phoenix（Patch 1.2 同時リリース）はビザンツ帝国�
 | 日本語 | 英語 | カテゴリ | 備考 |
 |--------|------|---------|------|
 | 召集軍 | Levy | システム | 一時的な徴兵 |
-| 支配度 | Dominance | システム | 大国指標 |
+| 支配度 | Control | システム | 州支配度（占領度） |
+| 大国指標 | Dominance | システム | 1.x で大国判定に使用 |
 | 進歩 | Advance | システム | 国家技術ツリー |
 | 階級 | Estate | システム | 社会階層 |
 | 統合軍備 | Combined Arms | システム | 多兵科混成ボーナス |

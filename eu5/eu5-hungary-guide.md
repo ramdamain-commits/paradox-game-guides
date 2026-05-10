@@ -20,7 +20,7 @@
 |------|------|
 | 新 Advances 300+ | バルカン関連のフレーバーが大幅に拡充 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | 新 DHE 140+ | ハンガリー周辺のバルカン情勢が動的に変化 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| Restore Roman Borders CB 新登場 | ビザンツ用の新 CB。ハンガリー支配下のバルカン領土が標的になりうる最大の脅威 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| Restore Roman Borders CB 新登場 | ビザンツ用の新 CB。ハンガリー支配下のバルカン領土が標的になりうる最大の脅威 `[src: Patch_1.2 wiki + script verified]` |
 | Latin Culture Movement | ハンガリー支配下カトリック文化との連動可能性 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | 新 3D モニュメント（Hagia Sophia 等） | 観光・威信収入の動的変化 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 
@@ -29,7 +29,7 @@
 | 変更 | 内容 |
 |------|------|
 | Imperial Diet 投票システム | 帝国議会の投票メカニクス新規追加 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| 皇帝 GP Score 貢献 250→50 | 帝国皇帝の Great Power Score 寄与が大幅減少 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| 皇帝 GP Score 貢献 250→50 | 帝国皇帝の Great Power Score 寄与が大幅減少 `[src: Patch_1.2 wiki + script verified]` |
 | Free Cities 自動参戦廃止 | 自由都市が自動的に帝国戦争に参戦しなくなった `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | Imperial Armories 新建造物 | 帝国兵器庫の新建造物追加 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | 王朝力上限 200→300 | Dynastic Power の蓄積上限が拡大 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
@@ -39,7 +39,7 @@
 
 | 変更 | 内容 |
 |------|------|
-| Claim Throne CB 制限 | 請求者がすでに対象国を統治中なら CB 不発。ハンガリー王位継承戦略の事前確認が必要 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| Claim Throne CB 制限 | 請求者がすでに対象国を統治中なら CB 不発。ハンガリー王位継承戦略の事前確認が必要 `[src: Patch_1.2 wiki + script verified]` |
 | Coalition War が Superiority War 化 | 連合戦争が優位性戦争目標（Superiority Wargoal）方式に変更 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | Enforce Peace 双方合意必須 | 一方的講和強制不可に `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | Belligerent / Conciliatory 修正 | 年間減衰 4→5 等のバランス修正 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
@@ -48,7 +48,7 @@
 
 | 変更 | 内容 |
 |------|------|
-| 要塞駐屯 Heavy Infantry 限定 | Light Infantry（ハイドゥク推定）は要塞駐屯不可。国境守備の編成見直しが必要 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| 要塞駐屯 Heavy Infantry 限定 | Light Infantry（ハイドゥクは Light Infantry 系統と推定。スクリプト未確認）は要塞駐屯不可。国境守備の編成見直しが必要 `[src: Patch_1.2 wiki + script verified]` |
 | 兵科 Heavy/Light 分類 | 歩兵・騎兵がそれぞれ Heavy/Light に分類。重騎兵・軽騎兵の使い分けが重要に `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | ロジスティクス距離 50→30、食料消費 10倍 | 対オスマン・対モルダヴィア遠征の補給線管理が必須に `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | 傭兵コスト +25% | 黒軍（Black Army）への傭兵依存度の再評価が必要 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
