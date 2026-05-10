@@ -3,6 +3,32 @@
 ## 2026-05-09
 
 ### Changed
+- EU5 ブランデンブルク攻略ガイド（`eu5/eu5-brandenburg-guide.md`）を Patch 1.2「Echinades」ベースに更新
+  - ヘッダ・確認日を 1.2 に更新
+  - パッチ差分セクションを 1.2 確定情報に書き換え（HRE オーバーホール・戦争外交・軍事の3カテゴリ）。「ブランデンブルクプレイヤーが特に注意すべき変更」サブ節を新設
+  - 序盤・中盤戦略に 1.2 注記追加（Free Cities 自動参戦廃止メリット・Coalition Superiority 化・王朝力上限 300）
+  - 軍事ドクトリンに「### 1.2 兵科分類とプロイセン軍編成」節追加（擲弾兵 Heavy Infantry 推測・要塞守備見直し・補給線管理）
+  - 外交に「### 1.2 外交変更とブランデンブルク」節追加（Claim Throne CB 制限・Coalition Superiority・Enforce Peace）
+  - よくあるミスに 1.2 関連 4 項目追加
+  - 用語対照表に 6 項目追加（Imperial Diet・Imperial Armories・王朝力・軽装/重装歩兵・軽装/重装騎兵・優位性戦争）
+- EU5 カスティーリャ攻略ガイド（`eu5/eu5-castile-guide.md`）を Patch 1.2「Echinades」ベースに更新
+  - ヘッダ・確認日を 1.2 に更新
+  - パッチ差分セクションを 1.2 確定情報に書き換え（貿易/都市・宗教・戦争外交の3カテゴリ）。「カスティーリャプレイヤーが特に注意すべき変更」サブ節を新設
+  - 序盤・中盤・終盤戦略に 1.2 注記追加（海上ルートコスト 1/10・Maritime Presence 反映・Megalopolis）
+  - 軍事ドクトリンに「### 1.2 兵科分類とテルシオ編成」節追加（テルシオ Heavy Infantry 推測・北アフリカ/イタリア戦線補給線）
+  - 内政・経済に「### 1.2 貿易改修と Urban Rights」節追加（海上 1/10・Town Rights スロット制・Megalopolis）
+  - 「### 1.2 Papal Authority とカトリック超大国戦略」節追加（コスト半減・北アフリカ十字軍 CB フォールバック）
+  - よくあるミスに 1.2 関連 4 項目追加
+  - 用語対照表に 7 項目追加
+- EU5 ハンガリー攻略ガイド（`eu5/eu5-hungary-guide.md`）を Patch 1.2「Echinades」ベースに更新
+  - ヘッダ・確認日を 1.2 に更新
+  - パッチ差分セクションを 1.2 確定情報に書き換え（バルカン新規・HRE関連・戦争外交・軍事の4カテゴリ）。「ハンガリープレイヤーが特に注意すべき変更」サブ節を新設（Restore Roman Borders CB がバルカン領土を標的化する最大脅威を強調）
+  - 序盤・中盤・終盤戦略に 1.2 注記追加（バルカン DHE 動的化・ビザンツ復興警戒・ハプスブルク同君連合時の HRE オーバーホール影響）
+  - 軍事ドクトリンに「### 1.2 兵科分類とハンガリー軍編成」節追加（ハイドゥク Light Infantry 推測・フッサル前身軽騎兵・対オスマン補給線）
+  - 外交に「### 1.2 外交変更とハンガリー」節追加
+  - 固有イベント時系列に「### 1.2 バルカン新規コンテンツ」節追加（Restore Roman Borders CB・Latin Culture Movement・新3Dモニュメント）
+  - よくあるミスに 1.2 関連 4 項目追加
+  - 用語対照表に 7 項目追加
 - EU5 汎用攻略ガイド（`eu5/eu5-universal-guide.md`）を Patch 1.2「Echinades」（2026-05-06 リリース）ベースに全面更新
   - ヘッダ・確認日を 1.2「Echinades」（2026-05-06 リリース）に更新
   - パッチ差分セクションを 1.2 主要変更 12 項目（HRE 大幅オーバーホール・Papal Authority・Heavy/Light 兵科分類・兵站厳格化・Coalition→Superiority War・Enforce Peace 双方合意・Claim Throne CB 制限・貿易改修・Urban Rights/Megalopolis・正教オーバーホール・ギリシャバルカン新規）に書き換え
