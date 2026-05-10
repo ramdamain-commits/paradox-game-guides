@@ -3,6 +3,17 @@
 ## 2026-05-09
 
 ### Changed
+- EU5 オスマン帝国攻略ガイド（`eu5/eu5-ottoman-guide.md`）を Patch 1.2「Echinades」ベースに更新（DLC Fate of the Phoenix 直撃）
+  - ヘッダ・確認日を 1.2 に更新
+  - パッチ差分セクションを 1.2 確定情報に書き換え（バルカン・ビザンツ / 戦争外交 / 軍事 / 宗教 / 貿易の5カテゴリ）。「オスマンプレイヤーが特に注意すべき変更（破壊的）」サブ節を新設（ビザンツ復興・Restore Roman Borders CB・Greek Fire/Cataphracts/Legionaries・要塞駐屯 Heavy Infantry 限定・補給線管理・Coalition Superiority 化）
+  - 序盤・中盤・終盤戦略に「1.2 重要」「1.2 最重要」blockquote 注記追加（バルカン DHE 動的化・コンスタンティノープル攻略タイミング加速・要塞数超過 Belligerent）
+  - 軍事ドクトリンに「### 1.2 兵科分類とオスマン軍編成」節追加（イェニチェリ Heavy Infantry 推測・アクンジュ Light Cavalry・シパーヒー/カピクル騎兵 Heavy Cavalry・補給線管理）
+  - 外交に「### 1.2 外交変更とオスマン」節追加（Claim Throne CB 制限・Coalition Superiority・Enforce Peace 双方合意・Belligerent 要塞超過判定）
+  - 内政・経済に「### 1.2 貿易・宗教変更とオスマン内政」節追加（海上 1/10・正教オーバーホール）
+  - 固有イベント時系列に「### 1.2 ビザンツ復興と DLC コンテンツ（脅威）」節追加（Pronoia・Katepanata・Restore Roman Borders CB・ギリシャ火・新ユニット・Latin Culture Movement）
+  - よくあるミスに 1.2 関連 4 項目追加
+  - 用語対照表に 7 項目追加（ローマ国境回復 CB・プロノイア・カテパナタ・軽装/重装歩兵・軽装/重装騎兵・優位性戦争・総主教）
+  - 出典に Patch 1.2・Fate of the Phoenix・Byzantine content の各 Wiki URL を追加
 - EU5 ブランデンブルク攻略ガイド（`eu5/eu5-brandenburg-guide.md`）を Patch 1.2「Echinades」ベースに更新
   - ヘッダ・確認日を 1.2 に更新
   - パッチ差分セクションを 1.2 確定情報に書き換え（HRE オーバーホール・戦争外交・軍事の3カテゴリ）。「ブランデンブルクプレイヤーが特に注意すべき変更」サブ節を新設
