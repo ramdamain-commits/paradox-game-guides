@@ -30,18 +30,18 @@
 |------|------|
 | Imperial Diet 投票システム | 帝国議会の投票メカニクス新規追加 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | 皇帝 GP Score 貢献 250→50 | 帝国皇帝の Great Power Score 寄与が大幅減少 `[src: Patch_1.2 wiki + script verified]` |
-| Free Cities 自動参戦廃止 | 自由都市が自動的に帝国戦争に参戦しなくなった `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| Imperial Armories 新建造物 | 帝国兵器庫の新建造物追加 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| Free Cities 自動参戦廃止 | INDEPENDENT Free City のみが皇帝防衛義務を持ち、自動参戦しなくなった `[src: Patch_1.2 wiki + script verified]` |
+| Imperial Armories 新建造物 | 帝国兵器庫（gold=500）。自国所有で local_manpower +0.0025、外国所有で manpower_to_building_owner +0.005。設置条件: 皇帝のみ・HRE 加盟領内・law:military_contribution 必須 `[src: Patch_1.2 wiki + script verified]` |
 | 王朝力上限 200→300 | Dynastic Power の蓄積上限が拡大 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| 1400 年 Golden Bull 未制定なら諸侯離脱可能 | HRE 政治の不安定化リスク `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| 1400 年 Golden Bull 未制定なら諸侯離脱可能 | 1400 年以降に golden_bull_policy 未採択の場合、HRE 離脱が可能になる `[src: Patch_1.2 wiki + script verified]` |
 
 #### 戦争・外交
 
 | 変更 | 内容 |
 |------|------|
 | Claim Throne CB 制限 | 請求者がすでに対象国を統治中なら CB 不発。ハンガリー王位継承戦略の事前確認が必要 `[src: Patch_1.2 wiki + script verified]` |
-| Coalition War が Superiority War 化 | 連合戦争が優位性戦争目標（Superiority Wargoal）方式に変更 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| Enforce Peace 双方合意必須 | 一方的講和強制不可に `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| Coalition War が Superiority War 化 | 攻撃側 conquer_cost=0.75/release_cost=0.25、防衛側 conquer_cost=2.5、ticking_war_score=0.5 `[src: Patch_1.2 wiki + script verified]` |
+| Enforce Peace 双方合意必須 | 一方的講和強制不可。双方の合意が必要 `[src: Patch_1.2 wiki + script verified]` |
 | Belligerent / Conciliatory 修正 | 年間減衰 4→5 等のバランス修正 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 
 #### 軍事
@@ -50,7 +50,7 @@
 |------|------|
 | 要塞駐屯 Heavy Infantry 限定 | Light Infantry（ハイドゥクは Light Infantry 系統と推定。スクリプト未確認）は要塞駐屯不可。国境守備の編成見直しが必要 `[src: Patch_1.2 wiki + script verified]` |
 | 兵科 Heavy/Light 分類 | 歩兵・騎兵がそれぞれ Heavy/Light に分類。重騎兵・軽騎兵の使い分けが重要に `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| ロジスティクス距離 50→30、食料消費 10倍 | 対オスマン・対モルダヴィア遠征の補給線管理が必須に `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| ロジスティクス距離 50→30、食料消費 10倍 | 対オスマン・対モルダヴィア遠征の補給線管理が必須に `[src: Patch_1.2 wiki + script verified]` |
 | 傭兵コスト +25% | 黒軍（Black Army）への傭兵依存度の再評価が必要 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 
 ### ハンガリープレイヤーが特に注意すべき変更
@@ -506,6 +506,13 @@
 - [Hungarian content - EU5 Wiki](https://eu5.paradoxwikis.com/Hungarian_content)
 - [Patch 1.1 "Rossbach" - EU5 Wiki](https://eu5.paradoxwikis.com/Patch_1.1)
 - [Patch 1.1.X Hotfixes - EU5 Wiki](https://eu5.paradoxwikis.com/Patch_1.1.X)
+- [Patch 1.2 "Echinades" - EU5 Wiki](https://eu5.paradoxwikis.com/Patch_1.2)
+
+**Patch 1.2 スクリプト検証済み項目（`script verified`）:**
+`international_organizations/hre.txt`（Free Cities 自動参戦廃止・Golden Bull 離脱条件）、`building_types/hre_buildings.txt` + `prices/01_buildings.txt`（Imperial Armories コスト・効果）、`casus_belli/coalition.txt` + `wargoals/00_default.txt`（Coalition War コスト）、`country_interactions/subject_enforce_peace.txt` + `union_enforce_peace.txt`（Enforce Peace 双方合意）、`auto_modifiers/country.txt` + unit_categories（ロジスティクス距離・食料消費）
+
+**Patch 1.2 コミュニティ知見項目（スクリプト未確認）:**
+新 Advances 300+・新 DHE 140+・Latin Culture Movement・新 3D モニュメント・Imperial Diet 投票システム・王朝力上限 200→300・Belligerent/Conciliatory 修正・兵科 Heavy/Light 分類・傭兵コスト +25%
 
 ### コミュニティ情報（補足知見）
 

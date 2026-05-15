@@ -34,7 +34,7 @@
 | 変更 | 内容 | 出典 |
 |------|------|------|
 | Papal Authority（教皇権威）新システム（0-100 範囲） | 0-100 のリソースとして導入 `[src: Patch_1.2 wiki + script verified]` |
-| Papal Authority 閾値効果 | 75↑でポジティブ、25↓でネガティブ | `[src: Patch_1.2 wiki]`（コミュニティ知見：75/25 閾値ボーナスの具体値はスクリプト未確認） |
+| Papal Authority 閾値効果 | **high (≥75)**: 全カトリック国に monthly_devotion +0.05・monthly_legitimacy +0.02・tolerance_heretic +1.0 / **low (<25)**: 全カトリック国に monthly_devotion -0.1・monthly_legitimacy -0.03。教皇側/反教皇側の二分でなく全カトリック国均等適用 | `[src: Patch_1.2 wiki + script verified]`（religion.txt 行 776-791） |
 | 列聖コスト削減 | 150 → 75 に低減 | `[src: Patch_1.2 wiki + script verified]` |
 | 外交破門コスト削減 | 100 → 50 に低減 | `[src: Patch_1.2 wiki + script verified]` |
 | 十字軍 CB 変更 | エルサレム未保有時はカトリック聖地・首都にフォールバック | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
@@ -44,13 +44,13 @@
 
 | 変更 | 内容 | 出典 |
 |------|------|------|
-| Coalition War の Superiority Wargoal 化 | 対連合戦争の戦争目標が優位性戦争（Superiority War）形式に変更 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| Enforce Peace 双方合意必須 | 和平強制に両当事者の合意が必要に | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| Coalition War の Superiority Wargoal 化 | 対連合戦争の戦争目標が優位性戦争（Superiority War）形式に変更。攻撃側 conquer_cost=0.75/release_cost=0.25、防衛側 conquer_cost=2.5、ticking_war_score=0.5 | `[src: Patch_1.2 wiki + script verified]`（casus_belli/coalition.txt 行 13、wargoals/00_default.txt 行 244-261） |
+| Enforce Peace 双方合意必須 | 和平強制に両当事者の合意が必要に | `[src: Patch_1.2 wiki + script verified]`（country_interactions/subject_enforce_peace.txt 行 84-90、union_enforce_peace.txt 行 108-164） |
 | Claim Throne CB 制限 | 請求者が既に統治している場合に不発 | `[src: Patch_1.2 wiki + script verified]` |
 | 要塞駐屯 Heavy Infantry 限定 | 駐屯可能兵科が Heavy Infantry（重装歩兵）のみに | `[src: Patch_1.2 wiki + script verified]` |
 | Heavy/Light 独立アップグレードツリー | 重装・軽装兵科が独立した技術ツリーを持つ | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| ロジスティクス距離 50→30 | 補給線の有効距離が短縮 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| 食料消費 10倍 | 遠征時の食料消費量が大幅増加 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| ロジスティクス距離 50→30 | 補給線の有効距離が短縮 | `[src: Patch_1.2 wiki + script verified]`（auto_modifiers/country.txt 行 90：army_logistics_distance=30） |
+| 食料消費 10倍 | 遠征時の食料消費量が大幅増加 | `[src: Patch_1.2 wiki + script verified]`（unit_categories スクリプト確認済み） |
 
 ### 過去パッチ（1.1 / 1.1.10）
 
@@ -60,7 +60,7 @@
 ### カスティーリャプレイヤーが特に注意すべき変更
 
 - **海上ルートコスト 1/10** → 大西洋・地中海貿易の収益性が劇的に向上（最大メリット）`[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
-- **Papal Authority（教皇権威）新システム** → カトリック超大国として積極的な宗教外交が可能に `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
+- **Papal Authority（教皇権威）新システム** → カトリック超大国として積極的な宗教外交が可能に。75↑で全カトリック国に devotion/legitimacy ボーナス、25↓でペナルティ（全カトリック国均等適用） `[src: Patch_1.2 wiki + script verified]`（religion.txt 行 776-791）
 - **Megalopolis（メガロポリス）** → 首都人口40万超でマドリードの戦略的価値が拡大 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
 - **Claim Throne CB 制限** → アラゴン継承・PU戦略の前提条件を事前確認すること `[src: Patch_1.2 wiki + script verified]`
 - **要塞駐屯 Heavy Infantry 限定** → テルシオ系統の守備配置を見直す必要あり `[src: Patch_1.2 wiki + script verified]`
@@ -185,7 +185,7 @@
 
 ## 中盤戦略（1400〜1500）
 
-> **1.2 重要**: 大西洋探検後の植民地貿易は Maritime Presence（海上プレゼンス）が経路コストに反映され収益が向上 `[src: Patch_1.2 wiki]`。Papal Authority（教皇権威）でプロテスタント諸侯への破門コスト半減（コミュニティ知見：スクリプト未確認）
+> **1.2 重要**: 大西洋探検後の植民地貿易は Maritime Presence（海上プレゼンス）が経路コストに反映され収益が向上 `[src: Patch_1.2 wiki]`。Papal Authority（教皇権威）で外交破門コスト 100→50 に半減 `[src: Patch_1.2 wiki + script verified]`。閾値 75↑維持で全カトリック国に devotion/legitimacy ボーナスが入るため、Papal Authority 管理が中盤の優先事項になる `[src: Patch_1.2 wiki + script verified]`（religion.txt 行 776-791）
 
 ### イベリアの結婚（最重要イベント連鎖）
 

@@ -16,19 +16,19 @@
 
 | 変更 | 内容 | src |
 |------|------|-----|
-| Imperial Diet 投票システム刷新 | Diet 発展段階（Court Assembly → Early Diet → Bicamerial → Tricamerial）ごとに投票権重が変化。皇帝: 500→200、選帝侯: 200→100。自由都市は Tricamerial で 50（上昇）のため選帝侯の相対的発言力が低下 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| Imperial Diet 投票システム刷新 | Diet 発展段階（Court Assembly → Early Diet → Bicamerial → Tricamerial）ごとに投票権重が変化。皇帝 基本値 150（Court Assembly で 187.5、Tricamerial で 150）、選帝侯 基本値 75（Court Assembly 112.5、Tricamerial 75）。自由都市は Tricamerial で 50（上昇）のため、Tricamerial 段階では皇帝 150 vs 自由都市 50 となり、選帝侯の相対的発言力が低下する局面がある | `[src: Patch_1.2 wiki + script verified]`（hre.txt 行 15-38, 266-286） |
 | 皇帝の Great Power Score 貢献 250 → 50 に削減 | ブランデンブルクが皇帝奪取を狙う場合の旨味が低下 | `[src: Patch_1.2 wiki + script verified]` |
-| Imperial Armories（帝国兵器庫）新建造物 | 皇帝が HRE 構成員領土内に建造。ブランデンブルクが皇帝でない場合、領土内に建造される可能性がある（拒否権はスクリプト未確認） | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| Free Cities 自動参戦廃止 | 皇帝が自由都市を自動防衛しなくなった。HRE 内自由都市への攻撃的拡張の障壁が低下 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| Imperial Armories（帝国兵器庫）新建造物 | 皇帝が HRE 構成員領土内に建造（建造コスト gold=500、皇帝のみ建設可・law:military_contribution 必須）。ブランデンブルクが皇帝でない期間は、領土内に建造される（外国所有）形になり、所有国に manpower_to_building_owner=+0.005 のマンパワーが入る | `[src: Patch_1.2 wiki + script verified]`（hre_buildings.txt 行 1-90） |
+| Free Cities 自動参戦廃止 | INDEPENDENT Free City のみ皇帝が防衛する形に変更（非独立の自由都市への自動参戦は廃止）。HRE 内自由都市への攻撃的拡張の障壁が低下 | `[src: Patch_1.2 wiki + script verified]`（hre.txt） |
 | 王朝力（Dynastic Power）上限 200 → 300 | ホーエンツォレルン家の婚姻外交範囲が拡大 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプトに明示的な cap 値（200, 300）は未発見。dynastic_power は計算値として運用される模様） |
-| 1400 年までに Golden Bull 未制定なら構成国が脱退可能 | ブランデンブルクの HRE 離脱→独立帝国化ルートが開かれる可能性 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| 1400 年以降に Golden Bull 未採択なら構成国が脱退可能 | ブランデンブルクの HRE 離脱→独立帝国化ルートが開かれる可能性（条件: `current_year > 1400` かつ `golden_bull_policy` 未採択） | `[src: Patch_1.2 wiki + script verified]`（hre.txt 行 275-277） |
 
 ### 戦争・外交変更
 
 | 変更 | 内容 | src |
 |------|------|-----|
-| Coalition War が Superiority Wargoal（優位性戦争）化 | 包囲網戦争の勝利条件が変更。連合国側として防衛しやすく、攻撃側として首都占領なしに勝利可能 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| Enforce Peace 双方合意必須 | 一方的講和強制が不可に | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| Coalition War が Superiority Wargoal（優位性戦争）化 | 包囲網戦争の勝利条件が変更。攻撃側 conquer_cost=0.75/release_cost=0.25、防衛側 conquer_cost=2.5、ticking_war_score=0.5。連合国側として防衛しやすく、攻撃側として首都占領なしに勝利可能 | `[src: Patch_1.2 wiki + script verified]`（coalition.txt 行 13、00_default.txt 行 244-261） |
+| Enforce Peace 双方合意必須 | 一方的講和強制が不可に。双方の同意が必要（subject_enforce_peace.txt 行 84-90、union_enforce_peace.txt 行 108-164） | `[src: Patch_1.2 wiki + script verified]` |
 | Claim Throne CB 制限 | 請求者（ruler または heir）が対象国を既に統治中なら CB 不発。ホーエンツォレルン王朝による継承戦略（特にプロイセン公国継承）に影響 | `[src: Patch_1.2 wiki + script verified]` |
 
 ### 軍事変更
@@ -37,14 +37,14 @@
 |------|------|-----|
 | 要塞駐屯は Heavy Infantry（重装歩兵）のみ | Light Infantry を要塞守備に配置しても駐屯扱いにならない。プロイセン軍ドクトリンの守備兵編成見直しが必要 | `[src: Patch_1.2 wiki + script verified]` |
 | 兵科 Heavy/Light 独立アップグレードツリー | Heavy Infantry・Light Infantry が独立した研究ツリーを持つ。擲弾兵（Heavy Infantry 系統と推測）の特化研究が可能 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| ロジスティクス距離 50 → 30、食料消費 10 倍 | 多方面作戦の補給線管理が必須に。傭兵コスト +25% | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| ロジスティクス距離 50 → 30、食料消費 10 倍 | 多方面作戦の補給線管理が必須に（army_logistics_distance=30 はスクリプト確認済み）。傭兵コスト +25% | `[src: Patch_1.2 wiki + script verified]`（auto_modifiers/country.txt 行 90） |
 
 ### ブランデンブルクプレイヤーが特に注意すべき変更
 
-- **Free Cities 自動参戦廃止（メリット）**: 皇帝が HRE 内自由都市を自動防衛しなくなったため、ベルリン周辺の自由都市攻略のハードルが下がった `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
+- **Free Cities 自動参戦廃止（メリット）**: INDEPENDENT Free City のみ皇帝が防衛する形に変更され、ベルリン周辺の自由都市攻略のハードルが下がった `[src: Patch_1.2 wiki + script verified]`（hre.txt）
 - **皇帝 Great Power Score 250 → 50（デメリット）**: ブランデンブルクが皇帝奪取を狙う場合の実利（大国スコア）が大幅に低下した `[src: Patch_1.2 wiki + script verified]`
 - **王朝力上限 300（メリット）**: ホーエンツォレルン婚姻外交の戦略的射程が拡大 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプトに明示的な cap 値は未発見）
-- **1400 年 Golden Bull 未制定なら離脱可能（メリット）**: HRE 離脱→独立帝国化ルートが現実的な選択肢になった `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
+- **1400 年以降 Golden Bull 未採択なら離脱可能（メリット）**: HRE 離脱→独立帝国化ルートが現実的な選択肢になった（条件: `current_year > 1400` かつ `golden_bull_policy` 未採択） `[src: Patch_1.2 wiki + script verified]`（hre.txt 行 275-277）
 - **要塞守備 Heavy Infantry 限定（要対応）**: 国境要塞守備兵の編成を見直す必要がある。Light Infantry 配置は守備扱いにならない `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
 
 ### 過去パッチ（1.1 / 1.1.10）
@@ -240,7 +240,7 @@ Patch 1.1 で追加された固有ディザスター。旧イベント群を一�
 - 支配度不足のままの直接併合
 - 皇帝との関係悪化
 
-> **1.2 重要**: HRE 内戦争で Free Cities（自由都市）が自動参戦しなくなったため、ベルリン周辺の自由都市攻略のハードルが下がった `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
+> **1.2 重要**: INDEPENDENT Free City のみ皇帝が防衛する形に変更されたため、ベルリン周辺の自由都市攻略のハードルが下がった `[src: Patch_1.2 wiki + script verified]`（hre.txt）
 
 ---
 
@@ -324,7 +324,7 @@ Patch 1.1 で追加された固有ディザスター。旧イベント群を一�
 - 拒否分岐まで考えるなら、帝国に残るか離れるかを自分で選びやすい
 - **1.2**: 皇帝の Great Power Score 貢献が 250 → 50 に削減されたため、皇帝奪取の実利がさらに低下した
 
-> **1.2 重要**: Coalition War（包囲網戦争）が Superiority Wargoal（優位性戦争）化し、王朝力（Dynastic Power）上限 300 でホーエンツォレルン婚姻網の戦略的価値が拡大 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプトに明示的な cap 値は未発見。dynastic_power は計算値として運用される模様）
+> **1.2 重要**: Coalition War（包囲網戦争）が Superiority Wargoal（優位性戦争）化し（攻撃側 conquer_cost=0.75/release_cost=0.25、防衛側 conquer_cost=2.5）`[src: Patch_1.2 wiki + script verified]`（coalition.txt 行 13、00_default.txt 行 244-261）、王朝力（Dynastic Power）上限 300 でホーエンツォレルン婚姻網の戦略的価値が拡大 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプトに明示的な cap 値は未発見。dynastic_power は計算値として運用される模様）
 
 ---
 
@@ -471,7 +471,7 @@ Patch 1.2 では兵科が Heavy/Light に分類され、各系統が独立した
 
 - **要塞駐屯**: Heavy Infantry のみ有効。国境要塞守備には**擲弾兵（Heavy Infantry 系統）**を集中配置する `[src: Patch_1.2 wiki + script verified]`
 - **独立アップグレードツリー**: 擲弾兵特化の Heavy Infantry 研究を優先することで、後半のプロイセン歩兵の優位性がさらに拡大 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
-- **補給線管理の必須化**: ロジスティクス距離 50 → 30、食料消費 10 倍の変更により、多方面同時作戦は補給線を常に監視する必要がある。傭兵コスト +25% を踏まえ、傭兵主体の長期戦は避けること `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
+- **補給線管理の必須化**: ロジスティクス距離 50 → 30（army_logistics_distance=30）、食料消費 10 倍の変更により、多方面同時作戦は補給線を常に監視する必要がある。傭兵コスト +25% を踏まえ、傭兵主体の長期戦は避けること `[src: Patch_1.2 wiki + script verified]`（auto_modifiers/country.txt 行 90）
 
 ---
 
@@ -512,7 +512,7 @@ Patch 1.2 の外交変更はブランデンブルクの戦略選択に直接影�
 
 #### Coalition War（包囲網戦争）の Superiority Wargoal 化
 
-敵対心から形成された連合との戦争が Superiority Wargoal（優位性戦争）に変更された `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）。
+敵対心から形成された連合との戦争が Superiority Wargoal（優位性戦争）に変更された（攻撃側 conquer_cost=0.75/release_cost=0.25、防衛側 conquer_cost=2.5、ticking_war_score=0.5）`[src: Patch_1.2 wiki + script verified]`（coalition.txt 行 13、00_default.txt 行 244-261）。
 
 - **防衛側（ブランデンブルク）として**: 首都を落とされなくても主要都市・要塞で優位を積み上げれば勝利できる
 - **攻撃側として**: 連合相手の場合も首都占領なしに勝利条件を満たせる可能性がある
@@ -648,9 +648,9 @@ Patch 1.2 の外交変更はブランデンブルクの戦略選択に直接影�
 
 ### 1.2 特有のミス
 
-10. **HRE 自由都市攻略の機会を見逃す**: Free Cities の自動参戦が廃止された 1.2 では、皇帝の自動防衛を気にせずベルリン周辺の自由都市を攻略できる。このメリットを活かさないまま序盤を過ごすと拡張機会を損失する `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
+10. **HRE 自由都市攻略の機会を見逃す**: 1.2 で INDEPENDENT Free City のみ皇帝が防衛する形に変更されたため、ベルリン周辺の自由都市を攻略しやすくなった。このメリットを活かさないまま序盤を過ごすと拡張機会を損失する `[src: Patch_1.2 wiki + script verified]`（hre.txt）
 11. **要塞守備に Light Infantry（軽装歩兵）を配置する**: 1.2 から要塞駐屯判定は Heavy Infantry のみ。Light Infantry を守備に置いても要塞防衛力として機能しない `[src: Patch_1.2 wiki + script verified]`
-12. **大軍団の補給線を軽視する**: ロジスティクス距離が 50 → 30 に短縮され食料消費が 10 倍になった。多方面同時進軍は補給線をすぐに超過する。戦線を絞り補給路を確保してから進軍すること `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
+12. **大軍団の補給線を軽視する**: ロジスティクス距離が 50 → 30（army_logistics_distance=30）に短縮され食料消費が 10 倍になった。多方面同時進軍は補給線をすぐに超過する。戦線を絞り補給路を確保してから進軍すること `[src: Patch_1.2 wiki + script verified]`（auto_modifiers/country.txt 行 90）
 13. **Claim Throne CB を既統治対象に取ろうとする**: 1.2 の CB 制限により、請求者が既に対象国を統治中の場合は CB が発動しない。ホーエンツォレルン継承戦略の組み立て直しが必要 `[src: Patch_1.2 wiki + script verified]`
 
 ---
@@ -737,6 +737,14 @@ Patch 1.2 の外交変更はブランデンブルクの戦略選択に直接影�
   - `country_brapru.txt` — ブランデンブルク/プロイセン固有進歩（soldier_king, auftragstaktik 含む）
   - `country_specific.txt:prussian_monarchy` — プロイセン軍国主義政体
   - `disaster_triggers.txt:653-668` — ブランデンブルクの混乱ディザスター終了条件
+  - `building_types/hre_buildings.txt:1-90` — Imperial Armories 定義（建造コスト・効果・設置条件）
+  - `prices/01_buildings.txt:21` — Imperial Armories ゴールドコスト（gold=500）
+  - `international_organizations/hre.txt` — Free Cities 防衛条件（INDEPENDENT Free City のみ）
+  - `country_interactions/subject_enforce_peace.txt:84-90` — Enforce Peace 双方合意条件
+  - `country_interactions/union_enforce_peace.txt:108-164` — Union Enforce Peace 合意条件
+  - `casus_belli/coalition.txt:13` — Coalition War Superiority Wargoal 定義
+  - `wargoals/00_default.txt:244-261` — Coalition War コスト（攻撃側 conquer_cost=0.75/release_cost=0.25、防衛側 conquer_cost=2.5）
+  - `auto_modifiers/country.txt:90` — army_logistics_distance=30（ロジスティクス距離）
 - [Brandenburg - EU5 Wiki](https://eu5.paradoxwikis.com/Brandenburg)
 - [Formable country - EU5 Wiki](https://eu5.paradoxwikis.com/Formable_country)
 - [Patch 1.1 "Rossbach" - EU5 Wiki](https://eu5.paradoxwikis.com/Patch_1.1)

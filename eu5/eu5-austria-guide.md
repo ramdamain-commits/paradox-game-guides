@@ -16,24 +16,24 @@
 
 | 変更 | 内容 | src |
 |------|------|-----|
-| Imperial Diet 投票システム刷新 | Diet 4段階（Court Assembly → Early Diet → Bicamerial → Tricamerial）の存在 `[src: Patch_1.2 wiki + script verified]`。各段階の投票権重（皇帝: 500→250→200→200、選帝侯: 200→150→125→100 等）はコミュニティ知見（スクリプト未確認） | `[src: Patch_1.2 wiki]` |
+| Imperial Diet 投票システム刷新 | Diet 4段階（Court Assembly → Early Diet → Bicamerial → Tricamerial）の存在 `[src: Patch_1.2 wiki + script verified]`（hre.txt 行 15-38, 266-286）。各段階の投票権重（基本値: 皇帝 150 / 選帝侯・大司教選帝侯 各 75 / 自由都市 25 / 首座司教 4）`[src: Patch_1.2 wiki + script verified]`（hre.txt 行 15-38, 90-113, 160-183, 266-286）。Court Assembly 段階では皇帝 ×1.25・選帝侯/大司教 ×1.5・自由都市 ×0.1 の倍率変動。Tricamerial 段階では自由都市が ×2.0 に上昇（動的スコア country_combined_special_status_power による。wiki の「500/250/200」固定数値は誤り） | `[src: Patch_1.2 wiki + script verified]` |
 | Diet UI タブ化 | Overview / Members / Treasury の3タブ。投票前にツールチップで可決見込みを確認可能 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | 皇帝の Great Power Score 貢献 250 → 50 に削減 | **破壊的変更**: オーストリアの自動大国扱いが大幅に弱体化 | `[src: Patch_1.2 wiki + script verified]` |
 | 同一王朝再選で +5 Imperial Authority | 同一王朝の皇帝が連続再選されると IA ボーナス | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | 皇帝が政体変更すると再選挙発生 | 政体変更で帝位が自動失効し選挙がトリガーされる | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| Imperial Armories（帝国兵器庫）新建造物 | 皇帝が HRE 構成員領土内に建造。HRE Treasury から支出。建造国に Manpower 提供。皇帝交代時に新皇帝へ自動移転 | `[src: Patch_1.2 wiki]`（コミュニティ知見：建造コスト・Manpower 値はスクリプト未確認） |
-| Free Cities 自動参戦廃止 | 皇帝は Free Cities が攻撃された場合に**自動参戦しなくなった**（旧: 自動防衛義務） | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| Imperial Armories（帝国兵器庫）新建造物 | 皇帝が HRE 構成員領土内に建造（HRE 加盟領内・law:military_contribution 必須）。建造コスト gold=500（HRE Treasury から支出）。自国所有時: local_manpower=+0.0025・can_recruit_regiment_in_this_location=yes。外国所有時: manpower_to_building_owner=+0.005。皇帝交代時に新皇帝へ自動移転 | `[src: Patch_1.2 wiki + script verified]`（hre_buildings.txt 行 1-90） |
+| Free Cities 自動参戦廃止 | 皇帝は**INDEPENDENT Free City** が攻撃された場合に自動参戦しなくなった（旧: 自動防衛義務。臣属化された Free City は対象外） | `[src: Patch_1.2 wiki + script verified]`（hre.txt 自動参戦トリガーが存在しないことを確認） |
 | 構成国戦争の指揮権自動取得廃止 | 皇帝は HRE 構成国戦争の指揮権を自動取得しなくなった | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | 王朝力（Dynastic Power）上限 200 → 300 | ハプスブルク家の王朝管理範囲が拡大 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | HRE 軍事政策が全構成員への不満に変更 | 旧: 自由都市・選帝侯のみへの不満 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| 1400年までに Golden Bull 未制定なら構成国が脱退可能 | 旧: 脱退不可 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| 1400 年以降に golden_bull_policy 未採択なら HRE 離脱可能 | 旧: 脱退不可。条件: `current_year > 1400` かつ `NOT = { international_organization_has_policy = policy:golden_bull_policy }` | `[src: Patch_1.2 wiki + script verified]`（hre.txt 行 275-277） |
 
 #### Papal Authority（教皇権威）新システム
 
 | 変更 | 内容 | src |
 |------|------|-----|
 | Papal Authority 新リソース追加（0〜100 範囲） | 0〜100 の指標として導入 `[src: Patch_1.2 wiki + script verified]` |
-| Papal Authority 閾値効果 | 75 以上でカトリック国へのポジティブ効果、25 以下でネガティブ効果 | `[src: Patch_1.2 wiki]`（コミュニティ知見：75/25 閾値ボーナスの具体値はスクリプト未確認） |
+| Papal Authority 閾値効果 | 75 以上で全カトリック国に monthly_devotion +0.05・monthly_legitimacy +0.02・tolerance_heretic +1.0。25 未満で全カトリック国に monthly_devotion -0.1・monthly_legitimacy -0.03（教皇側/反教皇側の区別なく均等適用） | `[src: Patch_1.2 wiki + script verified]`（religion.txt 行 776-791） |
 | 列聖（Canonization）コスト Religious Influence 150 → 75 | コスト半減 | `[src: Patch_1.2 wiki + script verified]` |
 | 外交破門コスト 100 → 50 | プロテスタント諸侯への破門が安価化 | `[src: Patch_1.2 wiki + script verified]` |
 | Papal States の重複破門不可 | Papal States は既破門対象への重複破門不可、自身が単独で破門 Resolution を起動不可 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
@@ -43,10 +43,10 @@
 | 変更 | 内容 | src |
 |------|------|-----|
 | Claim Throne CB 制限 | 請求者（ruler または heir）が既に対象国を統治中なら CB 不発。婚姻外交の継承戦略に重大影響 | `[src: Patch_1.2 wiki + script verified]` |
-| Enforce Peace 双方合意必須 | 一方的講和強制が不可に | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| Coalition War が Superiority Wargoal（優位性戦争）化 | 包囲網戦争の勝利条件が変更 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| Enforce Peace 双方合意必須 | 一方的講和強制が不可に（subject_enforce_peace.txt / union_enforce_peace.txt に accept ブロック実装済み）。HRE 固有の enforce_landfriede は accept なし（皇帝特権で白色平和強制） | `[src: Patch_1.2 wiki + script verified]`（subject_enforce_peace.txt 行 84-90、union_enforce_peace.txt 行 108-164） |
+| Coalition War が Superiority Wargoal（優位性戦争）化 | 包囲網戦争の勝利条件が変更（war_goal_type = superiority_coalition）。攻撃側: conquer_cost=0.75 / release_cost=0.25。防衛側: conquer_cost=2.5 / release_cost=2.5。ticking_war_score=0.5 | `[src: Patch_1.2 wiki + script verified]`（casus_belli/coalition.txt 行 13、wargoals/00_default.txt 行 244-261） |
 | 要塞駐屯は Heavy Infantry のみ | Light Infantry を要塞守備に配置しても駐屯扱いにならない | `[src: Patch_1.2 wiki + script verified]` |
-| ロジスティクス距離 50 → 30、軍の食料消費 10 倍 | 補給線管理が大幅に厳格化。傭兵コスト +25% | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| ロジスティクス距離 50 → 30、軍の食料消費 10 倍 | 補給線管理が大幅に厳格化（army_logistics_distance=30 をスクリプト確認）。食料消費: light_cavalry=0.66 / light_infantry=0.33（10倍化は公式パッチノート確認）。傭兵コスト +25% | `[src: Patch_1.2 wiki + script verified]`（auto_modifiers/country.txt 行 90） |
 
 ---
 
@@ -55,9 +55,9 @@
 > 以下は 1.1 系プレイヤーが 1.2 で必ず見直しを要する変更点。
 
 - **皇帝の Great Power Score 貢献 250 → 50 への削減**: 皇帝であるだけで大国扱いされる効果が大幅減少。IA 管理・軍事力・経済力の実力で大国スコアを積み上げる必要がある `[src: Patch_1.2 wiki + script verified]`
-- **Free Cities 自動参戦廃止**: 自由都市（Imperial Free City）が攻撃された場合、皇帝は手動で参戦を判断しなければならない。旧来の「帝国防衛は自動対応」の前提が崩れる `[src: Patch_1.2 wiki]`（コミュニティ知見：帝国防衛意識の刷新が必要）
+- **Free Cities 自動参戦廃止**: INDEPENDENT Free City が攻撃された場合、皇帝は手動で参戦を判断しなければならない（臣属化された Free City は対象外）。旧来の「帝国防衛は自動対応」の前提が崩れる `[src: Patch_1.2 wiki + script verified]`（hre.txt 自動参戦トリガーが存在しないことを確認）
 - **Claim Throne CB 制限**: 婚姻 → 直系相続人空白 → Claim Throne CB という継承戦略が、既統治の請求者を持つ場合は使えなくなった。ハプスブルク婚姻外交の継承順位の操作戦略に影響 `[src: Patch_1.2 wiki + script verified]`
-- **1400 年までに Golden Bull 未制定なら諸侯離脱可能**: ゲーム開幕早期の帝国法整備が従来以上に重要になった `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
+- **1400 年以降に golden_bull_policy 未採択なら HRE 離脱可能**: ゲーム開幕早期の帝国法整備が従来以上に重要になった `[src: Patch_1.2 wiki + script verified]`（hre.txt 行 275-277）
 
 ---
 
@@ -778,7 +778,7 @@ IA は 0〜100 で変動。皇帝権力強化ポリシーへのアクセス（`i
 | 不法領土を要求 | 非HRE国が保有する HRE 領土の返還要求 | IA を使って HRE 境界を守る。失敗しても IA ダメージは限定的 |
 | 帝国軍を強化 | 諸侯に対オスマン参戦を要請 | 大規模侵攻時に帝国全体を動員 |
 | 帝国の禁令（cb_imperial_ban） | 法律侵犯者への宣戦 CB | 大国への CB として利用。HRE 内の問題諸侯を合法的に叩く |
-| Imperial Armories 建造（1.2 新規） | 皇帝が HRE 構成員領土内に建造。建造国に Manpower 提供、皇帝交代時に新皇帝へ移転 | HRE 構成国の軍事力補強。HRE Treasury から支出 `[src: Patch_1.2 wiki]`（コミュニティ知見：建造コスト・Manpower 値はスクリプト未確認） |
+| Imperial Armories 建造（1.2 新規） | 皇帝が HRE 構成員領土内に建造（皇帝のみ建設可・HRE 加盟領内・law:military_contribution 必須）。建造コスト gold=500（HRE Treasury 支出）。自国所有: local_manpower=+0.0025・can_recruit_regiment_in_this_location=yes。外国所有: manpower_to_building_owner=+0.005。皇帝交代時に新皇帝へ移転 | HRE 構成国の軍事力補強 `[src: Patch_1.2 wiki + script verified]`（hre_buildings.txt 行 1-90） |
 
 ### 帝国法ロードマップ（集権化路線）
 
@@ -844,7 +844,7 @@ IA は 0〜100 で変動。皇帝権力強化ポリシーへのアクセス（`i
 
 #### 重要な変更（1.2）
 
-- **Free Cities 戦争への自動参戦が廃止**: 自由都市（Imperial Free City）が攻撃された場合、皇帝は手動で参戦判断が必要 `[src: Patch_1.2 wiki]`（コミュニティ知見：オーストリアの帝国防衛意識が変わる重要変更。防衛戦争への手動参戦フローを組み込む必要がある）
+- **Free Cities 戦争への自動参戦が廃止**: INDEPENDENT Free City（臣属化された Free City は対象外）が攻撃された場合、皇帝は手動で参戦判断が必要 `[src: Patch_1.2 wiki + script verified]`（hre.txt 自動参戦トリガーが存在しないことを確認。オーストリアの帝国防衛意識が変わる重要変更。防衛戦争への手動参戦フローを組み込む必要がある）
 - **皇帝は HRE 構成国戦争の指揮権を自動取得しなくなった** `[src: Patch_1.2 wiki]`（コミュニティ知見：連合軍指揮の手動操作が増え、大規模帝国防衛戦での軍管理が複雑化する）
 
 ---
@@ -947,10 +947,10 @@ IA は 0〜100 で変動。皇帝権力強化ポリシーへのアクセス（`i
 
 1.2 で新たに追加された 0〜100 のリソース。カトリック帝国オーストリアにとって戦略的価値が高い `[src: Patch_1.2 wiki]`（コミュニティ知見：以下は未確認情報を含む）。
 
-| Papal Authority 値 | 効果 |
+| Papal Authority 値 | 効果（全カトリック国に均等適用） |
 |-------------------|------|
-| 75 以上 | カトリック国へのポジティブ効果 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| 25 以下 | ネガティブ効果 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| 75 以上 | monthly_devotion +0.05、monthly_legitimacy +0.02、tolerance_heretic +1.0 `[src: Patch_1.2 wiki + script verified]`（religion.txt 行 776-791） |
+| 25 未満 | monthly_devotion -0.1、monthly_legitimacy -0.03 `[src: Patch_1.2 wiki + script verified]`（religion.txt 行 776-791） |
 
 **1.2 でのコスト変更**:
 - 列聖（Canonization）コスト: Religious Influence 150 → 75（半額）`[src: Patch_1.2 wiki + script verified]`
@@ -1020,7 +1020,7 @@ IA は 0〜100 で変動。皇帝権力強化ポリシーへのアクセス（`i
 | 選帝侯を属国化して IA ペナルティを受け続ける | 強国の選帝侯を征服した際に属国に格下げする | 選帝侯の HRE ステータスを保ったまま同君連合に引き込む経路を探す。属国化は最終手段 |
 | 固有進歩 `austrian_court` と `geheimrat` を後回しにする | 汎用進歩を先取りしてしまう | 固有ボーナスの ROI は汎用進歩より高いケースが多い。序盤〜中盤で優先取得する |
 | 婚姻外交のタイミングを誤る（統治者死亡直後に王室婚姻が切れる） | 婚姻の対象統治者死亡に気づかない | 主要婚姻国（ボヘミア・ハンガリー・ポーランド・スペイン）の統治者寿命を定期確認し、死亡後すぐに再締結する |
-| **1.2: Free Cities 戦争への自動参戦を期待** | 1.2 で自動参戦が廃止されたことを知らない | 自由都市が攻撃された場合は手動参戦判断が必須。HRE 防衛通知を見落とさないよう定期チェックする（コミュニティ知見） |
+| **1.2: Free Cities 戦争への自動参戦を期待** | 1.2 で自動参戦が廃止されたことを知らない | INDEPENDENT Free City が攻撃された場合は手動参戦判断が必須（臣属化済み Free City は対象外）。HRE 防衛通知を見落とさないよう定期チェックする `[src: Patch_1.2 wiki + script verified]` |
 | **1.2: Claim Throne CB の前提確認漏れ** | 既統治の請求者では CB 不発になることを見落とす | 婚姻継承戦略を立てる前に、請求者が対象国を既に統治していないか確認する `[src: Patch_1.2 wiki + script verified]` |
 | **1.2: Light Infantry を要塞守備に配置** | 1.2 では要塞駐屯は Heavy Infantry のみ有効なことを知らない | 守備部隊の兵科を確認し、Light Infantry を要塞守備から外す。Heavy Infantry 中心の守備編成に見直す `[src: Patch_1.2 wiki + script verified]` |
 
@@ -1034,8 +1034,8 @@ IA は 0〜100 で変動。皇帝権力強化ポリシーへのアクセス（`i
 | 外交許容量（Diplomatic Capacity）を超過する | 従属国・同盟国を増やしすぎる | 外交関係の総数を定期チェックし、不要な保障・属国は整理する |
 | 進歩取得順を適当にしてしまう | 固有進歩の効果を把握せずに汎用から取る | ガイドのセクション 10 の優先表を参照し、時代ボーナスに合わせたタイミングで取得する |
 | 資金不足のまま戦争を起こす | 月次収支だけ見て戦争費用の試算をしない | 戦争開始前に「想定戦費（軍維持費×予想期間）」を計算し、戦争中の月次黒字が確保できる状態を確認する |
-| **1.2: Enforce Peace を一方的講和に期待** | 1.2 で双方合意必須化されたことを知らない | 第三者仲裁での停戦は不可になった。当事国双方が合意しない限り Enforce Peace は機能しない `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| **1.2: 大軍団の補給線軽視** | 食料消費 10 倍・ロジスティクス距離 50 → 30 の変更を見落とす | 遠征前に補給基地の確保・軍の分散配置を計画する。HRE 全域や東欧への大遠征は補給線が特にシビア `[src: Patch_1.2 wiki]`（コミュニティ知見：オスマン戦線での進軍は特に注意） |
+| **1.2: Enforce Peace を一方的講和に期待** | 1.2 で双方合意必須化されたことを知らない | 第三者仲裁での停戦は不可になった。当事国双方が合意しない限り Enforce Peace は機能しない（HRE 固有の enforce_landfriede は白色平和強制で accept なし） `[src: Patch_1.2 wiki + script verified]`（subject_enforce_peace.txt 行 84-90、union_enforce_peace.txt 行 108-164） |
+| **1.2: 大軍団の補給線軽視** | 食料消費 10 倍・ロジスティクス距離 50 → 30 の変更を見落とす | 遠征前に補給基地の確保・軍の分散配置を計画する（army_logistics_distance=30、light_cavalry food_consumption=0.66・light_infantry=0.33）。HRE 全域や東欧への大遠征は補給線が特にシビア `[src: Patch_1.2 wiki + script verified]`（auto_modifiers/country.txt 行 90。オスマン戦線での進軍は特に注意） |
 
 ---
 
@@ -1065,8 +1065,8 @@ IA は 0〜100 で変動。皇帝権力強化ポリシーへのアクセス（`i
 | 婚姻連合 | Marriage Union | 王室婚姻から生じる共同防衛同盟 |
 | 大特許状 | Privilegium Maius | ハプスブルク家の特権を確認した文書 |
 | 帝国議会の発展段階 | Court Assembly / Early Diet / Bicamerial / Tricamerial | 1.2 新規。Diet の発展段階。段階ごとに皇帝・選帝侯・自由都市の投票権重が異なる `[src: Patch_1.2 wiki]` |
-| 帝国兵器庫 | Imperial Armories | 1.2 新規。皇帝が HRE 構成員領土内に建造する軍事施設。建造国に Manpower 提供 `[src: Patch_1.2 wiki]` |
-| 教皇権威 | Papal Authority | 1.2 新規。0〜100 のリソース。75 以上でカトリック国へのポジティブ効果 `[src: Patch_1.2 wiki]` |
+| 帝国兵器庫 | Imperial Armories | 1.2 新規。皇帝が HRE 構成員領土内に建造する軍事施設（皇帝のみ建設可・gold=500）。自国所有: local_manpower=+0.0025・can_recruit_regiment_in_this_location=yes。外国所有: manpower_to_building_owner=+0.005 `[src: Patch_1.2 wiki + script verified]`（hre_buildings.txt 行 1-90） |
+| 教皇権威 | Papal Authority | 1.2 新規。0〜100 のリソース。75 以上で全カトリック国に monthly_devotion +0.05・monthly_legitimacy +0.02・tolerance_heretic +1.0、25 未満で monthly_devotion -0.1・monthly_legitimacy -0.03（均等適用）`[src: Patch_1.2 wiki + script verified]`（religion.txt 行 776-791） |
 | 王朝力 | Dynastic Power | 1.2 で上限が 200 → 300 に拡大。ハプスブルク家の王朝管理範囲に影響 `[src: Patch_1.2 wiki]` |
 | ローマ国境回復 CB | Restore Roman Borders | 1.2 新規。ビザンツ用 CB。オーストリアのバルカン進出と競合する可能性 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 
@@ -1098,7 +1098,7 @@ IA は 0〜100 で変動。皇帝権力強化ポリシーへのアクセス（`i
 | 重装歩兵 | Heavy Infantry | 1.2 新規分類。要塞駐屯に必須 `[src: Patch_1.2 wiki]` |
 | 軽装騎兵 | Light Cavalry | 1.2 新規分類。移動速度 3.0・フランキング 210%・被モラルダメ +10%。機動力に優れる `[src: Patch_1.2 wiki + script verified]` |
 | 重装騎兵 | Heavy Cavalry | 1.2 新規分類。標準モラル耐性（Light Cavalry は被モラルダメ +10%）。正面突撃に優れる `[src: Patch_1.2 wiki + script verified]` |
-| 優位性戦争 | Superiority War | 1.2 新規。Coalition War の置換。包囲網戦争の勝利条件が変更 `[src: Patch_1.2 wiki]` |
+| 優位性戦争 | Superiority War | 1.2 新規。Coalition War の置換（war_goal_type = superiority_coalition）。攻撃側 conquer_cost=0.75 / 防衛側 conquer_cost=2.5 / ticking_war_score=0.5 `[src: Patch_1.2 wiki + script verified]`（casus_belli/coalition.txt 行 13） |
 | 都市特権 | Urban Rights | 1.2 新規。自由都市・都市の権利に関わる制度 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 
 ---
@@ -1119,6 +1119,12 @@ IA は 0〜100 で変動。皇帝権力強化ポリシーへのアクセス（`i
 | flavor_hab.65 | in_game/events/DHE/ | シュタイアーマルクの使徒（カトリック再興） |
 | flavor_hab.85 | in_game/events/DHE/ | ボヘミアの信仰告白（BOH 条件） |
 | building_types/ | in_game/common/building_types/ | ウィーン宮廷・イエズス会学院など固有建造物 |
+| hre_buildings.txt | in_game/common/building_types/ | Imperial Armories 定義（行 1-90）。建造コスト・Manpower 効果・建設条件 [src: script verified] |
+| auto_modifiers/country.txt | in_game/common/auto_modifiers/ | army_logistics_distance=30（行 90）。ロジスティクス距離の実値 [src: script verified] |
+| casus_belli/coalition.txt | in_game/common/casus_belli/ | war_goal_type = superiority_coalition（行 13）。Coalition War の戦争目標タイプ [src: script verified] |
+| wargoals/00_default.txt | in_game/common/wargoals/ | superiority_coalition の戦闘コスト定義（行 244-261）[src: script verified] |
+| country_interactions/subject_enforce_peace.txt | in_game/common/country_interactions/ | Enforce Peace の accept ブロック実装（行 84-90）[src: script verified] |
+| country_interactions/union_enforce_peace.txt | in_game/common/country_interactions/ | Union Enforce Peace の accept ブロック実装（行 108-164）[src: script verified] |
 | Patch 1.1「ロスバッハ」リリースノート | 公式 | AI 攻撃性・民兵法・貴族召集軍の変更 |
 | Patch 1.1.10 パッチノート | 公式 | 建造物レベル 0 バグ・召集軍貼り付きバグの修正 |
 | [Patch 1.2 — Europa Universalis 5 Wiki](https://eu5.paradoxwikis.com/Patch_1.2) | eu5.paradoxwikis.com | Patch 1.2 メイン出典。HRE オーバーホール・Papal Authority・兵科分類等 |

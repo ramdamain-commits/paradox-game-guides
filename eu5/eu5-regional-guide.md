@@ -133,22 +133,28 @@ HRE 小国として生き残るには:
 3. 序盤は拡張より**内政充実**（進歩・建造物）に集中し、人口・収入を底上げする
 4. 宗教改革後は帝国内の宗派バランスに乗っかるか抵抗するかを早めに決断する（コミュニティ知見）
 
-> **1.2 更新**: Imperial Diet 投票システム導入、皇帝 GP Score 貢献 250→50、Free Cities 自動参戦廃止、Imperial Armories 新建造物、1400 年までに Golden Bull 未制定なら諸侯離脱可能 `[src: Patch_1.2 wiki]`（コミュニティ知見：HRE 小国の生存戦略は離脱オプションで多様化）
+> **1.2 更新**:
+> - Imperial Diet 投票システム導入（Diet 発展段階別に投票権の重みが異なる） `[src: Patch_1.2 wiki + script verified]`
+> - 皇帝 GP Score 貢献 250→50 に削減 `[src: Patch_1.2 wiki + script verified]`
+> - Free Cities 自動参戦廃止（INDEPENDENT Free City のみ皇帝防衛に参加） `[src: Patch_1.2 wiki + script verified]`
+> - Imperial Armories 新建造物（建造コスト gold=500、local_manpower +0.0025、皇帝交代時に移転） `[src: hre_buildings.txt:1-90, 01_buildings.txt:21 + script verified]`
+> - 1400 年以降に golden_bull_policy 未採択なら HRE 離脱可能 `[src: hre.txt:275-277 + script verified]`
+> - HRE 小国の生存・外交戦略は離脱オプションで多様化（コミュニティ知見）
 
 ### 1.2 HRE オーバーホール（地域影響）
 
-Patch 1.2 の HRE 大幅オーバーホールにより、神聖ローマ帝国の政治構造が根本から変化した `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）。
+Patch 1.2 の HRE 大幅オーバーホールにより、神聖ローマ帝国の政治構造が根本から変化した `[src: Patch_1.2 wiki + script verified]`。
 
 | 変更点 | 内容 |
 |--------|------|
 | Imperial Diet 投票システム | Diet 発展段階別に投票権の重みが異なる |
 | 皇帝 GP Score 貢献 | 250 → 50 に大幅削減 |
-| Free Cities 自動参戦 | 廃止。自由都市の生存戦略が多様化 |
-| Imperial Armories | 皇帝が構成員領土内に建造可能な新建造物。Manpower を提供し、皇帝交代時に移転する |
-| Golden Bull 未制定 | 1400 年までに未制定の場合、諸侯が HRE から離脱可能 |
+| Free Cities 自動参戦 | 廃止。INDEPENDENT Free City のみ皇帝防衛に参加 `[src: Patch_1.2 wiki + script verified]` |
+| Imperial Armories | 皇帝のみ建設可能（HRE 加盟領内・law:military_contribution 必須）。建造コスト gold=500、自国所有 local_manpower +0.0025、外国所有 manpower_to_building_owner +0.005、皇帝交代時に移転 `[src: hre_buildings.txt:1-90, 01_buildings.txt:21 + script verified]` |
+| Golden Bull 未制定 | 1400 年以降に golden_bull_policy 未採択の場合、諸侯が HRE から離脱可能 `[src: hre.txt:275-277 + script verified]` |
 | 王朝力上限 | 200 → 300 に拡大 |
 
-**HRE 小国への影響**: Free Cities 自動参戦廃止と Golden Bull 離脱オプションにより、小国の生存・外交戦略が大きく多様化した（コミュニティ知見：スクリプト未確認）
+**HRE 小国への影響**: Free Cities 自動参戦廃止 `[src: script verified]` と Golden Bull 離脱オプション `[src: hre.txt:275-277 + script verified]` により、小国の生存・外交戦略が大きく多様化した（コミュニティ知見）
 
 詳細は [eu5-austria-guide.md](eu5-austria-guide.md) と [eu5-government-guide.md](eu5-government-guide.md) を参照。
 

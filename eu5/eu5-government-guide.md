@@ -92,15 +92,15 @@
 
 | 変更内容 | 詳細 |
 |---------|------|
-| Imperial Diet 投票システム | Diet 4段階（Court Assembly → Early Diet → Bicamerial → Tricamerial）`[src: Patch_1.2 wiki + script verified]`。各段階の投票権重テーブル数値はコミュニティ知見（スクリプト未確認） |
+| Imperial Diet 投票システム | Diet 4段階（Court Assembly → Early Diet → Bicamerial → Tricamerial）`[src: Patch_1.2 wiki + script verified]`（hre.txt 行 15-38, 90-113, 160-183）。各身分の投票権重（実値）: 皇帝 150、選帝侯（世俗）75、大司教選帝侯 75、自由都市 25、首座司教/legatus_natus 4。Diet 段階乗数: Court Assembly は皇帝×1.25・選帝侯×1.5・自由都市×0.1・首座司教×10 / Early Diet は皇帝×1・選帝侯×1.5・自由都市×0.25・首座司教×1 / Bicamerial は皇帝×1・選帝侯×1.25・自由都市×0 / Tricamerial は皇帝×1・選帝侯×1・自由都市×2 `[src: Patch_1.2 wiki + script verified]`（hre.txt 行 15-38, 266-286） |
 | 皇帝の Great Power Score 貢献 250→50 | 大幅な弱体化。帝位保持による Great Power 維持戦略を見直す必要あり `[src: Patch_1.2 wiki + script verified]` |
 | 王朝力（Dynastic Power）上限 200→300 | 王朝外交の継続選択肢が増加 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| Imperial Armories（帝国兵器庫） | 皇帝が HRE 構成員領土に建造可能な新建造物。Manpower を提供し、皇帝交代時に移転する `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| Free Cities 自動参戦廃止 | 皇帝は自由都市の戦争に自動参戦しなくなった `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| Imperial Armories（帝国兵器庫） | 皇帝のみ建設可能な新建造物（HRE 加盟領内・law:military_contribution 必須）。自国所有時 local_manpower +0.0025、外国所有時 manpower_to_building_owner +0.005。建造コスト gold=500。皇帝交代時に移転 `[src: Patch_1.2 wiki + script verified]`（hre_buildings.txt 行 1-90, prices/01_buildings.txt 行 21） |
+| Free Cities 自動参戦廃止 | INDEPENDENT Free City への攻撃に限り皇帝が防衛義務を負う仕様に精緻化。皇帝が自由都市の戦争に無条件で自動参戦する挙動は廃止 `[src: Patch_1.2 wiki + script verified]`（hre.txt） |
 | HRE 戦争指揮権の自動取得廃止 | 皇帝は HRE 構成国の戦争の指揮権を自動取得しなくなった `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | 同一王朝再選ボーナス | 同一王朝が皇帝に再選されると +5 Imperial Authority `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | 皇帝の政体変更で再選挙 | 皇帝が政体を変更すると再選挙が発生する `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| Golden Bull 未制定による諸侯離脱 | 1400 年までに Golden Bull を制定していない場合、HRE 諸侯が離脱可能になった `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| Golden Bull 未制定による諸侯離脱 | 1400 年以降に golden_bull_policy 未採択の場合、HRE 諸侯が離脱可能になった `[src: Patch_1.2 wiki + script verified]`（hre.txt 行 275-277） |
 | 軍事政策の不満対象変更 | HRE の軍事政策は全構成員への不満に変更（旧: 自由都市・選帝侯のみ）`[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 
 #### Claim Throne CB 制限
@@ -322,15 +322,15 @@
 | 白羊朝（Aq Qoyunlu） | 中東進出の足掛かり |
 | モゴリスタン（Moghulistan） | 中央アジア拡大のプラットフォーム |
 
-> **1.2 更新**: 軍の食料消費 10 倍・ロジスティクス距離 50→30 で大規模遊牧軍の補給管理が難化。騎兵主力の大部隊運用は再検討が必要 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
+> **1.2 更新**: ロジスティクス距離 50→30（army_logistics_distance=30）・軍の食料消費 10 倍で大規模遊牧軍の補給管理が難化。騎兵主力の大部隊運用は再検討が必要 `[src: Patch_1.2 wiki + script verified]`（auto_modifiers/country.txt 行 90, unit_categories food_consumption_per_strength）
 
 ### 1.2 ホード/部族への影響
 
 | 変更内容 | 詳細 |
 |---------|------|
 | 騎兵の Light Cavalry 分類 | ホード騎兵は Light Cavalry 系統に分類される可能性が高い。Heavy/Light 分類変更が戦闘・編成効率に影響 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| 軍の食料消費 10 倍 | 大規模遊牧軍の補給コストが大幅増加。分散進軍・略奪ルートの計画が重要に `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| ロジスティクス距離 50→30 | 補給可能距離が大幅縮小。遠征ルートの見直しが必要 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| 軍の食料消費 10 倍 | 大規模遊牧軍の補給コストが大幅増加。分散進軍・略奪ルートの計画が重要に `[src: Patch_1.2 wiki + script verified]`（unit_categories food_consumption_per_strength） |
+| ロジスティクス距離 50→30 | army_logistics_distance=30。補給可能距離が大幅縮小。遠征ルートの見直しが必要 `[src: Patch_1.2 wiki + script verified]`（auto_modifiers/country.txt 行 90） |
 
 ---
 
@@ -385,7 +385,7 @@
 | ステップ遊牧民（Steppe Horde）への転換 | army タイプ国家として条件を満たす場合（未検証） | 略奪・無名戦争コスト削減が加わる |
 | 部族のまま維持 | 特定の固有改革がある場合 | 外交コスト削減の恩恵を享受し続ける |
 
-> **1.2 更新**: 新政府改革・特権が追加（具体的内容はスクリプト未確認）。ロジスティクス距離縮小・食料消費増加の影響はホードと共通 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
+> **1.2 更新**: 新政府改革・特権が追加（具体的内容はスクリプト未確認）`[src: Patch_1.2 wiki]`（コミュニティ知見）。ロジスティクス距離縮小（army_logistics_distance=30）・食料消費増加の影響はホードと共通 `[src: Patch_1.2 wiki + script verified]`（auto_modifiers/country.txt 行 90, unit_categories food_consumption_per_strength）
 
 ---
 
@@ -437,7 +437,7 @@ Patch 1.2（2026-05-06 リリース）で確認された政府タイプ関連の
 | 共和国 | 新政府改革・特権追加、貿易改修恩恵、Urban Rights / Megalopolis 追加 |
 | 神権制（カトリック） | Papal Authority コスト半減（列聖 150→75、破門 100→50）、Papal States 制限追加 |
 | 神権制（正教） | 正教オーバーホール（Patriarch キャラクター実装、Rite Power 廃止） |
-| ステップ遊牧民・部族 | ロジスティクス距離 50→30・食料消費 10 倍で大規模軍運用難化 |
+| ステップ遊牧民・部族 | ロジスティクス距離 50→30（army_logistics_distance=30）・食料消費 10 倍で大規模軍運用難化 `[src: Patch_1.2 wiki + script verified]`（auto_modifiers/country.txt 行 90, unit_categories food_consumption_per_strength） |
 | 全政府タイプ | 官僚制（Bureaucracies）— 1.2 では実装されなかった（コミュニティ知見：将来パッチでの実装可能性は未確定） |
 
 > 情報元: EU5 Wiki パッチノート（Patch 1.2「Echinades」、2026-05-06）
@@ -450,8 +450,8 @@ Patch 1.2 で追加・変更された政府タイプ関連の用語。完全版�
 
 | 日本語（仮称・英語併記） | 英語 | 備考 |
 |----------------------|------|------|
-| 帝国議会 | Imperial Diet | 投票システム。Diet 発展段階（Court Assembly→Early Diet→Bicamerial→Tricamerial）別の投票権重テーブル。1.2 更新 |
-| 帝国兵器庫 | Imperial Armories | 1.2 新規建造物。皇帝が HRE 構成員領土に建造。Manpower 提供、皇帝交代時に移転 |
+| 帝国議会 | Imperial Diet | 投票システム。Diet 発展段階（Court Assembly→Early Diet→Bicamerial→Tricamerial）別の投票権重。身分ごとの基本値と段階乗数はHRE関連変更テーブル参照 `[src: Patch_1.2 wiki + script verified]`（hre.txt 行 15-38, 266-286）。1.2 更新 |
+| 帝国兵器庫 | Imperial Armories | 1.2 新規建造物。皇帝のみ建設可（HRE 加盟領内・law:military_contribution 必須）。Manpower 提供、皇帝交代時に移転 `[src: Patch_1.2 wiki + script verified]` |
 | 教皇権威 | Papal Authority | 神権制カトリック国に影響。1.2 でコスト変更（列聖 150→75、破門 100→50） |
 | 王朝力 | Dynastic Power | 上限が 1.2 で 200→300 に拡大 |
 | ローマ国境回復 CB | Restore Roman Borders | 1.2 新規ビザンツ用 CB `[src: Patch_1.2 wiki + script verified]` |
@@ -507,10 +507,14 @@ Patch 1.2 で追加・変更された政府タイプ関連の用語。完全版�
 | `in_game/common/government_reforms/country_specific.txt` | 国家固有の政府改革（部族改革含む） |
 | `in_game/common/prices/00_hardcoded.txt:1101-1104` | 政府タイプ変更コスト（安定度 -50、正統性 -25） |
 | `in_game/common/prices/00_hardcoded.txt:64-67` | 政府改革削除コスト（安定度 -20、義 -10） |
-| `in_game/common/international_organizations/hre.txt` | 皇帝 Great Power Score 免除閾値（`great_power_score_exempt_from_forfeit = 50`） |
+| `in_game/common/international_organizations/hre.txt` | 皇帝 Great Power Score 免除閾値（`great_power_score_exempt_from_forfeit = 50`）; Imperial Diet 各段階の投票権重（行 15-38: Court Assembly, 90-113: Early Diet, 160-183: Bicamerial, 266-286: Tricamerial）; Golden Bull 未採択時の諸侯離脱条件（行 275-277: `current_year > 1400`） |
 | `in_game/common/casus_belli/claim_throne.txt` | Claim Throne CB 発動制限（`not = { this = scope:target.ruler }`） |
 | `in_game/common/parliament_types/01_international_organization.txt` | Imperial Diet 4段階定義（Court Assembly → Early Diet → Bicamerial → Tricamerial） |
 | `in_game/common/casus_belli/D008_restore_roman_borders.txt` | Restore Roman Borders CB 定義 |
+| `in_game/common/building_types/hre_buildings.txt` | Imperial Armories 建造物定義（建造コスト gold=500、local_manpower +0.0025、manpower_to_building_owner +0.005、設置条件: 皇帝のみ・HRE 加盟領内・law:military_contribution） |
+| `in_game/common/prices/01_buildings.txt` | Imperial Armories 建造コスト（行 21） |
+| `in_game/common/auto_modifiers/country.txt` | ロジスティクス距離定数（行 90: army_logistics_distance=30） |
+| `in_game/common/unit_categories/` | food_consumption_per_strength（兵科別食料消費係数） |
 | `main_menu/localization/japanese/government_l_japanese.yml` | 権力リソース・継承システムの日本語ローカライズ |
 | `main_menu/localization/japanese/government_names_l_japanese.yml` | 政府タイプ名の日本語ローカライズ |
 | `main_menu/localization/japanese/game_concepts_l_japanese.yml` | 権力リソースの説明テキスト |
@@ -532,4 +536,5 @@ Patch 1.2 で追加・変更された政府タイプ関連の用語。完全版�
 | 共和的伝統の維持目安（50〜70 以上） | EU5 コミュニティ知見 |
 | 部族から君主制への移行タイミング | EU5 コミュニティ知見 |
 | ステップ遊牧民の結束補充戦略 | EU5 コミュニティ知見 |
-| Patch 1.2 変更情報 | EU5 Wiki パッチノート（2026-05-06 リリース版）および EU5 コミュニティ知見 |
+| Patch 1.2 変更情報（script verified 済み） | Imperial Armories（hre_buildings.txt, prices/01_buildings.txt）・Free Cities 自動参戦廃止（hre.txt）・ロジスティクス距離/食料消費（auto_modifiers/country.txt, unit_categories）は EU5 スクリプト実値確認済み |
+| Patch 1.2 変更情報（コミュニティ知見） | 共和国新政府改革・特権・部族新特権（具体値スクリプト未確認）、王朝力上限 200→300（スクリプト未確認）、HRE 戦争指揮権廃止・同一王朝再選ボーナス・皇帝政体変更再選挙（スクリプト未確認）は EU5 Wiki パッチノートおよびコミュニティ知見に基づく |

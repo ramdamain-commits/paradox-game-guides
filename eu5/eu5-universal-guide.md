@@ -15,11 +15,11 @@
 | 変更 | 内容 |
 |------|------|
 | HRE 大幅オーバーホール | Imperial Diet（帝国議会）投票システム導入・4段階（Court Assembly → Early Diet → Bicamerial → Tricamerial）`[src: Patch_1.2 wiki + script verified]`、皇帝選挙重み付け変更（皇帝の Great Power Score 貢献 250→50）`[src: Patch_1.2 wiki + script verified]`、Imperial Armories（帝国兵器庫）建造物追加、王朝力上限 200→300 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）。投票権重数値（500/250/200 等）はコミュニティ知見 |
-| Papal Authority（教皇権威）新システム（0–100 範囲） | 0–100 のリソースとして導入 `[src: Patch_1.2 wiki + script verified]`。列聖コスト 150→75、外交破門コスト 100→50 `[src: Patch_1.2 wiki + script verified]`。75 以上でカトリック向けポジティブ効果、25 以下でネガティブ効果 `[src: Patch_1.2 wiki]`（コミュニティ知見：75/25 閾値ボーナスの具体値はスクリプト未確認） |
+| Papal Authority（教皇権威）新システム（0–100 範囲） | 0–100 のリソースとして導入 `[src: Patch_1.2 wiki + script verified]`。列聖コスト 150→75、外交破門コスト 100→50 `[src: Patch_1.2 wiki + script verified]`。75 以上（high_papal_authority）で全カトリック国に monthly_devotion +0.05・monthly_legitimacy +0.02・tolerance_heretic +1.0、25 未満（low_papal_authority）で monthly_devotion -0.1・monthly_legitimacy -0.03 `[src: religion.txt 行 776-791 + script verified]` |
 | 兵科の Heavy/Light 分類（**破壊的変更**） | 歩兵・騎兵がそれぞれ重装（Heavy）/軽装（Light）に分類。**要塞駐屯は Heavy Infantry のみ** `[src: Patch_1.2 wiki + script verified]`。Light Infantry はイニシアティブ +6.00 でフランキング 100%、Heavy Cavalry は標準モラル耐性（Light Cavalry は被モラルダメ +10%）等、独立した特性差あり `[src: Patch_1.2 wiki + script verified]` |
-| 兵站大幅厳格化 | ロジスティクス距離 50→30、将軍補正半減、軍の食料消費 10倍、傭兵コスト +25% `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| Coalition War が Superiority War（優位性戦争）化 | 首都占領ベースの勝敗判定 → 軍事的優位ベースに変更。連合側の防衛が強化 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| Enforce Peace 双方合意必須 | 一方的講和強制不可に。Unconditional Surrender オプション新規追加 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| 兵站大幅厳格化 | ロジスティクス距離 50→30 `[src: auto_modifiers/country.txt 行 90 + script verified]`、軍の食料消費 10倍 `[src: unit_categories + script verified]`、将軍補正半減・傭兵コスト +25%（コミュニティ知見） |
+| Coalition War が Superiority War（優位性戦争）化 | 首都占領ベースの勝敗判定 → 軍事的優位ベースに変更。連合側の防衛が強化 `[src: Patch_1.2 wiki + script verified]`（攻撃側 conquer_cost=0.75/release_cost=0.25、防衛側 conquer_cost=2.5/release_cost=2.5、ticking_war_score=0.5 `[src: casus_belli/coalition.txt 行 13 + wargoals/00_default.txt 行 244-261 + script verified]`） |
+| Enforce Peace 双方合意必須 | 一方的講和強制不可に。Unconditional Surrender オプション新規追加 `[src: Patch_1.2 wiki + script verified]`（accept ブロック実装確認 `[src: country_interactions/subject_enforce_peace.txt 行 84-90 + union_enforce_peace.txt 行 108-164 + script verified]`。HRE 固有 enforce_landfriede は accept なし・白色平和強制） |
 | Claim Throne CB 制限 | 請求者がすでに対象国を統治中なら CB 不発 `[src: Patch_1.2 wiki + script verified]` |
 | Belligerent / Conciliatory 修正 | 要塞数超過時の判定バグ修正。年間減衰 4→5 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | 貿易システム改修 | 海上ルートコスト 1/10、距離影響 50%、Maritime Presence が経路コストに反映、Trade Capacity コスト全体削減 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
@@ -31,9 +31,9 @@
 
 - **Light Infantry を要塞守備に置く戦略は不可** — 駐屯できるのは Heavy Infantry のみ（破壊的変更）
 - **傭兵を序盤の低コスト戦力として多用する戦略は見直しが必要** — 傭兵コスト +25% 追加で費用対効果が変化
-- **兵站延伸を前提とした遠征戦略は大幅に制限** — ロジスティクス距離 50→30、食料消費 10倍
-- **Enforce Peace による一方的停戦強制は不可** — 双方合意が必須に（第三者介入スタイルの外交が変質）
-- **Coalition War（連合戦争）の防衛は首都防衛だけでは不十分** — Superiority War 化により軍事的優位で勝敗が決まる
+- **兵站延伸を前提とした遠征戦略は大幅に制限** — ロジスティクス距離 50→30・食料消費 10倍 `[src: auto_modifiers/country.txt 行 90 + script verified]`
+- **Enforce Peace による一方的停戦強制は不可** — 双方合意が必須に `[src: subject_enforce_peace.txt 行 84-90 + script verified]`（第三者介入スタイルの外交が変質）
+- **Coalition War（連合戦争）の防衛は首都防衛だけでは不十分** — Superiority War 化により軍事的優位で勝敗が決まる `[src: casus_belli/coalition.txt 行 13 + script verified]`
 
 ### 過去パッチ（1.1「ロスバッハ」）
 
@@ -200,7 +200,7 @@ EU5 の軍隊は精鋭軍と徴兵の 2 系統で構成される。
 
 ### 兵科の Heavy/Light 分類（1.2）
 
-1.2 で歩兵・騎兵がそれぞれ重装（Heavy）と軽装（Light）に分類された `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）。
+1.2 で歩兵・騎兵がそれぞれ重装（Heavy）と軽装（Light）に分類された `[src: Patch_1.2 wiki + script verified]`。
 
 | 兵科 | 主な特性 |
 |------|---------|
@@ -248,7 +248,7 @@ EU5 の軍隊は精鋭軍と徴兵の 2 系統で構成される。
 - 敵地での長期作戦は補給ルートを確保してから行うこと
 - 冬季（Winter）は補給消費が増加する。冬季攻勢は慎重に
 
-> 1.2 でロジスティクス距離 50→30、将軍補正半減、軍の食料消費 10倍に変更 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）。補給管理は 1.2 以降さらに厳しくなった。
+> 1.2 でロジスティクス距離 50→30 `[src: auto_modifiers/country.txt 行 90 + script verified]`、軍の食料消費 10倍 `[src: unit_categories + script verified]`、将軍補正半減（コミュニティ知見）。補給管理は 1.2 以降さらに厳しくなった。
 
 ---
 
@@ -281,7 +281,7 @@ EU5 の軍隊は精鋭軍と徴兵の 2 系統で構成される。
 
 ### 1.2 の外交変更（Coalition War / Enforce Peace / Claim Throne）
 
-1.2 で外交メカニクスに複数の破壊的変更が入った `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）。
+1.2 で外交メカニクスに複数の破壊的変更が入った `[src: Patch_1.2 wiki + script verified]`。
 
 **Coalition War（連合戦争）の Superiority War 化**
 - 連合戦争の勝敗判定が「首都占領ベース」から「軍事的優位ベース」（Superiority Wargoal）に変更
@@ -430,8 +430,8 @@ EU5 では時代（Age）ごとに進歩を選択する。国家固有の進歩�
 | 文化・宗教の無視 | 異文化・異宗教の州は反乱リスクが高い。同化政策や改宗を計画的に行う |
 | 建造物の乱建設 | 序盤は市場・工房に集中投資。散発的な建設は効果が薄い |
 | Light Infantry を要塞守備に置く（1.2） | 1.2 では要塞駐屯は Heavy Infantry のみ。Light Infantry のみの守備隊は要塞として機能しない `[src: Patch_1.2 wiki + script verified]` |
-| 大軍団の補給線管理を怠る（1.2） | 1.2 でロジスティクス距離 50→30・食料消費 10倍に変更。長距離遠征で補給切れが一気に悪化する `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| Enforce Peace で一方的講和を期待する（1.2） | 1.2 から双方合意必須。第三者に強制停戦を依頼する戦術は機能しない `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| 大軍団の補給線管理を怠る（1.2） | 1.2 でロジスティクス距離 50→30・食料消費 10倍に変更。長距離遠征で補給切れが一気に悪化する `[src: auto_modifiers/country.txt 行 90 + script verified]` |
+| Enforce Peace で一方的講和を期待する（1.2） | 1.2 から双方合意必須。第三者に強制停戦を依頼する戦術は機能しない `[src: subject_enforce_peace.txt 行 84-90 + script verified]` |
 | Claim Throne CB を既統治対象に使おうとする（1.2） | 請求者がすでに対象国を統治している場合、CB が発生しない `[src: Patch_1.2 wiki + script verified]` |
 
 ---
@@ -460,8 +460,8 @@ EU5 では時代（Age）ごとに進歩を選択する。国家固有の進歩�
 | 同君連合 | Personal Union (PU) | 君主を共有する国家間の関係 |
 | 官僚制 | Bureaucracies | 1.2 では未実装。代わりに Imperial Diet 等の固有メカニクスが導入された |
 | 帝国議会 | Imperial Diet | HRE 1.2 新規。加盟国の投票で帝国政策を決定するシステム |
-| 帝国兵器庫 | Imperial Armories | HRE 1.2 新規建造物。帝国内の軍事力底上げ |
-| 教皇権威 | Papal Authority | 1.2 新規。0–100 のリソース。75↑でポジティブ、25↓でネガティブ効果 |
+| 帝国兵器庫 | Imperial Armories | HRE 1.2 新規建造物。帝国内の軍事力底上げ `[src: Patch_1.2 wiki]`（コミュニティ知見：建造物効果の具体値はスクリプト未確認） |
+| 教皇権威 | Papal Authority | 1.2 新規。0–100 のリソース。75↑で全カトリック国に devotion +0.05・legitimacy +0.02・heretic 寛容 +1.0、25↓で devotion -0.1・legitimacy -0.03 `[src: religion.txt 行 776-791]` |
 | 軽装歩兵 | Light Infantry | 1.2 分類。イニシアティブ +6.00、フランキング 100%。要塞駐屯不可 |
 | 重装歩兵 | Heavy Infantry | 1.2 分類。要塞駐屯可能 |
 | 軽装騎兵 | Light Cavalry | 1.2 分類。機動力・追撃向き |
@@ -480,7 +480,12 @@ EU5 では時代（Age）ごとに進歩を選択する。国家固有の進歩�
 
 | ファイル | 用途 |
 |---------|------|
-| `auto_modifiers/country.txt` | 慢心・戦争疲弊の効果値、反乱閾値 |
+| `auto_modifiers/country.txt` | 慢心・戦争疲弊の効果値、反乱閾値、ロジスティクス距離（行 90: army_logistics_distance=30） |
+| `casus_belli/coalition.txt` | Coalition War の war_goal_type = superiority_coalition（行 13） |
+| `wargoals/00_default.txt` | Coalition War の戦争コスト定義（行 244-261: conquer/release コスト・ticking_war_score） |
+| `country_interactions/subject_enforce_peace.txt` | Enforce Peace 双方合意の accept ブロック（行 84-90） |
+| `country_interactions/union_enforce_peace.txt` | Union Enforce Peace の accept ブロック（行 108-164）。HRE enforce_landfriede は accept なし |
+| `unit_categories/` | 各兵科の food_consumption・移動速度等の定義 |
 | `prices/00_hardcoded.txt` | 政府変更コスト、傭兵雇用プレミアム |
 | `prices/02_units.txt` | 兵科別の建設・維持コスト |
 | `prices/04_government.txt` | 国家ランク昇格コスト |

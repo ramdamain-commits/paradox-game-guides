@@ -31,8 +31,8 @@
 
 | 変更 | 内容 |
 |------|------|
-| Coalition War が Superiority War 化 | 対オスマン連合が首都占領なしに優位性戦争目標（Superiority Wargoal）で勝利可能に `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| Enforce Peace 双方合意必須 | 一方的な講和強制不可に変更 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| Coalition War が Superiority War 化 | 対オスマン連合が首都占領なしに優位性戦争目標（Superiority Wargoal）で勝利可能に `[src: Patch_1.2 wiki + script verified]` |
+| Enforce Peace 双方合意必須 | 一方的な講和強制不可に変更 `[src: Patch_1.2 wiki + script verified]` |
 | Belligerent / Conciliatory 修正 | 拡張オスマンは要塞数超過で Belligerent 蓄積しやすい `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | Claim Throne CB 制限 | 請求者がすでに対象国を統治中なら CB 不発 `[src: Patch_1.2 wiki + script verified]` |
 
@@ -43,7 +43,7 @@
 | 要塞駐屯 Heavy Infantry のみ | 騎兵は要塞守備不可。イェニチェリ（Heavy Infantry 系統推測）への依存度上昇 `[src: Patch_1.2 wiki + script verified]` |
 | 兵科 Heavy / Light 分類 | Light Cavalry / Heavy Cavalry カテゴリの存在 `[src: Patch_1.2 wiki + script verified]`。アクンジュ = Light Cavalry、シパーヒー・カピクル騎兵 = Heavy Cavalry の分類はコミュニティ知見（スクリプト未確認） |
 | 独立アップグレードツリー | 兵科ごとの独立強化ツリーが追加 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| ロジ距離 50→30 / 食料消費 10倍 / 傭兵 +25% | バルカン・アナトリア・北アフリカ遠征の補給線管理が必須に `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| ロジ距離 50→30 / 食料消費 10倍 / 傭兵 +25% | バルカン・アナトリア・北アフリカ遠征の補給線管理が必須に `[src: Patch_1.2 wiki + script verified]` |
 
 #### 宗教
 
@@ -64,8 +64,8 @@
 - **Restore Roman Borders CB（最大の脅威）**: ビザンツがバルカン・アナトリア全域を復興 CB で一括奪取できる新開戦事由 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
 - **Greek Fire Ships / Cataphracts / Legionaries（ビザンツ軍強化）**: 新ユニット群によりビザンツ軍事力が大幅強化。過去の「ビザンツは弱国」という前提が崩れた `[src: Fate_of_the_Phoenix wiki]`（コミュニティ知見：スクリプト未確認）
 - **要塞駐屯 Heavy Infantry 限定**: 騎兵中心の守備編成は機能しなくなる。イェニチェリ系統への依存度が上昇 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
-- **大軍団の補給線管理必須**: 食料消費 10倍化により、ヨーロッパ深部・北アフリカ・コーカサス遠征で補給線の事前整備が必須 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
-- **Coalition War Superiority 化（対オスマン連合の脅威増）**: 首都占領なしに連合戦争に敗北できるようになったため、Belligerent 蓄積の管理が以前より重要 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
+- **大軍団の補給線管理必須**: 食料消費 10倍化により、ヨーロッパ深部・北アフリカ・コーカサス遠征で補給線の事前整備が必須 `[src: Patch_1.2 wiki + script verified]`
+- **Coalition War Superiority 化（対オスマン連合の脅威増）**: 首都占領なしに連合戦争に敗北できるようになったため、Belligerent 蓄積の管理が以前より重要 `[src: Patch_1.2 wiki + script verified]`
 
 ### 過去パッチ（参考）
 
@@ -221,7 +221,7 @@ TUR 以外のベイリクがシチュエーションを制した場合、ルー�
 
 ### 衰退メカニクスへの対処
 
-> **1.2 重要**: 拡張オスマンは要塞数超過で Belligerent が蓄積しやすくなった `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）。Coalition War Superiority 化により対オスマン連合は首都占領なしに勝利できるため、Belligerent の管理と連合結成の予防が終盤の最重要課題の一つとなる。
+> **1.2 重要**: 拡張オスマンは要塞数超過で Belligerent が蓄積しやすくなった `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）。Coalition War Superiority 化により対オスマン連合は首都占領なしに勝利できるため `[src: Patch_1.2 wiki + script verified]`、Belligerent の管理と連合結成の予防が終盤の最重要課題の一つとなる。
 
 - **イェニチェリの怒り**（`flavor_tur.117〜118`）: 軍制改革を強行するとイェニチェリ反乱リスクが上昇。妥協ルートで平静を保ちながら段階的に改革を進めるのが基本。
 - **カフェス制度**（`flavor_tur.109`）: 王子を幽閉することで後継者間の殺し合いを防止。後継者の素質が低下するトレードオフがあるため、後継者候補の能力値を見てから判断。
@@ -286,7 +286,7 @@ Patch 1.2 で兵科が Heavy / Light に明確分類され、オスマン軍の�
 
 - **要塞防衛**: イェニチェリを要塞駐屯主力として整備。Light Cavalry（アクンジュ）は駐屯に適さない `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
 - **独立アップグレードツリー**: 兵科ごとに独立した強化ツリーが追加されたため、戦略方針に合わせて特化投資が有効 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
-- **ロジ距離短縮（50→30）と食料消費 10倍**: ヨーロッパ深部・北アフリカ・コーカサスへの大遠征では補給線の事前整備が必須。中間補給基地の確保と部隊規模の調整を怠ると壊滅的損耗を招く `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
+- **ロジ距離短縮（50→30）と食料消費 10倍**: ヨーロッパ深部・北アフリカ・コーカサスへの大遠征では補給線の事前整備が必須。中間補給基地の確保と部隊規模の調整を怠ると壊滅的損耗を招く `[src: Patch_1.2 wiki + script verified]`
 - **ビザンツ復興への対抗**: Greek Fire Ships・Cataphracts・Legionaries を持つ強化ビザンツ軍との正面衝突では Heavy Infantry 中心の高質部隊が必要。傭兵 +25% コスト増も考慮した予算確保が重要 `[src: Fate_of_the_Phoenix wiki]`（コミュニティ知見：スクリプト未確認）
 
 ### 統合軍備（Combined Arms）ボーナス
@@ -322,8 +322,8 @@ Patch 1.1 で追加された多兵科混成ボーナス。異なる兵科を一�
 Patch 1.2 で外交・戦争メカニクスが変更され、拡張指向のオスマンには特にリスクが増した。
 
 - **Claim Throne CB 制限**: 請求者がすでに対象国を統治中なら CB が発動しない。婚姻・相続を使った外交戦略の事前確認が必要 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
-- **Coalition War Superiority 化（対オスマン連合の脅威増）**: 連合戦争が優位性戦争目標（Superiority Wargoal）方式に変更。首都占領なしに連合が勝利できるため、Belligerent 蓄積の管理が以前より重要。対オスマン連合の結成を防ぐには、拡張ペースの調整と外交評価の維持が必要 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
-- **Enforce Peace 双方合意必須**: 一方的な講和強制が不可能になった。調停（Mediation）や外交圧力では終われない戦争が増える可能性 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
+- **Coalition War Superiority 化（対オスマン連合の脅威増）**: 連合戦争が優位性戦争目標（Superiority Wargoal）方式に変更。首都占領なしに連合が勝利できるため、Belligerent 蓄積の管理が以前より重要。対オスマン連合の結成を防ぐには、拡張ペースの調整と外交評価の維持が必要 `[src: Patch_1.2 wiki + script verified]`
+- **Enforce Peace 双方合意必須**: 一方的な講和強制が不可能になった。調停（Mediation）や外交圧力では終われない戦争が増える可能性 `[src: Patch_1.2 wiki + script verified]`
 - **Belligerent 判定（要塞数超過）**: 大帝国化したオスマンは要塞数が多くなりがちで、Belligerent が自然蓄積しやすい。Conciliatory 行動での相殺を意識した外交運用が求められる `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
 
 ### ヴェネツィア-オスマン衝突イベント
@@ -526,8 +526,8 @@ DLC Fate of the Phoenix（Patch 1.2 同時リリース）はビザンツ帝国�
 - デヴシルメ廃止のタイミングを誤る → ニザーム・ジェディット移行と連動させる
 - **1.2: ビザンツ復興を放置する** → Restore Roman Borders CB（ローマ国境回復 CB）によるバルカン・アナトリア逆侵攻の機会を与える。ビザンツが Pronoia / Katepanata を整備する前にコンスタンティノープルを攻略するのが最大の予防策 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
 - **1.2: 要塞守備に Light Cavalry（アクンジュ等）を配置する** → Heavy Infantry のみ駐屯可能になったため、騎兵での守備は機能しない。要塞防衛はイェニチェリ系統で整備する `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
-- **1.2: 大軍団の補給線を軽視する** → 食料消費が 10倍になった。ヨーロッパ深部・北アフリカ・コーカサス方面への大遠征では補給基地の事前確保なしに大軍を送ると壊滅損耗を招く `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
-- **1.2: Coalition War Superiority 化を軽視する** → Belligerent が高い状態で連合を結成されると、首都占領なしに敗北する可能性がある。Belligerent 蓄積を定期的に Conciliatory 行動で解消することが重要 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
+- **1.2: 大軍団の補給線を軽視する** → 食料消費が 10倍になった。ヨーロッパ深部・北アフリカ・コーカサス方面への大遠征では補給基地の事前確保なしに大軍を送ると壊滅損耗を招く `[src: Patch_1.2 wiki + script verified]`
+- **1.2: Coalition War Superiority 化を軽視する** → Belligerent が高い状態で連合を結成されると、首都占領なしに敗北する可能性がある。Belligerent 蓄積を定期的に Conciliatory 行動で解消することが重要 `[src: Patch_1.2 wiki + script verified]`
 
 ### EU5 全般
 
@@ -601,6 +601,12 @@ DLC Fate of the Phoenix（Patch 1.2 同時リリース）はビザンツ帝国�
 - `game/in_game/common/government_reforms/`（政府改革 11種）
 - Patch 1.1「ロスバッハ」リリースノート
 - Patch 1.2「エキナデス」リリースノート（2026-05-06）
+
+#### Patch 1.2 スクリプト検証済み項目（`[src: Patch_1.2 wiki + script verified]`）
+
+- **Coalition War Superiority 化**: `game/in_game/common/casus_belli/coalition.txt` 行 13（`conquer_cost = 0.75`、`release_cost = 0.25`）、`game/in_game/common/wargoals/00_default.txt` 行 244–261（防衛側 `conquer_cost = 2.5`、`ticking_war_score = 0.5`）で確認
+- **Enforce Peace 双方合意必須**: `game/in_game/common/country_interactions/subject_enforce_peace.txt` 行 84–90、`game/in_game/common/country_interactions/union_enforce_peace.txt` 行 108–164 で双方合意ロジックを確認
+- **ロジ距離 50→30 / 食料消費 10倍**: `game/in_game/common/auto_modifiers/country.txt` 行 90（`supply_range` 定義）、`game/in_game/common/unit_categories/` 内 food_consumption 係数で確認
 
 ### 公式 Wiki（パッチ・DLC 情報）
 

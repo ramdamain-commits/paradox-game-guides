@@ -60,21 +60,21 @@
 
 `[src: religions/christian.txt:217-228]`
 
-> **1.2 更新**: Papal Authority 新システム（0-100）が導入され `[src: Patch_1.2 wiki + script verified]`、75↑でカトリック向けポジティブ効果、25↓でネガティブ効果（コミュニティ知見：75/25 閾値ボーナスの具体値はスクリプト未確認）。列聖コスト 150→75 `[src: prices/00_hardcoded.txt]`、外交破門コスト 100→50 `[src: prices/03_diplomacy.txt]`（コミュニティ知見：プロテスタント諸侯への早期破門が安価化）
+> **1.2 更新**: Papal Authority 新システム（0-100）が導入され `[src: Patch_1.2 wiki + script verified]`、75↑で全カトリック国に monthly_devotion +0.05・monthly_legitimacy +0.02・tolerance_heretic +1.0 `[src: religion.txt 行 776-791 + international_organization_triggers.txt 行 842-854]`、25↓で全カトリック国に monthly_devotion -0.1・monthly_legitimacy -0.03 `[src: religion.txt 行 776-791]`。列聖コスト 150→75 `[src: prices/00_hardcoded.txt]`、外交破門コスト 100→50 `[src: prices/03_diplomacy.txt]`（コミュニティ知見：プロテスタント諸侯への早期破門が安価化）
 
 #### Papal Authority（教皇権威）— 1.2 新システム
 
-`[src: Patch_1.2 wiki + script verified]`（0-100 範囲・初期値 60 はスクリプト確認済み。75/25 閾値ボーナスの具体値はスクリプト未確認）
+`[src: Patch_1.2 wiki + script verified]`（0-100 範囲・初期値 60 はスクリプト確認済み）
 
 0-100 のリソース。Catholic Church 国際組織（IO: International Organization）内で追跡。すべてのカトリックメカニクス・Situation と連動する。
 
-**効果テーブル**
+**効果テーブル**（全カトリック国均等適用） `[src: religion.txt 行 776-791 + international_organization_triggers.txt 行 842-854]`
 
-| 値 | 効果 |
-|---|------|
-| 75 以上 | カトリック向けポジティブ効果（具体値はスクリプト未確認） |
-| 25 以下 | ネガティブ効果（ペナルティ）（具体値はスクリプト未確認） |
-| 25-75 | 中立帯 |
+| 値 | 修正名 | 効果 |
+|---|--------|------|
+| 75 以上（high_papal_authority） | religion_modifier | monthly_devotion +0.05、monthly_legitimacy +0.02、tolerance_heretic +1.0 |
+| 25 以下（low_papal_authority） | religion_modifier | monthly_devotion -0.1、monthly_legitimacy -0.03 |
+| 25-75 | — | 中立帯（修正なし） |
 
 **アクションコスト変更（1.2）**
 
@@ -793,5 +793,5 @@ EU4 の宣教師システムは廃止され、EU5 では異なるメカニクス
 > スクリプト確認状況:
 > - 1.1 系: 2026-04-08 / EU5 Patch 1.1.10 時点
 > - 1.2「Echinades」対応: 2026-05-09
-> - 1.2 で script verified 済: 列聖コスト 75（`prices/00_hardcoded.txt`）、外交破門コスト 50（`prices/03_diplomacy.txt`）、Papal Authority 0-100 範囲（`international_organizations/catholic_church.txt`）
-> - 1.2 で wiki 情報ベース（コミュニティ知見・スクリプト未確認）: 75/25 閾値ボーナスの具体値、Papal States 重複破門不可、Rite Power 廃止 など
+> - 1.2 で script verified 済: 列聖コスト 75（`prices/00_hardcoded.txt`）、外交破門コスト 50（`prices/03_diplomacy.txt`）、Papal Authority 0-100 範囲（`international_organizations/catholic_church.txt`）、Papal Authority 閾値効果（high/low の religion_modifier 値）（`main_menu/common/static_modifiers/religion.txt` 行 776-791、`scripted_triggers/international_organization_triggers.txt` 行 842-854）
+> - 1.2 で wiki 情報ベース（コミュニティ知見・スクリプト未確認）: Papal States 重複破門不可、Rite Power 廃止 など
