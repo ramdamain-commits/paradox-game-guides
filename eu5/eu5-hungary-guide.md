@@ -48,14 +48,15 @@
 
 | 変更 | 内容 |
 |------|------|
-| 要塞駐屯 Heavy Infantry 限定 | Light Infantry（ハイドゥクは Light Infantry 系統と推定。スクリプト未確認）は要塞駐屯不可。国境守備の編成見直しが必要 `[src: Patch_1.2 wiki + script verified]` |
+| 要塞駐屯 Heavy Infantry 限定 | Light Infantry は要塞駐屯不可。国境守備の編成見直しが必要 `[src: Patch_1.2 wiki + script verified]` |
+| ハイドゥクの兵科分類 | ハイドゥクは Light Infantry 系統と推定（コミュニティ知見：スクリプト未確認） `[src: Patch_1.2 wiki]` |
 | 兵科 Heavy/Light 分類 | 歩兵・騎兵がそれぞれ Heavy/Light に分類。重騎兵・軽騎兵の使い分けが重要に `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | ロジスティクス距離 50→30、食料消費 10倍 | 対オスマン・対モルダヴィア遠征の補給線管理が必須に `[src: Patch_1.2 wiki + script verified]` |
 | 傭兵コスト +25% | 黒軍（Black Army）への傭兵依存度の再評価が必要 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 
 ### ハンガリープレイヤーが特に注意すべき変更
 
-- **Restore Roman Borders CB 新登場** — ビザンツが復興した場合、ハンガリー支配下のバルカン領土が標的化する最大の脅威 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
+- **Restore Roman Borders CB 新登場** — ビザンツが復興した場合、ハンガリー支配下のバルカン領土が標的化する最大の脅威 `[src: Patch_1.2 wiki + script verified]`
 - **300+ Advances・140+ DHE** — バルカン情勢がより動的・複雑化。トランシルヴァニア・ヴァラキア周辺の勢力変動に常に注意 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
 - **Claim Throne CB 制限** — 既に統治中の請求者では CB が不発になるため、ハンガリー王位継承戦略を事前に確認する
 - **要塞駐屯 Heavy Infantry 限定** — ハイドゥク（軽装歩兵系統と推測）を国境要塞守備に置く編成は 1.2 で機能しない

@@ -158,6 +158,7 @@
 | 自信仰への寛容 | tolerance_own +1 | `[src: religions/christian.txt:370]` |
 | 異端への寛容 | tolerance_heretic −1 | `[src: religions/christian.txt:371]` |
 | Rite Power | あり（`has_rite_power = yes`） | `[src: religions/christian.txt:365]` |
+| ※ Rite Power 存続確認 | 正教は 1.2 で廃止済み（→ Religious Influence 統合）。Miaphysite が廃止対象外かはスクリプト上確認済み（christian.txt:365 に `has_rite_power = yes` が残存）。 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | 最大 Religious Influence | 400 | `[src: religions/christian.txt:374]` |
 
 **建物：ミアフィジット修道院（Miaphysite Monastery）**

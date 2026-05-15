@@ -33,7 +33,7 @@
 | 変更 | 内容 | src |
 |------|------|-----|
 | Papal Authority 新リソース追加（0〜100 範囲） | 0〜100 の指標として導入 `[src: Patch_1.2 wiki + script verified]` |
-| Papal Authority 閾値効果 | 75 以上で全カトリック国に monthly_devotion +0.05・monthly_legitimacy +0.02・tolerance_heretic +1.0。25 未満で全カトリック国に monthly_devotion -0.1・monthly_legitimacy -0.03（教皇側/反教皇側の区別なく均等適用） | `[src: Patch_1.2 wiki + script verified]`（religion.txt 行 776-791） |
+| Papal Authority 閾値効果 | 75 以上で全カトリック国に monthly_devotion +0.05・monthly_legitimacy +0.02・tolerance_heretic +1.0。25 未満で全カトリック国に monthly_devotion -0.1・monthly_legitimacy -0.03（全カトリック国に均等適用される religion_modifier） | `[src: Patch_1.2 wiki + script verified]`（religion.txt 行 776-791） |
 | 列聖（Canonization）コスト Religious Influence 150 → 75 | コスト半減 | `[src: Patch_1.2 wiki + script verified]` |
 | 外交破門コスト 100 → 50 | プロテスタント諸侯への破門が安価化 | `[src: Patch_1.2 wiki + script verified]` |
 | Papal States の重複破門不可 | Papal States は既破門対象への重複破門不可、自身が単独で破門 Resolution を起動不可 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |

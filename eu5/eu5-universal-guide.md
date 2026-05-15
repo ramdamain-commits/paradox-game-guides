@@ -460,7 +460,7 @@ EU5 では時代（Age）ごとに進歩を選択する。国家固有の進歩�
 | 同君連合 | Personal Union (PU) | 君主を共有する国家間の関係 |
 | 官僚制 | Bureaucracies | 1.2 では未実装。代わりに Imperial Diet 等の固有メカニクスが導入された |
 | 帝国議会 | Imperial Diet | HRE 1.2 新規。加盟国の投票で帝国政策を決定するシステム |
-| 帝国兵器庫 | Imperial Armories | HRE 1.2 新規建造物。帝国内の軍事力底上げ `[src: Patch_1.2 wiki]`（コミュニティ知見：建造物効果の具体値はスクリプト未確認） |
+| 帝国兵器庫 | Imperial Armories | HRE 1.2 新規建造物。帝国内の軍事力底上げ。gold=500、自国所有時 local_manpower +0.0025、外国所有時 manpower_to_building_owner +0.005、皇帝のみ建設可 `[src: Patch_1.2 wiki + script verified]`（hre_buildings.txt 行 1-90、prices/01_buildings.txt 行 21） |
 | 教皇権威 | Papal Authority | 1.2 新規。0–100 のリソース。75↑で全カトリック国に devotion +0.05・legitimacy +0.02・heretic 寛容 +1.0、25↓で devotion -0.1・legitimacy -0.03 `[src: religion.txt 行 776-791]` |
 | 軽装歩兵 | Light Infantry | 1.2 分類。イニシアティブ +6.00、フランキング 100%。要塞駐屯不可 |
 | 重装歩兵 | Heavy Infantry | 1.2 分類。要塞駐屯可能 |
