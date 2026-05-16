@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-05-16
+
+### Added
+- EU5 ビザンツ帝国攻略ガイド（`eu5/eu5-byzantium-guide.md`）新規作成、1015 行
+  - Patch 1.2「Echinades」/ DLC Fate of the Phoenix の主役国家
+  - 全12章構成（パッチ差分・1337開始状況・Day 1・序盤/中盤/後半戦略・軍事・外交・内政・固有イベント・固有Advance・よくあるミス・用語・出典）
+  - DLC スクリプト一次検証済み: Restore Roman Borders CB / Pronoia サブジェクト / Katepanata 政体 / Cataphracts / Legionaries / Greek Fire Ships / Greek Fire Infantry / Varangians / Latinization vs Hellenization / 1337 開始状態（stability -45 / gold -300 / war_exhaustion 10）/ 正教 maximum_religious_influence 400
+  - スクリプト出典マーカー 131 箇所、コミュニティ知見明示 48 箇所
+- `eu5/localization-reference.md` にビザンツ固有用語 24 件追加（Pronoia / Katepanata / Cataphracts / Legionaries / Varangians / Greek Fire / Latinization vs Hellenization / Byzantine Succession Crisis 等）
+- `index.html` にビザンツガイドカード追加（カスティーリャ枠の次）
+
+### Changed
+- `eu5/eu5-regional-guide.md` のビザンツ評価「⚠ 非推奨」→「★★★ 上級」に昇格、新ガイドへの相互リンク追加
+  - DLC Fate of the Phoenix 実装により復興パスが確立されたため
+
 ## 2026-05-10
 
 ### Changed

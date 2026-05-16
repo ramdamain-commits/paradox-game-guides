@@ -268,6 +268,35 @@
 |----------|---------------|------|
 | SPA / Spain | スペイン | CAS からの国家形成 |
 
+## ビザンツ固有（Patch 1.2 / DLC Fate of the Phoenix）
+
+| 英語キー | ゲーム内日本語 | 補足 |
+|----------|---------------|------|
+| Byzantine Empire / BYZ | ビザンツ帝国 | 1337 開始時 タグ |
+| Restore Roman Borders | ローマ国境回復 | DLC 新規 CB。Fate of the Phoenix ディザスター後解禁 |
+| Pronoia | プロノイア | DLC 新規サブジェクト形態。BYZ 専用 |
+| Pronoia System | プロノイア制 | 行政ポリシー。Pronoia サブジェクトの母体 |
+| Komnenian Formalization | コムネノス朝公式化 | pronoia_system 後継ポリシー |
+| Palaeologan Hereditary Transition | パレオロゴス朝世襲移行 | pronoia_system 後継ポリシー |
+| Reformed Pronoia System | 改革プロノイア制 | pronoia_system 後継ポリシー |
+| Katepanata | カテパナタ | DLC 新規政体（総督府） |
+| Theme System | テマ制 | ビザンツ伝統的軍管区制 |
+| Kritai Katholikoi | 大判事会 | ビザンツ司法改革 |
+| Themata Bureaucracy | テマ官僚制 | ビザンツ固有官僚制 |
+| Imperial Senate Bureaucracy | 帝国元老院官僚制 | ビザンツ固有官僚制 |
+| Latinization vs Hellenization | ラテン化 vs ヘレナイゼーション | DLC Societal Value。BYZ 開始値 80（ヘレナイゼーション寄り） |
+| Cataphracts | カタフラクト | ビザンツ固有重騎兵。age_1 はベース、age_2 以降は DLC 必須 |
+| Legionaries | レギオナリイ | ビザンツ固有重歩兵。DLC + ROM タグ + Hellenization 必要 |
+| Greek Fire Ships | ギリシャ火炎船 | DLC 固有海軍。`unlocked_greek_fire` 変数必要 |
+| Greek Fire Infantry | ギリシャ火炎歩兵 | DLC 固有歩兵 |
+| Varangians | ヴァリャーグ親衛隊 | DLC + BYZ tag。最大戦力 10%、首都でのみ建設可 |
+| Byzantine Succession | ビザンツ式継承 | BYZ 固有後継者選定 |
+| Byzantine Succession Crisis | ビザンツ継承危機 | 固有ディザスター |
+| Fate of the Phoenix | フェニックスの宿命 | DLC 名 + メインディザスター |
+| Mutilation | 肢体切断 | ビザンツ固有キャラクター刑罰 |
+| Blinding | 盲目化 | ビザンツ固有キャラクター刑罰 |
+| ROM / Roman Empire | ローマ帝国 | BYZ からの国家変形（フォーム） |
+
 ---
 
 ## 運用ルール
