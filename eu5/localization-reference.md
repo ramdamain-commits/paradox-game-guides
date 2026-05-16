@@ -174,6 +174,9 @@
 | Renovatio Imperii | 帝国の復活 | 帝国統一の最終段階 |
 | Marriage Union | 婚姻連合 | 王室婚姻による共同防衛 |
 | Privilegium Maius | 大特許状 | ハプスブルク特権文書 |
+| Imperial Armory | 帝国兵器庫 | 1.2 で追加された HRE 建造物。皇帝のみ建設可、マンパワー移転 |
+| Personal Union (PU) | 同君連合 | 同じ統治者を戴く 2 国の連合。最低 50 年で統合可（script verified） |
+| cb_claim_throne | 王位請求 CB | 君主制同士で対象請求者が現君主でない場合に発動可能 |
 
 ## カスティーリャ / スペイン固有
 
