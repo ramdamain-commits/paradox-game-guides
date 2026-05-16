@@ -166,7 +166,7 @@ Cataphracts（カタフラクト）は Cataphracts age_1 アドバンスを取�
 ただし序盤の gold -300 では新規徴募の余地はほぼない。
 
 - **守備優先**: 首都と主要要塞の守備隊を最低限維持することを最優先とする
-- **攻撃戦争は 1400 年まで厳禁**: 財政・安定度・war_exhaustion の三重苦が改善するまで新たな戦争を始めない（コミュニティ知見）
+- **全面戦争は 1400 年まで厳禁**。ただし以下の条件を満たす限定的奪還戦のみ例外として検討可（→ 後述「奪還戦の注意点」）: 財政・安定度・war_exhaustion の三重苦が改善するまで新たな全面戦争を始めない（コミュニティ知見）
 - **要塞守備は Heavy Infantry のみ**: Patch 1.2 で Light Cavalry は要塞駐屯不可 `[src: Patch_1.2 wiki + script verified]`。Cataphracts（重騎兵）は要塞に配置できない点に注意
 
 ---
@@ -220,6 +220,8 @@ Cataphracts（カタフラクト）は Cataphracts age_1 アドバンスを取�
 
 **序盤に奪還を検討すべき目標（優先度順）**:
 
+**前提条件**: gold が月次黒字、war_exhaustion 5 以下、ハンガリーまたはセルビアと同盟済み。これらを満たさない限り全項目見送り。
+
 1. テッサリア（征服占領地の正式化）: すでに占領中なので、条件が整えば統合できる
 2. ブルガリアの弱体領域: オスマンと戦う前に背後を固める
 3. アルバニア海岸部（コアあり）: 将来の Adriatic 出口として価値がある
@@ -250,7 +252,7 @@ Cataphracts（カタフラクト）は Cataphracts age_1 アドバンスを取�
 5. **外交評価の維持**: 同盟国との評価を高く保つ。贈り物や婚姻で関係を強化する
 
 **正教の stability_cost 恩恵**:
-正教は stability_cost -0.10 を持つ `[src: religions/christian.txt]`。これにより安定度回復のコストが 10% 安くなる。sequence -45 から回復する長い道のりで、この割引は積み重ねると大きな節約になる。
+正教は stability_cost -0.10 を持つ `[src: religions/christian.txt — 正教固有か共通かは未確認]`。これにより安定度回復のコストが 10% 安くなる。sequence -45 から回復する長い道のりで、この割引は積み重ねると大きな節約になる。
 
 ---
 
@@ -286,7 +288,7 @@ Pronoia（プロノイア）は BYZ 固有の封臣制度 `[src: subject_types/D
 | 外交キャパ消費 | 0.75 | `[src: subject_types/D008_pronoia.txt]` |
 | 宗主国側 modifier | monthly_legitimacy +0.01、月次中央集権度低下 | `[src: subject_types/D008_pronoia.txt]` |
 | 臣属国側 modifier | global_manpower_modifier +0.10 | `[src: subject_types/D008_pronoia.txt]` |
-| strength_vs_overlord | -0.50（宗主国に対し 50% 抵抗減） | `[src: subject_types/D008_pronoia.txt]` |
+| strength_vs_overlord | -0.50（宗主国への反乱強度 -50%） | `[src: subject_types/D008_pronoia.txt]` |
 | 支払い | scaled_gold 0.2 / scaled_sailors 0.1 / scaled_manpower 0.1 | `[src: subject_types/D008_pronoia.txt]` |
 | 併合条件 | 20 年経過 + 関係 190 | `[src: subject_types/D008_pronoia.txt]` |
 
@@ -375,7 +377,7 @@ CB スペック `[src: casus_belli/D008_restore_roman_borders.txt]`:
 | wargoal | superiority_restore_roman_borders |
 | 攻者 conquer_cost | 0.5 |
 | 守者 conquer_cost | 0.5 |
-| ticking_war_score | 0.5 |
+| ticking_war_score | 0.5 /月 |
 | 対象範囲 | roman_borders_geography（バルカン・アナトリア・イタリア・イベリア・フランス・エジプト・イングランド諸州等広域） |
 
 **発動の前提**:
@@ -545,7 +547,7 @@ DLC「Fate of the Phoenix」が提供するビザンツ固有ユニット群は�
 |------|-----|
 | DLC 要件 | DLC 必須 |
 | タグ条件 | ROM タグ必須 |
-| ローカライゼーション条件 | `latinization_vs_hellenization` 必要 |
+| Hellenization 閾値条件 | `latinization_vs_hellenization` 必要 |
 | 段階 | 6 段階 |
 | 被強度ダメージ修正 | -0.10 |
 | 被士気ダメージ修正 | -0.10 |
@@ -568,7 +570,7 @@ DLC「Fate of the Phoenix」が提供するビザンツ固有ユニット群は�
 | 海軍 | Greek Fire Ships を主力に、汎用ガレー船で補完 | 制海権確保が最優先 |
 
 **統合軍備（Combined Arms）ボーナス**:
-歩兵（Greek Fire Infantry / Legionaries）+ 騎兵（Cataphracts）+ 砲兵の三兵科混成で統合軍備ボーナスが発生。Patch 1.1 で追加されたこのボーナスをビザンツ軍でも活用する（コミュニティ知見）。
+歩兵（Greek Fire Infantry / Legionaries）+ 騎兵（Cataphracts）+ 砲兵の三兵科混成で統合軍備ボーナスが発生。Patch 1.1 で追加されたこのボーナスをビザンツ軍でも活用する `[src: コミュニティ知見・スクリプト未確認]`。
 
 ### 兵科別の地形適性
 
@@ -786,7 +788,6 @@ Pronoia サブジェクト制度は元々封建的な土地割当制度に由来
 | アドバンス名 | 効果 | 取得優先度 | 備考 |
 |-------------|------|-----------|------|
 | Cataphracts age_1 | Cataphracts（DLC なし可）解放 | ★★★ | DLC なしでも利用できる唯一の固有重騎兵 |
-| ビザンツ固有進歩（確認中） | — | — | `[src: common/advances/country_byz.txt]` で詳細確認要 |
 
 `[src: common/advances/country_byz.txt]`
 
@@ -947,6 +948,7 @@ DLC なしでは Cataphracts age_1 を活かした限定的な固有軍事戦略
 | `game/in_game/common/casus_belli/coalition.txt` 行 13 | Coalition War conquer_cost 確認 |
 | `game/in_game/common/wargoals/00_default.txt` 行 244-261 | Superiority War ticking_war_score 確認 |
 | `game/in_game/common/auto_modifiers/country.txt` 行 90 | ロジスティクス距離定義 |
+| `game/in_game/common/bureaucracies/byz.txt` | ビザンツ固有官僚制アドバンス（スクリプト確認済み） |
 
 ### 参照ファイル（スクリプト未確認、wiki / コミュニティ知見）
 
@@ -956,7 +958,6 @@ DLC なしでは Cataphracts age_1 を活かした限定的な固有軍事戦略
 | `game/in_game/events/DHE/D008_flavor_BYZ.txt` | DLC 追加 BYZ フレーバー |
 | `game/in_game/common/disasters/byzantine_succession_crisis.txt` | ビザンツ継承危機ディザスター |
 | `game/in_game/common/character_interactions/d008_mutilations.txt` | 失明・肢体切断インタラクション |
-| `game/in_game/common/bureaucracies/byz.txt` | ビザンツ固有官僚制 |
 
 ### コミュニティ知見（スクリプト未確認項目一覧）
 
@@ -981,27 +982,7 @@ DLC なしでは Cataphracts age_1 を活かした限定的な固有軍事戦略
 - [Steam Workshop: EU5](https://steamcommunity.com/app/3450310/workshop/)
 - Reddit r/eu5
 
-### スクリプト検証済み項目の一覧
-
-`[src: ファイル名]` マーカーが付いた項目のうち、スクリプト確認が完了したものの一覧。
-
-| 項目 | 根拠ファイル |
-|------|------------|
-| BYZ 初期 gold -300・stability -45・war_exhaustion 10 等の全初期値 | `setup/start/10_countries.txt` |
-| Pronoia の全スペック（レベル・外交キャパ・modifier・strength_vs_overlord・支払い・可視条件） | `subject_types/D008_pronoia.txt` |
-| Katepanata の効果（統合速度 +0.10・完了後 +0.20） | `government_reforms/country_specific.txt` |
-| Cataphracts の全 Age スペック（移動速度・被ダメージ・士気ダメージ・地形ペナルティ・build_time） | `unit_types/D008_byzantine_unit_types.txt` |
-| Greek Fire Ships の cannons 数・強度ダメージ | `unit_types/D008_byzantine_unit_types.txt` |
-| Greek Fire Infantry の initiative・士気ダメージ・強度ダメージ | `unit_types/D008_byzantine_unit_types.txt` |
-| Varangians の max_strength・強度・士気ダメージ・首都限定建設 | `unit_types/D008_byzantine_unit_types.txt` |
-| Legionaries の被強度・士気ダメージ・initiative・combat_speed | `unit_types/D008_byzantine_unit_types.txt` |
-| Restore Roman Borders CB の conquer_cost・ticking_war_score・DLC ゲート | `casus_belli/D008_restore_roman_borders.txt` |
-| 正教の maximum_religious_influence 400・stability_cost -0.10 | `religions/christian.txt` |
-| Fate of the Phoenix ディザスターの DLC ゲート・CB 解禁トリガー | `disaster/D008_fate_of_the_phoenix.txt` |
-| Coalition War Superiority 化 | `casus_belli/coalition.txt` / `wargoals/00_default.txt` |
-| 要塞駐屯 Heavy Infantry のみ | `auto_modifiers/` 系 |
-| ロジ距離 30・食料消費 10 倍 | `auto_modifiers/country.txt` |
-| 傭兵コスト +25% | `auto_modifiers/` 系 |
+上記出典テーブルを参照
 
 ### 関連ガイド
 
