@@ -29,7 +29,7 @@
 
 ### 1.1→1.2 移行で旧戦略が無効化される事項（移行注意）
 
-- **Light Infantry を要塞守備に置く戦略は不可** — 駐屯できるのは Heavy Infantry のみ（破壊的変更）
+- **Light Infantry を要塞守備に置く戦略は不可** — 駐屯できるのは Heavy Infantry のみ（**破壊的変更**）
 - **傭兵を序盤の低コスト戦力として多用する戦略は見直しが必要** — 傭兵コスト +25% 追加で費用対効果が変化
 - **兵站延伸を前提とした遠征戦略は大幅に制限** — ロジスティクス距離 50→30・食料消費 10倍 `[src: auto_modifiers/country.txt 行 90 + script verified]`
 - **Enforce Peace による一方的停戦強制は不可** — 双方合意が必須に `[src: subject_enforce_peace.txt 行 84-90 + script verified]`（第三者介入スタイルの外交が変質）

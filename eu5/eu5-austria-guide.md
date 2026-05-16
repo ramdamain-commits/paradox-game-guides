@@ -18,7 +18,7 @@
 |------|------|-----|
 | Imperial Diet 投票システム刷新 | Diet 4段階（Court Assembly → Early Diet → Bicamerial → Tricamerial）の存在 `[src: Patch_1.2 wiki + script verified]`（hre.txt 行 15-38, 266-286）。各段階の投票権重（基本値: 皇帝 150 / 選帝侯・大司教選帝侯 各 75 / 自由都市 25 / 首座司教 4）`[src: Patch_1.2 wiki + script verified]`（hre.txt 行 15-38, 90-113, 160-183, 266-286）。Court Assembly 段階では皇帝 ×1.25・選帝侯/大司教 ×1.5・自由都市 ×0.1 の倍率変動。Tricamerial 段階では自由都市が ×2.0 に上昇（動的スコア country_combined_special_status_power による。wiki の「500/250/200」固定数値は誤り） | `[src: Patch_1.2 wiki + script verified]` |
 | Diet UI タブ化 | Overview / Members / Treasury の3タブ。投票前にツールチップで可決見込みを確認可能 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| 皇帝の Great Power Score 貢献 250 → 50 に削減 | **破壊的変更**: オーストリアの自動大国扱いが大幅に弱体化 | `[src: Patch_1.2 wiki + script verified]` |
+| 皇帝の Great Power Score 貢献 250 → 50 に削減 | （**破壊的変更**）オーストリアの自動大国扱いが大幅に弱体化 | `[src: Patch_1.2 wiki + script verified]` |
 | 同一王朝再選で +5 Imperial Authority | 同一王朝の皇帝が連続再選されると IA ボーナス | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | 皇帝が政体変更すると再選挙発生 | 政体変更で帝位が自動失効し選挙がトリガーされる | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | Imperial Armories（帝国兵器庫）新建造物 | 皇帝が HRE 構成員領土内に建造（HRE 加盟領内・law:military_contribution 必須）。建造コスト gold=500（HRE Treasury から支出）。自国所有時: local_manpower=+0.0025・can_recruit_regiment_in_this_location=yes。外国所有時: manpower_to_building_owner=+0.005。皇帝交代時に新皇帝へ自動移転 | `[src: Patch_1.2 wiki + script verified]`（hre_buildings.txt 行 1-90） |
