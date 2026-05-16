@@ -258,6 +258,8 @@ Steam デフォルト: C:\Program Files (x86)\Steam\steamapps\common\
 - **総括ブロック（複数クレームを1行に詰めた表現）は最初から行内分割する**。「1.2 更新: A、B、C、D、E `[src: ...]`」のような一括マーカー行は、サブエージェントレビューで必ず「クレーム単位の verified 状態が判別不能」指摘になる。最初から各クレームを別行・別マーカーで書く（regional-guide の旧行 136 の総括ブロック → 6行分割で解決した実例）
 - **`scales_with multiply = N` ブロックを伴う auto_modifiers の効果値は「スケール変数が最大値（通常 100）の時の値」であり「1 ポイントあたり」ではない**。線形スケールするため、表ヘッダに「X 100（最大）時の値」と明記する。実例（2026-05-16 EU5 universal-guide Complacency 修正）: `scales_with = { value = complacency multiply = 0.01 }` により列挙効果は慢心値 × 0.01 で線形適用。「1 ポイントあたり -50%」と記載すると 2 ポイントで -100% という誤読を生む
 - **「wiki 数値が誤りそう」と思ったら、まず stat 名そのものを script で grep する**。同名でも別 stat の可能性がある。実例（2026-05-16 EU5 Cavalry 二重確認）: 「Light Cavalry 移動速度 3.0」を疑って検証したら、`movement_speed`（戦略マップ移動）は実値 3.0 で正しく、別 stat の `combat_speed`（戦闘内速度）= 5 と混同しかけた。`grep -E "movement_speed|combat_speed"` のように全候補 stat を列挙して同定する
+- **EU5 ユニット定義の `impact` と `combat` は意味が異なる**。`impact = { terrain = -0.X }` は進軍コスト減（=移動しやすい、戦闘ボーナスではない）、`combat = { terrain = +0.X }` のみ戦闘力修正。両者を script verify する際に混同しない。実例（2026-05-16 EU5 ハンガリー軍事章）: ハンガリー・フサールの `impact = { flatland = -0.25 mountains = -0.25 }` を「平地・山岳での戦闘ボーナス」と誤読しかけたが、`impact` は進軍コスト系で戦闘ボーナスではない
+- **「固有ユニット」と書く前に解禁経路の advance ファイルを確認する**。ユニット定義（`unit_types/`）が国固有でも、解禁する advance が**地域 advance**（`advances/region_*.txt`）にある場合は複数文化グループで取得可能。`country_XXX.txt` 経由か `region_XXX.txt` 経由かで「固有」「地域共有」が分かれる。実例（2026-05-16 EU5 ハイドゥク検証）: `a_hajduk` 自体に HUN 専用フラグはなく、`balkan_hajduks` 地域 advance（バルカン・カルパティア圏首都が条件、POL・SER・ワラキア等も対象）経由で解禁される。「ハンガリー固有」と書くと不正確
 
 ---
 
@@ -403,3 +405,4 @@ Plan をコミットしたら即 subagent-driven-development で実行。
 - 全書き直しが必要な場合は、事前に変更前後のセクション見出し比較表をユーザーに提示してから着手する
 - **ガイド追加時は `index.html` にカードを追加する**（ゲームセクション内の `card-list` に `<li>` を追加、リンクは `viewer.html?file=パス` 形式）
 - **ローカライズ対照表の拡充をエージェントに委任するときはカテゴリを3つ以下に分割する**（全カテゴリ一括は走査ファイル数が多すぎてタイムアウトする）
+- **ガイド本体の用語対照表更新と中央 `localization-reference.md` 更新は別タスク**。implementer は本体側を更新するが、中央対照表はメイン側で確認すべき。新規追加用語のうち「他ガイドでも使う可能性のある汎用語（HRE 系・PU 系・CB 系・兵科系）」だけを中央に転載し、勢力固有用語（黒軍・フサール等）は本体のみで完結させる
