@@ -537,6 +537,42 @@
 
 ---
 
+## 1.13（Matcha）追加用語（汎用）
+
+複数ガイドで使用する 1.13 新規メカニクス用語。日本ガイド・プロイセンガイドで共通使用。
+
+| 英語 | 日本語 | 補足 |
+|------|--------|------|
+| Prominence | プロミネンス | 政治家の政治機構内での影響力指標。IG 指導者選出の主因が Popularity から変更 |
+| Gunboat Diplomacy | 砲撃外交 | 沿岸国相手の新外交アクション。条約交渉時の脅迫オプション |
+| Strategic Interest | 戦略的関心度 | 地域への関与度の階層指標（ティアド化）。Vital / Major / Minor の閾値 |
+| Single Commander | 単一指揮官制 | 1.13 で導入された軍事改編。1司令官あたりの軍団数上限・移動制約 |
+| Naval Overhaul | 海軍改修 | 1.13 の艦船デザイナー導入・旗艦・海戦システム改編・新型艦 20 種 |
+
+---
+
+## EP2 The Great Wave（日本固有）
+
+日本ガイドで使用する EP2 追加用語。詳細は [vic3-japan-guide.md](vic3-japan-guide.md) の用語対照表を参照。
+
+| 英語 / スクリプトキー | 日本語 | 補足 |
+|------------------|--------|------|
+| law_bakufu | 幕府 | 日本のみ表示の政体法 |
+| law_sakoku | 鎖国 | 日本文化専用の貿易政策法 |
+| law_warrior_caste | 武士階級 | 日本文化のみ表示の軍制法 |
+| ig_daimyo | 大名 | 維新前の地主 IG 名称 |
+| ig_kazoku | 華族 | 維新後の地主 IG 名称 |
+| je_meiji_restoration | 明治維新 JE | 維新の成否を決める中核 JE |
+| je_sakoku | 鎖国 JE | 開始時付与、開国まで継続 |
+| je_iwakura_mission | 岩倉使節団 JE | EP2 専用、外交承認の代替ルート |
+| kobu_gattai | 公武合体 | 維新 JE の幕府勝利分岐A |
+| kogi_yoron | 公議輿論 | 維新 JE の幕府勝利分岐B |
+| Treaty Port / treaty_port | 条約港 | 列強が強制設置する外交合意 |
+| forced_market_opening | 強制開国 | 条約で市場を強制された時の modifier |
+| Dejima | 出島 | 鎖国中の唯一の取引所建設可能地 |
+
+---
+
 ## 運用ルール
 
 - 攻略ガイドの用語はこのファイルを**正本**とする

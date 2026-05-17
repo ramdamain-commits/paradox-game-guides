@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026-05-17 VIC3 日本攻略ガイド 新規追加（EP2 + 1.13 海軍改修対応）
+
+### Added
+- `vic3/vic3-japan-guide.md` 新規作成（911 行、EP2 The Great Wave + Patch 1.13 Matcha 対応）
+  - パッチ 1.13 / DLC での日本関連変更点（砲撃外交・プロミネンス・単一指揮官制・戦略的関心度・海軍改修）
+  - 開始状況（1836年）: 周辺国関係 / 強み・弱み / IG 構造特殊性（幕府/大名/学者）
+  - 開国の軛（Unrecognized 脱却・不平等条約・関税）を序盤独立セクションとして配置
+  - 時系列戦略 序盤（1836-1860）/ 中盤（1860-1880）/ 終盤（1880-1936）
+  - 内政・経済（建設優先 / IG 管理（維新前後の遷移）/ プロミネンス活用 / 法律改正ロードマップ）
+  - 外交・同盟（必須外交 / Unrecognized→Recognized 昇格ルート / 1.13 新外交手段）
+  - 軍事ドクトリン（陸軍）+ 海軍ドクトリン（1.13 海軍改修反映、独立セクション）
+  - 固有イベント時系列（明治維新JE 攻略チャート: kobu_gattai / kogi_yoron 2 分岐の表形式）
+  - 技術・法律 / よくあるミス / 用語対照表 / 出典
+- `index.html` の Victoria 3 セクションに日本カード追加
+- スクリプト検証範囲: `common/journal_entries/00_meiji_restoration.txt`, `07_sakoku.txt`, `07_iwakura_mission.txt`, `07_japanese_religion.txt`, `07_korea_colonization.txt`, `common/laws/00_trade_policy.txt`, `common/interest_groups/00_landowners.txt`, `common/static_modifiers/00_ep2_04_modifiers.txt` 他（src マーカー 128 件、未検証マーカー 6 件、コミュニティ知見マーカー 40 件）
+- EU4 派生メカニクス混入チェック完了（fabricate_claim / forge_claim / spy_network / 領有権主張捏造 / 理念グループ / 交易ノードはすべて不在確認、VIC3 固有の関税は注意書きで区別）
+
 ## 2026-05-17 ハンガリーガイド 序盤〜中盤 1.2 再整合
 
 ### Fixed
