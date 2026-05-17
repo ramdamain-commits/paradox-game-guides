@@ -92,8 +92,10 @@
 |----------|---------------|------|
 | Casus Belli | 開戦事由 | 戦争の正当化根拠。略称 CB |
 | War Goal | 戦争目標 | 戦争で達成すべき目標 |
-| Claims on Province | 州の請求 | 領有権主張に基づく CB |
-| Fabricated Claims | 州の請求（根拠なし） | 捏造した請求権 |
+| Claims on Province | 州の請求 | `cb_conquer_province`。**コア（`integration_level = core`）取得後**に使用可能な汎用征服 CB `[src: casus_belli/conquest.txt]` |
+| Dubious Claims | 州の請求（根拠なし） | `cb_fabricated_conquer_province`。コア取得を前提とする外交ペナルティ付き征服 CB。**EU4 のスパイ「請求権捏造（fabricate_claim）」アクションは EU5 に存在しない** — 1.2 で `spy_actions/` 自体が無く、`scripted_relations/` のスパイ網にも Claim 付与効果なし `[src: casus_belli/fabricated_conquest.txt + scripted_relations/sow_discontent.txt + script verified]` |
+| Conquer Enemy | 敵対国の征服 | `cb_conquer_enemy`。**ライバル指定された敵対国専用の征服 CB（コア不要）**。序盤の主力 CB `[src: casus_belli/conquer_enemy.txt + script verified]` |
+| Disloyal Subject | 不忠な属国 | `cb_disloyal_subject`。属国が離反した場合の再征服 CB `[src: casus_belli/disloyal_subject.txt]` |
 | Claim Throne | 王位の請求 | 王位を請求する CB |
 | Crusade | 十字軍 | 宗教的大義の CB |
 | Humiliate Rival | ライバルに屈辱を与える | ライバル国への CB |

@@ -1,5 +1,27 @@
 # Changelog
 
+## 2026-05-17 ハンガリーガイド 序盤〜中盤 1.2 再整合
+
+### Fixed
+- 序盤〜中盤セクション（行 150〜394）の 1.0〜1.1 残存記述を一掃
+  - `flavor_hun.2`（議会と摂政問題）トリガーに `has_parliament` 等 6 条件を明示。option A の貴族満足度を `mild_penalty` → `weak_penalty` に訂正
+  - ドラゴン騎士団（`flavor_hun.410`）に `order_of_chivalry_law` 必須条件を明記
+  - ヴィシェグラード会議（`flavor_hun.330`）にカローイ・ロベルト＋カジミェシュ 3 世のキャラクター存命条件を追記、成立時の `union_of_crowns_succession` 継承法変更も追加
+  - マティアス・コルヴィヌス（`flavor_hun.110`）が `dynasty:hunyadi_dynasty` 判定で固有キャラ ID 不在であることを注記
+- 市場中心ロケーション誤記を修正: ブダ（首都・wine 産地）に市場を建てる記述 → ペスト（wheat 穀倉地、`is_market_center`）の市場ツリー強化に修正（Day 1 とフェーズ 1 の 2 箇所）
+- EU4 派生メカニクスの除去:
+  - 「諜報→請求権捏造（fabricate_claim）」前提の戦略記述を削除（EU5 1.2 に `spy_actions/` 自体が存在せず、`scripted_relations/` のスパイ網にも Claim 付与効果なし）
+  - ボスニアを「ライバル設定」対象から除外。`flavor_BOS.txt:28` の `is_subject_of = c:HUN` で開始時 HUN 属国を間接確認、`disloyal_subject` CB 経路に統一
+  - CB 取得ルートを `cb_conquer_enemy`（ライバル相手・コア不要）/ `cb_conquer_province`（コア要、Claims on Province）に分離
+
+### Added
+- `eu5/localization-reference.md` の CB セクションに 4 項目追加: Claims on Province / Dubious Claims / Conquer Enemy / Disloyal Subject。「EU4 のスパイ請求権捏造は EU5 に存在しない」を Dubious Claims の補足として明記
+- ハンガリーガイド本文の用語対照表に同 4 項目を追記（`flavor_BOS.txt:28` 出典も付与）
+- `.gitignore` に `_staging/` を追加（subagent の script-check / review メモは local のみ保持）
+
+### Changed
+- `CLAUDE.md` に学び 5 件追記: EU4 派生メカニクス横断スキャン・市場の location 依存・属国スタートの間接確認・ユーザー指摘起点の researcher 即委任パターン・追加検証フロー
+
 ## 2026-05-16 ハンガリーガイド ビザンツ並み粒度に拡張
 
 ### Added

@@ -151,8 +151,10 @@
 
 ### 即座にやること
 
-1. **ブダに市場（Marketplace）を建設**
-   - 交易収入の土台を最優先で確保
+1. **ペストの市場（Marketplace）ツリーを強化**
+   - 市場中心は首都ブダではなく隣接の **ペスト**（Pest、`raw_material = wheat`）。Entrepot / Trading Hub 系はペスト側に積む `[src: map_data/location_templates.txt, pest/buda]`
+   - ブダ（`raw_material = wine`、首都・宮廷拠点）は `is_market_center` フラグを持たない想定のため、市場系はそもそも建造不可。ペスト未保有の例外時のみブダ建造を検討
+   - コミュニティ知見：交易収入の土台は「ペストの市場ツリー＋スロバキア鉱山との内陸ルート」
 
 2. **内閣（Cabinet）を安定度（Stability）投資に割り当て**
    - 序盤の安定度維持が内政の土台
@@ -161,9 +163,11 @@
    - 維持費を浮かせて経済基盤を作る
    - 対オスマン防衛に重要なベオグラード方面の要塞は残す
 
-4. **ライバル設定: セルビア、ボスニア、ワラキア**
-   - 「州の請求（Claims on Province）」の開戦事由を確保しやすくする
-   - ライバル国には領有権主張（Claim）を捏造しやすくなり、戦争の正当性を得やすい
+4. **ライバル設定: セルビア、ワラキア**（ボスニアは含めない）
+   - ライバル指定で `cb_conquer_enemy`（敵対関係を条件とする征服 CB、コア不要）を解放し、戦争の正当性を得る `[src: casus_belli/conquer_enemy.txt + script verified]`
+   - 一方の **`cb_conquer_province`（「Claims on Province」）はコア（`integration_level = core`）取得後にのみ使用可能**。征服後に `cabinet_actions/integrate_province.txt` でコアを育てる流れになる
+   - **EU5 にはスパイによる Claim 捏造（EU4 の fabricate_claim）は存在しない**（1.2 スクリプト確認、`spy_actions/` 自体が存在せず `scripted_relations/` のスパイ網にも Claim 付与効果はない）。「請求権捏造」前提の戦略は通用しないため注意 `[src: scripted_relations/sow_discontent.txt, corrupt_officials.txt + script verified]`
+   - **ボスニアは開始時 HUN の属国**（`flavor_BOS.txt:28` で `is_subject_of = c:HUN` トリガー確認）。属国にはライバル指定そのものが通常不可。継続属国化 → 統合（Integrate）か、離反時の `disloyal_subject` CB で再征服する `[src: events/DHE/flavor_BOS.txt + script verified]`
 
 5. **ポーランドとの関係改善（Improve Relations）を開始**
    - 王室間の婚姻（Royal Marriage）を結び、同君連合チャンスに備える
@@ -180,7 +184,7 @@
 
 ### 軍編成の基本方針（→ 詳細は[軍事ドクトリン](#軍事ドクトリン)を参照）
 
-- ハンガリーの固有進歩「複合弓軽騎兵」で騎兵戦力 +20% `[src: advances/country_HUN.txt + script verified]`。序盤から**騎兵比率を 40〜50%** に保つ
+- ハンガリーの固有進歩「複合弓軽騎兵」で騎兵戦力 +20% `[src: country_HUN.txt, hun_composite_light_cavalry + script verified]`。序盤から**騎兵比率を 40〜50%** に保つ
 - 将軍は騎兵戦力に寄与する特性（Trait）を重視
 - 統合軍備（Combined Arms）ボーナスにより、歩兵・砲兵も混ぜるメリットがある
 
@@ -194,10 +198,10 @@
 
 **やること:**
 
-- セルビア・ボスニアをライバル設定し、州請求（Claim）を捏造
+- **セルビア・ワラキア**をライバル設定して `cb_conquer_enemy` を確保（ボスニアは属国のためライバル不可）。請求権捏造メカニクスは 1.2 でも存在しないため、コア育成は征服後の `Integrate` で進める
 - ポーランドへの王室婚姻を早期に実施
-- ヴィシェグラード会議（`flavor_hun.330`、→ 詳細は[固有イベント時系列](#固有イベント時系列)参照）の発火を待ちながら対 POL 関係を維持
-- ブダへの市場・製材所建設を優先。スロバキア鉱山地帯の開発開始
+- ヴィシェグラード会議（`flavor_hun.330`、→ 詳細は[固有イベント時系列](#固有イベント時系列)参照）の発火を待ちながら対 POL 関係を維持（注意: 現君主がカローイ・ロベルト `character:hun_karoly_robert`、かつ POL の君主がカジミェシュ 3 世 `character:pol_casimir_iii_piast` である必要がある。1337〜1370 内にどちらかが死亡・交代するとイベントが不発になる）
+- **ペスト**の市場ツリー強化を最優先（市場中心はブダではなくペスト）。ブダには製材所など非市場系のインフラを積み、スロバキア鉱山地帯の開発を並行
 - 不要要塞の削除で維持費を抑制
 
 **避けること:**
@@ -208,7 +212,7 @@
 
 **関連イベント:**
 
-- `flavor_hun.330` ヴィシェグラード会議（1337-1370）→「あの合意を成文化しよう」でポーランド関係強化 + PU pact 契機 `[src: events/DHE/flavor_HUN.txt]`
+- `flavor_hun.330` ヴィシェグラード会議（1337-1370）→「あの合意を成文化しよう」でポーランド関係強化 + PU pact 契機 `[src: events/DHE/flavor_HUN.txt]`（トリガー条件: 現君主 `character:hun_karoly_robert`・POL 君主 `character:pol_casimir_iii_piast`。カローイ・ロベルトの早期死亡か POL 君主交代でイベント不発になる）
 - `flavor_hun.340` [国名]の金（1340-1390）→「禁令を延長しろ」で Gold +2 scale `[src: events/DHE/flavor_HUN.txt]`
 - `flavor_hun.350` 1222 年の金印勅書（1340-1440）→ 状況次第（コミュニティ知見：効果詳細未確認）`[src: events/DHE/flavor_HUN.txt]`
 
@@ -220,7 +224,8 @@
 
 | 順位 | 対象 | 方法 | 備考 |
 |------|------|------|------|
-| 1 | セルビア・ボスニア | 州の請求（CB）で征服 | 弱小国。最初の拡張先 |
+| 1 | セルビア | ライバル指定 → `cb_conquer_enemy` で征服 → コア化 | 弱小国。最初の拡張先 |
+| 1' | ボスニア | **開始時属国**。継続属国化 → 統合、離反時のみ `disloyal_subject` CB で再征服 | ライバル設定・征服 CB 直接利用は不可 |
 | 2 | ワラキア | 辺境伯領（March）化 | オスマンとの緩衝地帯。属国に留める |
 | 3 | ダルマチア海岸 | 状況次第で征服 | ヴェネツィア領と接するため外交注意 |
 
@@ -240,7 +245,7 @@
 **関連イベント:**
 
 - `flavor_hun.600` ボスニア問題（1340-1500）→ 外交対応
-- `flavor_hun.220` セルビア陥落（SER 消滅後）→ セルビア人移民（amount 0.2、20 年）`[src: events/DHE/flavor_HUN.txt]`
+- `flavor_hun.220` セルビア陥落（SER 消滅後）→ セルビア人移民（amount 0.2、20 年）`[src: events/DHE/flavor_HUN.txt]`（スクリプト上は `from=1337.1.1` だが実質的な発火は SER 消滅後に限定される）
 - `flavor_hun.520` ブラン城（1377-1420）→ ブラショフ所有時にトランシルヴァニア要塞建設
 
 ### フェーズ3: 黒死病対策と中盤準備（1370〜1400）
@@ -285,13 +290,20 @@
 
 ### 議会と摂政問題（1444〜1470）
 
-フニャディ存命・摂政状態・戦争中という条件が揃うと `flavor_hun.2` が発火する（月 50%）。
+以下の条件がすべて揃うと `flavor_hun.2` が発火する（月 50%）。`[src: events/DHE/flavor_HUN.txt, flavor_hun.2]`
+
+- 議会（Parliament）を保有している（`has_parliament = yes`）
+- 摂政状態である（`has_regent = yes`）
+- 戦争中である（`at_war = yes`）
+- フニャディ・ヤーノシュが存命（`character:hun_janos_hunyadi is_alive`）
+- 現君主がフニャディでない
+- 現摂政がフニャディでない
 
 **イベント内容（`flavor_hun.2`）:**
 
 | 選択肢 | 効果 | 推奨 |
 |--------|------|------|
-| A「フニャディを摂政に」 | 名声 weak_bonus、貴族満足度 mild_penalty | **推奨**（コミュニティ知見：軍事優先なら） |
+| A「フニャディを摂政に」 | 名声 weak_bonus、貴族満足度 weak_penalty | **推奨**（コミュニティ知見：軍事優先なら） |
 | B「現評議会維持」 | 貴族満足度 mild_bonus | 内政安定優先なら |
 | C「フニャディを新国王に」 | 正統性 weak_penalty、フニャディ君主化 | 状況次第（コミュニティ知見） |
 
@@ -302,6 +314,10 @@
 イベント「[年]年のヴィシェグラード会議」（`flavor_hun.330`）で外交ボーナスが得られる。
 
 - 選択肢「あの合意を成文化しよう」を選ぶとポーランドとの関係が強化される。POL に `hun.331` が送られ、POL が合意すれば `union_of_crowns_pact` が成立する `[src: events/DHE/flavor_HUN.txt]`
+  - 成立時（`flavor_hun.332`）の追加効果:
+    - `union_of_crowns_pact` リレーションが形成される
+    - **継承法が `union_of_crowns_succession` に変更**される（内政・後継者選定に大きく影響するため注意）
+    - POL との Opinion modifier `agreed_second_congress_of_visegrad` が付与される
 - ポーランドが出席すれば第 2 回会議（`flavor_hun.331/.332`）につながる
 - ポーランドが拒否した場合（`flavor_hun.18`）は関係に影を落とすが、致命的ではない
 
@@ -316,6 +332,8 @@
 ### マティアス・コルヴィヌスの改革（1466〜1470）
 
 ハンガリアディ家の君主が存在する場合に発火（月 10%）。`flavor_hun.110`。
+
+> **注:** スクリプト上のトリガーは `dynasty = dynasty:hunyadi_dynasty` による王朝判定であり、マティアス固有のキャラクター ID は存在しない（コミュニティ知見: `hun_karoly_robert` のような固有スクリプト ID ではマティアスを個別に特定できない）。
 
 **3 択の効果:**
 
@@ -354,7 +372,7 @@
 
 ### セルビア陥落とセルビア人移民（`flavor_hun.220`）
 
-SER 消滅後、ベオグラード保有・キリスト教・TUR 非同盟・ベオグラードがセルビア文化という条件で発火。
+SER 消滅後、ベオグラード保有・キリスト教・TUR 非同盟・ベオグラードがセルビア文化という条件で発火。なおスクリプト上の `from=1337.1.1` との乖離に注意（実際の発火タイミングは SER 消滅依存であり 1337 年とは限らない）。
 
 - TUR セルビア文化都市 1か所からベオグラードへ移民（amount 0.2、20 年継続）
 - セルビア系人口の流入がベオグラードの人的資源・人口を補強する
@@ -363,7 +381,7 @@ SER 消滅後、ベオグラード保有・キリスト教・TUR 非同盟・ベ
 
 ### ドラゴン騎士団（1400〜1450）
 
-`flavor_hun.410`：騎士団法律保持・非戦時・君主在位・バルカンにオスマン文化イスラム都市 5 以上という条件で発火（月 5%）。
+`flavor_hun.410`：**騎士団法律（`order_of_chivalry_law`）保持**・非戦時・君主在位・バルカンにオスマン文化イスラム都市 5 以上という条件で発火（月 5%）。`[src: events/DHE/flavor_HUN.txt, flavor_hun.410 + laws/04_order_of_chivalry.txt]`
 
 | 選択肢 | 効果 |
 |--------|------|
@@ -1028,7 +1046,10 @@ Age 5 解禁の地形特化型軽装歩兵。重要注意点が 2 点ある。
 | 橋 | Bridge | 湖・河川の近接障壁を解消する建造物 |
 | 製材所 | Lumber Mill | 建設資材を生産する建造物 |
 | 要塞 | Fortification | 防衛施設。支配領域（ZoC）を発生させる |
-| 州の請求 | Claims on Province | 領有権主張に基づく開戦事由 |
+| 州の請求 | Claims on Province / `cb_conquer_province` | **コア取得後に使える** 汎用征服 CB。EU4 の「Claim」概念とは別物（EU5 は core/integration_level で管理）`[src: casus_belli/conquest.txt + script verified]` |
+| 州の請求（根拠なし） | Dubious Claims / `cb_fabricated_conquer_province` | コア取得を前提とする外交ペナルティ付き征服 CB。**EU4 のスパイ「請求権捏造」は EU5 1.2 に存在しない**（`spy_actions/` 自体なし、`scripted_relations/` のスパイ網にも Claim 付与効果なし）`[src: casus_belli/fabricated_conquest.txt + scripted_relations/sow_discontent.txt + script verified]` |
+| 敵対国の征服 | Conquer Enemy / `cb_conquer_enemy` | **ライバル相手専用、コア不要** の征服 CB。序盤の主力 `[src: casus_belli/conquer_enemy.txt + script verified]` |
+| 不忠な属国 | Disloyal Subject / `cb_disloyal_subject` | 属国が離反した場合の再征服 CB。ボスニア（開始時 HUN 属国）の対応経路 `[src: casus_belli/disloyal_subject.txt + events/DHE/flavor_BOS.txt:28 + script verified]` |
 | 王室間の婚姻 | Royal Marriage | 王族同士の婚姻外交 |
 | 関係改善 | Improve Relations | 外交アクション |
 | RGO | Resource Gathering Operations | 資源採取。ゲーム内でも「RGO」とアルファベット表記 |
