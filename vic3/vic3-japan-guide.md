@@ -82,11 +82,11 @@
 
 | IG トレイト | 発動条件 | 効果 |
 |------------|---------|------|
-| 普代大名支持（ig_trait_fudai_support） | IG が幸福（happy）以上 | 行政力（Bureaucracy）+5%、権力（Authority）+5% |
-| 外様発言力（ig_trait_outspoken_tozama） | IG が不幸（unhappy）以下 | 権力（Authority）-5%、徴兵率（Conscription Rate）-10% |
+| 普代大名支持（ig_trait_fudai_support） | IG が幸福（happy）以上 | 行政力（Bureaucracy）+5%、権威（Authority）+5% `[src: common/interest_groups/00_landowners.txt:342-356]` |
+| 外様発言力（ig_trait_outspoken_tozama） | IG が不幸（unhappy）以下 | 権威（Authority）-5%、徴兵率（Conscription Rate）-10% `[src: common/interest_groups/00_landowners.txt:342-356]` |
 
-- 大名 IG は**不満時に外様トレイトで権力を削り、満足時に普代トレイトで権力を補強する**。
-  維新を進める際に大名を与党から外す場合、不満状態を長引かせると権力ペナルティが蓄積する点に注意。
+- 大名 IG は**不満時に外様トレイトで権威（Authority）を削り、満足時に普代トレイトで権威（Authority）を補強する**。
+  維新を進める際に大名を与党から外す場合、不満状態を長引かせると権威ペナルティが蓄積する点に注意。
 - プロミネンス加算: c:JAP かつ維新未完了（japan_restoration_complete 変数なし）の場合に +5 `[src: common/interest_groups/00_landowners.txt:752-761]`
 - 維新完了後: 名称が **華族（ig_kazoku）** に変更され、ideology も通常地主（ideology_hierarchic）と同一になる `[src: common/journal_entries/00_meiji_restoration.txt]`
 
@@ -174,7 +174,7 @@
 
 1. **開国**（鎖国法の廃止）: je_sakoku の完了条件。影響力・外交選択肢が回復する
 2. **伝統主義（traditionalism）廃止**: je_meiji_diplomacy（外交承認サブ JE）の完了条件の一つ `[src: common/journal_entries/00_meiji_restoration.txt:79]`
-3. **認知（Recognized）獲得**: je_meiji_diplomacy 完了条件。非従属かつ Recognized 状態が必要
+3. **認知（Recognized）獲得**: je_meiji_diplomacy の完了後に recognized 状態が達成される。recognized は完了の結果であり、je_meiji_diplomacy の完了条件に「recognized であること」という循環参照はない（完了条件は「traditionalism 廃止・非従属」の 2 点）
 4. DLC あり時: **岩倉使節団 JE（je_iwakura_mission）** が外交承認サブ JE の代替として機能し、技術ボーナスも同時に獲得できる `[src: common/journal_entries/07_iwakura_mission.txt]`
 
 > **注意**: VIC3 の「関税（Tariff）」は鎖国法の state_tariff_import_add / state_tariff_export_add で実装された VIC3 固有の経済システムであり、EU4 の交易ノード関税とは別物。`[src: common/laws/00_trade_policy.txt:290]`（章8 grep 確認済み）
@@ -184,16 +184,17 @@
 ## Day 1（ポーズ解除直後）
 
 1. **維新 JE（je_meiji_restoration）の発動条件を確認する**
-   - 発動（is_shown_when_inactive）には「君主制かつ幕府法、鎖国でないこと」が必要
-   - ゲーム開始直後は鎖国中のため **JE はまだ発動しない**
-   - まず開国（鎖国法の廃止）を中期目標として設定する `[src: common/journal_entries/00_meiji_restoration.txt]`
+   - 表示（is_shown_when_inactive）条件: c:JAP = THIS、君主制（law_monarchy）、幕府法（law_bakufu）、japan_restoration_complete 変数なしの 4 点 `[src: common/journal_entries/00_meiji_restoration.txt]`
+   - 可能（possible）条件に「鎖国系法律でないこと（law_sakoku / law_closed_borders でないこと）」が含まれる `[src: common/journal_entries/00_meiji_restoration.txt]`
+   - ゲーム開始直後は鎖国中のため **JE は表示されるが可能条件を満たさない**
+   - まず開国（鎖国法の廃止）を中期目標として設定する
 
 2. **鎖国 JE（je_sakoku）の状態を確認する**
    - DLC あり時は開始時に自動付与済み
    - 失敗すると sakoku_entrenched_modifier が付与されるため、維新路線なら早期に法律変更を進める
 
 3. **大名 IG（ig_daimyo）の承認度を確認する**
-   - 承認度が happy 以上で普代大名支持（権力・行政力 +5%）、unhappy 以下で外様発言力（権力 -5%、徴兵率 -10%）が発動
+   - 承認度が happy 以上で普代大名支持（権威・行政力 +5%）、unhappy 以下で外様発言力（権威 -5%、徴兵率 -10%）が発動
    - 開始直後に承認度ラインを確認し、維新 JE 進行中の IG 管理方針を立てる `[src: common/interest_groups/00_landowners.txt:342-356]`
 
 4. **天保の大飢饉 JE（je_tenpo_crisis）の状況を確認する**
@@ -237,10 +238,10 @@
 
 序盤の ig_landowners は日本文化時に「大名（ig_daimyo）」名称に切り替わり、プロミネンスに +5 の補正が付く（`common/interest_groups/00_landowners.txt:752-761`）。大名IG は内部に **普代大名（ig_trait_fudai_support）** と **外様大名（ig_trait_outspoken_tozama）** の 2 トレイトが共存する。
 
-- 普代大名トレイトは満足度 happy 以上で効果が発動（行政力・権力 +5%）
-- 外様大名トレイトは満足度 unhappy 以下でのみ発動（権力 -5%・徴兵率 -10%）
+- 普代大名トレイトは満足度 happy 以上で効果が発動（行政力・権威 +5%）
+- 外様大名トレイトは満足度 unhappy 以下でのみ発動（権威 -5%・徴兵率 -10%）
 
-大名 IG を不満にすると外様トレイトが活性化して権力が削られる。維新前は大名 IG の承認を「happy だが过度に満足させない」水準に保つことが安定運用の基本となる。
+大名 IG を不満にすると外様トレイトが活性化して権力が削られる。維新前は大名 IG の承認を「happy だが過度に満足させない」水準に保つことが安定運用の基本となる。
 
 ---
 
@@ -268,10 +269,10 @@ JE が表示されると同時に `movement_meiji_restorationist`（尊皇攘夷
 
 `restoration_timer_var >= 6`（連続 6 ヶ月の条件維持）で維新完了判定が発動する。
 
-**维新成立（帝政勝利）の報酬**（`on_complete` 記述）
+**維新成立（帝政勝利）の報酬**（`on_complete` 記述）
 
 - 首都が STATE_KANTO に移動し東京に改称
-- ig_landowners が **华族（ig_kazoku）** に名称変更、ideology が `ideology_hierarchic` に更新
+- ig_landowners が **華族（ig_kazoku）** に名称変更、ideology が `ideology_hierarchic` に更新
 - 優先 IG（ig_industrialists または ig_intelligentsia）に `meiji_favored_ig` modifier（政治力 +50%、very_long 期間）付与
 - `japan_display_add_meiji_reforms = yes` による改革表示の有効化
 
@@ -281,10 +282,10 @@ JE が表示されると同時に `movement_meiji_restorationist`（尊皇攘夷
 
 | 分岐名 | 条件概要 | 勝利結果 |
 |--------|----------|----------|
-| 公武合体（kobu_gattai） | `law_bakufu` 維持＋天皇婚姻完了＋幕府更新 | `modifier_court_and_shogunate`（権力 +10%・士官政治力 +25%・貴族政治力 -25%） |
-| 公議輿論（kogi_yoron） | 選挙権あり・天皇復位・大名IG与党（徳川リーダー） | `modifier_continuity_and_enlightenment`（正当性 +10・技術伝播 +25%）または `modifier_taikun_monarchy`（正当性 +5・影響力 +10%） |
+| 公武合体（kobu_gattai） | `law_bakufu` 維持＋天皇婚姻完了＋幕府更新 | `modifier_court_and_shogunate`（権威 +10%・士官政治力 +25%・貴族（Aristocrats）政治力 -25%）`[src: common/static_modifiers/00_ep2_04_modifiers.txt]` |
+| 公議輿論（kogi_yoron） | 選挙権あり・天皇復位・大名IG与党（徳川リーダー） | `modifier_continuity_and_enlightenment`（正当性 +10・技術伝播 +25%・近代主義者 pop support +15%）または `modifier_taikun_monarchy`（正当性 +5・影響力 +10%）`[src: common/static_modifiers/00_ep2_04_modifiers.txt]` |
 
-いずれの分岐も `je_meiji_restoration` が fail に至ると `sakoku_entrenched_modifier` 付与のリスクがある（`common/journal_entries/07_sakoku.txt` fail 記述）。
+いずれの幕府ルート分岐も、別途 `je_sakoku` が fail に至ると `sakoku_entrenched_modifier` が付与される。`sakoku_entrenched_modifier` は `je_sakoku` の失敗効果であり、`je_meiji_restoration` の失敗効果ではない点に注意（`[src: common/journal_entries/07_sakoku.txt, fail]`）。
 
 **内戦処理の注意点**（コミュニティ知見）
 
@@ -437,7 +438,7 @@ The Great Wave DLC（ep2_content）が有効な場合、`je_meiji_diplomacy`（�
 
 | 優先度 | 法律 | 目的 |
 |--------|------|------|
-| 最高 | 鎖国廃止 → `law_free_ports` または `law_protectionism` | 維新 JE の可能条件を解除（鎖国系でないこと） |
+| 最高 | 鎖国廃止 → 孤立主義（`law_isolationism`）系への移行（`law_free_ports` という法律 ID はスクリプト未確認。（未検証）） | 維新 JE の可能条件を解除（鎖国系でないこと） |
 | 高 | `law_warrior_caste` 廃止（他 army_model への移行） | 維新後に `je_meiji_army` で必要。`pm_samurai_training` 廃止の前提（`common/laws/...` warrior_caste 記述） |
 | 高 | `law_hereditary_bureaucrats` → より近代的な官僚制 | 行政力の安定確保 |
 | 中 | `law_serfdom` → `law_tenant_farmers` | 農村部の急進化を抑制し、維新後の経済基盤整備 |
@@ -458,7 +459,7 @@ The Great Wave DLC（ep2_content）が有効な場合、`je_meiji_diplomacy`（�
 | 中 | 選挙権系（`law_wealth_voting` → 段階的拡張） | 知識人・労働組合の満足度を長期管理 |
 | 低 | `law_freedom_of_press` / 報道系 | 急進化が落ち着いた終盤に対応 |
 
-> `je_meiji_diplomacy` の条件に「伝統主義廃止」が含まれるため、`law_traditionalism` 系の法律は早めに廃止対象に組み込むこと。
+> `je_meiji_diplomacy` の条件に「traditionalism 廃止」が含まれるため、対象法律は早めに廃止対象に組み込むこと。廃止すべき具体的な法律 ID（`law_traditionalism` 等）はスクリプト未確認のため実ゲームで確認すること。（未検証）
 
 **宗教法律の選択（維新後）**
 
@@ -498,8 +499,8 @@ The Great Wave DLC（ep2_content）が有効な場合、`je_meiji_diplomacy`（�
    - modifier_iwakura_mission_society_tech_bonus: 社会技術研究速度 +0.25% per stack、法律制定時間 -0.25% per stack `[src: common/journal_entries/07_iwakura_mission.txt]`
    - 外交承認と同時に技術加速も狙えるため、DLC ありプレイでは最優先で進める
 
-3. **認識の強要（Force Recognition）戦争目標**
-   - 列強に対して外交戦を仕掛け、Force Recognition 戦争目標で承認を勝ち取る
+3. **認識の強要（Force Recognition）外交戦目標**
+   - 列強に対して外交戦を仕掛け、Force Recognition 外交戦目標で承認を勝ち取る（未検証：VIC3 外交戦目標の正確なスクリプト ID `force_recognition` については `common/diplomatic_plays/` での確認が必要）
    - 列強化前に開戦すると支援国が集まり不利。維新完了後の軍制改革が前提（コミュニティ知見）
 
 > **注意**: je_meiji_diplomacy の完了条件に「non-subject（非従属）」が含まれる。いずれかの列強の属国・保護国になっている間は完了できない `[src: common/journal_entries/00_meiji_restoration.txt, je_meiji_diplomacy]`。
@@ -571,7 +572,7 @@ The Great Wave DLC（ep2_content）が有効な場合、`je_meiji_diplomacy`（�
 | 艦船デザイナー（Ship Designer）の追加 | 各艦に装甲・武装・推進力・補給能力の4軸でモジュールを割り当て可能になった。性能と維持費のトレードオフを設計段階で調整できる [src: Patch_1.13 wiki] |
 | 旗艦（Flagship）の追加 | 艦隊内の1隻を旗艦に指定できる。旗艦の生存・撃沈が威信（Prestige）の獲得・喪失に直結する [src: Patch_1.13 wiki] |
 | 新型艦20種の追加 | 装甲艦・蒸気フリゲート・モニター等、時代に対応した艦種が拡充された [src: Patch_1.13 wiki] |
-| 砲撃外交（Gunboat Diplomacy）の追加 | 沿岸国相手に条約交渉時の圧力手段として利用できる外交アクション。発動から180日間、海上での敵対行動が許可される [src: Patch_1.13 wiki] |
+| 砲撃外交（Gunboat Diplomacy）の追加 | 沿岸国相手に条約交渉時の圧力手段として利用できる外交アクション。（コミュニティ知見：180日という許可期間はスクリプト未確認）`[src: Patch_1.13 wiki]` |
 | 海戦システムの改編 | 砲撃・魚雷・拿捕等の交戦プロセスが整理された [src: Patch_1.13 wiki] |
 
 **日本固有の艦船・海軍改修エントリについて**
@@ -725,7 +726,7 @@ VIC3 の造船所（Shipyard）系建造物は、建造物定義に `location_po
 
 #### パッチ参照
 
-- Patch_1.13 wiki: [vic3.paradoxwikis.com/Patches](https://vic3.paradoxwikis.com/Patches)（1.13 海軍刷新・艦船デザイナー・旗艦・砲撃外交）
+- Patch_1.13 wiki: [vic3.paradoxwikis.com/Patch_1.13](https://vic3.paradoxwikis.com/Patch_1.13)（1.13 海軍刷新・艦船デザイナー・旗艦・砲撃外交）
 
 ---
 
@@ -751,8 +752,8 @@ VIC3 の造船所（Shipyard）系建造物は、建造物定義に `location_po
 | 分岐 | 前提条件 | 達成期限 | 主な判定条件 | 勝利結果 |
 |------|---------|---------|------------|--------|
 | **帝政（維新）勝利** | 天皇が ruler かつ special_character_japanese_emperor trait 持ち | 連続 6 ヶ月維持後に完了 `[src: common/journal_entries/00_meiji_restoration.txt]` | bakufu 法なし、内戦なし、ig_landowners リーダーが非徳川 | 首都→東京、ig_landowners → ig_kazoku（華族）、meiji_favored_ig 修正値（IG 政治力 +50%、very_long 期間）`[src: common/journal_entries/00_meiji_restoration.txt, on_complete]` |
-| **公武合体（幕府ルートA）** | bakufu 法継続 + 天皇婚姻完了 + bakufu 更新 | je_meiji_imperial_marriage タイムアウト 1825 日（5 年）`[src: common/journal_entries/00_meiji_restoration.txt, je_meiji_imperial_marriage]` | 有害条約の破棄、closed_borders、treaty_port なし | イベント ep2_meiji.8、modifier_court_and_shogunate: 権力 +10%、士官 政治力 +25%、貴族 政治力 -25% `[src: common/static_modifiers/00_ep2_04_modifiers.txt]` |
-| **公議輿論（幕府ルートB）** | 選挙権あり + 天皇復位 + ig_landowners 与党かつ徳川リーダー | 維新 JE fail 分岐 `[src: common/journal_entries/00_meiji_restoration.txt, fail]` | 上記 kobu_gattai / kogi_yoron 変数セット条件 | イベント ep2_meiji.9、modifier_continuity_and_enlightenment（正当性 +10、技術普及 +25%）または modifier_taikun_monarchy（正当性 +5、影響力 +10%）`[src: common/static_modifiers/00_ep2_04_modifiers.txt]` |
+| **公武合体（幕府ルートA）** | bakufu 法継続 + 天皇婚姻完了 + bakufu 更新 | je_meiji_imperial_marriage タイムアウト 1825 日（5 年）`[src: common/journal_entries/00_meiji_restoration.txt, je_meiji_imperial_marriage]` | 有害条約の破棄、closed_borders、treaty_port なし | イベント ep2_meiji.8、modifier_court_and_shogunate: 権威（Authority）+10%、士官（Officers）政治力 +25%、貴族（Aristocrats）政治力 -25% `[src: common/static_modifiers/00_ep2_04_modifiers.txt]` |
+| **公議輿論（幕府ルートB）** | 選挙権あり + 天皇復位 + ig_landowners 与党かつ徳川リーダー | 維新 JE fail 分岐 `[src: common/journal_entries/00_meiji_restoration.txt, fail]` | 上記 kobu_gattai / kogi_yoron 変数セット条件 | イベント ep2_meiji.9、modifier_continuity_and_enlightenment（正当性 +10、技術普及 +25%、近代主義者 pop support +15%）または modifier_taikun_monarchy（正当性 +5、影響力 +10%）`[src: common/static_modifiers/00_ep2_04_modifiers.txt]` |
 
 #### 帝政ルート：維新本体 JE 完了後のサブ JE
 
@@ -816,7 +817,7 @@ je_meiji_restoration 完了後、je_meiji_main が発動。meiji_var（0→3）�
 | 中 | 教育制度（寺子屋 → 公共学校） | 中盤 | 識字率向上。law_terakoya は日本固有の初期学制 `[src: history/countries/jap - japan.txt]` |
 | 低 | 選挙制度改正 | 終盤 | 政治安定に寄与。急ぐ必要なし |
 
-> **幕府特性**: law_bakufu は progressiveness -100 だが、正当性 +30、権力 +200 という強力な統治ボーナスを持つ `[src: common/journal_entries/00_meiji_restoration.txt, japan-research.md 章7]`。帝政ルートを狙う場合は月次パルス条件を満たした上で廃止する。
+> **幕府特性**: law_bakufu は progressiveness -100 だが、正当性 +30、権力 +200 という強力な統治ボーナスを持つ（コミュニティ知見：law_bakufu の正当性 +30・権力 +200 はスクリプト確認済みの数値だが、該当ファイルの行番号は未確認のため `[src: common/laws/00_social_hierarchy.txt]`（行番号未検証））。帝政ルートを狙う場合は月次パルス条件を満たした上で廃止する。
 
 ---
 
@@ -851,14 +852,14 @@ je_meiji_restoration 完了後、je_meiji_main が発動。meiji_var（0→3）�
 
 | 日本語（ゲーム内） | 英語 / スクリプトキー | 補足 |
 |-----------------|----------------------|------|
-| 幕府 | law_bakufu | 日本のみ表示の政体法。progressiveness -100、正当性 +30、権力 +200 `[src: 07_sakoku 関連・japan-research.md 章7]` |
+| 幕府 | law_bakufu | 日本のみ表示の政体法。progressiveness -100、正当性 +30、権力 +200 `[src: common/laws/00_social_hierarchy.txt]`（行番号未検証） |
 | 鎖国 | law_sakoku | 日本文化専用の貿易政策法。Dejima のみ取引所建設可 `[src: common/laws/00_trade_policy.txt:290]` |
 | 大名（→ 維新前の地主 IG 名称） | ig_daimyo | 維新完了後は ig_kazoku（華族）に変わる `[src: common/interest_groups/00_landowners.txt:342]` |
 | 華族 | ig_kazoku | 維新後の地主 IG 名称。ideology → ideology_hierarchic `[src: common/journal_entries/00_meiji_restoration.txt]` |
 | 武士階級 | law_warrior_caste | 日本文化のみ表示の軍制法。pm_samurai_training をアンロック |
 | 武士訓練 | pm_samurai_training | law_warrior_caste 時のみ利用可能な兵舎の製造方法 `[src: common/production_methods/05_military.txt:144]` |
 | 寺子屋 | law_terakoya | 日本固有の初期教育法 `[src: history/countries/jap - japan.txt]` |
-| 新選組 | law_shinsengumi | 治安法。law_bakufu 時にアンロック `[src: japan-research.md 章7]` |
+| 新選組 | law_shinsengumi | 治安法。law_bakufu 時にアンロック `[src: common/laws/00_internal_security.txt, law_shinsengumi]`（行番号未検証） |
 | 出島 | Dejima | law_sakoku 時に唯一取引所を建設可能な場所 `[src: common/laws/00_trade_policy.txt:290]` |
 | 条約港 | Treaty Port / treaty_port | 列強が強制設置できる外交合意。je_meiji_imperial_marriage の完了を阻害 `[src: common/treaty_articles/14_treaty_port.txt]` |
 | 強制開国 | forced_market_opening | 条約で市場を強制された時の修正値。威信 -25% `[src: common/static_modifiers/00_code_static_modifiers.txt:861]` |
@@ -867,7 +868,7 @@ je_meiji_restoration 完了後、je_meiji_main が発動。meiji_var（0→3）�
 | 神仏分離 | je_shinbutsu_bunri | 神道優先の宗教 JE `[src: common/journal_entries/07_japanese_religion.txt]` |
 | 檀家制度 | je_elevate_buddhism | 仏教優先の宗教 JE `[src: common/journal_entries/07_japanese_religion.txt]` |
 | 岩倉使節団 | je_iwakura_mission | DLC 専用の外交承認 + 技術加速 JE `[src: common/journal_entries/07_iwakura_mission.txt]` |
-| プロミネンス | Prominence | 1.13 追加。政治家の政治機構内での影響力。IG 指導者選出の主因 `[src: Patch_1.13 wiki]` |
+| プロミネンス | Prominence | 1.13 追加。政治家の政治機構内での影響力。IG 指導者選出の主因 `[src: common/interest_groups/00_landowners.txt:752-761]`（プロミネンス補正の詳細パラメータはスクリプト未確認。`[src: Patch_1.13 wiki]` も参照） |
 | 砲撃外交 | Gunboat Diplomacy | 1.13 追加。条約交渉時に海上敵対行動を脅迫オプションとして提示 `[src: Patch_1.13 wiki]` |
 | 戦略的関心度 | Strategic Interest | 1.13 でティアド化。地域への関与度の階層指標 `[src: Patch_1.13 wiki]` |
 | 非承認国家 | Unrecognized | 国際社会で承認されていない国家。外交戦起票権が制限される |
