@@ -1,5 +1,28 @@
 # Changelog
 
+## 2026-06-01 VIC3 日本攻略ガイド ゼロベース書き直し（1.13.8 全数値再検証）
+
+### Changed
+- `vic3/vic3-japan-guide.md` を全面書き直し（911 行 → 499 行）。基準パッチをインストール版 **1.13.8 + EP2** に正確化し、全数値を再検証
+- 構成の整理（重複排除）:
+  - 3 セクション（A/B/C）結合の痕跡を除去（文書途中の 2 つ目 H1 `# Section A`、`<!-- Section C -->` HTML コメント）
+  - 重複していた鎖国法効果表（4 回 → 1 回）、維新発動条件（3 回 → 1 回）、大名 IG トレイト表（3 回 → 1 回）、法律改正ロードマップ（2 章 → 「技術・法律」に一本化）、出典セクション（2 つ → 末尾 1 つ）を統合
+  - 海軍ドクトリンを独立セクション＋独立出典から「軍事ドクトリン（陸軍・海軍）」に統合
+  - 「開国の軛」独立章を「外交・同盟」に吸収
+
+### Fixed（再検証で判明した誤りの訂正）
+- `law_free_ports` は**存在しない法律 ID**。鎖国の移行先を `law_mercantilism` に訂正（旧ガイドは「未検証」のまま放置）
+- `force_recognition` 外交プレイ/CB は**スクリプト上に存在しない**。承認は `je_meiji_diplomacy` 完了で得る旨に訂正（慣用表現と明記）
+- `law_bakufu` の所在を `00_social_hierarchy.txt`（誤）→ `00_distribution_of_power.txt:114`（正）に訂正、行番号未検証を解消
+- 「プロミネンス +5 補正」は誤解釈。実際は `magnate_leader_weight +5`（大名リーダー選出重みの加算）に訂正 `[src: common/interest_groups/00_landowners.txt:751-762]`
+- 岩倉使節団の社会技術ボーナスを +0.25%/stack（誤）→ +1%/stack（正）に訂正
+- 維新 possible 条件を「law_sakoku/law_closed_borders でない」→「law_isolationism でない」に厳密化、je_meiji_army に `pm_no_organization` 兵舎条件を追加、je_meiji_economy を「70% 超（>0.7）」に厳密化
+- 鎖国は前提に `law_traditionalism` が必要・九州外交易禁止（`country_disallow_trade_outside_kyushu_bool`）を追記
+- キャラクターパスを `common/characters/`（誤）→ `common/character_templates/country_jap.txt`（正）に訂正
+- 現行の朝鮮植民地化 JE は `07_korea_colonization.txt`（`03_korea.txt` は内乱系で別物）と明記
+- 残存していた `（未検証）` マーカーをすべて解消（スクリプト確認または慣用表現への格下げ）
+- 検証範囲: インストール版 1.13.8 のゲームスクリプト全数値を 3 トピック並列で再検証（明治維新/鎖国 JE・法律/IG/PM/人物・外交/技術/modifier/海軍/宗教/朝鮮）
+
 ## 2026-05-17 VIC3 日本攻略ガイド 新規追加（EP2 + 1.13 海軍改修対応）
 
 ### Added
