@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-06-01 VIC3 プロイセン攻略ガイド ゼロベース書き直し（1.13.8 統一メカニクス再検証）
+
+### Changed
+- `vic3/vic3-prussia-guide.md` を全面書き直し（361 → 363 行、内容を日本ガイド水準に深化）。基準パッチをインストール版 **1.13.8 + EP2** に正確化し、ドイツ統一メカニクス・開始状態を explorer 2並列で再検証
+- **核心の統一 JE チェーンを完全データ表化**（旧版は完了条件の記載なし）: je_schleswig_holstein_question → je_german_unification_idea → je_north/south_german_unification → je_german_unification の前提・完了条件・効果・技術ゲートを明記
+- ツォルフェラインを「関税同盟」曖昧記述 → **パワーブロック（identity_trade_league、リーダー交易容量+25%、初期原則 principle_internal_trade_1）** として正確化
+- **プロイセン教育修正（amendment_prussian_education、開始時付与・同化+10%/徴兵率+10%/軍部政治力+10%）** を新規記載（旧版は言及なし）
+- 投機的な「UI導線（一般知識ベース）」節を削除し、検証済みメカニクスに置換
+
+### Fixed
+- 「裏取り予定」だったクーデター扇動・砲撃外交の実在を確認し昇格（`57_orchestrate_coup.txt` / `can_threaten_naval_hostilities` ルール `:226`）
+- 技術ゲートを明確化: NGF/SGF JE = **nationalism**（era_2）、je_german_unification = **pan-nationalism**（era_3、ID ハイフン表記）
+- GER 形成要件を明記: greater_germany 地域の **73%**（required_states_fraction=0.73）+ pan-nationalism または統一理念変数
+- イベント ID `—` だった2件を**スクリプト上に不在と確定**: ツォルフェライン拡大イベント・ビスマルク社会立法イベントは未実装（拡大は外交、社会立法は法律改正で行う）
+- ビスマルク（PRU_otto_von_bismarck）の所属 IG を ig_landowners、登用前提を pan-nationalism 研究済みと明記
+- 開始状態を実測値に: 首都 STATE_BRANDENBURG、文化 north_german、国教 protestant、与党 IG（地主・軍部）
+- `vic3/localization-reference.md`: 岩倉使節団 JE の説明を「外交承認の代替ルート」（JE スクリプトに根拠なし）→「生産・社会技術の研究加速 JE（外交承認フェーズと並行）」に訂正
+
 ## 2026-06-01 VIC3 日本攻略ガイド ゼロベース書き直し（1.13.8 全数値再検証）
 
 ### Changed

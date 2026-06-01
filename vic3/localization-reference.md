@@ -564,7 +564,7 @@
 | ig_kazoku | 華族 | 維新後の地主 IG 名称 |
 | je_meiji_restoration | 明治維新 JE | 維新の成否を決める中核 JE |
 | je_sakoku | 鎖国 JE | 開始時付与、開国まで継続 |
-| je_iwakura_mission | 岩倉使節団 JE | EP2 専用、外交承認の代替ルート |
+| je_iwakura_mission | 岩倉使節団 JE | EP2 専用。生産・社会技術の研究加速 JE（外交承認フェーズと並行して進める） |
 | kobu_gattai | 公武合体 | 維新 JE の幕府勝利分岐A |
 | kogi_yoron | 公議輿論 | 維新 JE の幕府勝利分岐B |
 | Treaty Port / treaty_port | 条約港 | 列強が強制設置する外交合意 |
