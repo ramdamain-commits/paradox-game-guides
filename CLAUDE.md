@@ -204,14 +204,22 @@ Steam デフォルト: C:\Program Files (x86)\Steam\steamapps\common\
 
 ```
 ゲーム本体: Victoria 3\game\
-  common/technology/             … Era別技術定義
+  common/technology/technologies/ … Era別技術定義（20_military.txt 等）
   common/interest_groups/        … 利益団体定義
-  common/laws/                   … 法律定義
-  common/pop_types/              … Pop種類定義
-  events/                        … イベントスクリプト（12サブディレクトリ）
+  common/interest_group_traits/  … IGトレイト定義（普代/外様等の効果値）
+  common/laws/                   … 法律定義（00_distribution_of_power.txt に law_bakufu 等）
+  common/journal_entries/        … JE定義（00_meiji_restoration.txt / 00_german_unification.txt 等。完了条件の正本）
+  common/country_formation/      … 建国可能タグ要件（GER/NGF/SGF 等）
+  common/power_bloc_identities/  … パワーブロックのidentity（ツォルフェライン=identity_trade_league 等）
+  common/static_modifiers/       … modifier効果値（00_ep2_04/05/06_modifiers.txt に日本/独統一系）
+  common/character_templates/    … 国別キャラ（country_jap.txt / country_pru.txt。characters/ ではない）
+  common/diplomatic_plays/ , common/diplomatic_actions/ , common/scripted_rules/ … 外交プレイ/アクション/砲撃外交ルール
+  events/                        … イベントスクリプト
+
+バージョン確認: ルート直下 `caligula_branch.txt`（例 release/1.13.8）/ `clausewitz_branch.txt`
 
 日本語ローカライズ:
-  localization/japanese/          … 全ローカライズ（153ファイル）
+  localization/japanese/          … 全ローカライズ。ステータス訳語は concept_*（concept_authority="権力" 等）
 ```
 
 ---
@@ -220,6 +228,10 @@ Steam デフォルト: C:\Program Files (x86)\Steam\steamapps\common\
 
 - 数値や条件を記載する場合、出典として**ファイル名:行番号**を明記する
 - ローカライズファイルで正式な日本語名を確認してから記載する
+- **ガイドを書き直す/パッチ更新するときは、検証基準を「インストール版」に固定する**（公開ベータの最新パッチを追わない）。プレイヤーが実際に遊ぶ版＝スクリプト最優先ソースであり、版ズレ検証は無意味。VIC3 は `caligula_branch.txt`、EU5/CK3 も同様のブランチファイルで版を確認する。実例（2026-06-01 VIC3 日本/プロイセン書き直し）: インストール版 1.13.8 を基準に固定
+- **前セッションの `[src:]` マーカーも誤りうる前提で、書き直し時は全数値を再検証する**。実例（同セッション）: 既存 [src:] 付きでも `law_free_ports`（実在せず→law_mercantilism）・`force_recognition`（CB 不在）・law_bakufu の所在ファイル誤り・岩倉社会技術 +0.25%→実値+1%・「プロミネンス+5」→実は magnate_leader_weight、と複数の実誤りが発覚。特に「[src:] がローカライズ yml を指しているだけでメカニクス未検証」のケースに注意（yml は名称の裏取りであって効果値の裏取りではない）
+- **ステータス（Authority/Prestige 等）の訳語は本文に書く前に `concept_*` ローカライズキーで確認する**。実例（同セッション）: VIC3 の Authority はゲーム内 `concept_authority = "権力"`。「権威」は誤訳で、IGトレイト表だけ「権威」になり同一ガイド内で訳語分裂していた。ステータス名は1ガイド内で必ず統一する
+- **イベント/JE の「ID 未確認（—）」を放置せず、不在なら「スクリプト上に存在しない」と確定まで詰める**。実例（同セッション）: VIC3 プロイセンの「ツォルフェライン拡大イベント」「ビスマルク社会立法イベント」は events/ 全走査で不在＝未実装と確定し、「拡大は外交・社会立法は法律改正で行う」と代替手段を明示した
 - **他タイトルの用語を混ぜない**（EU4 用語を EU5 に使う、CK2 用語を CK3 に使う等は禁止）
 - パッチで変動しうる数値には、冒頭のパッチ版で一括免責する
 
