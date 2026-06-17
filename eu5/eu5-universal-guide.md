@@ -48,6 +48,45 @@
 
 ---
 
+## 1.3 オープンベータ差分（全国家影響・純追記）
+
+> **本セクションは 1.3 オープンベータ（buildid 23683141 / BetaKey `1.3-open-beta`）のローカルスクリプトと公式 1.3.0 / 1.3.2 パッチノートを独立検証基準とする。上位の 1.2「Echinades」baseline とは独立であり、1.2 本体章の数値・記述には一切手を加えていない。**
+> 1.3 はオープンベータのため数値が変動しうる。安定版リリースまで本セクション内に封じ込め、本文（1.2 baseline）には昇格させない。公開ガイドの読者多数派は安定版（live=1.2）でプレイしている点に留意すること。
+> マーカー: `[src: ...]（1.3 beta）` = ローカル 1.3 スクリプトで実値確認 / `（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）` = エンジン内部値でスクリプトに実値がなく、1.2/1.3 パッチノート突き合わせで真正な変更と確定した項目。
+
+### 経済（建物・貿易・利益率）
+
+- 建物維持費が時間経過で逓増し、建設から1世紀で約 **+50%** に達する（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認。1.2 はインフレ影響のみで逓増メカニクスはなかった）。
+- 生産系建物の利益率が再調整：ギルド 10% / ワークショップ 15% / マニュファクトリ 20% / ミル 25%（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。
+- ミルの雇用（mills_employment）が半減（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。
+- バーガー（市民）の最大交易範囲が時代でスケールする：時代1 = 600、時代2以降は時代ごとに +100、時代6 で 1100 `[src: age/00_default.txt: burgher_max_trade_range（age1=600 → age6=1100）]（1.3 beta）`。
+- 市場吸引力（market attraction）の調整あり（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。
+
+### 海軍・軍事
+
+- 船の建造コストが **金 4倍・goods 10倍**、海軍維持費の下限が艦隊規模の 10% に（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。序盤の海軍拡張が大幅に高コスト化する。
+- 海戦の致死性が上昇（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。
+- 陸軍の goods 需要が **2倍** に（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。常備軍維持の goods 負担が増加。
+- 正規兵が徴募兵に対して持っていたダメージボーナスが撤廃（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。徴募兵主体の編成が相対的に改善。
+- 要塞の兵士雇用が減少（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。
+- 補助連隊（補給部隊）の食料消費が +50%（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。
+- 個別固有ユニットの兵科再分類が進行（兵科の Heavy/Light 分類**自体は 1.2 既存**。1.3 では個別の固有ユニットが該当兵科へ再分類された）。ジェノヴァ弩兵 → 軽歩兵 `[src: unit_types/1_uniques_for_age_2_renaissance.txt:69]（1.3 beta）`。
+- Hobelar / Hakkapeliitta → 軽騎兵 `[src: unit_types: copy_from 軽騎兵テンプレ]（1.3 beta）`。
+- Mamluk Horsemen → 重騎兵 `[src: unit_types（age1/age2 の2段定義）]（1.3 beta）`。
+
+### 諜報・外交
+
+- **諜報網（Spy Network、ゲーム内訳「諜報網」）の構築による段階的な戦場の霧（fog of war）解除が 1.3 新規**（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。諜報網を構築・維持すると対象国の視界が徐々に開ける。
+- 注意（誤帰属回避）: **「政府への潜入（Infiltrate Administration）」は 1.2 既存**の covert action であり、1.3 新規ではない。これは諜報網を消費して数ヶ月間だけ対象国全土の fog of war を一時解除するアクション `[src: diplomacy_l_japanese.yml: INFILTRATE_ADMINISTRATION_DESC（1.2 既存メカニクスを 1.3 beta で確認）]`。1.3 新規は「諜報網そのものの構築で視界が徐々に開く」常時メカニクスの方を指す。
+- 連合（Coalition）のスノーボール抑制：連合解散（Dissolve Coalition）の必要値が 75 → 20 に緩和（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。プレイヤー側が連合を解体しやすくなる。
+
+### 自動化・宮廷芸術家
+
+- 内閣自動化が Members（内閣メンバー）と Actions（内閣アクション）の2系統に分割。外交・建物・RGO（産品産出地）の自動拡張まで自動化対象が拡充（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。
+- **宮廷芸術家（Court Artists）刷新**: 芸術家の種類が **12 種**（彫刻家・作曲家・作家・建築家・哲学者・法学者・科学者・イコン画家・金属細工師・書家・語り部・医師）として整理 `[src: artist_types/00_default.txt（12 種）]（1.3 beta）`。招聘は専用の国家インタラクションで条件・コスト制約あり `[src: country_interactions/invite_artist.txt]（1.3 beta）`。詳細な廷臣（Courtier）管理は government ガイドの 1.3 差分を参照。
+
+---
+
 ## 最初の10分（Day 1 共通手順）
 
 ゲーム開始直後はポーズ状態で以下を確認・設定する。国家によって細部は異なるが、確認すべき項目は共通。
@@ -474,6 +513,12 @@ EU5 では時代（Age）ごとに進歩を選択する。国家固有の進歩�
 | メガロポリス | Megalopolis | 1.2 新規。首都人口40万超で昇格。人口容量・建造物レベル倍増 |
 | プロノイア | Pronoia | ビザンツ・ギリシャ系国家の土地制度（1.2 Fate of the Phoenix 関連）`[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | ローマ国境回復 CB | Restore Roman Borders | 1.2 Fate of the Phoenix 新規 CB。ビザンツ復興ルート向け `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
+| 諜報網（**1.3 beta 仮登録**） | Spy Network | 1.3 で構築により対象国の戦場の霧が段階的に解除される。ゲーム内訳「諜報網」 |
+| 政府への潜入（**1.3 beta 仮登録**） | Infiltrate Administration | **1.2 既存**の covert action。諜報網を消費し数ヶ月間 fog を一時解除（1.3 新規ではない・誤帰属注意） |
+| 宮廷芸術家（**1.3 beta 仮登録**） | Court Artists | 1.3 刷新。12 種に整理 `[src: artist_types/00_default.txt]（1.3 beta）` |
+| 連合解散（**1.3 beta 仮登録**） | Dissolve Coalition | 1.3 で必要値が 75→20 に緩和（連合スノーボール抑制） |
+
+> 上記「1.3 beta 仮登録」の用語は安定版リリース後に中央 `localization-reference.md` へ正式昇格する（それまでは本ガイドの差分セクション内に留める）。
 
 ---
 
@@ -495,8 +540,14 @@ EU5 では時代（Age）ごとに進歩を選択する。国家固有の進歩�
 | `scripted_triggers/country_triggers.txt` | 国家ランク昇格条件 |
 | `recruitment_method/army.txt` | 精鋭訓練の効果 |
 | `script_values/define_values.txt` | 高戦争疲弊の閾値 |
+| `common/age/00_default.txt` | バーガー最大交易範囲の時代スケール（burgher_max_trade_range、1.3 beta） |
+| `common/artist_types/00_default.txt` | 宮廷芸術家 12 種の定義（1.3 beta） |
+| `common/country_interactions/invite_artist.txt` | 宮廷芸術家招聘の条件・コスト制約（1.3 beta） |
+| `common/unit_types/1_uniques_for_age_2_renaissance.txt` | ジェノヴァ弩兵の軽歩兵化（行 69、1.3 beta） |
+| `main_menu/.../diplomacy_l_japanese.yml` | 政府への潜入の説明（INFILTRATE_ADMINISTRATION_DESC、1.2 既存メカニクスの文言確認） |
 | [Patch 1.1 — Europa Universalis 5 Wiki](https://eu5.paradoxwikis.com/Patch_1.1) | パッチノート（1.1 参照用） |
 | [Patch 1.2 — Europa Universalis 5 Wiki](https://eu5.paradoxwikis.com/Patch_1.2) | パッチノート（本ガイドの主要出典） |
+| [Patch 1.3 — Europa Universalis 5 Wiki](https://eu5.paradoxwikis.com/Patch_1.3) | パッチノート（1.3 オープンベータ差分の出典・スクリプト未確認項目の根拠） |
 | [Holy Roman Empire — EU5 Wiki](https://eu5.paradoxwikis.com/Holy_Roman_Empire) | HRE メカニクス解説（Imperial Diet 等） |
 | [Fate of the Phoenix DLC — EU5 Wiki](https://eu5.paradoxwikis.com/Fate_of_the_Phoenix) | DLC 内容（Pronoia・Restore Roman Borders 等） |
 

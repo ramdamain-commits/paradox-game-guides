@@ -71,6 +71,31 @@
 
 ---
 
+## 1.3 オープンベータ差分（ビザンツ直接影響・純追記）
+
+> **本セクションは 1.3 オープンベータ（buildid 23683141 / BetaKey `1.3-open-beta`）のローカルスクリプトと公式 1.3.0 / 1.3.2 パッチノートを独立検証基準とする。上位の 1.2「Echinades」baseline とは独立であり、1.2 本体章の数値・記述には一切手を加えていない。**
+> 1.3 はオープンベータのため数値が変動しうる。安定版リリースまで本セクション内に封じ込め、本文（1.2 baseline）には昇格させない。
+> マーカー: `[src: ...]（1.3 beta）` = ローカル 1.3 スクリプトで実値・実体を確認（「1.3 新規か否か」の最終判定は 1.2/1.3 パッチノート差分による）/ `（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）` = エンジン内部値。
+
+### 外交・継承・国境
+
+- **反ジェノヴァ盟約（ヴェネツィアとの連携）**: ビザンツ・ヴェネツィア間のフレーバーで、ジェノヴァに対抗する盟約イベントが追加 `[src: events/DHE/flavor_byz_ven.txt]（1.3 beta）`。コンスタンティノープルのジェノヴァ商人勢力への対抗手段になる。
+- **Born in the Purple（紫の間に生まれし者）**: ビザンツの後継者選定・正統性に関わるメカニクスが整理された `[src: heir_selections/monarchy.txt, events/culture/culture_greek.txt]（1.3 beta）`。皇位継承の安定性に影響。
+- **1337 開始国境の修正**: ビザンツ開始時の領土・国境設定が調整された（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。瀕死帝国の初期戦略環境が微変する可能性があるため、最新 beta では開始状況を実機で再確認すること。
+
+### 軍事・海軍（船コスト・海戦致死性のエーゲ海/ボスポラス影響）
+
+- **個別固有ユニットの兵科再分類（1.3）**: ジェノヴァ弩兵 → 軽歩兵 `[src: unit_types/1_uniques_for_age_2_renaissance.txt:69]（1.3 beta）`。エーゲ海・バルカン戦線で対峙するジェノヴァ系勢力の編成が変化する（兵科の Heavy/Light 分類**自体は 1.2 既存**）。
+- **船コスト増（金 4倍・goods 10倍）の影響**: ギリシャ火炎船（Greek Fire Ships）を含む海軍の建造が大幅に高コスト化（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。エーゲ海・ボスポラス海峡の制海権確保コストが上昇し、序盤の海軍依存戦略が圧迫される。
+- **海戦致死性の上昇**: 海戦の損耗が増加（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。少数精鋭のギリシャ火炎船を温存し、不利な海戦を避ける運用がより重要になる。
+
+### Twilight of the Tsardom（ブルガリア崩壊の機会）
+
+- **Twilight of the Tsardom（ツァーリ国の黄昏）ディザスター**が 1.3 で追加 `[src: disasters/twilight_of_the_tsardom.txt, events/DHE/flavor_BUL.txt]（1.3 beta）`。ブルガリア（第二次ブルガリア帝国）等のバルカン勢力に崩壊・分裂を引き起こす。
+- ビザンツにとっては**北方バルカンの再征服の好機**。ブルガリアが内紛・分裂で弱体化したタイミングで、Restore Roman Borders CB や通常征服でバルカン領を回収しやすくなる `[src: disasters/twilight_of_the_tsardom.txt]（1.3 beta）`。地域章（regional ガイド）東欧・バルカン節の Twilight of the Tsardom 記述と相互参照。
+
+---
+
 ## 開始状況（1337年）— 瀕死帝国の戦略環境
 
 ### 基本ステータス
@@ -912,6 +937,16 @@ DLC なしでは Cataphracts age_1 を活かした限定的な固有軍事戦略
 | 総主教 | Patriarch | キャラクター | 1.2 で正教オーバーホール。キャラクターとして実装 |
 | ロマノス国境地理 | Roman Borders Geography | スクリプト地理 | Restore Roman Borders CB の対象範囲 |
 
+### 1.3 オープンベータ用語（仮登録）
+
+安定版リリース後に中央 `localization-reference.md` へ正式昇格する。詳細は本ガイド冒頭の「1.3 オープンベータ差分」節を参照。
+
+| 日本語 | 英語 | カテゴリ | 備考 |
+|--------|------|---------|------|
+| 紫の間に生まれし者 | Born in the Purple | 継承メカニクス | 1.3。後継者選定・正統性 `[src: heir_selections/monarchy.txt]（1.3 beta）` |
+| ツァーリ国の黄昏 | Twilight of the Tsardom | ディザスター | 1.3。ブルガリア等バルカン勢力の崩壊。ビザンツの再征服機会 `[src: disasters/twilight_of_the_tsardom.txt]（1.3 beta）` |
+| 反ジェノヴァ盟約 | （ヴェネツィア連携フレーバー） | イベント | 1.3。対ジェノヴァのビザンツ・ヴェネツィア連携 `[src: events/DHE/flavor_byz_ven.txt]（1.3 beta）` |
+
 ### 共通用語（抜粋）
 
 | 日本語 | 英語 | カテゴリ | 備考 |
@@ -949,6 +984,13 @@ DLC なしでは Cataphracts age_1 を活かした限定的な固有軍事戦略
 | `game/in_game/common/wargoals/00_default.txt` 行 244-261 | Superiority War ticking_war_score 確認 |
 | `game/in_game/common/auto_modifiers/country.txt` 行 90 | ロジスティクス距離定義 |
 | `game/in_game/common/bureaucracies/byz.txt` | ビザンツ固有官僚制アドバンス（スクリプト確認済み） |
+| `game/in_game/common/disasters/twilight_of_the_tsardom.txt` | Twilight of the Tsardom ディザスター（1.3 beta。ブルガリア等バルカン崩壊） |
+| `game/in_game/events/DHE/flavor_BUL.txt` | Twilight of the Tsardom のブルガリア側フレーバー（1.3 beta） |
+| `game/in_game/events/DHE/flavor_byz_ven.txt` | 反ジェノヴァ盟約（ビザンツ・ヴェネツィア連携、1.3 beta） |
+| `game/in_game/common/heir_selections/monarchy.txt` | Born in the Purple 継承メカニクス（1.3 beta） |
+| `game/in_game/common/unit_types/1_uniques_for_age_2_renaissance.txt` 行 69 | ジェノヴァ弩兵の軽歩兵化（1.3 beta） |
+
+> **1.3 オープンベータ補足**: 上記「1.3 beta」マーカー付きはローカル 1.3 open beta スクリプトで実体を確認したもの。「1.3 新規か否か」の最終判定は 1.2/1.3 パッチノート差分による。船コスト増・海戦致死性・1337 国境修正はエンジン内部値/フレーバー調整でスクリプト実値未確認のため `（コミュニティ知見：1.3 beta、公式パッチノート由来）` 扱い。Patch 1.3 wiki: eu5.paradoxwikis.com/Patch_1.3。
 
 ### 参照ファイル（スクリプト未確認、wiki / コミュニティ知見）
 

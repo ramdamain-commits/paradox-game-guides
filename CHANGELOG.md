@@ -1,5 +1,31 @@
 # Changelog
 
+## 2026-06-17 EU5 1.3 オープンベータ差分 純追記（バッチ2: religion + byzantium）
+
+### Added
+- `eu5/eu5-religion-guide.md`: 「1.3 オープンベータ差分（宗教関連・純追記）」を追加（身分の宗教属性 `[src: estates/00_default.txt]`、低Devotionペナルティ `[src: auto_modifiers/country.txt]`、枢機卿+1%聖職者満足、市場言語話者バーガー同化のhard-block撤廃→超低速、Papacy→Lutheran議会バグ修正）。**Patriarch/Rite Power廃止は1.2変更のため1.3差分に再掲しない**旨を明記（B-5反映）
+- `eu5/eu5-byzantium-guide.md`: 「1.3 オープンベータ差分（ビザンツ直接影響・純追記）」を追加（反ジェノヴァ盟約 `[src: events/DHE/flavor_byz_ven.txt]`、Born in the Purple `[src: heir_selections/monarchy.txt]`、1337国境修正、ジェノヴァ弩兵軽歩兵化 `[src: unit_types/1_uniques_for_age_2_renaissance.txt:69]`、船コスト増・海戦致死性のエーゲ海/ボスポラス影響、Twilight of the Tsardom=ブルガリア崩壊→再征服機会 `[src: disasters/twilight_of_the_tsardom.txt, events/DHE/flavor_BUL.txt]`）
+- 両ガイドの用語対照表に「1.3 beta 仮登録」用語を追加、出典セクションに 1.3 スクリプトファイル・Patch 1.3 wiki を追記
+- `index.html`: religion/byzantium カードに「1.3 beta差分」バッジを追加
+
+### Notes
+- byzantium 1.3項目は全て実機script実体確認済（反ジェノヴァ=flavor_byz_ven.txt / Born in the Purple=heir_selections/monarchy.txt+culture_greek.txt / Twilight=disasters/twilight_of_the_tsardom.txt+flavor_BUL.txt）。「1.3新規か否か」最終判定はノート差分による
+- regional-guide・国別（ottoman/hungary格上げ・austria・brandenburg・castile）・Tier4 は次々セッション持越し
+
+## 2026-06-17 EU5 1.3 オープンベータ差分 純追記（バッチ1: universal + government）
+
+### Added
+- 案A（純追記・差分セクション方式）で 1.3 open beta（buildid 23683141 / `1.3-open-beta`）の差分を**専用セクションとして純追記**。1.2「Echinades」本体章は一切変更せず、beta 起源の数値は本文に昇格させない方針
+- `eu5/eu5-universal-guide.md`: 「1.3 オープンベータ差分（全国家影響・純追記）」を追加（経済=建物維持費逓増/利益率/mills 半減/バーガー交易範囲スケール `[src: age/00_default.txt]`、海軍・軍事=船コスト4x金/10x goods・陸軍goods2倍・正規vs徴募ダメボ撤廃・個別ユニット兵科再分類 `[src: unit_types/1_uniques_for_age_2_renaissance.txt:69]`、諜報=諜報網fog段階解除（**政府への潜入=1.2既存**の誤帰属注意付き）、自動化・宮廷芸術家12種 `[src: artist_types/00_default.txt]`）
+- `eu5/eu5-government-guide.md`: 「1.3 オープンベータ差分（政府タイプ別・純追記）」を追加（身分の文化宗教 `[src: estates/00_default.txt]`、官僚制実装 `[src: bureaucracies/]`、低Devotion/低Republican Tradition ペナルティ `[src: auto_modifiers/country.txt]`、Prikazi/Collegium country_cabinet_efficiency=0.10 `[src: government_reforms/country_specific.txt:2407/2932]`、Voivode改革、退位コスト prestige50+legitimacy40 `[src: prices/03_diplomacy.txt:115]`、宮廷芸術家の廷臣管理）
+- 両ガイドの用語対照表に「1.3 beta 仮登録」用語を追加（安定版で中央 localization-reference.md へ昇格予定）、出典セクションに 1.3 スクリプトファイル・Patch 1.3 wiki を追記
+- `index.html`: universal/government カードに「1.3 beta差分」バッジ（`.tag--beta`）を追加
+
+### Notes
+- 残検証2件を実機で確定: ①Hall of Worthies = 集賢殿（country modifier `kor_hall_of_worthies_modifier`、イベント flavor_kor.28 経由）、②スパイ網fog = 「諜報網」構築による段階解除が1.3新規／「政府への潜入」は1.2既存と切り分け
+- spec の誤りを実機検証で2点是正: 宮廷芸術家は **12種**（spec の14種は誤り）、官僚制の汎用は10種（generic.txt）
+- regional-guide・国別（ottoman/hungary格上げ・austria・brandenburg・castile）・Tier4 は次々セッション持越し（CLAUDE.md「2バッチ上限」遵守）
+
 ## 2026-06-01 VIC3 プロイセン攻略ガイド ゼロベース書き直し（1.13.8 統一メカニクス再検証）
 
 ### Changed

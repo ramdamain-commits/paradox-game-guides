@@ -444,6 +444,41 @@ Patch 1.2（2026-05-06 リリース）で確認された政府タイプ関連の
 
 ---
 
+## 1.3 オープンベータ差分（政府タイプ別・純追記）
+
+> **本セクションは 1.3 オープンベータ（buildid 23683141 / BetaKey `1.3-open-beta`）のローカルスクリプトと公式 1.3.0 / 1.3.2 パッチノートを独立検証基準とする。上位の 1.2「Echinades」baseline とは独立であり、1.2 本体章の数値・記述には一切手を加えていない。**
+> 1.3 はオープンベータのため数値が変動しうる。安定版リリースまで本セクション内に封じ込め、本文（1.2 baseline）には昇格させない。
+> マーカー: `[src: ...]（1.3 beta）` = ローカル 1.3 スクリプトで実値確認 / `（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）` = エンジン内部値でスクリプトに実値がなく、1.2/1.3 パッチノート突き合わせで真正な変更と確定した項目。
+
+### 身分・官僚制
+
+- 身分（Estate）に文化・宗教の属性が付与され、全政体で身分の文化・宗教が管理対象になった `[src: common/estates/00_default.txt]（1.3 beta）`。異文化・異宗教の身分は満足度・反乱挙動に影響する。
+- **官僚制（Bureaucracies）が 1.3 で実装された**（1.2 では未実装だった項目）。汎用 10 種・ビザンツ固有 10 種・中華固有 4 種が定義されている `[src: common/bureaucracies/generic.txt（10 種）, byz.txt（10 種）, china.txt（4 種）]（1.3 beta）`。
+- 新規政府改革が多数追加（公式ノートでは新規 17 種）（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認。「新規」判定は版間ノート差分による）。
+
+### 権力リソースのペナルティ
+
+- **低 Devotion（献身）ペナルティ**: 献身が低い君主制（devotion 型）で月次の宗教的影響力 `monthly_religious_influence = -0.1`、身分満足度ペナルティが発生 `[src: auto_modifiers/country.txt low_devotion ブロック]（1.3 beta）`。
+- **低 Republican Tradition（共和的伝統）ペナルティ**: 共和的伝統が低い共和制で republican_tradition にスケールするペナルティが発生 `[src: auto_modifiers/country.txt low_republican_tradition ブロック（scales_with republican_tradition）]（1.3 beta）`。
+
+### 国家固有改革・コスト
+
+- **Prikazi 改革 / Collegium 改革**（ロシア系 MOS/RUS）の内閣効率（country_cabinet_efficiency）が現値 **0.10**（1.2 ノートでは 0.15 / 0.20 → 1.3 で 0.10 に引き下げ）`[src: government_reforms/country_specific.txt prikazi_reform 行 2407 / collegium_reform 行 2932: country_cabinet_efficiency = 0.10]（1.3 beta）`。旧値 0.15 / 0.20 は 1.2 → 1.3 パッチノート差分で確認。
+- **Voivode 改革**（ポーランド/カルパチア系）が政府改革として存在 `[src: government_reforms/country_specific.txt]（1.3 beta）`。地域章（regional ガイド）の Voivode 記述と相互参照。
+- **退位（Abdicate）コスト**: 威信 50 + 正統性 40 `[src: prices/03_diplomacy.txt:115 abdicate_price（prestige=50, legitimacy=40）]（1.3 beta）`。
+
+### 内閣（Cabinet）と自動化
+
+- 内閣の 2 長（2 名の長官職）同時封鎖が制限される変更（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。
+- 内閣自動化が Members（内閣メンバー）と Actions（内閣アクション）の 2 系統に分割（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。汎用ガイドの 1.3 差分も参照。
+
+### 宮廷芸術家（Court Artists）の廷臣管理
+
+- 宮廷芸術家が **12 種**（彫刻家・作曲家・作家・建築家・哲学者・法学者・科学者・イコン画家・金属細工師・書家・語り部・医師）に整理された `[src: artist_types/00_default.txt（12 種）]（1.3 beta）`。
+- 芸術家の招聘は専用の国家インタラクションで行い、条件・コストの制約がかかる `[src: country_interactions/invite_artist.txt]（1.3 beta）`。廷臣（Courtier）枠として宮廷を圧迫するため、政体ごとの宮廷管理方針に影響する。
+
+---
+
 ## 1.2 新規用語（政府タイプ別ガイド範囲）
 
 Patch 1.2 で追加・変更された政府タイプ関連の用語。完全版は [ローカライズ対照表](localization-reference.md) へ。
@@ -489,6 +524,12 @@ Patch 1.2 で追加・変更された政府タイプ関連の用語。完全版�
 | 宮廷言語 | Court Language | — |
 | 典礼言語 | Liturgical Language | — |
 | 無名戦争 | War with No CB | CB = 開戦事由（Casus Belli） |
+| 官僚制（**1.3 beta 仮登録**） | Bureaucracies | 1.3 で実装。汎用10/ビザンツ10/中華4 種 `[src: common/bureaucracies/]（1.3 beta）` |
+| Voivode 改革（**1.3 beta 仮登録**） | Voivode Reform | ポーランド/カルパチア系の政府改革 `[src: government_reforms/country_specific.txt]（1.3 beta）` |
+| 退位（**1.3 beta 仮登録**） | Abdicate | 威信50+正統性40 `[src: prices/03_diplomacy.txt:115]（1.3 beta）` |
+| 宮廷芸術家（**1.3 beta 仮登録**） | Court Artists | 1.3 刷新。12 種 `[src: artist_types/00_default.txt]（1.3 beta）` |
+
+> 上記「1.3 beta 仮登録」の用語は安定版リリース後に中央 `localization-reference.md` へ正式昇格する。
 
 ---
 
@@ -513,7 +554,13 @@ Patch 1.2 で追加・変更された政府タイプ関連の用語。完全版�
 | `in_game/common/casus_belli/D008_restore_roman_borders.txt` | Restore Roman Borders CB 定義 |
 | `in_game/common/building_types/hre_buildings.txt` | Imperial Armories 建造物定義（建造コスト gold=500、local_manpower +0.0025、manpower_to_building_owner +0.005、設置条件: 皇帝のみ・HRE 加盟領内・law:military_contribution） |
 | `in_game/common/prices/01_buildings.txt` | Imperial Armories 建造コスト（行 21） |
-| `in_game/common/auto_modifiers/country.txt` | ロジスティクス距離定数（行 90: army_logistics_distance=30） |
+| `in_game/common/auto_modifiers/country.txt` | ロジスティクス距離定数（行 90: army_logistics_distance=30）; 低 Devotion ペナルティ（low_devotion: monthly_religious_influence=-0.1）; 低 Republican Tradition ペナルティ（low_republican_tradition 行 573, 1.3 beta） |
+| `in_game/common/bureaucracies/` | 官僚制定義（generic 10種・byz 10種・china 4種、1.3 beta） |
+| `in_game/common/estates/00_default.txt` | 身分の文化・宗教属性（1.3 beta） |
+| `in_game/common/government_reforms/country_specific.txt` | Prikazi/Collegium 改革の country_cabinet_efficiency=0.10（行 2407/2932）、Voivode 改革（1.3 beta） |
+| `in_game/common/prices/03_diplomacy.txt:115` | 退位コスト（abdicate_price: prestige=50, legitimacy=40、1.3 beta） |
+| `in_game/common/artist_types/00_default.txt` | 宮廷芸術家 12 種の定義（1.3 beta） |
+| `in_game/common/country_interactions/invite_artist.txt` | 宮廷芸術家招聘の制約（1.3 beta） |
 | `in_game/common/unit_categories/` | food_consumption_per_strength（兵科別食料消費係数） |
 | `main_menu/localization/japanese/government_l_japanese.yml` | 権力リソース・継承システムの日本語ローカライズ |
 | `main_menu/localization/japanese/government_names_l_japanese.yml` | 政府タイプ名の日本語ローカライズ |
@@ -525,6 +572,7 @@ Patch 1.2 で追加・変更された政府タイプ関連の用語。完全版�
 | 内容 | URL |
 |------|-----|
 | Patch 1.2 パッチノート | `https://eu5.paradoxwikis.com/Patch_1.2` |
+| Patch 1.3 パッチノート（1.3 beta 差分の出典） | `https://eu5.paradoxwikis.com/Patch_1.3` |
 | Holy Roman Empire メカニクス | `https://eu5.paradoxwikis.com/Holy_Roman_Empire` |
 | Fate of the Phoenix（ビザンツ関連） | `https://eu5.paradoxwikis.com/Fate_of_the_Phoenix` |
 

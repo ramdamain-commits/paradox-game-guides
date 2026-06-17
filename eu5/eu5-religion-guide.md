@@ -726,6 +726,21 @@ EU4 の宣教師システムは廃止され、EU5 では異なるメカニクス
 
 ---
 
+## 1.3 オープンベータ差分（宗教関連・純追記）
+
+> **本セクションは 1.3 オープンベータ（buildid 23683141 / BetaKey `1.3-open-beta`）のローカルスクリプトと公式 1.3.0 / 1.3.2 パッチノートを独立検証基準とする。上位の 1.2「Echinades」baseline とは独立であり、1.2 本体章の数値・記述には一切手を加えていない。**
+> 1.3 はオープンベータのため数値が変動しうる。安定版リリースまで本セクション内に封じ込め、本文（1.2 baseline）には昇格させない。
+> マーカー: `[src: ...]（1.3 beta）` = ローカル 1.3 スクリプトで実値確認 / `（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）` = エンジン内部値でスクリプトに実値がなく、1.2/1.3 パッチノート突き合わせで真正な変更と確定した項目。
+
+- **身分（Estate）に宗教属性が付与**され、全政体で身分の宗教が管理対象になった `[src: common/estates/00_default.txt]（1.3 beta）`。聖職者以外の身分も宗教が異なると満足度・改宗挙動に影響する。
+- **低 Devotion（献身）ペナルティ**: 献身が低い君主制で月次の宗教的影響力 `monthly_religious_influence = -0.1` `[src: auto_modifiers/country.txt low_devotion ブロック]（1.3 beta）`。Religious Influence の蓄積が遅れ、改宗・教会運営が停滞する。
+- 枢機卿（Cardinal）あたりの聖職者満足度ボーナス +1%（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。カトリック国の聖職者管理に有利。
+- **市場言語話者バーガーの同化**: 市場の言語を話すバーガー（市民）の同化が、従来の hard-block（完全不可）から「超低速で可能」に緩和（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。長期的な文化統合の余地が生まれる。
+- Papacy → Lutheran 議会移行のバグ修正（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。
+- 注意（誤帰属回避）: **Patriarch（総主教）のキャラクター実装・Rite Power 廃止 → Religious Influence 統合は 1.2「Echinades」の変更**であり、1.3 新規ではない（本ガイドのカトリック/正教会セクションおよび用語対照表で既述）。1.3 差分として再掲しない。
+
+---
+
 ## 用語対照表
 
 | 日本語 | 英語（ゲーム内） | 備考 |
@@ -752,6 +767,10 @@ EU4 の宣教師システムは廃止され、EU5 では異なるメカニクス
 | 外交破門 | Excommunication | カトリック新コスト（1.2）: Religious Influence 100→50 |
 | 総主教 | Patriarch | 1.2 でキャラクターとして実装（旧: 抽象的リソース） |
 | 儀式力 | Rite Power | 1.2 で廃止 → Religious Influence 統合（正教会） |
+| 身分の宗教（**1.3 beta 仮登録**） | Estate Religion | 1.3 で全政体に身分の宗教属性が付与 `[src: estates/00_default.txt]（1.3 beta）` |
+| 低献身（**1.3 beta 仮登録**） | Low Devotion | 1.3 で monthly_religious_influence -0.1 等のペナルティ `[src: auto_modifiers/country.txt]（1.3 beta）` |
+
+> 上記「1.3 beta 仮登録」の用語は安定版リリース後に中央 `localization-reference.md` へ正式昇格する。
 
 ---
 
@@ -781,6 +800,14 @@ EU4 の宣教師システムは廃止され、EU5 では異なるメカニクス
 | `in_game/common/religious_schools/jain.txt` | ジャイナ法学派 |
 | `in_game/common/religious_focuses/nahuatl.txt` | ナワトル宗教フォーカス8種 |
 | `in_game/common/building_types/religion_buildings.txt` | 宗教建物定義・修正値 |
+| `in_game/common/estates/00_default.txt` | 身分の宗教属性（1.3 beta） |
+| `in_game/common/auto_modifiers/country.txt` | 低 Devotion ペナルティ（low_devotion: monthly_religious_influence=-0.1、1.3 beta） |
+
+**1.3 オープンベータ Wiki**
+
+| マーカー | 対応ページ |
+|---------|----------|
+| `[src: Patch_1.3 wiki]` | eu5.paradoxwikis.com/Patch_1.3（1.3 beta 差分・スクリプト未確認項目の根拠） |
 
 **1.2 パッチ関連 Wiki ページ**（URL はツール制約により本文直埋め禁止。以下はショートマーカーと対応 URL の対照）
 
