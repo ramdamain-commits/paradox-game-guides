@@ -56,6 +56,28 @@
 
 ---
 
+## 1.3 オープンベータ差分（ブランデンブルク直接影響・純追記）
+
+> **本セクションは 1.3 オープンベータ（buildid 23683141 / BetaKey `1.3-open-beta`）のローカルスクリプトと公式 1.3.0 / 1.3.2 パッチノートを独立検証基準とする。上位の 1.2「Echinades」baseline とは独立であり、1.2 本体章の数値・記述には一切手を加えていない。**
+> 1.3 はオープンベータのため数値が変動しうる。安定版リリースまで本セクション内に封じ込め、本文（1.2 baseline）には昇格させない。
+> マーカー: `[src: ...]（1.3 beta）` = ローカル 1.3 スクリプトで実体を確認 / `（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）` = エンジン内部値・公式ノートのみ根拠。
+
+### HRE 運営（皇帝メカニクスの 1.3 変更）
+
+- **HRE 加入 reluctance・土地剥奪の皇帝集権・従属国への宗教統一強制不可**: 1.3 で HRE 皇帝メカニクスが調整された（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。HRE 小国〜中堅のブランデンブルクにとっては、皇帝（オーストリア）の統制手段が増える一方で帝国拡張ペースが鈍るため、皇帝との距離の取り方が変わる。皇帝視点の詳細は [eu5-austria-guide.md](eu5-austria-guide.md) の「1.3 オープンベータ差分」節を参照。
+
+### 東方外交（ポーランドの Voivode 改革）
+
+- **Voivode（ヴォイヴォダ）改革**: ポーランド・カルパチア圏向けの政府改革 Voivode が 1.3 で追加された `[src: government_reforms/country_specific.txt]（1.3 beta）`。ブランデンブルク自身が採れる改革ではないが、東の隣国ポーランドの内政選択肢が広がるため、対ポーランド外交・東方拡張の前提が動きうる。改革の詳細は [eu5-government-guide.md](eu5-government-guide.md) の 1.3 節、地域影響は地域章（regional ガイド）東欧・バルカン節を参照。
+
+### 経済・軍事（全国家共通の 1.3 リバランス）
+
+- **建物維持費の逓増・船コスト増・陸軍 goods 2 倍**: 全国家に効く 1.3 の経済リバランスはブランデンブルク／プロイセンにも適用される（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。軍事国家として常備軍を厚く積むプロイセン路線は陸軍 goods 2 倍の影響を受けるため、goods 供給を意識した拡張が要る。詳細は [eu5-universal-guide.md](eu5-universal-guide.md) の「1.3 オープンベータ差分」節を参照。
+
+> **⚠ 家族銀行（Berenberg）についての注意**: 1.3 で言及される家族銀行系フレーバー（Berenberg 等）は**ハンブルク（HAM）固有のフレーバー**であり `[src: events/DHE/flavor_HAM.txt]（1.3 beta）`、スクリプト上ブランデンブルクに紐づく銀行メカニクスは確認できない。「1.3 でブランデンブルクに家族銀行が来る」という形で本ガイドには取り込まない（誤帰属回避）。アラゴンの公営銀行 Taula de Canvi も別系統（地域章イベリア節参照）。
+
+---
+
 ## 開始状況（1337年）
 
 | 項目 | 値 |
@@ -718,6 +740,15 @@ Patch 1.2 の外交変更はブランデンブルクの戦略選択に直接影�
 | 階級権力 | Estate Power | システム | 各階級の権力値 |
 | RGO | Resource Gathering Operations | 経済 | 資源採取 |
 
+### 1.3 オープンベータ用語（仮登録）
+
+> 安定版リリース後に中央 `localization-reference.md` へ正式昇格する。詳細は本ガイドの「1.3 オープンベータ差分」節を参照。
+
+| 日本語 | 英語 | カテゴリ | 備考 |
+|--------|------|---------|------|
+| ヴォイヴォダ | Voivode | 政府改革 | 1.3。ポーランド・カルパチア圏。東の隣国の内政選択肢 `[src: government_reforms/country_specific.txt]（1.3 beta）` |
+| 家族銀行（ハンブルク） | Berenberg / family bank | フレーバー | 1.3。HAM 固有。ブランデンブルクには紐づかない `[src: events/DHE/flavor_HAM.txt]（1.3 beta）` |
+
 > 2026-04-05 時点でも、`wittelsbacher_event_occurs_tt` など一部ツールチップはゲーム内で未翻訳のまま残っている。
 
 ---
@@ -753,6 +784,14 @@ Patch 1.2 の外交変更はブランデンブルクの戦略選択に直接影�
 - [Religion - EU5 Wiki](https://eu5.paradoxwikis.com/Religion)
 - [SteamDB Patch 1.1.10](https://steamdb.info/patchnotes/22329656/)
 - [Tinto Talks #100 — Fate of the Phoenix 初公開](https://store.steampowered.com/news/app/3450310/view/509608484353868138) — Patch 1.2 予告
+
+#### 1.3 オープンベータ差分の出典（純追記分）
+
+ローカル 1.3 open beta（buildid 23683141 / BetaKey `1.3-open-beta`）スクリプトで実体確認したファイル。HRE 皇帝メカニクス調整・経済リバランスはエンジン内部値/メカニクス挙動でスクリプト実値未確認のため `（コミュニティ知見：1.3 beta、公式パッチノート由来）` 扱い。
+
+  - `government_reforms/country_specific.txt` — Voivode 改革（1.3 beta。ポーランド・カルパチア圏）
+  - `events/DHE/flavor_HAM.txt` — Berenberg 家族銀行フレーバー（1.3 beta。HAM 固有＝ブランデンブルク非該当の確認）
+  - Patch 1.3 wiki: eu5.paradoxwikis.com/Patch_1.3
 
 ### コミュニティ情報（補足知見）
 

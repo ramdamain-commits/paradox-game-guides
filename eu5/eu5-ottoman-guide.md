@@ -75,6 +75,30 @@
 
 ---
 
+## 1.3 オープンベータ差分（オスマン直接影響・純追記）
+
+> **本セクションは 1.3 オープンベータ（buildid 23683141 / BetaKey `1.3-open-beta`）のローカルスクリプトと公式 1.3.0 / 1.3.2 パッチノートを独立検証基準とする。上位の 1.2「Echinades」baseline とは独立であり、1.2 本体章の数値・記述には一切手を加えていない。**
+> 1.3 はオープンベータのため数値が変動しうる。安定版リリースまで本セクション内に封じ込め、本文（1.2 baseline）には昇格させない。
+> マーカー: `[src: ...]（1.3 beta）` = ローカル 1.3 スクリプトで実体を確認 / `（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）` = エンジン内部値・公式ノートのみ根拠。
+
+> **更新優先度メモ**: マルチエージェントレビューで、1.3 の経済・海軍リバランスはオスマンの大艦隊・大規模常備軍・広域建造物という強みすべてに同時に効くため、本ガイドは安定版対応時に優先度 Tier2 で本文統合する対象とされた。
+
+### 海軍・貿易（船コストの直撃）
+
+- **船コスト増（金 4 倍・goods 10 倍）**: 軍艦の建造コストが金で 4 倍・goods で 10 倍に引き上げられた（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。エーゲ海・黒海・東地中海の制海権を握るオスマンの海軍拡張が大幅に高コスト化する。1.2 で前提にしていた早期大艦隊は再考が必要。
+- **海戦致死性の上昇**: 海戦の損耗が増加（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。ヴェネツィア・ジェノヴァ・ビザンツ海軍との衝突で艦隊が消耗しやすくなるため、無理な海戦を避ける運用が要る。
+
+### 内政・経済（建物維持費・陸軍 goods）
+
+- **建物維持費の逓増（1 世紀で +50%）**: 建造物の維持費が時間経過で逓増し、1 世紀かけて約 +50% に達する（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。広大な版図に建造物を積むオスマンは長期維持費が重くなり、拡張ペースと建設投資のバランス管理がよりシビアになる。
+- **陸軍 goods 需要 2 倍**: 常備軍の goods 消費が約 2 倍に増加（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。イェニチェリ・シパーヒーを大量編成するオスマンの軍事経済に直撃するため、goods 供給（自国産 + 交易）の確保が拡張の前提になる。
+
+### 外交（対ビザンツ・バルカン）
+
+- **Twilight of the Tsardom によるバルカン流動化**: 1.3 でブルガリア等のバルカン勢力に崩壊・分裂を引き起こすディザスターが追加された `[src: disasters/twilight_of_the_tsardom.txt, events/DHE/flavor_BUL.txt]（1.3 beta）`。バルカンが流動化するとビザンツの再征服（1.2 既存の Restore Roman Borders CB）も活性化しうるため、オスマンのバルカン支配は機会であると同時に新たな係争地化リスクもある。地域章（regional ガイド）東欧・バルカン節および [eu5-byzantium-guide.md](eu5-byzantium-guide.md) の 1.3 節と相互参照。
+
+---
+
 ## 開始状況（1337年）
 
 ### 「オスマンの台頭」シチュエーション
@@ -572,6 +596,14 @@ DLC Fate of the Phoenix（Patch 1.2 同時リリース）はビザンツ帝国�
 | 優位性戦争 | Superiority War | 戦争目標 | 1.2 で Coalition War に適用。首都占領なしに勝利可能 |
 | 総主教 | Patriarch | キャラクター | 1.2 で正教会オーバーホールによりキャラクターとして実装 |
 
+#### 1.3 オープンベータ用語（仮登録）
+
+> 安定版リリース後に中央 `localization-reference.md` へ正式昇格する。詳細は本ガイドの「1.3 オープンベータ差分」節を参照。
+
+| 日本語 | 英語 | カテゴリ | 備考 |
+|--------|------|---------|------|
+| ツァーリ国の黄昏 | Twilight of the Tsardom | ディザスター | 1.3。バルカン勢力の崩壊→バルカン流動化 `[src: disasters/twilight_of_the_tsardom.txt]（1.3 beta）` |
+
 ### 共通用語（抜粋）
 
 | 日本語 | 英語 | カテゴリ | 備考 |
@@ -607,6 +639,13 @@ DLC Fate of the Phoenix（Patch 1.2 同時リリース）はビザンツ帝国�
 - **Coalition War Superiority 化**: `game/in_game/common/casus_belli/coalition.txt` 行 13（`conquer_cost = 0.75`、`release_cost = 0.25`）、`game/in_game/common/wargoals/00_default.txt` 行 244–261（防衛側 `conquer_cost = 2.5`、`ticking_war_score = 0.5`）で確認
 - **Enforce Peace 双方合意必須**: `game/in_game/common/country_interactions/subject_enforce_peace.txt` 行 84–90、`game/in_game/common/country_interactions/union_enforce_peace.txt` 行 108–164 で双方合意ロジックを確認
 - **ロジ距離 50→30 / 食料消費 10倍**: `game/in_game/common/auto_modifiers/country.txt` 行 90（`supply_range` 定義）、`game/in_game/common/unit_categories/` 内 food_consumption 係数で確認
+
+#### 1.3 オープンベータ差分の出典（純追記分）
+
+ローカル 1.3 open beta（buildid 23683141 / BetaKey `1.3-open-beta`）スクリプトで実体確認したファイル。船コスト増・海戦致死性・建物維持費逓増・陸軍 goods 2 倍はエンジン内部値でスクリプト実値未確認のため `（コミュニティ知見：1.3 beta、公式パッチノート由来）` 扱い。
+
+- `game/in_game/common/disasters/twilight_of_the_tsardom.txt`, `events/DHE/flavor_BUL.txt`（Twilight of the Tsardom ディザスター。1.3 beta。バルカン流動化）
+- Patch 1.3 wiki: eu5.paradoxwikis.com/Patch_1.3
 
 ### 公式 Wiki（パッチ・DLC 情報）
 

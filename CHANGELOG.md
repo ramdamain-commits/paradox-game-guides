@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-06-18 EU5 1.3 オープンベータ差分 純追記（次セッションバッチ2: 国別 ottoman/hungary/austria/brandenburg/castile）
+
+### Added
+- 5 国別ガイドに「1.3 オープンベータ差分（…直接影響・純追記）」を案A方式で追加。1.2 本体章は無変更:
+  - `eu5/eu5-ottoman-guide.md`: 船コスト 4x/10x・海戦致死性・建物維持費逓増+50%・陸軍 goods 2 倍（いずれも changelog 由来）＋ Twilight of the Tsardom によるバルカン流動化 `[src: disasters/twilight_of_the_tsardom.txt]`。更新優先度 Tier2 メモを明記（B-1）
+  - `eu5/eu5-hungary-guide.md`: 陸軍 goods 2 倍＝黒軍(a_the_black_army)コスト直撃（B-2、changelog 由来）＋ Union of Crowns の女性継承整理 `[src: scripted_relations/union_of_crowns_pact.txt, heir_selections/monarchy.txt]`、**⚠ 対ポーランド PU の女性継承除外例外 `no_female_heirs_for_poland` `[src: heir_selections/monarchy.txt:1206]`**（A-7）
+  - `eu5/eu5-austria-guide.md`: **従属国への宗教統一強制が不可**（B-3）・HRE 加入 reluctance・土地剥奪の皇帝集権（いずれも changelog 由来）＋経済リバランス・Twilight 相互参照 `[src: disasters/twilight_of_the_tsardom.txt]`
+  - `eu5/eu5-brandenburg-guide.md`: HRE 皇帝メカニクス調整・Voivode（東隣ポーランド）`[src: government_reforms/country_specific.txt]`・経済リバランス＋**⚠ Berenberg 家族銀行は HAM 固有 `[src: events/DHE/flavor_HAM.txt]` でブランデンブルク非該当（A-5・誤帰属回避）**
+  - `eu5/eu5-castile-guide.md`: 船コスト増（植民艦隊直撃）・海戦致死性・経済リバランス・植民/移民拡大・新文化（種別断定保留）＋**ℹ Taula de Canvi はアラゴン固有 `[src: events/DHE/flavor_ARA.txt:flavor_ara.220]` で regional 移管済（誤帰属回避）**
+- 各ガイドの用語対照表に「1.3 オープンベータ用語（仮登録）」を追加、出典に 1.3 スクリプトファイル・Patch 1.3 wiki を追記
+- `index.html`: ottoman/hungary/austria/brandenburg/castile カードに「1.3 beta差分」バッジを追加
+
+### Notes
+- script-checkable 項目は実機 grep で再確認: `no_female_heirs_for_poland`(monarchy.txt:1206) / `union_of_crowns_pact`(scripted_relations) / Berenberg=flavor_HAM.txt（HAM 固有確定）/ Taula=flavor_ara.220 / Voivode=country_specific.txt
+- 経済目玉値（船コスト 4x/10x・建物維持費+50%・陸軍 goods 2 倍・海戦致死性）はエンジン内部値で全て changelog 由来マーカー（spec section 1 の確定表どおり）
+- austria/brandenburg からの被リンク相互更新を実体化（regional Twilight/Voivode ノードと相互参照、universal/government/byzantium へのリンクを 1.3 節内に配置）
+- Tier4（localization-reference 中央昇格・差分の本文統合）は 1.3 安定版リリース後の昇格フローで実施
+
 ## 2026-06-18 EU5 1.3 オープンベータ差分 純追記（次セッションバッチ1: regional-guide 単独）
 
 ### Added

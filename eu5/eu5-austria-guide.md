@@ -70,6 +70,28 @@
 
 ---
 
+## 1.3 オープンベータ差分（オーストリア・HRE 直接影響・純追記）
+
+> **本セクションは 1.3 オープンベータ（buildid 23683141 / BetaKey `1.3-open-beta`）のローカルスクリプトと公式 1.3.0 / 1.3.2 パッチノートを独立検証基準とする。上位の 1.2「Echinades」baseline とは独立であり、1.2 本体章の数値・記述には一切手を加えていない。**
+> 1.3 はオープンベータのため数値が変動しうる。安定版リリースまで本セクション内に封じ込め、本文（1.2 baseline）には昇格させない。
+> マーカー: `[src: ...]（1.3 beta）` = ローカル 1.3 スクリプトで実体を確認 / `（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）` = エンジン内部値・公式ノートのみ根拠。
+
+### 宗教・従属国管理（従属国への宗教統一強制が不可に）
+
+- **宗教統一の強制を従属国に適用できない**: 宗主国が従属国に対して宗教統一（改宗）を強制するルートが塞がれた（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。ハプスブルクは同君連合・属国を多数抱える政体であり、これらの異宗派従属国（プロテスタント諸侯・正教バルカン等）を宗教的に揃える手段が制限される。宗教改革後の帝国内宗派管理は、強制ではなく外交・帝国法・自発改宗を前提に組み直す必要がある。
+
+### HRE 運営（加入 reluctance・土地剥奪）
+
+- **HRE 加入の reluctance（消極化）**: 非加盟国を HRE に組み込む際の抵抗が高まる方向に調整された（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。皇帝として帝国を拡張するペースが鈍るため、加入交渉と帝国権威の使いどころをより計画的に運ぶ。
+- **土地剥奪が皇帝の手に**: 帝国内の領土剥奪・再分配の権限が皇帝側に寄せられた（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。皇帝プレイでは諸侯統制の手札が増える一方、諸侯側の反発管理が新たな論点になる。
+
+### 経済・軍事（全国家共通の 1.3 リバランスの影響）
+
+- **建物維持費の逓増・船コスト増・陸軍 goods 2 倍**: 全国家に効く 1.3 の経済リバランスはオーストリアにも適用される（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。詳細は [eu5-universal-guide.md](eu5-universal-guide.md) の「1.3 オープンベータ差分」節を参照。
+- **Twilight of the Tsardom によるバルカン流動化**: 1.3 でバルカン勢力の崩壊ディザスターが追加された `[src: disasters/twilight_of_the_tsardom.txt]（1.3 beta）`。ハプスブルクのバルカン・対オスマン方面の機会と係争に影響する。地域章（regional ガイド）東欧・バルカン節と相互参照。
+
+---
+
 ## 開始状況（1337年）
 
 ### 基本ステータス
@@ -1101,6 +1123,14 @@ IA は 0〜100 で変動。皇帝権力強化ポリシーへのアクセス（`i
 | 優位性戦争 | Superiority War | 1.2 新規。Coalition War の置換（war_goal_type = superiority_coalition）。攻撃側 conquer_cost=0.75 / 防衛側 conquer_cost=2.5 / ticking_war_score=0.5 `[src: Patch_1.2 wiki + script verified]`（casus_belli/coalition.txt 行 13） |
 | 都市特権 | Urban Rights | 1.2 新規。自由都市・都市の権利に関わる制度 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 
+### 1.3 オープンベータ用語（仮登録）
+
+> 安定版リリース後に中央 `localization-reference.md` へ正式昇格する。詳細は本ガイドの「1.3 オープンベータ差分」節を参照。
+
+| 日本語 | 英語 | 説明 |
+|--------|------|------|
+| ツァーリ国の黄昏 | Twilight of the Tsardom | 1.3。バルカン勢力の崩壊ディザスター。対オスマン方面に影響 `[src: disasters/twilight_of_the_tsardom.txt]（1.3 beta）` |
+
 ---
 
 ## 出典
@@ -1130,6 +1160,15 @@ IA は 0〜100 で変動。皇帝権力強化ポリシーへのアクセス（`i
 | [Patch 1.2 — Europa Universalis 5 Wiki](https://eu5.paradoxwikis.com/Patch_1.2) | eu5.paradoxwikis.com | Patch 1.2 メイン出典。HRE オーバーホール・Papal Authority・兵科分類等 |
 | [Holy Roman Empire — EU5 Wiki](https://eu5.paradoxwikis.com/Holy_Roman_Empire) | eu5.paradoxwikis.com | Imperial Diet 投票テーブル・帝国メカニクス詳細 |
 | [Fate of the Phoenix — EU5 Wiki](https://eu5.paradoxwikis.com/Fate_of_the_Phoenix) | eu5.paradoxwikis.com | DLC コンテンツ参照（バルカン新コンテンツ等） |
+
+#### 1.3 オープンベータ差分の出典（純追記分）
+
+ローカル 1.3 open beta（buildid 23683141 / BetaKey `1.3-open-beta`）スクリプトで実体確認したファイル。従属国への宗教統一強制不可・HRE 加入 reluctance・土地剥奪の皇帝集権・経済リバランスはエンジン内部値/メカニクス挙動でスクリプト実値未確認のため `（コミュニティ知見：1.3 beta、公式パッチノート由来）` 扱い。
+
+| ファイル | 用途 |
+|---------|------|
+| `in_game/common/disasters/twilight_of_the_tsardom.txt` | Twilight of the Tsardom ディザスター（1.3 beta。バルカン流動化） |
+| Patch 1.3 wiki: eu5.paradoxwikis.com/Patch_1.3 | 1.3.0 / 1.3.2 パッチノート |
 
 ### コミュニティ情報（補足知見）
 

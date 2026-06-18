@@ -77,6 +77,24 @@
 
 ---
 
+## 1.3 オープンベータ差分（ハンガリー直接影響・純追記）
+
+> **本セクションは 1.3 オープンベータ（buildid 23683141 / BetaKey `1.3-open-beta`）のローカルスクリプトと公式 1.3.0 / 1.3.2 パッチノートを独立検証基準とする。上位の 1.2「Echinades」baseline とは独立であり、1.2 本体章の数値・記述には一切手を加えていない。**
+> 1.3 はオープンベータのため数値が変動しうる。安定版リリースまで本セクション内に封じ込め、本文（1.2 baseline）には昇格させない。
+> マーカー: `[src: ...]（1.3 beta）` = ローカル 1.3 スクリプトで実体を確認 / `（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）` = エンジン内部値・公式ノートのみ根拠。
+
+### 軍事（陸軍 goods 需要 2 倍＝黒軍コスト直撃）
+
+- **陸軍 goods 需要 2 倍**: 常備軍の goods 消費が約 2 倍に増加（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。ハンガリーの主力である**黒軍（Black Army / a_the_black_army、Heavy Infantry）**は goods 消費の重い兵科であり、大量編成のランニングコストが直撃を受ける。1.2 で前提にしていた黒軍中心の常備軍規模は、goods 供給（産地確保・交易）とセットで再設計する必要がある。
+- **建物維持費の逓増（1 世紀で +50%）**: 建造物維持費が時間経過で逓増する（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。要塞網（ヴェグヴァール体制）を厚く積む防衛戦略は長期維持費が増すため、収入とのバランスを意識する。
+
+### 継承・外交（Union of Crowns の女性継承と対ポーランド例外）
+
+- **Union of Crowns（王冠連合協定）の女性継承**: ヴィシェグラード会議連鎖で成立するポーランドとの PU 協定 `union_of_crowns_pact` まわりの継承ロジックが整理され、女性継承が継承候補として扱われるケースが追加された `[src: scripted_relations/union_of_crowns_pact.txt, heir_selections/monarchy.txt]（1.3 beta）`。
+- **⚠ 対ポーランド PU の例外注記**: ただし継承資格ルールに `no_female_heirs_for_poland` が定義されており、ポーランド方面の継承では女性継承者が資格から除外される `[src: heir_selections/monarchy.txt:1206（custom_eligibility_rules = no_female_heirs_for_poland）]（1.3 beta）`。「女性継承が一般に緩和された」と早合点して対ポーランド PU を女性後継者で繋ごうとすると不発になりうるため、ヤギェウォ朝・ポーランド王冠連合ルートを狙う場合は男性後継者の確保を引き続き計画に入れること。
+
+---
+
 ## 開始状況（1337年）
 
 ### 基本ステータス
@@ -1070,6 +1088,14 @@ Age 5 解禁の地形特化型軽装歩兵。重要注意点が 2 点ある。
 | 黄金大勅書（HRE） | Golden Bull（HRE） | HRE 皇帝が制定する帝国法。未制定だと 1400 年以降に諸侯が離脱可能 `[src: international_organizations/hre.txt + script verified]` |
 | 戦力前線幅 | possible_frontage_modifier | 戦場に展開できる兵力幅の修正値 `[src: advances/country_HUN.txt]` |
 
+### 1.3 オープンベータ用語（仮登録）
+
+> 安定版リリース後に中央 `localization-reference.md` へ正式昇格する。詳細は本ガイドの「1.3 オープンベータ差分」節を参照。
+
+| 日本語 | 英語 | 補足 |
+|--------|------|------|
+| 対ポーランド女性継承除外 | no_female_heirs_for_poland | 1.3。継承資格ルール。ポーランド方面の継承で女性継承者を資格から除外 `[src: heir_selections/monarchy.txt:1206]（1.3 beta）` |
+
 ---
 
 ## 出典
@@ -1101,6 +1127,14 @@ Age 5 解禁の地形特化型軽装歩兵。重要注意点が 2 点ある。
   - `international_organizations/union.txt` — 同君連合 IO
   - `laws/40_personal_unions.txt` — PU 法律・統合レベル
   - `events/DHE/flavor_HAB.txt` — flavor_hab.46（HAB 視点ハンガリー陥落）
+
+#### 1.3 オープンベータ差分の出典（純追記分）
+
+ローカル 1.3 open beta（buildid 23683141 / BetaKey `1.3-open-beta`）スクリプトで実体確認したファイル。陸軍 goods 2 倍・建物維持費逓増はエンジン内部値でスクリプト実値未確認のため `（コミュニティ知見：1.3 beta、公式パッチノート由来）` 扱い。
+
+  - `scripted_relations/union_of_crowns_pact.txt` — Union of Crowns 協定の継承ロジック整理（1.3 beta）
+  - `heir_selections/monarchy.txt` 行 1206 — `no_female_heirs_for_poland`（対ポーランド継承の女性除外ルール、1.3 beta）
+  - Patch 1.3 wiki: eu5.paradoxwikis.com/Patch_1.3
   - `international_organizations/hre.txt` — HRE 1.2 オーバーホール（Golden Bull・GP Score）
   - `laws/20_hre.txt` — HRE 法律（Golden Bull 効果）
   - `building_types/hre_buildings.txt` — Imperial Armory コスト・効果
