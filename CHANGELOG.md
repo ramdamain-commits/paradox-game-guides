@@ -1,5 +1,25 @@
 # Changelog
 
+## 2026-06-18 EU5 1.3 オープンベータ差分 純追記（次セッションバッチ1: regional-guide 単独）
+
+### Added
+- `eu5/eu5-regional-guide.md`: 「1.3 オープンベータ差分（地域別・純追記）」を追加。1.2 本体（各地域節）は一切変更せず、地域別に 1.3 差分を純追記:
+  - 西欧=百年戦争リバランス `[src: situations/hundred_years_war.txt]`・薔薇戦争ディザスター `[src: disasters/war_of_the_roses.txt]`
+  - イタリア=ゲルフ／ギベリン改修 `[src: situations/guelphs_and_ghibellines.txt]`（spec通り西欧章から移動）
+  - イベリア(アラゴン)=Taula de Canvi 公営銀行 `[src: events/DHE/flavor_ARA.txt:flavor_ara.220]`（castile でなく regional に配置）
+  - 東欧・バルカン=Twilight of the Tsardom `[src: disasters/twilight_of_the_tsardom.txt, events/DHE/flavor_BUL.txt]`・Voivode 改革 `[src: government_reforms/country_specific.txt]`
+  - 各地域共通=RGO 再分配（Iron/Wool/Horses/Beeswax、changelog 由来）
+  - 概要・東アジア=植民/移民拡大・新文化（公式ノート 6 種、種別断定保留）・天然痘亜熱帯化 `[src: diseases/smallpox.txt]`（1.3.2 で発生率 0.1→0.05・拡散閾値 0.15・subtropical 追加）・Korea 研究ナーフ＝集賢殿(Hall of Worthies) `[src: events/DHE/flavor_KOR.txt: kor_hall_of_worthies_modifier]`
+- 用語対照表に「1.3 オープンベータ用語（仮登録）」表（7 語）を追加、出典セクションに 1.3 スクリプトファイル一覧・Patch 1.3 wiki を追記
+- `index.html`: regional カードに「1.3 beta差分」バッジを追加
+- byzantium 既存 1.3 節の「regional 東欧・バルカン節の Twilight 記述と相互参照」を実体化（regional 側 Twilight ノードから byzantium へ相互リンク）
+
+### Notes
+- load-bearing な値は実機 grep で再確認: smallpox 実値（spawn 0.05 / threshold 0.15 / subtropical）・Taula(flavor_ara.220)・Hall of Worthies(flavor_KOR.txt:1893)・Guelph/Ghibelline・War of the Roses・Hundred Years War の各シチュエーション/ディザスターの実体を確認
+- 「新文化 6 種」は spec のカウントを鵜呑みにせず、どの文化が 1.3 新規かはノート差分依存のため種別断定を保留（changelog 由来マーカー）。前バッチの宮廷芸術家 14→12 種の誤り捕捉に倣う
+- austria/brandenburg からの被リンク相互更新は、両ガイドの 1.3 節を作成する次バッチ（国別）で実施
+- 国別（ottoman/hungary 格上げ・austria・brandenburg・castile）・Tier4 は後続持越し
+
 ## 2026-06-17 EU5 1.3 オープンベータ差分 純追記（バッチ2: religion + byzantium）
 
 ### Added
