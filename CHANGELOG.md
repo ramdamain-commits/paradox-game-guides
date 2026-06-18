@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-06-18 EU5 1.3 オープンベータ差分 純追記（Tier4 先行: recommended-mods 1.3 beta互換注記）
+
+### Added
+- `eu5/eu5-recommended-mods.md`: 「1.3 オープンベータでのMOD互換性（純追記）」を追加。ベータブランチ切替時の incompatible 挙動・バニラ上書き型MODの破損リスク・壊れにくい追加/ビジュアル系・セーブ非互換・実績仕様を整理（全て コミュニティ知見：1.3 beta 扱い）。MOD表の対応パッチ列(1.1.x基準)は安定版で更新する旨を明記
+- 出典に Patch 1.3 wiki を追記、`index.html` の おすすめMOD カードに「1.3 beta差分」バッジを追加（計11）
+
+### Notes
+- Tier4 のうち beta 時点で意味を持つ「recommended-mods 互換注記」のみ先行。localization-reference 中央昇格・差分の本文統合（昇格フロー）は 1.3 安定版リリース後に実施
+
 ## 2026-06-18 EU5 1.3 オープンベータ差分 純追記（次セッションバッチ2: 国別 ottoman/hungary/austria/brandenburg/castile）
 
 ### Added

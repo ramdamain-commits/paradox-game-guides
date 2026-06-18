@@ -11,6 +11,17 @@
 - 実績: MODを有効にするとほとんどの場合実績が解除されなくなる（例外は各MODの注意点を参照）
 - Steam Workshop で「incompatible」と表示されるMODがあるが、これはParadoxのバージョンチェック機構によるもので実際には動作する場合が多い。各MODのコメント欄で動作状況を確認すること
 
+## 1.3 オープンベータでのMOD互換性（純追記）
+
+> **本セクションは 1.3 オープンベータ（BetaKey `1.3-open-beta`）時点の注記。本記事の MOD 表（対応パッチ列）は 1.1.x〜1.1.10 ベースのままで、各 MOD の 1.3 beta 動作は未確認。安定版リリース後に対応パッチ列を更新する。**
+> MOD 情報の性質上スクリプト検証はできないため、本節は全て（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）扱い。
+
+- **ベータブランチ切替時の挙動**: Steam の `1.3-open-beta` ブランチに切り替えると、ほとんどの MOD が「incompatible」表示になる。表示だけで実際は動く場合もあるが、1.2→1.3 は経済・海軍・HRE・宗教まわりが大きく動くため、**バニラファイルを上書きする大型 MOD ほど実際に壊れる確率が上がる**（New World Improvement Project / Beyond the Cape 等は要注意）。
+- **壊れにくい MOD**: 追加型・ビジュアル系（Community Flavor Pack / Way of the Dodo 等）は本体ロジックを上書きしないため、ベータでも動作継続しやすい。
+- **遊び方の指針**: 1.3 beta を試す間は、①MOD を一旦すべて外してバニラ beta で確認 → ②必要な MOD を各 Workshop ページのコメント欄で「1.3 対応」報告を確認しながら個別に戻す、の順が安全。
+- **セーブ互換**: ベータ版と安定版の間、また beta のホットフィックス間でセーブデータが壊れる/読めなくなることがある。beta で進めたセーブは安定版移行時に引き継げない前提で扱う。
+- **実績**: ベータブランチ自体は実績に影響しないが、MOD 有効化で実績解除が無効になる従来仕様は 1.3 でも変わらない見込み。
+
 ## ビジュアル変更
 
 | MOD名 | 作者 | 概要 | おすすめ理由 | 注意点 | 対応パッチ |
@@ -46,3 +57,4 @@
   - [Deltia's Gaming: EU5 5 Best Mods](https://deltiasgaming.com/europa-universalis-5-eu5-5-best-mods/)
   - [Steam Workshop Essential Mods コレクション](https://steamcommunity.com/sharedfiles/filedetails/?id=3606622874)
   - [Steam Workshop: EU5](https://steamcommunity.com/app/3450310/workshop/)
+  - [Patch 1.3 — EU5 Wiki](https://eu5.paradoxwikis.com/Patch_1.3)（1.3 オープンベータの変更点・MOD互換性の前提）
