@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-07-03 CLAUDE.md ダイエット（章テンプレ・定型手順の分離）
+
+### Changed
+- CLAUDE.md（35.2KB）から「ゲーム横断テンプレート」（全13セクションの章構成）を `docs/templates/guide-section-template.md` へ、「新規国別ガイド追加の手順」を `docs/procedures/new-country-guide.md` へ verbatim 分離（26.2KB へ削減・内容の削除なし）。CLAUDE.md にはルール・制約・スクリプト参照先とポインタのみを残す
+
 ## 2026-06-18 EU5 1.3 オープンベータ差分 純追記（Tier4 先行: recommended-mods 1.3 beta互換注記）
 
 ### Added

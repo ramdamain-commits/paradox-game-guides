@@ -56,7 +56,7 @@ ck3/          … Crusader Kings III 攻略（勢力ガイド + おすすめMOD�
 index.html    … GitHub Pages トップ
 viewer.html   … Markdown ビューア
 docs/         … 内部計画・設計メモ
-CLAUDE.md     … 攻略ガイド作成ルール・テンプレート
+CLAUDE.md     … 攻略ガイド作成ルール（章テンプレは docs/templates/guide-section-template.md）
 ```
 
 ## ファイル命名規則
@@ -72,4 +72,4 @@ CLAUDE.md     … 攻略ガイド作成ルール・テンプレート
 - パッチバージョンを明記し、仕様変更があれば更新する
 - 日本語はゲーム内ローカライズ準拠。各ゲームの `localization-reference.md` が用語の正本
 - ゲームスクリプトを一次ソースとし、コミュニティ知見と区別する
-- 詳細な作成ルールとテンプレートは [CLAUDE.md](CLAUDE.md) を参照
+- 詳細な作成ルールは [CLAUDE.md](CLAUDE.md)、章構成テンプレートは [docs/templates/guide-section-template.md](docs/templates/guide-section-template.md)、新規ガイド追加手順は [docs/procedures/new-country-guide.md](docs/procedures/new-country-guide.md) を参照
