@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-07-11 EU5 1.3 安定版昇格 フェーズ1 Task1-4（recommended-mods昇格）
+
+### Changed
+- `eu5-recommended-mods.md` の「1.3 オープンベータでのMOD互換性（純追記）」節を「1.3 でのMOD互換性」に格上げ
+- MOD表の「対応パッチ」列（旧1.1.x基準）を、researcher（sonnet）によるSteam Workshop実地調査（8 MOD全件）に基づき更新。1.3対応が明確なのはImperial Papermapのみ（作者が1.3.10リリース当日に明言）、残り7件は「1.3未確認」としてコミュニティ知見マーカーで記載
+- reviewer検出のWarning2件を反映: 4 MOD（Community Flavor Pack/Nice Wide Mapmode UI/Way of the Dodo/Beyond the Cape）の最終更新日がPatch1.2リリース日（2026-05-06）より前だったため対応パッチ表記を「1.2.x」→「1.1.x」に修正、Community Flavor Packのセーブクラッシュ報告を注意点欄へ反映
+
+### Notes
+- **これでフェーズ1（Task1-1〜1-4、全11ガイドの本文統合）が完遂**。次はフェーズ2（中央localization-reference昇格+index.html betaバッジ除去）→フェーズ2.5（小型3ガイド拡充、opus推奨）→フェーズ3（整合スイープ+検証）
+
 ## 2026-07-11 EU5 1.3 安定版昇格 フェーズ1 Task1-3（byzantium + 国別5 本文統合）
 
 ### Changed

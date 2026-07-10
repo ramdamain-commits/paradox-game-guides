@@ -91,8 +91,8 @@
 
 > **実運用メモ**: 相互参照の依存関係を避けるため Wave1(byzantium/austria/hungary、他ガイド未参照の自己完結組)→Wave2(ottoman/brandenburg/castile、Wave1で確定した見出し名を参照)の2波に分けてimplementer 3並列×2＋reviewer 3並列×2で実施。reviewer初回投入時にAPIセッション上限で失敗する事象が2回発生したが、いずれも再投入で成功。
 
-### Task 1-4: recommended-mods（昇格＝対応パッチ列更新）
-- [ ] 「1.3 オープンベータでのMOD互換性」節を「1.3 でのMOD互換性」に格上げ。MOD表の「対応パッチ」列（現状 1.1.x 基準）を 1.3 動作確認ベースに更新（各 Workshop の 1.3 対応状況を確認）。ヘッダのパッチ版を更新。
+### Task 1-4: recommended-mods（昇格＝対応パッチ列更新） — ✅完了 (07-11, 4aa6267)
+- [x] 「1.3 オープンベータでのMOD互換性」節を「1.3 でのMOD互換性」に格上げ。MOD表の「対応パッチ」列（現状 1.1.x 基準）を 1.3 動作確認ベースに更新（各 Workshop の 1.3 対応状況を確認）。ヘッダのパッチ版を更新。researcher(sonnet)で8 MOD全件のSteam Workshop実地調査を実施し、1.3対応が明確なImperial Papermap以外はコミュニティ知見マーカーで「1.3未確認」と記載。reviewerが4 MODの最終更新日とバージョン表記の不整合（Patch1.2リリース日より前の更新なのに1.2.x表記）を検出・修正。
 
 **各ガイドの統合をコミット境界に揃える**（CLAUDE.md: staging 結合タイミング＝コミット境界）。**セッション分割（1セッション2バッチ上限・レビューD-3反映）:** ①横断3（universal/government/religion）で1セッション、②**regional 単独で1セッション**（20マーカーで最大規模＝implementer+reviewer で2バッチを使い切る。byzantium と同居させない）、③byzantium＋国別5で1セッション、④recommended-mods＋フェーズ2＋3で1セッション。**「横断3＋regional/byz を1〜2セッション」と詰めるとバッチ超過になるため不可。**
 
