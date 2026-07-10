@@ -1,8 +1,8 @@
-# EU5 宗教グループ別攻略ガイド（Patch 1.2 時点）
+# EU5 宗教グループ別攻略ガイド（Patch 1.3 時点）
 
 > 各宗教グループの固有メカニクス・修正値・法学派（School）の選択指針をまとめた参照ガイド。
 > 国家固有の宗教戦略は各国家別ガイドも参照すること。
-> 2026-05-09 確認時点の最新パッチ 1.2「Echinades」（2026-05-06 リリース）に合わせて更新。スクリプト照合対象: `in_game/common/religions/`・`religious_aspects/`・`religious_schools/`・`building_types/religion_buildings.txt`
+> 2026-07-10 確認時点の最新パッチ 1.3.10（buildid 24075414、安定版。1.2「Echinades」baseline に 1.3 差分を統合済み）に合わせて更新。スクリプト照合対象: `in_game/common/religions/`・`religious_aspects/`・`religious_schools/`・`building_types/religion_buildings.txt`・`estates/00_default.txt`・`auto_modifiers/country.txt`
 > 日本語は原則としてゲーム内ローカライズ準拠。未翻訳箇所は英語を併記する。
 
 > 基本メカニクスは [汎用攻略ガイド](eu5-universal-guide.md) を参照。
@@ -36,6 +36,9 @@
 | 月間 Religious Influence 増加 | +0.1（多くの宗教の基本値） | `[src: religions/christian.txt]` |
 | 最大 Religious Influence（プロテスタント系） | 400 | `[src: religions/christian.txt:各定義]` |
 | 最大 Religious Influence（カトリック・正教・ボスニア教会） | 900 | `[src: religions/christian.txt:210,95]` |
+| 低 Devotion（献身）時のペナルティ | monthly_religious_influence -0.1 | `[src: auto_modifiers/country.txt low_devotion ブロック]` |
+
+君主の Devotion（献身）が低い状態が続くと、上記の月間増加分を打ち消す形で Religious Influence の蓄積が停滞し、改宗・教会運営に影響する。
 
 ---
 
@@ -91,6 +94,11 @@
 
 **戦略的意義**（コミュニティ知見：スクリプト未確認）: プロテスタント諸侯への早期破門が安価化し、HRE カトリック皇帝にとってプロテスタント反乱抑止ツールとして有用。
 
+**その他のカトリック関連修正**
+
+- 枢機卿（Cardinal）1 人あたり聖職者エステート満足度 +1%（コミュニティ知見：スクリプト未確認）。カトリック国の聖職者管理に有利。
+- Papacy → Lutheran 議会移行のバグ修正（コミュニティ知見：スクリプト未確認）。
+
 #### 十字軍 CB 変更（1.2）
 
 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
@@ -104,6 +112,7 @@
 ### 正教会（Orthodox）
 
 > **重要**: 1.2「Echinades」で正教は大幅オーバーホール。以下の構成を参照すること。
+> 注記（誤帰属回避）: Patriarch のキャラクター実装・Rite Power 廃止 → Religious Influence 統合は 1.2 の変更であり、1.3 での追加変更はない。
 
 #### 1.2 オーバーホール（破壊的変更）
 
@@ -705,6 +714,10 @@ EU4 の宣教師システムは廃止され、EU5 では異なるメカニクス
 
 `[src: common/diplomatic_costs/00_hardcoded.txt]`（※宗教変更固有コストは同ファイルに記載なし。安定度コストは別経路で処理）（未検証）
 
+### 身分（Estate）の宗教属性
+
+全政体で身分（Estate）に宗教属性が付与され、聖職者以外の身分も宗教が異なると満足度・改宗挙動に影響するようになった `[src: common/estates/00_default.txt]`。
+
 ### 改宗に影響するスクリプト確認済み修正値
 
 | 修正値 | 効果 | 代表的な発生源 |
@@ -724,20 +737,9 @@ EU4 の宣教師システムは廃止され、EU5 では異なるメカニクス
 | 正教会修道院（Orthodox Monastery） | 正教会のみ | 改宗速度 +0.1、聖職者識字率 +10 | `[src: building_types/religion_buildings.txt:203-241]` |
 | ミアフィジット修道院（Miaphysite Monastery） | ミアフィジット派のみ | 改宗速度 +0.1、識字率 +10、首都で Rite Power +0.05 | `[src: building_types/religion_buildings.txt:243-282]` |
 
----
+### 同化（Assimilation）の緩和 — 市場言語話者バーガー
 
-## 1.3 オープンベータ差分（宗教関連・純追記）
-
-> **本セクションは 1.3 オープンベータ（buildid 23683141 / BetaKey `1.3-open-beta`）のローカルスクリプトと公式 1.3.0 / 1.3.2 パッチノートを独立検証基準とする。上位の 1.2「Echinades」baseline とは独立であり、1.2 本体章の数値・記述には一切手を加えていない。**
-> 1.3 はオープンベータのため数値が変動しうる。安定版リリースまで本セクション内に封じ込め、本文（1.2 baseline）には昇格させない。
-> マーカー: `[src: ...]（1.3 beta）` = ローカル 1.3 スクリプトで実値確認 / `（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）` = エンジン内部値でスクリプトに実値がなく、1.2/1.3 パッチノート突き合わせで真正な変更と確定した項目。
-
-- **身分（Estate）に宗教属性が付与**され、全政体で身分の宗教が管理対象になった `[src: common/estates/00_default.txt]（1.3 beta）`。聖職者以外の身分も宗教が異なると満足度・改宗挙動に影響する。
-- **低 Devotion（献身）ペナルティ**: 献身が低い君主制で月次の宗教的影響力 `monthly_religious_influence = -0.1` `[src: auto_modifiers/country.txt low_devotion ブロック]（1.3 beta）`。Religious Influence の蓄積が遅れ、改宗・教会運営が停滞する。
-- 枢機卿（Cardinal）あたりの聖職者満足度ボーナス +1%（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。カトリック国の聖職者管理に有利。
-- **市場言語話者バーガーの同化**: 市場の言語を話すバーガー（市民）の同化が、従来の hard-block（完全不可）から「超低速で可能」に緩和（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。長期的な文化統合の余地が生まれる。
-- Papacy → Lutheran 議会移行のバグ修正（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。
-- 注意（誤帰属回避）: **Patriarch（総主教）のキャラクター実装・Rite Power 廃止 → Religious Influence 統合は 1.2「Echinades」の変更**であり、1.3 新規ではない（本ガイドのカトリック/正教会セクションおよび用語対照表で既述）。1.3 差分として再掲しない。
+市場の言語を話すバーガー（市民）の同化が、従来の hard-block（完全不可）から「超低速で可能」に緩和された（コミュニティ知見：スクリプト未確認）。長期的な文化統合の余地が生まれる。
 
 ---
 
@@ -767,10 +769,8 @@ EU4 の宣教師システムは廃止され、EU5 では異なるメカニクス
 | 外交破門 | Excommunication | カトリック新コスト（1.2）: Religious Influence 100→50 |
 | 総主教 | Patriarch | 1.2 でキャラクターとして実装（旧: 抽象的リソース） |
 | 儀式力 | Rite Power | 1.2 で廃止 → Religious Influence 統合（正教会） |
-| 身分の宗教（**1.3 beta 仮登録**） | Estate Religion | 1.3 で全政体に身分の宗教属性が付与 `[src: estates/00_default.txt]（1.3 beta）` |
-| 低献身（**1.3 beta 仮登録**） | Low Devotion | 1.3 で monthly_religious_influence -0.1 等のペナルティ `[src: auto_modifiers/country.txt]（1.3 beta）` |
-
-> 上記「1.3 beta 仮登録」の用語は安定版リリース後に中央 `localization-reference.md` へ正式昇格する。
+| 身分の宗教 | Estate Religion | 全政体に身分の宗教属性が付与される `[src: estates/00_default.txt]` |
+| 低献身 | Low Devotion | 君主の Devotion（献身）が低いと monthly_religious_influence -0.1 等のペナルティ `[src: auto_modifiers/country.txt]` |
 
 ---
 
@@ -800,14 +800,14 @@ EU4 の宣教師システムは廃止され、EU5 では異なるメカニクス
 | `in_game/common/religious_schools/jain.txt` | ジャイナ法学派 |
 | `in_game/common/religious_focuses/nahuatl.txt` | ナワトル宗教フォーカス8種 |
 | `in_game/common/building_types/religion_buildings.txt` | 宗教建物定義・修正値 |
-| `in_game/common/estates/00_default.txt` | 身分の宗教属性（1.3 beta） |
-| `in_game/common/auto_modifiers/country.txt` | 低 Devotion ペナルティ（low_devotion: monthly_religious_influence=-0.1、1.3 beta） |
+| `in_game/common/estates/00_default.txt` | 身分の宗教属性 |
+| `in_game/common/auto_modifiers/country.txt` | 低 Devotion ペナルティ（low_devotion: monthly_religious_influence=-0.1） |
 
-**1.3 オープンベータ Wiki**
+**1.3 安定版パッチノート**
 
 | マーカー | 対応ページ |
 |---------|----------|
-| `[src: Patch_1.3 wiki]` | eu5.paradoxwikis.com/Patch_1.3（1.3 beta 差分・スクリプト未確認項目の根拠） |
+| `[src: Patch_1.3 wiki]` | eu5.paradoxwikis.com/Patch_1.3（1.3 安定版〈1.3.10 / buildid 24075414〉差分・スクリプト未確認項目の根拠） |
 
 **1.2 パッチ関連 Wiki ページ**（URL はツール制約により本文直埋め禁止。以下はショートマーカーと対応 URL の対照）
 
@@ -823,3 +823,6 @@ EU4 の宣教師システムは廃止され、EU5 では異なるメカニクス
 > - 1.2「Echinades」対応: 2026-05-09
 > - 1.2 で script verified 済: 列聖コスト 75（`prices/00_hardcoded.txt`）、外交破門コスト 50（`prices/03_diplomacy.txt`）、Papal Authority 0-100 範囲（`international_organizations/catholic_church.txt`）、Papal Authority 閾値効果（high/low の religion_modifier 値）（`main_menu/common/static_modifiers/religion.txt` 行 776-791、`scripted_triggers/international_organization_triggers.txt` 行 842-854）
 > - 1.2 で wiki 情報ベース（コミュニティ知見・スクリプト未確認）: Papal States 重複破門不可、Rite Power 廃止 など
+> - 1.3「安定版」対応: 2026-07-10（1.3.10 / buildid 24075414）
+> - 1.3 で script verified 済: 低 Devotion ペナルティ `monthly_religious_influence = -0.1`（`auto_modifiers/country.txt` low_devotion ブロック）、身分の宗教属性付与（`estates/00_default.txt`）
+> - 1.3 で wiki 情報ベース（コミュニティ知見・スクリプト未確認）: 枢機卿あたり聖職者満足度 +1%、市場言語話者バーガー同化緩和、Papacy → Lutheran 議会移行バグ修正
