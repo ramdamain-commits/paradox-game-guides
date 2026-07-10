@@ -1,7 +1,7 @@
-# EU5 ブランデンブルク攻略ガイド（Patch 1.2 時点）
+# EU5 ブランデンブルク攻略ガイド（Patch 1.3 時点）
 
 > ブランデンブルク → プロイセンを狙う序盤から建国までの整理。
-> 2026-05-09 確認時点の最新パッチ 1.2「Echinades」（2026-05-06 リリース）に合わせて更新。
+> 2026-07-11 確認時点の最新パッチ 1.3 安定版（buildid 24075414 = 1.3.10）に合わせて更新。1.2「Echinades」（2026-05-06 リリース）baseline に 1.3 の変更点を統合済み。
 > 日本語は原則としてゲーム内ローカライズ準拠。未翻訳の箇所は英語を併記する。
 
 ---
@@ -39,6 +39,16 @@
 | 兵科 Heavy/Light 独立アップグレードツリー | Heavy Infantry・Light Infantry が独立した研究ツリーを持つ。擲弾兵（Heavy Infantry 系統と推測）の特化研究が可能 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | ロジスティクス距離 50 → 30、食料消費 10 倍 | 多方面作戦の補給線管理が必須に（army_logistics_distance=30 はスクリプト確認済み）。傭兵コスト +25% | `[src: Patch_1.2 wiki + script verified]`（auto_modifiers/country.txt 行 90） |
 
+### Patch 1.3（安定版）主要変更（ブランデンブルク直接影響）
+
+| 変更 | 内容 | src |
+|------|------|-----|
+| HRE 加入 reluctance（消極化）上昇・土地剥奪の皇帝集権・従属国への宗教統一強制不可 | HRE 皇帝メカニクスが調整された。皇帝（オーストリア）の統制手段が増える一方、帝国拡張ペースは鈍る。HRE 小国〜中堅のブランデンブルクは皇帝との距離の取り方の見直しが必要になる | （コミュニティ知見：公式パッチノート由来・スクリプト未確認） |
+| Voivode（ヴォイヴォダ）改革追加 | ポーランド・カルパチア圏向けの政府改革が新設された。ブランデンブルク自身が採れる改革ではないが、東の隣国ポーランドの内政選択肢が広がる | `[src: government_reforms/country_specific.txt]` |
+| 建物維持費の逓増（建設から1世紀で約 +50%） | 全国家共通の経済リバランス。長期にわたるインフラ投資の維持コストが増加する | （コミュニティ知見：公式パッチノート由来・スクリプト未確認） |
+| 陸軍 goods 需要2倍・補助連隊食料消費 +50%・船コスト金4倍/goods10倍 | 全国家共通の経済リバランス。常備軍を厚く積むプロイセン路線は goods 供給を意識した拡張が要る | （コミュニティ知見：公式パッチノート由来・スクリプト未確認） |
+| 家族銀行（Berenberg）はハンブルク固有フレーバー | ブランデンブルクには紐づかない（誤帰属回避）。詳細は「内政・経済」章を参照 | `[src: events/DHE/flavor_HAM.txt]` |
+
 ### ブランデンブルクプレイヤーが特に注意すべき変更
 
 - **Free Cities 自動参戦廃止（メリット）**: INDEPENDENT Free City のみ皇帝が防衛する形に変更され、ベルリン周辺の自由都市攻略のハードルが下がった `[src: Patch_1.2 wiki + script verified]`（hre.txt）
@@ -46,6 +56,7 @@
 - **王朝力上限 300（メリット）**: ホーエンツォレルン婚姻外交の戦略的射程が拡大 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプトに明示的な cap 値は未発見）
 - **1400 年以降 Golden Bull 未採択なら離脱可能（メリット）**: HRE 離脱→独立帝国化ルートが現実的な選択肢になった（条件: `current_year > 1400` かつ `golden_bull_policy` 未採択） `[src: Patch_1.2 wiki + script verified]`（hre.txt 行 275-277）
 - **要塞守備 Heavy Infantry 限定（要対応）**: 国境要塞守備兵の編成を見直す必要がある。Light Infantry 配置は守備扱いにならない `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
+- **（1.3）HRE 皇帝メカニクスの調整**: 加入 reluctance 上昇・土地剥奪の皇帝集権・従属国への宗教統一強制不可により、皇帝との距離の取り方の見直しが必要になった（コミュニティ知見：公式パッチノート由来・スクリプト未確認）
 
 ### 過去パッチ（1.1 / 1.1.10）
 
@@ -53,28 +64,6 @@
 |--------|---------|
 | 1.1「ロスバッハ」 | 固有ディザスター「ブランデンブルクの混乱」追加・擲弾兵ユニット追加・民兵法（+25%→+10% 下方）・貴族召集軍（+20%→+50% 上方）・ドイツ宮廷語選挙影響（+10→+20）・君主力修正（20%→33%）・革命国家の皇帝選挙除外 |
 | 1.1.10（2026-03-17） | 建造物レベル 0 無限ループ修正・召集軍貼り付きバグ修正・正規部隊 +100% 戦闘ボーナス誤追加を削除 |
-
----
-
-## 1.3 オープンベータ差分（ブランデンブルク直接影響・純追記）
-
-> **本セクションは 1.3 オープンベータ（buildid 23683141 / BetaKey `1.3-open-beta`）のローカルスクリプトと公式 1.3.0 / 1.3.2 パッチノートを独立検証基準とする。上位の 1.2「Echinades」baseline とは独立であり、1.2 本体章の数値・記述には一切手を加えていない。**
-> 1.3 はオープンベータのため数値が変動しうる。安定版リリースまで本セクション内に封じ込め、本文（1.2 baseline）には昇格させない。
-> マーカー: `[src: ...]（1.3 beta）` = ローカル 1.3 スクリプトで実体を確認 / `（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）` = エンジン内部値・公式ノートのみ根拠。
-
-### HRE 運営（皇帝メカニクスの 1.3 変更）
-
-- **HRE 加入 reluctance・土地剥奪の皇帝集権・従属国への宗教統一強制不可**: 1.3 で HRE 皇帝メカニクスが調整された（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。HRE 小国〜中堅のブランデンブルクにとっては、皇帝（オーストリア）の統制手段が増える一方で帝国拡張ペースが鈍るため、皇帝との距離の取り方が変わる。皇帝視点の詳細は [eu5-austria-guide.md](eu5-austria-guide.md) の「1.3 オープンベータ差分」節を参照。
-
-### 東方外交（ポーランドの Voivode 改革）
-
-- **Voivode（ヴォイヴォダ）改革**: ポーランド・カルパチア圏向けの政府改革 Voivode が 1.3 で追加された `[src: government_reforms/country_specific.txt]（1.3 beta）`。ブランデンブルク自身が採れる改革ではないが、東の隣国ポーランドの内政選択肢が広がるため、対ポーランド外交・東方拡張の前提が動きうる。改革の詳細は [eu5-government-guide.md](eu5-government-guide.md) の 1.3 節、地域影響は地域章（regional ガイド）東欧・バルカン節を参照。
-
-### 経済・軍事（全国家共通の 1.3 リバランス）
-
-- **建物維持費の逓増・船コスト増・陸軍 goods 2 倍**: 全国家に効く 1.3 の経済リバランスはブランデンブルク／プロイセンにも適用される（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。軍事国家として常備軍を厚く積むプロイセン路線は陸軍 goods 2 倍の影響を受けるため、goods 供給を意識した拡張が要る。詳細は [eu5-universal-guide.md](eu5-universal-guide.md) の「1.3 オープンベータ差分」節を参照。
-
-> **⚠ 家族銀行（Berenberg）についての注意**: 1.3 で言及される家族銀行系フレーバー（Berenberg 等）は**ハンブルク（HAM）固有のフレーバー**であり `[src: events/DHE/flavor_HAM.txt]（1.3 beta）`、スクリプト上ブランデンブルクに紐づく銀行メカニクスは確認できない。「1.3 でブランデンブルクに家族銀行が来る」という形で本ガイドには取り込まない（誤帰属回避）。アラゴンの公営銀行 Taula de Canvi も別系統（地域章イベリア節参照）。
 
 ---
 
@@ -118,6 +107,8 @@
 | ドイツ騎士団（TEU） | ダンツィヒ確保の対象 | プロイセン地域の足場 |
 | ポーランド（POL） | 慎重な関係維持 | 東方拡張時に衝突しやすい |
 | 皇帝（オーストリア等） | 関係維持が最優先 | ランク昇格・プロイセン王国化交渉に直結 |
+
+> **1.3**: ポーランド向けに Voivode（ヴォイヴォダ）改革が追加された `[src: government_reforms/country_specific.txt]`。ブランデンブルク自身が採れる改革ではないが、東の隣国ポーランドの内政選択肢が広がるため、対ポーランド外交・東方拡張の前提が動きうる。改革の詳細は [eu5-government-guide.md](eu5-government-guide.md)の「君主制（Monarchy）」章「主要政府改革」表、地域影響は [eu5-regional-guide.md](eu5-regional-guide.md)の「東欧（ポーランド・ハンガリー・ロシア・バルカン）」章を参照。
 
 ### 初期の強み・弱み
 
@@ -345,6 +336,7 @@ Patch 1.1 で追加された固有ディザスター。旧イベント群を一�
 - 友好的な他国を皇帝にしたほうが交渉しやすい
 - 拒否分岐まで考えるなら、帝国に残るか離れるかを自分で選びやすい
 - **1.2**: 皇帝の Great Power Score 貢献が 250 → 50 に削減されたため、皇帝奪取の実利がさらに低下した
+- **1.3**: HRE 加入 reluctance（消極化）上昇・土地剥奪の皇帝集権・従属国への宗教統一強制不可など、皇帝メカニクスが調整された（コミュニティ知見：公式パッチノート由来・スクリプト未確認）。皇帝（オーストリア）の統制手段が増える一方で帝国拡張ペースは鈍るため、皇帝との距離の取り方を再検討する必要がある。皇帝視点の詳細は [eu5-austria-guide.md](eu5-austria-guide.md)の「HRE 入門：帝国の権威と帝国改革の概要」節（HRE加入reluctance）・「皇帝アクション（使いどころ）」表（土地剥奪）を参照
 
 > **1.2 重要**: Coalition War（包囲網戦争）が Superiority Wargoal（優位性戦争）化し（攻撃側 conquer_cost=0.75/release_cost=0.25、防衛側 conquer_cost=2.5）`[src: Patch_1.2 wiki + script verified]`（coalition.txt 行 13、00_default.txt 行 244-261）、王朝力（Dynastic Power）上限 300 でホーエンツォレルン婚姻網の戦略的価値が拡大 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプトに明示的な cap 値は未発見。dynastic_power は計算値として運用される模様）
 
@@ -495,6 +487,10 @@ Patch 1.2 では兵科が Heavy/Light に分類され、各系統が独立した
 - **独立アップグレードツリー**: 擲弾兵特化の Heavy Infantry 研究を優先することで、後半のプロイセン歩兵の優位性がさらに拡大 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
 - **補給線管理の必須化**: ロジスティクス距離 50 → 30（army_logistics_distance=30）、食料消費 10 倍の変更により、多方面同時作戦は補給線を常に監視する必要がある。傭兵コスト +25% を踏まえ、傭兵主体の長期戦は避けること `[src: Patch_1.2 wiki + script verified]`（auto_modifiers/country.txt 行 90）
 
+### 1.3 陸軍 goods 需要増と補給コスト
+
+Patch 1.3（安定版）で陸軍の goods 需要が建設・維持とも2倍になり、補助連隊（補給部隊）の食料消費も +50% となった（コミュニティ知見：公式パッチノート由来・スクリプト未確認）。常備軍を厚く積むプロイセン路線は goods 供給と補給線の両面で負担が増すため、召集軍から正規軍への移行ペースを goods 供給力に合わせて調整する必要がある。詳細は [eu5-universal-guide.md](eu5-universal-guide.md)の「軍事の基本」章（陸軍 goods 需要）を参照。
+
 ---
 
 ## 外交・同盟
@@ -551,6 +547,12 @@ Patch 1.2 の外交変更はブランデンブルクの戦略選択に直接影�
 | 支配度 | **内閣（Cabinet）**を首都から順に動かし、中核州の支配度を回復 |
 | 経済 | 市場建設と交易路開設で収入を安定化 |
 | 属国管理 | 東部州は属国に委任。直轄化はディザスター後 |
+
+### 1.3 建物維持費の逓増
+
+建物維持費は時間経過で逓増し、建設から1世紀で約 +50% に達するようになった（コミュニティ知見：公式パッチノート由来・スクリプト未確認）。ブランデンブルクは東部の再建・属国統合など長期にわたるインフラ投資が多いため、古い建造物の維持費が膨らんでいないか定期的に見直す必要がある。詳細は [eu5-universal-guide.md](eu5-universal-guide.md)の「経済・内政の基本」章（建物維持費）を参照。
+
+> **家族銀行（Berenberg）についての注意**: 1.3 で言及される家族銀行系フレーバー（Berenberg 等）は**ハンブルク（HAM）固有のフレーバー**であり `[src: events/DHE/flavor_HAM.txt]`、スクリプト上ブランデンブルクに紐づく銀行メカニクスは確認できない。「1.3 でブランデンブルクに家族銀行が来る」という形で本ガイドには取り込まない（誤帰属回避）。アラゴンの公営銀行 Taula de Canvi も別系統（地域章イベリア節参照）。
 
 ### 階級（Estate）管理
 
@@ -739,15 +741,8 @@ Patch 1.2 の外交変更はブランデンブルクの戦略選択に直接影�
 | 国境紛争 | Border Dispute | 開戦事由 | 隣接国との紛争 CB |
 | 階級権力 | Estate Power | システム | 各階級の権力値 |
 | RGO | Resource Gathering Operations | 経済 | 資源採取 |
-
-### 1.3 オープンベータ用語（仮登録）
-
-> 安定版リリース後に中央 `localization-reference.md` へ正式昇格する。詳細は本ガイドの「1.3 オープンベータ差分」節を参照。
-
-| 日本語 | 英語 | カテゴリ | 備考 |
-|--------|------|---------|------|
-| ヴォイヴォダ | Voivode | 政府改革 | 1.3。ポーランド・カルパチア圏。東の隣国の内政選択肢 `[src: government_reforms/country_specific.txt]（1.3 beta）` |
-| 家族銀行（ハンブルク） | Berenberg / family bank | フレーバー | 1.3。HAM 固有。ブランデンブルクには紐づかない `[src: events/DHE/flavor_HAM.txt]（1.3 beta）` |
+| ヴォイヴォダ | Voivode | 政府改革 | 1.3 新規。ポーランド・カルパチア圏。東の隣国の内政選択肢 `[src: government_reforms/country_specific.txt]` |
+| 家族銀行（ハンブルク） | Berenberg / family bank | フレーバー | 1.3 言及。HAM 固有。ブランデンブルクには紐づかない `[src: events/DHE/flavor_HAM.txt]` |
 
 > 2026-04-05 時点でも、`wittelsbacher_event_occurs_tt` など一部ツールチップはゲーム内で未翻訳のまま残っている。
 
@@ -776,6 +771,8 @@ Patch 1.2 の外交変更はブランデンブルクの戦略選択に直接影�
   - `casus_belli/coalition.txt:13` — Coalition War Superiority Wargoal 定義
   - `wargoals/00_default.txt:244-261` — Coalition War コスト（攻撃側 conquer_cost=0.75/release_cost=0.25、防衛側 conquer_cost=2.5）
   - `auto_modifiers/country.txt:90` — army_logistics_distance=30（ロジスティクス距離）
+  - `government_reforms/country_specific.txt` — Voivode 改革（1.3。ポーランド・カルパチア圏の政府改革）
+  - `events/DHE/flavor_HAM.txt` — Berenberg 家族銀行フレーバー（1.3。HAM 固有＝ブランデンブルク非該当の確認）
 - [Brandenburg - EU5 Wiki](https://eu5.paradoxwikis.com/Brandenburg)
 - [Formable country - EU5 Wiki](https://eu5.paradoxwikis.com/Formable_country)
 - [Patch 1.1 "Rossbach" - EU5 Wiki](https://eu5.paradoxwikis.com/Patch_1.1)
@@ -784,14 +781,7 @@ Patch 1.2 の外交変更はブランデンブルクの戦略選択に直接影�
 - [Religion - EU5 Wiki](https://eu5.paradoxwikis.com/Religion)
 - [SteamDB Patch 1.1.10](https://steamdb.info/patchnotes/22329656/)
 - [Tinto Talks #100 — Fate of the Phoenix 初公開](https://store.steampowered.com/news/app/3450310/view/509608484353868138) — Patch 1.2 予告
-
-#### 1.3 オープンベータ差分の出典（純追記分）
-
-ローカル 1.3 open beta（buildid 23683141 / BetaKey `1.3-open-beta`）スクリプトで実体確認したファイル。HRE 皇帝メカニクス調整・経済リバランスはエンジン内部値/メカニクス挙動でスクリプト実値未確認のため `（コミュニティ知見：1.3 beta、公式パッチノート由来）` 扱い。
-
-  - `government_reforms/country_specific.txt` — Voivode 改革（1.3 beta。ポーランド・カルパチア圏）
-  - `events/DHE/flavor_HAM.txt` — Berenberg 家族銀行フレーバー（1.3 beta。HAM 固有＝ブランデンブルク非該当の確認）
-  - Patch 1.3 wiki: eu5.paradoxwikis.com/Patch_1.3
+- [Patch 1.3 — Europa Universalis 5 Wiki](https://eu5.paradoxwikis.com/Patch_1.3) — パッチノート（本ガイドの 1.3 主要出典）。数値の一部は公式パッチノート由来でスクリプト未確認
 
 ### コミュニティ情報（補足知見）
 
