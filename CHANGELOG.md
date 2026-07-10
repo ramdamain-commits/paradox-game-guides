@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-07-10 EU5 1.3 安定版昇格 フェーズ1 Task1-1（universal/government/religion 本文統合）
+
+### Changed
+- EU5 1.3が安定版（buildid 24075414 / v1.3.10）としてリリースされたことに伴い、`docs/superpowers/plans/2026-06-18-eu5-patch13-stable-promotion.md` の昇格フローに着手。`eu5-universal-guide.md` / `eu5-government-guide.md` / `eu5-religion-guide.md` の3ガイドについて「1.3 オープンベータ差分」純追記セクションを解体し、該当する本体章へ統合。beta語（`（1.3 beta）` 等）をstable語へ全面昇格
+- universal: 経済・海軍/軍事・諜報外交・自動化/宮廷芸術家の1.3項目を本体4章へ統合。プリフライト再検証で判明した誤記（「海軍維持費の下限が艦隊規模の10%」→正しくは「維持費も概ね2倍」）を修正した上で統合
+- government: 政体別1.3項目を各政体章へ統合。低Devotionペナルティは、ファイル内の権力リソース定義（Devotion=神権制）に基づき神権制章へ配置（当初計画の「君主制」から実装時に訂正）。宮廷芸術家12種の詳細はこのガイドを正本として保持し、universal側は簡略＋参照のみに整理
+- religion: 宗教関連1.3項目を「宗教改宗の仕組み（共通）」章・キリスト教グループ章へ統合。Patriarch/Rite Power廃止（1.2の変更であり1.3ではない）の誤帰属回避注記は削除せず正教会セクション冒頭に維持。マーカー表記の不整合（一括免責文と本文インライン表記の齟齬）・特殊文字（全角マイナス記号）を修正
+
+### Notes
+- reviewer 3並列によるレビューでCritical指摘なし（Warning 1件・Suggestion 2件は反映済み）
+- `eu5-regional-guide.md` に government の旧セクション名（「1.3 オープンベータ差分」）への参照が残存。regional-guide自体の昇格作業（フェーズ1 Task1-2、次セッション予定）で解消する
+- 残る作業: regional単独→国別6ガイド（ottoman/hungary/austria/brandenburg/castile/byzantium）→Tier4（用語対照表中央昇格）→検証（フェーズ2〜3）
+
 ## 2026-07-03 CLAUDE.md ダイエット（章テンプレ・定型手順の分離）
 
 ### Changed
