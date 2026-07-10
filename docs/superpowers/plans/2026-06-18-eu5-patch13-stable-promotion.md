@@ -81,13 +81,15 @@
 ### Task 1-2: regional 単独 — ✅完了 (07-10, 5b881e2)
 - [x] **regional**: 西欧/イタリア/イベリア/東欧バルカン/各地域/概要・東アジア の 1.3 ノードを、対応する各地域節の本文へ統合。天然痘spawn値の誤記修正（パッチノート0.05→実機値0.08採用）。Voivodeのgovernment-guideへの相互参照リンクを新セクション名（「君主制」章「主要政府改革」表）へ張り替え。byzantiumへの相互参照は同ガイド未着手のため維持（Task1-3で張り直す）。
 
-### Task 1-3: byzantium + 国別5（ottoman / hungary / austria / brandenburg / castile）
-- [ ] **byzantium**: 外交継承国境・海軍・Twilight を本体章へ統合。regional 側の Twilight 記述（昇格後の位置）への相互リンクを張り直す。
-- [ ] **ottoman**: 船コスト/維持費/陸軍goods/海戦/Twilight を海軍・貿易・内政・外交章へ統合。**「更新優先度Tier2メモ」は昇格時に削除**（運用メモであり本文ではない）。難易度評価（regional の ★★★）も 1.3 のコスト増を踏まえ再評価。
-- [ ] **hungary**: 陸軍goods=黒軍直撃を軍事章へ、Union of Crowns 女性継承＋`no_female_heirs_for_poland` 例外を継承/外交章へ統合。例外注記は**必ず残す**（A-7）。
-- [ ] **austria**: 宗教統一強制不可・HRE reluctance・土地剥奪を HRE 運営/宗教章へ統合。
-- [ ] **brandenburg**: HRE皇帝メカ・Voivode(東隣ポーランド)を統合。**Berenberg=HAM固有の非該当注記は残す**（A-5・誤帰属再発防止）。
-- [ ] **castile**: 船コスト/経済/植民/新文化を海軍・経済章へ統合。**Taula=アラゴン固有(regional)の非該当注記は残す**。
+### Task 1-3: byzantium + 国別5（ottoman / hungary / austria / brandenburg / castile） — ✅完了 (07-11, dd8c489/965f6ba)
+- [x] **byzantium**: 外交継承国境・海軍・Twilight を本体章へ統合。regional 側の Twilight 記述（昇格後の位置）への相互リンクを張り直す。船コスト増は差分原文が序盤文脈だったため序盤・後半の両章に配置。
+- [x] **ottoman**: 船コスト/維持費/陸軍goods/海戦/Twilight を海軍・貿易・内政・外交章へ統合。**「更新優先度Tier2メモ」は昇格時に削除**（運用メモであり本文ではない）。難易度評価（regional の ★★★）の再評価は今回スコープ外（低優先度のため見送り）。
+- [x] **hungary**: 陸軍goods=黒軍直撃を軍事章へ、Union of Crowns 女性継承＋`no_female_heirs_for_poland` 例外を継承/外交章へ統合。例外注記は**必ず残す**（A-7）。一般記述と例外を別節に分離し重複記載を回避。
+- [x] **austria**: 宗教統一強制不可・HRE reluctance・土地剥奪を HRE 運営/宗教章へ統合。「宗教改革への備え」独立節を新設せず既存の「中盤戦略」章「手順」節内に統合。
+- [x] **brandenburg**: HRE皇帝メカ・Voivode(東隣ポーランド)を統合。**Berenberg=HAM固有の非該当注記は残す**（A-5・誤帰属再発防止）。
+- [x] **castile**: 船コスト/経済/植民/新文化を海軍・経済章へ統合。**Taula=アラゴン固有(regional)の非該当注記は残す**。
+
+> **実運用メモ**: 相互参照の依存関係を避けるため Wave1(byzantium/austria/hungary、他ガイド未参照の自己完結組)→Wave2(ottoman/brandenburg/castile、Wave1で確定した見出し名を参照)の2波に分けてimplementer 3並列×2＋reviewer 3並列×2で実施。reviewer初回投入時にAPIセッション上限で失敗する事象が2回発生したが、いずれも再投入で成功。
 
 ### Task 1-4: recommended-mods（昇格＝対応パッチ列更新）
 - [ ] 「1.3 オープンベータでのMOD互換性」節を「1.3 でのMOD互換性」に格上げ。MOD表の「対応パッチ」列（現状 1.1.x 基準）を 1.3 動作確認ベースに更新（各 Workshop の 1.3 対応状況を確認）。ヘッダのパッチ版を更新。

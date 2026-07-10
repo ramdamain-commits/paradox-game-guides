@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026-07-11 EU5 1.3 安定版昇格 フェーズ1 Task1-3（byzantium + 国別5 本文統合）
+
+### Changed
+- `eu5-byzantium-guide.md` / `eu5-ottoman-guide.md` / `eu5-hungary-guide.md` / `eu5-austria-guide.md` / `eu5-brandenburg-guide.md` / `eu5-castile-guide.md` の6ガイドについて「1.3 オープンベータ差分」セクションを本体章へ統合し、beta語をstable語へ昇格
+- byzantium: ジェノヴァ弩兵の行番号誤記を修正（69→68）。船コスト増の記述を序盤・後半の両章に配置（差分原文が序盤文脈だったため）
+- ottoman: 「更新優先度Tier2メモ」（運用メモ）を本文統合せず完全削除
+- hungary: `no_female_heirs_for_poland`例外注記を維持しつつ、Union of Crownsの一般記述と例外を別節に分離配置
+- austria: 「宗教改革への備え」という独立節を新設せず、既存の「中盤戦略」章「手順」節内へ統合（存在しない見出しの誤創出を回避）
+- brandenburg: Berenberg（ハンブルク固有）の誤帰属回避注記を維持
+- castile: Taula de Canvi（アラゴン固有）の誤帰属回避注記を維持
+- 各ガイド間の相互参照リンクを、前セッション（Task1-1/1-2）およびWave1（byzantium/austria）で解体・再配置済みの新セクション名へ張り替え
+
+### Notes
+- 相互参照の依存関係を避けるため、他ガイド未参照の自己完結組（byzantium/austria/hungary＝Wave1）を先行させ、Wave1の結果を参照する組（ottoman/brandenburg/castile＝Wave2）を後続させる2波構成で実施
+- reviewer（sonnet）3並列×2波でCritical指摘なし。Warning/Suggestion計6件は反映済み
+- これでフェーズ1 Task1-3（byzantium+国別5）完遂。次はTask1-4（recommended-mods）→フェーズ2（中央用語昇格+index.html）→フェーズ2.5（小型3ガイド拡充）→フェーズ3（検証）
+
 ## 2026-07-10 EU5 1.3 安定版昇格 フェーズ1 Task1-2（regional単独 本文統合）
 
 ### Changed
