@@ -1,7 +1,7 @@
-# EU5 ビザンツ帝国攻略ガイド（Patch 1.2 時点）
+# EU5 ビザンツ帝国攻略ガイド（Patch 1.3 時点）
 
 > ビザンツ帝国（Byzantine Empire）→ 瀕死の帝国を立て直し、ローマ復興（ROM タグ変形）を目指す序盤サバイバルから帝国再建までの整理。
-> 2026-05-16 確認時点の最新パッチ 1.2「Echinades」（2026-05-06 リリース）および DLC「Fate of the Phoenix」に合わせて更新。
+> 2026-07-11 確認時点の最新パッチ 1.3 安定版（buildid 24075414 = 1.3.10）に合わせて更新。1.2「Echinades」（2026-05-06 リリース）baseline に 1.3 の変更点を統合済み。DLC「Fate of the Phoenix」の内容自体に変更はない。
 > 日本語は原則としてゲーム内ローカライズ準拠。未翻訳の箇所は英語を併記する。
 > **本ガイドの主題**: stability -45 / gold -300 / アナトリア大半喪失という極限状態からの「瀕死帝国の逆転劇」。
 
@@ -55,6 +55,22 @@
 | 要塞駐屯 Heavy Infantry のみ | 騎兵は要塞守備不可。カタフラクト（重騎兵）は要塞に入れない | `[src: Patch_1.2 wiki + script verified]` |
 | ロジ距離 50→30 / 食料消費 10倍 | 補給線管理の徹底が必須。アナトリア遠征でも適用される | `[src: Patch_1.2 wiki + script verified]` |
 
+#### Patch 1.3 主要変更（ビザンツ直接影響分）
+
+1.3 は安定版（buildid 24075414 = 1.3.10）としてリリース済み。1.2「Echinades」baseline に統合した。
+
+| 変更 | 内容 | src |
+|------|------|-----|
+| 反ジェノヴァ盟約（ヴェネツィアとの連携） | ビザンツ・ヴェネツィア間フレーバーで対ジェノヴァの連携イベントが追加。コンスタンティノープルのジェノヴァ商人勢力への対抗手段になる | `[src: events/DHE/flavor_byz_ven.txt]` |
+| Born in the Purple（紫の間に生まれし者） | ビザンツの後継者選定・正統性に関わるメカニクスが整理された。皇位継承の安定性に影響 | `[src: heir_selections/monarchy.txt, events/culture/culture_greek.txt]` |
+| 1337 開始国境の修正 | ビザンツ開始時の領土・国境設定が調整された（コミュニティ知見：公式パッチノート由来・スクリプト未確認） | — |
+| ジェノヴァ弩兵 → 軽歩兵（兵科再分類） | エーゲ海・バルカン戦線で対峙するジェノヴァ系勢力の編成が変化（兵科の Heavy/Light 分類自体は 1.2 既存） | `[src: unit_types/1_uniques_for_age_2_renaissance.txt:68]` |
+| 船コスト増（金 4倍・goods 10倍） | 海軍の建造・維持が大幅に高コスト化。エーゲ海・ボスポラス海峡の制海権確保コストが上昇し、序盤の海軍依存戦略が圧迫される（コミュニティ知見：公式パッチノート由来・スクリプト未確認） | — |
+| 海戦致死性の上昇 | 海戦の損耗が増加。少数精鋭の艦隊を温存し不利な海戦を避ける運用が重要になる（コミュニティ知見：公式パッチノート由来・スクリプト未確認） | — |
+| Twilight of the Tsardom（ツァーリ国の黄昏）ディザスター新規追加 | ブルガリア等バルカン勢力に崩壊・分裂を引き起こす。ビザンツにとっては北方バルカン再征服の好機 | `[src: disasters/twilight_of_the_tsardom.txt, events/DHE/flavor_BUL.txt]` |
+
+個別の詳細・運用方針は本文各章（開始状況・序盤戦略・中盤戦略・後半戦略・用語表）に統合済み。
+
 ### ビザンツプレイヤーが特に注意すべき変更（破壊的）
 
 - **DLC なしでも Cataphracts Age 1 は使用可能**: `country_byz.txt` のアドバンスで解放可能 `[src: unit_types/D008_byzantine_unit_types.txt]`（DLC なし版は age_1 のみ）
@@ -68,31 +84,6 @@
 **Patch 1.1「ロスバッハ」** — AI 攻撃性低下・統合軍備（Combined Arms）追加・召集軍民兵効率 +25%→+10% 下方・貴族召集軍 +20%→+50% 上方（戦闘効率 +25% は削除）。
 
 **Patch 1.1.10（2026-03-17）** — 建造物レベル 0 残留バグ修正・召集軍の部隊貼り付きバグ修正。
-
----
-
-## 1.3 オープンベータ差分（ビザンツ直接影響・純追記）
-
-> **本セクションは 1.3 オープンベータ（buildid 23683141 / BetaKey `1.3-open-beta`）のローカルスクリプトと公式 1.3.0 / 1.3.2 パッチノートを独立検証基準とする。上位の 1.2「Echinades」baseline とは独立であり、1.2 本体章の数値・記述には一切手を加えていない。**
-> 1.3 はオープンベータのため数値が変動しうる。安定版リリースまで本セクション内に封じ込め、本文（1.2 baseline）には昇格させない。
-> マーカー: `[src: ...]（1.3 beta）` = ローカル 1.3 スクリプトで実値・実体を確認（「1.3 新規か否か」の最終判定は 1.2/1.3 パッチノート差分による）/ `（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）` = エンジン内部値。
-
-### 外交・継承・国境
-
-- **反ジェノヴァ盟約（ヴェネツィアとの連携）**: ビザンツ・ヴェネツィア間のフレーバーで、ジェノヴァに対抗する盟約イベントが追加 `[src: events/DHE/flavor_byz_ven.txt]（1.3 beta）`。コンスタンティノープルのジェノヴァ商人勢力への対抗手段になる。
-- **Born in the Purple（紫の間に生まれし者）**: ビザンツの後継者選定・正統性に関わるメカニクスが整理された `[src: heir_selections/monarchy.txt, events/culture/culture_greek.txt]（1.3 beta）`。皇位継承の安定性に影響。
-- **1337 開始国境の修正**: ビザンツ開始時の領土・国境設定が調整された（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。瀕死帝国の初期戦略環境が微変する可能性があるため、最新 beta では開始状況を実機で再確認すること。
-
-### 軍事・海軍（船コスト・海戦致死性のエーゲ海/ボスポラス影響）
-
-- **個別固有ユニットの兵科再分類（1.3）**: ジェノヴァ弩兵 → 軽歩兵 `[src: unit_types/1_uniques_for_age_2_renaissance.txt:69]（1.3 beta）`。エーゲ海・バルカン戦線で対峙するジェノヴァ系勢力の編成が変化する（兵科の Heavy/Light 分類**自体は 1.2 既存**）。
-- **船コスト増（金 4倍・goods 10倍）の影響**: ギリシャ火炎船（Greek Fire Ships）を含む海軍の建造が大幅に高コスト化（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。エーゲ海・ボスポラス海峡の制海権確保コストが上昇し、序盤の海軍依存戦略が圧迫される。
-- **海戦致死性の上昇**: 海戦の損耗が増加（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。少数精鋭のギリシャ火炎船を温存し、不利な海戦を避ける運用がより重要になる。
-
-### Twilight of the Tsardom（ブルガリア崩壊の機会）
-
-- **Twilight of the Tsardom（ツァーリ国の黄昏）ディザスター**が 1.3 で追加 `[src: disasters/twilight_of_the_tsardom.txt, events/DHE/flavor_BUL.txt]（1.3 beta）`。ブルガリア（第二次ブルガリア帝国）等のバルカン勢力に崩壊・分裂を引き起こす。
-- ビザンツにとっては**北方バルカンの再征服の好機**。ブルガリアが内紛・分裂で弱体化したタイミングで、Restore Roman Borders CB や通常征服でバルカン領を回収しやすくなる `[src: disasters/twilight_of_the_tsardom.txt]（1.3 beta）`。地域章（regional ガイド）東欧・バルカン節の Twilight of the Tsardom 記述と相互参照。
 
 ---
 
@@ -131,6 +122,8 @@
 | administrative_system | pronoia_system（プロノイア制） | `[src: setup/start/10_countries.txt]` |
 | 後継者選定 | byzantine_succession（固有ビザンツ継承ルール） | `[src: setup/start/10_countries.txt]` |
 
+**1.3 での継承安定性の整理**: Born in the Purple（紫の間に生まれし者）メカニクスが 1.3 で整理され、byzantine_succession と合わせて皇位継承の安定性に影響する `[src: heir_selections/monarchy.txt, events/culture/culture_greek.txt]`。次の後継者候補を確認する際は、この整理された継承ルールを踏まえて評価すること。
+
 ### 領土状況（1337年開始）
 
 | 支配状況 | 地域 |
@@ -143,6 +136,8 @@
 
 **アナトリアのコア喪失が最大の問題点**。イズニク・ブルサ等の豊かな地域を奪還するには、オスマン（TUR）との直接対立が避けられない。しかし序盤の戦力では正面衝突は自殺行為に等しい。
 
+**1.3 での 1337 開始国境の修正**: 1.3 でビザンツ開始時の領土・国境設定が調整された（コミュニティ知見：公式パッチノート由来・スクリプト未確認）。瀕死帝国の初期戦略環境が微変する可能性があるため、上表の支配状況は実機で最新版に合わせて確認すること。
+
 ### 周辺国との関係
 
 | 国・勢力 | 関係 | 備考 |
@@ -154,6 +149,8 @@
 | ジェノヴァ（GEN） | 交易パートナー、コンスタンティノープルの商人 | 距離感を保つ。干渉されると内政が複雑化する |
 | ブルガリア（BUL） | 弱体化した隣国 | 吸収対象だが急ぎすぎると全方位的な敵を作る |
 | セルジューク系小国 | アナトリアに割拠 | オスマンが大ベイリクと競合している間は間接的な恩恵がある |
+
+**1.3 でのジェノヴァ勢力編成の変化**: ジェノヴァ弩兵が軽歩兵へ兵科再分類された `[src: unit_types/1_uniques_for_age_2_renaissance.txt:68]`（兵科の Heavy/Light 分類自体は 1.2 既存）。エーゲ海・バルカン戦線でジェノヴァ系勢力と対峙する際は、この編成変化を踏まえて敵の機動力・要塞駐屯可否を見積もること。
 
 ### 初期の強み・弱み
 
@@ -233,6 +230,10 @@ Cataphracts（カタフラクト）は Cataphracts age_1 アドバンスを取�
 
 - ヴェネツィア: オスマン対抗の一時的パートナーとして使えるが、エーゲ海の覇権で最終的に衝突する
 - ジェノヴァ: コンスタンティノープル内の商人コミュニティを抱える。短期的な交易協定が有効
+
+**反ジェノヴァ盟約（1.3）**: ビザンツ・ヴェネツィア間フレーバーで、ジェノヴァに対抗する連携イベントが追加された `[src: events/DHE/flavor_byz_ven.txt]`。コンスタンティノープルのジェノヴァ商人勢力への対抗手段として、ヴェネツィアとの一時的連携を模索する際の選択肢が増えている。
+
+**序盤の海軍運用と船コスト増（1.3）**: 船の建造・維持コストが金 4倍・goods 10倍に増加し（コミュニティ知見：公式パッチノート由来・スクリプト未確認）、序盤の海軍依存戦略が圧迫される。ヴェネツィア・ジェノヴァとの海軍力差を埋めようと序盤から艦隊を拡張する方針は財政負担が大きくなったため、コンスタンティノープル艦隊の最低限維持に絞り、本格的な制海権確保は財政再建後（中盤以降）に先送りするのが無難。
 
 ### フェーズ 3: オスマンの内紛を待つ（1370〜1400）
 
@@ -369,6 +370,8 @@ Restore Roman Borders CB（ローマ国境回復 CB）の発動前に、隣接�
 
 **バルカン地域情勢の詳細は `eu5-regional-guide.md` を参照**。オスマンとの直接対立については `eu5-ottoman-guide.md` に相手側の視点がある。
 
+**Twilight of the Tsardom（ツァーリ国の黄昏）— ブルガリア崩壊の機会（1.3）**: 1.3 で追加されたディザスター `[src: disasters/twilight_of_the_tsardom.txt, events/DHE/flavor_BUL.txt]`。ブルガリア（第二次ブルガリア帝国）等のバルカン勢力に崩壊・分裂を引き起こす。ビザンツにとっては**北方バルカンの再征服の好機**であり、ブルガリアが内紛・分裂で弱体化したタイミングで Restore Roman Borders CB や通常征服でバルカン領を回収しやすくなる `[src: disasters/twilight_of_the_tsardom.txt]`。詳細は[eu5-regional-guide.md](eu5-regional-guide.md)の「東欧（ポーランド・ハンガリー・ロシア・バルカン）」章を参照。
+
 ### Fate of the Phoenix ディザスター詳細
 
 `[src: events/disaster/D008_fate_of_the_phoenix.txt]`
@@ -464,6 +467,8 @@ Greek Fire Ships は `unlocked_greek_fire` 変数が必要 `[src: unit_types/D00
 4. **地中海西部への展開**: ローマ復興で西地中海まで拡大する場合は追加艦隊が必要
 
 Patch 1.2 の海上ルートコスト 1/10 削減 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）により、制海権を持つことで交易収入が向上する効果も期待できる。
+
+**船コスト増・海戦致死性の上昇（1.3）**: 1.3 で船の建造コストが金 4倍・goods 10倍に増加し、維持費も上昇した（コミュニティ知見：公式パッチノート由来・スクリプト未確認）。Greek Fire Ships を含む艦隊の新規建造・更新が大幅に高コスト化するため、後半戦でも艦隊規模の拡張は慎重に計画する必要がある。あわせて海戦の致死性が上昇しており（コミュニティ知見：公式パッチノート由来・スクリプト未確認）、少数精鋭の Greek Fire Ships を温存し、不利な海戦を避ける運用がより重要になる。制海権確保コストの上昇は序盤（フェーズ 2「同盟構築」）から続く傾向であり、後半に入ってからも艦隊は数より質（Greek Fire Ships 優先）で維持するのが得策。
 
 ### 後半の大陸戦略
 
@@ -924,6 +929,9 @@ DLC なしでは Cataphracts age_1 を活かした限定的な固有軍事戦略
 | コムネノス家式整備 | Komnenian Formalization | ポリシー | pronoia_system 廃止後選択肢の一つ |
 | パレオロゴス家式世襲転換 | Palaeologan Hereditary Transition | ポリシー | pronoia_system 廃止後選択肢の一つ |
 | 改革プロノイア制 | Reformed Pronoia System | ポリシー | pronoia_system 廃止後選択肢の一つ |
+| 紫の間に生まれし者 | Born in the Purple | 継承メカニクス | 1.3。後継者選定・正統性 `[src: heir_selections/monarchy.txt]` |
+| ツァーリ国の黄昏 | Twilight of the Tsardom | ディザスター | 1.3。ブルガリア等バルカン勢力の崩壊。ビザンツの再征服機会 `[src: disasters/twilight_of_the_tsardom.txt]` |
+| 反ジェノヴァ盟約 | （ヴェネツィア連携フレーバー） | イベント | 1.3。対ジェノヴァのビザンツ・ヴェネツィア連携 `[src: events/DHE/flavor_byz_ven.txt]` |
 
 ### パッチ 1.2 / DLC 共通用語
 
@@ -936,16 +944,6 @@ DLC なしでは Cataphracts age_1 を活かした限定的な固有軍事戦略
 | 宗教的影響力 | Religious Influence | 正教システム | 1.2 で Rite Power を廃止・統合 |
 | 総主教 | Patriarch | キャラクター | 1.2 で正教オーバーホール。キャラクターとして実装 |
 | ロマノス国境地理 | Roman Borders Geography | スクリプト地理 | Restore Roman Borders CB の対象範囲 |
-
-### 1.3 オープンベータ用語（仮登録）
-
-安定版リリース後に中央 `localization-reference.md` へ正式昇格する。詳細は本ガイド冒頭の「1.3 オープンベータ差分」節を参照。
-
-| 日本語 | 英語 | カテゴリ | 備考 |
-|--------|------|---------|------|
-| 紫の間に生まれし者 | Born in the Purple | 継承メカニクス | 1.3。後継者選定・正統性 `[src: heir_selections/monarchy.txt]（1.3 beta）` |
-| ツァーリ国の黄昏 | Twilight of the Tsardom | ディザスター | 1.3。ブルガリア等バルカン勢力の崩壊。ビザンツの再征服機会 `[src: disasters/twilight_of_the_tsardom.txt]（1.3 beta）` |
-| 反ジェノヴァ盟約 | （ヴェネツィア連携フレーバー） | イベント | 1.3。対ジェノヴァのビザンツ・ヴェネツィア連携 `[src: events/DHE/flavor_byz_ven.txt]（1.3 beta）` |
 
 ### 共通用語（抜粋）
 
@@ -984,13 +982,13 @@ DLC なしでは Cataphracts age_1 を活かした限定的な固有軍事戦略
 | `game/in_game/common/wargoals/00_default.txt` 行 244-261 | Superiority War ticking_war_score 確認 |
 | `game/in_game/common/auto_modifiers/country.txt` 行 90 | ロジスティクス距離定義 |
 | `game/in_game/common/bureaucracies/byz.txt` | ビザンツ固有官僚制アドバンス（スクリプト確認済み） |
-| `game/in_game/common/disasters/twilight_of_the_tsardom.txt` | Twilight of the Tsardom ディザスター（1.3 beta。ブルガリア等バルカン崩壊） |
-| `game/in_game/events/DHE/flavor_BUL.txt` | Twilight of the Tsardom のブルガリア側フレーバー（1.3 beta） |
-| `game/in_game/events/DHE/flavor_byz_ven.txt` | 反ジェノヴァ盟約（ビザンツ・ヴェネツィア連携、1.3 beta） |
-| `game/in_game/common/heir_selections/monarchy.txt` | Born in the Purple 継承メカニクス（1.3 beta） |
-| `game/in_game/common/unit_types/1_uniques_for_age_2_renaissance.txt` 行 69 | ジェノヴァ弩兵の軽歩兵化（1.3 beta） |
+| `game/in_game/common/disasters/twilight_of_the_tsardom.txt` | Twilight of the Tsardom ディザスター（1.3。ブルガリア等バルカン崩壊） |
+| `game/in_game/events/DHE/flavor_BUL.txt` | Twilight of the Tsardom のブルガリア側フレーバー（1.3） |
+| `game/in_game/events/DHE/flavor_byz_ven.txt` | 反ジェノヴァ盟約（ビザンツ・ヴェネツィア連携、1.3） |
+| `game/in_game/common/heir_selections/monarchy.txt` | Born in the Purple 継承メカニクス（1.3） |
+| `game/in_game/common/unit_types/1_uniques_for_age_2_renaissance.txt` 行 68 | ジェノヴァ弩兵の軽歩兵化（1.3） |
 
-> **1.3 オープンベータ補足**: 上記「1.3 beta」マーカー付きはローカル 1.3 open beta スクリプトで実体を確認したもの。「1.3 新規か否か」の最終判定は 1.2/1.3 パッチノート差分による。船コスト増・海戦致死性・1337 国境修正はエンジン内部値/フレーバー調整でスクリプト実値未確認のため `（コミュニティ知見：1.3 beta、公式パッチノート由来）` 扱い。Patch 1.3 wiki: eu5.paradoxwikis.com/Patch_1.3。
+> **1.3 補足**: 上記「1.3」マーカー付きファイルはインストール版 1.3 安定版（buildid 24075414 = 1.3.10）のローカルスクリプトで実体を確認したもの。「1.3 新規か否か」の最終判定は 1.2/1.3 パッチノート差分による。船コスト増・海戦致死性・1337 国境修正はエンジン内部値/フレーバー調整でスクリプト実値未確認のため `（コミュニティ知見：公式パッチノート由来・スクリプト未確認）` 扱い。Patch 1.3 wiki: eu5.paradoxwikis.com/Patch_1.3。
 
 ### 参照ファイル（スクリプト未確認、wiki / コミュニティ知見）
 

@@ -1,7 +1,7 @@
-# EU5 ハンガリー攻略ガイド（Patch 1.2 時点）
+# EU5 ハンガリー攻略ガイド（Patch 1.3 時点）
 
 > ハンガリー → 中欧の盟主を狙う序盤から大国化までの整理。
-> 2026-05-16 確認時点の最新パッチ 1.2「Echinades」（2026-05-06 リリース）に合わせて更新。
+> 2026-07-10 確認時点の最新パッチ 1.3（buildid 24075414 / バージョン 1.3.10、安定版）に合わせて更新。1.2「Echinades」（2026-05-06 リリース）baseline に 1.3 の変更点を統合済み。
 > 日本語は原則としてゲーム内ローカライズ準拠。未翻訳の箇所は英語を併記する。
 
 ---
@@ -75,23 +75,15 @@
 | イベント修正 | `flavor_hun.270`（エルデーディ・タマーシュ）選択肢・ローカライズ修正 |
 | 不具合修正（1.1.10） | 破産時建造物無限ループ、召集軍の部隊貼り付き、正規部隊 +100% 戦闘ボーナス誤付与を修正 |
 
----
+### Patch 1.3（buildid 24075414 = 1.3.10、安定版）
 
-## 1.3 オープンベータ差分（ハンガリー直接影響・純追記）
+ハンガリーへの直接影響が大きい変更を要約する。数値の詳細と運用への落とし込みは「黒軍」「ヴィシェグラード会議」「ポーランド同君連合」「内政・経済」の各節に統合済み。
 
-> **本セクションは 1.3 オープンベータ（buildid 23683141 / BetaKey `1.3-open-beta`）のローカルスクリプトと公式 1.3.0 / 1.3.2 パッチノートを独立検証基準とする。上位の 1.2「Echinades」baseline とは独立であり、1.2 本体章の数値・記述には一切手を加えていない。**
-> 1.3 はオープンベータのため数値が変動しうる。安定版リリースまで本セクション内に封じ込め、本文（1.2 baseline）には昇格させない。
-> マーカー: `[src: ...]（1.3 beta）` = ローカル 1.3 スクリプトで実体を確認 / `（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）` = エンジン内部値・公式ノートのみ根拠。
-
-### 軍事（陸軍 goods 需要 2 倍＝黒軍コスト直撃）
-
-- **陸軍 goods 需要 2 倍**: 常備軍の goods 消費が約 2 倍に増加（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。ハンガリーの主力である**黒軍（Black Army / a_the_black_army、Heavy Infantry）**は goods 消費の重い兵科であり、大量編成のランニングコストが直撃を受ける。1.2 で前提にしていた黒軍中心の常備軍規模は、goods 供給（産地確保・交易）とセットで再設計する必要がある。
-- **建物維持費の逓増（1 世紀で +50%）**: 建造物維持費が時間経過で逓増する（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。要塞網（ヴェグヴァール体制）を厚く積む防衛戦略は長期維持費が増すため、収入とのバランスを意識する。
-
-### 継承・外交（Union of Crowns の女性継承と対ポーランド例外）
-
-- **Union of Crowns（王冠連合協定）の女性継承**: ヴィシェグラード会議連鎖で成立するポーランドとの PU 協定 `union_of_crowns_pact` まわりの継承ロジックが整理され、女性継承が継承候補として扱われるケースが追加された `[src: scripted_relations/union_of_crowns_pact.txt, heir_selections/monarchy.txt]（1.3 beta）`。
-- **⚠ 対ポーランド PU の例外注記**: ただし継承資格ルールに `no_female_heirs_for_poland` が定義されており、ポーランド方面の継承では女性継承者が資格から除外される `[src: heir_selections/monarchy.txt:1206（custom_eligibility_rules = no_female_heirs_for_poland）]（1.3 beta）`。「女性継承が一般に緩和された」と早合点して対ポーランド PU を女性後継者で繋ごうとすると不発になりうるため、ヤギェウォ朝・ポーランド王冠連合ルートを狙う場合は男性後継者の確保を引き続き計画に入れること。
+| 変更 | 概要 |
+|------|------|
+| 陸軍 goods 需要 2 倍 | 常備軍の goods 消費が約 2 倍に増加。黒軍（Heavy Infantry）中心の常備軍規模は goods 供給（産地確保・交易）とセットで再設計が必要（コミュニティ知見：公式パッチノート由来・スクリプト未確認） |
+| 建物維持費の逓増（1 世紀で +50%） | 建造物維持費が時間経過で逓増。要塞網（ヴェグヴァール体制）を厚く積む防衛戦略は長期維持費が増す（コミュニティ知見：公式パッチノート由来・スクリプト未確認） |
+| Union of Crowns（王冠連合協定）の女性継承整理 | ポーランドとの PU 協定 `union_of_crowns_pact` まわりの継承ロジックが整理され、女性継承が候補として扱われるケースが追加 `[src: scripted_relations/union_of_crowns_pact.txt, heir_selections/monarchy.txt]`。ただし `no_female_heirs_for_poland` によりポーランド方面は女性継承者が除外される例外あり（→ ポーランド同君連合節） |
 
 ---
 
@@ -336,6 +328,7 @@
     - `union_of_crowns_pact` リレーションが形成される
     - **継承法が `union_of_crowns_succession` に変更**される（内政・後継者選定に大きく影響するため注意）
     - POL との Opinion modifier `agreed_second_congress_of_visegrad` が付与される
+    - **1.3 で継承ロジックが整理**され、女性継承者が継承候補として扱われるケースが追加された `[src: scripted_relations/union_of_crowns_pact.txt, heir_selections/monarchy.txt]`（対ポーランドの例外あり。→ 次節「ポーランド同君連合」参照）
 - ポーランドが出席すれば第 2 回会議（`flavor_hun.331/.332`）につながる
 - ポーランドが拒否した場合（`flavor_hun.18`）は関係に影を落とすが、致命的ではない
 
@@ -346,6 +339,7 @@
 - ポーランドの敵国と同盟しない（参戦要請でポーランドとの戦争に引きずり込まれるのを防ぐ）
 - 同君連合成立後 → **統合（Integrate）**で外交コストを毎月消費し、約 50 年で完了
 - 統合を進めるには `union_integration_level` と `union_senior_succession_law` の整備が必要 `[src: laws/40_personal_unions.txt + script verified]`
+- **⚠ 対ポーランド PU の女性継承除外例外**: 継承資格ルールに `no_female_heirs_for_poland` が定義されており、ポーランド方面の継承では女性継承者が資格から除外される `[src: heir_selections/monarchy.txt:1206（custom_eligibility_rules = no_female_heirs_for_poland）]`。前節（ヴィシェグラード会議）の「1.3 で女性継承が継承候補として扱われるケースが追加された」を「対ポーランド PU にも一般に適用される」と早合点して女性後継者で繋ごうとすると不発になりうる。ヤギェウォ朝・ポーランド王冠連合ルートを狙う場合は男性後継者の確保を引き続き計画に入れること。
 
 ### マティアス・コルヴィヌスの改革（1466〜1470）
 
@@ -646,6 +640,7 @@ Light Cavalry のベース数値（参考）:
 - ハンガリー文化地にしか建設できないため、コア領土の要塞守備を担当させる
 - is_garrison = yes で要塞駐屯可能。1.2 で Light Infantry が要塞駐屯不可になった環境では、黒軍の価値がさらに上昇する
 - 体力ダメージ軽減 -10% で長期包囲戦・消耗戦に強い
+- **1.3 で陸軍 goods 需要が約 2 倍に増加**。goods 消費の重い黒軍を中心とした常備軍規模は、goods 供給（産地確保・交易）とセットで再設計する必要がある（コミュニティ知見：公式パッチノート由来・スクリプト未確認）
 
 ### ハンガリー・フサール（a_hungarian_hussars）—— Heavy Cavalry
 
@@ -833,6 +828,8 @@ Age 5 解禁の地形特化型軽装歩兵。重要注意点が 2 点ある。
 | 3 | 橋 | Bridge | ハンガリーの湖が近接障壁。必須インフラ |
 | 4 | 製材所 | Lumber Mill | 建設資材の確保 |
 | 5 | 病院 | Hospital | 黒死病対策（1340年代までに建設） |
+
+> **1.3 で建物維持費が時間経過で逓増**（1 世紀で約 +50%）する。要塞網（ヴェグヴァール体制）を厚く積む防衛戦略は長期的に維持費が増すため、収入とのバランスを意識する（コミュニティ知見：公式パッチノート由来・スクリプト未確認）。
 
 ### 階級（Estate）管理
 
@@ -1087,14 +1084,7 @@ Age 5 解禁の地形特化型軽装歩兵。重要注意点が 2 点ある。
 | 帝国兵器庫 | Imperial Armory | HRE 皇帝のみ建設可能な軍事建造物（gold=500）`[src: building_types/hre_buildings.txt + script verified]` |
 | 黄金大勅書（HRE） | Golden Bull（HRE） | HRE 皇帝が制定する帝国法。未制定だと 1400 年以降に諸侯が離脱可能 `[src: international_organizations/hre.txt + script verified]` |
 | 戦力前線幅 | possible_frontage_modifier | 戦場に展開できる兵力幅の修正値 `[src: advances/country_HUN.txt]` |
-
-### 1.3 オープンベータ用語（仮登録）
-
-> 安定版リリース後に中央 `localization-reference.md` へ正式昇格する。詳細は本ガイドの「1.3 オープンベータ差分」節を参照。
-
-| 日本語 | 英語 | 補足 |
-|--------|------|------|
-| 対ポーランド女性継承除外 | no_female_heirs_for_poland | 1.3。継承資格ルール。ポーランド方面の継承で女性継承者を資格から除外 `[src: heir_selections/monarchy.txt:1206]（1.3 beta）` |
+| 対ポーランド女性継承除外 | no_female_heirs_for_poland | 1.3。継承資格ルール。ポーランド方面の継承で女性継承者を資格から除外 `[src: heir_selections/monarchy.txt:1206]` |
 
 ---
 
@@ -1127,22 +1117,17 @@ Age 5 解禁の地形特化型軽装歩兵。重要注意点が 2 点ある。
   - `international_organizations/union.txt` — 同君連合 IO
   - `laws/40_personal_unions.txt` — PU 法律・統合レベル
   - `events/DHE/flavor_HAB.txt` — flavor_hab.46（HAB 視点ハンガリー陥落）
-
-#### 1.3 オープンベータ差分の出典（純追記分）
-
-ローカル 1.3 open beta（buildid 23683141 / BetaKey `1.3-open-beta`）スクリプトで実体確認したファイル。陸軍 goods 2 倍・建物維持費逓増はエンジン内部値でスクリプト実値未確認のため `（コミュニティ知見：1.3 beta、公式パッチノート由来）` 扱い。
-
-  - `scripted_relations/union_of_crowns_pact.txt` — Union of Crowns 協定の継承ロジック整理（1.3 beta）
-  - `heir_selections/monarchy.txt` 行 1206 — `no_female_heirs_for_poland`（対ポーランド継承の女性除外ルール、1.3 beta）
-  - Patch 1.3 wiki: eu5.paradoxwikis.com/Patch_1.3
   - `international_organizations/hre.txt` — HRE 1.2 オーバーホール（Golden Bull・GP Score）
   - `laws/20_hre.txt` — HRE 法律（Golden Bull 効果）
   - `building_types/hre_buildings.txt` — Imperial Armory コスト・効果
+  - `scripted_relations/union_of_crowns_pact.txt` — Union of Crowns 協定の継承ロジック整理（1.3）
+  - `heir_selections/monarchy.txt` 行 1206 — `no_female_heirs_for_poland`（対ポーランド継承の女性除外ルール、1.3）
 - [Hungary - EU5 Wiki](https://eu5.paradoxwikis.com/Hungary)
 - [Hungarian content - EU5 Wiki](https://eu5.paradoxwikis.com/Hungarian_content)
 - [Patch 1.1 "Rossbach" - EU5 Wiki](https://eu5.paradoxwikis.com/Patch_1.1)
 - [Patch 1.1.X Hotfixes - EU5 Wiki](https://eu5.paradoxwikis.com/Patch_1.1.X)
 - [Patch 1.2 "Echinades" - EU5 Wiki](https://eu5.paradoxwikis.com/Patch_1.2)
+- [Patch 1.3 - EU5 Wiki](https://eu5.paradoxwikis.com/Patch_1.3)
 
 **スクリプト検証済み項目（`script verified`）:**
 
@@ -1164,7 +1149,7 @@ Age 5 解禁の地形特化型軽装歩兵。重要注意点が 2 点ある。
 - `laws/00_monarchy.txt`: Noble Levies 君主法（nobles_estate_levy_size = 0.50）
 
 **コミュニティ知見項目（スクリプト未確認）:**
-新 Advances 300+・新 DHE 140+・Latin Culture Movement・新 3D モニュメント・Imperial Diet 投票システム・王朝力上限 200→300・Belligerent/Conciliatory 修正・傭兵コスト +25%・Societal Values 初期値（詳細）・推奨選択の「どちらを選ぶか」判断・編成比率・タイミング推奨全般
+新 Advances 300+・新 DHE 140+・Latin Culture Movement・新 3D モニュメント・Imperial Diet 投票システム・王朝力上限 200→300・Belligerent/Conciliatory 修正・傭兵コスト +25%・Societal Values 初期値（詳細）・推奨選択の「どちらを選ぶか」判断・編成比率・タイミング推奨全般・陸軍 goods 需要 2 倍（1.3）・建物維持費逓増（1.3、エンジン内部値のためスクリプト実値未確認）
 
 ### コミュニティ情報（補足知見）
 

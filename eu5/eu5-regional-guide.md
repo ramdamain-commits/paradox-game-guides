@@ -227,7 +227,7 @@ DLC「Fate of the Phoenix」同梱のギリシャ・バルカン新コンテン�
 
 ### 1.3 バルカン新ディザスター・改革
 
-- **Twilight of the Tsardom（ツァーリ国の黄昏）ディザスター**が追加 `[src: disasters/twilight_of_the_tsardom.txt, events/DHE/flavor_BUL.txt]`。ブルガリア（第二次ブルガリア帝国）等のバルカン勢力に崩壊・分裂を引き起こす。これにより南下を狙うハンガリー・ビザンツ・オスマンにとって、バルカン領回収の好機が生まれる。ビザンツ視点の活用は [eu5-byzantium-guide.md](eu5-byzantium-guide.md) の「1.3 オープンベータ差分」節と相互参照。
+- **Twilight of the Tsardom（ツァーリ国の黄昏）ディザスター**が追加 `[src: disasters/twilight_of_the_tsardom.txt, events/DHE/flavor_BUL.txt]`。ブルガリア（第二次ブルガリア帝国）等のバルカン勢力に崩壊・分裂を引き起こす。これにより南下を狙うハンガリー・ビザンツ・オスマンにとって、バルカン領回収の好機が生まれる。ビザンツ視点の活用は [eu5-byzantium-guide.md](eu5-byzantium-guide.md) の中盤戦略「バルカン再征服の段階的進行」節と相互参照。
 - **Voivode（ヴォイヴォダ）改革**: ポーランド・カルパチア圏向けの政府改革 Voivode が追加 `[src: government_reforms/country_specific.txt]`。選挙制君主圏の内政選択肢が広がる。政府改革の詳細は [eu5-government-guide.md](eu5-government-guide.md) の「君主制（Monarchy）」章「主要政府改革」表を参照。
 
 ---
