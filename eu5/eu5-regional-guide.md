@@ -1,8 +1,8 @@
-# EU5 地域別攻略ガイド（Patch 1.2 時点）
+# EU5 地域別攻略ガイド（Patch 1.3 時点）
 
 > 全世界を地域別に分類し、各地域の特性・おすすめ国家・固有注意点をまとめた横断リファレンス。
 > 国家固有の詳細戦略は各国家別ガイドを参照。
-> 2026-05-09 確認時点の最新パッチ 1.2「Echinades」（2026-05-06 リリース）に合わせて更新。
+> 2026-07-10 確認時点の最新パッチ 1.3（buildid 24075414 / バージョン 1.3.10、安定版）に合わせて更新。1.2「Echinades」からの差分は本文各章へ統合済み。
 > 日本語は原則としてゲーム内ローカライズ準拠。未翻訳の箇所は英語を併記する。
 > 基本メカニクスは [汎用攻略ガイド](eu5-universal-guide.md) を参照。
 
@@ -40,42 +40,10 @@ EU5 の世界は大きく 8 地域に分けて攻略を考えると整理しや�
 | ⚠ 非推奨 | グラナダ（Granada） | イベリア半島の孤立無援。レコンキスタ攻勢に耐えるのが困難（コミュニティ知見） |
 | ⚠ 非推奨 | HRE 小国 | 帝国政治・封建外交の複雑さが重なり、初心者には過負荷（コミュニティ知見） |
 
----
+### 1.3 での地域横断変更
 
-## 1.3 オープンベータ差分（地域別・純追記）
-
-> **本セクションは 1.3 オープンベータ（buildid 23683141 / BetaKey `1.3-open-beta`）のローカルスクリプトと公式 1.3.0 / 1.3.2 パッチノートを独立検証基準とする。上位の 1.2「Echinades」baseline とは独立であり、1.2 本体章（上記各地域節）の数値・記述には一切手を加えていない。**
-> 1.3 はオープンベータのため数値が変動しうる。安定版リリースまで本セクション内に封じ込め、本文（1.2 baseline）には昇格させない。
-> マーカー: `[src: ...]（1.3 beta）` = ローカル 1.3 スクリプトで実値・実体を確認（「1.3 新規か否か」の最終判定は 1.2/1.3 パッチノート差分による）/ `（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）` = エンジン内部値・公式ノートのみ根拠。
-
-### 西欧 — 百年戦争リバランス・薔薇戦争
-
-- **百年戦争（Hundred Years War）のリバランス**: 百年戦争シチュエーションが調整された `[src: situations/hundred_years_war.txt]（1.3 beta）`。フランス初期国力・Appanage（アパナージュ）弱体化・French Subject への Influence 再スケール・騎士的貴族の徴募減が公式ノートで挙げられている（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。序盤のフランス統合がやや手間取る方向に動くため、対仏・対英プレイは最新 beta で初期勢力図を再確認すること。
-- **薔薇戦争（War of the Roses）ディザスター**: ブリテン（イングランド）向けに薔薇戦争ディザスターが追加 `[src: disasters/war_of_the_roses.txt, events/disaster/war_of_the_roses.txt]（1.3 beta）`。イングランドの内乱リスクが時系列イベントとして実装され、ブリテン統一プレイの中盤に内政負荷が乗る。詳細な国別影響は [eu5-brandenburg-guide.md](eu5-brandenburg-guide.md) ではなくイングランド系プレイで参照（本ガイドの西欧おすすめ国家「イングランド」欄と相互参照）。
-
-### イタリア — ゲルフ／ギベリン改修
-
-- **ゲルフ／ギベリン（Guelphs and Ghibellines）の改修**: 北イタリア諸都市の党派抗争シチュエーションが改修された `[src: situations/guelphs_and_ghibellines.txt, events/situations/guelphs_and_ghibellines.txt]（1.3 beta）`。ジェノヴァ・ヴェネツィア等の都市国家フレーバーにも関連イベントがある `[src: events/DHE/flavor_GEN.txt, events/DHE/flavor_ver.txt]（1.3 beta）`。北イタリア都市国家プレイの内政・派閥管理が変化する。
-
-### イベリア（アラゴン）— Taula de Canvi 銀行
-
-- **Taula de Canvi de Barcelona（バルセロナ両替所）**: アラゴン向けに公営銀行 Taula de Canvi を設立するフレーバーが追加 `[src: events/DHE/flavor_ARA.txt:flavor_ara.220]（1.3 beta）`。イベントで `banking_office`（銀行）建造物を設置する流れで、アラゴンの財政・交易に独自の選択肢を与える。家族銀行（Berenberg 等）とは別系統の、国家公営の銀行メカニクス。
-
-### 東欧・バルカン — Twilight of the Tsardom・Voivode
-
-- **Twilight of the Tsardom（ツァーリ国の黄昏）ディザスター**が 1.3 で追加 `[src: disasters/twilight_of_the_tsardom.txt, events/DHE/flavor_BUL.txt]（1.3 beta）`。ブルガリア（第二次ブルガリア帝国）等のバルカン勢力に崩壊・分裂を引き起こす。これにより南下を狙うハンガリー・ビザンツ・オスマンにとって、バルカン領回収の好機が生まれる。ビザンツ視点の活用は [eu5-byzantium-guide.md](eu5-byzantium-guide.md) の「1.3 オープンベータ差分」節と相互参照。
-- **Voivode（ヴォイヴォダ）改革**: ポーランド・カルパチア圏向けの政府改革 Voivode が追加 `[src: government_reforms/country_specific.txt]（1.3 beta）`。選挙制君主圏の内政選択肢が広がる。政府改革の詳細は [eu5-government-guide.md](eu5-government-guide.md) の「1.3 オープンベータ差分」節を参照。
-
-### 各地域共通 — RGO 再分配
-
-- **RGO（Resource Gathering Operations）の再分配**: Iron（鉄）・Wool（羊毛）・Horses（馬）・Beeswax（蜜蝋）等の産出 location が見直された（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。資源産地が変わると交易ノードの価値・建造物の最適配置が動くため、各地域の「市場中心・主要産地」前提は最新 beta で再確認すること。
-
-### 概要・東アジア — 植民/移民・新文化・天然痘・Korea 研究ナーフ
-
-- **植民・移民の拡大**: 植民地化・移民メカニクスの適用範囲が広がった（コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。アフリカ・新大陸・東南アジアの開拓ペースに影響。
-- **新文化の追加**: 複数の新文化が追加された（公式ノートでは 6 種とされるが、どの文化が 1.3 新規かはノート差分依存のため種別の断定は保留。コミュニティ知見：1.3 beta、公式パッチノート由来・スクリプト未確認）。ギリシャ語圏の地名整備も併せて行われた。
-- **天然痘（Smallpox）の亜熱帯化**: 1.3.2 で天然痘の月次発生率が引き下げられ（`monthly_spawn_chance` 実値 0.05）、発生対象気候に subtropical（亜熱帯）が加わり、location 拡散閾値は 0.15 `[src: diseases/smallpox.txt]（1.3 beta）`。旧値 0.1 からの引き下げ（0.1→0.05）はパッチノート差分による（コミュニティ知見：1.3.2、公式パッチノート由来）。亜熱帯地域（南欧・中東沿岸・東アジア南部等）でも天然痘が発生しうるようになり、人口稠密地帯の疫病リスクが微増する。
-- **Korea（朝鮮）研究ナーフ — Hall of Worthies（集賢殿）**: 朝鮮の研究加速フレーバー「Hall of Worthies（集賢殿）」が調整された `[src: events/DHE/flavor_KOR.txt（Hall of Worthies / kor_hall_of_worthies_modifier）]（1.3 beta）`。研究進捗ボーナスの規模・コストが見直され、朝鮮の技術先行が以前よりマイルドになる方向（ナーフ幅の具体値はノート差分依存・コミュニティ知見：1.3 beta、公式パッチノート由来）。東アジア強国ランキングの朝鮮（★★☆「技術研究の効率が高い」）評価は、安定版では微下方修正される可能性がある。
+- **RGO（Resource Gathering Operations）の再分配**: Iron（鉄）・Wool（羊毛）・Horses（馬）・Beeswax（蜜蝋）等の産出 location が見直された（コミュニティ知見）。資源産地の変更は交易ノードの価値・建造物の最適配置に影響するため、各地域節の「市場中心・主要産地」記述は随時最新情報で確認すること。
+- **植民・移民の拡大**: 植民地化・移民メカニクスの適用範囲が広がった（コミュニティ知見）。アフリカ・新大陸・東南アジアの開拓ペースへの影響は当該地域節（アフリカ・新大陸／東アジアの東南アジア関連記述）を参照。
 
 ---
 
@@ -126,6 +94,15 @@ Patch 1.2 の貿易システム改修により、西欧海洋国家の交易効�
 **主な影響国**: ポルトガル・カスティーリャ・イングランド・ヴェネツィア・オランダ（コミュニティ知見：スクリプト未確認）
 
 貿易メカニクスの詳細は [eu5-universal-guide.md](eu5-universal-guide.md) を参照。
+
+### 1.3 フレーバー拡充（百年戦争・薔薇戦争・北イタリア・アラゴン）
+
+Patch 1.3 で西欧・イタリア・イベリアの国別フレーバーが拡充された。
+
+- **百年戦争（Hundred Years War）のリバランス**: 百年戦争シチュエーションが調整された `[src: situations/hundred_years_war.txt]`。フランス初期国力・Appanage（アパナージュ）弱体化・French Subject への Influence 再スケール・騎士的貴族の徴募減が公式ノートで挙げられている（コミュニティ知見）。序盤のフランス統合がやや手間取る方向に動くため、対仏・対英プレイは最新の勢力図を確認すること。
+- **薔薇戦争（War of the Roses）ディザスター**: ブリテン（イングランド）向けに薔薇戦争ディザスターが追加 `[src: disasters/war_of_the_roses.txt, events/disaster/war_of_the_roses.txt]`。イングランドの内乱リスクが時系列イベントとして実装され、ブリテン統一プレイの中盤に内政負荷が乗る（本ガイドの西欧おすすめ国家「イングランド」欄と相互参照）。
+- **ゲルフ／ギベリン（Guelphs and Ghibellines）の改修**: 北イタリア諸都市の党派抗争シチュエーションが改修された `[src: situations/guelphs_and_ghibellines.txt, events/situations/guelphs_and_ghibellines.txt]`。ジェノヴァ・ヴェネツィア等の都市国家フレーバーにも関連イベントがある `[src: events/DHE/flavor_GEN.txt, events/DHE/flavor_ver.txt]`。北イタリア都市国家プレイの内政・派閥管理が変化する。
+- **Taula de Canvi de Barcelona（バルセロナ両替所）**: アラゴン向けに公営銀行 Taula de Canvi を設立するフレーバーが追加 `[src: events/DHE/flavor_ARA.txt:flavor_ara.220]`。イベントで `banking_office`（銀行）建造物を設置する流れで、アラゴンの財政・交易に独自の選択肢を与える（家族銀行 Berenberg 等とは別系統の、国家公営の銀行メカニクス）。アラゴンの学習目標「イベリア統合・植民地」（カスティーリャ枠）とあわせて、財政運用の幅が広がる。
 
 ---
 
@@ -248,6 +225,11 @@ DLC「Fate of the Phoenix」同梱のギリシャ・バルカン新コンテン�
 - **ハンガリー**: バルカン覇権争いでビザンツ・ヴェネツィアとの三つ巴に
 - **ヴェネツィア**: ビザンツ復興と地中海覇権争いが激化。貿易改修との相乗効果で東地中海の戦略価値が上昇
 
+### 1.3 バルカン新ディザスター・改革
+
+- **Twilight of the Tsardom（ツァーリ国の黄昏）ディザスター**が追加 `[src: disasters/twilight_of_the_tsardom.txt, events/DHE/flavor_BUL.txt]`。ブルガリア（第二次ブルガリア帝国）等のバルカン勢力に崩壊・分裂を引き起こす。これにより南下を狙うハンガリー・ビザンツ・オスマンにとって、バルカン領回収の好機が生まれる。ビザンツ視点の活用は [eu5-byzantium-guide.md](eu5-byzantium-guide.md) の「1.3 オープンベータ差分」節と相互参照。
+- **Voivode（ヴォイヴォダ）改革**: ポーランド・カルパチア圏向けの政府改革 Voivode が追加 `[src: government_reforms/country_specific.txt]`。選挙制君主圏の内政選択肢が広がる。政府改革の詳細は [eu5-government-guide.md](eu5-government-guide.md) の「君主制（Monarchy）」章「主要政府改革」表を参照。
+
 ---
 
 ## 中東・北アフリカ
@@ -316,6 +298,12 @@ DLC「Fate of the Phoenix」同梱のギリシャ・バルカン新コンテン�
 - **東南アジアの分断**: マレー半島・インドネシア方面は多数の小国が乱立。ポルトガルやオランダ（将来的な勢力）の植民地化ターゲットになるため、早期の経済基盤強化が生存の鍵
 
 > **1.2 確認**: 東アジア方面の固有変更は Patch 1.2 パッチノートに明示なし（コミュニティ知見：スクリプト未確認）。後続パッチでの対応を注視する
+
+### 1.3 主要変更（新文化・天然痘・Korea 研究ナーフ）
+
+- **新文化の追加**: 複数の新文化が追加された（公式ノートでは 6 種とされるが、どの文化が新規かはノート差分依存のため種別の断定は保留。コミュニティ知見）。ギリシャ語圏の地名整備も併せて行われた。
+- **天然痘（Smallpox）の亜熱帯化**: 天然痘の月次発生率 `monthly_spawn_chance` が旧値 0.1 から引き下げられた。パッチノート記載値は 0.05 だが、インストール版の実機スクリプト値は 0.08 で相違があり、中間 hotfix での再調整が疑われる。本文はスクリプト実値の 0.08 を採用する `[src: diseases/smallpox.txt]`。発生対象気候に subtropical（亜熱帯）が加わり、location 拡散閾値は 0.15 `[src: diseases/smallpox.txt]`。亜熱帯地域（南欧・中東沿岸・東アジア南部等）でも天然痘が発生しうるようになり、人口稠密地帯の疫病リスクが微増する。
+- **Korea（朝鮮）研究ナーフ — Hall of Worthies（集賢殿）**: 朝鮮の研究加速フレーバー「Hall of Worthies（集賢殿）」が調整された `[src: events/DHE/flavor_KOR.txt（Hall of Worthies / kor_hall_of_worthies_modifier）]`。研究進捗ボーナスの規模・コストが見直され、朝鮮の技術先行が以前よりマイルドになる方向（ナーフ幅の具体値はノート差分依存・コミュニティ知見）。東アジア強国ランキングの朝鮮（★★☆「技術研究の効率が高い」）評価は、微下方修正される可能性がある。
 
 ---
 
@@ -433,6 +421,8 @@ DLC「Fate of the Phoenix」同梱のギリシャ・バルカン新コンテン�
 
 > **1.2 確認**: アフリカ・新大陸固有のメカニクス変更は Patch 1.2 パッチノートに明示なし（コミュニティ知見：スクリプト未確認）。バルカン新コンテンツのような地域追加が後続パッチでアフリカ・新大陸にも適用される可能性を注視する
 
+> **1.3 更新**: 植民地化・移民メカニクスの適用範囲が広がった（コミュニティ知見）。ヨーロッパ勢との接触タイミング・開拓ペースにも影響しうるため、「概要」章の「1.3 での地域横断変更」もあわせて確認すること
+
 ---
 
 ## 用語対照表
@@ -471,9 +461,9 @@ DLC「Fate of the Phoenix」同梱のギリシャ・バルカン新コンテン�
 
 ---
 
-## 1.2 新規用語（地域別ガイド範囲）
+## 1.2 / 1.3 新規用語（地域別ガイド範囲）
 
-Patch 1.2 および DLC「Fate of the Phoenix」で追加された用語（地域別ガイド内で使用するもの）。
+Patch 1.2、DLC「Fate of the Phoenix」、および Patch 1.3（安定版）で追加された用語（地域別ガイド内で使用するもの）。
 
 | 日本語 | English | 備考 |
 |--------|---------|------|
@@ -490,22 +480,13 @@ Patch 1.2 および DLC「Fate of the Phoenix」で追加された用語（地�
 | 都市権 | Urban Rights | 都市スロット制（町1 / 市2）。Patch 1.2 で導入 |
 | 総主教 | Patriarch | 正教 1.2 オーバーホールでキャラクターとして実装 |
 | 宗教的影響力 | Religious Influence | Rite Power 廃止後の正教新メカニクス |
-
----
-
-## 1.3 オープンベータ用語（仮登録）
-
-> 以下は 1.3 オープンベータの差分セクションで使用する暫定用語。安定版リリース後に中央 `localization-reference.md` へ正式昇格する。詳細は本ガイドの「1.3 オープンベータ差分（地域別・純追記）」節を参照。
-
-| 日本語 | English | カテゴリ | 備考 |
-|--------|---------|---------|------|
-| 百年戦争 | Hundred Years War | シチュエーション | 1.3 でリバランス `[src: situations/hundred_years_war.txt]（1.3 beta）` |
-| 薔薇戦争 | War of the Roses | ディザスター | 1.3。イングランドの内乱 `[src: disasters/war_of_the_roses.txt]（1.3 beta）` |
-| ゲルフ／ギベリン | Guelphs and Ghibellines | シチュエーション | 1.3 で改修。北イタリア党派抗争 `[src: situations/guelphs_and_ghibellines.txt]（1.3 beta）` |
-| バルセロナ両替所 | Taula de Canvi | イベント/建造物 | 1.3。アラゴンの公営銀行 `[src: events/DHE/flavor_ARA.txt:flavor_ara.220]（1.3 beta）` |
-| ツァーリ国の黄昏 | Twilight of the Tsardom | ディザスター | 1.3。ブルガリア等バルカン勢力の崩壊 `[src: disasters/twilight_of_the_tsardom.txt]（1.3 beta）` |
-| ヴォイヴォダ | Voivode | 政府改革 | 1.3。ポーランド・カルパチア圏 `[src: government_reforms/country_specific.txt]（1.3 beta）` |
-| 集賢殿 | Hall of Worthies | フレーバー/修正 | 1.3 で調整（朝鮮の研究加速）`[src: events/DHE/flavor_KOR.txt: kor_hall_of_worthies_modifier]（1.3 beta）` |
+| 百年戦争 | Hundred Years War | シチュエーション。1.3 でリバランス `[src: situations/hundred_years_war.txt]` |
+| 薔薇戦争 | War of the Roses | ディザスター。1.3 追加。イングランドの内乱 `[src: disasters/war_of_the_roses.txt]` |
+| ゲルフ／ギベリン | Guelphs and Ghibellines | シチュエーション。1.3 で改修。北イタリア党派抗争 `[src: situations/guelphs_and_ghibellines.txt]` |
+| バルセロナ両替所 | Taula de Canvi | イベント/建造物。1.3 追加。アラゴンの公営銀行 `[src: events/DHE/flavor_ARA.txt:flavor_ara.220]` |
+| ツァーリ国の黄昏 | Twilight of the Tsardom | ディザスター。1.3 追加。ブルガリア等バルカン勢力の崩壊 `[src: disasters/twilight_of_the_tsardom.txt]` |
+| ヴォイヴォダ | Voivode | 政府改革。1.3 追加。ポーランド・カルパチア圏 `[src: government_reforms/country_specific.txt]` |
+| 集賢殿 | Hall of Worthies | フレーバー/修正。1.3 で調整（朝鮮の研究加速）`[src: events/DHE/flavor_KOR.txt: kor_hall_of_worthies_modifier]` |
 
 ---
 
@@ -517,28 +498,29 @@ Patch 1.2 および DLC「Fate of the Phoenix」で追加された用語（地�
 - [EU5 Wiki — Patch 1.1 "Rossbach"](https://eu5.paradoxwikis.com/Patch_1.1)
 - [EU5 Wiki — Patch 1.1.X Hotfixes](https://eu5.paradoxwikis.com/Patch_1.1.X)
 - [Patch 1.2 — EU5 Wiki](https://eu5.paradoxwikis.com/Patch_1.2)
+- [Patch 1.3 — EU5 Wiki](https://eu5.paradoxwikis.com/Patch_1.3)
 - [Fate of the Phoenix — EU5 Wiki](https://eu5.paradoxwikis.com/Fate_of_the_Phoenix)
 - [Holy Roman Empire — EU5 Wiki](https://eu5.paradoxwikis.com/Holy_Roman_Empire)
 - [Byzantine content — EU5 Wiki](https://eu5.paradoxwikis.com/Byzantine_content)
 - [Tinto Talks #100〜101（Patch 1.2 開発日記）](https://forum.paradoxplaza.com/)
 - ゲームスクリプト（`auto_modifiers/country.txt`・`prices/00_hardcoded.txt` 等）との照合は eu5-universal-guide.md を参照
 
-#### 1.3 オープンベータ差分の出典（純追記分）
+#### 1.3 で確認したスクリプトファイル
 
-ローカル 1.3 open beta（buildid 23683141 / BetaKey `1.3-open-beta`）スクリプトで実体確認したファイル。「1.3 新規か否か」の最終判定は 1.2/1.3 パッチノート差分による。
+安定版 1.3.10（buildid 24075414）のローカルスクリプトで実体確認したファイル。
 
 | スクリプトファイル | 確認した 1.3 差分 |
 |--------|------|
-| `game/in_game/common/situations/hundred_years_war.txt` | 百年戦争シチュエーションのリバランス（1.3 beta） |
-| `game/in_game/common/disasters/war_of_the_roses.txt`, `events/disaster/war_of_the_roses.txt` | 薔薇戦争ディザスター（1.3 beta。ブリテン内乱） |
-| `game/in_game/common/situations/guelphs_and_ghibellines.txt`, `events/situations/guelphs_and_ghibellines.txt` | ゲルフ／ギベリン改修（1.3 beta） |
-| `game/in_game/events/DHE/flavor_ARA.txt` 行 2574（`flavor_ara.220`） | Taula de Canvi de Barcelona（1.3 beta。アラゴン公営銀行） |
-| `game/in_game/common/disasters/twilight_of_the_tsardom.txt`, `events/DHE/flavor_BUL.txt` | Twilight of the Tsardom ディザスター（1.3 beta。バルカン崩壊） |
-| `game/in_game/common/government_reforms/country_specific.txt` | Voivode 改革（1.3 beta） |
-| `game/in_game/common/diseases/smallpox.txt` | 天然痘の亜熱帯化・発生率 0.05・拡散閾値 0.15（1.3.2 beta） |
-| `game/in_game/events/DHE/flavor_KOR.txt` 行 1893（Hall of Worthies / `kor_hall_of_worthies_modifier`） | 集賢殿＝朝鮮の研究加速の調整（1.3 beta） |
+| `game/in_game/common/situations/hundred_years_war.txt` | 百年戦争シチュエーションのリバランス |
+| `game/in_game/common/disasters/war_of_the_roses.txt`, `events/disaster/war_of_the_roses.txt` | 薔薇戦争ディザスター（ブリテン内乱） |
+| `game/in_game/common/situations/guelphs_and_ghibellines.txt`, `events/situations/guelphs_and_ghibellines.txt` | ゲルフ／ギベリン改修 |
+| `game/in_game/events/DHE/flavor_ARA.txt` 行 2574（`flavor_ara.220`） | Taula de Canvi de Barcelona（アラゴン公営銀行） |
+| `game/in_game/common/disasters/twilight_of_the_tsardom.txt`, `events/DHE/flavor_BUL.txt` | Twilight of the Tsardom ディザスター（バルカン崩壊） |
+| `game/in_game/common/government_reforms/country_specific.txt` | Voivode 改革 |
+| `game/in_game/common/diseases/smallpox.txt` | 天然痘の亜熱帯化・発生率実機値 0.08（パッチノート記載値 0.05 と相違。中間 hotfix での再調整が疑われる）・拡散閾値 0.15 |
+| `game/in_game/events/DHE/flavor_KOR.txt` 行 1893（Hall of Worthies / `kor_hall_of_worthies_modifier`） | 集賢殿＝朝鮮の研究加速の調整 |
 
-> **1.3 オープンベータ補足**: 上記「1.3 beta」マーカー付きはローカル 1.3 open beta スクリプトで実体を確認したもの。RGO 再分配・植民/移民拡大・新文化（公式ノートで 6 種）・Korea 研究ナーフの具体数値はエンジン内部値/ノート差分依存でスクリプト実値未確認のため `（コミュニティ知見：1.3 beta、公式パッチノート由来）` 扱い。Patch 1.3 wiki: eu5.paradoxwikis.com/Patch_1.3。
+> **1.3 補足**: RGO 再分配・植民/移民拡大・新文化（公式ノートで 6 種）・Korea 研究ナーフの具体数値はエンジン内部値/ノート差分依存でスクリプト実値未確認のため（コミュニティ知見）扱い。Patch 1.3 wiki: eu5.paradoxwikis.com/Patch_1.3。
 
 ### コミュニティ情報（補足知見）
 
