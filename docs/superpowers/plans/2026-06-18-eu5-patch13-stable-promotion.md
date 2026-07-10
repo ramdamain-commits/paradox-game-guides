@@ -47,27 +47,19 @@
 > beta→安定版でリバランス値が変わるのが常。**本文統合の前に必ず**、差分セクションの全クレームを安定版スクリプト/パッチノートで再確認する。spec section 1 の「数値検証の最終ステータス」表を安定版で再走査する。
 
 ### Task 0-1: 安定版ブランチ確認とバージョン固定
-- [ ] **トリガー判定（誤着手防止・優先順位厳守）**: 次の2条件の **AND** を必須とする — ①Steam の buildid が beta buildid（23683141）から変わっている ②Steam 店舗ページ/ランチャーの beta フラグ（`1.3-open-beta`）が外れ live がデフォルトになっている。`eu5.paradoxwikis.com/Patches` は更新遅延があるため**補完情報**に格下げ（単独で判定根拠にしない）。ゲーム内バージョンは beta で `b` サフィックスが付く/付かないが揺れるため補助扱い。
-- [ ] 1.3.x の最終 hotfix 版を基準に固定する。
-- [ ] spec の検証基準行（buildid 23683141 / `1.3-open-beta`）を、確定した安定版 buildid に差し替える。
+- [x] **トリガー判定（誤着手防止・優先順位厳守）**: 2026-07-10 確認済み。①Steam buildid=24075414（beta時23683141から変化）②UserConfig.BetaKey=`public`（betaフラグ解除・live既定）。AND成立でトリガー確定。
+- [x] 1.3.x の最終 hotfix 版を基準に固定する。→ buildid 24075414 = **1.3.10**（2026-07-09に正式stable昇格。これ以降のhotfixなし、2026-07-10時点）。ゲーム内表示「1.3.0」とはズレるため、本文表記は「Patch 1.3（1.3.10相当）」を使う。
+- [x] spec の検証基準行（buildid 23683141 / `1.3-open-beta`）を、確定した安定版 buildid に差し替える。→ spec冒頭に追記済み。
 
 ### Task 0-2: script 実値クレームの再 grep（researcher 委任可）
-- [ ] `[src:…]（1.3 beta）` 付きの全クレームを安定版スクリプトで再確認。特に load-bearing:
-  - `diseases/smallpox.txt`（spawn 0.05 / threshold 0.15 / subtropical）
-  - `government_reforms/country_specific.txt`（Prikazi/Collegium 0.10・Voivode）
-  - `artist_types/00_default.txt`（宮廷芸術家。**⚠ カウント不整合あり: beta実機=12種で universal 本文も12種だが、spec は14種と記載。安定版で実 grep カウントして確定すること**）
-  - `bureaucracies/`（官僚制 generic 10種を再カウント）
-  - `unit_types/1_uniques_for_age_2_renaissance.txt`（ジェノヴァ弩兵軽歩兵化の行番号）
-  - `heir_selections/monarchy.txt`（`no_female_heirs_for_poland`・行番号）
-  - `events/DHE/flavor_ARA.txt`（Taula `flavor_ara.220`）・`flavor_KOR.txt`（Hall of Worthies）・`flavor_HAM.txt`（Berenberg）
-  - `disasters/twilight_of_the_tsardom.txt` / `disasters/war_of_the_roses.txt` / `situations/{hundred_years_war,guelphs_and_ghibellines}.txt`
-- [ ] 行番号がズレていたら識別子優先で更新。**実体が消えた/改名された項目は記録**（昇格せず削除 or 文言修正）。
+- [x] `[src:…]（1.3 beta）` 付きの全クレームを安定版スクリプトで再確認済み（researcher委任、2026-07-10）。10項目中9項目一致・行番号1箇所のみ微修正（ジェノヴァ弩兵 69→68）。宮廷芸術家は**12種で確定**（旧spec「14種」表記は誤りと確定）。
+- [x] 行番号ズレ・実体消滅なし。詳細は `_staging/2026-07-10-eu5-13-stable-reverify.md` のタスク2表を参照。
 
 ### Task 0-3: changelog 由来値（エンジン内部）の安定版ノート突き合わせ
-- [ ] 船コスト4x金/10x goods・建物維持費+50%・陸軍goods2倍・利益率/mills半減・正規vs徴募ダメボ撤廃・海戦致死性・**Dissolve Coalition コスト 75→20（連合スノーボール抑制）** を **1.3 安定版パッチノート**で再確認。beta から数値変更があれば反映。1.3.x hotfix での再調整に注意。
-- [ ] 結果を `_staging/2026-XX-XX-eu5-13-stable-reverify.md` に「クレーム / beta値 / 安定版値 / 差異 / 対応」で一覧化（後続 implementer の入力にする）。
+- [x] 船コスト4x金/10x goods・建物維持費+50%・陸軍goods2倍・利益率/mills半減・正規vs徴募ダメボ撤廃・海戦致死性・Dissolve Coalition 75→20 を1.3安定版ノートで再確認済み。**7項目中6項目一致**。**smallpox spawn値のみ相違**（ノート記載0.05 vs 安定版実機script値0.08→実機値0.08を採用）。船コスト維持費の言い回しも「維持下限10%」→「維持費約2倍」に修正。
+- [x] 結果を `_staging/2026-07-10-eu5-13-stable-reverify.md` に一覧化済み（クレーム/beta値/安定版値/差異/対応）。
 
-**プリフライト完了をコミット境界とする**（本文はまだ無変更）。
+**プリフライト完了（2026-07-10、本文はまだ無変更）。次セッションでフェーズ1着手可。**
 
 ---
 

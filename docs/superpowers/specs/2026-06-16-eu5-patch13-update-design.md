@@ -2,6 +2,7 @@
 
 対象: `paradox-game-guides/eu5/` 全12ファイル。現行は全て **1.2「Echinades」基準**。
 検証ソース: ローカル1.3 open beta（buildid 23683141, BetaKey `1.3-open-beta`）スクリプト + 公式1.3.0/1.3.2パッチノート + **1.2/1.3パッチノート突き合わせ**（diff確定）。
+**2026-07-10 安定版プリフライト後の基準更新**: 安定版 buildid 24075414（= 1.3.10、2026-07-09に正式stable昇格。UserConfig.BetaKey=`public`）に基準変更。再検証結果は `_staging/2026-07-10-eu5-13-stable-reverify.md` 参照。
 レビュー: 正確性/網羅性/戦略構成の3エージェント（`review-accuracy.md` / `review-coverage.md` / `review-strategy.md`）反映済。
 
 ---
