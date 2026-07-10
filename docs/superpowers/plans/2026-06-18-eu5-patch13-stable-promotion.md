@@ -71,16 +71,18 @@
 > **委任方針（CLAUDE.md 準拠）:** implementer に最大3並列で委任。各 implementer に「担当ガイドのみ編集／本体章の既存記述を壊さない／プリフライト staging の確定値を使う／用語表・出典は担当ガイド内で完結」を明示。レビューは reviewer 3並列で「行番号+一行要約のみ報告」。
 > **各 Task のコミット前チェック（必須）:** チェックボックス完了後・コミット前に `git diff --stat` を実行し、**担当外ガイドの変更行が 0** であることを確認する（昇格は1.2本体を初めて改変するため波及検知が重要）。この一文を implementer 委任プロンプトにも入れる。
 
-### Task 1-1: 横断系3ガイド（universal / government / religion）
-- [ ] **universal**: 経済・海軍/軍事・諜報・自動化・宮廷芸術家を本体の該当章（内政/経済・軍事ドクトリン・諜報・廷臣）へ統合。「政府への潜入=1.2既存」の切り分け注記は本文側にも残す。差分セクション削除・パッチ差分に Patch 1.3 行・ヘッダ更新。
-- [ ] **government**: 身分の文化宗教・官僚制・各ペナルティ・Prikazi/Collegium 0.10・Voivode・退位コスト・宮廷芸術家廷臣を政体別章へ統合。
-- [ ] **religion**: 身分の宗教・枢機卿・低Devotion・バーガー同化・Papacy→Lutheran修正を宗教章へ統合。**Patriarch/Rite Power は1.2変更なので触らない**。
+### Task 1-1: 横断系3ガイド（universal / government / religion） — ✅完了 (07-10, ff89829/1d6b365)
+- [x] **universal**: 経済・海軍/軍事・諜報・自動化・宮廷芸術家を本体の該当章（内政/経済・軍事ドクトリン・諜報・廷臣）へ統合。「政府への潜入=1.2既存」の切り分け注記は本文側にも残す。差分セクション削除・パッチ差分に Patch 1.3 行・ヘッダ更新。
+- [x] **government**: 身分の文化宗教・官僚制・各ペナルティ・Prikazi/Collegium 0.10・Voivode・退位コスト・宮廷芸術家廷臣を政体別章へ統合。低Devotionペナルティは実装時にファイル内定義（Devotion=神権制の権力リソース）と照合し神権制章へ配置（当初想定の君主制から訂正）。
+- [x] **religion**: 身分の宗教・枢機卿・低Devotion・バーガー同化・Papacy→Lutheran修正を宗教章へ統合。**Patriarch/Rite Power は1.2変更なので触らない**（誤帰属回避注記を正教会セクションに維持）。
 
-### Task 1-2: regional + byzantium（相互参照あり・同時/隣接タスク）
-- [ ] **regional**: 西欧/イタリア/イベリア/東欧バルカン/各地域/概要・東アジア の 1.3 ノードを、対応する各地域節の本文へ統合。Twilight/Voivode の被リンクを byzantium/austria/brandenburg と整合させたまま昇格。
+> **セッション分割の実運用訂正**: 93行目のセッション分割ガイド（regional単独・byzantiumと同居させない）を優先し、Task 1-2 は regional 単独で実施。byzantium は Task 1-3（国別ガイド群）と同一セッションで扱う。
+
+### Task 1-2: regional 単独 — ✅完了 (07-10, 5b881e2)
+- [x] **regional**: 西欧/イタリア/イベリア/東欧バルカン/各地域/概要・東アジア の 1.3 ノードを、対応する各地域節の本文へ統合。天然痘spawn値の誤記修正（パッチノート0.05→実機値0.08採用）。Voivodeのgovernment-guideへの相互参照リンクを新セクション名（「君主制」章「主要政府改革」表）へ張り替え。byzantiumへの相互参照は同ガイド未着手のため維持（Task1-3で張り直す）。
+
+### Task 1-3: byzantium + 国別5（ottoman / hungary / austria / brandenburg / castile）
 - [ ] **byzantium**: 外交継承国境・海軍・Twilight を本体章へ統合。regional 側の Twilight 記述（昇格後の位置）への相互リンクを張り直す。
-
-### Task 1-3: 国別4ガイド（ottoman / hungary / austria / brandenburg / castile）
 - [ ] **ottoman**: 船コスト/維持費/陸軍goods/海戦/Twilight を海軍・貿易・内政・外交章へ統合。**「更新優先度Tier2メモ」は昇格時に削除**（運用メモであり本文ではない）。難易度評価（regional の ★★★）も 1.3 のコスト増を踏まえ再評価。
 - [ ] **hungary**: 陸軍goods=黒軍直撃を軍事章へ、Union of Crowns 女性継承＋`no_female_heirs_for_poland` 例外を継承/外交章へ統合。例外注記は**必ず残す**（A-7）。
 - [ ] **austria**: 宗教統一強制不可・HRE reluctance・土地剥奪を HRE 運営/宗教章へ統合。

@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-07-10 EU5 1.3 安定版昇格 フェーズ1 Task1-2（regional単独 本文統合）
+
+### Changed
+- `eu5-regional-guide.md` の「1.3 オープンベータ差分」セクション（西欧/イタリア/イベリア/東欧バルカン/各地域共通/概要・東アジアの6ブロック）を本体の各地域章へ統合。beta語をstable語へ全面昇格
+- 天然痘（Smallpox）の月次発生率の誤記を修正: パッチノート記載値0.05ではなく、インストール版の実機スクリプト値0.08を採用（中間hotfixでの再調整が疑われる旨を注記）
+- Voivode改革のgovernment-guideへの相互参照リンクを、前セッション（Task1-1）で解体済みの旧セクション名から新セクション（「君主制（Monarchy）」章「主要政府改革」表）へ張り替え。byzantium-guideへの相互参照はbyzantium未着手のため意図的に維持
+
+### Notes
+- reviewer（sonnet）によるレビューでCritical/Warning/Suggestionすべてなし
+- 計画書のセッション分割ガイド（regional単独・byzantiumと同居させない）に従い、`docs/superpowers/plans/2026-06-18-eu5-patch13-stable-promotion.md` のTask番号を実運用に合わせて整理（Task1-2=regional単独、Task1-3=byzantium+国別5に統合）
+- 次はTask1-3（byzantium+国別5ガイド）
+
 ## 2026-07-10 EU5 1.3 安定版昇格 フェーズ1 Task1-1（universal/government/religion 本文統合）
 
 ### Changed
