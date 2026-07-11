@@ -2,7 +2,7 @@
 
 > ゲーム内日本語表示の正本。攻略ガイドの用語はこのファイルを参照して統一する。
 > 出典: `C:\Program Files (x86)\Steam\steamapps\common\Europa Universalis V\game\main_menu\localization\japanese\` 配下の各 `.yml` ファイル
-> 確認パッチ: **1.1.10**（2026-03-30 確認）
+> 確認パッチ: **1.1.10**（2026-03-30 確認）。「Patch 1.3 追加の汎用用語」節のみ **1.3（1.3.10 相当）**（2026-07-11 確認）
 
 ---
 
@@ -179,6 +179,20 @@
 | Imperial Armory | 帝国兵器庫 | 1.2 で追加された HRE 建造物。皇帝のみ建設可、マンパワー移転 |
 | Personal Union (PU) | 同君連合 | 同じ統治者を戴く 2 国の連合。最低 50 年で統合可（script verified） |
 | cb_claim_throne | 王位請求 CB | 君主制同士で対象請求者が現君主でない場合に発動可能 |
+
+## Patch 1.3 追加の汎用用語
+
+> 各勢力ガイド本文へ統合済みの 1.3 汎用メカニクス用語を中央に集約する。勢力固有語（Berenberg・Taula de Canvi の固有名、`no_female_heirs_for_poland`、集賢殿、薔薇戦争・百年戦争・ゲルフ／ギベリン 等）は各ガイド本体で完結させ、ここには汎用の見出しのみ登録する。確認パッチ **1.3（1.3.10 相当・2026-07-11 確認）**。
+
+| 英語キー | ゲーム内日本語 | 補足 |
+|----------|---------------|------|
+| Voivode | ヴォイヴォダ | 1.3 新規の政府改革（汎用枠）。ポーランド・カルパチア圏の選挙制君主向け。多くの国は不採用だが、対ポーランド外交・東方情勢の前提として参照される `[src: government_reforms/country_specific.txt]` |
+| Estate Culture | 身分の文化 | 1.3 で全政体の身分（Estate）に文化属性が付与された。異文化の身分は満足度・反乱挙動に影響する `[src: estates/00_default.txt]` |
+| Estate Religion | 身分の宗教 | 1.3 で全政体の身分に宗教属性が付与された。異宗教の身分は満足度・反乱挙動に影響する `[src: estates/00_default.txt]` |
+| Court Artist | 宮廷芸術家 | 1.3 で 12 種（彫刻家・作曲家・作家・建築家・哲学者・法学者・科学者・イコン画家・金属細工師・書家・語り部・医師）に整理。招聘は専用の国家インタラクションで実施 `[src: artist_types/00_default.txt]` |
+| Mamluk Horsemen | マムルーク騎兵 | 1.3 で重騎兵へ再分類された固有ユニット（age1 ベース／age2「改良型マムルーク騎兵」の 2 段定義）。兵科の Heavy/Light 分類自体は 1.2 既存で、個別ユニットの再分類が 1.3 `[src: unit_types/1_uniques_for_age_1_traditions.txt, 1_uniques_for_age_2_renaissance.txt]` |
+| Twilight of the Tsardom | ツァーリ国の黄昏 | 1.3 新規のディザスター。ブルガリア等バルカン勢力に崩壊・分裂を引き起こす。ビザンツ／ハプスブルク／オスマンのバルカン・対オスマン方面に地域跨ぎで影響する `[src: disasters/twilight_of_the_tsardom.txt]` |
+| Family Bank / Public Bank | 家族銀行 / 公営銀行 | 1.3 で追加された銀行系フレーバーの汎用概念（見出しのみ中央登録）。**固有名は勢力ごとに別**: Berenberg＝ハンブルク（HAM）固有 `[src: events/DHE/flavor_HAM.txt]`、Taula de Canvi（バルセロナ両替所）＝アラゴン（ARA）固有 `[src: events/DHE/flavor_ARA.txt:flavor_ara.220]`。他勢力に無条件で紐づくメカニクスではない（誤帰属回避） |
 
 ## カスティーリャ / スペイン固有
 

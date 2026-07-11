@@ -427,6 +427,8 @@ DLC「Fate of the Phoenix」同梱のギリシャ・バルカン新コンテン�
 
 ## 用語対照表
 
+地域別ガイドで使用する主要用語の抜粋。完全版は [ローカライズ対照表](localization-reference.md) を参照（Voivode・身分の文化／宗教・宮廷芸術家・Twilight of the Tsardom 等の 1.3 汎用用語も中央に登録済み）。
+
 | 日本語 | English | 備考 |
 |--------|---------|------|
 | 神聖ローマ帝国 | Holy Roman Empire (HRE) | |

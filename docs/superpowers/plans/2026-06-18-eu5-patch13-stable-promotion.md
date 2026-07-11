@@ -100,15 +100,15 @@
 
 ## フェーズ 2: 中央 localization-reference 昇格 + index.html 更新
 
-### Task 2-1: localization-reference.md 中央昇格
-- [ ] spec Tier4 の中央昇格候補のうち **汎用語のみ**を `eu5/localization-reference.md` へ正式登録（CLAUDE.md: 汎用語＝HRE系/PU系/CB系/兵科系のみ中央、勢力固有は本体のみ）:
-  - 中央へ: Voivode（政府改革・汎用）、身分の文化/宗教（汎用メカニクス）、宮廷芸術家（汎用）、Mamluk Horsemen（兵科・汎用）、Twilight of the Tsardom（地域跨ぎ）、家族銀行（Berenberg/Taula は「家族/公営銀行」概念として汎用見出し化、固有名は本体）。
-  - 本体のみで完結: no_female_heirs_for_poland（hungary）、集賢殿（regional/Korea）、薔薇戦争・百年戦争・ゲルフ/ギベリン（地域固有寄り）。
-- [ ] 各ガイドの「1.3 オープンベータ用語（仮登録）」表は、本体用語対照表に溶かしたうえで**仮登録という枠を削除**し、完全版（localization-reference）への参照に一本化。
+### Task 2-1: localization-reference.md 中央昇格 — ✅完了 (07-11)
+- [x] spec Tier4 の中央昇格候補のうち **汎用語のみ**を `eu5/localization-reference.md` へ正式登録（CLAUDE.md: 汎用語＝HRE系/PU系/CB系/兵科系のみ中央、勢力固有は本体のみ）:
+  - 中央へ: Voivode（政府改革・汎用）、身分の文化/宗教（汎用メカニクス）、宮廷芸術家（汎用）、Mamluk Horsemen（兵科・汎用）、Twilight of the Tsardom（地域跨ぎ）、家族銀行（Berenberg/Taula は「家族/公営銀行」概念として汎用見出し化、固有名は本体）。→ 新規節「Patch 1.3 追加の汎用用語」に6語を集約登録（HRE 節と固有節の間）。Mamluk Horsemen のゲーム内和名は「マムルーク騎兵」（age2＝改良型マムルーク騎兵）を loc ファイルで確認。
+  - 本体のみで完結: no_female_heirs_for_poland（hungary）、集賢殿（regional/Korea）、薔薇戦争・百年戦争・ゲルフ/ギベリン（地域固有寄り）。→ 中央節の導入文に「本体で完結」明記。
+- [x] 各ガイドの「1.3 オープンベータ用語（仮登録）」表は、本体用語対照表に溶かしたうえで**仮登録という枠を削除**し、完全版（localization-reference）への参照に一本化。→ 仮登録枠はフェーズ1で解体済み（grep 0件）。参照リンク未整備だった regional/religion の2ガイドに中央対照表への参照文を追加し、全10ガイドで一本化完了。
 
-### Task 2-2: index.html
-- [ ] `tag--beta">1.3 beta差分` バッジを**全 11 個削除**（着手時に再カウント）。`.tag--beta` の CSS 定義は将来のため残してよい。
-- [ ] 各 EU5 カードの `card__meta` のパッチ表記（現状 "Patch 1.1.10" / "Patch 1.2" 等）を **"Patch 1.3"** に統一更新。
+### Task 2-2: index.html — ✅完了 (07-11)
+- [x] `tag--beta">1.3 beta差分` バッジを**全 11 個削除**（着手時に再カウント）。`.tag--beta` の CSS 定義は将来のため残してよい。→ 11個削除確認、CSS 定義（141行）は保持。
+- [x] 各 EU5 カードの `card__meta` のパッチ表記（現状 "Patch 1.1.10" / "Patch 1.2" 等）を **"Patch 1.3"** に統一更新。→ 攻略10カードを Patch 1.3 に統一（byzantium は "Patch 1.3 / DLC Fate of the Phoenix"）。MODカードは元々パッチ表記なし（MODリスト）で対象外。CK3/Vic3 カードは無変更。
 
 ---
 

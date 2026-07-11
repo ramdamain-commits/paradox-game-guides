@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-07-11 EU5 1.3 安定版昇格 フェーズ2（中央用語昇格 + index.html）
+
+### Changed
+- `eu5/localization-reference.md` に新規節「Patch 1.3 追加の汎用用語」を追加し、汎用6語を中央登録: Voivode（ヴォイヴォダ）／Estate Culture・Religion（身分の文化・宗教）／Court Artist（宮廷芸術家12種）／Mamluk Horsemen（マムルーク騎兵・重騎兵再分類）／Twilight of the Tsardom（ツァーリ国の黄昏）／Family Bank・Public Bank（家族銀行・公営銀行の汎用見出し）。勢力固有語（Berenberg/Taula 固有名・no_female_heirs_for_poland・集賢殿・薔薇/百年戦争等）は本体で完結と明記
+- Mamluk Horsemen のゲーム内和名を loc ファイルで確認（age1「マムルーク騎兵」／age2「改良型マムルーク騎兵」）し、出典を `unit_types/1_uniques_for_age_1_traditions.txt, 1_uniques_for_age_2_renaissance.txt` に精緻化
+- 中央対照表への参照リンクが未整備だった `eu5-regional-guide.md` / `eu5-religion-guide.md` の用語対照表に完全版参照文を追加（全10ガイドで一本化完了）
+- `index.html`: EU5全11カードの `tag--beta">1.3 beta差分` バッジを削除（`.tag--beta` CSS定義は保持）。攻略10カードの `card__meta` パッチ表記を「Patch 1.3」に統一（byzantium は「Patch 1.3 / DLC Fate of the Phoenix」）。MODカード・CK3/Vic3カードは対象外で無変更
+
+### Notes
+- 検証: `（1.3 beta）|1.3 オープンベータ|仮登録|tag--beta">` の grep が eu5/・index.html で0件、`git diff --stat` の波及も想定5ファイルのみを確認
+- 残: フェーズ2.5（小型3ガイド ottoman/castile/brandenburg 拡充・opus推奨）→フェーズ3（レビュー3並列+CHANGELOG最終+プロジェクト状態更新）
+
 ## 2026-07-11 EU5 1.3 安定版昇格 フェーズ1 Task1-4（recommended-mods昇格）
 
 ### Changed
