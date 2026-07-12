@@ -19,7 +19,7 @@
 | 変更 | 内容 | src |
 |------|------|-----|
 | Fate of the Phoenix ディザスター新規追加 | ビザンツ復興の中心メカニクス。ディザスター完了時に Restore Roman Borders CB が解禁 | `[src: disaster/D008_fate_of_the_phoenix.txt]` |
-| Restore Roman Borders CB（ローマ国境回復 CB）新規 | `cb_restore_roman_borders`。攻者・守者ともに conquer_cost = 0.5、ticking_war_score = 0.5。バルカン・アナトリア・イタリア等広域が対象 | `[src: casus_belli/D008_restore_roman_borders.txt]` |
+| Restore Roman Borders CB（ローマ国境回復 CB）新規 | `cb_restore_roman_borders`（発動条件・対象範囲は casus_belli/D008_restore_roman_borders.txt）。攻者・守者ともに conquer_cost = 0.5、ticking_war_score = 0.5（戦争目標の効果値は wargoals/00_default.txt の `superiority_restore_roman_borders` ブロック。旧記載の一括出典は誤り） | `[src: casus_belli/D008_restore_roman_borders.txt, wargoals/00_default.txt:1031]` |
 | Pronoia（プロノイア）新サブジェクト | BYZ 固有封臣制度。外交キャパ消費 0.75、strength_vs_overlord -0.50、manpower_modifier +0.10 | `[src: subject_types/D008_pronoia.txt]` |
 | Katepanata（カテパナタ）政体 | BYZ 固有政府改革。統合速度 +10%、ディザスター完了後さらに +10%（計 +20%） | `[src: government_reforms/country_specific.txt]` |
 | Cataphracts（カタフラクト）新ユニット | Age 1 は DLC なし可。Age 2 以降は DLC 必須 + latinization_vs_hellenization 条件。移動速度 -0.25、被強度ダメージ -0.25、士気ダメージ +0.33 | `[src: unit_types/D008_byzantine_unit_types.txt]` |
@@ -315,7 +315,7 @@ Pronoia（プロノイア）は BYZ 固有の封臣制度 `[src: subject_types/D
 | 宗主国側 modifier | monthly_legitimacy +0.01、月次中央集権度低下 | `[src: subject_types/D008_pronoia.txt]` |
 | 臣属国側 modifier | global_manpower_modifier +0.10 | `[src: subject_types/D008_pronoia.txt]` |
 | strength_vs_overlord | -0.50（宗主国への反乱強度 -50%） | `[src: subject_types/D008_pronoia.txt]` |
-| 支払い | scaled_gold 0.2 / scaled_sailors 0.1 / scaled_manpower 0.1 | `[src: subject_types/D008_pronoia.txt]` |
+| 支払い | scaled_gold 0.2 / scaled_sailors 0.1 / scaled_manpower 0.1（実値は `subject_pays_pronoia` 経由で参照。D008_pronoia.txt 単体には無い） | `[src: prices/03_diplomacy.txt:60]` |
 | 併合条件 | 20 年経過 + 関係 190 | `[src: subject_types/D008_pronoia.txt]` |
 
 **可視条件**: BYZ タグを保有または保有歴あり、かつ `enable_pronoia_subject = yes` モディファイアが必要 `[src: subject_types/D008_pronoia.txt]`。
@@ -346,9 +346,9 @@ Pronoia（プロノイア）は BYZ 固有の封臣制度 `[src: subject_types/D
 
 BYZ 開始値 80（ヘレナイゼーション寄り）`[src: setup/start/10_countries.txt]`。
 
-**推奨方針: ヘレナイゼーション寄りをキープ**
+**Societal Value の位置づけ（訂正: ユニット解禁とは無関係）**
 
-Cataphracts Age 2 以降および Legionaries の解放条件に latinization_vs_hellenization が関与する `[src: events/government/D008_latinization_vs_hellenization.txt]`。ヘレナイゼーション方向（高い値）を維持することで固有ユニットの段階的解放が可能になる。
+Cataphracts Age 2 以降および Legionaries の実際の解禁条件（`country_potential`）は `has_societal_value = societal_value_type:latinization_vs_hellenization`（この Societal Value 軸を保有しているかの存在チェックのみ）`[src: unit_types/D008_byzantine_unit_types.txt + script verified]`であり、**数値の高低・方向を問う条件はスクリプト上確認できない**。旧記載の「ヘレナイゼーション方向を維持しないと解禁されない」という戦略的主張は script の裏付けがなく訂正する。この Societal Value 自体の管理方針（コミュニティ知見：ヘレナイゼーション寄りが伝統的にビザンツらしいとされる）とユニット解禁条件は分けて理解する必要がある。
 
 ラテン化方向（低い値）に振れると固有ユニット解放の条件が変わる可能性があるため、特別な意図がない限りヘレナイゼーション寄りをキープするのが推奨される（コミュニティ知見）。
 
@@ -370,7 +370,7 @@ Restore Roman Borders CB（ローマ国境回復 CB）の発動前に、隣接�
 
 **バルカン地域情勢の詳細は `eu5-regional-guide.md` を参照**。オスマンとの直接対立については `eu5-ottoman-guide.md` に相手側の視点がある。
 
-**Twilight of the Tsardom（ツァーリ国の黄昏）— ブルガリア崩壊の機会（1.3）**: 1.3 で追加されたディザスター `[src: disasters/twilight_of_the_tsardom.txt, events/DHE/flavor_BUL.txt]`。ブルガリア（第二次ブルガリア帝国）等のバルカン勢力に崩壊・分裂を引き起こす。ビザンツにとっては**北方バルカンの再征服の好機**であり、ブルガリアが内紛・分裂で弱体化したタイミングで Restore Roman Borders CB や通常征服でバルカン領を回収しやすくなる `[src: disasters/twilight_of_the_tsardom.txt]`。詳細は[eu5-regional-guide.md](eu5-regional-guide.md)の「東欧（ポーランド・ハンガリー・ロシア・バルカン）」章を参照。
+**Twilight of the Tsardom（ツァーリ国の黄昏）— ブルガリア崩壊の機会（1.3）**: 1.3 で追加されたディザスター `[src: disasters/twilight_of_the_tsardom.txt, events/DHE/flavor_BUL.txt]`。**発火判定は `can_start = { tag = BUL, current_year < 1338 }` かつ `fire_only_once = yes` であり、ゲーム開始直後（1337年）にしか発火判定されない一度きりのディザスター**。1400年代に「発生を待つ」「狙う」ことはできない点に注意（旧記載の中盤戦略配置は発火タイミングの誤認）。ただし発火すれば、終了条件（`legitimacy > 90`・`stability > 50`・`num_locations > 50`・非交戦・プレテンダー反乱不在の同時達成）が厳しいため、反乱成長・支配度低下等の弱体化 modifier が長期間（中盤まで）持続しうる `[src: disasters/twilight_of_the_tsardom.txt, scripted_triggers/disaster_triggers.txt]`。ビザンツプレイヤーは**ゲーム開始時点でブルガリアがこのディザスターに突入したかを確認し、発火していれば序盤からバルカン領回収を積極化する**のが正しい運用（中盤まで様子見する戦略は成立しない）。詳細は[eu5-regional-guide.md](eu5-regional-guide.md)の「東欧（ポーランド・ハンガリー・ロシア・バルカン）」章を参照。
 
 ### Fate of the Phoenix ディザスター詳細
 
@@ -397,7 +397,7 @@ Restore Roman Borders CB（ローマ国境回復 CB）の発動前に、隣接�
 
 ### Restore Roman Borders CB の発動戦略
 
-CB スペック `[src: casus_belli/D008_restore_roman_borders.txt]`:
+CB スペック `[src: casus_belli/D008_restore_roman_borders.txt（CB定義・対象範囲）, wargoals/00_default.txt:1031（conquer_cost・ticking_war_score）]`:
 
 | 項目 | 値 |
 |------|-----|
@@ -524,12 +524,12 @@ DLC「Fate of the Phoenix」が提供するビザンツ固有ユニット群は�
 |------|-----|
 | DLC 要件 | DLC 必須 + `unlocked_greek_fire` 変数 |
 | 解放条件 | Age 2（Renaissance）以降 |
-| initiative | -1（先手が遅い） |
+| initiative | -0.5（旧記載「-1」は誤り） |
 | 士気ダメージ修正 | +0.20 |
 | 強度ダメージ修正 | +0.10 |
 
 **運用方針**:
-- initiative -1 のため先手が遅いが、ダメージが高い。後手から反撃する戦闘スタイルに向く
+- initiative -0.5 のため先手が遅いが、ダメージが高い。後手から反撃する戦闘スタイルに向く
 - Cataphracts と組み合わせると、歩兵が火で道を開き騎兵が士気崩壊した敵を追撃するパターンが強力（コミュニティ知見）
 - `unlocked_greek_fire` 変数の解禁が前提。固有ディザスター・イベントチェーンとの連動を確認する
 
@@ -577,17 +577,17 @@ DLC「Fate of the Phoenix」が提供するビザンツ固有ユニット群は�
 |------|-----|
 | DLC 要件 | DLC 必須 |
 | タグ条件 | ROM タグ必須 |
-| Hellenization 閾値条件 | `latinization_vs_hellenization` 必要 |
+| Societal Value 条件 | `latinization_vs_hellenization` 軸の保有チェックのみ（数値の閾値・方向は不問。旧記載「閾値条件」は誤り） |
 | 段階 | 6 段階 |
 | 被強度ダメージ修正 | -0.10 |
 | 被士気ダメージ修正 | -0.10 |
-| initiative | -1 |
+| initiative | -0.5（旧記載「-1」は誤り） |
 | combat_speed | -1 |
 
 **運用方針**:
 - ROM タグ変形後に解放されるため、後半戦の主力歩兵
 - 被ダメージ -0.10/-0.10 により高い耐久性。正面の消耗戦で強い
-- initiative -1・combat_speed -1 で機動性は低い。防衛線を張る戦い方が合う
+- initiative -0.5・combat_speed -1 で機動性は低い。防衛線を張る戦い方が合う
 - Greek Fire Infantry と組み合わせると、耐久型（Legionaries）+ 攻撃型（Greek Fire Infantry）の相互補完ができる（コミュニティ知見）
 
 ### ビザンツ軍の推奨編成（時期別）
@@ -780,7 +780,7 @@ Pronoia サブジェクト制度は元々封建的な土地割当制度に由来
 |----|----------|---------|---------|------|
 | flavor_BYZ.L3690-3732 | pronoia_system 廃止イベント | 1360〜1500 年 | komnenian_formalization 推奨（Pronoia 重視） | 3 ポリシーから選択して Pronoia サブジェクト解禁 |
 | D008_fate_of_the_phoenix 系 | Fate of the Phoenix ディザスター | DLC + BYZ | オプション選択でディザスター完了を目指す | Restore Roman Borders CB 解禁・Katepanata 強化 |
-| D008_latinization_vs_hellenization 系 | ラテン化 vs ヘレナイゼーション | 文化揺り戻し | ヘレナイゼーション寄りを維持 | Cataphracts Age 2 / Legionaries 解放条件 |
+| D008_latinization_vs_hellenization 系 | ラテン化 vs ヘレナイゼーション | 文化揺り戻し | この Societal Value 軸を保有していること（方向・数値は不問。旧記載「ヘレナイゼーション寄りを維持」は誤り） | Cataphracts Age 2 / Legionaries 解放条件 |
 
 `[src: events/DHE/flavor_BYZ.txt: L3690-3732]`（コミュニティ知見：スクリプト未確認）
 `[src: events/disaster/D008_fate_of_the_phoenix.txt]`
@@ -886,7 +886,7 @@ DLC なしでは Cataphracts age_1 を活かした限定的な固有軍事戦略
 - **同盟なしでオスマンと向き合う**: ハンガリーかセルビアとの同盟締結前にオスマンと衝突すると、軍事的にも外交的にも詰む（コミュニティ知見）
 - **コンスタンティノープルの交易収入を放置**: 序盤の主要収入源。商人の配置とルートを最適化しないと財政回復が遅れる
 - **Cataphracts を要塞に配置する**: Patch 1.2 で Heavy Infantry のみ要塞駐屯可能 `[src: Patch_1.2 wiki + script verified]`。Cataphracts は重騎兵であり要塞守備に使えない
-- **ヘレナイゼーション寄りを維持しない**: Cataphracts Age 2 以降と Legionaries の解放条件。ラテン化方向に振れると固有ユニットが使えなくなる `[src: events/government/D008_latinization_vs_hellenization.txt]`
+- **（訂正・旧版の誤り）「ヘレナイゼーション寄りを維持しないと固有ユニットが使えなくなる」は誤り**: Cataphracts Age 2 以降と Legionaries の実際の解禁条件は `latinization_vs_hellenization` 軸を保有しているかの存在チェックのみで、方向・数値は不問 `[src: unit_types/D008_byzantine_unit_types.txt + script verified]`。ラテン化方向に振れても固有ユニットは使い続けられる
 - **pronoia_system 廃止を準備なしに迎える**: 廃止イベントまでに 3 ポリシーの選択肢を理解しておく。突然の廃止で混乱しないよう事前準備が必要（コミュニティ知見）
 - **Fate of the Phoenix ディザスターを放置する**: ディザスター完了なしには Restore Roman Borders CB が解禁されない。Katepanata の追加ボーナスも得られない `[src: disaster/D008_fate_of_the_phoenix.txt]`
 - **`unlocked_greek_fire` 変数の解禁を後回しにする**: Greek Fire Ships と Greek Fire Infantry の前提条件。DLC 有りプレイでは早めに解禁を進める `[src: unit_types/D008_byzantine_unit_types.txt]`
@@ -970,8 +970,10 @@ DLC なしでは Cataphracts age_1 を活かした限定的な固有軍事戦略
 | ファイル | 検証内容 |
 |---------|---------|
 | `game/main_menu/setup/start/10_countries.txt` | BYZ 初期設定（首都・ランク・テック・ルーラー・財政・Societal Values・リフォーム・行政システム・占領状態） |
-| `game/in_game/common/casus_belli/D008_restore_roman_borders.txt` | Restore Roman Borders CB（conquer_cost・ticking_war_score・対象範囲・解禁条件） |
-| `game/in_game/common/subject_types/D008_pronoia.txt` | Pronoia サブジェクト（レベル・外交キャパ・modifier 群・strength_vs_overlord・併合条件・支払い・可視条件） |
+| `game/in_game/common/casus_belli/D008_restore_roman_borders.txt` | Restore Roman Borders CB（対象範囲・解禁条件） |
+| `game/in_game/common/wargoals/00_default.txt:1031` | Restore Roman Borders CB の conquer_cost・ticking_war_score（`superiority_restore_roman_borders` ブロック） |
+| `game/in_game/common/subject_types/D008_pronoia.txt` | Pronoia サブジェクト（レベル・外交キャパ・modifier 群・strength_vs_overlord・併合条件・可視条件） |
+| `game/in_game/common/prices/03_diplomacy.txt:60` | Pronoia の支払い（`subject_pays_pronoia`: scaled_gold/sailors/manpower） |
 | `game/in_game/common/government_reforms/country_specific.txt` | Katepanata 政体（potential 条件・基本効果・ディザスター完了後追加効果） |
 | `game/in_game/common/unit_types/D008_byzantine_unit_types.txt` | Cataphracts（全 Age）・Legionaries・Greek Fire Ships・Greek Fire Infantry・Varangians の全スペック |
 | `game/in_game/events/government/D008_latinization_vs_hellenization.txt` | Latinization vs Hellenization Societal Value の定義 |

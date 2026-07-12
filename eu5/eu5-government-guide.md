@@ -96,7 +96,7 @@
 
 > HRE 運営の詳細は [オーストリアガイド](eu5-austria-guide.md) を参照。
 
-> **1.2 更新**: 君主制特有の HRE 関連変更が大量。皇帝（君主制限定）の Great Power Score 貢献 250→50 `[src: Patch_1.2 wiki + script verified]`、王朝力上限 200→300、Imperial Diet 投票システム、Free Cities 自動参戦廃止、Imperial Armories 新建造物 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）。Claim Throne CB は請求者が既統治の場合不発 `[src: Patch_1.2 wiki + script verified]`（PU 継承戦略に影響）
+> **1.2 更新**: 君主制特有の HRE 関連変更が大量。皇帝（君主制限定）の Great Power Score 貢献 250→50 `[src: Patch_1.2 wiki]`（コミュニティ知見：`hre.txt` に該当識別子なし・スクリプト未確認）、王朝力上限 200→300、Imperial Diet 投票システム、Free Cities 自動参戦廃止、Imperial Armories 新建造物 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）。Claim Throne CB は請求者が既統治の場合不発 `[src: Patch_1.2 wiki + script verified]`（PU 継承戦略に影響）
 
 ### 1.2 君主制への影響
 
@@ -104,8 +104,8 @@
 
 | 変更内容 | 詳細 |
 |---------|------|
-| Imperial Diet 投票システム | Diet 4段階（Court Assembly → Early Diet → Bicamerial → Tricamerial）`[src: Patch_1.2 wiki + script verified]`（hre.txt 行 15-38, 90-113, 160-183）。各身分の投票権重（実値）: 皇帝 150、選帝侯（世俗）75、大司教選帝侯 75、自由都市 25、首座司教/legatus_natus 4。Diet 段階乗数: Court Assembly は皇帝×1.25・選帝侯×1.5・自由都市×0.1・首座司教×10 / Early Diet は皇帝×1・選帝侯×1.5・自由都市×0.25・首座司教×1 / Bicamerial は皇帝×1・選帝侯×1.25・自由都市×0 / Tricamerial は皇帝×1・選帝侯×1・自由都市×2 `[src: Patch_1.2 wiki + script verified]`（hre.txt 行 15-38, 266-286） |
-| 皇帝の Great Power Score 貢献 250→50 | 大幅な弱体化。帝位保持による Great Power 維持戦略を見直す必要あり `[src: Patch_1.2 wiki + script verified]` |
+| Imperial Diet 投票システム | Diet 4段階（Court Assembly → Early Diet → Bicamerial → Tricamerial）が存在すること自体は `hre.txt`（`parliament_types/` の Imperial Diet 定義）で確認済み。各身分の具体的な投票権重・段階別乗数は `country_combined_special_status_power` というハードコード関数で計算されており、スクリプト上に定数として存在しない（CLAUDE.md「エンジン内部値」該当）。以下の数値は `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）: 皇帝 150、選帝侯（世俗）75、大司教選帝侯 75、自由都市 25、首座司教/legatus_natus 4。Diet 段階乗数: Court Assembly は皇帝×1.25・選帝侯×1.5・自由都市×0.1・首座司教×10 / Early Diet は皇帝×1・選帝侯×1.5・自由都市×0.25・首座司教×1 / Bicamerial は皇帝×1・選帝侯×1.25・自由都市×0 / Tricamerial は皇帝×1・選帝侯×1・自由都市×2 |
+| 皇帝の Great Power Score 貢献 250→50 | 大幅な弱体化。帝位保持による Great Power 維持戦略を見直す必要あり `[src: Patch_1.2 wiki]`（コミュニティ知見：`hre.txt` に該当識別子なし・スクリプト未確認） |
 | 王朝力（Dynastic Power）上限 200→300 | 王朝外交の継続選択肢が増加 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | Imperial Armories（帝国兵器庫） | 皇帝のみ建設可能な新建造物（HRE 加盟領内・law:military_contribution 必須）。自国所有時 local_manpower +0.0025、外国所有時 manpower_to_building_owner +0.005。建造コスト gold=500。皇帝交代時に移転 `[src: Patch_1.2 wiki + script verified]`（hre_buildings.txt 行 1-90, prices/01_buildings.txt 行 21） |
 | Free Cities 自動参戦廃止 | INDEPENDENT Free City への攻撃に限り皇帝が防衛義務を負う仕様に精緻化。皇帝が自由都市の戦争に無条件で自動参戦する挙動は廃止 `[src: Patch_1.2 wiki + script verified]`（hre.txt） |
@@ -133,7 +133,7 @@
 | 権力リソース | 共和的伝統（Republican Tradition） `[src: government_types/00_default.txt:58]` |
 | デフォルト階級 | 商人階級（Burghers Estate） `[src: government_types/00_default.txt:60]` |
 | 継承システム | 2年/4年任期選挙・ドージェ選挙・籤引き選挙など |
-| 宮廷言語ボーナス | 市場言語が宮廷言語の場合に重要度ボーナス（+1） `[src: government_types/00_default.txt:63]` |
+| 宮廷言語ボーナス | 市場言語が宮廷言語の場合に重要度ボーナス（+3） `[src: government_types/00_default.txt:64]` |
 
 ### 強み
 
@@ -285,7 +285,7 @@
 | 無名戦争コスト修正 | -50%（無名開戦コスト半減） `[src: government_types/00_default.txt:106]` |
 | 略奪量修正 | +33% `[src: government_types/00_default.txt:107]` |
 | 農村集落降格コスト | -75% `[src: government_types/00_default.txt:108]` |
-| 戦争スコアコスト | -20% `[src: government_types/00_default.txt:109]` |
+| 戦争スコア効率 | +25%（`global_war_score_efficiency`） `[src: government_types/00_default.txt:110]` |
 | 統合軍備上限閾値 | 0.2（低め）`[src: government_types/00_default.txt:112]` |
 | 統合軍備ボーナス/タイプ | -0.01（ペナルティ） `[src: government_types/00_default.txt:113]` |
 
@@ -359,8 +359,8 @@
 | デフォルト階級 | 貴族階級（Nobles Estate） `[src: government_types/00_default.txt:129]` |
 | 農村集落降格コスト | -50% `[src: government_types/00_default.txt:133]` |
 | 貴族の食料消費 | -25%（維持コスト削減） `[src: government_types/00_default.txt:134]` |
-| 外交維持費修正 | -75%（外交スロットの維持コストが大幅に安い） `[src: government_types/00_default.txt:135]` |
-| 共通言語重要度ボーナス | +10 `[src: government_types/00_default.txt:132]` |
+| 外交維持費修正 | +50%（`diplomatic_upkeep_efficiency = 1.5`、外交スロットの維持コストが逆に割高。旧記載「-75%割安」は誤り） `[src: government_types/00_default.txt:136]` |
+| 共通言語重要度ボーナス | +30 `[src: government_types/00_default.txt:130]` |
 
 ### 強み
 
@@ -557,7 +557,7 @@ Patch 1.2・1.3 で追加・変更された政府タイプ関連の用語。完�
 | `in_game/common/government_reforms/country_specific.txt` | 国家固有の政府改革（部族改革含む） |
 | `in_game/common/prices/00_hardcoded.txt:1101-1104` | 政府タイプ変更コスト（安定度 -50、正統性 -25） |
 | `in_game/common/prices/00_hardcoded.txt:64-67` | 政府改革削除コスト（安定度 -20、義 -10） |
-| `in_game/common/international_organizations/hre.txt` | 皇帝 Great Power Score 免除閾値（`great_power_score_exempt_from_forfeit = 50`）; Imperial Diet 各段階の投票権重（行 15-38: Court Assembly, 90-113: Early Diet, 160-183: Bicamerial, 266-286: Tricamerial）; Golden Bull 未採択時の諸侯離脱条件（行 275-277: `current_year > 1400`） |
+| `in_game/common/international_organizations/hre.txt` | Imperial Diet 4段階の定義（Court Assembly/Early Diet/Bicamerial/Tricamerial の存在は確認済み。各段階の投票権重自体はハードコード関数 `country_combined_special_status_power` で計算されスクリプト定数なし）; Golden Bull 未採択時の諸侯離脱条件（行 376: `current_year > 1400`）。**皇帝 Great Power Score 免除閾値 `great_power_score_exempt_from_forfeit` はファイル全体を grep しても非実在**（旧記載は誤り。250→50 の変更自体は Patch_1.2 wiki 由来のコミュニティ知見にとどめる） |
 | `in_game/common/casus_belli/claim_throne.txt` | Claim Throne CB 発動制限（`not = { this = scope:target.ruler }`） |
 | `in_game/common/parliament_types/01_international_organization.txt` | Imperial Diet 4段階定義（Court Assembly → Early Diet → Bicamerial → Tricamerial） |
 | `in_game/common/casus_belli/D008_restore_roman_borders.txt` | Restore Roman Borders CB 定義 |

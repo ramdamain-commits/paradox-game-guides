@@ -29,7 +29,7 @@
 | 変更 | 内容 |
 |------|------|
 | Imperial Diet 投票システム | 帝国議会の投票メカニクス新規追加。4 段階（Court Assembly / Early Diet / Bicamerial / Tricamerial）`[src: parliament_types/01_international_organization.txt + script verified]` |
-| 皇帝 GP Score 貢献 250→50 | 帝国皇帝の Great Power Score 寄与が大幅減少。新値 50 は script verified（`hre.txt:139-141 great_power_score_exempt_from_forfeit = 50`）、旧値 250 は Patch_1.2 wiki 由来でスクリプト未確認 `[src: international_organizations/hre.txt + script verified（新値のみ）]` |
+| 皇帝 GP Score 貢献 250→50 | 帝国皇帝の Great Power Score 寄与が大幅減少（コミュニティ知見：`hre.txt` に `great_power_score_exempt_from_forfeit` 等の該当識別子は非実在。250/50 とも Patch_1.2 wiki 由来でスクリプト未確認。旧記載の「新値のみscript verified」は誤り） `[src: Patch_1.2 wiki]` |
 | Free Cities 自動参戦廃止 | INDEPENDENT Free City のみが皇帝防衛義務を持ち、自動参戦しなくなった `[src: international_organizations/hre.txt + script verified]` |
 | Imperial Armories 新建造物 | 帝国兵器庫（gold=500）。自国所有で local_manpower +0.0025、外国所有で manpower_to_building_owner +0.005。設置条件: 皇帝のみ・HRE 加盟領内・law:military_contribution 必須 `[src: building_types/hre_buildings.txt + script verified]` |
 | 王朝力上限 200→300 | Dynastic Power の蓄積上限が拡大 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
@@ -642,40 +642,40 @@ Light Cavalry のベース数値（参考）:
 - 体力ダメージ軽減 -10% で長期包囲戦・消耗戦に強い
 - **1.3 で陸軍 goods 需要が約 2 倍に増加**。goods 消費の重い黒軍を中心とした常備軍規模は、goods 供給（産地確保・交易）とセットで再設計する必要がある（コミュニティ知見：公式パッチノート由来・スクリプト未確認）
 
-### ハンガリー・フサール（a_hungarian_hussars）—— Heavy Cavalry
+### ハンガリー・フサール（a_hungarian_hussars）—— Light Cavalry
 
 `[src: unit_types/1_uniques_for_age_4_reformation.txt + script verified]`
 
-歴史的なハンガリー・フサールを体現する Age 4 の精鋭重騎兵。貴族 Pop に依存するため、貴族階級の満足度・人口管理が重要。
+歴史的なハンガリー・フサールを体現する Age 4 の精鋭軽騎兵。**旧版は「Heavy Cavalry」と誤記していたが、実スクリプトは `copy_from = a_age_4_reformation_light_cavalry` で Light Cavalry 系統**（訂正）。貴族 Pop に依存するため、貴族階級の満足度・人口管理が重要。
 
 | 項目 | 値 |
 |------|-----|
-| 系統 | Heavy Cavalry（copy_from = a_age_4_reformation_heavy_cavalry） |
+| 系統 | Light Cavalry（copy_from = a_age_4_reformation_light_cavalry） |
 | 解禁 | Age 4（`hun_hungarian_hussars` Advance が必要） |
-| initiative | カテゴリ base 2 に +2 = 計 **4** |
+| initiative | **2**（Light Cavalry カテゴリ base 5 を絶対値上書き＝**低下**。旧記載「base2+2=4」は誤り） |
 | impact（進軍コスト） | flatland -0.25、mountains -0.25（**平地・山岳での進軍コスト 25% 減**） |
 | mercenaries_per_location | nobles pop × 0.3（**貴族 Pop 依存**） |
 | ベース max_strength | 0.8 |
 | ベース combat_power | 4.0 |
-| is_garrison | なし（Heavy Cavalry カテゴリ上、要塞駐屯不可） |
+| is_garrison | なし（Light Cavalry カテゴリ上、要塞駐屯不可。旧記載「Heavy Cavalryカテゴリ上」は誤り） |
 
 > **注意:** `impact` のマイナス値は**進軍コスト削減**（= 移動しやすい）を意味し、戦闘力ボーナスとは別。フサールは平地・山岳でより機動的に動ける `[src: unit_types/1_uniques_for_age_4_reformation.txt + script verified]`。
 
-**Heavy Cavalry ベース数値（参考）:**
+**Light Cavalry ベース数値（参考。フサールの initiative は上記の通り 2 に上書きされる点に注意）:**
 
 | 項目 | 値 | src |
 |------|-----|-----|
-| 移動速度 | 2.5 | `[src: unit_categories/03_army_heavy_cavalry.txt + script verified]` |
-| initiative | 2 | `[src: unit_categories/03_army_heavy_cavalry.txt + script verified]` |
-| flanking_ability | 2.0 | `[src: unit_categories/03_army_heavy_cavalry.txt + script verified]` |
-| damage_taken | 0.75（被ダメ -25%） | `[src: unit_categories/03_army_heavy_cavalry.txt + script verified]` |
+| 移動速度 | 3.0 | `[src: unit_categories/02_army_light_cavalry.txt + script verified]` |
+| initiative（カテゴリ base、フサールは 2 に上書き） | 5 | `[src: unit_categories/02_army_light_cavalry.txt + script verified]` |
+| flanking_ability | 2.1 | `[src: unit_categories/02_army_light_cavalry.txt + script verified]` |
+| damage_taken | 0.75（被ダメ -25%） | `[src: unit_categories/02_army_light_cavalry.txt + script verified]` |
 
 **運用方針:**
 
 - combat_power 4.0 は高水準。正面会戦での騎兵突撃に最適
 - 貴族 Pop に依存するため、進歩「農民の自由の制限」（`hun_curtailed_peasantry`）等で貴族 Pop を圧迫しすぎないよう注意
-- 要塞駐屯は不可（Heavy Cavalry はカテゴリ上 is_garrison なし）
-- 平地・山岳での機動コスト削減を活かし、バルカンの山岳地帯でも追撃戦をこなせる
+- 要塞駐屯は不可（Light Cavalry はカテゴリ上 is_garrison なし）
+- 平地・山岳での機動コスト削減を活かし、バルカンの山岳地帯でも追撃戦をこなせる。initiative が Light Cavalry base(5)より低い(2)ため、先手を取る戦術より機動力・追撃戦での運用が向く
 
 ### ハイドゥク（a_hajduk）—— Light Infantry
 
@@ -969,7 +969,7 @@ Age 5 解禁の地形特化型軽装歩兵。重要注意点が 2 点ある。
 | 進歩名 | ID | 効果 |
 |--------|----|------|
 | 町への支援 | `hun_strengthened_towns` | 都市望ましい人口 +0.5、貴族権力 -50% |
-| ハンガリー人の団結 | `hun_hungarian_unity` | `land_morale_modifier +0.10`（陸軍士気 +10%）`[src: advances/country_HUN.txt + script verified]` |
+| ハンガリー人の団結 | `hun_hungarian_unity` | `land_morale_modifier +0.15`（陸軍士気 +15%。旧記載+10%は誤り）`[src: advances/country_HUN.txt + script verified]` |
 
 ---
 
@@ -986,7 +986,7 @@ Age 5 解禁の地形特化型軽装歩兵。重要注意点が 2 点ある。
 | Age 3（大航海） | `hun_found_the_black_army` → `hun_reformed_coinage` | 黒軍解禁が最優先。貨幣制度は経済安定のため早めに |
 | Age 4（宗教改革） | `hun_bulwark_of_christianity` → `hun_hungarian_hussars` → 宗教分岐 1 つ | 人的資源 +10% で大軍維持、フサール解禁で騎兵精鋭化、宗教分岐は方針に応じて選択 |
 | Age 5（絶対主義） | `hun_curtailed_peasantry` → `hun_revolutionized_military_tactics` | RGO +20% が庶民収入の底上げに有効。戦力前線幅 +10% で大軍の展開力向上 |
-| Age 6（革命） | `hun_hungarian_unity` → `hun_strengthened_towns` | 士気 +10% が最終段階の戦闘力強化の要。都市強化は後回し可 |
+| Age 6（革命） | `hun_hungarian_unity` → `hun_strengthened_towns` | 士気 +15% が最終段階の戦闘力強化の要。都市強化は後回し可 |
 
 ### 組合せのポイント
 
@@ -1070,7 +1070,7 @@ Age 5 解禁の地形特化型軽装歩兵。重要注意点が 2 点ある。
 | RGO | Resource Gathering Operations | 資源採取。ゲーム内でも「RGO」とアルファベット表記 |
 | 階級権力 | Estate Power | 各階級の権力値 |
 | 黒軍 | Black Army / a_the_black_army | ハンガリー固有 Heavy Infantry ユニット。Age 3 解禁 `[src: unit_types/1_uniques_for_age_3_discovery.txt + script verified]` |
-| ハンガリー・フサール | Hungarian Hussars / a_hungarian_hussars | ハンガリー固有 Heavy Cavalry ユニット。Age 4 解禁 `[src: unit_types/1_uniques_for_age_4_reformation.txt + script verified]` |
+| ハンガリー・フサール | Hungarian Hussars / a_hungarian_hussars | ハンガリー固有 Light Cavalry ユニット（旧記載「Heavy Cavalry」は誤り・訂正済み）。Age 4 解禁 `[src: unit_types/1_uniques_for_age_4_reformation.txt + script verified]` |
 | ハイドゥク | Hajduk / a_hajduk | Light Infantry ユニット。Age 5 解禁。HUN 専用ではなくバルカン地域 Advance（balkan_hajduks）経由 `[src: unit_types/1_uniques_for_age_5_absolutism.txt + script verified]` |
 | ヴェグヴァール体制 | vegvar_system | ベオグラード防衛イベント選択肢 A で解禁される国境要塞体制 |
 | 黒軍政策 | black_army_policy | ハンガリー固有軍事政策。discipline +2.5% `[src: laws/01_military_laws.txt + script verified]` |
@@ -1141,7 +1141,7 @@ Age 5 解禁の地形特化型軽装歩兵。重要注意点が 2 点ある。
 - `casus_belli/claim_throne.txt`: cb_claim_throne（請求者が統治中なら不発）
 - `international_organizations/union.txt + laws/40_personal_unions.txt`: 同君連合（最低 50 年・統合レベル）
 - `events/DHE/flavor_HAB.txt`: flavor_hab.46（HAB への cb_claim_throne 付与イベント）
-- `international_organizations/hre.txt + laws/20_hre.txt`: HRE（Golden Bull 離脱条件・GP Score 50）
+- `international_organizations/hre.txt + laws/20_hre.txt`: HRE（Golden Bull 離脱条件）。GP Score 250→50 の変更はスクリプト上に該当識別子なく、Patch_1.2 wiki 由来のコミュニティ知見にとどまる
 - `building_types/hre_buildings.txt`: Imperial Armory（gold=500・military_contribution 法必須）
 - `events/DHE/flavor_HUN.txt`: flavor_hun.150（発火条件全文）・flavor_hun.210（vegvar_system）・flavor_hun.220（移民 amount 0.2）・flavor_hun.480（HAB 再建条件）・flavor_hun.550（ウィーン首都条件）・flavor_hun.580（ブラチスラバ条件）
 - `casus_belli/D008_restore_roman_borders.txt`: Restore Roman Borders CB 存在（BYZ 用・HUN 領土への脅威）

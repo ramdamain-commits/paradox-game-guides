@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-07-12 EU5 1.3 安定版昇格 フェーズ3（整合スイープ・レビュー・誤り訂正）
+
+### Changed
+- Task3-1 整合スイープ: `（1.3 beta）|1.3 オープンベータ|仮登録|tag--beta` の eu5/・index.html 全体grep が0件（`.tag--beta` CSS定義のみ許容）を再確認。「Patch 1.2 Echinades」表記は全て意図的な旧パッチ履歴節（現行baselineは1.3明記済み）と確認、被リンク（regional⇔byzantium/austria/brandenburg、universal/government参照）は全て見出し実在を確認
+- Task3-2 レビュー: 11ガイドを検証ポイント数（旧beta marker数）で3分割しreviewer3並列実施（regional専任寄り27pt/government系31pt/byzantium系27pt）。critical 1件・important 多数を検出・修正
+- **eu5-byzantium-guide.md / eu5-regional-guide.md（critical）**: Twilight of the Tsardom ディザスターの発火判定は `current_year < 1338` かつ `fire_only_once=yes`（開始直後1337年の一度きり）だが、旧記載は「1400年代に狙う好機」と時系列を誤認していた。発火有無をゲーム開始時点で確認する運用に訂正（終了条件が厳しいため弱体化効果自体は長期化しうる点は維持）
+- **eu5-austria-guide.md（critical）**: 架空の出典ファイル `hab-advances.md`/`hab-hre-mechanics.md`/`hab-union-mechanics.md`/`hab-events-part1/2.md`（ゲーム内にもリポジトリ内にも非実在）が本文31箇所に混入していたのを実在スクリプト（country_HAB.txt/hre.txt/flavor_HAB.txt/laws/20_hre.txt等）へ全置換。「山と川の国」地形ペナルティ-50%→実値-33%、「宮廷軍事局」を「軍補充コスト-10%」→実際は「軍補充効率+20%」と訂正（各2箇所）
+- **皇帝GP Score免除閾値の横断誤り（government/hungary/austria/brandenburg、critical）**: `great_power_score_exempt_from_forfeit = 50` という識別子が `hre.txt` に非実在と確定（grep 0件）。4ガイド計7箇所で「script verified」を撤回しコミュニティ知見（スクリプト未確認）に格下げ。Imperial Diet投票権重の具体数値（皇帝150等）も動的ハードコード関数 `country_combined_special_status_power` が算出しスクリプト定数が存在しないため、同様に4ガイドでマーカーを格下げ
+- **eu5-hungary-guide.md（critical）**: ハンガリー・フサール（a_hungarian_hussars）を「Heavy Cavalry」と誤記していたが、実スクリプトは `copy_from = a_age_4_reformation_light_cavalry` でLight Cavalry系統と確定。initiative「base2+2=4」も誤りで実際は絶対値上書きの「2」（Light Cavalry base5からの低下）。ベース数値参考表もLight Cavalry値（移動3.0/flanking2.1等）へ訂正。`hun_hungarian_unity` 陸軍士気+10%→実値+15%も訂正
+- **eu5-government-guide.md（critical）**: 共和国「宮廷言語ボーナス+1」→実値+3、部族「外交維持費-75%」→実際は`diplomatic_upkeep_efficiency=1.5`で+50%（方向も逆）、部族「共通言語+10」→実値+30、ステップ遊牧民「戦争スコアコスト-20%」→実際は`global_war_score_efficiency=0.25`で+25%効率、と誤記4件を訂正
+- **eu5-byzantium-guide.md（important）**: Legionaries/Greek Fire Infantry の initiative「-1」→実値「-0.5」（2ユニット×計3箇所）。Restore Roman Borders CBのconquer_cost/ticking_war_scoreとPronoiaの支払い額（scaled_gold等）の出典ファイル誤帰属を修正（実際はwargoals/00_default.txt:1031、prices/03_diplomacy.txt:60）。Cataphracts Age2以降/Legionariesの解禁条件「ヘレナイゼーション方向を維持しないと解禁されない」という戦略的主張がscript未裏付け（実際は`has_societal_value`の存在チェックのみで数値の方向・閾値は不問）と判明、5箇所で訂正
+- **eu5-brandenburg-guide.md（minor）**: プロイセン建国条件「軍事修道会でないこと」「強力な司教区未保有」を独立2条件と誤記していたが、実スクリプトは `NOT = { A AND B }`（両方同時保有時のみ不可、片方なら建国可）と訂正
+
+### Notes
+- 全修正は該当箇所を実機スクリプトで直接裏取り後に適用（グレップ・行番号確認込み）。修正対象は6ガイド（austria/hungary/government/brandenburg/byzantium/regional）のみ、他ガイドへの波及なし（`git diff --stat`確認済み）
+- フェーズ2.5で使用したopus実装エージェント2件がAPIセッション上限で中断したため、Phase3の修正はメイン側で直接実施
+- 残: Task3-3（このCHANGELOGエントリ・プロジェクト状態更新: projects.json→MEMORY.md→TASKS.md→changelog.json→export）
+
 ## 2026-07-12 EU5 1.3 安定版昇格 フェーズ2.5（小型3ガイド拡充・サイズ均衡調整）
 
 ### Changed

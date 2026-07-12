@@ -16,7 +16,7 @@
 
 | 変更 | 内容 | src |
 |------|------|-----|
-| Imperial Diet 投票システム刷新 | Diet 発展段階（Court Assembly → Early Diet → Bicamerial → Tricamerial）ごとに投票権重が変化。皇帝 基本値 150（Court Assembly で 187.5、Tricamerial で 150）、選帝侯 基本値 75（Court Assembly 112.5、Tricamerial 75）。自由都市は Tricamerial で 50（上昇）のため、Tricamerial 段階では皇帝 150 vs 自由都市 50 となり、選帝侯の相対的発言力が低下する局面がある | `[src: Patch_1.2 wiki + script verified]`（hre.txt 行 15-38, 266-286） |
+| Imperial Diet 投票システム刷新 | Diet 発展段階（Court Assembly → Early Diet → Bicamerial → Tricamerial）の存在は `hre.txt` で確認済み。段階ごとの具体的な投票権重（皇帝基本値150・選帝侯基本値75・自由都市の段階別変動等）は動的スコア `country_combined_special_status_power`（ハードコード関数）が算出しスクリプト上に定数として存在しない（旧記載「script verified」は誤り）。Tricamerial 段階で自由都市の相対的発言力が上昇し選帝侯の発言力が相対低下する傾向はある | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | 皇帝の Great Power Score 貢献 250 → 50 に削減 | ブランデンブルクが皇帝奪取を狙う場合の旨味が低下 | `[src: Patch_1.2 wiki + script verified]` |
 | Imperial Armories（帝国兵器庫）新建造物 | 皇帝が HRE 構成員領土内に建造（建造コスト gold=500、皇帝のみ建設可・law:military_contribution 必須）。ブランデンブルクが皇帝でない期間は、領土内に建造される（外国所有）形になり、所有国に manpower_to_building_owner=+0.005 のマンパワーが入る | `[src: Patch_1.2 wiki + script verified]`（hre_buildings.txt 行 1-90） |
 | Free Cities 自動参戦廃止 | INDEPENDENT Free City のみ皇帝が防衛する形に変更（非独立の自由都市への自動参戦は廃止）。HRE 内自由都市への攻撃的拡張の障壁が低下 | `[src: Patch_1.2 wiki + script verified]`（hre.txt） |
@@ -267,9 +267,9 @@ Patch 1.1 で追加された固有ディザスター。旧イベント群を一�
 |------|------|
 | 文化 | ドイツ系文化グループ |
 | 領土 | **プロイセン地域（Prussia Area）の 75% 以上**を直接所有（`required_locations_fraction = 0.75`）。全州は不要 |
-| 政体 | **軍事修道会（Military Order）でないこと**（君主制・共和制いずれも可。建国時に君主制でも共和制でもない政体の場合のみ君主制へ変更される。共和制はそのまま維持） |
+| 政体 | 君主制・共和制いずれも可（建国時に君主制でも共和制でもない政体の場合のみ君主制へ変更される。共和制はそのまま維持） |
 | 状態 | 平和状態 |
-| 階級特権 | 「土地権利（Land Rights）」保有 / 「強力な司教区（Powerful Dioceses）」未保有 |
+| 政体・階級特権（複合条件） | 「土地権利（Land Rights）」保有。**「軍事修道会（Military Order）改革」と「強力な司教区（Powerful Dioceses）」特権は、両方同時に保有している場合のみ建国不可**（`NOT = { has_reform=military_order_reform AND has_estate_privilege=clergy_powerful_dioceses }`）。片方だけなら建国可。旧記載の「軍事修道会でないこと」「強力な司教区未保有」を独立2条件として書いていたのは誤り（実際は AND 条件の否定＝どちらか一方さえ満たせばよい） |
 | 聖職者権力 | **20% 未満**であること |
 | 貴族権力 | **20% 超過**であること |
 

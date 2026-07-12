@@ -16,9 +16,9 @@
 
 | 変更 | 内容 | src |
 |------|------|-----|
-| Imperial Diet 投票システム刷新 | Diet 4段階（Court Assembly → Early Diet → Bicamerial → Tricamerial）の存在 `[src: Patch_1.2 wiki + script verified]`（hre.txt 行 15-38, 266-286）。各段階の投票権重（基本値: 皇帝 150 / 選帝侯・大司教選帝侯 各 75 / 自由都市 25 / 首座司教 4）`[src: Patch_1.2 wiki + script verified]`（hre.txt 行 15-38, 90-113, 160-183, 266-286）。Court Assembly 段階では皇帝 ×1.25・選帝侯/大司教 ×1.5・自由都市 ×0.1 の倍率変動。Tricamerial 段階では自由都市が ×2.0 に上昇（動的スコア country_combined_special_status_power による。wiki の「500/250/200」固定数値は誤り） | `[src: Patch_1.2 wiki + script verified]` |
+| Imperial Diet 投票システム刷新 | Diet 4段階（Court Assembly → Early Diet → Bicamerial → Tricamerial）の存在は `hre.txt` で確認済み。各段階の投票権重（基本値: 皇帝 150 / 選帝侯・大司教選帝侯 各 75 / 自由都市 25 / 首座司教 4）と段階別倍率（Court Assembly 皇帝×1.25・選帝侯/大司教×1.5・自由都市×0.1、Tricamerial 自由都市×2.0 等）は動的スコア `country_combined_special_status_power`（ハードコード関数）が算出しスクリプト上に定数として存在しない（CLAUDE.md「エンジン内部値」該当。旧記載「script verified」は誤り）。wiki の「500/250/200」固定数値は誤りとの確認のみ script 側で可能 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | Diet UI タブ化 | Overview / Members / Treasury の3タブ。投票前にツールチップで可決見込みを確認可能 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| 皇帝の Great Power Score 貢献 250 → 50 に削減 | （**破壊的変更**）オーストリアの自動大国扱いが大幅に弱体化 | `[src: Patch_1.2 wiki + script verified]` |
+| 皇帝の Great Power Score 貢献 250 → 50 に削減 | （**破壊的変更**）オーストリアの自動大国扱いが大幅に弱体化（コミュニティ知見：`hre.txt` に該当識別子なし・スクリプト未確認。旧記載「script verified」は誤り） | `[src: Patch_1.2 wiki]` |
 | 同一王朝再選で +5 Imperial Authority | 同一王朝の皇帝が連続再選されると IA ボーナス | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | 皇帝が政体変更すると再選挙発生 | 政体変更で帝位が自動失効し選挙がトリガーされる | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
 | Imperial Armories（帝国兵器庫）新建造物 | 皇帝が HRE 構成員領土内に建造（HRE 加盟領内・law:military_contribution 必須）。建造コスト gold=500（HRE Treasury から支出）。自国所有時: local_manpower=+0.0025・can_recruit_regiment_in_this_location=yes。外国所有時: manpower_to_building_owner=+0.005。皇帝交代時に新皇帝へ自動移転 | `[src: Patch_1.2 wiki + script verified]`（hre_buildings.txt 行 1-90） |
@@ -66,7 +66,7 @@
 
 > 以下は 1.1 系プレイヤーが 1.2 で必ず見直しを要する変更点。1.3 分は別途明示する。
 
-- **皇帝の Great Power Score 貢献 250 → 50 への削減**: 皇帝であるだけで大国扱いされる効果が大幅減少。IA 管理・軍事力・経済力の実力で大国スコアを積み上げる必要がある `[src: Patch_1.2 wiki + script verified]`
+- **皇帝の Great Power Score 貢献 250 → 50 への削減**: 皇帝であるだけで大国扱いされる効果が大幅減少。IA 管理・軍事力・経済力の実力で大国スコアを積み上げる必要がある（コミュニティ知見：`hre.txt` に該当識別子なし・スクリプト未確認） `[src: Patch_1.2 wiki]`
 - **Free Cities 自動参戦廃止**: INDEPENDENT Free City が攻撃された場合、皇帝は手動で参戦を判断しなければならない（臣属化された Free City は対象外）。旧来の「帝国防衛は自動対応」の前提が崩れる `[src: Patch_1.2 wiki + script verified]`（hre.txt 自動参戦トリガーが存在しないことを確認）
 - **Claim Throne CB 制限**: 婚姻 → 直系相続人空白 → Claim Throne CB という継承戦略が、既統治の請求者を持つ場合は使えなくなった。ハプスブルク婚姻外交の継承順位の操作戦略に影響 `[src: Patch_1.2 wiki + script verified]`
 - **1400 年以降に golden_bull_policy 未採択なら HRE 離脱可能**: ゲーム開幕早期の帝国法整備が従来以上に重要になった `[src: Patch_1.2 wiki + script verified]`（hre.txt 行 275-277）
@@ -113,7 +113,7 @@
 | 政府規模 | +1 | [src: hre.txt, 147] |
 | 毎月威信 | +0.1 | [src: hre.txt, 148] |
 | 毎月外交官（外交アクション頻度） | +0.5 | [src: hre.txt, 157] |
-| 大国スコア免除閾値 | 50 | [src: hre.txt, 137] |
+| 大国スコア免除閾値 | 50（コミュニティ知見：`hre.txt` に該当識別子なし・スクリプト未確認。行137はGolden Bull選帝侯定員の記述で無関係） | [src: Patch_1.2 wiki] |
 
 皇帝権限として「ラント平和令の強制」「宗教統一の強制」「不法領土の返還要求」「帝国軍の強化」「帝国の禁令 CB」などの専用アクションが使用可能になる [src: hre.txt, 外交アクション一覧]。
 
@@ -137,16 +137,16 @@
 | 区分 | 内容 |
 |------|------|
 | 強み | HRE 皇帝として外交容量 +1・外交官数 +2・威信 +0.1/月などの大幅ボーナスを獲得 [src: hre.txt, 139-157] |
-| 強み | 固有進歩「幸いなるオーストリアよ、結婚せよ」（外交評判 +2）が婚姻外交を加速 [src: hab-advances.md, 42行] |
-| 強み | 固有進歩「オーストリアの外交手腕」（関係改善効果 +33%）で同盟維持が容易 [src: hab-advances.md, 54行] |
-| 強み | 「ルドルフ1世の遺産」（陸軍士気 +10%）で初期軍事力が安定 [src: hab-advances.md, 14行] |
+| 強み | 固有進歩「幸いなるオーストリアよ、結婚せよ」（外交評判 +2）が婚姻外交を加速 [src: country_HAB.txt:42（未再検証）] |
+| 強み | 固有進歩「オーストリアの外交手腕」（関係改善効果 +33%）で同盟維持が容易 [src: country_HAB.txt:54（未再検証）] |
+| 強み | 「ルドルフ1世の遺産」（陸軍士気 +10%）で初期軍事力が安定 [src: country_HAB.txt:14（未再検証）] |
 | 強み | 帝国の禁令 CB・ラント平和令など皇帝固有アクションで HRE 内の外交的主導権を握れる |
 | 強み | ボヘミア・ハンガリー継承に成功すると中欧の大国に直結する |
 | 弱み | HRE 皇帝は**選帝侯の投票**で選出される。関係が悪化すると次の選挙で帝位を失うリスク |
 | 弱み | 属国選帝侯は IA にペナルティ（1名につき −0.05/月）。選帝侯の独立性を保ちながら管理が必要 [src: hre.txt, 456-471] |
 | 弱み | 帝国防衛義務が発生すると本来の拡張計画を中断せざるを得ない場面がある |
 | 弱み | 多民族・多言語の国土を将来的に抱えるため、文化容量・政府規模の管理が中盤以降に重要になる |
-| 弱み | 「山と川の国」進歩（山岳・丘陵・高原地形ペナルティ -50%）は age_2 以降なので序盤は地形の制約を受ける [src: hab-advances.md, 26行] |
+| 弱み | 「山と川の国」進歩（山岳・丘陵・高原地形の近接影響 −33%。旧記載「-50%」は誤り）は age_2 以降なので序盤は地形の制約を受ける [src: country_HAB.txt:26（`mountains_proximity_impact = -0.33`、script verified）] |
 
 ---
 
@@ -167,12 +167,12 @@ HAB の Day 1 は通常の国家プレイと異なり、**HRE の現状把握**�
 
 3. **ボヘミア（BOH）との王室婚姻を確認・強化する**
    - ボヘミアは HRE 内最有力の選帝侯候補かつ婚姻外交の最重要ターゲット
-   - 王室婚姻（Royal Marriage）を締結すると marriage_union（結婚連合）が成立し、防衛戦争への共同参戦が確定する [src: hab-union-mechanics.md, marriage_union.txt:19-21]
+   - 王室婚姻（Royal Marriage）を締結すると marriage_union（結婚連合）が成立し、防衛戦争への共同参戦が確定する [src: marriage_union.txt:19-21]
    - 共通の後継者を生み出すことで将来的な Personal Union（同君連合）への布石となる
 
 4. **ハンガリー（HUN）との関係構築を開始する**
    - ハプスブルク家の婚姻外交における最大のターゲット
-   - 友好的な関係を維持しながら王室婚姻を狙う。同君連合成立には共通後継者が必要 [src: hab-union-mechanics.md, union.txt:270-295]
+   - 友好的な関係を維持しながら王室婚姻を狙う。同君連合成立には共通後継者が必要 [src: union.txt:270-295]
    - 開始直後に宣戦する必要はなく、まず関係を正の値に持ち込むことを優先する
 
 5. **帝国の権威（IA）を上昇させる行動を確認する**
@@ -187,7 +187,7 @@ HAB の Day 1 は通常の国家プレイと異なり、**HRE の現状把握**�
 
 7. **内政の初期設定を確認する**
    - 階級（Estate）の特権初期設定を確認し、貴族と聖職者のバランスを整える
-   - 「栄光の一族」（外交官/月 +0.1、威信/月 +0.05）は age_1 の固有進歩。未取得なら早期取得を狙う [src: hab-advances.md, 1行]
+   - 「栄光の一族」（外交官/月 +0.1、威信/月 +0.05）は age_1 の固有進歩。未取得なら早期取得を狙う [src: country_HAB.txt:1（未再検証）]
 
 8. **皇帝固有アクションの使用可否を確認する**
    - ラント平和令強制（`enforce_landfriede`）: HRE 内の諸侯間戦争を止めたい場面で使用
@@ -216,7 +216,7 @@ HAB の Day 1 は通常の国家プレイと異なり、**HRE の現状把握**�
 
 **帝国改革のロードマップ（概要）**
 
-HRE の集権化は「皇帝快適性カウンター（`hre_emperor_comfort_policies_counter`）」を積み上げることで解放が進む [src: hab-hre-mechanics.md, Section 7]。
+HRE の集権化は「皇帝快適性カウンター（`hre_emperor_comfort_policies_counter`）」を積み上げることで解放が進む [src: hre.txt, Section 7（節番号は目安）]。
 
 | ステップ | 制定する法律 | comfort カウンター | 解放内容 |
 |------|------|------|------|
@@ -226,7 +226,7 @@ HRE の集権化は「皇帝快適性カウンター（`hre_emperor_comfort_poli
 | 3 | 選帝侯を統合（integrated_electors_policy） | +1 | 累計 3 |
 | 4〜5 | さらに comfort 改革を追加 | +1〜2 | 累計 5 → **特権の剥奪・帝国の復活** が解放 |
 
-最終段階の「帝国の復活（`renovatio_policy`）」に到達すると、帝国統一（全 HRE メンバーの外交的吸収）が可能になる [src: hab-hre-mechanics.md, 20_hre.txt:3068]。これがオーストリアプレイの長期目標の一つとなる。
+最終段階の「帝国の復活（`renovatio_policy`）」に到達すると、帝国統一（全 HRE メンバーの外交的吸収）が可能になる [src: laws/20_hre.txt:3068（未再検証）]。これがオーストリアプレイの長期目標の一つとなる。
 
 > **1.3 注記**: 非加盟国を HRE に組み込む際の reluctance（消極化）が 1.3 で高まる方向に調整された（コミュニティ知見：公式パッチノート由来・スクリプト未確認）。皇帝として帝国を拡張するペースが鈍るため、加入交渉と帝国の権威の使いどころをより計画的に運ぶ必要がある。
 
@@ -241,7 +241,7 @@ HRE の集権化は「皇帝快適性カウンター（`hre_emperor_comfort_poli
 ### 手順
 
 1. **ゲーム開始直後**: ウィーン周辺の支配度（Control）を最優先で回復する。ウィーンは帝都候補（flavor_hab.1100）かつ主要イベントの発火地であるため、初期の都市整備から外せない。
-2. **選帝侯の管理**: 選帝侯が 4 名（公・選帝侯）+ 大司教選帝侯 3 名の規定を満たすよう維持する。欠員が 1 名ごとに IA −0.1/月のペナルティが発生する [src: hab-hre-mechanics.md, Section 3]。各選帝侯の opinion を 0 以上に保ち、選挙での支持を安定させる。
+2. **選帝侯の管理**: 選帝侯が 4 名（公・選帝侯）+ 大司教選帝侯 3 名の規定を満たすよう維持する。欠員が 1 名ごとに IA −0.1/月のペナルティが発生する [src: hre.txt, Section 3（節番号は目安）]。各選帝侯の opinion を 0 以上に保ち、選挙での支持を安定させる。
 3. **ボヘミア・ハンガリーとの関係**: 両国はオーストリア最大の婚姻ターゲット。ゲーム開始時から王室婚姻を締結し、共通後継者が生まれる布石を打つ。ハンガリーとは `flavor_hab.50`（タンシュテッターの地図）発火でさらに好感度が上昇する。
 
    > 詳細は [ハンガリーガイド](eu5-hungary-guide.md) を参照。
@@ -250,7 +250,7 @@ HRE の集権化は「皇帝快適性カウンター（`hre_emperor_comfort_poli
 5. **シュテファン大聖堂の完成（flavor_hab.29）**: 1340〜1360 年にウィーン所持で発火。金 −6 の投資でウィーンに記念碑が完成する。財政に余裕があれば積極的に選択する。
 6. **ウィーン大学（flavor_hab.30）**: 1350〜1370 年、金 400 以上かつ大学未建設で発火。選択肢 a を選べば文化影響力と繁栄ボーナスが得られる。
 
-**注意点**: 序盤は拡張よりも帝国内安定を優先する。皇帝がメンバーへの攻撃戦争を主導すると IA −0.5/月のペナルティが発生し [src: hab-hre-mechanics.md, Section 3]、権威の急落を招く。帝国の禁令（Imperial Ban）CB も使いすぎると他の選帝侯の反発を招くため慎重に行使する。
+**注意点**: 序盤は拡張よりも帝国内安定を優先する。皇帝がメンバーへの攻撃戦争を主導すると IA −0.5/月のペナルティが発生し [src: hre.txt, Section 3（節番号は目安）]、権威の急落を招く。帝国の禁令（Imperial Ban）CB も使いすぎると他の選帝侯の反発を招くため慎重に行使する。
 
 ---
 
@@ -263,10 +263,10 @@ HRE の集権化は「皇帝快適性カウンター（`hre_emperor_comfort_poli
 1. **大特許状（Privilegium Maius）連鎖（flavor_hab.1000〜1008）**: 1345〜1370 年に発火する重要連鎖イベント。成功すれば「大公国（Austrian Archduchy）改革」と「自由主張権（libertas affectandi）」が解放され、帝国内の地位が強化される。選択肢 b（賄賂付き）は金 −6 で成功確率を高められる。詳細はセクション 9 参照。
 2. **王冠領議会（flavor_hab.6）**: 1400〜1520 年、ウィーン・グラーツ・インスブルック・リエンツを保有し議会制の政体であれば発火。議会支持 +0.5 で中央集権化の布石となる。
 3. **ライヒスホーフラート（flavor_hab.7）**: 1490〜1520 年、神聖ローマ皇帝かつウィーン保有で発火。選択肢 a を選ぶと `reichshofrat_reform` が解放される。
-4. **ボヘミア・ハンガリー継承への布石**: 婚姻連合（marriage_union）は「共通の後継者を共有」した時点で自動成立する [src: hab-union-mechanics.md]。成立後は継承法・統一財政・統一外交を段階的に整備し（各 10〜40 年ごと）、最終的な同君連合への昇格を目指す。「ハンガリーの失墜（flavor_hab.46）」は 1500〜1600 年にオスマンがハンガリー旧領を保有する状況で発火し、継承権主張の CB を獲得できる。1.3 で従属国（同君連合下位国・属国）への宗教統一の強制が不可になったため、異宗派の従属国を抱えたまま統合する場合は改宗を強制ではなく自発改宗・外交・帝国法（`hre_religion_catholic` 維持等）で促す設計に切り替える（コミュニティ知見：公式パッチノート由来・スクリプト未確認）。
+4. **ボヘミア・ハンガリー継承への布石**: 婚姻連合（marriage_union）は「共通の後継者を共有」した時点で自動成立する [src: union.txt]。成立後は継承法・統一財政・統一外交を段階的に整備し（各 10〜40 年ごと）、最終的な同君連合への昇格を目指す。「ハンガリーの失墜（flavor_hab.46）」は 1500〜1600 年にオスマンがハンガリー旧領を保有する状況で発火し、継承権主張の CB を獲得できる。1.3 で従属国（同君連合下位国・属国）への宗教統一の強制が不可になったため、異宗派の従属国を抱えたまま統合する場合は改宗を強制ではなく自発改宗・外交・帝国法（`hre_religion_catholic` 維持等）で促す設計に切り替える（コミュニティ知見：公式パッチノート由来・スクリプト未確認）。
 5. **メルクの修道院改革（flavor_hab.8）**: 1400〜1430 年発火。選択肢 a で宗教改革欲求を小低下させられる。宗教改革前の緩衝策として有効。
 6. **ウィーン協約（flavor_hab.9）**: 1430〜1460 年、教皇庁好感度 ≥ 0 かつ神聖ローマ皇帝で発火。ウィーン協約特権付与で教会との関係を安定させる。
-7. **帝国改革の着手**: 金印勅書（`golden_bull`）を制定して帝国法体系を有効化する。続けて `complete_imperial_contribution` を施行して comfort カウンター +1 を積み始める [src: hab-hre-mechanics.md, Section 7]。
+7. **帝国改革の着手**: 金印勅書（`golden_bull`）を制定して帝国法体系を有効化する。続けて `complete_imperial_contribution` を施行して comfort カウンター +1 を積み始める [src: hre.txt, Section 7（節番号は目安）]。
 
 **注意点**: フス派の台頭（ボヘミア）は帝国宗教ポリシーと衝突し IA の低下を引き起こす可能性がある。宗教統一の強制（`enforce_religious_unity`）アクションは IA が高いときに使用し、選帝侯の反発を最小化してから行使する。この強制は HRE 諸侯が対象であり、1.3 以降は同君連合下位国・属国などの従属国には適用できない点に注意する（コミュニティ知見：公式パッチノート由来・スクリプト未確認）。
 
@@ -278,14 +278,14 @@ HRE の集権化は「皇帝快適性カウンター（`hre_emperor_comfort_poli
 
 ### 手順
 
-1. **帝国改革ロードマップの完遂**: comfort カウンターを 5 まで積み上げ、`revoke_privilegia_policy`（特権の剥奪）→ `renovatio_policy`（帝国の復活）を順次制定する。`renovatio_policy` 制定後は hre.102 イベントが発火し、全メンバーを外交的に吸収して帝国統一が完了する [src: hab-hre-mechanics.md, Section 6.14]。
+1. **帝国改革ロードマップの完遂**: comfort カウンターを 5 まで積み上げ、`revoke_privilegia_policy`（特権の剥奪）→ `renovatio_policy`（帝国の復活）を順次制定する。`renovatio_policy` 制定後は hre.102 イベントが発火し、全メンバーを外交的に吸収して帝国統一が完了する [src: hre.txt, Section 6.14（節番号は目安）]。
 2. **世襲制への移行（erbkaisertum_policy）**: comfort カウンター +1 を付与し、帝位を世襲に固定することで選挙リスクを排除できる。制定後は選帝侯法・宗教法がロックされるため、事前に宗教ポリシーを所望の状態に固めておく。
 3. **独自路線（帝国離脱）**: HRE を離脱して「オーストリア帝国」としての独立路線を取ることもできる。`flavor_hab.99`（オーストリア帝国の宣言、1750〜1836 年）でゲーム後半に帝国ランクへの昇格が可能。
 4. **対オスマン戦略**: `flavor_hab.55`（軍政国境地帯の確立、1550〜1700 年）で国境防衛を整備し、`flavor_hab.39`（対オスマン帝国支援税）で HRE 全体を巻き込んだ防衛体制を構築する。1.3 で追加された Twilight of the Tsardom（ツァーリ国の黄昏）ディザスターはバルカン勢力を崩壊・流動化させ、対オスマン方面に新たな機会と係争をもたらす `[src: disasters/twilight_of_the_tsardom.txt]`。
 
    > 対オスマン戦略の詳細は [オスマンガイド](eu5-ottoman-guide.md) も参照。バルカン情勢は [eu5-regional-guide.md](eu5-regional-guide.md) の「東欧（ポーランド・ハンガリー・ロシア・バルカン）」章とも相互参照。
 
-5. **宗教改革への本格対処**: `edict_of_restitution` 進歩（age_4_reformation、HAB のみ）で全国人口の改宗速度 +10% を得る [src: hab-advances.md, l.81]。`flavor_hab.16`（メルヒオール・クレスル、1572〜1630 年）でカトリック推進派顧問を採用するか否かで対応方針が分岐する。帝国宗教ポリシーを `hre_religion_catholic`（カトリック）に維持することで、改宗した諸侯から IA が上昇する（hre.903）。
+5. **宗教改革への本格対処**: `edict_of_restitution` 進歩（age_4_reformation、HAB のみ）で全国人口の改宗速度 +10% を得る [src: country_HAB.txt:81（未再検証）]。`flavor_hab.16`（メルヒオール・クレスル、1572〜1630 年）でカトリック推進派顧問を採用するか否かで対応方針が分岐する。帝国宗教ポリシーを `hre_religion_catholic`（カトリック）に維持することで、改宗した諸侯から IA が上昇する（hre.903）。
 6. **三十年戦争局面**: `flavor_hab.65`（シュタイアーマルクの使徒）や `flavor_hab.76`（勝利の式典・マリアの柱）は再カトリック化の推進イベント。帝国軍（bolster_imperial_army）を活用し HRE メンバーを防衛戦に動員することで、IA を維持しながら戦費を節約できる。
 7. **フランスへの対応**: HRE の防衛体制を盾にしながらイベリア半島のスペイン（ハプスブルク家）との連携を優先する。
 
@@ -303,18 +303,18 @@ HRE の集権化は「皇帝快適性カウンター（`hre_emperor_comfort_poli
 
 | 進歩名（日本語） | 時代 | 効果 | src |
 |----------------|------|------|-----|
-| ルドルフ1世の遺産（`austrian_heritage`） | age_1_traditions | 陸軍士気 +10% | [src: hab-advances.md, l.14] |
-| 山と川の国（`hab_expert_mountaineers`） | age_2_renaissance | 山岳/丘陵/高原地形の近接影響 −50% | [src: hab-advances.md, l.26] |
-| ランツクネヒトの戦術（`austrian_military_flexibility`） | age_3_discovery | 軍事戦術 +10%・傭兵雇用コスト −10% | [src: hab-advances.md, l.67] |
-| 宮廷軍事局（`hofkriegsrat`） | age_5_absolutism | 軍補充コスト −10%・連隊補充速度 +10% | [src: hab-advances.md, l.109] |
-| 軍事的国境（`military_border`） | age_5_absolutism | 移住速度 +10%・規律 +3% | [src: hab-advances.md, l.119] |
-| 帝国砲兵隊（`imperial_artillery`） | age_6_revolutions | 砲兵戦闘力 +10%・砲兵建設コスト −10% | [src: hab-advances.md, l.168] |
+| ルドルフ1世の遺産（`austrian_heritage`） | age_1_traditions | 陸軍士気 +10% | [src: country_HAB.txt:14（未再検証）] |
+| 山と川の国（`hab_expert_mountaineers`） | age_2_renaissance | 山岳/丘陵/高原地形の近接影響 −33%（旧記載「-50%」は誤り） | [src: country_HAB.txt:26（`mountains/hills/plateau_proximity_impact = -0.33`、script verified）] |
+| ランツクネヒトの戦術（`austrian_military_flexibility`） | age_3_discovery | 軍事戦術 +10%・傭兵雇用コスト −10% | [src: country_HAB.txt:67（未再検証）] |
+| 宮廷軍事局（`hofkriegsrat`） | age_5_absolutism | 軍補充効率 +20%（コスト削減ではない。旧記載「軍補充コスト −10%」は誤り）・連隊補充速度 +10% | [src: country_HAB.txt:109（`army_reinforce_efficiency = 0.2, regiment_reinforcement_speed = 0.1`、script verified）] |
+| 軍事的国境（`military_border`） | age_5_absolutism | 移住速度 +10%・規律 +3% | [src: country_HAB.txt:119（未再検証）] |
+| 帝国砲兵隊（`imperial_artillery`） | age_6_revolutions | 砲兵戦闘力 +10%・砲兵建設コスト −10% | [src: country_HAB.txt:168（未再検証）] |
 
 オーストリアの固有ユニットについては現在公式データ未確認（コミュニティ知見）。山岳・丘陵地形でのペナルティ大幅軽減（`hab_expert_mountaineers`）が際立った優位点であり、アルプス山岳地帯での防衛戦に強みを発揮する。
 
 ### 帝国防衛軍の活用
 
-神聖ローマ皇帝として HRE メンバーの防衛戦争に参戦することで、以下の利点がある [src: hab-hre-mechanics.md, Section 1]。
+神聖ローマ皇帝として HRE メンバーの防衛戦争に参戦することで、以下の利点がある [src: hre.txt, Section 1（節番号は目安）]。
 
 - 皇帝国がメンバー防衛に参戦すると IA が上昇（hre.908: 自軍人口/攻撃国人口 × 5、上限 +10）
 - 防衛戦争勝利でもさらに IA 上昇（hre.904: 敵戦力/自戦力 × 5、上限 +10）
@@ -368,10 +368,10 @@ HRE の集権化は「皇帝快適性カウンター（`hre_emperor_comfort_poli
 
 ### ハプスブルク婚姻外交の概要
 
-「幸いなるオーストリアよ、結婚せよ（`austrian_marriage_policy`）」進歩は外交評判 +2 を付与し [src: hab-advances.md, l.42]、ハプスブルク婚姻外交のゲーム内での表現となっている。オーストリアの婚姻外交の核心は以下の 3 段階。
+「幸いなるオーストリアよ、結婚せよ（`austrian_marriage_policy`）」進歩は外交評判 +2 を付与し [src: country_HAB.txt:42（未再検証）]、ハプスブルク婚姻外交のゲーム内での表現となっている。オーストリアの婚姻外交の核心は以下の 3 段階。
 
-1. **王室婚姻の締結**: 対象国との婚姻で共通後継者誕生の下地をつくる。`habsburg_dominance`（オーストリアの外交手腕）進歩による関係改善効果 +33% でさらに婚姻を推進しやすくなる [src: hab-advances.md, l.54]。
-2. **婚姻連合（marriage_union）の成立**: 共通後継者が確定した時点で自動成立。防衛同盟として機能し、霧の戦争も解除される [src: hab-union-mechanics.md]。
+1. **王室婚姻の締結**: 対象国との婚姻で共通後継者誕生の下地をつくる。`habsburg_dominance`（オーストリアの外交手腕）進歩による関係改善効果 +33% でさらに婚姻を推進しやすくなる [src: country_HAB.txt:54（未再検証）]。
+2. **婚姻連合（marriage_union）の成立**: 共通後継者が確定した時点で自動成立。防衛同盟として機能し、霧の戦争も解除される [src: union.txt]。
 3. **同君連合（Personal Union）への昇格**: 共通の君主が複数国を継承した時点で自動昇格。その後、統合法律を 10 年ごとに順次施行（最大 50 年で併合可能）。
 
 > 婚姻・同君連合メカニクスの詳細はハプスブルク婚姻外交セクションで解説する。
@@ -427,13 +427,13 @@ HRE 皇帝としての特有の収入源・コストは以下のとおり。
 
 | 項目 | 内容 | src |
 |------|------|-----|
-| 帝国国庫貢献（complete_imperial_contribution 後） | 諸侯からの定期貢物。税収を安定させる副収入 | [src: hab-hre-mechanics.md, Section 6.2] |
-| 対オスマン支援税（flavor_hab.39） | オスマン交戦中に帝国に税収 4 ヶ月分を追加徴収できる | [src: hab-events-part1.md, l.43] |
-| 皇帝ボーナス（leader_modifier） | 外交容量 +1、政府規模 +1、最大外交官 +2 など | [src: hab-hre-mechanics.md, Section 2] |
-| 帝国宝物（Imperial Works of Art） | 首都移転時に自動移動。ウィーンを首都として維持するのが基本（flavor_hab.1100） | [src: hab-hre-mechanics.md, Section 9] |
-| シュヴァーツ銀鉱山（flavor_hab.1200〜1201） | 1380〜1440 年に銀産出と鉱山レベルが解放される。長期的な安定収入源 | [src: hab-events-part2.md, l.59] |
+| 帝国国庫貢献（complete_imperial_contribution 後） | 諸侯からの定期貢物。税収を安定させる副収入 | [src: hre.txt, Section 6.2（節番号は目安）] |
+| 対オスマン支援税（flavor_hab.39） | オスマン交戦中に帝国に税収 4 ヶ月分を追加徴収できる | [src: flavor_HAB.txt:43（未再検証）] |
+| 皇帝ボーナス（leader_modifier） | 外交容量 +1、政府規模 +1、最大外交官 +2 など | [src: hre.txt, Section 2（節番号は目安）] |
+| 帝国宝物（Imperial Works of Art） | 首都移転時に自動移動。ウィーンを首都として維持するのが基本（flavor_hab.1100） | [src: hre.txt, Section 9（節番号は目安）] |
+| シュヴァーツ銀鉱山（flavor_hab.1200〜1201） | 1380〜1440 年に銀産出と鉱山レベルが解放される。長期的な安定収入源 | [src: flavor_HAB.txt:59（未再検証）] |
 
-**帝国改革後の経済的恩恵**: `revoke_privilegia_policy`（特権の剥奪）制定後は全 HRE 領土に制度成長 +10% の効果が加わり、技術・制度の普及が加速する [src: hab-hre-mechanics.md, Section 6.14]。`renovatio_policy`（帝国の復活）制定後は全メンバーの安定度コスト −0.2 と皇帝の威信 +0.2/月が付与される。
+**帝国改革後の経済的恩恵**: `revoke_privilegia_policy`（特権の剥奪）制定後は全 HRE 領土に制度成長 +10% の効果が加わり、技術・制度の普及が加速する [src: hre.txt, Section 6.14（節番号は目安）]。`renovatio_policy`（帝国の復活）制定後は全メンバーの安定度コスト −0.2 と皇帝の威信 +0.2/月が付与される。
 
 ---
 
@@ -701,7 +701,7 @@ HRE 皇帝としての特有の収入源・コストは以下のとおり。
 | 進歩名 | ID | 前提 | 適用対象 | 効果 | 取得優先度 |
 |--------|-----|-----|---------|------|-----------|
 | 枢密顧問院 | `geheimrat` | `the_constitution` | HABのみ | 政府規模 +1 `[src: country_HAB.txt:99]` | ★★★（廷臣連鎖イベントの起点） |
-| 宮廷軍事局 | `hofkriegsrat` | `artillery_vs_fort_age_5_absolutism` | HABのみ | 軍補充コスト −10%、連隊補充速度 +10% | ★★（三十年戦争後の大軍維持） |
+| 宮廷軍事局 | `hofkriegsrat` | `artillery_vs_fort_age_5_absolutism` | HABのみ | 軍補充効率 +20%（旧記載「軍補充コスト −10%」は誤り）、連隊補充速度 +10% | ★★（三十年戦争後の大軍維持） |
 | 軍事的国境 | `military_border` | `army_movement_speed_absolutism` | HABのみ | 全国移住速度 +10%、規律 +3% `[src: country_HAB.txt:119]` | ★★（対オスマン国境安定化） |
 
 ### 革命の時代（Age 6）
@@ -755,7 +755,7 @@ HRE 皇帝としての特有の収入源・コストは以下のとおり。
 | 政府規模 | +1 | [src: hre.txt:147] |
 | 毎月威信 | +0.1 | [src: hre.txt:148] |
 | 毎月外交官（頻度） | +0.5 | [src: hre.txt:157] |
-| 大国スコア免除閾値 | 50（最低保証） | [src: hre.txt:137] |
+| 大国スコア免除閾値 | 50（最低保証、コミュニティ知見：`hre.txt` に該当識別子なし・スクリプト未確認） | [src: Patch_1.2 wiki] |
 
 > （コミュニティ知見：上記ボーナスは 1.1 系スクリプトに基づく。1.2 でのスクリプト変更は未確認）
 
@@ -785,7 +785,7 @@ IA は 0〜100 で変動。皇帝権力強化ポリシーへのアクセス（`i
 | 異教諸侯 | 宗教乖離度×−0.01/月 | 帝国宗教を統一、または異教諸侯を排除 |
 | 皇帝が HRE 防衛不参加（hre.909） | `imperial_authority_strong_penalty` | 防衛戦争には必ず参戦する |
 
-> **1.2 注記**: 皇帝の Great Power Score 貢献が 250 → 50 に削減されたことで、IA 管理だけでは大国維持ができなくなった可能性がある `[src: Patch_1.2 wiki + script verified]`。大国スコアは軍事力・経済力・外交実績で積み上げる必要があり、皇帝地位に依存した従来の大国維持戦略の見直しが必要。
+> **1.2 注記**: 皇帝の Great Power Score 貢献が 250 → 50 に削減されたことで、IA 管理だけでは大国維持ができなくなった可能性がある（コミュニティ知見：`hre.txt` に該当識別子なし・スクリプト未確認） `[src: Patch_1.2 wiki]`。大国スコアは軍事力・経済力・外交実績で積み上げる必要があり、皇帝地位に依存した従来の大国維持戦略の見直しが必要。
 
 ### 皇帝アクション（使いどころ）
 
