@@ -878,7 +878,7 @@ DLC なしでは Cataphracts age_1 を活かした限定的な固有軍事戦略
 
 ---
 
-## よくある失敗パターン
+## よくあるミス
 
 ### ビザンツ固有の失敗
 
@@ -903,7 +903,7 @@ DLC なしでは Cataphracts age_1 を活かした限定的な固有軍事戦略
 
 ---
 
-## 用語表（1.2 / DLC 用語の和英対照）
+## 用語対照表（1.2 / DLC 用語の和英対照）
 
 > 完全版は [`localization-reference.md`](./localization-reference.md) を参照。
 
@@ -931,7 +931,7 @@ DLC なしでは Cataphracts age_1 を活かした限定的な固有軍事戦略
 | 改革プロノイア制 | Reformed Pronoia System | ポリシー | pronoia_system 廃止後選択肢の一つ |
 | 紫の間に生まれし者 | Born in the Purple | 継承メカニクス | 1.3。後継者選定・正統性 `[src: heir_selections/monarchy.txt]` |
 | ツァーリ国の黄昏 | Twilight of the Tsardom | ディザスター | 1.3。ブルガリア等バルカン勢力の崩壊。ビザンツの再征服機会 `[src: disasters/twilight_of_the_tsardom.txt]` |
-| 反ジェノヴァ盟約 | （ヴェネツィア連携フレーバー） | イベント | 1.3。対ジェノヴァのビザンツ・ヴェネツィア連携 `[src: events/DHE/flavor_byz_ven.txt]` |
+| 反ジェノヴァ盟約 | `flavor_byz_ven`（訳語未確認・固有英語名なし） | イベント | 1.3。対ジェノヴァのビザンツ・ヴェネツィア連携 `[src: events/DHE/flavor_byz_ven.txt]` |
 
 ### パッチ 1.2 / DLC 共通用語
 
@@ -943,7 +943,7 @@ DLC なしでは Cataphracts age_1 を活かした限定的な固有軍事戦略
 | 優位性戦争 | Superiority War | 戦争目標 | Coalition War が 1.2 で変更。首都占領なしに勝利可能 |
 | 宗教的影響力 | Religious Influence | 正教システム | 1.2 で Rite Power を廃止・統合 |
 | 総主教 | Patriarch | キャラクター | 1.2 で正教オーバーホール。キャラクターとして実装 |
-| ロマノス国境地理 | Roman Borders Geography | スクリプト地理 | Restore Roman Borders CB の対象範囲 |
+| ローマ国境地理 | Roman Borders Geography | スクリプト地理 | Restore Roman Borders CB の対象範囲 |
 
 ### 共通用語（抜粋）
 
@@ -993,7 +993,9 @@ DLC なしでは Cataphracts age_1 を活かした限定的な固有軍事戦略
 
 > **1.3 補足**: 上記「1.3」マーカー付きファイルはインストール版 1.3 安定版（buildid 24075414 = 1.3.10）のローカルスクリプトで実体を確認したもの。「1.3 新規か否か」の最終判定は 1.2/1.3 パッチノート差分による。船コスト増・海戦致死性・1337 国境修正はエンジン内部値/フレーバー調整でスクリプト実値未確認のため `（コミュニティ知見：公式パッチノート由来・スクリプト未確認）` 扱い。Patch 1.3 wiki: eu5.paradoxwikis.com/Patch_1.3。
 
-### 参照ファイル（スクリプト未確認、wiki / コミュニティ知見）
+### 参照ファイル・コミュニティ知見（スクリプト未確認）
+
+ファイルの存在・参照箇所は確認したが、効果値やメカニクスの詳細まではスクリプト検証していない項目。
 
 | ファイル | 内容 |
 |---------|------|
@@ -1002,9 +1004,7 @@ DLC なしでは Cataphracts age_1 を活かした限定的な固有軍事戦略
 | `game/in_game/common/disasters/byzantine_succession_crisis.txt` | ビザンツ継承危機ディザスター |
 | `game/in_game/common/character_interactions/d008_mutilations.txt` | 失明・肢体切断インタラクション |
 
-### コミュニティ知見（スクリプト未確認項目一覧）
-
-以下は `（コミュニティ知見：スクリプト未確認）` マーカー付きの項目のまとめ:
+対応するファイルがない、あるいはコミュニティ報告のみに基づく項目:
 
 - Latin Culture Movement のヴェネツィア・ジェノヴァ介入の具体的影響度
 - DHE 140+ 追加の内訳詳細
@@ -1024,8 +1024,6 @@ DLC なしでは Cataphracts age_1 を活かした限定的な固有軍事戦略
 
 - [Steam Workshop: EU5](https://steamcommunity.com/app/3450310/workshop/)
 - Reddit r/eu5
-
-上記出典テーブルを参照
 
 ### 関連ガイド
 

@@ -850,6 +850,21 @@ Papal Authority は 0-100 のリソース。初期値 60、範囲 min=0 / max=10
 
 > 完全版は [eu5/localization-reference.md](localization-reference.md) を参照。以下はこのガイドで使う用語の抜粋。
 
+### カスティーリャ固有用語
+
+| 日本語 | 英語 | 補足 |
+|--------|------|------|
+| 通商院 | Casa de Contratación | カスティーリャ固有の貿易統括機関 |
+| バルセロナ両替所 | Taula de Canvi | アラゴン（ARA）固有の公営銀行。1.3 追加。カスティーリャ本体ではない `[src: events/DHE/flavor_ARA.txt:flavor_ara.220]` |
+| テルシオ | Tercio | イベリア文化固有の歩兵ユニット |
+| 異端審問所 | Spanish Inquisition | 宗教政策の中核機関 |
+| 審問法 | inquisition_law | 異端審問系の政策（法律）グループ。排他選択 `[src: common/laws/00_religious.txt]` |
+| スペイン異端審問（政策） | spa_inquisition_policy | 審問法グループのカスティーリャ固有政策（訳語未確認） |
+| エンコミエンダ | Encomienda | 植民地の先住民統治制度 |
+| メスタ | Mesta | カスティーリャの羊毛組合 |
+
+### 共通用語（抜粋）
+
 | 日本語 | 英語 | 補足 |
 |--------|------|------|
 | 支配度 | Control | 州の実効支配度 |
@@ -877,12 +892,6 @@ Papal Authority は 0-100 のリソース。初期値 60、範囲 min=0 / max=10
 | ドック | Dock | 海軍関連建造物 |
 | 製材所 | Lumber Mill | 建設資材を生産する建造物 |
 | 要塞 | Fortification | 防衛施設 |
-| 通商院 | Casa de Contratación | カスティーリャ固有の貿易統括機関 |
-| バルセロナ両替所 | Taula de Canvi | アラゴン（ARA）固有の公営銀行。1.3 追加。カスティーリャ本体ではない `[src: events/DHE/flavor_ARA.txt:flavor_ara.220]` |
-| テルシオ | Tercio | イベリア文化固有の歩兵ユニット |
-| 異端審問所 | Spanish Inquisition | 宗教政策の中核機関 |
-| 審問法 | inquisition_law | 異端審問系の政策（法律）グループ。排他選択 `[src: common/laws/00_religious.txt]` |
-| スペイン異端審問（政策） | spa_inquisition_policy | 審問法グループのカスティーリャ固有政策（訳語未確認） |
 | 教皇権威 | Papal Authority | 0-100 のカトリック共通リソース。閾値でボーナス/ペナルティ |
 | 交易所 | Trade Office | 他国領内に建てる外交系交易拠点 |
 | 海外交易所 | Overseas Trading Post | 別大陸沿岸に建てる簡易交易所 |
@@ -891,8 +900,6 @@ Papal Authority は 0-100 のリソース。初期値 60、範囲 min=0 / max=10
 | 植民地化 | Create Colonial Charter | 国家アクション `create_colonial_charter`。対象 location を選び直接入植する（EU5 に植民地専用建造物は存在しない）`[src: common/generic_actions/colonial_charters.txt]` |
 | 貿易会社本部 | Trade Company Headquarters | 建設で location を貿易会社属国化する建造物 |
 | 王位請求 CB | Casus Belli: cb_claim_throne | 王位請求に基づく開戦事由。同君連合 CB とは別 |
-| エンコミエンダ | Encomienda | 植民地の先住民統治制度 |
-| メスタ | Mesta | カスティーリャの羊毛組合 |
 | 開戦事由 | Casus Belli（CB） | 戦争の正当性 |
 | 独立欲求 | Liberty Desire | 従属国の独立志向 |
 | 将軍 | General | 陸軍指揮官 |

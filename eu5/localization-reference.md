@@ -35,6 +35,8 @@
 | Cabinet Efficiency | 内閣効率 | 内閣の効率値 |
 | Spy Network | 諜報網 | スパイ活動の成果 |
 | RGO / Resource Gathering Operations | RGO / 資源採取 | ゲーム内でも「RGO」とアルファベット表記 |
+| Great Power | 列強 | 最上位の国力を持つ国家群 `[src: game_concepts_l_japanese.yml]` |
+| Great Power Score | 列強スコア | 列強判定に使う国力スコア。「大国スコア」は誤訳（`game_concept_great_power_score_short` = 「列強スコア」）`[src: game_concepts_l_japanese.yml:1893]` |
 
 ## 階級（Estate）
 

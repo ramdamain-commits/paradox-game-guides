@@ -149,7 +149,7 @@ HRE 小国として生き残るには:
 
 > **1.2 更新**:
 > - Imperial Diet 投票システム導入（Diet 発展段階別に投票権の重みが異なる） `[src: Patch_1.2 wiki + script verified]`
-> - 皇帝 GP Score 貢献 250→50 に削減 `[src: Patch_1.2 wiki + script verified]`
+> - 皇帝の列強スコア（Great Power Score、以下 GP Score）貢献 250→50 に削減 `[src: Patch_1.2 wiki + script verified]`
 > - Free Cities 自動参戦廃止（INDEPENDENT Free City のみ皇帝防衛に参加） `[src: Patch_1.2 wiki + script verified]`
 > - Imperial Armories 新建造物（建造コスト gold=500、local_manpower +0.0025、皇帝交代時に移転） `[src: hre_buildings.txt:1-90, 01_buildings.txt:21 + script verified]`
 > - 1400 年以降に golden_bull_policy 未採択なら HRE 離脱可能 `[src: hre.txt:275-277 + script verified]`

@@ -17,7 +17,7 @@
 | 変更 | 内容 | src |
 |------|------|-----|
 | Imperial Diet 投票システム刷新 | Diet 発展段階（Court Assembly → Early Diet → Bicamerial → Tricamerial）の存在は `hre.txt` で確認済み。段階ごとの具体的な投票権重（皇帝基本値150・選帝侯基本値75・自由都市の段階別変動等）は動的スコア `country_combined_special_status_power`（ハードコード関数）が算出しスクリプト上に定数として存在しない（旧記載「script verified」は誤り）。Tricamerial 段階で自由都市の相対的発言力が上昇し選帝侯の発言力が相対低下する傾向はある | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |
-| 皇帝の Great Power Score 貢献 250 → 50 に削減 | ブランデンブルクが皇帝奪取を狙う場合の旨味が低下 | `[src: Patch_1.2 wiki + script verified]` |
+| 皇帝の列強スコア（Great Power Score）貢献 250 → 50 に削減 | ブランデンブルクが皇帝奪取を狙う場合の旨味が低下 | `[src: Patch_1.2 wiki + script verified]` |
 | Imperial Armories（帝国兵器庫）新建造物 | 皇帝が HRE 構成員領土内に建造（建造コスト gold=500、皇帝のみ建設可・law:military_contribution 必須）。ブランデンブルクが皇帝でない期間は、領土内に建造される（外国所有）形になり、所有国に manpower_to_building_owner=+0.005 のマンパワーが入る | `[src: Patch_1.2 wiki + script verified]`（hre_buildings.txt 行 1-90） |
 | Free Cities 自動参戦廃止 | INDEPENDENT Free City のみ皇帝が防衛する形に変更（非独立の自由都市への自動参戦は廃止）。HRE 内自由都市への攻撃的拡張の障壁が低下 | `[src: Patch_1.2 wiki + script verified]`（hre.txt） |
 | 王朝力（Dynastic Power）上限 200 → 300 | ホーエンツォレルン家の婚姻外交範囲が拡大 | `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプトに明示的な cap 値（200, 300）は未発見。dynastic_power は計算値として運用される模様） |
@@ -52,7 +52,7 @@
 ### ブランデンブルクプレイヤーが特に注意すべき変更
 
 - **Free Cities 自動参戦廃止（メリット）**: INDEPENDENT Free City のみ皇帝が防衛する形に変更され、ベルリン周辺の自由都市攻略のハードルが下がった `[src: Patch_1.2 wiki + script verified]`（hre.txt）
-- **皇帝 Great Power Score 250 → 50（デメリット）**: ブランデンブルクが皇帝奪取を狙う場合の実利（大国スコア）が大幅に低下した `[src: Patch_1.2 wiki + script verified]`
+- **皇帝 Great Power Score 250 → 50（デメリット）**: ブランデンブルクが皇帝奪取を狙う場合の実利（列強スコア）が大幅に低下した `[src: Patch_1.2 wiki + script verified]`
 - **王朝力上限 300（メリット）**: ホーエンツォレルン婚姻外交の戦略的射程が拡大 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプトに明示的な cap 値は未発見）
 - **1400 年以降 Golden Bull 未採択なら離脱可能（メリット）**: HRE 離脱→独立帝国化ルートが現実的な選択肢になった（条件: `current_year > 1400` かつ `golden_bull_policy` 未採択） `[src: Patch_1.2 wiki + script verified]`（hre.txt 行 275-277）
 - **要塞守備 Heavy Infantry 限定（要対応）**: 国境要塞守備兵の編成を見直す必要がある。Light Infantry 配置は守備扱いにならない `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）
@@ -442,7 +442,7 @@ Patch 1.1 で追加された固有ユニット。絶対主義時代にはさら�
 
 ### 召集軍（Levy）の扱い
 
-| 項目 | 召集軍 | 正規（Regulars） |
+| 項目 | 召集軍 | 正規軍（Regulars） |
 |------|--------|------------------|
 | コスト | 無料 | 高い |
 | 補充 | 戦闘中は増援しない | 人的資源から補充 |

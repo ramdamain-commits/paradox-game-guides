@@ -672,7 +672,7 @@ DLC Fate of the Phoenix（Patch 1.2 同時リリース）はビザンツ帝国�
 |--------|------|---------|------|
 | 召集軍 | Levy | システム | 一時的な徴兵 |
 | 支配度 | Control | システム | 州支配度（占領度） |
-| 大国指標 | Dominance | システム | 1.x で大国判定に使用 |
+| 列強スコア | Great Power Score | システム | 列強（Great Power）判定に使う国力スコア。「Dominance」「大国指標」は誤り（該当システムはゲーム内に存在しない）`[src: game_concepts_l_japanese.yml]` |
 | 進歩 | Advance | システム | 国家技術ツリー |
 | 階級 | Estate | システム | 社会階層 |
 | 統合軍備 | Combined Arms | システム | 多兵科混成ボーナス |

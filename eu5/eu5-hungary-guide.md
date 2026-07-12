@@ -29,7 +29,7 @@
 | 変更 | 内容 |
 |------|------|
 | Imperial Diet 投票システム | 帝国議会の投票メカニクス新規追加。4 段階（Court Assembly / Early Diet / Bicamerial / Tricamerial）`[src: parliament_types/01_international_organization.txt + script verified]` |
-| 皇帝 GP Score 貢献 250→50 | 帝国皇帝の Great Power Score 寄与が大幅減少（コミュニティ知見：`hre.txt` に `great_power_score_exempt_from_forfeit` 等の該当識別子は非実在。250/50 とも Patch_1.2 wiki 由来でスクリプト未確認。旧記載の「新値のみscript verified」は誤り） `[src: Patch_1.2 wiki]` |
+| 皇帝の列強スコア（Great Power Score、以下 GP Score）貢献 250→50 | 帝国皇帝の GP Score 寄与が大幅減少（コミュニティ知見：`hre.txt` に `great_power_score_exempt_from_forfeit` 等の該当識別子は非実在。250/50 とも Patch_1.2 wiki 由来でスクリプト未確認。旧記載の「新値のみscript verified」は誤り） `[src: Patch_1.2 wiki]` |
 | Free Cities 自動参戦廃止 | INDEPENDENT Free City のみが皇帝防衛義務を持ち、自動参戦しなくなった `[src: international_organizations/hre.txt + script verified]` |
 | Imperial Armories 新建造物 | 帝国兵器庫（gold=500）。自国所有で local_manpower +0.0025、外国所有で manpower_to_building_owner +0.005。設置条件: 皇帝のみ・HRE 加盟領内・law:military_contribution 必須 `[src: building_types/hre_buildings.txt + script verified]` |
 | 王朝力上限 200→300 | Dynastic Power の蓄積上限が拡大 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認） |

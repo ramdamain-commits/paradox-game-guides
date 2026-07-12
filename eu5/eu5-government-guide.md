@@ -96,7 +96,7 @@
 
 > HRE 運営の詳細は [オーストリアガイド](eu5-austria-guide.md) を参照。
 
-> **1.2 更新**: 君主制特有の HRE 関連変更が大量。皇帝（君主制限定）の Great Power Score 貢献 250→50 `[src: Patch_1.2 wiki]`（コミュニティ知見：`hre.txt` に該当識別子なし・スクリプト未確認）、王朝力上限 200→300、Imperial Diet 投票システム、Free Cities 自動参戦廃止、Imperial Armories 新建造物 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）。Claim Throne CB は請求者が既統治の場合不発 `[src: Patch_1.2 wiki + script verified]`（PU 継承戦略に影響）
+> **1.2 更新**: 君主制特有の HRE 関連変更が大量。皇帝（君主制限定）の列強スコア（Great Power Score）貢献 250→50 `[src: Patch_1.2 wiki]`（コミュニティ知見：`hre.txt` に該当識別子なし・スクリプト未確認）、王朝力上限 200→300、Imperial Diet 投票システム、Free Cities 自動参戦廃止、Imperial Armories 新建造物 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）。Claim Throne CB は請求者が既統治の場合不発 `[src: Patch_1.2 wiki + script verified]`（PU 継承戦略に影響）
 
 ### 1.2 君主制への影響
 

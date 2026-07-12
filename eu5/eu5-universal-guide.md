@@ -14,7 +14,7 @@
 
 | 変更 | 内容 |
 |------|------|
-| HRE 大幅オーバーホール | Imperial Diet（帝国議会）投票システム導入・4段階（Court Assembly → Early Diet → Bicamerial → Tricamerial）`[src: Patch_1.2 wiki + script verified]`、皇帝選挙重み付け変更（皇帝の Great Power Score 貢献 250→50）`[src: Patch_1.2 wiki + script verified]`、Imperial Armories（帝国兵器庫）建造物追加、王朝力上限 200→300 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）。投票権重数値（500/250/200 等）はコミュニティ知見 |
+| HRE 大幅オーバーホール | Imperial Diet（帝国議会）投票システム導入・4段階（Court Assembly → Early Diet → Bicamerial → Tricamerial）`[src: Patch_1.2 wiki + script verified]`、皇帝選挙重み付け変更（皇帝の列強スコア〈Great Power Score〉貢献 250→50）`[src: Patch_1.2 wiki + script verified]`、Imperial Armories（帝国兵器庫）建造物追加、王朝力上限 200→300 `[src: Patch_1.2 wiki]`（コミュニティ知見：スクリプト未確認）。投票権重数値（500/250/200 等）はコミュニティ知見 |
 | Papal Authority（教皇権威）新システム（0–100 範囲） | 0–100 のリソースとして導入 `[src: Patch_1.2 wiki + script verified]`。列聖コスト 150→75、外交破門コスト 100→50 `[src: Patch_1.2 wiki + script verified]`。75 以上（high_papal_authority）で全カトリック国に monthly_devotion +0.05・monthly_legitimacy +0.02・tolerance_heretic +1.0、25 未満（low_papal_authority）で monthly_devotion -0.1・monthly_legitimacy -0.03 `[src: religion.txt 行 776-791 + script verified]` |
 | 兵科の Heavy/Light 分類（**破壊的変更**） | 歩兵・騎兵がそれぞれ重装（Heavy）/軽装（Light）に分類。**要塞駐屯は Heavy Infantry のみ** `[src: Patch_1.2 wiki + script verified]`。Light Infantry はイニシアティブ +6.00 でフランキング 100%、Heavy Cavalry は標準モラル耐性（Light Cavalry は被モラルダメ +10%）等、独立した特性差あり `[src: Patch_1.2 wiki + script verified]` |
 | 兵站大幅厳格化 | ロジスティクス距離 50→30 `[src: auto_modifiers/country.txt 行 90 + script verified]`、軍の食料消費 10倍 `[src: unit_categories + script verified]`、将軍補正半減・傭兵コスト +25%（コミュニティ知見） |
