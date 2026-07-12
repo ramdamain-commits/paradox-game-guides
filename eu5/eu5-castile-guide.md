@@ -209,12 +209,12 @@
 | 「ほかの方法を模索する」 | 両方断る。非推奨（統合チャンスを逃す） |
 
 **婚姻連鎖の流れ:**
-1. `flavor_cas.2200`: 提案先を選択（ARA or POR）
-2. `flavor_cas.2201`: 相手国が受諾/拒否を判断
-3. `flavor_cas.2202`: 受諾 → 婚姻成立。**未選択の国（例: POR）が CAS を標的とした PU CB を取得**（`flavor_cas.2204`）
+1. `flavor_cas.2200`: 提案先を選択（a: ARA / b: POR / c: ほかの方法を模索）。c は正統性小ペナルティ `[src: flavor_CAS.txt:11435]`
+2. `flavor_cas.2201`: 相手国が受諾/拒否を判断。拒否時は双方に opinion ペナルティ `[src: flavor_CAS.txt:11533]`
+3. `flavor_cas.2202`: 受諾 → 婚姻成立。20日後に**未選択の国**（例: ARA を選んだ場合の POR）へ `flavor_cas.2204` が発火 `[src: flavor_CAS.txt:11596]`
 4. `flavor_cas.2203`: 拒否 → 別の解決策を検討
 
-**注意:** 未選択の国（例: ARA を選んだ場合の POR）が CAS に対して同君連合 CB を得る（`flavor_cas.2204`〜`2205`）。防衛の準備をしておくこと。
+**注意（誤記訂正）:** 未選択の国が CAS に対して取得するのは **王位請求 CB（`casus_belli:cb_claim_throne`）であって同君連合（PU）CB ではない** `[src: flavor_CAS.txt:11674, 11717]`。さらに `flavor_cas.2204` の選択肢 b「引き下がろう」を相手 AI が選べば CB 取得自体を見送る場合もある（威信小ペナルティ）`[src: flavor_CAS.txt:11674]`。いずれにせよ防衛の準備をしておくこと。連鎖の全段は[固有イベント時系列](#固有イベント時系列)の「王朝・外交系: イベリアの結婚連鎖」を参照。
 
 > **ℹ Taula de Canvi（バルセロナ両替所）はアラゴン固有**: 1.3 で追加された公営銀行 Taula de Canvi は**アラゴン（ARA）のフレーバー**であり `[src: events/DHE/flavor_ARA.txt:flavor_ara.220]`、カスティーリャ本体のメカニクスではない。アラゴン合同後の選択肢として関係しうるため、詳細は [eu5-regional-guide.md](eu5-regional-guide.md) の「西欧」章を参照。本ガイドのカスティーリャ財政章には統合しない（誤帰属回避）。
 
@@ -227,7 +227,7 @@
 
 ### 異端審問所の分岐
 
-1450〜1485年に「トルケマダとスペイン語の異端審問」（`flavor_cas.1000`）が発火。ゲーム最大の宗教分岐。
+1450〜1485年に「トルケマダとスペイン語の異端審問」（`flavor_cas.1000`）が発火。ゲーム最大の宗教分岐。審問の実装（`inquisition_law` 政策セット・トルケマダ個人キャラ・Papal Authority 運用）は[異端審問所運営](#異端審問所運営)を参照。
 
 | ルート | 選択 | 連鎖イベント | 長期影響 |
 |--------|------|-------------|---------|
@@ -266,10 +266,10 @@
 |------|-----|------|
 | 前兆 | `flavor_cas.1800` | 弾圧 → 反乱軍増強 / 支持 → 貴族大ペナルティ |
 | 勃発 | `flavor_cas.1801` | 反乱50%以上で発火。鎮圧か支持の二択 |
-| 鎮圧 | `flavor_cas.1802` | カスティーリャ法廷強化ポリシー + 中央集権化 |
-| 妥協 | `flavor_cas.1803` | コムネロス議会ポリシー + 地方分権化 |
+| 鎮圧 | `flavor_cas.1802` | カスティーリャ法廷強化ポリシー + 貴族制寄り（`aristocracy_vs_plutocracy` 軸で貴族権力を強化） |
+| 妥協 | `flavor_cas.1803` | コムネロス議会ポリシー + 金権制寄り（市民・商人寄りへ移動） |
 
-（コミュニティ知見）鎮圧ルートが中央集権化の観点で有利。ただし反乱軍の鎮圧に軍を割かれるため、他国との戦争中に発火しないよう庶民階級の満足度管理に注意。
+（コミュニティ知見）鎮圧ルートは貴族制寄り（`aristocracy_vs_plutocracy` 軸で貴族権力強化）に振れる。ただし反乱軍の鎮圧に軍を割かれるため、他国との戦争中に発火しないよう庶民階級の満足度管理に注意。
 
 ### 植民地帝国の建設
 
@@ -403,12 +403,14 @@ Patch 1.2 で Heavy Infantry（重装歩兵）と Light Infantry（軽装歩兵�
 
 ### 著名軍人イベント
 
-| 人物 | ID | 発生期間 | 兵種 | 備考 |
-|------|-----|---------|------|------|
-| ゴンサロ・フェルナンデス | `flavor_cas.34` | 1495〜1510 | 将軍 | 「大将軍」。陸軍伝統大ボーナス |
-| アルバロ・デ・バサン | `flavor_cas.82` | 1560〜1570 | 提督（mil100） | **最強提督**。無敗の海軍指揮官 |
-| ブラス・デ・レソ | `flavor_cas.71` | 1735〜1741 | 提督（mil90） | 終盤の海軍再建に |
-| セゴビアの砲兵アカデミー | `flavor_cas.63` | 1764〜1800 | 砲兵施設 | 陸軍伝統大ボーナス + 建物建設 |
+表ヘッダは austria ガイドの「軍事・征服系」と統一。ステータスは `create_character` の定義値。
+
+| ID | 人物 | 発火条件 | おすすめ選択肢 | 効果 |
+|----|------|---------|--------------|------|
+| flavor_cas.34 | ゴンサロ・フェルナンデス・デ・コルドバ（「大将軍」） | 1495〜1510、コルドバ領有 | a: 編入（歴史的） | ステータス adm70-80/dip70-80/mil85-95・貴族階級。a: 陸軍伝統小ボーナス + 将軍系ランダム特性 + 内閣拒否 modifier。b: 陸軍伝統小ペナルティ + 好戦寄り + キャラ死亡 `[src: flavor_CAS.txt:2033]` |
+| flavor_cas.82 | アルバロ・デ・バサン（「無敗の提督」） | 1560〜1570、グラナダ領有 | a: 編入（歴史的） | ステータス adm50-85/dip50-85/**mil100**・貴族階級。a: 提督系ランダム特性 + 内閣拒否 modifier。b: 海軍伝統大ボーナス + 陸海バランス海軍寄りだが両軍事コマンド不適正付与（事実上飼い殺し） `[src: flavor_CAS.txt:5141]` |
+| flavor_cas.71 | ブラス・デ・レソ・イ・オラバリエタ | 1735〜1741、サン・セバスティアン領有 | a: 編入（歴史的） | ステータス adm45/dip30/mil90・バスク文化・市民階級。a: 提督系ランダム特性 + 内閣拒否 modifier。b: 両軍事コマンド不適正付与だが内閣拒否解除（文官運用可） `[src: flavor_CAS.txt:4332]` |
+| flavor_cas.63 | セゴビア砲兵アカデミー（施設イベント） | 1764〜1800、セゴビア領有 + `artillery_institution_advance` 保有・体得済み | a: 設立（歴史的） | a: 陸軍伝統大ボーナス + `segovia_artillery_academy` 建設 + 伝統主義寄り。b: 陸軍伝統大ペナルティ + 革新主義寄り（**二択構造。b は逆にペナルティ**） `[src: flavor_CAS.txt:3829]` |
 
 ---
 
@@ -511,56 +513,152 @@ Patch 1.2 で Heavy Infantry（重装歩兵）と Light Infantry（軽装歩兵�
 
 ---
 
+## 異端審問所運営
+
+> EU5 には CK3 的な「宮廷役職（court position）」システムは存在しない（`common/court_positions/` ディレクトリはスクリプト上に存在しない＝確認済み）。カスティーリャの異端審問は **① `inquisition_law` 政策セット（法律）** と **② トルケマダ個人キャラ** の二層構造で実装されている。「異端審問官という役職」ではない点に注意。
+
+### 二層構造
+
+1. **政策（法律）**: `inquisition_law` グループの排他選択肢。カスティーリャは `flavor_cas.1000` の a（トルケマダ支援）を選ぶと固有の `spa_inquisition_policy`（訳語未確認: スペイン異端審問）がアンロックされる `[src: common/laws/00_religious.txt:174-198]`
+2. **人物キャラ**: `flavor_cas.1000` で `create_character` されるトルケマダ（adm66/dip47/mil84、軍事コマンド不適正の聖職者キャラ）。`create_in_limbo` → `move_country` で自国キャラプールに編入されるが、特定の役職には自動就任しない `[src: flavor_CAS.txt:8801-8816]`
+
+### inquisition_law 政策セット
+
+`inquisition_law` は法律カテゴリの排他選択肢（同時に採用できるのは1つ）。カトリック国共通の4種 + カスティーリャ固有1種。効果値は最大レベル時の値 `[src: common/laws/00_religious.txt:77-198]`。
+
+| 政策（英名） | ID | 適用条件 | 主な効果 |
+|-------------|-----|---------|---------|
+| 教皇の統制（Papal Control） | `papal_control` | カトリック共通 | 非 PAP 国は pop 改宗速度 +10%、ルター派/カルヴァン派反乱抵抗 各 +15% `[src: 00_religious.txt:87]` |
+| 地方裁判所（Local Courts） | `local_courts` | カトリック共通 | 改宗速度 +20%、異端寛容 -1、異教徒寛容 -1、反乱抵抗 各 +15% `[src: 00_religious.txt:106]` |
+| 国家異端審問官（State Inquisitors） | `state_inquisitors` | ヴェネツィア文化 or イベリア文化グループ限定 | イベリア文化: 内閣効率 +5%、改宗速度 +5%、月間反乱成長 -0.05%、反乱抵抗 各 +15%。ヴェネツィア文化: 月間支配度 +0.001・防諜 +33%（カスティーリャはイベリア文化のため前者を適用）`[src: 00_religious.txt:120]` |
+| 三国評議会（訳語未確認） | `council_of_three_lands_policy` | `council_of_three_lands_advance` 保有（ユダヤ教徒人口要求） | 文化容量 +1、異教徒寛容 +1 `[src: 00_religious.txt:147]` |
+| スペイン異端審問（訳語未確認） | `spa_inquisition_policy` | CAS/SPA 現・旧保有 or カスティーリャ文化、かつ `flavor_cas.1000` の a でアンロック済み | pop 改宗速度 +20%、防諜 +20%、異教徒寛容 -2、異端寛容 -2、反乱抵抗 各 +15%、聖職者階級選好 `[src: 00_religious.txt:174]` |
+
+**運用上の注意:**
+- `spa_inquisition_policy` は `flavor_cas.1000` の a（トルケマダ支援）を選ばないとアンロック条件（`has_unlocked_policy_trigger`）を満たさない `[src: 00_religious.txt:196]`
+- 政策切替のロック期間は 2 年（`years=2`）。頻繁な切替は不可 `[src: 00_religious.txt:196]`
+- 既存ガイドの「審問所ルート vs 寛容ルート」の二分は、実質「`spa_inquisition_policy` を採用するか、一般カトリック系政策に留めるか」という法律選択であり、`flavor_cas.1000` の a/b と法律アンロックが連動している
+
+### Papal Authority（教皇権威）の運用
+
+Papal Authority は 0-100 のリソース。初期値 60、範囲 min=0 / max=100 `[src: common/international_organizations/catholic_church.txt:39-41]`。毎月 `on_papal_authority_updated`（`tag = PAP` の教皇庁でのみ実行）が閾値をチェックし、効果は `religion:catholic` 全体に一律付与される（= カスティーリャを含む全カトリック国が対象）`[src: common/on_action/country_monthly.txt:108-150]`。
+
+**閾値効果:**
+
+| 閾値 | modifier | 効果 |
+|------|----------|------|
+| ≥75 | `high_papal_authority` | 全カトリック国に monthly_devotion +0.05、monthly_legitimacy +0.02、tolerance_heretic +1.0 `[src: religion.txt:776-791]` |
+| <25 | `low_papal_authority` | 全カトリック国に monthly_devotion -0.1、monthly_legitimacy -0.03 `[src: religion.txt:776-791]` |
+
+**月次増減の主な要因** `[src: catholic_church.txt:36-162]`:
+
+| 要因 | 変化 |
+|------|------|
+| 教皇庁の改革欲求（reform_desire） | -reform_desire × 0.2 |
+| 教会内部の平和（内紛なし） | +0.03 |
+| Ultramontanism 教義ポリシー | +0.02 |
+| Gallicanism 教義ポリシー | -0.01 |
+| Conciliarism 教義ポリシー | -0.025 |
+| Invisible Church 教義ポリシー | -0.05 |
+| 教皇庁がローマ領有 | +0.02 |
+| 枢機卿数（全カトリック合計） | +0.002 × 枢機卿数 |
+| 破門されたまま在位中の統治者 | -0.02 × 人数 |
+| 教皇勅書を無視できる国（can_ignore_papal_bulls） | -0.01 × 国数 |
+| 教皇空位（interregnum） | -0.5 |
+
+カスティーリャはカトリック超大国として、枢機卿を多く抱え自国統治者の破門を避けることで Papal Authority を 75 以上に維持し、全カトリック国ボーナス（devotion/legitimacy）を享受しやすい立場にある（コミュニティ知見）。
+
+---
+
 ## 固有イベント時系列
 
-出典: `flavor_cas_l_japanese.yml`, `flavor_cas_por_l_japanese.yml`, `flavor_cas_rio_salado_l_japanese.yml`
+出典: `events/DHE/flavor_CAS.txt`, `events/DHE/flavor_cas_por.txt`, `events/DHE/flavor_cas_rio_salado.txt`（日本語名は `flavor_cas_l_japanese.yml` ほかで確認）。表ヘッダは austria ガイドと統一。行番号は 1.3.10 時点。
 
-### 序盤（1337〜1400）
+### 序盤: 法制・経済（1337〜1400）
 
-| イベント | ID | 発生期間/条件 | 推奨選択 |
-|----------|----|--------------|----------|
-| モロッコの脅威 | `flavor_cas_rio_salado.1` | 1337〜1350、MOR が Algeciras 所有 | 「戦争の準備を」→ CB + POR 同盟連鎖 |
-| イベリアからモロッコを撃退 | `flavor_cas_rio_salado.5` | Algeciras 占領後 | 自動。宗教的影響力 + 金 +3 |
-| カスティーリャ旧法典 | `flavor_cas.23` | 1337〜1400、貴族権力50%超 | 中央集権重視なら革新主義側 |
-| アルカラ法令 | `flavor_cas.24` | 1337〜1400 | 中央集権ポリシー推奨 |
-| メスタ会議の影響力 | `flavor_cas.1200` | 1337〜1365 | メスタ確認 → 経済連鎖開始 |
-| レジミエント | `flavor_cas.65` | 1340〜1350 | 旧特権廃止 + 新制度導入 |
-| ベヘトリアの一覧書 | `flavor_cas.25` | 1350〜1400 | 庶民寄りが長期的に安定 |
-| 王室大法官裁判所の創設 | `flavor_cas.137` | 1370〜1400 | 政府権力 + 安定度ボーナス |
+| ID | イベント名 | 発火条件 | おすすめ選択肢 | 効果 |
+|----|-----------|---------|--------------|------|
+| flavor_cas_rio_salado.1 | モロッコの脅威 | 1337〜1350、MOR が Algeciras 所有 | a: 「戦争の準備を」 | モロッコに CB 取得 + POR へ同盟要請の連鎖 |
+| flavor_cas_rio_salado.5 | イベリアからモロッコを撃退 | Algeciras 占領後 | 自動 | 宗教的影響力 + 金 +3 |
+| flavor_cas_rio_salado.7 | 記念すべき勝利（トルデシリャス修道院） | 1337〜1360、バリャドリッド領有・リオ・サラド勝利（`won_battle_of_rio_salado`） | a: 記念碑を制作（推奨） | 金 -1 でバリャドリッドのサンタ・クララ王立修道院に記念碑（美術品）を制作。修道院未保有なら建設。b は威信小ペナルティ `[src: flavor_cas_rio_salado.txt:345]` |
+| flavor_cas.23 | カスティーリャ旧法典 | 1337〜1400、貴族権力50%超 | 中央集権を目指すなら革新主義側 | 法制度改革の分岐 |
+| flavor_cas.24 | アルカラ法令 | 1337〜1400 | 中央集権ポリシー推奨 | 中央集権化 |
+| flavor_cas.1200 | メスタ会議の影響力 | 1337〜1365 | メスタ確認 → 経済連鎖開始 | イベリア全毛産出地にメリノ羊毛修正 |
+| flavor_cas.65 | レジミエント | 1340〜1350 | 旧特権廃止 + 新制度導入 | 制度近代化 |
+| flavor_cas.25 | ベヘトリアの一覧書 | 1350〜1400 | 庶民寄りが長期的に安定 | 庶民 vs 貴族のバランス調整 |
+| flavor_cas.137 | 王室大法官裁判所の創設 | 1370〜1400 | 制度化 | 政府権力 + 安定度 + 繁栄ボーナス |
 
-### 中盤（1400〜1550）
+### 王朝・外交系: イベリアの結婚連鎖
 
-| イベント | ID | 発生期間/条件 | 推奨選択 |
-|----------|----|--------------|----------|
-| トルケマダとスペイン語の異端審問 | `flavor_cas.1000` | 1450〜1485、Catholic | [異端審問所の分岐](#異端審問所の分岐)を参照 |
-| イベリアの結婚 | `flavor_cas.2200` | 1450〜1500、女性後継者 | ARA 推奨（[詳細](#イベリアの結婚最重要イベント連鎖)を参照） |
-| カトリック王の称号 | `flavor_cas.22` | 1480〜1550、PAP と良好 | 称号受け入れ推奨 |
-| コロンブス | `flavor_cas.1` | Quest for New World 保有、Catholic | 金 -2 でコロンブス獲得 |
-| コンプルテンセ大学の創設 | `flavor_cas.33` | 1490〜1510 | 繁栄 + 発展ボーナス |
-| スペイン・ドル制定 | `flavor_cas.66` | 1450〜1550 | 10年間の経済修正 |
-| ブルゴス法 | `flavor_cas.1300` | 1500〜1540 | エンコミエンダ制導入 |
-| カスティーリャ王立評議会 | `flavor_cas.101` | 1500〜1600 | 中央集権化推奨 |
-| コルテスの野心 | `flavor_cas.36` | 1519〜1530 | テノチティトラン CB 獲得 |
-| マドリード遷都 | `flavor_cas.3` | 1520〜1580 | マドリード首都化推奨 |
-| ピサロの遠征 | `flavor_cas.35` | 1525〜1530 | チュクイト CB 獲得 |
-| マゼラン遠征 | `flavor_cas.28` | マゼラン CB 保有時 | 金 -250。大コストだが太平洋航路開拓 |
-| インディアス新法 | `flavor_cas.1301` | 1530〜1550 | エンコミエンダ廃止 + 新法 |
-| バリャドリッドの議論 | `flavor_cas.1302` | 1540〜1565 | ラス・カサス側推奨（長期安定） |
+> 詳細な戦略判断は[イベリアの結婚（最重要イベント連鎖）](#イベリアの結婚最重要イベント連鎖)を参照。
 
-### 中盤〜終盤（1550〜）
+| ID | イベント名 | 発火条件 | おすすめ選択肢 | 効果 |
+|----|-----------|---------|--------------|------|
+| flavor_cas.2200 | イベリアの結婚 | 1450〜1500、当主が女性でなく ARA 当主でもない、後継者が女性かつ結婚可能、ARA/POR 王朝に未婚男性候補あり | a: ARA へ提案（推奨） | a/b: 20日後に相手国側で `2201` 発火。c「ほかの方法を模索」は正統性小ペナルティ `[src: flavor_CAS.txt:11435]` |
+| flavor_cas.2201 | 婚姻要請（相手国視点） | `2200` の a/b から自動 | — | a承諾: 婚姻成立 → 20日後 `2202`。b拒否: 20日後 `2203` + 双方に opinion ペナルティ `[src: flavor_CAS.txt:11533]` |
+| flavor_cas.2202 | 婚姻成立通知 | `2201` 承諾から自動 | — | 20日後に未選択国（ARA 選択時は POR、逆も同様）へ `2204` を発火 `[src: flavor_CAS.txt:11596]` |
+| flavor_cas.2203 | 婚姻拒否通知 | `2201` 拒否から自動 | — | opinion ペナルティは `2201` 側で適用済み（tooltip 表示のみ） |
+| flavor_cas.2204 | 未選択国の王位請求 | `2202` から自動（未選択国側で発火） | — | a: CAS への**王位請求 CB（`casus_belli:cb_claim_throne`、PU CB ではない）**を取得。b: 見送り（威信小ペナルティ） `[src: flavor_CAS.txt:11674, 11717]` |
+| flavor_cas.2205 | CB 取得通知（CAS側） | `2204` の a から自動 | — | 付与済み CB を CAS 側に開示（tooltip のみ） |
+| flavor_cas.22 | カトリック王の称号 | 1480〜1550、Catholic・PAP と良好 | a: 称号を受け入れる | 正統性大ボーナス + スペイン王変数。拒否は正統性大ペナルティ |
+| flavor_cas.85 | イベリア連合 | イベリア全域が Christian or 自国属国 | a: 伝統尊重 / b: 中央集権 | SPA 形成。a は正統性大 + 中央集権化、b は威信大 + 地方分権化 |
 
-| イベント | ID | 発生期間/条件 | 推奨選択 |
-|----------|----|--------------|----------|
-| コムネロスの組織 | `flavor_cas.1800` | 1500〜1600、議会未開催 | 鎮圧ルート → 法廷強化（[詳細](#コムネロスの乱)を参照） |
-| イベリア連合 | `flavor_cas.85` | イベリア全域 Christian | 正統性 or 威信。どちらも強力 |
-| 通商院 | `flavor_cas.1500` | 新世界発見後 | 貿易拠点の政府改革を採択 |
-| 太陽の沈まぬ国 | `flavor_cas.1502` | 4大陸制覇 | 威信・正統性・安定度極大ボーナス |
-| オラン遠征 | `flavor_cas.1600` | Granada・Andalusia 完全支配 | CB 獲得。北アフリカ進出 |
-| イタリアでの衝突 | `flavor_cas.1400` | イタリア戦争状況 | イタリア征服 CB チェーン |
-| ヌエバ・プランタ法令 | `flavor_cas.102` | 1700〜1836 | アラゴン・カタルーニャ改革。安定度リスクあり |
-| ブルボン改革 | `flavor_cas.2600` | 1700+、centralization 低 | 政府権力大ボーナス。植民地独立への布石に注意 |
-| エンセナーダの土地台帳 | `flavor_cas.131` | 1750〜1790 | 租税改革修正10年 |
-| インド諸島の記録保管所 | `flavor_cas.1503` | 1765〜1837 | 通商院改革撤廃 + 文書館建設 |
+### 宗教・異端審問系: トルケマダ連鎖
+
+> 政策・Papal Authority の運用は[異端審問所運営](#異端審問所運営)、戦略判断は[異端審問所の分岐](#異端審問所の分岐)を参照。
+
+| ID | イベント名 | 発火条件 | おすすめ選択肢 | 効果 |
+|----|-----------|---------|--------------|------|
+| flavor_cas.1000 | トマス・デ・トルケマダの登場 | 1450〜1485、君主制・Catholic・`inquisition_advance` 保有 | a: 支援（審問所ルート） | a: トルケマダ（adm66/dip47/mil84、軍事コマンド不適正の聖職者キャラ）を編入 + `spa_inquisition_policy` アンロック・採用 + 聖職者満足度小ボーナス。b: 伝統主義寄り + 聖職者満足度極大ペナルティ + トルケマダ追放 `[src: flavor_CAS.txt:8786]` |
+| flavor_cas.1001 | アルハンブラ勅令 | 1440〜1520、`spa_holy_inquisition` 保有・グラナダ/アンダルシア完全領有 | a: 勅令発布（史実） | a: ユダヤ教徒 pop の10%をカトリック改宗 + 残りをマグリブ等へ移民（セファルディ文化観 -1）。b: 聖職者満足度大ペナルティ + 安定度大ペナルティ `[src: flavor_CAS.txt:8856]` |
+| flavor_cas.1002 | モリスコ改宗 | 1440〜1540、同上条件 | a: 改宗令（史実） | a: スンニ pop の**75%**をカトリック改宗 + 残り移民。2〜10年後に `1003` を silent トリガー（発火自体は確定）。b: 伝統主義寄り + 聖職者・安定度大ペナルティ `[src: flavor_CAS.txt:9088]` |
+| flavor_cas.1003 | 第一次アルプハラの反乱 | `1002` の a から silent（years={2 10} の範囲で発火） | — | `alpujarras_rebels`（category=nationalist、andalusi 文化起点）を生成 + 安定度極大ペナルティ `[src: flavor_CAS.txt:9250]` |
+| flavor_cas.1004 | アルプハラの戦い | 1550〜1640、`converted_moriscos` 保有・グラナダ/アンダルシア完全領有 | — | `alpujarras_rebels` 再生成/進捗 +0.5 + 安定度極大ペナルティ。10〜20年後に `1005` を silent トリガー `[src: flavor_CAS.txt:9306]` |
+| flavor_cas.1005 | モリスコ追放 | `1004` から silent | a: 追放（史実） / b: 審問所廃止 | a: andalusi 文化 pop をマグリブへ移民。b: `spa_holy_inquisition` 除去 + `spa_inquisition_policy` をロック（政策廃止）+ 聖職者満足度極大ペナルティ + 安定度最大ペナルティ `[src: flavor_CAS.txt:9390]` |
+| flavor_cas.1006 | 寛容路線の代替報酬 | 1485〜1505、`spa_holy_inquisition_declined`（`1000` の b で設定）保有 | a: 受け入れる | `spanish_tolerance` 統治改革をアンロック `[src: flavor_CAS.txt:9540]` |
+| flavor_cas.1007 | グラナダのアルプハラ戦争勝利（CAS 敗北シナリオ、GRA 視点） | 1550〜1640、GRA 視点・非戦争中・Catholic | — | GRA が宗教をスンニへ変更・統治者/王族も改宗・カトリック pop の90%をスンニ改宗（CAS がアルプハラ連鎖に敗れた場合の代替結末） `[src: flavor_CAS.txt:9584]` |
+
+### 反乱・内乱系: コムネロスの乱連鎖
+
+> 戦略判断は[コムネロスの乱](#コムネロスの乱)を参照。
+
+| ID | イベント名 | 発火条件 | おすすめ選択肢 | 効果 |
+|----|-----------|---------|--------------|------|
+| flavor_cas.1800 | コムネロスの組織 | 1500〜1600、君主制、かつ「議会未招集80ヶ月超」「議会案件支持50%未満」「`parliament_approved_extra_taxes` 保有」のいずれか | a: 弾圧（歴史的） | a: レオン・カスティーリャ・トレド地域の非農村 location で市民・農民を `comuneros_rebels`（category=estate、市民階級起点）へ寝返らせる + 貴族満足度小ボーナス + `comuneros_rebellion` modifier 10年。b: 支持 → 農民満足度小ボーナス + 貴族満足度急進ペナルティ `[src: flavor_CAS.txt:10892]` |
+| flavor_cas.1801 | コムネロスの要求 | 1500〜1600、`comuneros_rebels` の進捗 ≥ 0.5・`repress_the_rebels` 保有 | a: 鎮圧（歴史的） | a: 威信小ボーナス。b: 支持継続 → 威信大ペナルティ + 安定度大ペナルティ `[src: flavor_CAS.txt:10979]` |
+| flavor_cas.1802 | コムネロスの打破 | 1500〜1650、`crush_the_rebels` 保有・`comuneros_rebels` 消滅（鎮圧完了） | a: 採用（単一） | `dop_law_castilian_courts_reinforced` ポリシーをアンロック・採用 + 安定度小ボーナス + 社会価値「貴族制 vs 金権制」を貴族制寄りへ + `comuneros_rebellion` 解除 `[src: flavor_CAS.txt:11043]` |
+| flavor_cas.1803 | コムネロスとの妥協 | 1500〜1650、`support_the_rebels` 保有・`comuneros_rebels` 消滅 | a: 採用（単一） | `dop_law_comuneros_parliament` ポリシーをアンロック・採用 + 安定度小ボーナス + 社会価値を金権制寄りへ + `comuneros_rebellion` 解除 `[src: flavor_CAS.txt:11099]` |
+
+（訂正）既存の「鎮圧＝中央集権化／妥協＝地方分権化」表現は不正確。実際は `aristocracy_vs_plutocracy`（貴族制 vs 金権制）軸の移動であり、鎮圧は貴族制寄り（≒貴族権力強化）、妥協は金権制寄り（≒市民・商人寄り）に振れる `[src: flavor_CAS.txt:11043, 11099]`。
+
+### 植民地・新大陸系
+
+| ID | イベント名 | 発火条件 | おすすめ選択肢 | 効果 |
+|----|-----------|---------|--------------|------|
+| flavor_cas.1 | コロンブス | Quest for New World 保有、Catholic | a: 出資（金 -2） | コロンブスを探検家として獲得 |
+| flavor_cas.36 | コルテスの野心 | 1519〜1530 | a: 支援 | テノチティトラン CB 獲得 |
+| flavor_cas.35 | ピサロの遠征 | 1525〜1530 | a: 支援 | チュクイト CB 獲得 |
+| flavor_cas.28 | マゼラン遠征 | マゼラン CB 保有時 | 資金余裕があれば | 金 -250。太平洋航路開拓 |
+| flavor_cas.1500 | 通商院（Casa de Contratación） | 新世界発見後 | a: 採択 | 貿易拠点の政府改革 + 世界港発展（`1501`） |
+| flavor_cas.1502 | 太陽の沈まぬ国 | 欧州・アメリカ・アフリカ・アジア全大陸制覇 | — | 威信・正統性・安定度極大ボーナス |
+| flavor_cas.1600 | オラン遠征 | Granada・Andalusia 完全支配 | a: 出兵 | 北アフリカ進出 CB 獲得 |
+| flavor_cas.1300 | ブルゴス法 | 1500〜1540 | エンコミエンダ制導入 | 植民地統治ポリシー |
+| flavor_cas.1301 | インディアス新法 | 1530〜1550 | エンコミエンダ廃止 + 新法 | 植民地統治ポリシー |
+| flavor_cas.1302 | バリャドリッドの議論 | 1540〜1565 | ラス・カサス側推奨（長期安定） | 三択の統治方針分岐 |
+
+### 内政・改革系
+
+| ID | イベント名 | 発火条件 | おすすめ選択肢 | 効果 |
+|----|-----------|---------|--------------|------|
+| flavor_cas.33 | コンプルテンセ大学の創設 | 1490〜1510 | a: 創設 | アルカラの繁栄 + 発展ボーナス |
+| flavor_cas.66 | スペイン・ドル制定 | 1450〜1550 | a: 制定 | 10年間の経済修正 |
+| flavor_cas.3 | マドリード遷都 | 1520〜1580 | a: 遷都推奨 | 都市化ボーナス |
+| flavor_cas.101 | カスティーリャ王立評議会 | 1500〜1600 | a: 中央集権化推奨 | 中央集権化 + 貴族満足度ペナルティ |
+| flavor_cas.1400 | イタリアでの衝突 | イタリア戦争状況 | 状況次第 | イタリア征服 CB チェーン |
+| flavor_cas.102 | ヌエバ・プランタ法令 | 1700〜1836 | 状況次第 | アラゴン・カタルーニャ改革。安定度大ペナルティ |
+| flavor_cas.2600 | ブルボン改革 | 1700+、centralization 低 | 状況次第 | 政府権力大ボーナス。植民地独立への布石に注意 |
+| flavor_cas.131 | エンセナーダの土地台帳 | 1750〜1790 | a: 実施 | 租税改革修正10年 |
+| flavor_cas.1503 | インド諸島の記録保管所 | 1765〜1837 | a: 設立 | 通商院改革撤廃 + 文書館建設 |
 
 ---
 
@@ -681,6 +779,46 @@ Patch 1.2 で Heavy Infantry（重装歩兵）と Light Infantry（軽装歩兵�
 | 王室五分税 | `flavor_cas_por.1` | 産出地最大労働者 +1 |
 | 王立タバコ工場 | `flavor_cas.122` | セビリア発展大ボーナス + 20年修正 |
 
+#### 建造物優先順位（交易所 vs 植民地化）
+
+> **重要な訂正**: 「植民地を建てる建造物」は `building_types/` に存在しない。植民地化は Generic Action（国家アクション）`create_colonial_charter` で対象 location を選んで直接入植する `[src: common/generic_actions/colonial_charters.txt]`。
+
+**植民地化アクション（`create_colonial_charter`）**
+
+| 項目 | 値 | 出典 |
+|------|-----|------|
+| 発動条件 | 自国州1つ以上、反乱国でない、`modifier:can_colonize` 保有 | `[src: generic_actions/colonial_charters.txt:5-16]` |
+| 実行条件 | 総人口5以上 | `[src: generic_actions/colonial_charters.txt:19-22]` |
+| コスト | scaled_gold=2（規模連動、max_scale=250） | `[src: common/prices/00_hardcoded.txt:205-208]` |
+
+`modifier:can_colonize` の付与元 advance（`cas_new_world` か `open_sea_exploration` か）は未特定（コミュニティ知見：スクリプト未確認）。
+
+**交易所系建造物（貿易ネットワーク拡張）** `[src: common/building_types/foreign_buildings.txt, trade_buildings.txt]`
+
+| 建造物（英名） | ID | 前提 | merchant_capacity / power | 用途 |
+|---------------|-----|------|--------------------------|------|
+| 交易所（Trade Office） | `trade_office` | 市場の貿易範囲内・良好な関係必須 | +0.3 / +0.2（+ 海上プレゼンス +0.05） | 他国領内の外交系交易拠点 |
+| 海外交易所（Overseas Trading Post） | `overseas_trading_post` | 自国首都と別大陸の沿岸 location | +0.1 / +0.2 | 入植前でも建てられる簡易足場 |
+| 植民地行政庁（Colonial Administration、1.2追加） | `colonial_administration` | `colonial_nation` 属国の領地・自国が宗主国 | +0.2 / +0.2 | 属国化後に複数建設可。直轄地には不可 |
+| 副王領（Viceroyalty） | `viceroyalty` | `colonial_nation` 属国の首都限定 | +0.3 / +0.2（+ 地元王権力 +1、属国収入 +10%） | 植民統治の最上位。属国首都に1棟のみ |
+| 貿易会社本部（Trade Company Headquarters） | `trade_company_headquarters` | 貿易範囲内・自国領外・地域につき1棟 | +0.2 / —（+ 海上プレゼンス +0.02、収益20%還元） | 完成で当該 location を貿易会社属国として分離。植民地化と競合する代替ルート |
+
+**本国市場系建造物（比較用）** `[src: common/building_types/trade_buildings.txt]`
+
+| 建造物（英名） | merchant_capacity / power | 備考 |
+|---------------|--------------------------|------|
+| 市場（Marketplace） | +1 / +1 | 最下位グレード |
+| 商人街（Merchants Quarters） | +1.5 / +1.5 | Marketplace 上位互換 |
+| 大市場（Grand Marketplace） | +2.0 / +2.0 | |
+| 商業中心地（Commerce Center） | +4.0 / +4.0 | 最上位グレード |
+| 港湾庁（Port Authority） | +0.5 / —（貿易保護特化） | 沿岸限定 |
+
+**建造順の指針**（コミュニティ知見：建造物定義から見た自然な進行順であり、収益シミュレーション未実施）:
+
+1. 本国は市場系（Marketplace → 上位互換）を優先。merchant_capacity/power 効率が海外交易所の数倍高い
+2. 新大陸は `create_colonial_charter` で入植 → `overseas_trading_post` で安価に足場を作る
+3. 属国化（`colonial_nation` 化）が進んだ地域から `colonial_administration` → `viceroyalty` へ移行（いずれも属国限定・直轄地には建てられない）
+
 ---
 
 ## よくあるミス
@@ -743,6 +881,16 @@ Patch 1.2 で Heavy Infantry（重装歩兵）と Light Infantry（軽装歩兵�
 | バルセロナ両替所 | Taula de Canvi | アラゴン（ARA）固有の公営銀行。1.3 追加。カスティーリャ本体ではない `[src: events/DHE/flavor_ARA.txt:flavor_ara.220]` |
 | テルシオ | Tercio | イベリア文化固有の歩兵ユニット |
 | 異端審問所 | Spanish Inquisition | 宗教政策の中核機関 |
+| 審問法 | inquisition_law | 異端審問系の政策（法律）グループ。排他選択 `[src: common/laws/00_religious.txt]` |
+| スペイン異端審問（政策） | spa_inquisition_policy | 審問法グループのカスティーリャ固有政策（訳語未確認） |
+| 教皇権威 | Papal Authority | 0-100 のカトリック共通リソース。閾値でボーナス/ペナルティ |
+| 交易所 | Trade Office | 他国領内に建てる外交系交易拠点 |
+| 海外交易所 | Overseas Trading Post | 別大陸沿岸に建てる簡易交易所 |
+| 植民地行政庁 | Colonial Administration | 植民地属国に建てる商人容量建造物（1.2追加） |
+| 副王領 | Viceroyalty | 植民地属国首都に建てる統治最上位建造物 |
+| 植民地化 | Create Colonial Charter | 国家アクション `create_colonial_charter`。対象 location を選び直接入植する（EU5 に植民地専用建造物は存在しない）`[src: common/generic_actions/colonial_charters.txt]` |
+| 貿易会社本部 | Trade Company Headquarters | 建設で location を貿易会社属国化する建造物 |
+| 王位請求 CB | Casus Belli: cb_claim_throne | 王位請求に基づく開戦事由。同君連合 CB とは別 |
 | エンコミエンダ | Encomienda | 植民地の先住民統治制度 |
 | メスタ | Mesta | カスティーリャの羊毛組合 |
 | 開戦事由 | Casus Belli（CB） | 戦争の正当性 |
@@ -762,6 +910,9 @@ Patch 1.2 で Heavy Infantry（重装歩兵）と Light Infantry（軽装歩兵�
 条件や数値の根拠はこちらを優先。
 
 - ローカルのゲームスクリプトと日本語 localization を照合
+  - `events/DHE/flavor_CAS.txt` — カスティーリャ固有イベントのスクリプト本体（発火条件・効果値・キャラステータス。結婚2200-2205・異端審問1000-1007・コムネロス1800-1803・著名軍人34/82/71/63 等）
+  - `events/DHE/flavor_cas_por.txt` — カスティーリャ＝ポルトガル関連イベント（王室五分税等）
+  - `events/DHE/flavor_cas_rio_salado.txt` — リオ・サラドの戦い関連イベント（`flavor_cas_rio_salado.7` トルデシリャス修道院を含む）
   - `flavor_cas_l_japanese.yml` — カスティーリャ固有イベントの日本語テキスト
   - `flavor_cas_por_l_japanese.yml` — カスティーリャ＝ポルトガル関連イベント
   - `flavor_cas_rio_salado_l_japanese.yml` — リオ・サラドの戦い関連イベント
@@ -769,7 +920,15 @@ Patch 1.2 で Heavy Infantry（重装歩兵）と Light Infantry（軽装歩兵�
   - `culture_iberia.txt` — イベリア文化共通進歩の定義
   - `advances_l_japanese.yml` — 進歩名の日本語訳
   - `game_concepts_l_japanese.yml` — ゲーム内用語の日本語訳
+  - `common/laws/00_religious.txt` 行 77-198 — `inquisition_law` 政策群（`spa_inquisition_policy` 等5種）
+  - `common/international_organizations/catholic_church.txt` 行 36-162 — Papal Authority の定義・月次増減要因
+  - `main_menu/common/static_modifiers/religion.txt` 行 776-791 — `high_papal_authority` / `low_papal_authority` の閾値効果
+  - `common/on_action/country_monthly.txt` 行 108-150 — `on_papal_authority_updated`（閾値判定ロジック）
+  - `common/building_types/foreign_buildings.txt`, `trade_buildings.txt` — 交易所系・本国市場系建造物の効果値
+  - `common/generic_actions/colonial_charters.txt` — 植民地化アクション `create_colonial_charter`
+  - `common/prices/00_hardcoded.txt` 行 205-208 — `create_colonial_charter` のコスト
   - `events/DHE/flavor_ARA.txt` 行 2574（`flavor_ara.220`）— Taula de Canvi（アラゴン公営銀行。カスティーリャ非該当の確認）
+  - 不在確定: `common/court_positions/`（廷臣ディレクトリ）と植民地専用の「入植建造物」はスクリプト上に存在しない（異端審問は政策セット、植民地化は Generic Action として実装）
 - [Castile - EU5 Wiki](https://eu5.paradoxwikis.com/Castile)
 - [Patch 1.1 "Rossbach" - EU5 Wiki](https://eu5.paradoxwikis.com/Patch_1.1)
 - [Patch 1.1.X Hotfixes - EU5 Wiki](https://eu5.paradoxwikis.com/Patch_1.1.X)

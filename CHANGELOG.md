@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-07-12 EU5 1.3 安定版昇格 フェーズ2.5（小型3ガイド拡充・サイズ均衡調整）
+
+### Changed
+- `eu5/eu5-ottoman-guide.md`（65.4K→81.0K字）: 「ティマール制とデヴシルメ制」節を独立化（ティマール制＝軽騎兵の戦力・維持費ボーナスへ訂正／デヴシルメ制＝軍事法律ポリシー `devshirme_system_policy` として新設）、「地中海制海戦略」10.5節を新設（エーゲ海・黒海・紅海の三段展開＋海軍建造物・Age6進歩 `imperial_school_of_naval_engineering`）、固有イベント時系列テーブルを完全化（`flavor_tur.204/.208/.209/.132/.118` 追加）。誤記訂正: ヴェネツィア紛争 namespace `flavor_ven_tur`→`flavor_ven_tur_conflict`、モレア紛争発火期間 1450-1551→1300-1500、マリカーネ解禁トリガー `.112`→`.132`
+- `eu5/eu5-castile-guide.md`（53.3K→75.4K字）: 固有イベント時系列テーブルを austria 準拠5列で拡充（イベリアの結婚2200-2205／トルケマダ1000-1007／コムネロス1800-1803）、「異端審問所運営」10.5節を独立化（`inquisition_law` 政策5種＋Torquemada＋Papal Authority の二層構造。EU5 に廷臣=court position 不在を明記）、植民地運営の建造物優先順位テーブル（交易所 vs 植民地化＝`create_colonial_charter` アクション）を追加。誤記訂正: イベリアの結婚 CB を PU CB→`cb_claim_throne`、コムネロス分岐を中央/地方分権→`aristocracy_vs_plutocracy` 軸
+- `eu5/eu5-brandenburg-guide.md`（59.6K→79.8K字）: 大選帝侯改革イベントを固有イベント時系列テーブルへ統合（`flavor_brapru.8/.9/.29/.1000/.1001`）、「HRE 諸侯（選帝侯）固有の収入構造」節を新設（選帝侯定員・ローマ月税・自己投票権・選帝侯資格剥奪・Diet 段階別）、「プロイセン建国後の内政戦略」節を追加（Age4-6 固有進歩＋固有建造物3種＝ベルリン王宮/サンスーシ/シャリテ）、固有進歩を全26件（BRA13・PRU13）に整備。訳語訂正: 拡張政策→拡大政策・北辺境伯領→ノルトマルク・任務戦術→訓令戦術・首都移転破壊建物をハンザ商館へ
+
+### Notes
+- サイズ均衡: 小型3ガイド（旧53-65K）を75-81K字へ引き上げ、byzantium(79K)/hungary(85K) の中大型帯へ寄せて austria(125K) との差を縮小。religion(52K) 水準は全て超過
+- 検証: researcher(sonnet)→implementer(opus)→reviewer(sonnet)3並列。reviewer 指摘（castile コムネロス軸の既存行未昇格=critical／severe語彙「重」→「大」統一／brandenburg 固有進歩件数 24→26 訂正 等）をメイン側 Edit で反映。`（1.3 beta）|1.3 オープンベータ|仮登録|tag--beta` grep は 3ガイドで 0 件維持
+- index.html: 3カードは既にフェーズ2で「Patch 1.3」表記・betaバッジ除去済みのため無変更（拡充はカードメタに影響しない）
+- 残: フェーズ3（全体整合スイープ Task3-1・レビュー Task3-2・最終CHANGELOG＋プロジェクト状態更新 Task3-3）
+
 ## 2026-07-11 EU5 1.3 安定版昇格 フェーズ2（中央用語昇格 + index.html）
 
 ### Changed
