@@ -1,22 +1,22 @@
-# CK3 イングランド 1066 攻略ガイド（Patch 1.19.0.1 時点）
+# CK3 イングランド 1066 攻略ガイド（インストール版 1.19.0.6（Scribe） 時点）
 
 > ハロルド・ゴドウィンソン → ノルマン撃退からブリタニア帝国を狙う初代から3代目以降までの整理。
-> 2026-04-09 確認時点の最新パッチ 1.19.0.1（Scribe）に合わせて更新。
+> 2026-07-12 確認時点のインストール版 **1.19.0.6（Scribe）** に合わせて更新。
 > 日本語は原則としてゲーム内ローカライズ準拠。未翻訳の箇所は英語を併記する。
 
 ---
 
-## パッチ 1.19 / 1.19.0.1 でのイングランド関連変更点
+## パッチ 1.19（Scribe、インストール版 1.19.0.6）でのイングランド関連変更点
 
 1.19「Scribe」はイングランド固有イベントよりも、統治システム刷新の影響が大きい。ハロルド 1066 は「開幕の連戦で正統性を稼ぎやすいが、代替わりで崩れやすい」シナリオになった。
 
 | 変更 | 内容 |
 |------|------|
-| 正統性（Legitimacy）新設 | 開幕2戦の勝敗と即位後の立て直しが直結。敗戦や継承失敗の痛手が大きい |
+| 正統性システム（Patch 1.12 Scythe 導入・既存メカニクス） | 開幕2戦の勝敗と即位後の立て直しが直結。敗戦や継承失敗の痛手が大きい |
 | 直轄領上限の計算式変更 | 管理スキル依存から教育特性依存へ。ハロルド本人は軍事Lv3で扱いやすいが、後継者の教育差が大きい |
-| 封臣のスタンス導入 | ウィテナゲモット選挙制に加えて、封臣の期待値と後継者の相性も見る必要がある |
-| 戴冠式（Coronation）と誓約（Oath） | ノルマン撃退後の安定化手段。戦後に金を使い切ると立て直しが遅れる |
-| 叙勲（Accolade）刷新 | 優秀な騎士を中長期で育てる価値が上昇。初代の戦後再編に影響 |
+| 封臣のスタンス（Patch 1.9 導入・既存システム） | ウィテナゲモット選挙制に加えて、封臣の期待値と後継者の相性も見る必要がある |
+| 戴冠式・誓約（Patch 1.17 Coronations 導入・1.19で終了フェーズ短縮等を調整） | ノルマン撃退後の安定化手段。戦後に金を使い切ると立て直しが遅れる |
+| 叙勲（Accolade）刷新 | 優秀な騎士を中長期で育てる価値が上昇。初代の戦後再編に影響。**公爵（Duke）ランク以上の統治者限定**になった。ハロルドは開始時点で王ランクのため直接影響なしだが、後継者が分割相続で公爵未満に転落した場合は叙勲不可になるリスクがある |
 
 ---
 
@@ -49,7 +49,7 @@
 | イングランド王位で大量の徴募兵（Levies）を動員可能 | 二正面作戦の開幕が確定 |
 | 開幕2戦に勝てば正統性を一気に稼げる | 分割連合相続制で領土が分散するリスク |
 | 島国の地理的優位（大陸からの侵攻は限定的） | ハロルドに後継者問題あり（兄弟に領地が流れる） |
-| ハロルド本人は軍事Lv3教育で直轄領上限を維持しやすい | 1.19 では代替わりで正統性・封臣の期待・直轄領上限が同時に崩れやすい |
+| ハロルド本人は軍事Lv3教育で直轄領上限を維持しやすい | 代替わりでは正統性の立て直しや封臣の期待への対応に加え、直轄領上限（教育特性依存）も同時に崩れやすい |
 
 ---
 
@@ -75,7 +75,7 @@
 
 5. **傭兵団（Mercenary Company）の雇用を検討**
    - 金（Gold）に余裕があれば傭兵で兵力を補強
-   - ただし 1.19 では戦後の戴冠式資金も必要。使い切らない
+   - ただし戴冠式（既存の戴冠式システム）の資金も戦後に必要。使い切らない
 
 6. **同盟を確認**
    - 婚姻（Marriage）で同盟を組めるなら組む。ただし開幕は時間がないため、既存の関係を活用
@@ -100,10 +100,10 @@
 
 #### 内政の安定化
 
-- **継承法を意識する**: 1066開始時の継承法はウィテナゲモット選挙制（saxon_elective_succession_law）。封臣の選挙で後継者が決まるため、封臣の好感度が重要 [src: history/titles/k_england.txt:927.7.12; common/laws/01_title_succession_laws.txt:saxon_elective_succession_law]。ゲームが進むと分割連合相続制（confederate_partition_succession_law）に変更されるリスクがあるため要確認 [src: succession_laws_l_japanese.yml, confederate_partition_succession_law]。1.19 以降はこれに正統性と封臣のスタンスが重なり、継承直後の安定度は「誰が継ぐか」だけでなく「誰に支持されるか」でも変わる。[src: game_concepts_l_japanese.yml, game_concept_legitimacy / game_concept_vassal_stance]
+- **継承法を意識する**: 1066開始時の継承法はウィテナゲモット選挙制（saxon_elective_succession_law）。封臣の選挙で後継者が決まるため、封臣の好感度が重要 [src: history/titles/k_england.txt:927.7.12; common/laws/01_title_succession_laws.txt:saxon_elective_succession_law]。ゲームが進むと分割連合相続制（confederate_partition_succession_law）に変更されるリスクがあるため要確認 [src: succession_laws_l_japanese.yml, confederate_partition_succession_law]。これに正統性システムと封臣のスタンスの仕組みが重なり、継承直後の安定度は「誰が継ぐか」だけでなく「誰に支持されるか」でも変わる。[src: game_concepts_l_japanese.yml, game_concept_legitimacy / game_concept_vassal_stance]
 - **婚姻で後継者を確保**: ハロルドの子供が少ない場合は早めに婚姻
-- **封臣（Vassal）の好感度とスタンスを管理**: 戦争直後は不満が溜まりやすい。1.19 では封臣のスタンスが継承時の期待値にも触るため、強力な封臣の性向を見ておく
-- **即位直後の正統性回復を意識する**: 1.19 以降は戴冠式（Coronation）と誓約（Oath）が代替わり直後の立て直し手段になる。継承前から金を残しておくと事故が減る。[src: coronation_activity_l_japanese.yml, activity_coronation_host_desc]
+- **封臣（Vassal）の好感度とスタンスを管理**: 戦争直後は不満が溜まりやすい。封臣のスタンスの仕組み上、継承時の期待値にも触るため、強力な封臣の性向を見ておく
+- **即位直後の正統性回復を意識する**: 戴冠式（Coronation）と誓約（Oath）は代替わり直後の立て直し手段になる。継承前から金を残しておくと事故が減る。[src: coronation_activity_l_japanese.yml, activity_coronation_host_desc]
 - **請求権（Claim）の整理**: ウェールズ、スコットランドへの請求権を確認
 
 ### 2代目（1090〜1130頃）: 島内統一とブリタニアへの布石
@@ -130,7 +130,7 @@
   - 革新性「長子相続（innovation_primogeniture）」で解放される [src: cultural_innovations_l_japanese.yml, innovation_primogeniture]
   - アングロサクソン文化の革新速度に注意
 - **後継者の教育を優先する**: 1.19 以降は教育特性 Lv3 以上が直轄領上限に直結する。管理スキルを後から伸ばしても補いにくいため、後見人選びの優先度が上がる。[src: common/traits/00_traits.txt; common/defines/00_defines.txt:NDomain]
-- **即位後の戴冠式資金を残す**: 1.19 以降は戴冠式で正統性を回復し、封臣の期待値を下げやすい。戦争直後でも現金を使い切らない方が安定する。[src: coronation_activity_l_japanese.yml, activity_coronation_host_desc]
+- **即位後の戴冠式資金を残す**: 戴冠式は正統性を回復し、封臣の期待値を下げやすい手段になる。戦争直後でも現金を使い切らない方が安定する。[src: coronation_activity_l_japanese.yml, activity_coronation_host_desc]
 - **選挙と封臣のスタンスを両方見る**: ウィテナゲモット選挙制では、主要封臣が支持しやすい後継者を育てると継承事故を減らしやすい [src: history/titles/k_england.txt:927.7.12; game_concepts_l_japanese.yml, game_concept_vassal_stance]
 - **次男以降への対策**: 公爵領を意図的に作成し、分割の影響を制御する
 
@@ -158,7 +158,7 @@
 |------|------|
 | 徴募兵（Levies） | 主力の数合わせ。封臣からの動員が大半 |
 | 常備軍（Men-at-Arms） | 精鋭。ハスカール（重歩兵）が序盤の主力 [src: 00_maa_types.txt, 00_cultural_maa_types.txt] |
-| 騎士（Knight） | 個人戦闘力が高い。1.19 以降は優秀な騎士を叙勲候補として育てる価値も高い |
+| 騎士（Knight） | 個人戦闘力が高い。優秀な騎士を叙勲候補として育てる価値も高い（叙勲は公爵ランク以上限定） |
 | 傭兵（Mercenary） | 金があるときの緊急戦力。開幕の二正面戦争で有用 |
 
 ### 常備軍の推奨兵種
@@ -207,8 +207,8 @@
 | 対策 | 方法 |
 |------|------|
 | 好感度（Opinion）を維持 | 恩赦、祝宴、贈り物で管理 |
-| 正統性を維持 | 1.19 以降は低正統性で婚姻・同盟・派閥管理が悪化する。継承直後ほど祝宴・戦争勝利・戴冠式で立て直したい。[src: common/legitimacy/00_legitimacy.txt:legitimacy_level_1; coronation_activity_l_japanese.yml, activity_coronation_host_desc] |
-| 封臣のスタンスを確認 | 1.19 以降は各封臣のスタンスが継承直後の期待値と後継者支持に影響する。強力な封臣だけでなく「礼節」「名誉追求者」「地方主義」などの傾向も見る。[src: game_concepts_l_japanese.yml, game_concept_vassal_stance; vassal_stances_l_japanese.yml] |
+| 正統性を維持 | （正統性システムの仕組み上）低正統性では婚姻・同盟・派閥管理が悪化する。継承直後ほど祝宴・戦争勝利・戴冠式で立て直したい。[src: common/legitimacy/00_legitimacy.txt:legitimacy_level_1; coronation_activity_l_japanese.yml, activity_coronation_host_desc] |
+| 封臣のスタンスを確認 | （封臣のスタンスの仕組み上）各封臣のスタンスが継承直後の期待値と後継者支持に影響する。強力な封臣だけでなく「礼節」「名誉追求者」「地方主義」などの傾向も見る。[src: game_concepts_l_japanese.yml, game_concept_vassal_stance; vassal_stances_l_japanese.yml] |
 | 強力な封臣を牽制 | フック（Hook）の活用、封臣契約の見直し |
 | 派閥（Faction）を監視 | 不満が溜まると反乱。恐怖（Dread）で抑制も可 |
 
@@ -237,7 +237,7 @@
 | 世代 | 推奨 | 理由 |
 |------|------|------|
 | 初代（ハロルド） | 軍事（Martial）→ 戦略方針 [src: focuses_l_japanese.yml, martial_strategy_focus] | 開幕の戦争を生き残る |
-| 2代目 | 管理（Stewardship）→ 直轄領方針 or 富方針 [src: focuses_l_japanese.yml, stewardship_domain_focus / stewardship_wealth_focus] | 経済基盤の構築。1.19 以降も収入系パークは強いが、直轄領上限自体は教育特性レベルで決まる |
+| 2代目 | 管理（Stewardship）→ 直轄領方針 or 富方針 [src: focuses_l_japanese.yml, stewardship_domain_focus / stewardship_wealth_focus] | 経済基盤の構築。収入系パークは引き続き有効だが、直轄領上限自体は教育特性レベルで決まる |
 | 3代目 | 外交（Diplomacy）→ 外政方針 [src: focuses_l_japanese.yml, diplomacy_foreign_affairs_focus] | ブリタニア帝国形成に向けた外交 |
 
 ### 文化の革新性（Innovation）
@@ -266,7 +266,7 @@
 |---------|------|
 | ハロルドを最前線に立たせる | 戦死するとゲーム終了に近い。指揮官にしない or 後方配置を検討 |
 | 南のウィリアムを先に攻撃する | 北のハーラルが暴れて領土を荒らされる。北を先に処理 |
-| 戴冠式資金まで使い切る | 1.19 では継承直後の正統性回復が遅れ、封臣管理が苦しくなる |
+| 戴冠式資金まで使い切る | 継承直後の正統性回復が遅れ、封臣管理が苦しくなる |
 | 相続対策を怠る | 分割連合相続制に加え、2代目で正統性と直轄領上限も崩れやすい |
 | 封臣の不満とスタンスを放置する | 戦争直後や継承直後の反乱・選挙事故が起きやすい |
 | 大陸領を優先する | 防衛困難。まず島内を統一してから |

@@ -1,5 +1,19 @@
 # Changelog
 
+## 2026-07-12 CK3 1.19 最新化（パッチ帰属誤り訂正・MOD互換更新）
+
+### Changed
+- 実インストール版バージョンを`launcher/launcher-settings.json`で確認したところ**1.19.0.6（Scribe）**であり、対象3ガイドの記載（2026-04-09確認・1.19.0.1時点）から約3ヶ月分ドリフトしていたことが判明。researcher裏取りの結果、単純なhotfix未反映に留まらず、複数メカニクスを「1.19新設」と誤帰属していたcritical級の誤りを発見
+- **eu5系と同様の教訓（前セッションの記載も誤りうる前提での全数値再検証）がCK3にも該当**: `ck3-systems-guide.md`の「1.19主要変更サマリー」表8項目中6項目がパッチ帰属の誤りと判明。正統性（Legitimacy）→実際はPatch 1.12「Scythe」(2024-03-04)導入、封臣スタンス→Patch 1.9(2023-05-11)導入、戴冠式と誓約→Patch 1.17「Coronations」(2025-09-09)導入、遊牧連合→Patch 1.16「Chamfron」(2025-04-28、DLC不要の無料機能なのに「Roads to Power必要」と誤記)導入、徴税スロット→Patch 1.11「Peacock」(2023-11-09)導入（正式ローカライズ名も「課税区域」と確認、旧称と判明）、台帳イノベーション→部族時代の文化イノベーション「台帳」と1.19新設の「台帳ウィンドウ」（統計閲覧9ページUI）を混同していたのを分離。直轄領上限の計算式変更（管理スキル依存→教育特性レベル依存）のみ1.19真正の変更と確認
+- **叙勲（Accolade）セクション（critical）**: 「1.19で刷新された」という帰属自体は正しいが、本文が説明していたメカニクス（ティア×セット分類）は刷新前の旧仕様。現行仕様（named attribute方式・ランク1-3・Glory閾値6段階=100/300/600/1000/1500/2100・公爵ランク以上限定）に全面書き直し
+- `ck3-england-1066-guide.md`: 同根の3誤り（正統性・封臣のスタンス・戴冠式と誓約）を表で修正し、本文中の「1.19以降は」という誤帰属の枕詞11箇所を中立表現に置換。直轄領上限関連の正当な1.19言及は維持
+- `ck3-recommended-mods.md`: 2026-04-09時点「1.19対応待ち」に分類していたCommunity Flavor Pack・Ethnicities & Portraits Expanded・RICE・A Game of Thrones・Princes of Darknessの5MODが、3ヶ月経過した現在は正式対応済みと確認し「対応済み」区分へ移動。CFP+EPE互換パッチは親MOD対応済みだがSteam非互換表示継続中のため「要実機確認」と注記
+- 中央`localization-reference.md`にも同根の誤り2件（Legitimacy「1.19新設」・Tax Slot「1.19新設」）が残存していたのを発見し訂正。Tax Jurisdiction（課税区域）の重複行も統合
+
+### Notes
+- 検証フロー: researcher(sonnet)で3ガイド全記載をCK3公式Wiki・実インストール版スクリプトで裏取り→`_staging/ck3-1.19-factcheck.md`に出力→implementer3並列(sonnet)で各ガイドへ反映→メイン側で残存誤りをgrep横断確認（中央localization-reference.mdの取りこぼしを発見）
+- 対象は`ck3-systems-guide.md`・`ck3-england-1066-guide.md`・`ck3-recommended-mods.md`・`localization-reference.md`の4ファイルのみ、他ゲーム（EU5/VIC3）への波及なし
+
 ## 2026-07-12 EU5 1.3 安定版昇格 フェーズ3（整合スイープ・レビュー・誤り訂正）
 
 ### Changed

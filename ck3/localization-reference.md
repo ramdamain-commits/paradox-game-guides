@@ -274,6 +274,7 @@
 |------|---------------|------|
 | Motte（防塁） | 防塁 | 部族 |
 | Ledger | 台帳 | 部族 |
+| Ledger window | 台帳ウィンドウ | UI（Patch 1.19新設、統計閲覧画面9ページ） |
 | Gavelkind | 分割相続制 | 部族 |
 | City Planning | 都市計画 | 部族 |
 | Casus Belli | 開戦事由 | 部族 |
@@ -339,7 +340,7 @@
 
 | 英語 | ゲーム内日本語 | 補足 |
 |------|---------------|------|
-| Legitimacy | 正統性 | 統治者の支配権の正当性（1.19新設） |
+| Legitimacy | 正統性 | 統治者の支配権の正当性（Patch 1.12 Scythe 導入） |
 | Legitimacy Level | 正統性レベル | 5段階 + 非正統の計6段階 |
 | Legitimacy Expectations | 正統性への期待 | 封臣が主君に要求する正統性の水準 |
 | Initial Legitimacy | 初期正統性 | 統治者就任時に計算される初期値 |
@@ -376,10 +377,9 @@
 
 | 英語 | ゲーム内日本語 | 補足 |
 |------|---------------|------|
-| Tax Slot | 徴税スロット | 氏族政体の徴税管理（1.19新設） |
-| Tax Collector | 徴税官 | 徴税スロットの管理者 |
-| Obligation | 義務 | 徴税スロットの税制種別 |
-| Tax Jurisdiction | 徴税管轄 | 宰相が提供する追加スロット |
+| Tax Jurisdiction | 課税区域（旧称: 徴税スロット/徴税管轄） | 氏族政体の徴税管理（Patch 1.11 Peacock 導入）。宰相（Vizier）任命で追加スロットを獲得 |
+| Tax Collector | 徴税官 | 課税区域の管理者 |
+| Obligation | 義務 | 課税区域の税制種別 |
 
 ## その他
 

@@ -1,7 +1,7 @@
-# CK3 汎用システムガイド（Patch 1.19.0.1 時点）
+# CK3 汎用システムガイド（Patch 1.19.0.6 時点）
 
 > CK3 の主要システムを横断的に解説するリファレンス。
-> 2026-04-09 確認時点の最新パッチ 1.19.0.1 (Scribe) に合わせて作成。
+> 2026-07-12 確認時点。インストール版 **1.19.0.6（Scribe）** に合わせて作成。
 > 日本語は原則としてゲーム内ローカライズ準拠。未翻訳の箇所は英語を併記する。
 > **DLC前提**: 基本ゲームのシステムを中心に解説。DLC固有機能は注記で明示する。
 
@@ -11,20 +11,20 @@
 
 | 変更 | 内容 | 影響度 |
 |------|------|--------|
-| 正統性（Legitimacy）新設 | 統治者の支配権の正当性を数値化。6段階のレベル制 | 大 |
+| 正統性（Legitimacy） | Patch 1.12（Scythe）で導入済みの既存システム。1.19での変更なし | — |
 | 直轄領上限の計算式変更 | 管理（Stewardship）スキル依存 → 教育特性レベル依存 | 大 |
-| 叙勲（Accolade）刷新 | 種別選択、ランクシステム、Glory蓄積の再設計 | 中 |
-| 封臣スタンス（Vassal Stance）導入 | 封臣の態度を7種に分類。正統性への期待値と連動 | 中 |
-| 戴冠式（Coronation）と誓約（Oath） | 正統性を大幅獲得する活動。誓約で統治方針を宣言 | 中 |
-| 遊牧連合（Confederation）新設 | 遊牧政体の新しい政治単位（DLC: Roads to Power 必要） | 小 |
-| 徴税スロット（Tax Slot）新設 | 氏族政体の徴税管理の再設計 | 小 |
-| 台帳（Ledger）イノベーション追加 | 部族時代の文化イノベーション | 小 |
+| 叙勲（Accolade）刷新 | primary/secondary attribute構造を撤廃し、個別named attribute・ランク1-3・Glory閾値6段階へ再設計 | 中 |
+| 封臣スタンス（Vassal Stance） | Patch 1.9（Tours & Tournaments）で導入済みの既存システム。1.19での変更なし | — |
+| 戴冠式（Coronation）と誓約（Oath） | Patch 1.17（Coronations）で導入済み。1.19では戴冠式終了フェーズ短縮・一部誓約要件緩和のみ | 小 |
+| 遊牧連合（Confederation） | Patch 1.16（Chamfron）で無料機能として導入済み。1.19でコサック王国建国ディシジョン等が追加 | 小 |
+| 課税区域（Tax Jurisdiction） | Patch 1.11（Peacock）で導入済みの既存システム。1.19での変更なし | — |
+| 台帳（Ledger）ウィンドウ新設 | 戦争/アーティファクト/キャラクター/家門・王朝/所領/伯爵領/称号/信仰/文化の9ページからなる統計閲覧UI（文化イノベーションの「台帳」とは別物） | 小 |
 
 ---
 
 ## 正統性（Legitimacy）
 
-1.19 で新設されたシステム。統治者（Ruler）が支配権を持つに相応しいかどうかを数値で表す。統治者になった瞬間に初期正統性（Initial Legitimacy）が計算され、前統治者の正統性の一部も後継者に引き継がれる。[src: game_concepts_l_japanese.yml, game_concept_legitimacy]
+Patch 1.12（Scythe、2024-03-04）で導入されたシステム。統治者（Ruler）が支配権を持つに相応しいかどうかを数値で表す。1.19 では仕様変更なし。（コミュニティ知見：wiki由来、スクリプト未確認）統治者になった瞬間に初期正統性（Initial Legitimacy）が計算され、前統治者の正統性の一部も後継者に引き継がれる。[src: game_concepts_l_japanese.yml, game_concept_legitimacy]
 
 ### 正統性レベル
 
@@ -146,25 +146,23 @@
 
 <!-- 1.20更新候補: 叙勲の種別・効果が調整される可能性 -->
 
-叙勲は騎士（Knight）に栄誉を与えるシステム。1.19 で種別選択・ランクシステム・Glory蓄積が刷新された。[src: accolades_l_japanese.yml]
+叙勲は騎士（Knight）に栄誉を与えるシステム。元々は Patch 1.9（Tours & Tournaments、2023-05-11）で導入されたが、1.19 でメカニクスが大規模に再設計された。旧仕様（ティア×セットによる種別選択）は廃止され、個別の named attribute とランク制へ刷新されている。[src: accolades_l_japanese.yml]
 
-### 基本メカニクス
+### 基本メカニクス（1.19版）
 
-1. **騎士を選択** — 叙勲された騎士（Acclaimed Knight）を1人指定
-2. **種別を選択** — 騎士のスキル・特性で利用可能な種別が決まる
+1. **対象条件の確認** — 叙勲を与えられるのは**公爵（Duke）ランク以上の統治者**のみ。対象となる騎士は**武勇（Prowess）8以上**かつ**主君への好感度+15以上**が必要（コミュニティ知見：wiki由来、スクリプト未確認）
+2. **騎士を叙勲** — 条件を満たす騎士（Acclaimed Knight）を1人指定
 3. **Glory蓄積** — 騎士の活躍でGlory（栄光）が溜まる
-4. **ランク上昇** — Gloryが閾値に達するとランクが上がり、効果が強化
-5. **種別追加** — ランク上昇でポイントを獲得し、新たな種別を追加選択可能
+4. **ランク上昇** — Gloryが6段階の閾値（100 / 300 / 600 / 1000 / 1500 / 2100）に達するたびにランクが上がる（ランクは1〜3）（コミュニティ知見：wiki由来、スクリプト未確認）
+5. **属性ポイントの獲得** — ランクアップのたびに属性ポイントを1個獲得。既存の属性を強化するか、新規属性を追加するかを選べる（属性は最大3つまで保有可能）（コミュニティ知見：wiki由来、スクリプト未確認）
 
-### 叙勲の種別カテゴリ
+### 叙勲属性（Accolade Attributes）
 
-叙勲の種別はカテゴリとティアで分類される: [src: 00_accolade_categories.txt]
+1.19 以降は「ティア（common/skilled/exceptional/eminent）」「セット（personality/skill/culture/men_at_arms）」による分類は廃止され、Blademaster・Besieger・Charmer・Mentor 等の**個別の named attribute**を直接選択する方式に変わっている。各属性はランク（強化段階）ごとに効果が段階的に強くなる。（コミュニティ知見：wiki由来、スクリプト未確認）
 
-**ティア**: common（一般）、skilled（熟練）、exceptional（卓越）、eminent（著名）
+> `[src: 00_accolade_categories.txt]`（未検証） — 旧仕様（ティア×セット構造）時点での出典。1.19でファイル自体が再構成された可能性があり、現行データと一致するか未確認。
 
-**セット**: personality（性格）、skill（スキル）、culture（文化）、men_at_arms（常備軍）
-
-> **DLC注記**: 一部の叙勲種別は Tours & Tournaments DLC（EP2）が必要。
+> **DLC注記**: 叙勲システム自体は Tours & Tournaments DLC（EP2）が必要。
 
 ### 叙勲の戦略的意義
 
@@ -178,7 +176,7 @@
 
 <!-- 1.20更新候補: 封臣スタンスの種類・効果が調整される可能性 -->
 
-封臣のスタンスは、封臣が主君に対してどのような態度を取るかを分類するシステム。正統性への期待値（Legitimacy Expectations）と連動し、各スタンスは特定の後継者をひいきする。[src: game_concepts_l_japanese.yml, game_concept_vassal_stance]
+Patch 1.9（Tours & Tournaments、2023-05-11）で導入された既存システム。1.19での変更なし。封臣のスタンスは、封臣が主君に対してどのような態度を取るかを分類するシステム。正統性への期待値（Legitimacy Expectations）と連動し、各スタンスは特定の後継者をひいきする。[src: game_concepts_l_japanese.yml, game_concept_vassal_stance]
 
 ### 7種のスタンス
 
@@ -267,21 +265,23 @@
 
 ### 遊牧連合（Confederation）
 
-遊牧政体の新しい政治単位。遊牧連合に加入・脱退するとメンバー全員に通知される。加入直後の3年間は「新規連合員」フラグが付き、5年間は連合メンバー補正が適用される。[src: 00_confederation_types.txt, nomadic_confederation]
+Patch 1.16（Chamfron、2025-04-28）で無料機能として導入、1.19でコサック王国建国ディシジョン等が追加された。遊牧政体の政治単位。遊牧連合に加入・脱退するとメンバー全員に通知される。加入直後の3年間は「新規連合員」フラグが付き、5年間は連合メンバー補正が適用される。[src: 00_confederation_types.txt, nomadic_confederation]
 
-（DLC: Roads to Power 必要）
+### 課税区域（Tax Jurisdiction）
 
-### 徴税スロット（Tax Slot）
+Patch 1.11（Peacock、2023-11-09）で導入された既存システム。1.19での変更なし。氏族政体の徴税管理システム。1区域あたり封臣12名を管理できる。徴税官（Tax Collector）を任命し、異なる税制（義務）を適用する。[src: 00_tax_slot_types.txt, clan_tax_slot]
 
-氏族政体の徴税管理を再設計したシステム。1スロットあたり封臣12名を管理できる。徴税官（Tax Collector）を任命し、異なる税制（義務）を適用する。[src: 00_tax_slot_types.txt, clan_tax_slot]
+> **正式名称について**: 日本語ローカライズを確認したところ、正式名称は「課税区域」（`game_concepts_l_japanese.yml: game_concept_tax_jurisdiction`, `government_l_japanese.yml: clan_tax_slot = "課税区域"`）。「徴税スロット」「徴税管轄」はいずれも旧称・非公式表記のため本ガイドでは「課税区域」に統一する。[src: government_l_japanese.yml, clan_tax_slot]
 
 - 徴税官の条件: 成人、投獄されていない、無能力でない
 - 性別制限: 宗派の教義（男性優位等）に従う
-- 宰相（Vizier）を任命すると追加の徴税管轄を獲得（DLC: Roads to Power 必要）
+- 宰相（Vizier）を任命すると追加の課税区域を獲得（DLC: Roads to Power 必要）
 
-### 台帳（Ledger）イノベーション
+### 台帳（Ledger）ウィンドウ
 
-部族時代の文化イノベーション。所有物の記録管理を可能にする。[src: cultural_innovations_l_japanese.yml, innovation_ledger]
+1.19 で新設されたUI機能。**戦争・アーティファクト・キャラクター・家門/王朝・所領・伯爵領・称号・信仰・文化の9ページ**からなる統計閲覧画面で、王国全体の情報をまとめて確認できる。（コミュニティ知見：wiki由来、スクリプト未確認）
+
+> **文化イノベーション「台帳」との混同に注意**: 部族時代の文化イノベーションにも同名の「台帳（Ledger）」が存在するが、これは上記の1.19新設UIとは全くの別物。効果は建造物スロット+1・畜群からの月間収入+5%。[src: cultural_innovations_l_japanese.yml, innovation_ledger]
 
 ---
 
@@ -320,10 +320,11 @@
 | 弱小地主 | Barons and Minor Landholders | 封臣スタンスの一種 |
 | 好戦的 | Belligerent | 封臣スタンスの一種 |
 | 権力の秤 | Scales of Power | 統治者と摂政の権力バランス |
-| 徴税スロット | Tax Slot | 氏族政体の徴税管理 |
-| 徴税官 | Tax Collector | 徴税スロットの管理者 |
+| 課税区域 | Tax Jurisdiction | 氏族政体の徴税管理単位（旧称: 徴税スロット/徴税管轄） |
+| 徴税官 | Tax Collector | 課税区域の管理者 |
 | 遊牧連合 | Confederation | 遊牧政体の政治単位 |
-| 台帳 | Ledger | 文化イノベーション |
+| 台帳イノベーション | Ledger（文化イノベーション） | 部族時代の文化イノベーション。1.19新設の台帳ウィンドウとは別物 |
+| 台帳ウィンドウ | Ledger window | 1.19新設のUI機能（統計閲覧画面、9ページ構成） |
 | 教育 | Education | 子供時代の育成結果 |
 
 ---
@@ -337,16 +338,23 @@
   - `common/defines/00_defines.txt:NDomain` — STEWARDSHIP_SKILL_FOR_DOMAIN_LIMIT_INCREASE = 200
   - `common/traits/00_traits.txt` — 教育特性の domain_limit 値（全5系統×5レベル）
   - `common/modifiers/00_basic_modifiers.txt` — 称号ティア別 domain_limit ボーナス
-  - `common/accolade_types/00_accolade_categories.txt` — 叙勲種別カテゴリ定義
+  - `common/accolade_types/00_accolade_categories.txt` — 叙勲種別カテゴリ定義（未検証: 1.19で再構成された可能性あり）
   - `common/confederation_types/00_confederation_types.txt` — 遊牧連合定義
-  - `common/tax_slots/types/00_tax_slot_types.txt` — 徴税スロット定義
-  - `localization/japanese/game_concepts_l_japanese.yml` — 正統性、封臣スタンス、権力の秤
+  - `common/tax_slots/types/00_tax_slot_types.txt` — 課税区域（Tax Jurisdiction）定義
+  - `localization/japanese/game_concepts_l_japanese.yml` — 正統性、封臣スタンス、権力の秤、課税区域（tax_jurisdiction）
+  - `localization/japanese/government_l_japanese.yml` — 課税区域（clan_tax_slot = "課税区域"）
   - `localization/japanese/vassal_stances_l_japanese.yml` — 封臣スタンス名
   - `localization/japanese/traits_l_japanese.yml` — 教育特性名
   - `localization/japanese/accolades/accolades_l_japanese.yml` — 叙勲用語
   - `localization/japanese/activities/coronation_activity_l_japanese.yml` — 戴冠式・誓約
-  - `localization/japanese/culture/cultural_innovations_l_japanese.yml` — 台帳イノベーション
+  - `localization/japanese/culture/cultural_innovations_l_japanese.yml` — 台帳イノベーション（文化イノベーション、Ledgerウィンドウとは別物）
 - [Patch 1.19 Scribe - CK3 Wiki](https://ck3.paradoxwikis.com/Patches)
+- [Patch 1.9 - CK3 Wiki](https://ck3.paradoxwikis.com/Patch_1.9) — 封臣スタンス・叙勲の導入元
+- [Patch 1.11 Peacock - CK3 Wiki](https://ck3.paradoxwikis.com/Patch_1.11) — 課税区域（Tax Jurisdiction）の導入元
+- [Patch 1.12 Scythe - CK3 Wiki](https://ck3.paradoxwikis.com/Patch_1.12) — 正統性（Legitimacy）の導入元
+- [Patch 1.16 Chamfron - CK3 Wiki](https://ck3.paradoxwikis.com/Patch_1.16) — 遊牧連合（Confederation）の導入元
+- [Patch 1.17 - CK3 Wiki](https://ck3.paradoxwikis.com/Patch_1.17) — 戴冠式（Coronation）・誓約（Oath）の導入元
+- [Accolade - CK3 Wiki](https://ck3.paradoxwikis.com/Accolade) — 1.19刷新後の叙勲メカニクス（現行仕様）
 
 ### コミュニティ情報（補足知見）
 
@@ -355,3 +363,5 @@
 - 教育系統の選択指針は経験則ベース
 - 相続対策チェックリストはコミュニティで広く共有される知見
 - 叙勲の戦略的意義はプレイ報告ベース
+- 叙勲の対象条件（公爵ランク以上・武勇8以上・好感度+15以上）、Glory閾値6段階、ランクアップごとの属性ポイント獲得はいずれも wiki 由来でスクリプト未確認
+- 台帳（Ledger）ウィンドウの9ページ構成は wiki 由来でスクリプト未確認
