@@ -55,7 +55,7 @@
 | 要塞駐屯 Heavy Infantry のみ | 騎兵は要塞守備不可。カタフラクト（重騎兵）は要塞に入れない | `[src: Patch_1.2 wiki + script verified]` |
 | ロジ距離 50→30 / 食料消費 10倍 | 補給線管理の徹底が必須。アナトリア遠征でも適用される | `[src: Patch_1.2 wiki + script verified]` |
 
-#### Patch 1.3 主要変更（ビザンツ直接影響分）
+### Patch 1.3 主要変更（ビザンツ直接影響分）
 
 1.3 は安定版（buildid 24075414 = 1.3.10）としてリリース済み。1.2「Echinades」baseline に統合した。
 
@@ -654,7 +654,7 @@ Patch 1.2 で傭兵コストが +25% 上昇した `[src: Patch_1.2 wiki + script
 - セルビアが弱体化した場合、Pronoia 化して事実上の臣属国に
 - ヴェネツィアとの一時的な反オスマン連携（長期では競合するが短期的には有効）
 
-**Belligerent（好戦性）の管理**:
+**Belligerent（好戦的傾向）の管理**:
 
 Restore Roman Borders CB（ローマ国境回復 CB）を多用すると Belligerent が蓄積しやすい。
 Coalition War が Superiority War 化し、首都占領なしに連合が勝利できるようになった `[src: Patch_1.2 wiki + script verified]`。
@@ -958,6 +958,7 @@ DLC なしでは Cataphracts age_1 を活かした限定的な固有軍事戦略
 | 安定度 | Stability | システム | 国内の政治安定指標 |
 | 戦争疲弊度 | War Exhaustion | システム | 戦争による国民負担の蓄積 |
 | 正統性 | Legitimacy | システム | 君主・政権の正当性 |
+| 好戦的傾向 | Belligerent | Societal Value | 社会価値軸 `belligerent_vs_conciliatory` の一方向 |
 
 ---
 

@@ -513,63 +513,6 @@ Patch 1.2 で Heavy Infantry（重装歩兵）と Light Infantry（軽装歩兵�
 
 ---
 
-## 異端審問所運営
-
-> EU5 には CK3 的な「宮廷役職（court position）」システムは存在しない（`common/court_positions/` ディレクトリはスクリプト上に存在しない＝確認済み）。カスティーリャの異端審問は **① `inquisition_law` 政策セット（法律）** と **② トルケマダ個人キャラ** の二層構造で実装されている。「異端審問官という役職」ではない点に注意。
-
-### 二層構造
-
-1. **政策（法律）**: `inquisition_law` グループの排他選択肢。カスティーリャは `flavor_cas.1000` の a（トルケマダ支援）を選ぶと固有の `spa_inquisition_policy`（訳語未確認: スペイン異端審問）がアンロックされる `[src: common/laws/00_religious.txt:174-198]`
-2. **人物キャラ**: `flavor_cas.1000` で `create_character` されるトルケマダ（adm66/dip47/mil84、軍事コマンド不適正の聖職者キャラ）。`create_in_limbo` → `move_country` で自国キャラプールに編入されるが、特定の役職には自動就任しない `[src: flavor_CAS.txt:8801-8816]`
-
-### inquisition_law 政策セット
-
-`inquisition_law` は法律カテゴリの排他選択肢（同時に採用できるのは1つ）。カトリック国共通の4種 + カスティーリャ固有1種。効果値は最大レベル時の値 `[src: common/laws/00_religious.txt:77-198]`。
-
-| 政策（英名） | ID | 適用条件 | 主な効果 |
-|-------------|-----|---------|---------|
-| 教皇の統制（Papal Control） | `papal_control` | カトリック共通 | 非 PAP 国は pop 改宗速度 +10%、ルター派/カルヴァン派反乱抵抗 各 +15% `[src: 00_religious.txt:87]` |
-| 地方裁判所（Local Courts） | `local_courts` | カトリック共通 | 改宗速度 +20%、異端寛容 -1、異教徒寛容 -1、反乱抵抗 各 +15% `[src: 00_religious.txt:106]` |
-| 国家異端審問官（State Inquisitors） | `state_inquisitors` | ヴェネツィア文化 or イベリア文化グループ限定 | イベリア文化: 内閣効率 +5%、改宗速度 +5%、月間反乱成長 -0.05%、反乱抵抗 各 +15%。ヴェネツィア文化: 月間支配度 +0.001・防諜 +33%（カスティーリャはイベリア文化のため前者を適用）`[src: 00_religious.txt:120]` |
-| 三国評議会（訳語未確認） | `council_of_three_lands_policy` | `council_of_three_lands_advance` 保有（ユダヤ教徒人口要求） | 文化容量 +1、異教徒寛容 +1 `[src: 00_religious.txt:147]` |
-| スペイン異端審問（訳語未確認） | `spa_inquisition_policy` | CAS/SPA 現・旧保有 or カスティーリャ文化、かつ `flavor_cas.1000` の a でアンロック済み | pop 改宗速度 +20%、防諜 +20%、異教徒寛容 -2、異端寛容 -2、反乱抵抗 各 +15%、聖職者階級選好 `[src: 00_religious.txt:174]` |
-
-**運用上の注意:**
-- `spa_inquisition_policy` は `flavor_cas.1000` の a（トルケマダ支援）を選ばないとアンロック条件（`has_unlocked_policy_trigger`）を満たさない `[src: 00_religious.txt:196]`
-- 政策切替のロック期間は 2 年（`years=2`）。頻繁な切替は不可 `[src: 00_religious.txt:196]`
-- 既存ガイドの「審問所ルート vs 寛容ルート」の二分は、実質「`spa_inquisition_policy` を採用するか、一般カトリック系政策に留めるか」という法律選択であり、`flavor_cas.1000` の a/b と法律アンロックが連動している
-
-### Papal Authority（教皇権威）の運用
-
-Papal Authority は 0-100 のリソース。初期値 60、範囲 min=0 / max=100 `[src: common/international_organizations/catholic_church.txt:39-41]`。毎月 `on_papal_authority_updated`（`tag = PAP` の教皇庁でのみ実行）が閾値をチェックし、効果は `religion:catholic` 全体に一律付与される（= カスティーリャを含む全カトリック国が対象）`[src: common/on_action/country_monthly.txt:108-150]`。
-
-**閾値効果:**
-
-| 閾値 | modifier | 効果 |
-|------|----------|------|
-| ≥75 | `high_papal_authority` | 全カトリック国に monthly_devotion +0.05、monthly_legitimacy +0.02、tolerance_heretic +1.0 `[src: religion.txt:776-791]` |
-| <25 | `low_papal_authority` | 全カトリック国に monthly_devotion -0.1、monthly_legitimacy -0.03 `[src: religion.txt:776-791]` |
-
-**月次増減の主な要因** `[src: catholic_church.txt:36-162]`:
-
-| 要因 | 変化 |
-|------|------|
-| 教皇庁の改革欲求（reform_desire） | -reform_desire × 0.2 |
-| 教会内部の平和（内紛なし） | +0.03 |
-| Ultramontanism 教義ポリシー | +0.02 |
-| Gallicanism 教義ポリシー | -0.01 |
-| Conciliarism 教義ポリシー | -0.025 |
-| Invisible Church 教義ポリシー | -0.05 |
-| 教皇庁がローマ領有 | +0.02 |
-| 枢機卿数（全カトリック合計） | +0.002 × 枢機卿数 |
-| 破門されたまま在位中の統治者 | -0.02 × 人数 |
-| 教皇勅書を無視できる国（can_ignore_papal_bulls） | -0.01 × 国数 |
-| 教皇空位（interregnum） | -0.5 |
-
-カスティーリャはカトリック超大国として、枢機卿を多く抱え自国統治者の破門を避けることで Papal Authority を 75 以上に維持し、全カトリック国ボーナス（devotion/legitimacy）を享受しやすい立場にある（コミュニティ知見）。
-
----
-
 ## 固有イベント時系列
 
 出典: `events/DHE/flavor_CAS.txt`, `events/DHE/flavor_cas_por.txt`, `events/DHE/flavor_cas_rio_salado.txt`（日本語名は `flavor_cas_l_japanese.yml` ほかで確認）。表ヘッダは austria ガイドと統一。行番号は 1.3.10 時点。
@@ -718,6 +661,63 @@ Papal Authority は 0-100 のリソース。初期値 60、範囲 min=0 / max=10
 | 高 | ミジョネスの改革 | 中盤以降の経済安定化 |
 | 中 | 移民の誘致 | レコンキスタ後の再入植に有用 |
 | 中 | カスティーリャ海軍歩兵 | 海外遠征に有用だが、陸路征服が主ならやや優先度下がる |
+
+---
+
+## 異端審問所運営
+
+> EU5 には CK3 的な「宮廷役職（court position）」システムは存在しない（`common/court_positions/` ディレクトリはスクリプト上に存在しない＝確認済み）。カスティーリャの異端審問は **① `inquisition_law` 政策セット（法律）** と **② トルケマダ個人キャラ** の二層構造で実装されている。「異端審問官という役職」ではない点に注意。
+
+### 二層構造
+
+1. **政策（法律）**: `inquisition_law` グループの排他選択肢。カスティーリャは `flavor_cas.1000` の a（トルケマダ支援）を選ぶと固有の `spa_inquisition_policy`（訳語未確認: スペイン異端審問）がアンロックされる `[src: common/laws/00_religious.txt:174-198]`
+2. **人物キャラ**: `flavor_cas.1000` で `create_character` されるトルケマダ（adm66/dip47/mil84、軍事コマンド不適正の聖職者キャラ）。`create_in_limbo` → `move_country` で自国キャラプールに編入されるが、特定の役職には自動就任しない `[src: flavor_CAS.txt:8801-8816]`
+
+### inquisition_law 政策セット
+
+`inquisition_law` は法律カテゴリの排他選択肢（同時に採用できるのは1つ）。カトリック国共通の4種 + カスティーリャ固有1種。効果値は最大レベル時の値 `[src: common/laws/00_religious.txt:77-198]`。
+
+| 政策（英名） | ID | 適用条件 | 主な効果 |
+|-------------|-----|---------|---------|
+| 教皇の統制（Papal Control） | `papal_control` | カトリック共通 | 非 PAP 国は pop 改宗速度 +10%、ルター派/カルヴァン派反乱抵抗 各 +15% `[src: 00_religious.txt:87]` |
+| 地方裁判所（Local Courts） | `local_courts` | カトリック共通 | 改宗速度 +20%、異端寛容 -1、異教徒寛容 -1、反乱抵抗 各 +15% `[src: 00_religious.txt:106]` |
+| 国家異端審問官（State Inquisitors） | `state_inquisitors` | ヴェネツィア文化 or イベリア文化グループ限定 | イベリア文化: 内閣効率 +5%、改宗速度 +5%、月間反乱成長 -0.05%、反乱抵抗 各 +15%。ヴェネツィア文化: 月間支配度 +0.001・防諜 +33%（カスティーリャはイベリア文化のため前者を適用）`[src: 00_religious.txt:120]` |
+| 三国評議会（訳語未確認） | `council_of_three_lands_policy` | `council_of_three_lands_advance` 保有（ユダヤ教徒人口要求） | 文化容量 +1、異教徒寛容 +1 `[src: 00_religious.txt:147]` |
+| スペイン異端審問（訳語未確認） | `spa_inquisition_policy` | CAS/SPA 現・旧保有 or カスティーリャ文化、かつ `flavor_cas.1000` の a でアンロック済み | pop 改宗速度 +20%、防諜 +20%、異教徒寛容 -2、異端寛容 -2、反乱抵抗 各 +15%、聖職者階級選好 `[src: 00_religious.txt:174]` |
+
+**運用上の注意:**
+- `spa_inquisition_policy` は `flavor_cas.1000` の a（トルケマダ支援）を選ばないとアンロック条件（`has_unlocked_policy_trigger`）を満たさない `[src: 00_religious.txt:196]`
+- 政策切替のロック期間は 2 年（`years=2`）。頻繁な切替は不可 `[src: 00_religious.txt:196]`
+- 既存ガイドの「審問所ルート vs 寛容ルート」の二分は、実質「`spa_inquisition_policy` を採用するか、一般カトリック系政策に留めるか」という法律選択であり、`flavor_cas.1000` の a/b と法律アンロックが連動している
+
+### Papal Authority（教皇権威）の運用
+
+Papal Authority は 0-100 のリソース。初期値 60、範囲 min=0 / max=100 `[src: common/international_organizations/catholic_church.txt:39-41]`。毎月 `on_papal_authority_updated`（`tag = PAP` の教皇庁でのみ実行）が閾値をチェックし、効果は `religion:catholic` 全体に一律付与される（= カスティーリャを含む全カトリック国が対象）`[src: common/on_action/country_monthly.txt:108-150]`。
+
+**閾値効果:**
+
+| 閾値 | modifier | 効果 |
+|------|----------|------|
+| ≥75 | `high_papal_authority` | 全カトリック国に monthly_devotion +0.05、monthly_legitimacy +0.02、tolerance_heretic +1.0 `[src: religion.txt:776-791]` |
+| <25 | `low_papal_authority` | 全カトリック国に monthly_devotion -0.1、monthly_legitimacy -0.03 `[src: religion.txt:776-791]` |
+
+**月次増減の主な要因** `[src: catholic_church.txt:36-162]`:
+
+| 要因 | 変化 |
+|------|------|
+| 教皇庁の改革欲求（reform_desire） | -reform_desire × 0.2 |
+| 教会内部の平和（内紛なし） | +0.03 |
+| Ultramontanism 教義ポリシー | +0.02 |
+| Gallicanism 教義ポリシー | -0.01 |
+| Conciliarism 教義ポリシー | -0.025 |
+| Invisible Church 教義ポリシー | -0.05 |
+| 教皇庁がローマ領有 | +0.02 |
+| 枢機卿数（全カトリック合計） | +0.002 × 枢機卿数 |
+| 破門されたまま在位中の統治者 | -0.02 × 人数 |
+| 教皇勅書を無視できる国（can_ignore_papal_bulls） | -0.01 × 国数 |
+| 教皇空位（interregnum） | -0.5 |
+
+カスティーリャはカトリック超大国として、枢機卿を多く抱え自国統治者の破門を避けることで Papal Authority を 75 以上に維持し、全カトリック国ボーナス（devotion/legitimacy）を享受しやすい立場にある（コミュニティ知見）。
 
 ---
 

@@ -1,5 +1,24 @@
 # Changelog
 
+## 2026-07-12 EU5 国別6ガイド 見直しレビュー・誤り訂正
+
+### Changed
+- 1.3安定版昇格フェーズ3完了後の追加レビュー要望を受け、austria/brandenburg/byzantium/castile/hungary/ottomanの6ガイドを標準3名体制（熟練者/プレイヤー/テクニカルライター）で再レビュー。critical 5件・important 6件を検出し全て修正
+- **austria（critical）**: 固有進歩テーブルの「山と川の国」効果値が旧値-50%のまま残存（本文2箇所は実機確認済み-33%に訂正済みだったが表だけ未反映）。用語対照表に架空/誤帰属の識別子`hab_kammergericht`混入（実際はbrandenburgの固有進歩を誤帰属）を削除
+- **hungary（critical）**: 兵科推奨編成表・地形適性表・Combined Arms節でハンガリー・フサールが「重装騎兵（Heavy Cav）」表記のまま残存（軍事ドクトリン章・用語対照表は既に`Light Cavalry`に訂正済みで自己矛盾。熟練者・プレイヤー両レビューが独立検出）。表列を重装歩兵(黒軍)/軽装歩兵(ハイドゥク)/軽装騎兵(フサール)/砲兵の実態に合わせて組み替え
+- **ottoman（critical）**: 用語対照表「君主力＝Monarch Power」がEU4概念の混入（正しくは他5ガイド共通の`Crown Power`）。独自追加10.5節「ティマール制とデヴシルメ制」「地中海制海戦略」がテンプレートの章順序ルール（セクション10-11間）に違反した位置（セクション6-7間）に配置されていたのを移動。テンプレート自身がottomanを模範例として名指ししているため影響大
+- **ottoman（important）**: 固有イベント`flavor_tur.209`の未検証マーカーを実機`flavor_TUR.txt:17121-17202`で確認しトリガー・選択肢・イベント名（シャーム・スレイマニエ霊廟）を確定、未検証表記を解消
+- **brandenburg（important）**: 固有イベント時系列の未解決ID「flavor_brapru.?」3件を実機確認し確定（白鳥騎士団→.24、ベルリン王宮の建設→.1100、フランクフルト大学→.18）
+- **castile（important）**: 10.5節「異端審問所運営」がテンプレートの挿入位置ルール違反（セクション8-9間）だったのをセクション10-11間へ移動
+- **austria/byzantium（important）**: Patch 1.3変更点セクションの見出しレベルがH4（Patch1.2セクションの子）になっていたのを、他4ガイドと揃えてH3（並列）に修正
+- **hungary（important）**: 固有イベント時系列表の列構成（4列・ID2列目）が他5ガイド共通の5列構成（ID1列目、効果列独立）と不一致だったのを統一
+- **Belligerent（好戦的傾向）の訳語統一（important・cross-guide）**: hungary/ottoman（未訳）・byzantium（独自訳「好戦性」＝公式表記「好戦的」と不一致）で扱いがバラバラだったのを「好戦的傾向（Belligerent）」に統一し、中央`localization-reference.md`の基本概念セクションにも追加
+
+### Notes
+- 検証フロー: reviewer3並列（熟練者/プレイヤー/テクニカルライター、sonnet）で6ガイド全体をレビュー→重複除去して集約→implementer並列（sonnet、2波構成）で反映→メイン側でgrep横断確認（Monarch Power根絶・フサール表記統一・Belligerent統一を確認）
+- 発見されたcriticalの大半は「個別修正が同一ガイド内の別表・別セクションに伝播していない」という同一パターンの再発（CK3のパッチ帰属誤りとは異なる性質）。表・要約セクションへの伝播漏れが再発しやすい弱点として認識
+- suggestion級（10件）は今回未対応。次回着手時は`_staging/eu5-6countries-review-{veteran,player,writer}.md`を参照
+
 ## 2026-07-12 CK3 1.19 最新化（パッチ帰属誤り訂正・MOD互換更新）
 
 ### Changed

@@ -16,6 +16,7 @@
 | Legitimacy | 正統性 | 君主の正統性 |
 | Control | 支配度 | 州の実効支配度 |
 | Antagonism | 敵対心 | 拡張に対する反発 |
+| Belligerent | 好戦的傾向 | 社会価値軸`belligerent_vs_conciliatory`の一方向（対義: Conciliatory=融和的傾向） |
 | Opinion | 評価 | 国家間の関係値 |
 | Trust | 信頼度 | 同盟の信頼蓄積 |
 | Favor | 好感度 | 同盟国との蓄積関係値 |
