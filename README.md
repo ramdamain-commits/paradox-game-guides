@@ -8,22 +8,23 @@ Paradox Interactive のグランドストラテジーゲーム攻略メモ集。
 
 | 勢力 | ファイル | 難易度 | 対応パッチ |
 |------|----------|--------|-----------|
-| ブランデンブルク | [eu5/eu5-brandenburg-guide.md](eu5/eu5-brandenburg-guide.md) | 中級〜上級 | 1.1.10 |
-| ハンガリー | [eu5/eu5-hungary-guide.md](eu5/eu5-hungary-guide.md) | 初級〜中級 | 1.1.10 |
-| オスマン帝国 | [eu5/eu5-ottoman-guide.md](eu5/eu5-ottoman-guide.md) | 初級〜中級 | 1.1.10 |
-| カスティーリャ | [eu5/eu5-castile-guide.md](eu5/eu5-castile-guide.md) | 初級〜中級 | 1.1.10 |
+| ブランデンブルク | [eu5/eu5-brandenburg-guide.md](eu5/eu5-brandenburg-guide.md) | 中級〜上級 | 1.3.10 |
+| ハンガリー | [eu5/eu5-hungary-guide.md](eu5/eu5-hungary-guide.md) | 初級〜中級 | 1.3.10 |
+| オスマン帝国 | [eu5/eu5-ottoman-guide.md](eu5/eu5-ottoman-guide.md) | 初級〜中級 | 1.3.10 |
+| カスティーリャ | [eu5/eu5-castile-guide.md](eu5/eu5-castile-guide.md) | 初級〜中級 | 1.3.10 |
 | オーストリア（ハプスブルク家） | [eu5/eu5-austria-guide.md](eu5/eu5-austria-guide.md)（詳細編: [eu5-austria-hre-guide.md](eu5/eu5-austria-hre-guide.md)） | 中級〜上級 | 1.3.10 |
+| ビザンツ帝国 | [eu5/eu5-byzantium-guide.md](eu5/eu5-byzantium-guide.md) | ⚠ 非推奨（上級者向け挑戦枠） | 1.3.10 |
 
 #### 共通システム
 
 | テーマ | ファイル | 概要 | 対応パッチ |
 |--------|----------|------|-----------|
-| 汎用攻略 | [eu5/eu5-universal-guide.md](eu5/eu5-universal-guide.md) | 国家共通の序盤運営・拡張指針 | 1.1.10 |
-| 政体 | [eu5/eu5-government-guide.md](eu5/eu5-government-guide.md) | 君主制・共和国・神権制などの違い | 1.1.10 |
-| 宗教 | [eu5/eu5-religion-guide.md](eu5/eu5-religion-guide.md) | 宗教グループ別の固有メカニクス | 1.1.10 |
-| 地域 | [eu5/eu5-regional-guide.md](eu5/eu5-regional-guide.md) | 地域別の難易度とおすすめ国家 | 1.1.10 |
+| 汎用攻略 | [eu5/eu5-universal-guide.md](eu5/eu5-universal-guide.md) | 国家共通の序盤運営・拡張指針 | 1.3.10 |
+| 政体 | [eu5/eu5-government-guide.md](eu5/eu5-government-guide.md) | 君主制・共和国・神権制などの違い | 1.3.10 |
+| 宗教 | [eu5/eu5-religion-guide.md](eu5/eu5-religion-guide.md) | 宗教グループ別の固有メカニクス | 1.3.10 |
+| 地域 | [eu5/eu5-regional-guide.md](eu5/eu5-regional-guide.md) | 地域別の難易度とおすすめ国家 | 1.3.10 |
 
-**おすすめMOD**: [eu5/eu5-recommended-mods.md](eu5/eu5-recommended-mods.md)（1.1.10 時点）
+**おすすめMOD**: [eu5/eu5-recommended-mods.md](eu5/eu5-recommended-mods.md)（1.3.10 時点）
 
 ### Victoria 3
 
