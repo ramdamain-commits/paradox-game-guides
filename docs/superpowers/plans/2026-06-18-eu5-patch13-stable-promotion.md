@@ -153,19 +153,19 @@
 
 ## フェーズ 3: 検証 + 仕上げ
 
-### Task 3-1: 整合スイープ（grep）
-- [ ] `grep -rn "（1.3 beta）\|1.3 オープンベータ\|仮登録\|tag--beta" eu5/ index.html` が**0件**になることを確認（差分セクション・暫定マーカー・バッジの残存ゼロ）。
-- [ ] 各ガイド冒頭のパッチ版・確認日が 1.3 になっているか確認。`grep -rn "Patch 1.2 時点\|1.2「Echinades」" eu5/` で旧版表記の取り残しを検出。
-- [ ] 被リンク（regional⇔byzantium/austria/brandenburg、universal/government への参照）が昇格後の見出し位置を指しているか確認。
+### Task 3-1: 整合スイープ（grep） — ✅完了 (07-12)
+- [x] `grep -rn "（1.3 beta）\|1.3 オープンベータ\|仮登録\|tag--beta" eu5/ index.html` が**0件**（index.htmlの`.tag--beta`CSS定義のみ許容）を確認。
+- [x] 各ガイド冒頭のパッチ版・確認日が 1.3 になっているか確認。「1.2「Echinades」」表記は全て意図的な旧パッチ履歴節（現行baselineは1.3明記済み）と確認、旧版取り残しなし。
+- [x] 被リンク（regional⇔byzantium/austria/brandenburg、universal/government への参照）が昇格後の見出し位置を指しているか確認。全リンク先の見出し実在を確認済み。
 
-### Task 3-2: レビュー（reviewer 3並列・行番号+一行要約のみ）
-- [ ] 正確性（安定版スクリプト整合）／網羅性（差分項目の取りこぼし無し）／構成（差分セクション解体後の章構成の自然さ）。
-- [ ] **負荷分割は「検証ポイント数均等」で**（CLAUDE.md・行範囲均等にしない）。**regional は最大規模のため専任 reviewer を立てる**か、担当を2分割して最遅待ちを防ぐ（過去に 88秒 vs 283秒 の3倍差の実例あり）。
+### Task 3-2: レビュー（reviewer 3並列・行番号+一行要約のみ） — ✅完了 (07-12)
+- [x] 正確性（安定版スクリプト整合）／網羅性（差分項目の取りこぼし無し）／構成（差分セクション解体後の章構成の自然さ）。11ガイドを検証ポイント数（旧beta marker数、合計85pt）でR1(regional20+castile3+ottoman3+mods=27)/R2(government18+hungary5+austria3+brandenburg5=31)/R3(byzantium12+universal9+religion6=27)に分割し3並列実施。
+- [x] **負荷分割は「検証ポイント数均等」で**実施（regionalはR1で軽量3ガイドのみと同居させ実質専任化）。critical複数件（GP Score免除閾値の識別子非実在・austria架空出典31箇所・hungaryフサール兵科誤分類・Twilight of the Tsardom発火タイミング誤認）とimportant多数を検出、実機スクリプト裏取り後にメイン側で全修正。
 
-### Task 3-3: CHANGELOG + コミット + push + root submodule
-- [ ] `CHANGELOG.md` に「EU5 1.3 安定版へ昇格（差分セクション統合・本文昇格・中央用語登録・betaバッジ除去・小型ガイド拡充）」エントリ。
-- [ ] paradox-game-guides を push、root repo でサブモジュール参照を更新（CLAUDE.md）。
-- [ ] **プロジェクト状態更新を順序厳守で（CLAUDE.md・projects.json 起点。順序を守らないと LifeOpsConsole 警告が残る実例 2026-05-17）:** ① `setting/projects.json`（正本） → ② `MEMORY.md`（索引・project_paradox_game_guides.md も更新） → ③ `TASKS.md` → ④ `setting/changelog.json` 追記 → ⑤ `Invoke-LifeOpsConsole.ps1 -Action export -SkipOpen`。
+### Task 3-3: CHANGELOG + コミット + push + root submodule — ✅完了 (07-12)
+- [x] `CHANGELOG.md` にフェーズ2.5（小型3ガイド拡充）・フェーズ3（整合スイープ・レビュー・誤り訂正）のエントリを追加。
+- [x] paradox-game-guides を push（b6424de）、root repo でサブモジュール参照を更新。
+- [ ] プロジェクト状態更新（① projects.json → ② MEMORY.md → ③ TASKS.md → ④ changelog.json → ⑤ export）は次アクションとして持ち越し。
 
 ---
 
