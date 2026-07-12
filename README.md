@@ -12,6 +12,7 @@ Paradox Interactive のグランドストラテジーゲーム攻略メモ集。
 | ハンガリー | [eu5/eu5-hungary-guide.md](eu5/eu5-hungary-guide.md) | 初級〜中級 | 1.1.10 |
 | オスマン帝国 | [eu5/eu5-ottoman-guide.md](eu5/eu5-ottoman-guide.md) | 初級〜中級 | 1.1.10 |
 | カスティーリャ | [eu5/eu5-castile-guide.md](eu5/eu5-castile-guide.md) | 初級〜中級 | 1.1.10 |
+| オーストリア（ハプスブルク家） | [eu5/eu5-austria-guide.md](eu5/eu5-austria-guide.md)（詳細編: [eu5-austria-hre-guide.md](eu5/eu5-austria-hre-guide.md)） | 中級〜上級 | 1.3.10 |
 
 #### 共通システム
 
