@@ -9,7 +9,7 @@
   - なぜ: 公式チュートリアルが、ゲームを始めるたびに一読するよう勧めている [src: tutorial_l_japanese.yml, lesson_basics_wrap_up_6_desc]
 - [ ] 「自動化」パネルを開き、ゲームに任せる項目と自分で管理する項目を決める {#start-automation}
   - なぜ: 自動化した項目はアラートに出なくなるため、何を見るかを先に決めておく [src: tutorial_l_japanese.yml, lesson_basics_wrap_up_3b_desc]
-- [ ] 「実施可能な改革」のアラートが出ていれば、「政府」パネルの「国家」タブにある「階級」タブで、君主階級カード下の＋ボタンから政府改革を選ぶ {#start-reform}
+- [ ] 「実施可能な改革」のアラートが出ていれば、「政府」パネルの「国家」タブにある「階級」タブで、王室カード下の＋ボタンから政府改革を選ぶ {#start-reform}
   - なぜ: 政府改革は国の姿を大きく変えるので、新規ゲームでは最初に設定する [src: tutorial_l_japanese.yml, lesson_admin_6b_desc] [src: hints_l_japanese.yml, hint_has_possible_reform_hint_text_2]
 - [ ] 「成文化されていない法律」のアラートが出ていれば、「政府」パネルの「国家」タブにある「法律」タブでポリシーを設定する {#start-laws}
   - なぜ: ポリシーが空のままだと得られる恩恵を逃す。設定にはゴールドと安定度がかかる [src: hints_l_japanese.yml, hint_has_possible_law_hint_text_1] [src: hints_l_japanese.yml, hint_has_possible_law_hint_text_3]
@@ -44,7 +44,7 @@
   - なぜ: 正統性が低いと君主力の恩恵が損なわれ、反乱や階級満足度の低下を招く。共和的伝統・献身・遊牧民の結束・部族の団結も同じ50未満で警告される [src: scripted_hints.txt, hint_low_legitimacy] [src: strengthen_government.txt, strengthen_government]
 - [ ] 満足度が50%未満の階級があれば、「政府」パネルの「国家」タブにある「階級」タブで特権を見直すか、課税を下げる {#early-estates}
   - なぜ: 不満な階級は国にペナルティを与え、その階級のPOPが反乱に加わりやすくなる [src: scripted_hints.txt, hint_unhappy_estates] [src: 00_defines.txt, LOW_SATISFACTION_THRESHOLD]
-- [ ] 食糧不足や飢饉のアラートが出たら、食糧を作るRGOを拡大するか、食糧を輸入する {#early-food}
+- [ ] 「食糧市場在庫の少ない市場」のアラートが出たら、食糧を作るRGOを拡大するか、食糧を輸入する {#early-food}
   - なぜ: 市場の食糧備蓄が足りないと、その州のロケーションが飢饉に陥る [src: hints_l_japanese.yml, hint_low_food_in_market_hint_text_1] [src: hints_l_japanese.yml, hint_low_food_in_market_hint_text_2]
 - [ ] 「指揮官の不在」のアラートが出たら、アラートから軍に指揮官を任命する {#early-leader}
   - なぜ: 指揮官がいないと、軍は戦闘で力を発揮できない [src: hints_l_japanese.yml, hint_has_army_without_leader_hint_text_1]
@@ -59,8 +59,8 @@
   - なぜ: 研究ポイントは上限までしか蓄積されず、超えた分は無駄になる [src: 00_default.txt, has_nearly_maxed_out_stored_research_progress] [src: hints_l_japanese.yml, hint_can_do_more_research_hint_text_3]
 - [ ] 「受容可能な制度」のアラートが出たら、その制度を受容する {#early-institution}
   - なぜ: 制度を受容すると、その時代の新しい進歩を研究できる。受容にはゴールドと安定度がかかる [src: game_concepts_l_japanese.yml, game_concept_institution_desc] [src: 00_hardcoded.txt, embrace_institution]
-- [ ] 制度が自国に広がるのが遅いときは、内閣アクション「制度の推進」を実行する {#early-institution-push}
-  - なぜ: 公式の説明が、伝播が足りない場合の手段として挙げている [src: game_concepts_l_japanese.yml, game_concept_institution_desc] [src: study_institutions.txt, study_institutions]
+- [ ] 制度が自国に広がるのが遅いときは、内閣アクション「制度の推進」を実行する（部族政体では不可） {#early-institution-push}
+  - なぜ: 公式の説明が、伝播が足りない場合の手段として挙げている。部族政体は実行できない [src: game_concepts_l_japanese.yml, game_concept_institution_desc] [src: study_institutions.txt, study_institutions]
 - [ ] 支配度が95%未満で税基盤の大きい州に、内閣アクション「州支配を強化」を実行する {#early-control}
   - なぜ: 支配が及ばない富には課税できず、そのまま階級の取り分になる [src: tutorial_l_japanese.yml, lesson_location_4_desc] [src: increase_control.txt, increase_control_province]
 - [ ] 街道ビルダーで、首都から外へ向けて街道を延ばし続ける {#early-roads}
@@ -83,11 +83,11 @@
 - [ ] 正規兵で戦う予定なら、人的資源が20%以下の間は宣戦布告を控える {#early-manpower}
   - なぜ: 人的資源が少ないと、軍の補充能力が著しく制限される [src: scripted_hints.txt, hint_manpower] [src: hints_l_japanese.yml, hint_manpower_hint_text_2]
 - [ ] 宣戦布告の前に、自国の中核地を領有している国に対して使える開戦事由を確認する {#early-cb}
-  - なぜ: 開戦事由なしだと安定度と近隣国の評価が下がる。州征服の開戦事由は、相手が自国の中核地を領有していることが条件 [src: tutorial_l_japanese.yml, lesson_military_war_0_desc] [src: conquest.txt, cb_conquer_province]
+  - なぜ: 開戦事由なしだと安定度と近隣国の評価が下がる。「州の請求」の開戦事由は、相手が自国の中核地を領有していることが条件 [src: tutorial_l_japanese.yml, lesson_military_war_0_desc] [src: conquest.txt, cb_conquer_province]
 - [ ] 征服した土地は、内閣アクション「州の統合」で統合する {#early-integrate}
   - なぜ: 統合するまで、征服した土地は国に貢献せず厳しいペナルティを受ける [src: hints_l_japanese.yml, hint_has_conquered_provinces_hint_text_1] [src: integrate_province.txt, integrate_province]
 - [ ] 戦争疲弊のアラートが出ている間は、新しい宣戦布告を控えて平和状態にし、下がるのを待つ {#early-war-exhaustion}
-  - なぜ: 戦争疲弊が高いと軍の戦闘力が落ち、POPの増加が鈍り、経済が破綻する [src: 00_default.txt, has_high_war_exhaustion] [src: hints_l_japanese.yml, hint_war_exhaustion_hint_text_3]
+  - なぜ: 戦争疲弊が高いと軍の戦闘力が落ち、POPの増加が鈍り、経済が破綻する [src: 00_default.txt, has_high_war_exhaustion] [src: hints_l_japanese.yml, hint_war_exhaustion_hint_text_1] [src: hints_l_japanese.yml, hint_war_exhaustion_hint_text_2] [src: hints_l_japanese.yml, hint_war_exhaustion_hint_text_3]
 
 ## 3. 中盤：発見〜宗教改革（1437〜1637）
 
@@ -116,12 +116,12 @@
 - 内閣（Cabinet）／内閣アクション（Cabinet Action）
 - 国家の安定化（Stabilize Country）／政府の強化（Strengthen Government）／州支配を強化（Increase Province Control）／州の統合（Integrate Province）／制度の推進（Foster Institutions）
 - 安定度（Stability）／安定度投資（Stability Investment）／政府力（Government Power）／正統性（Legitimacy）／共和的伝統（Republican Tradition）／献身（Devotion）／遊牧民の結束（Horde Unity）／部族の団結（Tribal Cohesion）
-- 階級（Estate）／満足度（Satisfaction）／特権（Privilege）／君主力（Crown Power）
+- 階級（Estate）／王室（Crown）／満足度（Satisfaction）／特権（Privilege）／君主力（Crown Power）
 - 政府改革（Government Reform）／法律（Law）／ポリシー（Policy）
 - 収支（Balance）／貨幣鋳造（Minting）／インフレ（Inflation）／税基盤（Tax Base）
 - 制度（Institution）／受容（Embrace）／進歩（Advance）／時代（Age）
 - 支配度（Control）／近接性（Proximity）／街道（Road）／ロケーション（Location）／中核地（Core）
-- 開戦事由（Casus Belli）／戦争疲弊（War Exhaustion）／人的資源（Manpower）／指揮官（Commander）／同盟（Alliance）／外交アクション（Diplomatic Action）
+- 開戦事由（Casus Belli）／州の請求（Claims on Province）／戦争疲弊（War Exhaustion）／人的資源（Manpower）／指揮官（Commander）／同盟（Alliance）／外交アクション（Diplomatic Action）
 - 文化許容量（Cultural Capacity）／交易許容量（Trade Capacity）／外交許容量（Diplomatic Capacity）／食糧（Food）／RGO（R.G.O.）／ミッション（Mission）／自動化パネル（Automation Panel）／アジェンダ（Agenda）
 
 ## 9. 出典
@@ -135,7 +135,7 @@
 - `in_game/common/scriptable_hints/scripted_hints.txt`（ヒントの発動条件）
 - `in_game/common/cabinet_actions/stabilize_country.txt`、`strengthen_government.txt`、`increase_control.txt`、`integrate_province.txt`、`study_institutions.txt`（内閣アクション）
 - `in_game/common/prices/00_hardcoded.txt`（制度の受容コスト）
-- `in_game/common/casus_belli/conquest.txt`（州征服の開戦事由）
+- `in_game/common/casus_belli/conquest.txt`（「州の請求」の開戦事由）
 - `in_game/gui/economy_lateralview.gui`（安定度投資の置き場所）
 - `main_menu/localization/japanese/tutorial_l_japanese.yml`、`hints_l_japanese.yml`、`game_concepts_l_japanese.yml`（公式の説明文）
 
