@@ -24,12 +24,15 @@ ITEM_RE = re.compile(r"^\s*- \[( |x|X)\] ")
 ID_RE = re.compile(r"\{#([^}]*)\}\s*$")
 VALID_ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 SRC_RE = re.compile(r"\[src:\s*([^,\]]+)")
-FILE_EXT_RE = re.compile(r"\.(txt|yml|csv|gui|json)$")
+# 文字数上限の対象外にする範囲（checklist.html の wrapSrc と同じ。マーカーは既定で非表示のため）
+STRIP_SRC_RE = re.compile(r"\[src:[^\]]*\]")
+FILE_EXT_RE =re.compile(r"\.(txt|yml|csv|gui|json)$")
 
 
 class Result(NamedTuple):
     errors: list[str]
     items: int
+    chars: int  # [src:] マーカーを除いた文字数
 
 
 def normalize_src_name(raw: str) -> str | None:
@@ -92,9 +95,10 @@ def check(text: str, game_files: set[str] | None) -> Result:
 
     if items > MAX_ITEMS:
         errors.append(f"項目数 {items} が上限 {MAX_ITEMS} を超えている")
-    if len(text) > MAX_CHARS:
-        errors.append(f"文字数 {len(text)} が上限 {MAX_CHARS} を超えている")
-    return Result(errors, items)
+    chars = len(STRIP_SRC_RE.sub("", text))
+    if chars > MAX_CHARS:
+        errors.append(f"文字数 {chars}（[src:] を除く）が上限 {MAX_CHARS} を超えている")
+    return Result(errors, items, chars)
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -121,7 +125,7 @@ def main(argv: list[str] | None = None) -> int:
     if result.errors:
         print(f"NG: {len(result.errors)} 件", file=sys.stderr)
         return 1
-    print(f"OK: 項目数 {result.items} / 文字数 {len(text)}")
+    print(f"OK: 項目数 {result.items} / 文字数 {result.chars}（[src:] を除く。全体 {len(text)}）")
     return 0
 
 

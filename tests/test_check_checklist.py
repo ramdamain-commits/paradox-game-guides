@@ -27,6 +27,8 @@ class CheckTests(unittest.TestCase):
         res = cc.check(SAMPLE.read_text(encoding="utf-8-sig"), GAME_FILES)
         self.assertEqual(res.errors, [])
         self.assertEqual(res.items, 7)
+        # 全体 647 字のうち [src:] 2 箇所（計 80 字）を除いた固定値
+        self.assertEqual(res.chars, 567)
 
     def test_missing_id(self):
         self.assertEqual(errors(doc("## 1. A\n- [ ] 行動\n")), ["L5: 末尾に {#id} がない"])
@@ -99,7 +101,26 @@ class CheckTests(unittest.TestCase):
         base = doc("")
         exact = base + "あ" * (cc.MAX_CHARS - len(base))
         self.assertEqual(errors(exact), [])
-        self.assertEqual(errors(exact + "あ"), ["文字数 20001 が上限 20000 を超えている"])
+        self.assertEqual(errors(exact + "あ"), ["文字数 20001（[src:] を除く）が上限 20000 を超えている"])
+
+    def test_char_limit_excludes_src(self):
+        base = doc("")
+        marker = "[src: a.txt, ident]"
+        # [src:] を除けばちょうど 20000 字。マーカーを含めると超える
+        text = base + marker + "あ" * (cc.MAX_CHARS - len(base))
+        self.assertGreater(len(text), cc.MAX_CHARS)
+        res = cc.check(text, None)
+        self.assertEqual(res.errors, [])
+        self.assertEqual(res.chars, cc.MAX_CHARS)
+
+    def test_char_limit_counts_text_outside_src(self):
+        base = doc("")
+        # 1 行に [src:] と後続の本文がある。貪欲な除去だと本文まで消えて通ってしまう
+        line = "[src: a.txt]" + "あ" * 10 + "[src: b.txt]\n"
+        text = base + line + "あ" * (cc.MAX_CHARS + 1 - len(base) - 11)
+        res = cc.check(text, None)
+        self.assertEqual(res.chars, cc.MAX_CHARS + 1)
+        self.assertEqual(res.errors, ["文字数 20001（[src:] を除く）が上限 20000 を超えている"])
 
     def test_crlf_same_as_lf(self):
         lf = doc("## 1. A\n- [ ] a {#x}\n- [ ] b {#x}\n")
