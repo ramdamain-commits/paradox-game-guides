@@ -58,7 +58,7 @@
 | Alliance | 同盟 | 軍事同盟 |
 | Royal Marriage | 王室間の婚姻 | 王族同士の婚姻外交 |
 | Personal Union | 同君連合 | 同じ統治者を戴く連合 |
-| Improve Relations | 評価改善 | 外交アクション。ボタン名は `IMPROVE_RELATIONTITLE` = 「評価改善」。概念名 `game_concept_improve_relations` とヒント文は「関係改善」 `[src: diplomacy_l_japanese.yml, IMPROVE_RELATIONTITLE]` |
+| Improve Relations | 評価改善 | 外交アクション。ボタン名は `IMPROVE_RELATIONTITLE` = 「評価改善」。概念名 `game_concept_improve_relations` は「関係改善」。ヒント文は両方ある（`hint_has_disloyal_subjects_hint_text_2` などは `$IMPROVE_RELATIONTITLE$` 経由で「評価改善」、`hint_over_diplo_capacity_hint_text_2` は「関係改善」） `[src: diplomacy_l_japanese.yml, IMPROVE_RELATIONTITLE]` |
 | Guarantee | 独立保障 | 他国の独立を保障 |
 | Truce | 停戦 | 戦争終了後の停戦期間 |
 | Call to Arms | 参戦要請 | 同盟国への参戦要請 |
@@ -147,7 +147,7 @@
 | University | 大学 | 教育・制度伝播 |
 | Granary | 穀物庫 | 食料貯蔵 |
 | Barracks | 兵舎 | 軍事施設 |
-| Fortification / Fortress | 要塞 | 防衛施設。ZoC を発生 |
+| Fortification / Fortress | 要塞 | 防衛施設。ZoC を発生。概念 Fort（`game_concept_fort`）も同じ「要塞」 |
 | Star Fort | 星形要塞 | 要塞の上位 |
 | Dock | ドック | 海軍施設 |
 | Shipyard | 造船所 | 艦船建造 |
@@ -166,7 +166,7 @@
 
 | 英語キー | ゲーム内日本語 | 補足 |
 |----------|---------------|------|
-| Holy Roman Empire | 神聖ローマ帝国 | 略称 HRE |
+| Holy Roman Empire | 神聖ローマ帝国 | 略称 HRE。概念キーは `game_concept_holy_roman_empire` |
 | Emperor | 皇帝 | HRE の首長。選帝侯の投票で選出される |
 | Elector | 選帝侯 | 皇帝選挙の投票権者。最大 7 名 |
 | Imperial Authority | 帝国の権威 | 略称 IA。皇帝権力の強さを示す 0〜100 の指標 |
@@ -200,7 +200,7 @@
 ## 1.4 プレイ中チェックリストで追加した汎用用語
 
 > 1.4 オープンベータ（ビルド 25606497）で `main_menu/localization/japanese/` と `english/` を突き合わせて確認（2026-10-14）。出典列はキー名と yml ファイル。上の節に無かった語だけを足している。
-> 「ゴールド」（通貨）「教皇国」「非寛容な文化」はゲーム内に存在しない訳語（ゴールドは人名の一つとして出るのみ）。通貨は「ダカット」、教皇の国は「ローマ」（タグ PAP）、受容でも容認でもない文化は「非受容文化」「非指定文化」と表示される。
+> 「ゴールド」（通貨）「教皇国」「非寛容な文化」はゲーム内に存在しない訳語（通貨名としては使われず、人名・船名・文中の一般語に出るのみ）。通貨は「ダカット」、教皇の国は「ローマ」（タグ PAP）、受容でも容認でもない文化は「非受容文化」「非指定文化」と表示される。
 
 | 英語キー | ゲーム内日本語 | 補足 |
 |----------|---------------|------|
@@ -211,9 +211,7 @@
 | Accepted Culture | 受容文化 | `game_concept_accepted_culture`。主要文化もこの人口に数える（`total_accepted_culture_population`）。受容でも容認でもない文化には「非受容文化」「非指定文化」の両方が含まれる |
 | Tolerated Culture | 容認文化 | `game_concept_tolerated_culture` |
 | Primary Religion | 主要宗教 | `game_concept_true_faith`（`total_true_faith_population` の表示） |
-| Holy Roman Empire | 神聖ローマ帝国 | `game_concept_holy_roman_empire`。略称 HRE |
 | Mercenary | 傭兵 | `game_concept_mercenary`。基本コストは正規兵より50%高い |
-| Fort | 要塞 | `game_concept_fort`（上の Fortification / Fortress と同訳） |
 | Blockade | 封鎖 | `game_concept_blockade` |
 | Cabinet Seat | 閣僚ポスト | `game_concept_cabinet_seat`。進歩や補正の表示 `MODIFIER_TYPE_NAME_government_size`（英語 Cabinet Seats）は「閣僚議席」だが、同じ内閣の枠数を指す |
 | Stability Investment | 安定度投資 | `game_concept_stability_investment` |
