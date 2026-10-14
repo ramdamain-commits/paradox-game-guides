@@ -300,7 +300,7 @@
     main.textContent = '';
     const h = document.createElement('div');
     h.className = 'doc';
-    h.innerHTML = marked.parse(head);
+    h.innerHTML = wrapSrc(marked.parse(head));
     main.appendChild(h);
     const h1 = h.querySelector('h1');
     if (h1) document.title = h1.textContent;
@@ -310,7 +310,7 @@
       } else {
         const s = document.createElement('section');
         s.className = 'doc';
-        s.innerHTML = marked.parse('## ' + sec.title + '\n' + sec.lines.join('\n'));
+        s.innerHTML = wrapSrc(marked.parse('## ' + sec.title + '\n' + sec.lines.join('\n')));
         main.appendChild(s);
       }
     }
