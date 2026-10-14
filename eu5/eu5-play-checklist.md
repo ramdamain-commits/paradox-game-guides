@@ -164,7 +164,91 @@
 
 ## 5. 定期ルーチン {.routine}
 
+### 毎年
+
+- [ ] 「経済」パネルの「収支」タブで、月間収支がプラスか確認する {#yearly-balance}
+  - なぜ: マイナスのままだと負債や破産につながる [src: scripted_hints.txt, hint_in_deficit] [src: hints_l_japanese.yml, hint_in_deficit_hint_text_1]
+- [ ] 安定度が0を超えているか確認する {#yearly-stability}
+  - なぜ: 0以下でヒントが出て、-50以下は深刻とされる。数値は7章 [src: scripted_hints.txt, hint_low_stability] [src: scripted_hints.txt, hint_very_low_stability]
+- [ ] 「政府」パネルの「国家」タブにある「階級」タブで、満足度が50%未満の階級がないか確認する {#yearly-estates}
+  - なぜ: 25%未満になった階級は召集軍を提供しなくなる。数値は7章 [src: 00_defines.txt, ESTATE_LEVY_SATISFACTION_THRESHOLD] [src: hints_l_japanese.yml, hint_estates_hint_text_1]
+- [ ] 「進歩」パネルで研究が進行中か確認し、止まっていれば次の進歩を選ぶ {#yearly-research}
+  - なぜ: 研究ポイントは上限までしか貯まらず、超えた分は無駄になる [src: hints_l_japanese.yml, hint_can_do_more_research_hint_text_3]
+- [ ] 「政府」パネルの「内閣」タブで、空いている閣僚ポストにキャラクターを割り当て、利用できる内閣アクションを実行する {#yearly-cabinet}
+  - なぜ: 内閣アクションは国を動かす最も強力な道具で、閣僚ポストはすべて使うべきとされる [src: hints_l_japanese.yml, hint_has_possible_cabinet_action_hint_text_1] [src: hints_l_japanese.yml, hint_lack_cabinet_for_cabinet_action_hint_text_1]
+- [ ] 「投入物資不足の建設」「投入物資不足の建造物」のアラートが出たら、アラートから不足する交易品のRGOか建造物を増やすか、他の市場から輸入する {#yearly-input}
+  - なぜ: 物資が足りないと、建設は中断され、建造物は生産量が減る [src: hints_l_japanese.yml, hint_has_constructions_missing_input_hint_text_1] [src: hints_l_japanese.yml, hint_has_buildings_missing_input_hint_text_1] [src: hints_l_japanese.yml, hint_address_shortage_text]
+
+### 10年ごと
+
+- [ ] ライバルの全員が今も自国を脅かす強い国か見直し、そうでなければ選択画面で置き換える {#decade-rival}
+  - なぜ: 脅威とならないライバルは威信を毎月失わせ、脅威となるライバルは威信と外交評判をもたらす。置き換えには政治的影響力を使う（公式ヒントの説明・スクリプト未確認） [src: hints_l_japanese.yml, hint_has_inadequate_rivals_hint_text_1] [src: hints_l_japanese.yml, hint_has_inadequate_rivals_hint_text_2]
+- [ ] 同盟国に、弱すぎて自国を無関係の戦争に巻き込みかねない国がないか見直し、あれば同盟を破棄する {#decade-alliance}
+  - なぜ: 同盟国も自国を戦争に召集する。弱すぎる国との同盟は、無関係の戦争で敗戦国になる原因になる [src: hints_l_japanese.yml, hint_no_allies_hint_text_3]
+- [ ] 「交易」パネルで、赤字の交易路がないか確認し、戦略上不要なら廃止して黒字の交易路に置き換える {#decade-trade}
+  - なぜ: 建設用の木材や食糧の供給路など、戦略上重要な物資なら赤字でも意味がある [src: hints_l_japanese.yml, hint_unprofitable_trade_route_hint_text_1] [src: hints_l_japanese.yml, hint_unprofitable_trade_route_hint_text_2]
+- [ ] 安定度が高いときに、「階級」タブで最も強力な階級の特権を見直す {#decade-privileges}
+  - なぜ: 階級の権力のぶんだけ君主力が下がる。ただし特権を剥奪された階級は不満を抱くので、満足度を確認する [src: hints_l_japanese.yml, hint_estates_hint_text_2] [src: hints_l_japanese.yml, hint_crown_power_hint_text_2]
+- [ ] 「新たなポリシーを利用可能」のアラートが出たら、「政府」パネルの「国家」タブにある「法律」タブでポリシーを見直す {#decade-policies}
+  - なぜ: ポリシーはゴールドと安定度を使えばいつでも変更できる。完全な効果が出るまでには時間がかかる [src: hints_l_japanese.yml, hint_has_possible_law_hint_text_3]
+
+### 時代が変わったとき
+
+- [ ] 時代の始まりのイベントで、統治・外交・軍事のフォーカスの説明にある進歩を見比べ、この時代の方針に合う1つを選ぶ {#age-focus}
+  - なぜ: 選んだフォーカスが、その時代の自国の進歩ツリーを決める。選ばなかったフォーカス専用の進歩は、その時代には現れない [src: game_concepts_l_japanese.yml, game_concept_age_lower_desc] [src: ages.txt, ages_of_eu.1] [src: 4_choices_adm.txt, innovativeness] [src: effects_l_japanese.yml, WE_SET_AGE_PREFERENCE_EFFECT]
+- [ ] 「進歩」パネルで、新しい時代のツリーから研究する進歩を選ぶ {#age-research}
+  - なぜ: 各時代に独自の進歩ツリーがある [src: game_concepts_l_japanese.yml, game_concept_age_upper_desc]
+- [ ] 「政府」パネルの「国家」タブにある「法律」タブで、新しく解禁された法律とポリシーを確認し、空いているポリシーを設定する {#age-laws}
+  - なぜ: 時代が進むと多くの新しい法律とポリシーが解禁され、ポリシーが空のままだと恩恵を逃す [src: hints_l_japanese.yml, hint_has_possible_law_hint_text_1] [src: hints_l_japanese.yml, hint_has_possible_law_hint_text_3]
+- [ ] 「内閣」タブで、新しく解禁された内閣アクションがないか確認する {#age-cabinet}
+  - なぜ: 時代が進むと新たな内閣アクションが解禁される [src: hints_l_japanese.yml, hint_has_possible_cabinet_action_hint_text_3]
+- [ ] 新しい連隊タイプを解禁する進歩を研究したら、平和なうちに友好的なロケーションにいる陸軍へ「陸軍の強化」を実行する {#age-upgrade-army}
+  - なぜ: 連隊タイプには上位の連隊タイプが定められている。強化すると現在の士気が0になり、召集軍と傭兵は強化できない（ゲーム内表示の説明・スクリプト未確認） [src: 2_army_unlocks.txt, unlock_halberdiers_advance] [src: 2_unlocked_through_tech.txt, a_men_at_arms] [src: units_l_japanese.yml, UPGRADE_ARMY_INFO_NO] [src: units_l_japanese.yml, UPGRADE_ARMY_LEVIES_ARE_RUBBISH]
+- [ ] 新しい船のタイプを解禁する進歩を研究したら、平和なうちに自国か従属国の港にいる海軍へ「海軍の強化」を実行する {#age-upgrade-navy}
+  - なぜ: 船のタイプにも上位のタイプが定められている。強化すると現在の士気が0になり、召集軍は強化できない（ゲーム内表示の説明・スクリプト未確認） [src: 2_ship_unlocks.txt, unlock_carrack_advance] [src: navy_heavy_ship.txt, n_early_carrack] [src: units_l_japanese.yml, UPGRADE_FLEET_NOT_IN_OWNED_PORT] [src: units_l_japanese.yml, UPGRADE_FLEET_INFO_NO]
+
+### 戦争の前と後
+
+- [ ] 宣戦布告の前に、相手と停戦中でないか確認する {#war-truce}
+  - なぜ: 停戦中の相手に宣戦布告すると、厳しい罰則が科される [src: game_concepts_l_japanese.yml, game_concept_truce_desc]
+- [ ] 宣戦布告の前に、「経済」パネルで陸軍維持費の戦争開始時の自動増額を有効にするか、維持費を上げておく {#war-maintenance}
+  - なぜ: 維持費をかけないと士気と兵の有効性が下がる。戦争中に低いままだと「少ない陸軍維持費」のアラートが出る [src: game_concepts_l_japanese.yml, game_concept_army_maintenance_desc] [src: 00_default.txt, has_low_army_maintenance] [src: interfaces_l_japanese.yml, TOGGLE_AUTO_ARMY_MAINTENANCE_TOOLTIP_OFF_TT] [src: economy_lateralview.gui, AutoRaiseMaintenanceAtWar]
+- [ ] 戦争が始まったら、開戦事由の戦争目標を確認し、達成に向けて軍を動かす {#war-goal}
+  - なぜ: 戦争目標の達成が戦勝点を生み、有利な和平条約に欠かせない。ほかに首都や請求地の占領・要塞の占領・敵軍の撃破・港の封鎖でも戦勝点を稼げる [src: hints_l_japanese.yml, hint_war_hint_text_2]
+- [ ] 「和平の呼びかけ」のアラートが出たら、「和平条約」パネルで要求を減らし、戦争疲弊が致命的になる前に署名する {#war-peace}
+  - なぜ: 早めの署名で失ったものは、将来の別の戦争で取り戻せる [src: hints_l_japanese.yml, hint_call_for_peace_hint_text_2] [src: hints_l_japanese.yml, hint_call_for_peace_hint_text_3]
+- [ ] 「平時の召集陸軍動員」「平時の召集海軍動員」のアラートが出たら、召集軍を解散する {#war-disband}
+  - なぜ: 動員中は募集元のPOPが減り、解散すると生き残った者はPOPに戻る [src: game_concepts_l_japanese.yml, game_concept_army_levy_desc] [src: interfaces_l_japanese.yml, DISBAND_ALL_LEVIES]
+- [ ] 「追放状態の陸軍」のアラートが出たら、その陸軍を自国へ帰還させる {#war-exiled}
+  - なぜ: 追放状態の陸軍は、自国へ戻るまで再び戦えない [src: alerts_l_japanese.yml, ALERT_EXILED_UNITS]
+- [ ] 「停戦協定がまもなく終了」のアラートが出たら、期限までに軍の編成と同盟関係を確認する {#war-truce-end}
+  - なぜ: 停戦が終わると、再び宣戦布告されるかもしれない [src: alerts_l_japanese.yml, ALERT_TRUCE_EXPIRES]
+
 ## 6. 困ったとき
+
+**飢饉の州が出ている（「飢饉の州」「飢饉の危機にある州」）**
+- 見る場所: 「市場」パネルの「食糧」ボタンから開く「食糧生産」パネルで、飢饉の危険がある州 [src: 00_default.txt, has_starving_provinces] [src: hints_l_japanese.yml, hint_food_hint_text_2]
+- 打ち手: その州のRGOを拡大するか、別の市場から食糧を輸入する。冬は食糧生産が減るので、数ヵ月のマイナスで慌てない [src: hints_l_japanese.yml, hint_food_hint_text_2] [src: hints_l_japanese.yml, hint_food_hint_text_3]
+
+**軍の兵が減り続ける（「食糧不足」「深刻な食糧不足」）**
+- 見る場所: アラートに並ぶ、食糧が不足している陸軍の一覧 [src: 00_default.txt, has_army_with_very_low_food] [src: alerts_l_japanese.yml, ALERT_VERY_LOW_FOOD]
+- 打ち手: 消耗の主因である食糧切れ・場所の供給限界の超過・冬や地形から、軍を外す（公式の説明から導いた対処・スクリプト未確認） [src: game_concepts_l_japanese.yml, game_concept_attrition_desc]
+
+**従業員が足りない建造物やRGOがある（「従業員不足の建造物」「従業員不足のRGO」）**
+- 見る場所: 「ロケーション」パネルの「人口統計」タブにあるPOP昇格速度 [src: 00_default.txt, lack_pop_promotion_to_fill_buildings] [src: hints_l_japanese.yml, hint_lack_pop_promotion_to_fill_buildings_hint_text_3]
+- 打ち手: 従業員が足りない場所に新しい建造物を建てず、安定度・識字率・支配度を上げる。重要な場所には図書館と大学を建てる [src: hints_l_japanese.yml, hint_lack_pop_promotion_to_fill_buildings_hint_text_2]
+
+**POPの必需品が足りない（「満たされないPOP」）**
+- 見る場所: アラートに並ぶ、不足している交易品とその市場 [src: 00_default.txt, has_pop_needs] [src: alerts_l_japanese.yml, ALERT_POPS_WITH_NEEDS_ENTRY]
+- 打ち手: 「交易品生産」パネルから不足品のRGOや建造物を増やすか、別の市場から輸入する。反乱に向かっていなければ過度に心配しない [src: hints_l_japanese.yml, hint_pops_with_needs_yellow_hint_text_2] [src: hints_l_japanese.yml, hint_pops_with_needs_yellow_hint_text_3]
+
+**原因の分からないペナルティが付いている（「ペナルティが有効」）**
+- 見る場所: アラートに並ぶ、補正ごとの効果と有効な理由 [src: 00_default.txt, static_modifier_active] [src: alerts_l_japanese.yml, ALERT_STATIC_MODIFIER_ENTRY]
+- 打ち手: 有効な理由に挙がった条件を解消する（解消の方法は補正ごとに異なる。公式の説明・スクリプト未確認）
+
+**従属国が独立戦争を起こしそうだ（「差し迫る独立戦争」）**
+- 見る場所: アラートに並ぶ従属国と、「従属国の管理」パネル [src: 00_default.txt, has_imminent_independence_war] [src: alerts_l_japanese.yml, ALERT_HAS_IMMINENT_INDEPENDENCE_WAR]
+- 打ち手: 陸軍を増やして相手の勝利の推定確率を下げるか、忠誠度が50未満なら開戦事由「不忠の従属国」で先制するか、従属国の忠誠度を改善する。数値は7章 [src: hints_l_japanese.yml, hint_has_imminent_independence_war_hint_text_2] [src: disloyal_subject.txt, cb_disloyal_subject]
 
 ## 7. 判断の目安
 
@@ -174,12 +258,12 @@
 | ゲーム開始日 | 1337年4月1日 | [src: 00_defines.txt, START_DATE] |
 | 安定度 | 0以下で対処を始める／-50以下は深刻 | [src: scripted_hints.txt, hint_low_stability] [src: scripted_hints.txt, hint_very_low_stability] |
 | 政府力（正統性など） | 50未満で「政府の強化」を検討する | [src: scripted_hints.txt, hint_low_legitimacy] |
-| 階級の満足度 | 50%未満は不満（ペナルティ側） | [src: 00_defines.txt, LOW_SATISFACTION_THRESHOLD] [src: scripted_hints.txt, hint_unhappy_estates] |
+| 階級の満足度 | 50%未満は不満（ペナルティ側）／25%未満の階級は召集軍を提供しなくなる | [src: 00_defines.txt, LOW_SATISFACTION_THRESHOLD] [src: scripted_hints.txt, hint_unhappy_estates] [src: 00_defines.txt, ESTATE_LEVY_SATISFACTION_THRESHOLD] |
 | 人的資源 | 20%以下なら正規兵で戦う宣戦を控える | [src: scripted_hints.txt, hint_manpower] |
 | 州の支配度 | 95%未満の州が「州支配を強化」の対象 | [src: 00_defines.txt, LOW_CONTROL_THRESHOLD_FOR_BEST_TAX] [src: increase_control.txt, increase_control_province] |
 | ランクの昇格条件 | 公国：威信25・総人口200／王国：威信50・総人口2000／帝国：列強・威信70・総人口10000（総人口は千人単位。信仰・文化の人口でも代替可）。帝国はさらに、カトリック（教皇国を除く）は教皇国からの評価が100超であること、HRE（神聖ローマ帝国）の加盟国でないこと、カトリックはHREが存在しないことが必要。王国もHRE加盟国はゲームルール「神聖ローマ帝国のランク制限」の設定で制限される | [src: country_triggers.txt, can_upgrade_country_rank_duchy] [src: country_triggers.txt, can_upgrade_country_rank_kingdom] [src: country_triggers.txt, can_upgrade_country_rank_empire] [src: 00_default.txt, rank_empire] [src: christian.txt, block_from_change_to_empire_rank_catholic] [src: hre.txt, block_from_change_to_empire_rank] [src: hre.txt, block_from_change_to_kingdom_rank] |
 | 国難「慢心による衰退」 | 帝国を15年以上保持し、安定度0未満かつ首都がある地方の平均支配度が発見45%・宗教改革50%・絶対主義55%・革命60%未満（または非寛容な文化の人口が総人口の3分の1超） | [src: decline_of_empire.txt, can_start] [src: _hardcoded.txt, recently_became_empire_variable] |
-| 従属国の忠誠度 | 50未満で不忠。時代補正は絶対主義−10／革命−30 | [src: 00_defines.txt, TOO_DISLOYAL_THRESHOLD] [src: 00_default.txt, age_5_absolutism] [src: 00_default.txt, age_6_revolutions] |
+| 従属国の忠誠度 | 50未満で不忠（開戦事由「不忠の従属国」も50未満の従属国に使える）。時代補正は絶対主義−10／革命−30 | [src: 00_defines.txt, TOO_DISLOYAL_THRESHOLD] [src: disloyal_subject.txt, cb_disloyal_subject] [src: 00_default.txt, age_5_absolutism] [src: 00_default.txt, age_6_revolutions] |
 | 国難「革命！」の引き金 | 啓蒙を受容した国で、庶民と市民の満足度がともに35%未満 | [src: revolution_disaster.txt, can_start] |
 | 専門化の都市特権 | 指定品の生産+20〜30%、生産効率−5%、付与に政治的影響力20 | [src: 01_discovery.txt, royal_tooling_rights] [src: 01_discovery.txt, royal_textile_rights] [src: default_values.txt, town_right_efficiency_penalty] [src: 00_hardcoded.txt, grant_town_rights] |
 | 地方総督府 | 近接性の供給源80。建設できる数は基本1で、進歩と王国・帝国のランクで増える。首都との街道が必要 | [src: capital_buildings.txt, local_governor] [src: country.txt, country_base_values] [src: 1_building_unlocks.txt, local_governor_advance] [src: 00_default.txt, rank_kingdom] |
@@ -205,6 +289,10 @@
 - 舗装路（Paved Road）／近代的街道（Modern Road）／鉄道（Railroad）
 - 地方（Region）／地域（Area）／都（City）／開発度（Development）／敵対心（Antagonism）／評価（Opinion）
 - 地方総督府（Local Governor）／地域の統合（Integrate Area）／地域支配を強化（Increase Area Control）／州の開発（Develop Province）／懸念の軽減（Alleviate Concerns）／POPを我々の文化に同化させる（Assimilate Pops into our Culture）
+- 統治フォーカス（Administrative Focus）／外交フォーカス（Diplomatic Focus）／軍事フォーカス（Military Focus）／閣僚ポスト（Cabinet Seat）／外交評判（Diplomatic Reputation）
+- 陸軍（Army）／海軍（Navy）／連隊（Regiment）／士気（Morale）／召集陸軍（Army Levy）／陸軍維持費（Army Maintenance）／陸軍の強化（Upgrade Army）／海軍の強化（Upgrade Navy）／追放（Exiled）／消耗（Attrition）／供給限界（Supply Limit）
+- 停戦（Truce）／和平条約（Peace Treaty）／戦争目標（Wargoal）／戦勝点（Warscore）
+- 市場（Market）／交易（Trade）／交易品（Goods）／建造物（Building）／州（Province）／飢饉（Starvation）／昇格（Promotion）／識字率（Literacy）／図書館（Library）／大学（University）
 - 進歩名：国政術（Statecraft）／初期行政能力（Early Administrative Capacity）／信仰属地主義（'Cuius Regio, Eius Religio'）／近世の統治（Early Modern Administration）／初期行政改革（Early Administrative Reformation）／君主（The Prince）／執行官僚制度（Executive Bureaucracy）／絶対的支配者（Absolute Rulership）／忠実な従属者（Loyal Subordinates）／立憲主義（The Constitution）／国家（Nation）／現代的代表制度（Modern Representation）／権力の分離（Separation of Powers）／現代的官僚制度（Modern Bureaucracy）／改善された統合（Better Integration）／統制力の広範な強化（Increase Control Widely）／緊張の緩和（Deflating Tensions）
 
 ## 9. 出典
@@ -212,14 +300,14 @@
 ### 一次情報（ゲームスクリプト）
 
 - `in_game/common/age/00_default.txt`（時代の開始年）
-- `loading_screen/common/defines/00_defines.txt`（開始日、階級の不満の閾値、支配度の閾値）
+- `loading_screen/common/defines/00_defines.txt`（開始日、階級の不満の閾値、階級が召集軍を提供する閾値、支配度の閾値）
 - `in_game/common/tutorial_lessons/00_tutorial_lesson_basics.txt`、`00_tutorial_lesson_admin.txt`、`00_tutorial_lesson_diplomacy.txt`、`00_tutorial_lesson_military.txt`（公式の手順）
 - `in_game/common/alert_descriptions/00_default.txt`（アラートの種類）
 - `in_game/common/scriptable_hints/scripted_hints.txt`（ヒントの発動条件）
 - `in_game/common/cabinet_actions/stabilize_country.txt`、`strengthen_government.txt`、`increase_control.txt`、`integrate_province.txt`、`study_institutions.txt`（内閣アクション）
 - `in_game/common/prices/00_hardcoded.txt`（制度の受容コスト）
 - `in_game/common/casus_belli/conquest.txt`（「州の請求」の開戦事由）
-- `in_game/gui/economy_lateralview.gui`（安定度投資の置き場所）
+- `in_game/gui/economy_lateralview.gui`（安定度投資・陸軍維持費の置き場所）
 - `in_game/common/country_ranks/00_default.txt`、`scripted_triggers/country_triggers.txt`（ランクの効果と昇格条件）
 - `in_game/common/disasters/decline_of_empire.txt`、`revolution_disaster.txt`、`on_action/_hardcoded.txt`（国難の発生条件）
 - `in_game/common/advances/0_age_of_discovery.txt`、`0_age_of_reformation.txt`、`0_age_of_absolutism.txt`、`0_age_of_revolutions.txt`、`3_road_unlocks.txt`（枠を増やす進歩、街道の解禁）
@@ -229,7 +317,10 @@
 - `in_game/common/cabinet_actions/promote_culture.txt`、`integrate_area.txt`、`increase_control_area.txt`、`alleviate_concerns.txt`、`develop_province.txt`（本格拡大・終盤の内閣アクション）
 - `in_game/common/building_types/capital_buildings.txt`、`in_game/common/advances/1_building_unlocks.txt`、`3_cabinet_actions_unlocks.txt`（地方総督府、内閣アクションを解禁する進歩）
 - `in_game/common/religions/christian.txt`、`in_game/common/international_organizations/hre.txt`（帝国化・王国化の禁止条件）
-- `main_menu/localization/japanese/tutorial_l_japanese.yml`、`hints_l_japanese.yml`、`game_concepts_l_japanese.yml`、`advances_l_japanese.yml`、`interfaces_l_japanese.yml`、`government_l_japanese.yml`、`modifier_types_l_japanese.yml`（公式の説明文）
+- `in_game/events/ages.txt`、`in_game/common/advances/4_choices_adm.txt`（`4_choices_dip.txt`、`4_choices_mil.txt` も同形式）（時代の始まりのフォーカス選択と、フォーカスごとの進歩）
+- `in_game/common/advances/2_army_unlocks.txt`、`2_ship_unlocks.txt`、`in_game/common/unit_types/2_unlocked_through_tech.txt`、`navy_heavy_ship.txt`（連隊・船のタイプの解禁と上位タイプ）
+- `in_game/common/casus_belli/disloyal_subject.txt`（開戦事由「不忠の従属国」の条件）
+- `main_menu/localization/japanese/tutorial_l_japanese.yml`、`hints_l_japanese.yml`、`game_concepts_l_japanese.yml`、`advances_l_japanese.yml`、`interfaces_l_japanese.yml`、`government_l_japanese.yml`、`modifier_types_l_japanese.yml`、`alerts_l_japanese.yml`、`units_l_japanese.yml`、`effects_l_japanese.yml`（公式の説明文）
 
 ### コミュニティ情報
 
