@@ -91,12 +91,19 @@
 
 ## 3. 中盤：発見〜宗教改革（1437〜1637）
 
+### 本格拡大
+
+- [ ] 統合を進めている征服地で他文化のPOPが多いときは、内閣アクション「POPを我々の文化に同化させる」を実行し、その州を自国の主要文化または受容文化へ同化させる {#mid-assimilate}
+  - なぜ: 自国の文化がそのロケーションの支配的な文化になると統合が大幅に加速する（公式ヒントの説明）。同化中は、その州への移住の誘引が下がる [src: hints_l_japanese.yml, hint_has_conquered_provinces_hint_text_3] [src: promote_culture.txt, promote_culture]
+- [ ] 首都から遠く富が多いのに支配度の低い都は、街道で首都と結んだうえで、建造物「地方総督府」を建設する {#mid-governor}
+  - なぜ: 地方総督府は近接性の新たな供給源になり、隣接するロケーションの近接性も上げる。首都から高い近接性を得ている場所では効果がなく、維持費も高い。数値は7章 [src: capital_buildings.txt, local_governor] [src: modifier_types_l_japanese.yml, MODIFIER_TYPE_DESC_local_proximity_source] [src: hints_l_japanese.yml, hint_control_hint_text_2]
+
 ### 国家の格と外交
 
 - [ ] 「国家ランクをアップグレード可能」のアラートが出たら、クリックして「新しい国家に変容」パネルでランクを上げる {#mid-rank}
-  - なぜ: ランクが上がるほど外交許容量・毎月の威信・ライバル枠が増え、一度上げたランクは失われない。条件は7章 [src: 00_default.txt, rank_kingdom] [src: game_concepts_l_japanese.yml, game_concept_country_rank_upper_desc]
-- [ ] 帝国ランクの国は、マップモード「支配度」で首都のある地域に支配度の低いロケーションがないか確認し、あれば内閣アクション「州支配を強化」を実行する {#mid-empire-guard}
-  - なぜ: 帝国は安定度0未満かつ首都地域の平均支配度が基準未満（または非寛容な文化の人口が総人口の3分の1超）だと、国難「慢心による衰退」で研究速度が半減する。基準は7章 [src: decline_of_empire.txt, can_start] [src: decline_of_empire.txt, research_speed_modifier]
+  - なぜ: ランクが上がるほど外交許容量・毎月の威信・ライバル枠が増え、一度上げたランクは失われない。条件は7章（帝国には宗教・HRE絡みの追加条件がある。上げられないときは同パネルで条件を確認する） [src: 00_default.txt, rank_kingdom] [src: 00_default.txt, rank_empire] [src: game_concepts_l_japanese.yml, game_concept_country_rank_upper_desc]
+- [ ] 帝国ランクの国は、マップモード「支配度」で首都のある地方に支配度の低いロケーションがないか確認し、あれば内閣アクション「州支配を強化」を実行する {#mid-empire-guard}
+  - なぜ: 帝国は安定度0未満かつ首都がある地方の平均支配度が基準未満（または非寛容な文化の人口が総人口の3分の1超）だと、国難「慢心による衰退」で研究速度が半減する。基準は7章 [src: decline_of_empire.txt, can_start] [src: decline_of_empire.txt, research_speed_modifier]
 - [ ] 「ライバル候補たち」「不十分なライバル」のアラートが出たら、クリックしてライバル選択画面を開き、自国を脅かす強い国を「ライバルに指定」する {#mid-rival}
   - なぜ: ライバル枠はランクが上がるほど増える。脅威とならないライバルは威信を毎月失わせ、脅威となるライバルは威信をもたらす（公式ヒントの説明・スクリプト未確認） [src: 00_default.txt, num_possible_rivals] [src: hints_l_japanese.yml, hint_has_inadequate_rivals_hint_text_1]
 - [ ] 「不忠の従属国」のアラートが出たら、クリックして「従属国の管理」パネルを開き、対象国に外交アクション「評価改善」を実行する {#mid-subjects}
@@ -127,6 +134,17 @@
   - なぜ: 反乱の支持が最大に達すると反乱または内戦が起きる。弾圧は反乱の進行を抑える（公式ヒントの説明） [src: hints_l_japanese.yml, hint_rebels_growing_hint_text_1] [src: rebel_crackdown.txt, rebel_crackdown]
 
 ## 4. 終盤：絶対主義〜革命（1637〜）
+
+### 維持と仕上げ
+
+- [ ] 進歩「改善された統合」を研究したら、征服地の統合は内閣アクション「地域の統合」で行う {#late-integrate-area}
+  - なぜ: この進歩を研究すると「州の統合」は使えなくなり、地域単位の「地域の統合」に置き換わる。進歩は「立憲主義」の次 [src: integrate_province.txt, integrate_province] [src: integrate_area.txt, integrate_area] [src: 3_cabinet_actions_unlocks.txt, integrate_area_advance]
+- [ ] 進歩「統制力の広範な強化」を研究したら、平均支配度が95%未満の地域に、内閣アクション「地域支配を強化」を実行する {#late-control-area}
+  - なぜ: 「州支配を強化」より広い範囲に効き、支配度の上限の引き上げ幅も大きい。ただし毎月の上昇は遅い。数値は7章 [src: increase_control_area.txt, increase_control_area] [src: increase_control.txt, increase_control_province] [src: 0_age_of_absolutism.txt, increase_control_area_advance]
+- [ ] 進歩「緊張の緩和」を研究したら、他国の敵対心が残っているとき内閣アクション「懸念の軽減」を実行する {#late-alleviate}
+  - なぜ: 敵対心は他国の評価を下げ、外交に消極的にさせるが、時間とともに薄れる。このアクションは敵対心の減少を毎月速める [src: game_concepts_l_japanese.yml, game_concept_antagonism_desc] [src: government_l_japanese.yml, alleviate_concerns_desc] [src: alleviate_concerns.txt, alleviate_concerns]
+- [ ] 内閣に空席があり急ぎのアクションがないときは、内閣アクション「州の開発」で開発度を伸ばしたい州を選んで実行する {#late-develop}
+  - なぜ: 開発度が高いほど多くの人が住め、土地の利用価値も高まる。公式の説明は、急務がないときの実行を勧めている [src: game_concepts_l_japanese.yml, game_concept_development_desc] [src: government_l_japanese.yml, develop_province_desc] [src: develop_province.txt, develop_province]
 
 ### 進歩の取り方
 
@@ -159,11 +177,13 @@
 | 階級の満足度 | 50%未満は不満（ペナルティ側） | [src: 00_defines.txt, LOW_SATISFACTION_THRESHOLD] [src: scripted_hints.txt, hint_unhappy_estates] |
 | 人的資源 | 20%以下なら正規兵で戦う宣戦を控える | [src: scripted_hints.txt, hint_manpower] |
 | 州の支配度 | 95%未満の州が「州支配を強化」の対象 | [src: 00_defines.txt, LOW_CONTROL_THRESHOLD_FOR_BEST_TAX] [src: increase_control.txt, increase_control_province] |
-| ランクの昇格条件 | 公国：威信25・総人口200／王国：威信50・総人口2000／帝国：列強・威信70・総人口10000（総人口は千人単位。信仰・文化の人口でも代替可） | [src: country_triggers.txt, can_upgrade_country_rank_duchy] [src: country_triggers.txt, can_upgrade_country_rank_kingdom] [src: country_triggers.txt, can_upgrade_country_rank_empire] |
-| 国難「慢心による衰退」 | 帝国を15年以上保持し、安定度0未満かつ首都地域の平均支配度が発見45%・宗教改革50%・絶対主義55%・革命60%未満（または非寛容な文化の人口が総人口の3分の1超） | [src: decline_of_empire.txt, can_start] [src: _hardcoded.txt, recently_became_empire_variable] |
+| ランクの昇格条件 | 公国：威信25・総人口200／王国：威信50・総人口2000／帝国：列強・威信70・総人口10000（総人口は千人単位。信仰・文化の人口でも代替可）。帝国はさらに、カトリック（教皇国を除く）は教皇国からの評価が100超であること、HRE（神聖ローマ帝国）の加盟国でないこと、カトリックはHREが存在しないことが必要。王国もHRE加盟国はゲームルール「神聖ローマ帝国のランク制限」の設定で制限される | [src: country_triggers.txt, can_upgrade_country_rank_duchy] [src: country_triggers.txt, can_upgrade_country_rank_kingdom] [src: country_triggers.txt, can_upgrade_country_rank_empire] [src: 00_default.txt, rank_empire] [src: christian.txt, block_from_change_to_empire_rank_catholic] [src: hre.txt, block_from_change_to_empire_rank] [src: hre.txt, block_from_change_to_kingdom_rank] |
+| 国難「慢心による衰退」 | 帝国を15年以上保持し、安定度0未満かつ首都がある地方の平均支配度が発見45%・宗教改革50%・絶対主義55%・革命60%未満（または非寛容な文化の人口が総人口の3分の1超） | [src: decline_of_empire.txt, can_start] [src: _hardcoded.txt, recently_became_empire_variable] |
 | 従属国の忠誠度 | 50未満で不忠。時代補正は絶対主義−10／革命−30 | [src: 00_defines.txt, TOO_DISLOYAL_THRESHOLD] [src: 00_default.txt, age_5_absolutism] [src: 00_default.txt, age_6_revolutions] |
 | 国難「革命！」の引き金 | 啓蒙を受容した国で、庶民と市民の満足度がともに35%未満 | [src: revolution_disaster.txt, can_start] |
 | 専門化の都市特権 | 指定品の生産+20〜30%、生産効率−5%、付与に政治的影響力20 | [src: 01_discovery.txt, royal_tooling_rights] [src: 01_discovery.txt, royal_textile_rights] [src: default_values.txt, town_right_efficiency_penalty] [src: 00_hardcoded.txt, grant_town_rights] |
+| 地方総督府 | 近接性の供給源80。建設できる数は基本1で、進歩と王国・帝国のランクで増える。首都との街道が必要 | [src: capital_buildings.txt, local_governor] [src: country.txt, country_base_values] [src: 1_building_unlocks.txt, local_governor_advance] [src: 00_default.txt, rank_kingdom] |
+| 支配度強化の内閣アクション | 州版は上限+0.10・毎月+0.01、地域版は上限+0.15・毎月+0.005 | [src: increase_control.txt, increase_control_province] [src: increase_control_area.txt, increase_control_area] |
 
 ## 8. 用語
 
@@ -183,7 +203,9 @@
 - 国難（Disaster）／慢心による衰退（Decline of Empire）／革命！（Revolution!）／繁栄度（Prosperity）／反乱軍の弾圧（Rebel Crackdown）／復興への取り組み（Recovery Effort）／戦争疲弊を軽減（Reduce War Exhaustion）
 - 従属国（Subject）／従属国忠誠度（Subject Loyalty）／不忠の従属国（Disloyal Subject）／評価改善（Improve Opinion）／召集軍（Levy）／官僚機構（Bureaucracy）／都市特権（Urban Rights）／自治区特権（Borough Privileges）／探検（Exploration）／植民（Colonization）／啓蒙（Enlightenment）
 - 舗装路（Paved Road）／近代的街道（Modern Road）／鉄道（Railroad）
-- 進歩名：国政術（Statecraft）／初期行政能力（Early Administrative Capacity）／信仰属地主義（'Cuius Regio, Eius Religio'）／近世の統治（Early Modern Administration）／初期行政改革（Early Administrative Reformation）／君主（The Prince）／執行官僚制度（Executive Bureaucracy）／絶対的支配者（Absolute Rulership）／忠実な従属者（Loyal Subordinates）／立憲主義（The Constitution）／国家（Nation）／現代的代表制度（Modern Representation）／権力の分離（Separation of Powers）／現代的官僚制度（Modern Bureaucracy）
+- 地方（Region）／地域（Area）／都（City）／開発度（Development）／敵対心（Antagonism）／評価（Opinion）
+- 地方総督府（Local Governor）／地域の統合（Integrate Area）／地域支配を強化（Increase Area Control）／州の開発（Develop Province）／懸念の軽減（Alleviate Concerns）／POPを我々の文化に同化させる（Assimilate Pops into our Culture）
+- 進歩名：国政術（Statecraft）／初期行政能力（Early Administrative Capacity）／信仰属地主義（'Cuius Regio, Eius Religio'）／近世の統治（Early Modern Administration）／初期行政改革（Early Administrative Reformation）／君主（The Prince）／執行官僚制度（Executive Bureaucracy）／絶対的支配者（Absolute Rulership）／忠実な従属者（Loyal Subordinates）／立憲主義（The Constitution）／国家（Nation）／現代的代表制度（Modern Representation）／権力の分離（Separation of Powers）／現代的官僚制度（Modern Bureaucracy）／改善された統合（Better Integration）／統制力の広範な強化（Increase Control Widely）／緊張の緩和（Deflating Tensions）
 
 ## 9. 出典
 
@@ -204,7 +226,10 @@
 - `in_game/common/road_types/00_generic.txt`、`town_rights/01_discovery.txt`、`main_menu/common/script_values/default_values.txt`（街道・都市特権の効果）
 - `in_game/common/cabinet_actions/reduce_war_exhaustion.txt`、`recovery_effort.txt`、`rebel_crackdown.txt`、`auto_modifiers/country.txt`（内閣アクション、戦争疲弊の自然減）
 - `in_game/gui/alertmanager.gui`（アラートのクリック先）
-- `main_menu/localization/japanese/tutorial_l_japanese.yml`、`hints_l_japanese.yml`、`game_concepts_l_japanese.yml`、`advances_l_japanese.yml`、`interfaces_l_japanese.yml`（公式の説明文）
+- `in_game/common/cabinet_actions/promote_culture.txt`、`integrate_area.txt`、`increase_control_area.txt`、`alleviate_concerns.txt`、`develop_province.txt`（本格拡大・終盤の内閣アクション）
+- `in_game/common/building_types/capital_buildings.txt`、`in_game/common/advances/1_building_unlocks.txt`、`3_cabinet_actions_unlocks.txt`（地方総督府、内閣アクションを解禁する進歩）
+- `in_game/common/religions/christian.txt`、`in_game/common/international_organizations/hre.txt`（帝国化・王国化の禁止条件）
+- `main_menu/localization/japanese/tutorial_l_japanese.yml`、`hints_l_japanese.yml`、`game_concepts_l_japanese.yml`、`advances_l_japanese.yml`、`interfaces_l_japanese.yml`、`government_l_japanese.yml`、`modifier_types_l_japanese.yml`（公式の説明文）
 
 ### コミュニティ情報
 
