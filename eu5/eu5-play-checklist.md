@@ -90,8 +90,8 @@
 
 - [ ] 正規兵で戦う予定なら、人的資源が20%以下の間は宣戦布告を控える {#early-manpower}
   - なぜ: 人的資源が少ないと、軍の補充能力が著しく制限される（公式の説明） [src: scripted_hints.txt, hint_manpower] [src: hints_l_japanese.yml, hint_manpower_hint_text_2]
-- [ ] 宣戦布告の前に、「政府」パネルの「国家」タブにある「議会」タブで、議会に開戦事由を要求する（相手が自国の中核地を領有していれば「州の請求」を作成できる） {#early-cb}
-  - なぜ: 開戦事由なしだと安定度と近隣国の評価が下がり、公式ヒントは議会への要求を最善の入手法とする（公式の説明）。「州の請求」は相手が自国の中核地を領有していることが条件 [src: tutorial_l_japanese.yml, lesson_military_war_0_desc] [src: hints_l_japanese.yml, hint_casus_belli_hint_text_2] [src: conquest.txt, cb_conquer_province]
+- [ ] 宣戦布告の前に、「政府」パネルの「国家」タブにある「議会」タブで、議会に開戦事由を要求する（議会とは別の手段として、相手国に諜報網を構築し、相手が自国の中核地を領有していれば、「開戦事由を作成」で「州の請求」を作れる） {#early-cb}
+  - なぜ: 開戦事由なしだと安定度と近隣国の評価が下がり、公式ヒントは議会への要求を最善の入手法とする（公式の説明）。「州の請求」は相手が自国の中核地を領有していることが条件。開戦事由の作成には相手国への諜報網が前提（公式の説明） [src: tutorial_l_japanese.yml, lesson_military_war_0_desc] [src: hints_l_japanese.yml, hint_casus_belli_hint_text_2] [src: conquest.txt, cb_conquer_province]
 - [ ] 征服した土地は、内閣アクション「州の統合」で統合する {#early-integrate}
   - なぜ: 統合するまで、征服した土地は国に貢献せず厳しいペナルティを受ける（公式の説明）。進歩「改善された統合」の取得後は使えなくなり、4章の「地域の統合」に置き換わる [src: hints_l_japanese.yml, hint_has_conquered_provinces_hint_text_1] [src: integrate_province.txt, integrate_province] [src: 3_cabinet_actions_unlocks.txt, integrate_area_advance]
 - [ ] 「深刻な戦争疲弊」のアラートが出ている間は、新しい宣戦布告を控えて平和状態にし、下がるのを待つか次の項目で下げる {#early-war-exhaustion}
@@ -255,7 +255,7 @@
 | 時代の開始年 | ルネサンス1342／発見1437／宗教改革1537／絶対主義1637／革命1737 | [src: age/00_default.txt, age_2_renaissance 〜 age_6_revolutions] |
 | 安定度 | 0以下で対処を始める／−50以下は深刻 | [src: scripted_hints.txt, hint_low_stability] [src: scripted_hints.txt, hint_very_low_stability] |
 | 政府力（正統性など） | 50未満で「政府の強化」を検討する | [src: scripted_hints.txt, hint_low_legitimacy] |
-| 階級の満足度 | 50%未満は不満（ペナルティ側）／25%未満の階級は召集軍を提供しなくなる（公式ヒントの記述。定義値は25%だが、スクリプト上の使われ方は未確認） | [src: 00_defines.txt, LOW_SATISFACTION_THRESHOLD] [src: scripted_hints.txt, hint_unhappy_estates] [src: 00_defines.txt, ESTATE_LEVY_SATISFACTION_THRESHOLD] [src: hints_l_japanese.yml, hint_estates_hint_text_1] |
+| 階級の満足度 | 50%未満は不満（ペナルティ側）／25%未満の階級は召集軍を提供しなくなる（公式の説明）。定義値は25%（エンジン側での使われ方は未確認） | [src: 00_defines.txt, LOW_SATISFACTION_THRESHOLD] [src: scripted_hints.txt, hint_unhappy_estates] [src: 00_defines.txt, ESTATE_LEVY_SATISFACTION_THRESHOLD] [src: hints_l_japanese.yml, hint_estates_hint_text_1] |
 | 人的資源 | 20%以下なら正規兵で戦う宣戦を控える | [src: scripted_hints.txt, hint_manpower] |
 | 州の支配度 | 95%未満の州が「州支配を強化」の対象。「地域支配を強化」は地域の平均支配度が95%未満 | [src: 00_defines.txt, LOW_CONTROL_THRESHOLD_FOR_BEST_TAX] [src: increase_control.txt, increase_control_province] [src: increase_control_area.txt, increase_control_area] |
 | ランクの昇格条件 | 公国：威信25超・総人口200超／王国：威信50超・総人口2000超／帝国：列強・威信70超・総人口10000超。総人口は千人単位（コミュニティ知見）。総人口の代わりに、主要宗教の人口が公国150超・王国1500超・帝国7500超、受容文化の人口が公国100超・王国1000超・帝国5000超でもよい。王国・帝国は従属国でないこと。公国もHRE（神聖ローマ帝国）の加盟国は制限される（盟主を除く）。帝国はさらに、カトリック（ローマ自身を除く）は教皇の国ローマからの評価が100超であること、HREの加盟国でないこと、カトリックはHREが存在しないことが必要。王国もHRE加盟国はゲームルール「神聖ローマ帝国のランク制限」の設定で制限される | [src: country_triggers.txt, can_upgrade_country_rank_duchy] [src: country_triggers.txt, can_upgrade_country_rank_kingdom] [src: country_triggers.txt, can_upgrade_country_rank_empire] [src: country_ranks/00_default.txt, rank_empire] [src: country_ranks/00_default.txt, rank_duchy] [src: christian.txt, block_from_change_to_empire_rank_catholic] [src: hre.txt, block_from_change_to_empire_rank] [src: hre.txt, block_from_change_to_duchy_rank] [src: hre.txt, block_from_change_to_kingdom_rank] |
@@ -281,10 +281,10 @@
 - 支配度（Control）／近接性（Proximity）／街道（Road）／ロケーション（Location）／中核地（Core）／首都（Capital）
 - 開戦事由（Casus Belli）／州の請求（Claims on Province）／戦争疲弊（War Exhaustion）／人的資源（Manpower）／指揮官（Commander）／同盟（Alliance）／外交アクション（Diplomatic Action）
 - 文化許容量（Cultural Capacity）／交易許容量（Trade Capacity）／外交許容量（Diplomatic Capacity）／食糧（Food）／RGO（Resource Gathering Operations）／ミッション（Mission）／「自動化」パネル（Automation Panel）／アジェンダ（Agenda）
-- 国家ランク（Country Rank）／公国（Duchy）／王国（Kingdom）／帝国（Empire）／ライバル（Rival）／威信（Prestige）／政治的影響力（Political Influence）／庶民（Commoners）／市民（Burghers）／列強（Great Power）／神聖ローマ帝国（Holy Roman Empire）／ローマ（Rome。教皇の国）／受容文化（Accepted Culture）／容認文化（Tolerated Culture）／主要宗教（Primary Religion）／主要文化（Primary Culture）／総人口（Total Population）
+- 諜報網（Spy Network）／国家ランク（Country Rank）／公国（Duchy）／王国（Kingdom）／帝国（Empire）／ライバル（Rival）／威信（Prestige）／政治的影響力（Political Influence）／庶民（Commoners）／市民（Burghers）／列強（Great Power）／神聖ローマ帝国（Holy Roman Empire）／ローマ（Rome。教皇の国）／受容文化（Accepted Culture）／容認文化（Tolerated Culture）／主要宗教（Primary Religion）／主要文化（Primary Culture）／総人口（Total Population）
 - 国難（Disaster）／慢心による衰退（Decline of Empire）／革命！（Revolution!）／繁栄度（Prosperity）／反乱軍の弾圧（Rebel Crackdown）／復興への取り組み（Recovery Effort）／戦争疲弊を軽減（Reduce War Exhaustion）
 - 従属国（Subject）／従属国忠誠度（Subject Loyalty）／不忠の従属国（Disloyal Subject）／評価改善（Improve Opinion）／召集軍（Levy）／官僚機構（Bureaucracy）／都市特権（Urban Rights）／自治区特権（Borough Privileges）／啓蒙（Enlightenment）
-- 舗装路（Paved Road）／近代的街道（Modern Road）／鉄道（Railroad）
+- 砂利道（Gravel Road）／舗装路（Paved Road）／近代的街道（Modern Road）／鉄道（Railroad）
 - 地方（Region）／地域（Area）／都（City）／開発度（Development）／敵対心（Antagonism）／評価（Opinion）
 - 地方総督府（Local Governor）／地域の統合（Integrate Area）／地域支配を強化（Increase Area Control）／州の開発（Develop Province）／懸念の軽減（Alleviate Concerns）／POPを我々の文化に同化させる（Assimilate Pops into our Culture）
 - 統治フォーカス（Administrative Focus）／外交フォーカス（Diplomatic Focus）／軍事フォーカス（Military Focus）／閣僚ポスト（Cabinet Seat。進歩や補正の表示では「閣僚議席」）／外交評判（Diplomatic Reputation）／信頼度（Trust）

@@ -2,7 +2,7 @@
 
 > ゲーム内日本語表示の正本。攻略ガイドの用語はこのファイルを参照して統一する。
 > 出典: `C:\Program Files (x86)\Steam\steamapps\common\Europa Universalis V\game\main_menu\localization\japanese\` 配下の各 `.yml` ファイル
-> 確認パッチ: **1.1.10**（2026-03-30 確認）。「Patch 1.3 追加の汎用用語」節のみ **1.3（1.3.10 相当）**（2026-07-11 確認）、「Patch 1.4 追加の汎用用語」節のみ **1.4 オープンベータ（ビルド 25905365）**（2026-10-15 確認）
+> 確認パッチ: **1.1.10**（2026-03-30 確認）。「Patch 1.3 追加の汎用用語」節のみ **1.3（1.3.10 相当）**（2026-07-11 確認）、「Patch 1.4 で確認した汎用用語」節のみ **1.4 オープンベータ（ビルド 25905365）**（2026-10-15 確認）
 
 ---
 
@@ -97,7 +97,7 @@
 | Casus Belli | 開戦事由 | 戦争の正当化根拠。略称 CB |
 | War Goal | 戦争目標 | 戦争で達成すべき目標 |
 | Claims on Province | 州の請求 | `cb_conquer_province`。**コア（`integration_level = core`）取得後**に使用可能な汎用征服 CB `[src: casus_belli/conquest.txt]` |
-| Dubious Claims | 州の請求（根拠なし） | `cb_fabricated_conquer_province`。コア取得を前提とする外交ペナルティ付き征服 CB。**EU4 のスパイ「請求権捏造（fabricate_claim）」アクションは EU5 に存在しない** — 1.2 で `spy_actions/` 自体が無く、`scripted_relations/` のスパイ網にも Claim 付与効果なし `[src: casus_belli/fabricated_conquest.txt + scripted_relations/sow_discontent.txt + script verified]` |
+| Dubious Claims | 州の請求（根拠なし） | `cb_fabricated_conquer_province`。コア取得を前提とする外交ペナルティ付き征服 CB。**EU4 のスパイ「請求権捏造（fabricate_claim）」アクションは EU5 に存在しない** — 1.2 時点では `spy_actions/` 自体が無く、`scripted_relations/` のスパイ網にも Claim 付与効果なし `[src: casus_belli/fabricated_conquest.txt + scripted_relations/sow_discontent.txt + script verified]`。**1.4 では、諜報網を構築した相手に「開戦事由を作成」ができる**（相手が自国の中核地を領有している、またはライバル関係にある場合。公式チュートリアル・ヒントの記述で、スクリプトでは未確認）。下の 1.4 の節の「Spy Network」を参照 |
 | Conquer Enemy | 敵対国の征服 | `cb_conquer_enemy`。**ライバル指定された敵対国専用の征服 CB（コア不要）**。序盤の主力 CB `[src: casus_belli/conquer_enemy.txt + script verified]` |
 | Disloyal Subject | 不忠の従属国 | `cb_disloyal_subject`。宗主国が、従属国忠誠度50未満の自国の従属国に使う開戦事由（戦争目標は首都占領） `[src: casus_belli/disloyal_subject.txt]` |
 | Claim Throne | 王位の請求 | 王位を請求する CB |
@@ -198,9 +198,9 @@
 | Twilight of the Tsardom | ツァーリ国の黄昏 | 1.3 新規のディザスター。ブルガリア等バルカン勢力に崩壊・分裂を引き起こす。ビザンツ／ハプスブルク／オスマンのバルカン・対オスマン方面に地域跨ぎで影響する `[src: disasters/twilight_of_the_tsardom.txt]` |
 | Family Bank / Public Bank | 家族銀行 / 公営銀行 | 1.3 で追加された銀行系フレーバーの汎用概念（見出しのみ中央登録）。**固有名は勢力ごとに別**: Berenberg＝ハンブルク（HAM）固有 `[src: events/DHE/flavor_HAM.txt]`、Taula de Canvi（バルセロナ両替所）＝アラゴン（ARA）固有 `[src: events/DHE/flavor_ARA.txt:flavor_ara.220]`。他勢力に無条件で紐づくメカニクスではない（誤帰属回避） |
 
-## Patch 1.4 追加の汎用用語
+## Patch 1.4 で確認した汎用用語
 
-> 1.4 オープンベータ（ビルド 25905365）で `main_menu/localization/japanese/` と `english/` を突き合わせて確認（2026-10-15）。プレイ中チェックリスト（eu5-play-checklist.md）で使う汎用用語。出典列はキー名と yml ファイル。上の節に無かった語だけを足している。
+> 1.4 オープンベータ（ビルド 25905365）で `main_menu/localization/japanese/` と `english/` を突き合わせて確認（2026-10-15）。プレイ中チェックリスト（eu5-play-checklist.md）で使う汎用用語。出典列はキー名と yml ファイル。上の節に無かった語だけを足している（1.4 で新設された語とは限らず、ダカット・POP・首都のように 1.4 以前からある語も含む）。
 > 「ゴールド」（通貨）「教皇国」「非寛容な文化」はゲーム内に存在しない訳語（通貨名としては使われず、人名・船名・文中の一般語に出るのみ）。通貨は「ダカット」、教皇の国は「ローマ」（タグ PAP）、受容でも容認でもない文化は「非受容文化」「非指定文化」と表示される。
 
 | 英語キー | ゲーム内日本語 | 補足 |
@@ -224,6 +224,7 @@
 | Horde Unity | 遊牧民の結束 | `game_concept_horde_unity` |
 | Tribal Cohesion | 部族の団結 | `game_concept_tribal_cohesion` |
 | Law | 法律 | `game_concept_law` |
+| Privilege | 特権 | `game_concept_privilege`。階級に与える特権（「都市特権」「自治区特権」は別の語） |
 | Balance | 収支 | `game_concept_balance` |
 | Minting | 貨幣鋳造 | `game_concept_minting` |
 | Tax Base | 税基盤 | `game_concept_tax_base` |
@@ -232,14 +233,20 @@
 | Location | ロケーション | `game_concept_location` |
 | Core | 中核地 | `game_concept_core` |
 | Region | 地方 | `game_concept_region` |
+| Area | 地域 | `game_concept_area`。州の集合体で、地方の一部（地方 ⊃ 地域 ⊃ 州）。「地方（Region）」とは別の語。内閣アクション「地域の統合」「地域支配を強化」の「地域」はこちら |
+| Province | 州 | `game_concept_province`。同一国が領有するロケーションの集合体。内閣アクション「州の統合」「州支配を強化」の「州」はこちら |
+| City | 都 | `city`（economy_l_japanese.yml）。英語表示は City |
 | War Exhaustion | 戦争疲弊 | `game_concept_war_exhaustion` |
 | Cultural Capacity | 文化許容量 | `game_concept_cultural_capacity` |
 | Trade Capacity | 交易許容量 | `game_concept_merchant_capacity` |
+| Trade | 交易 | `game_concept_trade`。市場間の交易品の移動。「交易許容量」は別の語 |
 | Food | 食糧 | `game_concept_food` |
 | Mission | ミッション | `game_concept_mission` |
 | Agenda | アジェンダ | `OUTLINER_AGENDA_TITLE`（outliner_l_japanese.yml） |
 | Automation Panel | 「自動化」パネル | `lateralview_automation_entry_name`（lateralviews_l_japanese.yml）。括弧つきで表示される |
 | Country Rank | 国家ランク | `game_concept_country_rank` |
+| Rival | ライバル | `game_concept_rival`。他国への敵意を表明する指定。指定した相手には開戦事由の作成などの敵対行動ができ、友好的な条約は結べない |
+| Spy Network | 諜報網 | `game_concept_spy_network`（基本概念の節にも収録済み）。他国にどの程度浸透しているかを表す。1.4 では他国に構築すると、相手が自国の中核地を領有している、またはライバル関係にある場合に「開戦事由を作成」ができる（公式のチュートリアル・ヒントの記述。スクリプトでは未確認）`[src: tutorial_l_japanese.yml, lesson_military_war_0_desc]` `[src: hints_l_japanese.yml, hint_casus_belli_hint_text_2]` |
 | Duchy / Kingdom / Empire | 公国 / 王国 / 帝国 | `rank_duchy` / `rank_kingdom` / `rank_empire` |
 | Political Influence | 政治的影響力 | `game_concept_political_influence` |
 | Disaster | 国難 | `game_concept_disaster` |
@@ -251,6 +258,8 @@
 | Regiment | 連隊 | `game_concept_regiment` |
 | Army Levy | 召集陸軍 | `game_concept_army_levy` |
 | Army Maintenance | 陸軍維持費 | `game_concept_army_maintenance` |
+| Army | 陸軍 | `game_concept_army`。1人の指揮官が率いる連隊の集合体 |
+| Navy | 海軍 | `game_concept_navy`。1人の指揮官が率いる船の集団 |
 | Supply Limit | 供給限界 | `game_concept_supply_limit` |
 | Goods | 交易品 | `game_concept_goods` |
 | Starvation | 飢饉 | `game_concept_starvation` |
@@ -290,7 +299,7 @@
 | Better Integration | 改善された統合 | 進歩。`integrate_area_advance` |
 | Increase Control Widely | 統制力の広範な強化 | 進歩。`increase_control_area_advance` |
 | Deflating Tensions | 緊張の緩和 | 進歩。`alleviate_concerns_advance` |
-| Paved Road / Modern Road / Railroad | 舗装路 / 近代的街道 / 鉄道 | 街道の種別。`paved_road` / `modern_road` / `railroad`（economy_l_japanese.yml） |
+| Gravel Road / Paved Road / Modern Road / Railroad | 砂利道 / 舗装路 / 近代的街道 / 鉄道 | 街道の種別。`gravel_road` / `paved_road` / `modern_road` / `railroad`（economy_l_japanese.yml） |
 | Enlightenment | 啓蒙 | 制度。`enlightenment`（advances_l_japanese.yml） |
 | Local Governor | 地方総督府 | 建造物。`local_governor` |
 | Parliament | 議会 | `game_concept_parliament`。「政府」パネルの「国家」タブにある「議会」タブ |

@@ -172,7 +172,7 @@ Steam デフォルト: C:\Program Files (x86)\Steam\steamapps\common\
 - **「wiki 数値が誤りそう」と思ったら、まず stat 名そのものを script で grep する**。同名でも別 stat の可能性がある（例: `movement_speed`と`combat_speed`の混同）
 - **EU5 ユニット定義の `impact` と `combat` は意味が異なる**。`impact = { terrain = -0.X }` は進軍コスト減（移動しやすい、戦闘ボーナスではない）、`combat = { terrain = +0.X }` のみ戦闘力修正。両者を混同しない（例: ハンガリー・フサールの`impact = { flatland = -0.25 mountains = -0.25 }`を「平地・山岳での戦闘ボーナス」と誤読しかけたことがある）
 - **「固有ユニット」と書く前に解禁経路の advance ファイルを確認する**。ユニット定義が国固有でも、解禁する advance が**地域 advance**（`advances/region_*.txt`）にある場合は複数文化グループで取得可能（例: ハイドゥクは`balkan_hajduks`地域advance経由で解禁され、「ハンガリー固有」と書くと不正確だった）
-- **EU4 派生メカニクスが EU5 ガイドに混入していないか定期的に横断スキャンする**。`fabricate_claim`, `forge_claim`, `spy_network`, `Claim 捏造`等のキーワードgrepをチェックに含める（例: EU5には`spy_actions/`自体が存在せず、CBは`is_core_of`前提で「ライバル設定だけでClaims確保」は誤り。正しくは`cb_conquer_enemy`）
+- **EU4 派生メカニクスが EU5 ガイドに混入していないか定期的に横断スキャンする**。`fabricate_claim`, `forge_claim`, `spy_network`, `Claim 捏造`等のキーワードgrepをチェックに含める（例: EU5には`spy_actions/`自体が存在せず（1.2 時点。1.4 では諜報網を構築した相手に開戦事由を作成できる。公式チュートリアル・ヒントの記述）、CBは`is_core_of`前提で「ライバル設定だけでClaims確保」は誤り。正しくは`cb_conquer_enemy`）
 - **EU5 の市場（Market）は首都ではなく特定 location の `is_market_center` フラグで設定される**（例: ハンガリーは首都ブダでなく隣接ペストが市場中心。`location_ranks/00_default.txt`のmegalopolis allow句に`is_market_center = yes`必須条件あり）
 - **属国スタートの直接定義ファイルは EU5 に無い**。属国関係は flavor イベントの `is_subject_of = c:XXX` トリガーから間接確認する（`grep "is_subject_of = c:<TAG>" events/DHE/flavor_*.txt`。`setup/countries/*.txt` に liege/subject_of フィールドは無い）
 - **「他にも似た誤謬がありそう」という指摘を受けたら、まず researcher で横断 grep してから implementer 委任する**。指摘点だけの修正よりサブエージェント1回で関連表記（AE/Coalition/Trade Node 等）を一括スキャンする方が効率良い
