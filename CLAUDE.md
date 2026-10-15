@@ -1,7 +1,7 @@
 # Paradox Game Guides — 作業ルール
 
 > **章構成テンプレートの正本は `docs/templates/guide-section-template.md`。** 新規国別ガイド追加の定型手順は `docs/procedures/new-country-guide.md`。このファイルにはルール・制約・スクリプト参照先のみを置く。
-> テンプレート適用の模範例: `eu5/eu5-hungary-guide.md`、`eu5/eu5-ottoman-guide.md`
+> テンプレート適用の模範例: `vic3/vic3-japan-guide.md`
 
 **目次**: [対象ゲームと優先度](#対象ゲームと優先度) / [ファイル構成](#ファイル構成) / [デプロイ](#デプロイ) / [ゲーム横断テンプレート](#ゲーム横断テンプレート分離済み) / [情報ソースと優先順位](#情報ソースと優先順位) / [ゲームスクリプト参照先](#ゲームスクリプト参照先) / [スクリプト参照時のルール](#スクリプト参照時のルール) / [信頼性マーカー](#信頼性マーカー) / [ガイド章追加時のチェックリスト](#ガイド章追加時のチェックリスト) / [バージョン管理](#バージョン管理) / [用語ルール](#用語ルール) / [ローカライズ対照表の管理](#ローカライズ対照表の管理) / [レビュー](#レビュー) / [新規国別ガイド追加の手順](#新規国別ガイド追加の手順分離済み) / [エージェント作業ルール](#エージェント作業ルール)
 
@@ -21,7 +21,9 @@
   localization-reference.md           … ローカライズ対照表（ゲームごとに1つ）
 ```
 
-命名例: `eu5/eu5-brandenburg-guide.md`, `ck3/ck3-england-1066-guide.md`, `vic3/vic3-prussia-guide.md`
+命名例: `ck3/ck3-england-1066-guide.md`, `vic3/vic3-prussia-guide.md`
+
+EU5 は国別ガイドを置かない。`eu5/eu5-play-checklist.md`（`checklist.html` で表示）を正本とし、書式は仕様書 `docs/superpowers/specs/2026-10-13-eu5-checklist-reset-design.md` の3章に従う。コミット前に `python scripts/check_checklist.py eu5/eu5-play-checklist.md` を通す。
 
 CK3 のプレイ単位はキャラクター/王朝だが、ファイル名は「操作する主要勢力名」で統一する。CK3 は同じ勢力でも開始年で状況が大きく異なるため、**開始年をファイル名に含める**（例: `ck3-england-1066-guide.md`）。
 
@@ -124,6 +126,7 @@ Steam デフォルト: C:\Program Files (x86)\Steam\steamapps\common\
 - **検証基準は「インストール版」に固定する**（公開ベータの最新パッチを追わない）。プレイヤーが実際に遊ぶ版がスクリプト最優先ソース。VIC3 は `caligula_branch.txt`、EU5/CK3 も同様のブランチファイルで版を確認する（例: 2026-06-01 VIC3書き直し時はインストール版1.13.8で固定）
 - **エンジン内部 defines でスクリプトに実値が無い数値の「パッチ変更か否か」は、新旧パッチノート突き合わせで確定する**。C++側エンジン値でスクリプト検証・版間diffが不可な場合、「対象パッチのノートに変更明記＋旧バージョンのノートに同項目なし」を確認できれば真正な変更と確定し `（コミュニティ知見：x.y、公式パッチノート由来・スクリプト未確認）` で記載する（例: EU5 1.3 betaのPrikazi/Collegium値・船コスト変更はこの方式で確定。似た機能でも導入時期が異なる場合はノート差分で切り分ける）
 - **公開ベータへの対応は「純追記・差分セクション」方式**。本体章は書き換えず、beta起源の数値は本文に昇格させず専用の差分セクションに追記し、安定版リリース後に昇格フローで本文統合する。新マーカーは既存体系に重ねる（`[src:...]（x.y beta・変動注意）` 等）。読者多数派は安定版でプレイしている前提で安定版を baseline に維持する
+- **EU5 のプレイ中チェックリスト（`eu5/eu5-play-checklist.md`）は、ユーザーの指示で 1.4 オープンベータを本文の基準にしており、上の差分セクション方式の例外である**。安定版が出たら、チェックリストの全数値と `[src:]` を再検証する
 - **前セッションの `[src:]` マーカーも誤りうる前提で、書き直し時は全数値を再検証する**。`[src:]` がローカライズ yml を指しているだけでメカニクス未検証のケースに注意（yml は名称の裏取りであって効果値の裏取りではない）
 - **ステータスの訳語は本文に書く前に `concept_*` ローカライズキーで確認する**（例: VIC3 Authority は正式には `concept_authority = "権力"` だが「権威」と誤訳しIGトレイト表だけ訳語が分裂していたことがある。ステータス名は1ガイド内で統一する）
 - **イベント/JE の「ID 未確認（—）」を放置せず、不在なら events/ 全走査で「スクリプト上に存在しない」と確定する**（未実装の場合は代替手段を明示する）
@@ -146,6 +149,7 @@ Steam デフォルト: C:\Program Files (x86)\Steam\steamapps\common\
 |---------|------|--------|
 | `[src: ファイル名:行番号]` | スクリプト確認済み | 数値・条件。短いファイル名で本文に埋め込む |
 | `（コミュニティ知見）` | プレイ報告ベース | 体感・戦略論・タイミング推奨 |
+| `（公式の説明）` | ゲーム内のヒント・チュートリアル・用語説明の文言が根拠で、効果はスクリプトで確かめていない | EU5 チェックリストで使用。該当する節の直後に付ける |
 | `（未検証）` | 情報源不明 or 裏取り未了 | 暫定記載。検証後にマーカーを変更 |
 
 例: 「騎兵戦力 +20% `[src: country_HUN.txt, hun_composite_light_cavalry]`」
@@ -168,7 +172,7 @@ Steam デフォルト: C:\Program Files (x86)\Steam\steamapps\common\
 - **「wiki 数値が誤りそう」と思ったら、まず stat 名そのものを script で grep する**。同名でも別 stat の可能性がある（例: `movement_speed`と`combat_speed`の混同）
 - **EU5 ユニット定義の `impact` と `combat` は意味が異なる**。`impact = { terrain = -0.X }` は進軍コスト減（移動しやすい、戦闘ボーナスではない）、`combat = { terrain = +0.X }` のみ戦闘力修正。両者を混同しない（例: ハンガリー・フサールの`impact = { flatland = -0.25 mountains = -0.25 }`を「平地・山岳での戦闘ボーナス」と誤読しかけたことがある）
 - **「固有ユニット」と書く前に解禁経路の advance ファイルを確認する**。ユニット定義が国固有でも、解禁する advance が**地域 advance**（`advances/region_*.txt`）にある場合は複数文化グループで取得可能（例: ハイドゥクは`balkan_hajduks`地域advance経由で解禁され、「ハンガリー固有」と書くと不正確だった）
-- **EU4 派生メカニクスが EU5 ガイドに混入していないか定期的に横断スキャンする**。`fabricate_claim`, `forge_claim`, `spy_network`, `Claim 捏造`等のキーワードgrepをチェックに含める（例: EU5には`spy_actions/`自体が存在せず、CBは`is_core_of`前提で「ライバル設定だけでClaims確保」は誤り。正しくは`cb_conquer_enemy`）
+- **EU4 派生メカニクスが EU5 ガイドに混入していないか定期的に横断スキャンする**。`fabricate_claim`, `forge_claim`, `spy_network`, `Claim 捏造`等のキーワードgrepをチェックに含める（例: EU5には`spy_actions/`自体が存在せず（1.2 時点。1.4 では諜報網を構築した相手に開戦事由を作成できる。公式チュートリアル・ヒントの記述）、CBは`is_core_of`前提で「ライバル設定だけでClaims確保」は誤り。正しくは`cb_conquer_enemy`）
 - **EU5 の市場（Market）は首都ではなく特定 location の `is_market_center` フラグで設定される**（例: ハンガリーは首都ブダでなく隣接ペストが市場中心。`location_ranks/00_default.txt`のmegalopolis allow句に`is_market_center = yes`必須条件あり）
 - **属国スタートの直接定義ファイルは EU5 に無い**。属国関係は flavor イベントの `is_subject_of = c:XXX` トリガーから間接確認する（`grep "is_subject_of = c:<TAG>" events/DHE/flavor_*.txt`。`setup/countries/*.txt` に liege/subject_of フィールドは無い）
 - **「他にも似た誤謬がありそう」という指摘を受けたら、まず researcher で横断 grep してから implementer 委任する**。指摘点だけの修正よりサブエージェント1回で関連表記（AE/Coalition/Trade Node 等）を一括スキャンする方が効率良い

@@ -6,25 +6,10 @@ Paradox Interactive のグランドストラテジーゲーム攻略メモ集。
 
 ### Europa Universalis V
 
-| 勢力 | ファイル | 難易度 | 対応パッチ |
-|------|----------|--------|-----------|
-| ブランデンブルク | [eu5/eu5-brandenburg-guide.md](eu5/eu5-brandenburg-guide.md) | 中級〜上級 | 1.3.10 |
-| ハンガリー | [eu5/eu5-hungary-guide.md](eu5/eu5-hungary-guide.md) | 初級〜中級 | 1.3.10 |
-| オスマン帝国 | [eu5/eu5-ottoman-guide.md](eu5/eu5-ottoman-guide.md) | 初級〜中級 | 1.3.10 |
-| カスティーリャ | [eu5/eu5-castile-guide.md](eu5/eu5-castile-guide.md) | 初級〜中級 | 1.3.10 |
-| オーストリア（ハプスブルク家） | [eu5/eu5-austria-guide.md](eu5/eu5-austria-guide.md)（詳細編: [eu5-austria-hre-guide.md](eu5/eu5-austria-hre-guide.md)） | 中級〜上級 | 1.3.10 |
-| ビザンツ帝国 | [eu5/eu5-byzantium-guide.md](eu5/eu5-byzantium-guide.md) | ⚠ 非推奨（上級者向け挑戦枠） | 1.3.10 |
-
-#### 共通システム
-
-| テーマ | ファイル | 概要 | 対応パッチ |
-|--------|----------|------|-----------|
-| 汎用攻略 | [eu5/eu5-universal-guide.md](eu5/eu5-universal-guide.md) | 国家共通の序盤運営・拡張指針 | 1.3.10 |
-| 政体 | [eu5/eu5-government-guide.md](eu5/eu5-government-guide.md) | 君主制・共和国・神権制などの違い | 1.3.10 |
-| 宗教 | [eu5/eu5-religion-guide.md](eu5/eu5-religion-guide.md) | 宗教グループ別の固有メカニクス | 1.3.10 |
-| 地域 | [eu5/eu5-regional-guide.md](eu5/eu5-regional-guide.md) | 地域別の難易度とおすすめ国家 | 1.3.10 |
-
-**おすすめMOD**: [eu5/eu5-recommended-mods.md](eu5/eu5-recommended-mods.md)（1.3.10 時点）
+| 資料 | ファイル | 概要 | 対応パッチ |
+|------|----------|------|-----------|
+| プレイ中チェックリスト | [eu5/eu5-play-checklist.md](eu5/eu5-play-checklist.md)（[`checklist.html`](https://ramdamain-commits.github.io/paradox-game-guides/checklist.html?file=eu5/eu5-play-checklist.md) で表示） | どの国でも共通の「いつ・何をするか」。チェック状態はブラウザに保存 | 1.4 オープンベータ |
+| 用語対照表 | [eu5/localization-reference.md](https://ramdamain-commits.github.io/paradox-game-guides/viewer.html?file=eu5/localization-reference.md) | ゲーム内日本語訳と英語名の対照 | — |
 
 ### Victoria 3
 
@@ -47,16 +32,20 @@ Paradox Interactive のグランドストラテジーゲーム攻略メモ集。
 
 - `index.html` — ゲーム別のガイド一覧トップ
 - `viewer.html` — Markdown をブラウザで読むためのビューア
+- `checklist.html` — Markdown をチェックリストとして表示するビューア
 - 公開先: `https://ramdamain-commits.github.io/paradox-game-guides/`
 
 ## 構成
 
 ```
-eu5/          … Europa Universalis V 攻略（勢力ガイド + おすすめMOD）
+eu5/          … Europa Universalis V 攻略（プレイ中チェックリスト＋用語対照表）
 vic3/         … Victoria 3 攻略（勢力ガイド + おすすめMOD）
 ck3/          … Crusader Kings III 攻略（勢力ガイド + おすすめMOD）
 index.html    … GitHub Pages トップ
 viewer.html   … Markdown ビューア
+checklist.html … Markdown をチェックリストとして表示
+scripts/      … 検証スクリプト（check_checklist.py）
+tests/        … 検証スクリプトのテスト
 docs/         … 内部計画・設計メモ
 CLAUDE.md     … 攻略ガイド作成ルール（章テンプレは docs/templates/guide-section-template.md）
 ```
@@ -67,7 +56,9 @@ CLAUDE.md     … 攻略ガイド作成ルール（章テンプレは docs/templ
 {タイトル略称}/{タイトル略称}-{勢力名}-guide.md
 ```
 
-例: `eu5/eu5-brandenburg-guide.md`, `ck3/ck3-england-1066-guide.md`
+例: `vic3/vic3-prussia-guide.md`, `ck3/ck3-england-1066-guide.md`
+
+EU5 は国別ガイドを置かず、`eu5/eu5-play-checklist.md` を正本とする。
 
 ## ガイドの方針
 

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>プレイ中チェックリスト</title>
+<style>
+  :root {
+    --bg: #f8fafc; --surface: #ffffff; --border: #e2e8f0;
+    --text: #0f172a; --muted: #64748b;
+    --accent: #c2410c; --accent-dim: rgba(194, 65, 12, 0.12);
+    --radius: 8px;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0f172a; --surface: #1e293b; --border: #334155;
+      --text: #f1f5f9; --muted: #94a3b8;
+      --accent: #fb923c; --accent-dim: rgba(251, 146, 60, 0.15);
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text); line-height: 1.6;
+    font-family: system-ui, -apple-system, "Segoe UI", "Hiragino Sans", "Yu Gothic UI", sans-serif;
+  }
+  a { color: var(--accent); }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 16px 48px; }
+  .toolbar {
+    position: sticky; top: 0; z-index: 1; background: var(--bg);
+    padding: 10px 0; border-bottom: 1px solid var(--border);
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+  }
+  .progress { flex: 1 1 160px; height: 8px; background: var(--border); border-radius: 4px; overflow: hidden; }
+  .progress > span { display: block; height: 100%; width: 0; background: var(--accent); }
+  #progress-text { font-size: .85rem; color: var(--muted); }
+  button {
+    font: inherit; font-size: .85rem; padding: 4px 10px; cursor: pointer;
+    border: 1px solid var(--border); border-radius: var(--radius);
+    background: var(--surface); color: var(--text);
+  }
+  button[aria-pressed="true"] { background: var(--accent-dim); border-color: var(--accent); }
+  details { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); margin: 12px 0; padding: 0 12px; }
+  details details { margin: 8px 0; }
+  summary {
+    list-style: none; cursor: pointer; font-weight: 700; padding: 10px 0;
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline;
+  }
+  summary::-webkit-details-marker { display: none; }
+  summary::before { content: "▸"; color: var(--muted); }
+  details[open] > summary::before { content: "▾"; }
+  summary button { margin-left: auto; font-weight: 400; }
+  .count { color: var(--muted); font-weight: 400; font-size: .85rem; }
+  ul.items { list-style: none; padding: 0; margin: 0 0 12px; }
+  ul.items li { padding: 6px 0; border-top: 1px solid var(--border); }
+  ul.items label { display: flex; gap: 8px; align-items: flex-start; cursor: pointer; }
+  ul.items input { flex: none; margin-top: .3em; width: 1.1em; height: 1.1em; accent-color: var(--accent); }
+  li.done .text { color: var(--muted); text-decoration: line-through; }
+  .why { display: block; margin-left: 1.9em; font-size: .85rem; color: var(--muted); }
+  .src { font-size: .75rem; color: var(--muted); }
+  body:not(.show-src) .src { display: none; }
+  .doc, .note, ul.items { overflow-wrap: anywhere; }
+  .doc table, .note table { overflow-wrap: normal; word-break: normal; }
+  table { border-collapse: collapse; display: block; overflow-x: auto; max-width: 100%; }
+  th, td { border: 1px solid var(--border); padding: 4px 8px; text-align: left; }
+  blockquote { margin: 8px 0; padding: 4px 12px; border-left: 3px solid var(--accent); color: var(--muted); }
+  .error { border: 1px solid var(--accent); border-radius: var(--radius); padding: 12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="toolbar">
+    <div class="progress"><span id="bar"></span></div>
+    <span id="progress-text"></span>
+    <button type="button" id="toggle-src" aria-pressed="false">出典を表示</button>
+    <button type="button" id="reset-all">新しいプレイを始める</button>
+    <a id="md-link" href="viewer.html">Markdown で読む</a>
+  </div>
+  <main id="content"><p>読み込み中…</p></main>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/marked@15.0.12/marked.min.js"></script>
+<script>
+(function () {
+  'use strict';
+  const FILE_RE = /^[A-Za-z0-9_-]+(\/[A-Za-z0-9_-]+)*\.md$/;
+  const ITEM_RE = /^\s*- \[ \] (.*?)\s*\{#([a-z0-9]+(?:-[a-z0-9]+)*)\}\s*$/;
+  const WHY_RE = /^\s+- なぜ:\s*(.*)$/;
+  const H2_RE = /^## (.*)$/;
+  const H3_RE = /^### (.*)$/;
+  const ROUTINE_MARK = '{.routine}';
+  const LAST_CHECK_SECTION = 5;     // チェック項目を描画するのは 1〜5 章
+  const LAST_PROGRESS_SECTION = 4;  // 進捗バーに数えるのは 1〜4 章（ルーチンは除く）
+
+  const main = document.getElementById('content');
+  const file = new URLSearchParams(location.search).get('file') || '';
+
+  function showError(msg) {
+    main.textContent = '';
+    const p = document.createElement('p');
+    p.className = 'error';
+    p.textContent = msg;
+    main.appendChild(p);
+  }
+
+  if (!FILE_RE.test(file)) {
+    showError('file パラメータが不正です（例: checklist.html?file=eu5/eu5-play-checklist.md）');
+    return;
+  }
+  if (typeof marked === 'undefined') {
+    showError('Markdown ライブラリを読み込めませんでした。通信状況を確認して再読み込みしてください。');
+    return;
+  }
+
+  const storageKey = 'checklist:' + file;
+  const state = loadState();
+
+  function loadState() {
+    try {
+      const raw = localStorage.getItem(storageKey);
+      const s = raw ? JSON.parse(raw) : null;
+      if (s && typeof s === 'object') {
+        return { checked: s.checked || {}, open: s.open || {}, showSrc: !!s.showSrc };
+      }
+    } catch (e) { /* 保存できない環境では初期状態で動かす */ }
+    return { checked: {}, open: {}, showSrc: false };
+  }
+
+  function save() {
+    try { localStorage.setItem(storageKey, JSON.stringify(state)); } catch (e) { /* 保存だけ諦める */ }
+  }
+
+  function wrapSrc(html) {
+    return html.replace(/\[src:[^\]]*\]/g, m => '<span class="src">' + m + '</span>');
+  }
+
+  function inline(s) { return wrapSrc(marked.parseInline(s)); }
+
+  function parse(md) {
+    const lines = md.replace(/\r\n?/g, '\n').split('\n');
+    const head = [];
+    const sections = [];
+    let cur = null;
+    for (const line of lines) {
+      const h = line.match(H2_RE);
+      if (h) {
+        const routine = h[1].includes(ROUTINE_MARK);
+        const title = h[1].replace(ROUTINE_MARK, '').trim();
+        const num = Number((title.match(/^(\d+)\./) || [])[1] || 0);
+        cur = { title, num, routine, lines: [] };
+        sections.push(cur);
+        continue;
+      }
+      (cur ? cur.lines : head).push(line);
+    }
+    return { head: head.join('\n'), sections };
+  }
+
+  function groupBlocks(lines) {
+    const groups = [{ title: null, blocks: [] }];
+    let lastItem = null;
+    for (const line of lines) {
+      const h3 = line.match(H3_RE);
+      if (h3) { groups.push({ title: h3[1].trim(), blocks: [] }); lastItem = null; continue; }
+      const g = groups[groups.length - 1];
+      const it = line.match(ITEM_RE);
+      if (it) { lastItem = { type: 'item', text: it[1], id: it[2], why: null }; g.blocks.push(lastItem); continue; }
+      const why = line.match(WHY_RE);
+      if (why && lastItem) { lastItem.why = why[1]; continue; }
+      lastItem = null;
+      if (line.trim() === '') continue;
+      const prev = g.blocks[g.blocks.length - 1];
+      if (prev && prev.type === 'md') prev.text += '\n' + line;
+      else g.blocks.push({ type: 'md', text: line });
+    }
+    return groups.filter(g => g.title !== null || g.blocks.length);
+  }
+
+  function makeDetails(key, titleHtml, className) {
+    const d = document.createElement('details');
+    d.className = className + ' counted';
+    d.open = key in state.open ? !!state.open[key] : true;
+    const s = document.createElement('summary');
+    const t = document.createElement('span');
+    t.innerHTML = titleHtml;
+    const c = document.createElement('span');
+    c.className = 'count';
+    s.append(t, c);
+    d.appendChild(s);
+    d.addEventListener('toggle', () => { state.open[key] = d.open; save(); });
+    return { d, s };
+  }
+
+  function renderItem(block, progress) {
+    const li = document.createElement('li');
+    const label = document.createElement('label');
+    const cb = document.createElement('input');
+    cb.type = 'checkbox';
+    cb.dataset.id = block.id;
+    if (progress) cb.dataset.progress = '1';
+    cb.checked = !!state.checked[block.id];
+    const text = document.createElement('span');
+    text.className = 'text';
+    text.innerHTML = inline(block.text);
+    label.append(cb, text);
+    li.appendChild(label);
+    if (block.why) {
+      const w = document.createElement('span');
+      w.className = 'why';
+      w.innerHTML = 'なぜ: ' + inline(block.why);
+      li.appendChild(w);
+    }
+    li.classList.toggle('done', cb.checked);
+    cb.addEventListener('change', () => {
+      if (cb.checked) state.checked[block.id] = true;
+      else delete state.checked[block.id];
+      li.classList.toggle('done', cb.checked);
+      save();
+      updateCounts();
+    });
+    return li;
+  }
+
+  function uncheck(container) {
+    container.querySelectorAll('input[data-id]').forEach(cb => {
+      cb.checked = false;
+      delete state.checked[cb.dataset.id];
+      cb.closest('li').classList.remove('done');
+    });
+    save();
+    updateCounts();
+  }
+
+  function renderChecklistSection(sec) {
+    const progress = sec.num <= LAST_PROGRESS_SECTION;
+    const { d } = makeDetails('s' + sec.num, marked.parseInline(sec.title), 'sec');
+    for (const g of groupBlocks(sec.lines)) {
+      let target = d;
+      if (g.title !== null) {
+        const sub = makeDetails('s' + sec.num + ':' + g.title, marked.parseInline(g.title), 'group');
+        if (sec.routine) {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.textContent = 'リセット';
+          btn.addEventListener('click', e => {
+            e.preventDefault();
+            e.stopPropagation();
+            if (confirm('「' + g.title + '」のチェックを外しますか？')) uncheck(sub.d);
+          });
+          sub.s.appendChild(btn);
+        }
+        d.appendChild(sub.d);
+        target = sub.d;
+      }
+      let ul = null;
+      for (const b of g.blocks) {
+        if (b.type === 'item') {
+          if (!ul) { ul = document.createElement('ul'); ul.className = 'items'; target.appendChild(ul); }
+          ul.appendChild(renderItem(b, progress));
+        } else {
+          ul = null;
+          const div = document.createElement('div');
+          div.className = 'note';
+          div.innerHTML = wrapSrc(marked.parse(b.text));
+          target.appendChild(div);
+        }
+      }
+    }
+    return d;
+  }
+
+  function updateCounts() {
+    main.querySelectorAll('details.counted').forEach(d => {
+      const boxes = [...d.querySelectorAll('input[data-id]')];
+      const done = boxes.filter(b => b.checked).length;
+      d.querySelector(':scope > summary > .count').textContent = '[' + done + '/' + boxes.length + ']';
+    });
+    const p = [...main.querySelectorAll('input[data-progress]')];
+    const done = p.filter(b => b.checked).length;
+    document.getElementById('bar').style.width = (p.length ? done / p.length * 100 : 0) + '%';
+    document.getElementById('progress-text').textContent = '進捗 ' + done + '/' + p.length;
+  }
+
+  const srcBtn = document.getElementById('toggle-src');
+  function applySrc() {
+    document.body.classList.toggle('show-src', state.showSrc);
+    srcBtn.setAttribute('aria-pressed', String(state.showSrc));
+    srcBtn.textContent = state.showSrc ? '出典を隠す' : '出典を表示';
+  }
+  srcBtn.addEventListener('click', () => { state.showSrc = !state.showSrc; save(); applySrc(); });
+
+  document.getElementById('reset-all').addEventListener('click', () => {
+    if (!confirm('すべてのチェックを外して、新しいプレイを始めますか？')) return;
+    state.checked = {};
+    uncheck(main);
+  });
+
+  document.getElementById('md-link').href = 'viewer.html?file=' + encodeURIComponent(file);
+
+  function render(md) {
+    const { head, sections } = parse(md);
+    main.textContent = '';
+    const h = document.createElement('div');
+    h.className = 'doc';
+    h.innerHTML = wrapSrc(marked.parse(head));
+    main.appendChild(h);
+    const h1 = h.querySelector('h1');
+    if (h1) document.title = h1.textContent;
+    for (const sec of sections) {
+      if (sec.num >= 1 && sec.num <= LAST_CHECK_SECTION) {
+        main.appendChild(renderChecklistSection(sec));
+      } else {
+        const s = document.createElement('section');
+        s.className = 'doc';
+        s.innerHTML = wrapSrc(marked.parse('## ' + sec.title + '\n' + sec.lines.join('\n')));
+        main.appendChild(s);
+      }
+    }
+    applySrc();
+    updateCounts();
+  }
+
+  fetch(file, { cache: 'no-cache' })
+    .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+    .then(render)
+    .catch(e => showError('チェックリストを読み込めませんでした（' + file + '）: ' + e.message));
+})();
+</script>
+</body>
+</html>

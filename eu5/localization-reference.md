@@ -2,7 +2,7 @@
 
 > ゲーム内日本語表示の正本。攻略ガイドの用語はこのファイルを参照して統一する。
 > 出典: `C:\Program Files (x86)\Steam\steamapps\common\Europa Universalis V\game\main_menu\localization\japanese\` 配下の各 `.yml` ファイル
-> 確認パッチ: **1.1.10**（2026-03-30 確認）。「Patch 1.3 追加の汎用用語」節のみ **1.3（1.3.10 相当）**（2026-07-11 確認）
+> 確認パッチ: **1.1.10**（2026-03-30 確認）。「Patch 1.3 追加の汎用用語」節のみ **1.3（1.3.10 相当）**（2026-07-11 確認）、「Patch 1.4 で確認した汎用用語」節のみ **1.4 オープンベータ（ビルド 25905365）**（2026-10-15 確認）
 
 ---
 
@@ -58,7 +58,8 @@
 | Alliance | 同盟 | 軍事同盟 |
 | Royal Marriage | 王室間の婚姻 | 王族同士の婚姻外交 |
 | Personal Union | 同君連合 | 同じ統治者を戴く連合 |
-| Improve Relations | 関係改善 | 外交アクション |
+| Improve Opinion | 評価改善 | 外交アクション（ボタン名）。`IMPROVE_RELATIONTITLE` = 「評価改善」（英語表示は Improve Opinion）。ヒント文は、`$IMPROVE_RELATIONTITLE$` 経由で「評価改善」と出るもの（`hint_has_disloyal_subjects_hint_text_2` など）と、概念名の「関係改善」と出るもの（`hint_over_diplo_capacity_hint_text_2`）がある `[src: diplomacy_l_japanese.yml, IMPROVE_RELATIONTITLE]` |
+| Improve Relations | 関係改善 | 概念名。`game_concept_improve_relations`（game_concepts_l_japanese.yml）。外交アクションのボタン「評価改善」（Improve Opinion）とは別の表示 |
 | Guarantee | 独立保障 | 他国の独立を保障 |
 | Truce | 停戦 | 戦争終了後の停戦期間 |
 | Call to Arms | 参戦要請 | 同盟国への参戦要請 |
@@ -96,9 +97,9 @@
 | Casus Belli | 開戦事由 | 戦争の正当化根拠。略称 CB |
 | War Goal | 戦争目標 | 戦争で達成すべき目標 |
 | Claims on Province | 州の請求 | `cb_conquer_province`。**コア（`integration_level = core`）取得後**に使用可能な汎用征服 CB `[src: casus_belli/conquest.txt]` |
-| Dubious Claims | 州の請求（根拠なし） | `cb_fabricated_conquer_province`。コア取得を前提とする外交ペナルティ付き征服 CB。**EU4 のスパイ「請求権捏造（fabricate_claim）」アクションは EU5 に存在しない** — 1.2 で `spy_actions/` 自体が無く、`scripted_relations/` のスパイ網にも Claim 付与効果なし `[src: casus_belli/fabricated_conquest.txt + scripted_relations/sow_discontent.txt + script verified]` |
+| Dubious Claims | 州の請求（根拠なし） | `cb_fabricated_conquer_province`。コア取得を前提とする外交ペナルティ付き征服 CB。**EU4 のスパイ「請求権捏造（fabricate_claim）」アクションは EU5 に存在しない** — 1.2 時点では `spy_actions/` 自体が無く、`scripted_relations/` のスパイ網にも Claim 付与効果なし `[src: casus_belli/fabricated_conquest.txt + scripted_relations/sow_discontent.txt + script verified]`。**1.4 では、諜報網を構築した相手に「開戦事由を作成」ができる**（相手が自国の中核地を領有している、またはライバル関係にある場合。公式チュートリアル・ヒントの記述で、スクリプトでは未確認）。下の 1.4 の節の「Spy Network」を参照 |
 | Conquer Enemy | 敵対国の征服 | `cb_conquer_enemy`。**ライバル指定された敵対国専用の征服 CB（コア不要）**。序盤の主力 CB `[src: casus_belli/conquer_enemy.txt + script verified]` |
-| Disloyal Subject | 不忠な属国 | `cb_disloyal_subject`。属国が離反した場合の再征服 CB `[src: casus_belli/disloyal_subject.txt]` |
+| Disloyal Subject | 不忠の従属国 | `cb_disloyal_subject`。宗主国が、従属国忠誠度50未満の自国の従属国に使う開戦事由（戦争目標は首都占領） `[src: casus_belli/disloyal_subject.txt]` |
 | Claim Throne | 王位の請求 | 王位を請求する CB |
 | Crusade | 十字軍 | 宗教的大義の CB |
 | Humiliate Rival | ライバルに屈辱を与える | ライバル国への CB |
@@ -147,7 +148,7 @@
 | University | 大学 | 教育・制度伝播 |
 | Granary | 穀物庫 | 食料貯蔵 |
 | Barracks | 兵舎 | 軍事施設 |
-| Fortification / Fortress | 要塞 | 防衛施設。ZoC を発生 |
+| Fortification / Fortress | 要塞 | 防衛施設。ZoC を発生。概念 Fort（`game_concept_fort`）も同じ「要塞」 |
 | Star Fort | 星形要塞 | 要塞の上位 |
 | Dock | ドック | 海軍施設 |
 | Shipyard | 造船所 | 艦船建造 |
@@ -166,7 +167,7 @@
 
 | 英語キー | ゲーム内日本語 | 補足 |
 |----------|---------------|------|
-| Holy Roman Empire | 神聖ローマ帝国 | 略称 HRE |
+| Holy Roman Empire | 神聖ローマ帝国 | 略称 HRE。概念キーは `game_concept_holy_roman_empire` |
 | Emperor | 皇帝 | HRE の首長。選帝侯の投票で選出される |
 | Elector | 選帝侯 | 皇帝選挙の投票権者。最大 7 名 |
 | Imperial Authority | 帝国の権威 | 略称 IA。皇帝権力の強さを示す 0〜100 の指標 |
@@ -196,6 +197,127 @@
 | Mamluk Horsemen | マムルーク騎兵 | 1.3 で重騎兵へ再分類された固有ユニット（age1 ベース／age2「改良型マムルーク騎兵」の 2 段定義）。兵科の Heavy/Light 分類自体は 1.2 既存で、個別ユニットの再分類が 1.3 `[src: unit_types/1_uniques_for_age_1_traditions.txt, 1_uniques_for_age_2_renaissance.txt]` |
 | Twilight of the Tsardom | ツァーリ国の黄昏 | 1.3 新規のディザスター。ブルガリア等バルカン勢力に崩壊・分裂を引き起こす。ビザンツ／ハプスブルク／オスマンのバルカン・対オスマン方面に地域跨ぎで影響する `[src: disasters/twilight_of_the_tsardom.txt]` |
 | Family Bank / Public Bank | 家族銀行 / 公営銀行 | 1.3 で追加された銀行系フレーバーの汎用概念（見出しのみ中央登録）。**固有名は勢力ごとに別**: Berenberg＝ハンブルク（HAM）固有 `[src: events/DHE/flavor_HAM.txt]`、Taula de Canvi（バルセロナ両替所）＝アラゴン（ARA）固有 `[src: events/DHE/flavor_ARA.txt:flavor_ara.220]`。他勢力に無条件で紐づくメカニクスではない（誤帰属回避） |
+
+## Patch 1.4 で確認した汎用用語
+
+> 1.4 オープンベータ（ビルド 25905365）で `main_menu/localization/japanese/` と `english/` を突き合わせて確認（2026-10-15）。プレイ中チェックリスト（eu5-play-checklist.md）で使う汎用用語。出典列はキー名と yml ファイル。上の節に無かった語だけを足している（1.4 で新設された語とは限らず、ダカット・POP・首都のように 1.4 以前からある語も含む）。
+> 「ゴールド」（通貨）「教皇国」「非寛容な文化」はゲーム内に存在しない訳語（通貨名としては使われず、人名・船名・文中の一般語に出るのみ）。通貨は「ダカット」、教皇の国は「ローマ」（タグ PAP）、受容でも容認でもない文化は「非受容文化」「非指定文化」と表示される。
+
+| 英語キー | ゲーム内日本語 | 補足 |
+|----------|---------------|------|
+| Ducats | ダカット | 通貨。キー名は `game_concept_gold`（game_concepts_l_japanese.yml）。英語表示は Ducats |
+| Pop | POP | `game_concept_pop` |
+| Capital | 首都 | `game_concept_capital` |
+| Rome (PAP) | ローマ | 教皇の国のタグ PAP の表示名 `[src: country_names_l_japanese.yml, PAP]` |
+| Accepted Culture | 受容文化 | `game_concept_accepted_culture`。主要文化もこの人口に数える（`total_accepted_culture_population`）。受容でも容認でもない文化には「非受容文化」「非指定文化」の両方が含まれる |
+| Tolerated Culture | 容認文化 | `game_concept_tolerated_culture` |
+| Primary Religion | 主要宗教 | `game_concept_true_faith`（`total_true_faith_population` の表示） |
+| Primary Culture | 主要文化 | `game_concept_primary_culture` |
+| Total Population | 総人口 | `game_concept_total_population` |
+| Mercenary | 傭兵 | `game_concept_mercenary`。基本コストは正規兵より50%高い |
+| Blockade | 封鎖 | `game_concept_blockade` |
+| Cabinet Seat | 閣僚ポスト | `game_concept_cabinet_seat`。進歩や補正の表示 `MODIFIER_TYPE_NAME_government_size`（英語 Cabinet Seats）は「閣僚議席」だが、同じ内閣の枠数を指す |
+| Stability Investment | 安定度投資 | `game_concept_stability_investment` |
+| Government Power | 政府力 | `game_concept_government_power`。正統性・共和的伝統・献身・遊牧民の結束・部族の団結の総称 |
+| Republican Tradition | 共和的伝統 | `game_concept_republican_tradition` |
+| Devotion | 献身 | `game_concept_devotion` |
+| Horde Unity | 遊牧民の結束 | `game_concept_horde_unity` |
+| Tribal Cohesion | 部族の団結 | `game_concept_tribal_cohesion` |
+| Law | 法律 | `game_concept_law` |
+| Privilege | 特権 | `game_concept_privilege`。階級に与える特権（「都市特権」「自治区特権」は別の語） |
+| Balance | 収支 | `game_concept_balance` |
+| Minting | 貨幣鋳造 | `game_concept_minting` |
+| Tax Base | 税基盤 | `game_concept_tax_base` |
+| Embrace | 受容 | 制度の受容。`game_concept_embrace` |
+| Proximity | 近接性 | `game_concept_proximity` |
+| Location | ロケーション | `game_concept_location` |
+| Core | 中核地 | `game_concept_core` |
+| Region | 地方 | `game_concept_region` |
+| Area | 地域 | `game_concept_area`。州の集合体で、地方の一部（地方 ⊃ 地域 ⊃ 州）。「地方（Region）」とは別の語。内閣アクション「地域の統合」「地域支配を強化」の「地域」はこちら |
+| Province | 州 | `game_concept_province`。同一国が領有するロケーションの集合体。内閣アクション「州の統合」「州支配を強化」の「州」はこちら |
+| City | 都 | `city`（economy_l_japanese.yml）。英語表示は City |
+| War Exhaustion | 戦争疲弊 | `game_concept_war_exhaustion` |
+| Cultural Capacity | 文化許容量 | `game_concept_cultural_capacity` |
+| Trade Capacity | 交易許容量 | `game_concept_merchant_capacity` |
+| Trade | 交易 | `game_concept_trade`。市場間の交易品の移動。「交易許容量」は別の語 |
+| Food | 食糧 | `game_concept_food` |
+| Mission | ミッション | `game_concept_mission` |
+| Agenda | アジェンダ | `OUTLINER_AGENDA_TITLE`（outliner_l_japanese.yml） |
+| Automation Panel | 「自動化」パネル | `lateralview_automation_entry_name`（lateralviews_l_japanese.yml）。括弧つきで表示される |
+| Country Rank | 国家ランク | `game_concept_country_rank` |
+| Rival | ライバル | `game_concept_rival`。他国への敵意を表明する指定。指定した相手には開戦事由の作成などの敵対行動ができ、友好的な条約は結べない |
+| Spy Network | 諜報網 | `game_concept_spy_network`（基本概念の節にも収録済み）。他国にどの程度浸透しているかを表す。1.4 では他国に構築すると、相手が自国の中核地を領有している、またはライバル関係にある場合に「開戦事由を作成」ができる（公式のチュートリアル・ヒントの記述。スクリプトでは未確認）`[src: tutorial_l_japanese.yml, lesson_military_war_0_desc]` `[src: hints_l_japanese.yml, hint_casus_belli_hint_text_2]` |
+| Duchy / Kingdom / Empire | 公国 / 王国 / 帝国 | `rank_duchy` / `rank_kingdom` / `rank_empire` |
+| Political Influence | 政治的影響力 | `game_concept_political_influence` |
+| Disaster | 国難 | `game_concept_disaster` |
+| Decline of Empire | 慢心による衰退 | 国難。`decline_of_empire`（disasters_l_japanese.yml） |
+| Revolution! | 革命！ | 国難。`revolution_disaster`（disasters_l_japanese.yml） |
+| Prosperity | 繁栄度 | `game_concept_prosperity` |
+| Bureaucracy | 官僚機構 | `game_concept_bureaucracy` |
+| Urban Rights | 都市特権 | `game_concept_town_rights` |
+| Regiment | 連隊 | `game_concept_regiment` |
+| Army Levy | 召集陸軍 | `game_concept_army_levy` |
+| Army Maintenance | 陸軍維持費 | `game_concept_army_maintenance` |
+| Army | 陸軍 | `game_concept_army`。1人の指揮官が率いる連隊の集合体 |
+| Navy | 海軍 | `game_concept_navy`。1人の指揮官が率いる船の集団 |
+| Supply Limit | 供給限界 | `game_concept_supply_limit` |
+| Goods | 交易品 | `game_concept_goods` |
+| Starvation | 飢饉 | `game_concept_starvation` |
+| Promotion | 昇格 | POP の昇格。`game_concept_promotion` |
+| Library / University | 図書館 / 大学 | `library` / `university`（buildings_l_japanese.yml） |
+| Traditions / Renaissance / Discovery / Reformation / Absolutism / Revolutions | 伝統 / ルネサンス / 発見 / 宗教改革 / 絶対主義 / 革命 | 時代名。`age_1_traditions` 〜 `age_6_revolutions` |
+| Stabilize Country | 国家の安定化 | 内閣アクション。`stabilize_country`（government_l_japanese.yml） |
+| Strengthen Government | 政府の強化 | 内閣アクション。`strengthen_government` |
+| Increase Province Control | 州支配を強化 | 内閣アクション。`increase_control_province` |
+| Increase Area Control | 地域支配を強化 | 内閣アクション。`increase_control_area` |
+| Integrate Province | 州の統合 | 内閣アクション。`integrate_province`。進歩「改善された統合」の取得後は使えない |
+| Integrate Area | 地域の統合 | 内閣アクション。`integrate_area` |
+| Foster Institutions | 制度の推進 | 内閣アクション。`study_institutions` |
+| Develop Province | 州の開発 | 内閣アクション。`develop_province` |
+| Alleviate Concerns | 懸念の軽減 | 内閣アクション。`alleviate_concerns` |
+| Rebel Crackdown | 反乱軍の弾圧 | 内閣アクション。`rebel_crackdown` |
+| Recovery Effort | 復興への取り組み | 内閣アクション。`recovery_effort` |
+| Reduce War Exhaustion | 戦争疲弊を軽減 | 内閣アクション。`reduce_war_exhaustion`（表示は `$war_exhaustion$を軽減`） |
+| Assimilate Pops into our Culture | POPを我々の文化に同化させる | 内閣アクション。`promote_culture` |
+| Upgrade Army / Upgrade Navy | 陸軍の強化 / 海軍の強化 | `UPGRADE_ARMY` / `UPGRADE_FLEET`（units_l_japanese.yml） |
+| Administrative / Diplomatic / Military Focus | 統治フォーカス / 外交フォーカス / 軍事フォーカス | 時代の始まりのイベントの選択肢。`ages_of_eu.adm` / `.dip` / `.mil`（advances_l_japanese.yml） |
+| Statecraft | 国政術 | 進歩。`crown_power_advance_discovery` |
+| Early Administrative Capacity | 初期行政能力 | 進歩。`government_size_discovery` |
+| 'Cuius Regio, Eius Religio' | 信仰属地主義 | 進歩。`crown_power_advance_reformation` |
+| Early Modern Administration | 近世の統治 | 進歩。`early_modern_administation`（キー名は綴りのまま） |
+| Early Administrative Reformation | 初期行政改革 | 進歩。`gov_reform_discovery_a` |
+| The Prince | 君主 | 進歩。`gov_reform_reformation_a` |
+| Executive Bureaucracy | 執行官僚制度 | 進歩。`generic_bureaucracy_4_advance` |
+| Borough Privileges | 自治区特権 | 進歩。`town_rights_enable` |
+| Absolute Rulership | 絶対的支配者 | 進歩。`absolute_rulership` |
+| Loyal Subordinates | 忠実な従属者 | 進歩。`government_size_absolutism` |
+| The Constitution | 立憲主義 | 進歩。`the_constitution` |
+| Nation | 国家 | 進歩。`crown_power_advance_revolutions` |
+| Modern Representation | 現代的代表制度 | 進歩。`government_size_revolutions` |
+| Separation of Powers | 権力の分離 | 進歩。`separation_of_powers` |
+| Modern Bureaucracy | 現代的官僚制度 | 進歩。`modern_bureaucracy` |
+| Better Integration | 改善された統合 | 進歩。`integrate_area_advance` |
+| Increase Control Widely | 統制力の広範な強化 | 進歩。`increase_control_area_advance` |
+| Deflating Tensions | 緊張の緩和 | 進歩。`alleviate_concerns_advance` |
+| Gravel Road / Paved Road / Modern Road / Railroad | 砂利道 / 舗装路 / 近代的街道 / 鉄道 | 街道の種別。`gravel_road` / `paved_road` / `modern_road` / `railroad`（economy_l_japanese.yml） |
+| Enlightenment | 啓蒙 | 制度。`enlightenment`（advances_l_japanese.yml） |
+| Local Governor | 地方総督府 | 建造物。`local_governor` |
+| Parliament | 議会 | `game_concept_parliament`。「政府」パネルの「国家」タブにある「議会」タブ |
+| Satisfaction | 満足度 | 階級満足度の略称。`game_concept_estate_satisfaction_short`（正式名は `game_concept_estate_satisfaction` = 「階級満足度」） |
+| Policy | ポリシー | `game_concept_policy` |
+| Commander | 指揮官 | `game_concept_commander` |
+| Diplomatic Action | 外交アクション | `game_concept_diplomatic_action` |
+| Exiled | 追放 | `game_concept_exiled` |
+| Building | 建造物 | `game_concept_building` |
+| Literacy | 識字率 | `game_concept_literacy` |
+| Crown | 王室 | 階級の一つ。`crown_estate`（estate_l_japanese.yml） |
+| Commoners | 庶民 | 階級の一つ。`peasants_estate`（estate_l_japanese.yml）。概念名 `game_concept_lowborn` も「庶民」 |
+| Market | 市場 | `game_concept_market` |
+| Medieval Administration | 中世の統治 | 進歩。`medieval_administration` |
+| Renaissance Thought | ルネサンス思想 | 進歩。`renaissance_thought` |
+| Permanent Cabinet | 常設内閣 | 進歩。`government_size_renaissance` |
+| Sovereignty | 最高権力 | 進歩。`crown_power_advance_renaissance` |
+| Shared Knowledge | 知識の共有 | 進歩。`study_institutions_advance` |
 
 ## カスティーリャ / スペイン固有
 
