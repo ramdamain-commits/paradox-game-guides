@@ -1,4 +1,6 @@
 """check_checklist.py のテスト。壊したデータを1種類ずつ流し、検出できることを確かめる。"""
+import contextlib
+import io
 import sys
 import tempfile
 import unittest
@@ -143,10 +145,20 @@ class MainTests(unittest.TestCase):
             self.assertEqual(cc.game_file_names(Path(d)), {"foo.txt"})
 
     def test_main_reads_bom(self):
+        # 先頭行が `## 1.` の文書は、BOM を除去しないと H2 として認識されず、
+        # 項目が「章の外」エラーになる。BOM の有無で結果が変わらないことを確かめる
+        body = "## 1. A\n- [ ] a {#a-1}\n> 対象パッチ: 1.0 ／ 最終確認日: 2026-10-13\n"
+        outs = []
         with tempfile.TemporaryDirectory() as d:
-            f = Path(d) / "c.md"
-            f.write_bytes(SAMPLE.read_text(encoding="utf-8").encode("utf-8-sig"))
-            self.assertEqual(cc.main([str(f), "--skip-src"]), 0)
+            for name, data in (("plain.md", body.encode("utf-8")), ("bom.md", body.encode("utf-8-sig"))):
+                f = Path(d) / name
+                f.write_bytes(data)
+                buf = io.StringIO()
+                with contextlib.redirect_stdout(buf):
+                    code = cc.main([str(f), "--skip-src"])
+                outs.append((code, buf.getvalue()))
+        self.assertEqual(outs[0][0], 0)
+        self.assertEqual(outs[1], outs[0])
 
     def test_main_returns_1_on_error(self):
         with tempfile.TemporaryDirectory() as d:

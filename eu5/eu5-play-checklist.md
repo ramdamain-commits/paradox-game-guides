@@ -30,7 +30,7 @@
 
 ### 安全確保
 
-到達目標: 赤字・不安定・階級の不満・飢えのどれも放置していない状態にする。
+到達目標: 赤字・不安定・階級の不満・反乱・荒廃・飢えのどれも放置していない状態にする。
 
 - [ ] 「破産リスク」のアラートが出たら、「経済」パネルで税を上げるか支出を下げて黒字に戻す {#early-deficit}
   - なぜ: 月間収支がマイナスのままだと、負債や破産につながる（公式の説明） [src: scripted_hints.txt, hint_in_deficit]
@@ -265,7 +265,7 @@
 | 国難「革命！」の引き金 | 啓蒙を受容した国で、庶民と市民の満足度がともに35%未満 | [src: revolution_disaster.txt, can_start] |
 | 専門化の都市特権 | 指定品の生産+20〜30%、生産効率−5%、付与に政治的影響力20 | [src: 01_discovery.txt, royal_tooling_rights] [src: 01_discovery.txt, royal_textile_rights] [src: default_values.txt, town_right_efficiency_penalty] [src: 00_hardcoded.txt, grant_town_rights] |
 | 地方総督府 | 近接性の供給源80。建設できる数は基本1で、進歩と王国・帝国のランクで増える。首都との街道が必要 | [src: capital_buildings.txt, local_governor] [src: country.txt, country_base_values] [src: 1_building_unlocks.txt, local_governor_advance] [src: country_ranks/00_default.txt, rank_kingdom] [src: country_ranks/00_default.txt, rank_empire] |
-| 支配度強化の内閣アクション | 州版は上限+10%・毎月+1%、地域版は上限+15%・毎月+0.5% | [src: increase_control.txt, increase_control_province] [src: increase_control_area.txt, increase_control_area] |
+| 支配度強化の内閣アクション | 州版は最大支配度に+10ポイント（現在値の10%増ではない）・毎月+1%、地域版は最大支配度に+15ポイント・毎月+0.5% | [src: increase_control.txt, increase_control_province] [src: increase_control_area.txt, increase_control_area] |
 
 ## 8. 用語
 

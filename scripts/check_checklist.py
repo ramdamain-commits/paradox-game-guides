@@ -26,7 +26,7 @@ VALID_ID_RE = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 SRC_RE = re.compile(r"\[src:\s*([^,\]]+)")
 # 文字数上限の対象外にする範囲（checklist.html の wrapSrc と同じ。マーカーは既定で非表示のため）
 STRIP_SRC_RE = re.compile(r"\[src:[^\]]*\]")
-FILE_EXT_RE =re.compile(r"\.(txt|yml|csv|gui|json)$")
+FILE_EXT_RE = re.compile(r"\.(txt|yml|csv|gui|json)$")
 
 
 class Result(NamedTuple):
