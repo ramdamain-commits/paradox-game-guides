@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-10-15 EU5 チェックリストのレビュー指摘の後始末
+
+### Changed
+- チェックリスト2章の到達目標に「反乱・荒廃」を追加した。7章の支配度強化は、最大支配度への絶対値（ポイント）の加算だと明記した（`local_max_control` の値）
+- `localization-reference.md` の諜報網の補足を `game_concept_spy_network_desc` に合わせ、傭兵の「基本コスト+50%」に出典を付けた。War Score / War Goal の英語表記をゲーム内の `Warscore` / `Wargoal` に合わせた
+- `index.html` のメタ説明とヘッダー文から「国別」を外した
+- 国別ガイドの計画テンプレート・手順書・章テンプレートに、EU5 は国別ガイドを置かない旨を追記し、中間データの置き場を `{タイトル略称}/data/` に一般化した。repo `CLAUDE.md` に、EU5 チェックリストのカードは `checklist.html?file=` 形式という例外を追記した
+- `test_main_reads_bom` を、BOM を除去しないと結果が変わる文書で比較する形に直した（BOM 除去を外した複製で落ちることを確認済み）。`check_checklist.py` の空白欠けを直した
+
 ## 2026-10-15 EU5 攻略をプレイ中チェックリストへ作り直し
 
 ### Changed

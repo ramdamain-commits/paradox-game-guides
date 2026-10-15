@@ -1,5 +1,7 @@
 # EU5 ${COUNTRY_JA}攻略ガイド 実装計画
 
+> **注意（2026-10-15）:** EU5 は国別ガイドを置かない（`eu5/eu5-play-checklist.md` を正本とする。repo `CLAUDE.md` の「ファイル構成」参照）。このテンプレートの `EU5_ROOT` や `DHE` 等の走査パスは過去の EU5 国別ガイド用の例なので、CK3 / VIC3 で使うときはゲームごとのパスに読み替える。中間データの置き場 `{タイトル略称}/data/` は `ck3/data/`・`vic3/data/` 等に置き換える。
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** EU5 ${COUNTRY_JA}（${TAG}）の攻略ガイドを、既存ガイドと同等品質でゲームスクリプト一次ソース方式により作成する
@@ -50,7 +52,7 @@ GUIDE    = C:\Users\ramda\projects\paradox-game-guides
 **Files:**
 - Read: `${COMMON}/advances/${ADVANCE_FILES}`
 - Read: ローカライズ内の advance 関連
-- Create: `${GUIDE}/eu5/data/${TAG_LOWER}-advances.md`
+- Create: `${GUIDE}/{タイトル略称}/data/${TAG_LOWER}-advances.md`
 
 - [ ] **Step 1:** 進歩ファイルを全文読み、進歩名・効果・条件を表形式で抽出
 - [ ] **Step 2:** ローカライズで日本語名を確認
@@ -64,7 +66,7 @@ GUIDE    = C:\Users\ramda\projects\paradox-game-guides
 **Files:**
 - Read: `${DHE}/${EVENT_FILES}`
 - Read: ローカライズ
-- Create: `${GUIDE}/eu5/data/${TAG_LOWER}-events.md`（+ 分割時は part1/2/3）
+- Create: `${GUIDE}/{タイトル略称}/data/${TAG_LOWER}-events.md`（+ 分割時は part1/2/3）
 
 **分割判断:**
 - 3000行未満 → 単体処理
@@ -87,7 +89,7 @@ flavor_${TAG}.txt の ${START}〜${END} 行を読み、以下の表形式で全�
 ### Task 3: 追加メカニクス調査（国による — 不要なら省略）
 
 **対象:** ${EXTRA_SCRIPTS}
-**出力:** `${GUIDE}/eu5/data/${TAG_LOWER}-extra-mechanics.md`
+**出力:** `${GUIDE}/{タイトル略称}/data/${TAG_LOWER}-extra-mechanics.md`
 
 - [ ] **Step 1:** 追加スクリプトを読み、データ抽出
 - [ ] **Step 2:** ローカライズで日本語名確認
@@ -142,5 +144,5 @@ flavor_${TAG}.txt の ${START}〜${END} 行を読み、以下の表形式で全�
 
 - [ ] **Step 1:** 3名レビュー（熟練者/中級者/テクニカルライター）
 - [ ] **Step 2:** レビュー指摘を反映
-- [ ] **Step 3:** 中間データ削除（`eu5/data/${TAG_LOWER}-*`）
+- [ ] **Step 3:** 中間データ削除（`{タイトル略称}/data/${TAG_LOWER}-*`）
 - [ ] **Step 4:** 最終コミット

@@ -1,5 +1,7 @@
 # 新規国別ガイド追加の手順（定型パターン）
 
+> **注意（2026-10-15）:** EU5 は国別ガイドを置かない（`eu5/eu5-play-checklist.md` を正本とする。repo `CLAUDE.md` の「ファイル構成」参照）。この手順は CK3 / VIC3 の国別ガイド追加用。以下の `EU5_ROOT`・`DHE` 等の例は EU5 の走査パスなので、対象ゲームのパスに読み替える。
+
 > 2026-07-03 に CLAUDE.md から分離。章構成の正本は `guide-section-template.md`、Plan 変数は `country-guide-plan-template.md`。
 
 新しい国の攻略ガイドを追加するとき、ブレスト→Spec→Plan の儀式は不要。以下の手順で即実行する。

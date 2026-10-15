@@ -33,7 +33,7 @@
 | Cabinet | 内閣 | 高官による統治機構 |
 | Cabinet Action | 内閣アクション | 内閣が実行する行動 |
 | Cabinet Efficiency | 内閣効率 | 内閣の効率値 |
-| Spy Network | 諜報網 | スパイ活動の成果 |
+| Spy Network | 諜報網 | 他国にどの程度浸透し、その国の内部情報をどの程度持っているかを表す `[src: game_concepts_l_japanese.yml, game_concept_spy_network_desc]` |
 | RGO / Resource Gathering Operations | RGO / 資源採取 | ゲーム内でも「RGO」とアルファベット表記 |
 | Great Power | 列強 | 最上位の国力を持つ国家群 `[src: game_concepts_l_japanese.yml]` |
 | Great Power Score | 列強スコア | 列強判定に使う国力スコア。「大国スコア」は誤訳（`game_concept_great_power_score_short` = 「列強スコア」）`[src: game_concepts_l_japanese.yml:1893]` |
@@ -64,7 +64,7 @@
 | Truce | 停戦 | 戦争終了後の停戦期間 |
 | Call to Arms | 参戦要請 | 同盟国への参戦要請 |
 | Peace Treaty | 和平条約 | 戦争の終結条件 |
-| War Score | 戦勝点 | 戦争の優劣を示す値 |
+| Warscore（War Score） | 戦勝点 | 特定の戦争で、国がどれだけ力を発揮しているかを示す値。英語表示は `Warscore` `[src: game_concepts_l_japanese.yml, game_concept_war_score_desc]` |
 | War Participation | 戦争貢献度 | 同盟戦争での貢献度 |
 | Diplomatic Range | 外交範囲 | 外交可能な距離 |
 | Diplomatic Capacity | 外交許容量 | 維持可能な外交関係数 |
@@ -95,7 +95,7 @@
 | 英語キー | ゲーム内日本語 | 補足 |
 |----------|---------------|------|
 | Casus Belli | 開戦事由 | 戦争の正当化根拠。略称 CB |
-| War Goal | 戦争目標 | 戦争で達成すべき目標 |
+| Wargoal（War Goal） | 戦争目標 | 個々の戦争で設定される達成目標。使う開戦事由で変わる。英語表示は `Wargoal` `[src: game_concepts_l_japanese.yml, game_concept_war_goal_desc]` |
 | Claims on Province | 州の請求 | `cb_conquer_province`。**コア（`integration_level = core`）取得後**に使用可能な汎用征服 CB `[src: casus_belli/conquest.txt]` |
 | Dubious Claims | 州の請求（根拠なし） | `cb_fabricated_conquer_province`。コア取得を前提とする外交ペナルティ付き征服 CB。**EU4 のスパイ「請求権捏造（fabricate_claim）」アクションは EU5 に存在しない** — 1.2 時点では `spy_actions/` 自体が無く、`scripted_relations/` のスパイ網にも Claim 付与効果なし `[src: casus_belli/fabricated_conquest.txt + scripted_relations/sow_discontent.txt + script verified]`。**1.4 では、諜報網を構築した相手に「開戦事由を作成」ができる**（相手が自国の中核地を領有している、またはライバル関係にある場合。公式チュートリアル・ヒントの記述で、スクリプトでは未確認）。下の 1.4 の節の「Spy Network」を参照 |
 | Conquer Enemy | 敵対国の征服 | `cb_conquer_enemy`。**ライバル指定された敵対国専用の征服 CB（コア不要）**。序盤の主力 CB `[src: casus_belli/conquer_enemy.txt + script verified]` |
@@ -214,7 +214,7 @@
 | Primary Religion | 主要宗教 | `game_concept_true_faith`（`total_true_faith_population` の表示） |
 | Primary Culture | 主要文化 | `game_concept_primary_culture` |
 | Total Population | 総人口 | `game_concept_total_population` |
-| Mercenary | 傭兵 | `game_concept_mercenary`。基本コストは正規兵より50%高い |
+| Mercenary | 傭兵 | `game_concept_mercenary`。基本コストは正規兵より50%高い（公式の説明）`[src: game_concepts_l_japanese.yml, game_concept_mercenary_desc]` |
 | Blockade | 封鎖 | `game_concept_blockade` |
 | Cabinet Seat | 閣僚ポスト | `game_concept_cabinet_seat`。進歩や補正の表示 `MODIFIER_TYPE_NAME_government_size`（英語 Cabinet Seats）は「閣僚議席」だが、同じ内閣の枠数を指す |
 | Stability Investment | 安定度投資 | `game_concept_stability_investment` |
