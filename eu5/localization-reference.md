@@ -2,7 +2,7 @@
 
 > ゲーム内日本語表示の正本。攻略ガイドの用語はこのファイルを参照して統一する。
 > 出典: `C:\Program Files (x86)\Steam\steamapps\common\Europa Universalis V\game\main_menu\localization\japanese\` 配下の各 `.yml` ファイル
-> 確認パッチ: **1.1.10**（2026-03-30 確認）。「Patch 1.3 追加の汎用用語」節のみ **1.3（1.3.10 相当）**（2026-07-11 確認）
+> 確認パッチ: **1.1.10**（2026-03-30 確認）。「Patch 1.3 追加の汎用用語」節のみ **1.3（1.3.10 相当）**（2026-07-11 確認）、「Patch 1.4 追加の汎用用語」節のみ **1.4 オープンベータ（ビルド 25905365）**（2026-10-15 確認）
 
 ---
 
@@ -58,7 +58,8 @@
 | Alliance | 同盟 | 軍事同盟 |
 | Royal Marriage | 王室間の婚姻 | 王族同士の婚姻外交 |
 | Personal Union | 同君連合 | 同じ統治者を戴く連合 |
-| Improve Relations | 評価改善 | 外交アクション。ボタン名は `IMPROVE_RELATIONTITLE` = 「評価改善」。概念名 `game_concept_improve_relations` は「関係改善」。ヒント文は両方ある（`hint_has_disloyal_subjects_hint_text_2` などは `$IMPROVE_RELATIONTITLE$` 経由で「評価改善」、`hint_over_diplo_capacity_hint_text_2` は「関係改善」） `[src: diplomacy_l_japanese.yml, IMPROVE_RELATIONTITLE]` |
+| Improve Opinion | 評価改善 | 外交アクション（ボタン名）。`IMPROVE_RELATIONTITLE` = 「評価改善」（英語表示は Improve Opinion）。ヒント文は、`$IMPROVE_RELATIONTITLE$` 経由で「評価改善」と出るもの（`hint_has_disloyal_subjects_hint_text_2` など）と、概念名の「関係改善」と出るもの（`hint_over_diplo_capacity_hint_text_2`）がある `[src: diplomacy_l_japanese.yml, IMPROVE_RELATIONTITLE]` |
+| Improve Relations | 関係改善 | 概念名。`game_concept_improve_relations`（game_concepts_l_japanese.yml）。外交アクションのボタン「評価改善」（Improve Opinion）とは別の表示 |
 | Guarantee | 独立保障 | 他国の独立を保障 |
 | Truce | 停戦 | 戦争終了後の停戦期間 |
 | Call to Arms | 参戦要請 | 同盟国への参戦要請 |
@@ -98,7 +99,7 @@
 | Claims on Province | 州の請求 | `cb_conquer_province`。**コア（`integration_level = core`）取得後**に使用可能な汎用征服 CB `[src: casus_belli/conquest.txt]` |
 | Dubious Claims | 州の請求（根拠なし） | `cb_fabricated_conquer_province`。コア取得を前提とする外交ペナルティ付き征服 CB。**EU4 のスパイ「請求権捏造（fabricate_claim）」アクションは EU5 に存在しない** — 1.2 で `spy_actions/` 自体が無く、`scripted_relations/` のスパイ網にも Claim 付与効果なし `[src: casus_belli/fabricated_conquest.txt + scripted_relations/sow_discontent.txt + script verified]` |
 | Conquer Enemy | 敵対国の征服 | `cb_conquer_enemy`。**ライバル指定された敵対国専用の征服 CB（コア不要）**。序盤の主力 CB `[src: casus_belli/conquer_enemy.txt + script verified]` |
-| Disloyal Subject | 不忠の従属国 | `cb_disloyal_subject`。属国が離反した場合の再征服 CB `[src: casus_belli/disloyal_subject.txt]` |
+| Disloyal Subject | 不忠の従属国 | `cb_disloyal_subject`。宗主国が、従属国忠誠度50未満の自国の従属国に使う開戦事由（戦争目標は首都占領） `[src: casus_belli/disloyal_subject.txt]` |
 | Claim Throne | 王位の請求 | 王位を請求する CB |
 | Crusade | 十字軍 | 宗教的大義の CB |
 | Humiliate Rival | ライバルに屈辱を与える | ライバル国への CB |
@@ -197,9 +198,9 @@
 | Twilight of the Tsardom | ツァーリ国の黄昏 | 1.3 新規のディザスター。ブルガリア等バルカン勢力に崩壊・分裂を引き起こす。ビザンツ／ハプスブルク／オスマンのバルカン・対オスマン方面に地域跨ぎで影響する `[src: disasters/twilight_of_the_tsardom.txt]` |
 | Family Bank / Public Bank | 家族銀行 / 公営銀行 | 1.3 で追加された銀行系フレーバーの汎用概念（見出しのみ中央登録）。**固有名は勢力ごとに別**: Berenberg＝ハンブルク（HAM）固有 `[src: events/DHE/flavor_HAM.txt]`、Taula de Canvi（バルセロナ両替所）＝アラゴン（ARA）固有 `[src: events/DHE/flavor_ARA.txt:flavor_ara.220]`。他勢力に無条件で紐づくメカニクスではない（誤帰属回避） |
 
-## 1.4 プレイ中チェックリストで追加した汎用用語
+## Patch 1.4 追加の汎用用語
 
-> 1.4 オープンベータ（ビルド 25606497）で `main_menu/localization/japanese/` と `english/` を突き合わせて確認（2026-10-14）。出典列はキー名と yml ファイル。上の節に無かった語だけを足している。
+> 1.4 オープンベータ（ビルド 25905365）で `main_menu/localization/japanese/` と `english/` を突き合わせて確認（2026-10-15）。プレイ中チェックリスト（eu5-play-checklist.md）で使う汎用用語。出典列はキー名と yml ファイル。上の節に無かった語だけを足している。
 > 「ゴールド」（通貨）「教皇国」「非寛容な文化」はゲーム内に存在しない訳語（通貨名としては使われず、人名・船名・文中の一般語に出るのみ）。通貨は「ダカット」、教皇の国は「ローマ」（タグ PAP）、受容でも容認でもない文化は「非受容文化」「非指定文化」と表示される。
 
 | 英語キー | ゲーム内日本語 | 補足 |
@@ -211,6 +212,8 @@
 | Accepted Culture | 受容文化 | `game_concept_accepted_culture`。主要文化もこの人口に数える（`total_accepted_culture_population`）。受容でも容認でもない文化には「非受容文化」「非指定文化」の両方が含まれる |
 | Tolerated Culture | 容認文化 | `game_concept_tolerated_culture` |
 | Primary Religion | 主要宗教 | `game_concept_true_faith`（`total_true_faith_population` の表示） |
+| Primary Culture | 主要文化 | `game_concept_primary_culture` |
+| Total Population | 総人口 | `game_concept_total_population` |
 | Mercenary | 傭兵 | `game_concept_mercenary`。基本コストは正規兵より50%高い |
 | Blockade | 封鎖 | `game_concept_blockade` |
 | Cabinet Seat | 閣僚ポスト | `game_concept_cabinet_seat`。進歩や補正の表示 `MODIFIER_TYPE_NAME_government_size`（英語 Cabinet Seats）は「閣僚議席」だが、同じ内閣の枠数を指す |
@@ -290,6 +293,22 @@
 | Paved Road / Modern Road / Railroad | 舗装路 / 近代的街道 / 鉄道 | 街道の種別。`paved_road` / `modern_road` / `railroad`（economy_l_japanese.yml） |
 | Enlightenment | 啓蒙 | 制度。`enlightenment`（advances_l_japanese.yml） |
 | Local Governor | 地方総督府 | 建造物。`local_governor` |
+| Parliament | 議会 | `game_concept_parliament`。「政府」パネルの「国家」タブにある「議会」タブ |
+| Satisfaction | 満足度 | 階級満足度の略称。`game_concept_estate_satisfaction_short`（正式名は `game_concept_estate_satisfaction` = 「階級満足度」） |
+| Policy | ポリシー | `game_concept_policy` |
+| Commander | 指揮官 | `game_concept_commander` |
+| Diplomatic Action | 外交アクション | `game_concept_diplomatic_action` |
+| Exiled | 追放 | `game_concept_exiled` |
+| Building | 建造物 | `game_concept_building` |
+| Literacy | 識字率 | `game_concept_literacy` |
+| Crown | 王室 | 階級の一つ。`crown_estate`（estate_l_japanese.yml） |
+| Commoners | 庶民 | 階級の一つ。`peasants_estate`（estate_l_japanese.yml）。概念名 `game_concept_lowborn` も「庶民」 |
+| Market | 市場 | `game_concept_market` |
+| Medieval Administration | 中世の統治 | 進歩。`medieval_administration` |
+| Renaissance Thought | ルネサンス思想 | 進歩。`renaissance_thought` |
+| Permanent Cabinet | 常設内閣 | 進歩。`government_size_renaissance` |
+| Sovereignty | 最高権力 | 進歩。`crown_power_advance_renaissance` |
+| Shared Knowledge | 知識の共有 | 進歩。`study_institutions_advance` |
 
 ## カスティーリャ / スペイン固有
 
