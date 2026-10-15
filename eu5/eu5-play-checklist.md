@@ -96,12 +96,12 @@
 - [ ] 統合を進めている征服地で他文化のPOPが多いときは、内閣アクション「POPを我々の文化に同化させる」を実行し、その州を自国の主要文化または受容文化へ同化させる {#mid-assimilate}
   - なぜ: 自国の文化がそのロケーションの支配的な文化になると統合が大幅に加速する（公式の説明）。同化中は、その州への移住の誘引が下がる [src: hints_l_japanese.yml, hint_has_conquered_provinces_hint_text_3] [src: promote_culture.txt, promote_culture]
 - [ ] 首都から遠く富が多いのに支配度の低い都は、街道で首都と結んだうえで、建造物「地方総督府」を建設する {#mid-governor}
-  - なぜ: 地方総督府は近接性の新たな供給源になり、隣接するロケーションの近接性も上げる。首都から高い近接性を得ている場所では効果がなく、維持費も高い。数値は7章 [src: capital_buildings.txt, local_governor] [src: modifier_types_l_japanese.yml, MODIFIER_TYPE_DESC_local_proximity_source] [src: hints_l_japanese.yml, hint_control_hint_text_2]
+  - なぜ: 地方総督府は近接性の新たな供給源になる。隣接するロケーションの近接性も上げ、首都から高い近接性を得ている場所では効果がない（公式の説明）。維持費も高い。数値は7章 [src: capital_buildings.txt, local_governor] [src: modifier_types_l_japanese.yml, MODIFIER_TYPE_DESC_local_proximity_source] [src: hints_l_japanese.yml, hint_control_hint_text_2]
 
 ### 国家の格と外交
 
 - [ ] 「国家ランクをアップグレード可能」のアラートが出たら、クリックして「新しい国家に変容」パネルでランクを上げる {#mid-rank}
-  - なぜ: ランクが上がるほど外交許容量・毎月の威信・ライバル枠が増え、一度上げたランクは失われない。条件は7章（帝国には宗教・HRE絡みの追加条件がある。上げられないときは同パネルで条件を確認する） [src: 00_default.txt, rank_kingdom] [src: 00_default.txt, rank_empire] [src: game_concepts_l_japanese.yml, game_concept_country_rank_upper_desc]
+  - なぜ: ランクが上がるほど外交許容量・毎月の威信・ライバル枠が増え、一度上げたランクは失われない（公式の説明）。条件は7章（帝国には宗教・HRE絡みの追加条件がある。上げられないときは同パネルで条件を確認する） [src: 00_default.txt, rank_kingdom] [src: 00_default.txt, rank_empire] [src: game_concepts_l_japanese.yml, game_concept_country_rank_upper_desc]
 - [ ] 帝国ランクの国は、マップモード「支配度」で首都のある地方に支配度の低いロケーションがないか確認し、あれば内閣アクション「州支配を強化」を実行する {#mid-empire-guard}
   - なぜ: 帝国は安定度0未満かつ首都がある地方の平均支配度が基準未満（または受容文化・容認文化のどちらでもない文化の人口が総人口の3分の1超）だと、国難「慢心による衰退」で研究速度が半減する。基準は7章 [src: decline_of_empire.txt, can_start] [src: decline_of_empire.txt, research_speed_modifier]
 - [ ] 「ライバル候補たち」「不十分なライバル」のアラートが出たら、クリックしてライバル選択画面を開き、自国を脅かす強い国を「ライバルに指定」する {#mid-rival}
@@ -131,7 +131,7 @@
 - [ ] 「荒廃したロケーション」のアラートが出たら、荒廃したロケーションのある州に内閣アクション「復興への取り組み」を実行する {#mid-recovery}
   - なぜ: 繁栄度がマイナスのロケーションは人口に壊滅的な影響を受ける（公式の説明）。このアクションは繁栄度がマイナスの州にだけ実行できる [src: game_concepts_l_japanese.yml, game_concept_prosperity_desc] [src: recovery_effort.txt, recovery_effort]
 - [ ] 「反乱運動」のアラートが出たら、クリックして「混乱」パネルで反乱軍を確認し、内閣アクション「反乱軍の弾圧」を実行する {#mid-rebels}
-  - なぜ: 反乱の支持が最大に達すると反乱または内戦が起きる。弾圧は反乱の進行を抑える（公式の説明） [src: hints_l_japanese.yml, hint_rebels_growing_hint_text_1] [src: hints_l_japanese.yml, hint_rebels_growing_hint_text_2] [src: rebel_crackdown.txt, rebel_crackdown]
+  - なぜ: 反乱の支持が最大に達すると反乱または内戦が起きる（公式の説明）。弾圧は反乱の進行を抑える [src: hints_l_japanese.yml, hint_rebels_growing_hint_text_1] [src: hints_l_japanese.yml, hint_rebels_growing_hint_text_2] [src: rebel_crackdown.txt, rebel_crackdown]
 
 ## 4. 終盤：絶対主義〜革命（1637〜）
 
@@ -144,7 +144,7 @@
 - [ ] 進歩「緊張の緩和」を研究したら、他国の敵対心が残っているとき内閣アクション「懸念の軽減」を実行する {#late-alleviate}
   - なぜ: 敵対心は他国の評価を下げ、外交に消極的にさせるが、時間とともに薄れる（公式の説明）。このアクションは敵対心の減少を毎月速める [src: game_concepts_l_japanese.yml, game_concept_antagonism_desc] [src: government_l_japanese.yml, alleviate_concerns_desc] [src: alleviate_concerns.txt, alleviate_concerns]
 - [ ] 閣僚ポストに空きがあり急ぎのアクションがないときは、内閣アクション「州の開発」で開発度を伸ばしたい州を選んで実行する {#late-develop}
-  - なぜ: 開発度が高いほど多くの人が住め、土地の利用価値も高まる（公式の説明）。公式の説明は、急務がないときの実行を勧めている [src: game_concepts_l_japanese.yml, game_concept_development_desc] [src: government_l_japanese.yml, develop_province_desc] [src: develop_province.txt, develop_province]
+  - なぜ: 開発度が高いほど多くの人が住め、土地の利用価値も高まる（公式の説明）。急務がないときの実行が勧められている [src: game_concepts_l_japanese.yml, game_concept_development_desc] [src: government_l_japanese.yml, develop_province_desc] [src: develop_province.txt, develop_province]
 
 ### 進歩の取り方
 
@@ -182,7 +182,7 @@
 ### 10年ごと
 
 - [ ] 同盟国に、弱すぎて自国を無関係の戦争に巻き込みかねない国がないか見直す {#decade-alliance}
-  - なぜ: 弱すぎる国との同盟は、無関係の戦争で敗戦国になる原因になる（公式の説明）。破棄すると相手の評価と信頼度が下がるので慎重に（減点はスクリプト確認済み）。数値は7章 [src: hints_l_japanese.yml, hint_no_allies_hint_text_3] [src: 00_opinion_hardcoded.txt, opinion_broke_alliance] [src: 04_trust_hardcoded.txt, trust_broke_alliance]
+  - なぜ: 弱すぎる国との同盟は、無関係の戦争で敗戦国になる原因になる（公式の説明）。破棄すると相手の評価と信頼度が下がるので慎重に。数値は7章 [src: hints_l_japanese.yml, hint_no_allies_hint_text_3] [src: 00_opinion_hardcoded.txt, opinion_broke_alliance] [src: 04_trust_hardcoded.txt, trust_broke_alliance]
 - [ ] 「交易」パネルで、赤字の交易路がないか確認し、戦略上不要なら廃止して黒字の交易路に置き換える {#decade-trade}
   - なぜ: 建設用の木材や食糧の供給路など、戦略上重要な物資なら赤字でも意味がある（公式の説明） [src: hints_l_japanese.yml, hint_unprofitable_trade_route_hint_text_1] [src: hints_l_japanese.yml, hint_unprofitable_trade_route_hint_text_2]
 - [ ] 安定度が高いときに、「階級」タブで最も強力な階級の特権を見直す {#decade-privileges}
@@ -199,9 +199,9 @@
 - [ ] 「内閣」タブで、新しく解禁された内閣アクションがないか確認する {#age-cabinet}
   - なぜ: 時代が進むと新たな内閣アクションが解禁される（公式の説明） [src: hints_l_japanese.yml, hint_has_possible_cabinet_action_hint_text_3]
 - [ ] 新しい連隊タイプを解禁する進歩を研究したら、友好的なロケーションにいる陸軍へ「陸軍の強化」を実行する {#age-upgrade-army}
-  - なぜ: 連隊タイプには上位の連隊タイプが定められている。強化すると現在の士気が0になり、召集軍と傭兵は強化できない（公式の説明） [src: 2_army_unlocks.txt, unlock_halberdiers_advance] [src: 2_unlocked_through_tech.txt, a_men_at_arms] [src: units_l_japanese.yml, UPGRADE_ARMY_INFO_NO] [src: units_l_japanese.yml, UPGRADE_ARMY_LEVIES_ARE_RUBBISH] [src: units_l_japanese.yml, UPGRADE_ARMY_MERCS_ARENT_YOURS]
+  - なぜ: 強化すると現在の士気が0になり、召集軍と傭兵は強化できない（公式の説明）。連隊タイプには上位の連隊タイプが定められている [src: 2_army_unlocks.txt, unlock_halberdiers_advance] [src: 2_unlocked_through_tech.txt, a_men_at_arms] [src: units_l_japanese.yml, UPGRADE_ARMY_INFO_NO] [src: units_l_japanese.yml, UPGRADE_ARMY_LEVIES_ARE_RUBBISH] [src: units_l_japanese.yml, UPGRADE_ARMY_MERCS_ARENT_YOURS]
 - [ ] 新しい船のタイプを解禁する進歩を研究したら、自国か従属国の港にいる海軍へ「海軍の強化」を実行する {#age-upgrade-navy}
-  - なぜ: 船のタイプにも上位のタイプが定められている。強化すると現在の士気が0になり、召集軍は強化できない（公式の説明） [src: 2_ship_unlocks.txt, unlock_carrack_advance] [src: navy_heavy_ship.txt, n_early_carrack] [src: units_l_japanese.yml, UPGRADE_FLEET_NOT_IN_OWNED_PORT] [src: units_l_japanese.yml, UPGRADE_FLEET_INFO_NO] [src: units_l_japanese.yml, UPGRADE_FLEET_LEVIES_ARE_RUBBISH]
+  - なぜ: 強化すると現在の士気が0になり、召集軍は強化できない（公式の説明）。船のタイプにも上位のタイプが定められている [src: 2_ship_unlocks.txt, unlock_carrack_advance] [src: navy_heavy_ship.txt, n_early_carrack] [src: units_l_japanese.yml, UPGRADE_FLEET_NOT_IN_OWNED_PORT] [src: units_l_japanese.yml, UPGRADE_FLEET_INFO_NO] [src: units_l_japanese.yml, UPGRADE_FLEET_LEVIES_ARE_RUBBISH]
 
 ### 戦争の前と後
 
@@ -240,7 +240,7 @@
 
 **原因の分からないペナルティが付いている（「ペナルティが有効」）**
 - 見る場所: アラートに並ぶ、補正ごとの効果と有効な理由 [src: 00_default.txt, static_modifier_active] [src: alerts_l_japanese.yml, ALERT_STATIC_MODIFIER_ENTRY]
-- 打ち手: 有効な理由に挙がった条件を解消する（公式の説明。解消の方法は補正ごとに異なる）
+- 打ち手: 有効な理由に挙がった条件を解消する（公式の説明）
 
 **従属国が独立戦争を起こしそうだ（「差し迫る独立戦争」）**
 - 見る場所: アラートに並ぶ従属国と、「従属国の管理」パネル [src: 00_default.txt, has_imminent_independence_war] [src: alerts_l_japanese.yml, ALERT_HAS_IMMINENT_INDEPENDENCE_WAR]
