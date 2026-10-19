@@ -14,7 +14,7 @@
 - [ ] 画面上部の行政力・権力・影響力にそれぞれカーソルを合わせ、収支が0未満のものがないか確かめる {#start-capacity}
   - なぜ: 3つは貯めて使うものではなく、毎週の生産と使用の差で決まる。不足すると多大なペナルティを受け、少し余らせると小さなボーナスが付く（公式の説明）。不足と余剰の効果は7章 [src: concepts_l_japanese.yml, concept_capacity_desc] [src: 00_code_static_modifiers.txt:577] [src: 00_code_static_modifiers.txt:590] [src: 00_code_static_modifiers.txt:611]
 - [ ] 「政策」パネルで、政府内の利益集団と正当性の値を確かめる {#start-ig}
-  - なぜ: 正当性は、政府内の利益集団と法律の組み合わせがどれだけ合っているかを示す。低いほど法律の制定に時間がかかる。段階ごとの効果は7章 [src: concepts_l_japanese.yml, concept_legitimacy_desc] [src: 00_legitimacy_levels.txt:7] [src: 00_legitimacy_levels.txt:30]
+  - なぜ: 正当性は、政府内の利益集団と法律の組み合わせがどれだけ合っているかを示す（公式の説明）。効果が変わるのは段階の境目で、25未満は制定に政治運動の支持が要り、25〜49は制定速度 −25%、90以上は +25%。段階ごとの効果は7章 [src: concepts_l_japanese.yml, concept_legitimacy_desc] [src: 00_legitimacy_levels.txt:7] [src: 00_legitimacy_levels.txt:30]
 - [ ] 「建設」パネルで、建設キューの推定建設期間と、政府の建設・民間の建設の件数を確かめる {#start-construction}
   - なぜ: 建てる施設は建設キューに入り、資材が使えるようになると先頭から着工する。推定建設期間が長いなら、施設を足しても着工は後になる（公式の説明） [src: concepts_l_japanese.yml, concept_construction_queue_desc] [src: interfaces_l_japanese.yml, QUEUE_CONSTRUCTION_POINTS_SUMMARY_TOOLTIP] [src: construction_queue.gui:106]
 
@@ -58,7 +58,7 @@
 - [ ] 重要アクション「…の市場アクセスは、…%です」や警告「…は孤立したです」が出たら、その州に港か鉄道を建てる {#early-infra}
   - なぜ: 市場アクセスは100%から始まり、州のインフラ使用がインフラを超えると下がる。孤立した州は市場で売買できない。布告「道路整備」（技術「中央集権化」、権力100）でも補えるが、権力に限りがあるので一時しのぎにとどめる（公式の説明）。数値は7章 [src: concepts_l_japanese.yml, concept_market_access_desc] [src: alerts_l_japanese.yml, alert_low_market_access_alert_hint] [src: alerts_l_japanese.yml, alert_isolated_state_alert_hint] [src: tutorial_l_japanese.yml, lesson_market_access_with_railways_why_2_desc] [src: 00_alert_types.txt:927] [src: 00_alert_types.txt:477] [src: 00_decree.txt:20]
 - [ ] 警告「…での飢饉」が出たら、「市場」パネルの「食料保障」タブで被害の州を確かめ、基本的な食料を満たす商品を作る施設を建てるか、その商品を輸入する {#early-food}
-  - なぜ: 施設や輸入が効くまでには時間がかかる。布告「緊急救援」のほうが早く効くことがあるが、その州の徴税が半減する（技術「中央集権化」で解禁）。数値は7章 [src: alerts_l_japanese.yml, alert_famine_alert_hint] [src: 00_alert_types.txt:459] [src: 00_decree.txt:150]
+  - なぜ: 施設や輸入が効くまでには時間がかかり、布告「緊急救援」のほうが早く効くことがある（公式の説明）。ただしこの布告は州の徴税を半減させ、技術「中央集権化」で解禁される。数値は7章 [src: alerts_l_japanese.yml, alert_famine_alert_hint] [src: 00_alert_types.txt:459] [src: 00_decree.txt:150]
 - [ ] 新しい生産方式が解禁されたら、投入商品の価格と不足、必要な職業の資格を持つPOPの数を確かめてから切り替える {#early-pm}
   - なぜ: 投入商品が高い・不足しているときや、その生産方式に必要な資格を持つPOPが乏しいときは、近代化を急がないほうがよい（公式の説明） [src: tutorial_l_japanese.yml, lesson_production_methods_why_5_desc]
 - [ ] 重要アクション「…が生活水準の期待値（最小）を下回っています」が出たら、その州の仕事を増やしてPOPの収入を上げる {#early-sol}
@@ -74,12 +74,10 @@
   - なぜ: 成功率が0を下回るなどで後退が重なると制定に失敗し、730日たつまでその法律を再び試せない。制定は3つのフェーズを通る（公式の説明）。数値は7章 [src: concepts_l_japanese.yml, concept_enactment_setback_desc] [src: concepts_l_japanese.yml, concept_enactment_phase_desc] [src: 00_defines.txt:171] [src: 00_defines.txt:181]
 - [ ] 支持が足りないときは、「政策」パネルの「概要」タブで、通したい法律を支持する政治運動を選んで強化する {#early-bolster}
   - なぜ: 強化された運動は、時間とともに支持者と支持が増え、利益集団の思想に影響して法律を通しやすくする。強化には権力が要り、使えるかは「言論の自由」の法律グループの現行法で決まる（公式の説明）。数値は7章 [src: tutorial_l_japanese.yml, lesson_promote_movement_how_1_desc] [src: tutorial_l_japanese.yml, lesson_promote_movement_how_5_desc] [src: tutorial_l_japanese.yml, lesson_promote_movement_why_3_desc] [src: 00_defines.txt:283] [src: 00_tutorial_lessons_promote_ig.txt:131]
-- [ ] 警告「フリー政府改革」が出ている間に、「政策」パネルの「政府改革」タブで政府内の利益集団の構成を見直す {#early-reform-free}
+- [ ] 警告「フリー政府改革」が出ている間に、「政策」パネルの「政府」タブで「政府改革」ボタンを押し、政府内の利益集団の構成を見直す {#early-reform-free}
   - なぜ: 最近の選挙により、表示された期限内に行う次の政府改革は急進派を生まない。ふつうは、権力を持っていた集団を政府から外すと急進派が出て、改革を頻繁に行うと政情が大きく不安定になる（公式の説明） [src: alerts_l_japanese.yml, alert_free_government_reform_desc] [src: tutorial_l_japanese.yml, lesson_reform_government_how_5_desc] [src: 00_alert_types.txt:141]
-- [ ] 警告「非正規政府」や重要アクション「不安定な政府」が出たら、「政策」パネルの「政府改革」タブで、正当性が上がる利益集団の組み合わせを試す {#early-reform-legit}
-  - なぜ: 構成は確定するまで適用されないので、試し直せる。正当性が低いと法律の制定が遅くなり、25未満では制定に政治運動の支持が要る。段階ごとの効果は7章 [src: tutorial_l_japanese.yml, lesson_reform_government_how_3_desc] [src: alerts_l_japanese.yml, alert_low_legitimacy_alert_hint] [src: 00_alert_types.txt:419] [src: 00_alert_types.txt:741] [src: 00_legitimacy_levels.txt:7] [src: 00_legitimacy_levels.txt:30]
-- [ ] 行政力と収支に余裕があるときに、「学校なし」「警察なし」など「〜なし」の法律が有効な法律グループがあれば、「法律」タブで同じグループの別の法律の制定を始める {#early-institution}
-  - なぜ: 「〜なし」の法律はその制度を無効にする。制度は恩恵と権限をもたらすが、行政力を使い、編入州の人口に応じた支出が国庫にかかる（公式の説明） [src: tutorial_l_japanese.yml, lesson_enact_institution_law_how_2_desc] [src: tutorial_l_japanese.yml, lesson_enact_institution_law_why_4_desc] [src: 00_subgoals_tutorial.txt:1067]
+- [ ] 警告「非正規政府」や重要アクション「不安定な政府」が出たら、「政策」パネルの「政府」タブで「政府改革」ボタンを押し、正当性が上がる利益集団の組み合わせを試す {#early-reform-legit}
+  - なぜ: 構成は確定するまで適用されず、試し直せる（公式の説明）。正当性が25〜49なら制定速度 −25%、25未満なら制定に政治運動の支持が要る。段階ごとの効果は7章 [src: tutorial_l_japanese.yml, lesson_reform_government_how_3_desc] [src: alerts_l_japanese.yml, alert_low_legitimacy_alert_hint] [src: 00_alert_types.txt:419] [src: 00_alert_types.txt:741] [src: 00_legitimacy_levels.txt:7] [src: 00_legitimacy_levels.txt:30]
 
 ## 3. 中盤（1862〜1886）
 
@@ -110,7 +108,7 @@
 
 ## 8. 用語
 
-完全版は [用語対照表](localization-reference.md)。
+完全版は [用語対照表](viewer.html?file=vic3/localization-reference.md)。
 
 - 警告（Alert）／重要アクション（Important Action）／怒りの重要アクション（Angry Important Action）／現在の状況（Current Situation）
 - 行政力（Bureaucracy）／権力（Authority）／影響力（Influence）／キャパシティ（Capacity）
@@ -133,7 +131,6 @@
 - `common/technology/eras/00_eras.txt`
 - `common/alert_types/00_alert_types.txt`（警告・重要アクションの発生条件）
 - `common/tutorial_lessons/00_tutorial_lessons_promote_ig.txt`（政治運動の強化の前提）
-- `common/objective_subgoals/00_subgoals_tutorial.txt`（制度を有効にする法律）
 - `common/legitimacy_levels/00_legitimacy_levels.txt`（正当性の段階と効果）
 - `common/static_modifiers/00_code_static_modifiers.txt`（キャパシティの不足・余剰の効果）
 - `common/defines/00_defines.txt`（金準備の上限・商品の不足・法律の制定・強化のコスト）
