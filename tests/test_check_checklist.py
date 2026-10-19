@@ -1,6 +1,7 @@
 """check_checklist.py のテスト。壊したデータを1種類ずつ流し、検出できることを確かめる。"""
 import contextlib
 import io
+import os
 import sys
 import tempfile
 import unittest
@@ -134,6 +135,48 @@ class NormalizeTests(unittest.TestCase):
         self.assertEqual(cc.normalize_src_name(" a/b/c.txt:12 "), "c.txt")
         self.assertEqual(cc.normalize_src_name("x_l_japanese.yml"), "x_l_japanese.yml")
         self.assertIsNone(cc.normalize_src_name("Patch_1.4 wiki"))
+
+
+class SelectGameDirTests(unittest.TestCase):
+    def test_select_eu5(self):
+        self.assertEqual(cc.select_game_dir(cc.REPO_ROOT / "eu5" / "x.md", None), cc.GAME_DIRS["eu5"])
+
+    def test_select_vic3(self):
+        self.assertEqual(cc.select_game_dir(cc.REPO_ROOT / "vic3" / "x.md", None), cc.GAME_DIRS["vic3"])
+
+    def test_select_unknown_folder(self):
+        self.assertIsNone(cc.select_game_dir(cc.REPO_ROOT / "ck3" / "x.md", None))
+
+    def test_select_outside_repo(self):
+        with tempfile.TemporaryDirectory() as d:
+            self.assertIsNone(cc.select_game_dir(Path(d) / "vic3" / "x.md", None))
+
+    def test_select_file_directly_under_repo_root(self):
+        # フォルダ名と同じ名前のファイルが repo 直下にあっても、ゲームのフォルダとはみなさない
+        self.assertIsNone(cc.select_game_dir(cc.REPO_ROOT / "eu5", None))
+        self.assertIsNone(cc.select_game_dir(cc.REPO_ROOT / "x.md", None))
+
+    def test_select_override_wins(self):
+        self.assertEqual(cc.select_game_dir(cc.REPO_ROOT / "vic3" / "x.md", Path("D:/g")), Path("D:/g"))
+
+    def test_select_absolute_and_relative_agree(self):
+        old = os.getcwd()
+        try:
+            os.chdir(cc.REPO_ROOT / "scripts")
+            rel = cc.select_game_dir(Path("../vic3/x.md"), None)
+        finally:
+            os.chdir(old)
+        self.assertEqual(rel, cc.GAME_DIRS["vic3"])
+
+    def test_main_returns_2_when_game_unknown(self):
+        with tempfile.TemporaryDirectory() as d:
+            f = Path(d) / "c.md"
+            f.write_text(doc(""), encoding="utf-8")
+            err = io.StringIO()
+            with contextlib.redirect_stderr(err):
+                code = cc.main([str(f)])
+        self.assertEqual(code, 2)
+        self.assertIn("--game-dir", err.getvalue())
 
 
 class MainTests(unittest.TestCase):
