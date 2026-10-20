@@ -242,7 +242,7 @@
 | 行政力の不足／余剰 | 使用量が生産量の2倍で、徴収される税が100%減る（浪費税額 +1）。生産量が使用量の2倍で、州の建設速度 +10%。どちらも定義のコメントによる最大時の値 | [src: 00_code_static_modifiers.txt:573] [src: 00_code_static_modifiers.txt:579] |
 | 権力の不足／余剰 | 使用量が生産量の2倍で、対立側の利益集団の支持 −10・政治運動由来の急進派 +20%。生産量が使用量の2倍で、法律の制定速度 +25% | [src: 00_code_static_modifiers.txt:586] [src: 00_code_static_modifiers.txt:592] [src: 00_code_static_modifiers.txt:593] |
 | 影響力の不足 | 使用量が生産量の2倍で、威信 −50%（定義のコメントによる最大時の値） | [src: 00_code_static_modifiers.txt:613] |
-| 金準備の上限 | 基本は年間GDPの0.2倍（最低1000）。超えると警告が出る | [src: 00_defines.txt:541] [src: 00_defines.txt:542] |
+| 金準備の上限 | 基本は年間GDPの0.2倍（最低1000）。超えると重要アクションが出る | [src: 00_defines.txt:541] [src: 00_defines.txt:542] [src: 00_alert_types.txt:836] |
 | 商品の不足 | 供給が需要の50%を下回ると、使う施設に産出ペナルティ | [src: 00_defines.txt:419] |
 | 市場アクセス | 100%未満で重要アクションが出る | [src: 00_alert_types.txt:927] |
 | 生活水準の期待値 | 州のPOPの25%以上が期待値（最小）を下回ると重要アクションが出る | [src: 00_alert_types.txt:989] |
