@@ -126,8 +126,8 @@
   - なぜ: 編入した州は税を払い、制度の恩恵を受ける。行政力の全額は開始時にかかり、必要な年数は主要文化との違いで変わる（公式の説明） [src: tutorial_l_japanese.yml, lesson_incorporate_state_how_3_desc] [src: tutorial_l_japanese.yml, lesson_incorporate_state_complete_desc] [src: interfaces_l_japanese.yml, incorporate_state] [src: 00_tutorial_lessons_incorporate_state.txt:27] [src: 00_tutorial_lessons_incorporate_state.txt:28]
 - [ ] 外交パネルの「従属国」タブで従属国の自由への願望を確かめ、高い従属国は自治権を拡大し、低い従属国は自治権を縮小する {#mid-subject}
   - なぜ: 願望が高いと、従属国は独立のために外交戦を起こしうる。自治権の拡大・縮小で、願望と支配率を調整できる（公式の説明）。願望は25未満が低、75以上が高で、高いと従属国の政治運動由来の急進派が +25% になる [src: tutorial_l_japanese.yml, lesson_subject_liberty_how_5_desc] [src: tutorial_l_japanese.yml, lesson_subject_liberty_why_1_desc] [src: 00_liberty_desire_levels.txt:17] [src: 00_liberty_desire_levels.txt:27] [src: 00_liberty_desire_levels.txt:38]
-- [ ] 大国以上なら、勢力ブロックパネルで「勢力ブロックを形成」を押し、名前・アイデンティティの柱・主要原則を選んで形成する（Sphere of Influence が必要） {#mid-bloc}
-  - なぜ: 影響力が足りず関係を維持できない国とも関係を保て、他のブロックから遠ざけられる（公式の説明）。形成できるのは非承認大国以上で、法律「孤立主義」では形成できない。原則はこの DLC の機能がないと選べない [src: tutorial_l_japanese.yml, lesson_form_power_bloc_how_2_desc] [src: tutorial_l_japanese.yml, lesson_form_power_bloc_why_4_desc] [src: interfaces_l_japanese.yml, FORM_POWER_BLOC] [src: 00_scripted_triggers.txt:56] [src: 00_scripted_triggers.txt:57] [src: 00_power_bloc_principles.txt:10]
+- [ ] 大国以上なら、勢力ブロックパネルで「勢力ブロックを形成」を押し、名前・アイデンティティの柱・主要原則を選んで形成する {#mid-bloc}
+  - なぜ: 影響力が足りず関係を維持できない国とも関係を保て、他のブロックから遠ざけられる（公式の説明）。形成できるのは非承認大国以上で、法律「孤立主義」では形成できない。原則枠の1つ目は DLC なしで使える。2つ目以降の枠と多くの原則は Sphere of Influence が必要 [src: tutorial_l_japanese.yml, lesson_form_power_bloc_how_2_desc] [src: tutorial_l_japanese.yml, lesson_form_power_bloc_why_4_desc] [src: interfaces_l_japanese.yml, FORM_POWER_BLOC] [src: 00_scripted_triggers.txt:56] [src: 00_scripted_triggers.txt:57] [src: 00_scripted_rules.txt:157] [src: 00_scripted_rules.txt:161] [src: 00_power_bloc_principles.txt:10]
 
 ## 4. 終盤（1887〜）
 
@@ -139,8 +139,8 @@
   - なぜ: 威信が足りないまま回復しないと、警告に表示された日数でランクが下がる（公式の説明）。降格までの基本の日数は365。ランクが下がると貸付歩合の優遇（列強 −50%、大国 −25%）などを失う [src: alerts_l_japanese.yml, alert_is_losing_rank_alert_desc] [src: alerts_l_japanese.yml, alert_is_losing_rank_alert_hint] [src: concepts_l_japanese.yml, concept_prestige_desc] [src: 00_alert_types.txt:196] [src: 00_defines.txt:1295] [src: 00_country_ranks.txt:44] [src: 00_country_ranks.txt:82]
 - [ ] 怒りの重要アクションで外交協定や条約の条項が破棄の危機にあると出たら、外交パネルで破棄される条件を読み、重要な協定なら関係を改善するか、危うくしている行動をやめる {#late-treaty}
   - なぜ: 警告に出た条件が真でなくなると、その協定や条項は破棄される（公式の説明） [src: alerts_l_japanese.yml, alert_diplomatic_pact_in_danger_desc] [src: alerts_l_japanese.yml, alert_diplomatic_pact_in_danger_hint] [src: alerts_l_japanese.yml, alert_treaty_article_in_danger_hint] [src: 00_alert_types.txt:694] [src: 00_alert_types.txt:708]
-- [ ] 勢力ブロックリーダーなら、重要アクション「権限が利用可能」が出たら、勢力ブロックパネルで原則を変更・更新・追加する（Sphere of Influence が必要） {#late-bloc-mandate}
-  - なぜ: 権限は原則の変更・更新・新規追加に使う。強いメンバーがいる、結束力が高いと早く貯まる（公式の説明） [src: alerts_l_japanese.yml, alert_power_bloc_mandates_available_hint] [src: concepts_l_japanese.yml, concept_power_bloc_mandate_desc] [src: 00_alert_types.txt:1042] [src: 00_power_bloc_principles.txt:10]
+- [ ] 勢力ブロックリーダーなら、重要アクション「権限が利用可能」が出たら、勢力ブロックパネルで原則を変更・更新・追加する {#late-bloc-mandate}
+  - なぜ: 権限は原則の変更・更新・新規追加に使う。強いメンバーがいる、結束力が高いと早く貯まる（公式の説明） [src: alerts_l_japanese.yml, alert_power_bloc_mandates_available_hint] [src: concepts_l_japanese.yml, concept_power_bloc_mandate_desc] [src: 00_alert_types.txt:1042]
 
 ### 急進派・財政の崩れの予防
 
@@ -250,10 +250,12 @@
 - `gui/construction_queue.gui`（建設パネルの建設キュー表示）
 - `common/technology/technologies/30_society.txt`（企業の設立枠）
 - `common/institutions/00_institutions.txt`、`common/interest_tier_types/interest_tier_types.txt`、`common/liberty_desire_levels/00_liberty_desire_levels.txt`、`common/country_ranks/00_country_ranks.txt`
-- `common/scripted_triggers/00_scripted_triggers.txt`（勢力ブロックを形成できる条件）、`common/power_bloc_principles/00_power_bloc_principles.txt`（原則の表示条件に DLC の機能が要る）
+- `common/scripted_triggers/00_scripted_triggers.txt`（勢力ブロックを形成できる条件）、`common/power_bloc_principles/00_power_bloc_principles.txt`（原則の DLC 条件）、`common/scripted_rules/00_scripted_rules.txt`、`dlc/dlc010_ep1/dlc010_ep1.dlc`
 - `common/tutorial_lessons/00_tutorial_lessons_incorporate_state.txt`（州の編入を行う画面）
 - `gui/market_panel.gui`、`gui/politics_panel_institutions.gui`、`gui/politics_panel_overview.gui`、`gui/diplomatic_overview.gui`（画面の構成）
 - `localization/english/alerts_l_english.yml`（日本語訳がない警告の文言）
 - `localization/japanese/alerts_l_japanese.yml`、`tutorial_l_japanese.yml`、`concepts_l_japanese.yml`、`interfaces_l_japanese.yml`（警告・チュートリアル・用語説明の文言）
 
 ### コミュニティ情報
+
+- store.steampowered.com/app/2411231/（DLC の内容。陣営カスタマイズ・陣営記念碑）
