@@ -172,12 +172,12 @@
 
 ### 毎年
 
-- [ ] 警告「企業数の上限を超過」が出たら、「企業」パネルで企業を解散するか、上限を増やす技術を研究する {#yearly-company-limit}
-  - なぜ: 上限を超えると、所有するすべての企業の生産量に厳重なペナルティが課される（公式の説明） [src: alerts_l_japanese.yml, alert_above_company_limit_desc] [src: alerts_l_japanese.yml, alert_above_company_limit_hint] [src: 00_alert_types.txt:128]
-- [ ] 警告「…の恩義の失効」が出たら、失効前に、関係改善・外交協定・外交戦のどれかにその恩義を使う {#yearly-obligation}
-  - なぜ: 恩義を負う国は、こちらに外交戦を始められず、こちらと対立する側にも加われない（公式の説明） [src: concepts_l_japanese.yml, concept_obligation_desc] [src: alerts_l_japanese.yml, alert_obligation_expiring_hint] [src: 00_alert_types.txt:507]
-- [ ] 友好を保ちたい国は、国パネルの「外交」タブで関係を見直し、下がっていれば「関係改善」を結ぶか維持する {#yearly-relations}
-  - なぜ: 関係は何もしないと中立へ減衰する。維持には影響力を使う（公式の説明） [src: tutorial_l_japanese.yml, lesson_increase_relations_why_3_desc] [src: tutorial_l_japanese.yml, lesson_increase_relations_how_2_desc] [src: country_panel.gui:184]
+- [ ] ジャーナルパネルで進行中のジャーナル記事を開き、失敗や期限切れの恐れがあるものがないか確かめる {#yearly-journal}
+  - なぜ: ジャーナル記事は進行中のイベントを追い、約束の思い出しや危機の警告を示す。失敗や期限切れで消えるものもある（公式の説明） [src: concepts_l_japanese.yml, concept_journal_entry_desc] [src: alerts_l_japanese.yml, alert_can_take_decisions_action]
+- [ ] 州を右クリックして開くメニューの「布告」で、発令中の布告のうち不要になったものを取り消す {#yearly-decree}
+  - なぜ: 布告は有効な間ずっと権力を消費し、取り消すまで州にボーナスを与える（公式の説明） [src: concepts_l_japanese.yml, concept_decree_desc] [src: interfaces_l_japanese.yml, DECREE_REMOVE] [src: right_click_menu.gui:6419] [src: right_click_menu.gui:6445]
+- [ ] 外交協定を結びたい国や、外交戦で味方につけたい国は、国パネルの「外交」タブで関係を見直し、下がっていれば「関係改善」を結ぶか維持する {#yearly-relations}
+  - なぜ: 関係は何もしないと中立へ減衰する。維持には影響力を使う。関係は外交協定の可否と、外交戦での承諾に響く（公式の説明） [src: concepts_l_japanese.yml, concept_relations_desc] [src: tutorial_l_japanese.yml, lesson_increase_relations_why_3_desc] [src: tutorial_l_japanese.yml, lesson_increase_relations_how_2_desc] [src: country_panel.gui:184]
 
 ### 法律が成立したとき
 
@@ -192,8 +192,10 @@
 
 - [ ] 次の技術を選ぶ前に、「技術」パネルで前の時代の未研究の技術を確かめ、コストの上乗せと比べて研究の順を決める {#tech-old-era}
   - なぜ: 前の時代に未研究の技術があると、新しい技術に必要な革新が増える。数値は7章 [src: concepts_l_japanese.yml, concept_technology_era_ahead_of_time_penalty_desc] [src: 00_defines.txt:1862]
-- [ ] 「政策」パネルの「法律」タブと布告の一覧で、解禁された法律と布告を確かめる {#tech-unlock}
-  - なぜ: 技術は、生産方式・施設・法律・布告・外交協定を解禁する。例は技術「法執行機関」が解禁する法律「国家警備」（公式の説明） [src: concepts_l_japanese.yml, concept_technology_desc] [src: 00_internal_security.txt:28]
+- [ ] 「政策」パネルの「法律」タブで解禁された法律を、州を右クリックして開くメニューの「布告」で解禁された布告を確かめる {#tech-unlock}
+  - なぜ: 技術は、生産方式・施設・法律・布告・外交協定を解禁する。例は技術「法執行機関」が解禁する法律「国家警備」（公式の説明） [src: concepts_l_japanese.yml, concept_technology_desc] [src: 00_internal_security.txt:28] [src: right_click_menu.gui:6471]
+- [ ] 技術を選ぶとき、警告「企業数の上限を超過」が出ていれば、「企業」パネルで企業を解散するか、上限を増やす技術を優先して研究する {#tech-company-limit}
+  - なぜ: 上限を超えると、所有するすべての企業の生産量に厳重なペナルティが課される（公式の説明） [src: alerts_l_japanese.yml, alert_above_company_limit_desc] [src: alerts_l_japanese.yml, alert_above_company_limit_hint] [src: 00_alert_types.txt:128]
 
 ### 外交戦の前と後
 
@@ -205,6 +207,8 @@
   - なぜ: 昇進は行政力を払えばいつでもでき、将軍の指揮上限が増える（公式の説明） [src: tutorial_l_japanese.yml, lesson_recruit_promote_commander_how_1_desc] [src: tutorial_l_japanese.yml, lesson_recruit_promote_commander_how_6_desc] [src: concepts_l_japanese.yml, concept_command_limit_desc]
 - [ ] 外交工作のフェーズでは、戦略を使って、関心ランクの高い国を懐柔して味方につける {#play-sway}
   - なぜ: 戦略の量はランクで決まる。懐柔では戦争目標や恩義を約束に出せ、AIが受けるかは関係と態度で決まる（公式の説明） [src: concepts_l_japanese.yml, concept_diplomatic_maneuvers_desc] [src: concepts_l_japanese.yml, concept_maneuver_desc] [src: concepts_l_japanese.yml, concept_sway_desc]
+- [ ] 警告「…の恩義の失効」が出たら、失効前に、関係改善・外交協定・外交戦のどれかにその恩義を使う {#play-obligation-expiring}
+  - なぜ: 恩義を負う国は、こちらに外交戦を始められず、こちらと対立する側にも加われない（公式の説明） [src: concepts_l_japanese.yml, concept_obligation_desc] [src: alerts_l_japanese.yml, alert_obligation_expiring_hint] [src: 00_alert_types.txt:507]
 - [ ] 戦争へのカウントダウンに入ったら、軍事パネルの「全ての陸軍を動員」で動員し、将軍に前線の命令を出す {#play-mobilize}
   - なぜ: 動員は商品を消費し、戦争が終わると自動で解除される。早く解除すると時間も費用もかかる（公式の説明） [src: concepts_l_japanese.yml, concept_countdown_to_war_desc] [src: concepts_l_japanese.yml, concept_mobilize_army_desc] [src: concepts_l_japanese.yml, concept_army_desc] [src: interfaces_l_japanese.yml, MOBILIZE_ALL_MILITARY_FORMATIONS]
 - [ ] 戦争が終わったら、徴兵された州で失業者が増えていないか確かめ、施設を増やして仕事を作る {#play-jobs}
@@ -311,7 +315,7 @@
 - `common/institutions/00_institutions.txt`、`common/interest_tier_types/interest_tier_types.txt`、`common/liberty_desire_levels/00_liberty_desire_levels.txt`、`common/country_ranks/00_country_ranks.txt`、`common/laws/00_distribution_of_power.txt`、`00_internal_security.txt`
 - `common/scripted_triggers/00_scripted_triggers.txt`（勢力ブロックを形成できる条件）、`common/power_bloc_principles/00_power_bloc_principles.txt`（原則の DLC 条件）、`common/scripted_rules/00_scripted_rules.txt`、`dlc/dlc010_ep1/dlc010_ep1.dlc`
 - `common/tutorial_lessons/00_tutorial_lessons_incorporate_state.txt`（州の編入を行う画面）
-- `gui/market_panel.gui`、`gui/politics_panel_institutions.gui`、`gui/politics_panel_overview.gui`、`gui/diplomatic_overview.gui`、`gui/country_panel.gui`（画面の構成）
+- `gui/market_panel.gui`、`gui/politics_panel_institutions.gui`、`gui/politics_panel_overview.gui`、`gui/diplomatic_overview.gui`、`gui/country_panel.gui`、`gui/right_click_menu.gui`（画面の構成）
 - `localization/english/alerts_l_english.yml`（日本語訳がない警告の文言）
 - `localization/japanese/alerts_l_japanese.yml`、`tutorial_l_japanese.yml`、`concepts_l_japanese.yml`、`interfaces_l_japanese.yml`（警告・チュートリアル・用語説明の文言）
 
