@@ -170,7 +170,63 @@
 
 ## 5. 定期ルーチン {.routine}
 
+### 毎年
+
+- [ ] 警告「企業数の上限を超過」が出たら、「企業」パネルで企業を解散するか、上限を増やす技術を研究する {#yearly-company-limit}
+  - なぜ: 上限を超えると、所有するすべての企業の生産量に厳重なペナルティが課される（公式の説明） [src: alerts_l_japanese.yml, alert_above_company_limit_desc] [src: alerts_l_japanese.yml, alert_above_company_limit_hint] [src: 00_alert_types.txt:128]
+- [ ] 警告「…の恩義の失効」が出たら、失効前に、関係改善・外交協定・外交戦のどれかにその恩義を使う {#yearly-obligation}
+  - なぜ: 恩義を負う国は、こちらに外交戦を始められず、こちらと対立する側にも加われない（公式の説明） [src: concepts_l_japanese.yml, concept_obligation_desc] [src: alerts_l_japanese.yml, alert_obligation_expiring_hint] [src: 00_alert_types.txt:507]
+- [ ] 友好を保ちたい国は、国パネルの「外交」タブで関係を見直し、下がっていれば「関係改善」を結ぶか維持する {#yearly-relations}
+  - なぜ: 関係は何もしないと中立へ減衰する。維持には影響力を使う（公式の説明） [src: tutorial_l_japanese.yml, lesson_increase_relations_why_3_desc] [src: tutorial_l_japanese.yml, lesson_increase_relations_how_2_desc] [src: country_panel.gui:184]
+
+### 法律が成立したとき
+
+- [ ] 画面上部の権力にカーソルを合わせ、収支が0未満になっていないか確かめる {#law-authority}
+  - なぜ: 権力は自国の法律から得られるので、法律を変えると生産量が変わる（公式の説明）。不足の手順は2章「財政の安定」 [src: concepts_l_japanese.yml, concept_authority_desc] [src: 00_distribution_of_power.txt:35]
+- [ ] 「政策」パネルで利益集団の支持を見直し、怒りの集団がいれば、3章「政治改革」の手順で運動活動を確かめる {#law-approval}
+  - なぜ: 成立後の支持は一時的に大きく動き、長く残る。怒りの集団は政治運動の活動を押し上げる（公式の説明） [src: concepts_l_japanese.yml, concept_approval_desc] [src: 00_defines.txt:158] [src: 00_defines.txt:162]
+- [ ] 制度と対応する法律を変えたら、「政策」パネルの「制度」タブで、その制度が使えるか確かめ、投資レベルを見直す {#law-institution}
+  - なぜ: 一部の法律は制度を有効にして効果を変え、制度を無効にする法律もある（公式の説明） [src: tutorial_l_japanese.yml, lesson_enact_institution_law_how_2_desc] [src: 00_internal_security.txt:36]
+
+### 新しい技術を獲得したとき
+
+- [ ] 次の技術を選ぶ前に、「技術」パネルで前の時代の未研究の技術を確かめ、コストの上乗せと比べて研究の順を決める {#tech-old-era}
+  - なぜ: 前の時代に未研究の技術があると、新しい技術に必要な革新が増える。数値は7章 [src: concepts_l_japanese.yml, concept_technology_era_ahead_of_time_penalty_desc] [src: 00_defines.txt:1862]
+- [ ] 「政策」パネルの「法律」タブと布告の一覧で、解禁された法律と布告を確かめる {#tech-unlock}
+  - なぜ: 技術は、生産方式・施設・法律・布告・外交協定を解禁する。例は技術「法執行機関」が解禁する法律「国家警備」（公式の説明） [src: concepts_l_japanese.yml, concept_technology_desc] [src: 00_internal_security.txt:28]
+
+### 外交戦の前と後
+
+- [ ] 外交戦を始める前に、標的国の国パネルの「外交」タブで、恩義を負っていないか確かめる {#play-obligation}
+  - なぜ: 恩義を負う相手には、外交戦を始められない（公式の説明） [src: concepts_l_japanese.yml, concept_obligation_desc] [src: country_panel.gui:2277]
+- [ ] 平時のうちに、編隊パネルの「動員」タブで動員オプションを設定する {#play-option}
+  - なぜ: 動員オプションは平時に設定でき、動員時の商品のコストに響く。戦場で切り替えると組織力が一時的に落ちる（公式の説明） [src: concepts_l_japanese.yml, concept_mobilization_option_desc] [src: alerts_l_japanese.yml, alert_low_organization_active_hint] [src: interfaces_l_japanese.yml, MILITARY_FORMATION_PANEL_MOBILIZATION_TAB]
+- [ ] 将軍が足りなければ編隊パネルで雇用し、指揮上限が足りなければ昇進させる {#play-general}
+  - なぜ: 昇進は行政力を払えばいつでもでき、将軍の指揮上限が増える（公式の説明） [src: tutorial_l_japanese.yml, lesson_recruit_promote_commander_how_1_desc] [src: tutorial_l_japanese.yml, lesson_recruit_promote_commander_how_6_desc] [src: concepts_l_japanese.yml, concept_command_limit_desc]
+- [ ] 外交工作のフェーズでは、戦略を使って、関心ランクの高い国を懐柔して味方につける {#play-sway}
+  - なぜ: 戦略の量はランクで決まる。懐柔では戦争目標や恩義を約束に出せ、AIが受けるかは関係と態度で決まる（公式の説明） [src: concepts_l_japanese.yml, concept_diplomatic_maneuvers_desc] [src: concepts_l_japanese.yml, concept_maneuver_desc] [src: concepts_l_japanese.yml, concept_sway_desc]
+- [ ] 戦争へのカウントダウンに入ったら、軍事パネルの「全ての陸軍を動員」で動員し、将軍に前線の命令を出す {#play-mobilize}
+  - なぜ: 動員は商品を消費し、戦争が終わると自動で解除される。早く解除すると時間も費用もかかる（公式の説明） [src: concepts_l_japanese.yml, concept_countdown_to_war_desc] [src: concepts_l_japanese.yml, concept_mobilize_army_desc] [src: concepts_l_japanese.yml, concept_army_desc] [src: interfaces_l_japanese.yml, MOBILIZE_ALL_MILITARY_FORMATIONS]
+- [ ] 戦争が終わったら、徴兵された州で失業者が増えていないか確かめ、施設を増やして仕事を作る {#play-jobs}
+  - なぜ: 戦後は徴兵された大隊が解散し、POPは元の職に戻れる保証がなく、仕事がなければ移民になりやすい（公式の説明） [src: concepts_l_japanese.yml, concept_conscription_center_desc] [src: concepts_l_japanese.yml, concept_unemployed_desc]
+
 ## 6. 困ったとき
+
+**封鎖された州がある（重要アクション「…は…%封鎖されています」）**
+- 見る場所: 重要アクションに並ぶ、封鎖された州とその効果 [src: alerts_l_japanese.yml, alert_blockaded_state_alert_desc] [src: 00_alert_types.txt:339]
+- 打ち手: 戦闘で敵艦隊に勝てる艦隊に海軍任務「迎撃」を課し、関連する海上ノードへ派遣する。封鎖は隣接する港の世界市場へのアクセスを下げる（公式の説明） [src: alerts_l_japanese.yml, alert_blockaded_state_alert_hint] [src: concepts_l_japanese.yml, concept_blockade_desc]
+
+**軍の組織力が落ちている（警告または怒りの重要アクション「組織力の低下: …」）**
+- 見る場所: 並んだ編隊の組織力と、編隊のユニット数に対する指揮上限。前線の編隊は警告、待機中の編隊は怒りの重要アクションに出る [src: alerts_l_japanese.yml, alert_low_organization_idle_desc] [src: 00_alert_types.txt:574] [src: 00_alert_types.txt:606]
+- 打ち手: 将軍を昇進させて指揮上限を増やし、編隊は動かさずに回復を待つ。戦場で動員オプションを切り替えると一時的に組織力を失う（公式の説明） [src: alerts_l_japanese.yml, alert_low_organization_idle_hint] [src: concepts_l_japanese.yml, concept_organization_desc]
+
+**条約を守れていない（警告「…の不履行」「…に違反しています」）**
+- 見る場所: 警告に出た条約と、違反している条項の要件 [src: alerts_l_japanese.yml, alert_treaty_not_fulfilled_desc] [src: alerts_l_japanese.yml, alert_article_contravened_desc] [src: 00_alert_types.txt:1058] [src: 00_alert_types.txt:1073]
+- 打ち手: 違反している条項の要件を満たす。無理なら条約から脱退する。違反をやめないと不履行と見なされ、条約が凍結または破棄される（公式の説明） [src: alerts_l_japanese.yml, alert_treaty_not_fulfilled_hint] [src: alerts_l_japanese.yml, alert_article_contravened_hint]
+
+**革命が始まった（警告「革命」）**
+- 見る場所: 警告から開く外交戦の画面 [src: alerts_l_japanese.yml, alert_revolution_alert_desc] [src: 00_alert_types.txt:154]
+- 打ち手: 内戦でどちら側につくかを選び、味方側を成功させるために、必要なら他国を懐柔する。革命は急進化した政治運動から起こるので、予防は4章「急進派・財政の崩れの予防」（公式の説明） [src: alerts_l_japanese.yml, alert_revolution_alert_hint] [src: concepts_l_japanese.yml, concept_revolution_desc]
 
 ## 7. 判断の目安
 
@@ -200,6 +256,7 @@
 | 戦争支持率 | 25以下で戦闘への不利な補正と急進化が始まる | [src: 00_defines.txt:1203] |
 | 悪名 | 25超で「不信」、50超で「悪名」、100超で「疎外」。毎年5ずつ薄れる | [src: 00_defines.txt:1003] [src: 00_defines.txt:1004] [src: 00_defines.txt:1005] [src: 00_defines.txt:1006] |
 | ランクの降格と優遇 | 降格までの基本の日数は365。貸付歩合は列強 −50%、大国 −25% | [src: 00_defines.txt:1295] [src: 00_country_ranks.txt:44] [src: 00_country_ranks.txt:82] |
+| 前の時代の未研究技術 | 1つにつきコストの0.25倍×時代の差（定義のコメントによる） | [src: 00_defines.txt:1862] |
 
 ## 8. 用語
 
@@ -234,6 +291,8 @@
 - 勢力ブロック（Power Bloc）／アイデンティティの柱（Central Identity Pillar）／原則（Principle）／権限（Mandate）／勢力ブロックリーダー（Power Bloc Leader）
 - ランク（Rank）／列強（Great Power）／大国（Major Power）／非承認大国（Unrecognized Major Power）／悪名（Infamy）／国内総生産（Gross Domestic Product）／貸付歩合（Loan interest rate）
 - 条約（Treaty）／条項（Article）／外交協定（Diplomatic Pact）／外交アクション（Diplomatic Action）／孤立主義（Isolationism）
+- 恩義（Obligation）／関係改善（Improve Relations）／戦略（Maneuver）／懐柔（Sway）／内戦（Civil War）／不履行（Non-Fulfillment）／違反（Contravention）
+- 動員オプション（Mobilization Option）／組織力（Organization）／指揮上限（Command Limit）／封鎖（Blockade）／海軍任務（Naval Mission）／迎撃（Interception）／海上ノード（Sea Node）
 
 ## 9. 出典
 
@@ -249,10 +308,10 @@
 - `common/buildings/13_construction.txt`、`common/buildings/07_government.txt`（建設局・行政府の解禁技術）
 - `gui/construction_queue.gui`（建設パネルの建設キュー表示）
 - `common/technology/technologies/30_society.txt`（企業の設立枠）
-- `common/institutions/00_institutions.txt`、`common/interest_tier_types/interest_tier_types.txt`、`common/liberty_desire_levels/00_liberty_desire_levels.txt`、`common/country_ranks/00_country_ranks.txt`
+- `common/institutions/00_institutions.txt`、`common/interest_tier_types/interest_tier_types.txt`、`common/liberty_desire_levels/00_liberty_desire_levels.txt`、`common/country_ranks/00_country_ranks.txt`、`common/laws/00_distribution_of_power.txt`、`00_internal_security.txt`
 - `common/scripted_triggers/00_scripted_triggers.txt`（勢力ブロックを形成できる条件）、`common/power_bloc_principles/00_power_bloc_principles.txt`（原則の DLC 条件）、`common/scripted_rules/00_scripted_rules.txt`、`dlc/dlc010_ep1/dlc010_ep1.dlc`
 - `common/tutorial_lessons/00_tutorial_lessons_incorporate_state.txt`（州の編入を行う画面）
-- `gui/market_panel.gui`、`gui/politics_panel_institutions.gui`、`gui/politics_panel_overview.gui`、`gui/diplomatic_overview.gui`（画面の構成）
+- `gui/market_panel.gui`、`gui/politics_panel_institutions.gui`、`gui/politics_panel_overview.gui`、`gui/diplomatic_overview.gui`、`gui/country_panel.gui`（画面の構成）
 - `localization/english/alerts_l_english.yml`（日本語訳がない警告の文言）
 - `localization/japanese/alerts_l_japanese.yml`、`tutorial_l_japanese.yml`、`concepts_l_japanese.yml`、`interfaces_l_japanese.yml`（警告・チュートリアル・用語説明の文言）
 
