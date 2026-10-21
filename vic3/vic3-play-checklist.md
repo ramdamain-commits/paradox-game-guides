@@ -166,7 +166,7 @@
 - [ ] 戦争中は、戦争目標の掌握に必要な条件（目標の州の占領など）を保ち、戦争パネルで強制の進み具合を確かめる {#late-war-enforce}
   - なぜ: 目標を掌握している間は毎週進み、100で和平を待たずに強制される。掌握をやめると減る。進み具合の表示は英語のみ。数値は7章 [src: 00_defines.txt:2192] [src: 00_defines.txt:2193] [src: 00_defines.txt:2195] [src: war_goal_types.md, Fill per week / Deplete per week] [src: interfaces_l_english.yml, WAR_GOAL_ENFORCEMENT_PROGRESS] [src: war_panel.gui:1901]
 - [ ] 警告「無防備な戦線」が出たら、前線パネルを開き、将軍か大隊を配属する {#late-front}
-  - なぜ: 将軍も大隊も配属されていない戦線に、敵の将軍が少なくとも1人割り当てられている状態。将軍は「編隊」パネルの「情報」タブで雇用できる（公式の説明） [src: alerts_l_japanese.yml, alert_vulnerable_front_desc] [src: alerts_l_japanese.yml, alert_vulnerable_front_hint] [src: tutorial_l_japanese.yml, lesson_recruit_promote_commander_how_1_desc] [src: 00_alert_types.txt:226]
+  - なぜ: 将軍も大隊も配属されていない戦線に、敵の将軍が少なくとも1人割り当てられている状態。将軍は「編隊」パネルの「将軍の雇用」ボタンで雇用できる（公式の説明） [src: alerts_l_japanese.yml, alert_vulnerable_front_desc] [src: alerts_l_japanese.yml, alert_vulnerable_front_hint] [src: tutorial_l_japanese.yml, lesson_recruit_promote_commander_how_1_desc] [src: 00_alert_types.txt:226]
 
 ## 5. 定期ルーチン {.routine}
 
@@ -203,8 +203,8 @@
   - なぜ: 恩義を負う相手には、外交戦を始められない（公式の説明） [src: concepts_l_japanese.yml, concept_obligation_desc] [src: interfaces_l_japanese.yml, OBLIGATIONS_OWED_FROM] [src: country_panel.gui:2277]
 - [ ] 平時のうちに、「編隊」パネルの「動員」タブで動員オプションを設定する {#play-option}
   - なぜ: 動員オプションは平時に設定でき、動員時の商品のコストに響く。戦場で切り替えると組織力が一時的に失われることがある（公式の説明） [src: concepts_l_japanese.yml, concept_mobilization_option_desc] [src: alerts_l_japanese.yml, alert_low_organization_active_hint] [src: interfaces_l_japanese.yml, MILITARY_FORMATION_PANEL_MOBILIZATION_TAB]
-- [ ] 将軍が足りなければ「編隊」パネルの「情報」タブで雇用し、指揮上限が足りなければ将軍のパネルの「昇進」で昇進させる {#play-general}
-  - なぜ: 昇進は行政力を払えばいつでもでき、将軍の指揮上限が増える（公式の説明） [src: tutorial_l_japanese.yml, lesson_recruit_promote_commander_how_1_desc] [src: tutorial_l_japanese.yml, lesson_recruit_promote_commander_how_6_desc] [src: tutorial_l_japanese.yml, lesson_recruit_promote_commander_how_10_desc] [src: concepts_l_japanese.yml, concept_command_limit_desc] [src: character_panel.gui:1594]
+- [ ] 将軍が足りなければ「編隊」パネルの「将軍の雇用」ボタンで雇用し、指揮上限が足りなければ将軍のパネルで昇進させる {#play-general}
+  - なぜ: 昇進は行政力を払えばいつでもでき、将軍の指揮上限が増える（公式の説明） [src: tutorial_l_japanese.yml, lesson_recruit_promote_commander_how_1_desc] [src: tutorial_l_japanese.yml, lesson_recruit_promote_commander_how_6_desc] [src: tutorial_l_japanese.yml, lesson_recruit_promote_commander_how_10_desc] [src: concepts_l_japanese.yml, concept_command_limit_desc] [src: character_panel.gui:1594] [src: interfaces_l_japanese.yml, RECRUIT_GENERAL_BUTTON]
 - [ ] 外交戦の初動で戦争目標を足す前に、「戦争目標を追加」の画面で目標ごとの悪名を、外交パネルで自国の悪名を確かめる {#late-infamy}
   - なぜ: 悪名は、革命・分離・統一などを除き、戦争目標を足した時点で付き、引き下がると75%、強制せず和平すると50%が戻る。他国の態度と外交協定の影響力コストにも響く（公式の説明）。段階は7章 [src: concepts_l_japanese.yml, concept_infamy_desc] [src: 00_defines.txt:1172] [src: 00_defines.txt:1174] [src: diplomatic_plays.md:8] [src: add_wargoal_panel.gui:536] [src: diplomatic_overview.gui:1815]
 - [ ] 外交工作のフェーズでは、戦略を使って、関心ランクの高い国を懐柔して味方につける {#play-sway}
