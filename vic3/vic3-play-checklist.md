@@ -27,13 +27,13 @@
 - [ ] 警告「債務不履行中」が出たとき、または金準備が尽きて赤字が続くときは、「予算」パネルの「概要」タブで課税レベルを上げるか、新しい消費税を課す {#early-deficit}
   - なぜ: 増税は歳入をすぐ増やす最も簡単な方法だが、財力の低下や社会不安の恐れがある（公式の説明）。消費税は課す商品ごとに権力を使い、税の上げ下げは正当性にも響く [src: tutorial_l_japanese.yml, lesson_budget_balance_2_desc] [src: concepts_l_japanese.yml, concept_consumption_tax_desc] [src: concepts_l_japanese.yml, concept_legitimacy_desc] [src: 00_alert_types.txt:35]
 - [ ] 増税しても収支が戻らないときは、「予算」パネルの「概要」タブの「すべて一時停止」で、進行中の建設を中断する {#early-build-stop}
-  - なぜ: 建設費は固定費ではないが、建設中は国庫の負担になる。赤字を解消してから「すべて再開」できる。民間の建設は投資プールの資金で進む（公式の説明） [src: tutorial_l_japanese.yml, lesson_budget_balance_how_3_desc] [src: alerts_l_japanese.yml, alert_country_default_hint] [src: concepts_l_japanese.yml, concept_private_construction_desc] [src: budget_panel.gui:482] [src: interfaces_l_japanese.yml, RESUME_ALL_CONSTRUCTION_BUTTON]
+  - なぜ: 建設費は固定費ではないが、建設中は国庫の負担になる。赤字を解消してから「すべて再開」できる。民間の建設の資金は常に投資プールから出る（公式の説明） [src: tutorial_l_japanese.yml, lesson_budget_balance_how_3_desc] [src: alerts_l_japanese.yml, alert_country_default_hint] [src: concepts_l_japanese.yml, concept_private_construction_desc] [src: budget_panel.gui:482] [src: interfaces_l_japanese.yml, RESUME_ALL_CONSTRUCTION_BUTTON]
 - [ ] 「予算」パネルの「州」タブで支出の大きい政府施設を探して縮小するか、「概要」タブで国家公務員の給金と軍隊の給金を下げる {#early-gov-cost}
   - なぜ: 政府施設の運営費は固定費。縮小すると支出を恒久的に減らせるが、その施設レベルの恩恵を失う。賃金はいつでも戻せるが、変更の結果は説明を読んで確かめる（公式の説明） [src: tutorial_l_japanese.yml, lesson_budget_balance_how_4_desc] [src: tutorial_l_japanese.yml, lesson_budget_balance_how_5_desc] [src: tutorial_l_japanese.yml, lesson_budget_balance_how_6_desc] [src: budget_panel.gui:621] [src: budget_panel.gui:746]
 - [ ] 「予算」パネルの「資産」タブで、債務の元金が信用枠に近づいていないか確かめる {#early-debt}
   - なぜ: 元金が信用枠に達すると債務不履行になり、進行中の建設がすべて止まる。施設の生産量にも、時間とともに重くなるペナルティが付く。収支が黒字に戻るか、破産を宣言すると解除される（公式の説明） [src: concepts_l_japanese.yml, concept_default_desc] [src: tutorial_l_japanese.yml, lesson_budget_balance_why_6_desc] [src: tutorial_l_japanese.yml, lesson_budget_balance_why_7_desc]
 - [ ] 重要アクション「金の備蓄」が出たら、支出を増やすか税を下げる {#early-gold}
-  - なぜ: 金準備が上限を超えると、経済とPOPから資金を奪って財力を減らす（公式の説明）。上限の基本は年間GDPの0.2倍。数値は7章 [src: alerts_l_japanese.yml, alert_stockpiling_gold_alert_hint] [src: 00_alert_types.txt:836] [src: 00_defines.txt:542]
+  - なぜ: 収支が黒字のまま金準備が上限を超えると、経済とPOPから資金を奪って財力を減らす（公式の説明）。上限の基本は年間GDPの0.2倍。数値は7章 [src: alerts_l_japanese.yml, alert_stockpiling_gold_alert_hint] [src: 00_alert_types.txt:836] [src: 00_alert_types.txt:841] [src: 00_defines.txt:542]
 - [ ] 行政力が0未満なら、行政府を増築するか、行政府の方式をより効率的なものに切り替える {#early-bur}
   - なぜ: 行政力は主に行政府が生み、税の徴収と制度の維持に使われる。不足すると浪費税額が発生し、経済が急に鈍る（公式の説明）。行政府の解禁には技術「官僚制」が要る。数値は7章 [src: tutorial_l_japanese.yml, lesson_fix_capacity_deficit_how_3_desc] [src: tutorial_l_japanese.yml, lesson_fix_capacity_deficit_how_4_desc] [src: 00_code_static_modifiers.txt:577] [src: common/buildings/07_government.txt:9]
 - [ ] 権力が0未満なら、不要な布告を取り消し、課す必要のない消費税を外す {#early-aut}
@@ -56,7 +56,7 @@
 - [ ] 怒りの重要アクション「…における（商品）の不足」が出たら、その商品の売り注文を増やす {#early-shortage}
   - なぜ: 使う施設の産出ペナルティは、生産の増加・産地の州のインフラ改善による市場アクセスの向上・世界市場からの輸入（取引所が要る）で売り注文が増えれば解け、電力・サービスなど州内の商品は州の生産量を増やす（公式の説明）。数値は7章 [src: alerts_l_japanese.yml, alert_market_goods_shortage_hint] [src: alerts_l_japanese.yml, alert_state_goods_shortage_hint] [src: 00_alert_types.txt:781] [src: 00_alert_types.txt:797] [src: 00_defines.txt:419]
 - [ ] 重要アクション「…の市場アクセスは、…%です」や警告「…は孤立したです」が出たら、その州に港か鉄道を建てる {#early-infra}
-  - なぜ: 市場アクセスは州のインフラ使用がインフラを超えると下がり、孤立した州は市場で売買できない。布告「道路整備」でも補えるが、権力を使うので一時しのぎにとどめる（公式の説明）。数値は7章 [src: concepts_l_japanese.yml, concept_market_access_desc] [src: alerts_l_japanese.yml, alert_low_market_access_alert_hint] [src: alerts_l_japanese.yml, alert_isolated_state_alert_hint] [src: tutorial_l_japanese.yml, lesson_market_access_with_railways_why_2_desc] [src: 00_alert_types.txt:927] [src: 00_alert_types.txt:477] [src: 00_decree.txt:20]
+  - なぜ: 市場アクセスは州のインフラ使用がインフラを超えると下がり、孤立した州は市場で売買できない。港は技術「航海術」、鉄道は技術「鉄道」で解禁。布告「道路整備」でも補えるが、権力を使うので一時しのぎにとどめる（公式の説明）。数値は7章 [src: concepts_l_japanese.yml, concept_market_access_desc] [src: alerts_l_japanese.yml, alert_low_market_access_alert_hint] [src: alerts_l_japanese.yml, alert_isolated_state_alert_hint] [src: tutorial_l_japanese.yml, lesson_market_access_with_railways_why_2_desc] [src: 00_alert_types.txt:927] [src: 00_alert_types.txt:477] [src: common/buildings/11_private_infrastructure.txt:11] [src: common/buildings/11_private_infrastructure.txt:37] [src: 00_decree.txt:20]
 - [ ] 警告「…での飢饉」が出たら、「市場」パネルの「食料保障」タブで被害の州を確かめ、基本的な食料を満たす商品を作る施設を建てるか、その商品を輸入する {#early-food}
   - なぜ: 施設や輸入は効くまで時間がかかり、布告「緊急救援」のほうが早く効くことがある（公式の説明）。ただしこの布告は州の徴税を減らし、技術「中央集権化」で解禁される。数値は7章 [src: alerts_l_japanese.yml, alert_famine_alert_hint] [src: 00_alert_types.txt:459] [src: 00_decree.txt:150]
 - [ ] 新しい方式が解禁されたら、投入商品の価格と不足、必要な職業の資格を持つPOPの数を確かめてから切り替える {#early-pm}
@@ -97,7 +97,7 @@
 到達目標: 貿易キャパシティに余裕があり、行政品の高騰を放置していない状態にする。
 
 - [ ] 「市場」パネルの「貿易」タブ上部で、貿易キャパシティの使用量が総量に近づいていないか確かめ、近ければ取引所を増築する {#mid-trade-capacity}
-  - なぜ: 貿易キャパシティは取引所のレベルが生み、世界市場との貿易に使われる（公式の説明） [src: concepts_l_japanese.yml, concept_trade_capacity_desc] [src: interfaces_l_japanese.yml, MARKET_COUNTRY_TRADE_CAPACITY] [src: interfaces_l_japanese.yml, MARKET_PANEL_WORLD_MARKET_TRADE] [src: market_panel.gui:155]
+  - なぜ: 貿易キャパシティは取引所のレベルが生み、世界市場との貿易に使われる。総量が0だと表示されない（公式の説明） [src: concepts_l_japanese.yml, concept_trade_capacity_desc] [src: interfaces_l_japanese.yml, MARKET_COUNTRY_TRADE_CAPACITY] [src: interfaces_l_japanese.yml, MARKET_PANEL_WORLD_MARKET_TRADE] [src: market_panel.gui:155]
 - [ ] 重要アクションのグループ「高価な行政品」が出たら、商品パネルを開いて、その行政品の生産を増やすか輸入する {#mid-expensive-goods}
   - なぜ: 行政品は政府の施設が消費し、国庫の資金を使う。価格は、施設や方式で生産量を増やすか他国から手に入れると下がり、関税や消費税の変更が効くこともある（公式の説明） [src: concepts_l_japanese.yml, concept_government_good_desc] [src: alerts_l_japanese.yml, ag_expensive_government_goods_name] [src: alerts_l_japanese.yml, alert_expensive_goods_alert_hint_common] [src: alerts_l_japanese.yml, alert_expensive_government_goods_alert_desc] [src: 00_alert_types.txt:952]
 
@@ -200,7 +200,7 @@
 ### 外交戦の前と後
 
 - [ ] 外交戦を始める前に、標的国の国パネルの「外交」タブで、「以下から恩義があります」の一覧に自国がないか確かめる {#play-obligation}
-  - なぜ: 恩義を負う相手には、外交戦を始められない（公式の説明） [src: concepts_l_japanese.yml, concept_obligation_desc] [src: interfaces_l_japanese.yml, OBLIGATIONS_OWED_FROM] [src: country_panel.gui:2277]
+  - なぜ: 恩義を負う相手には、外交戦を始められない（公式の説明） [src: concepts_l_japanese.yml, concept_obligation_desc] [src: interfaces_l_japanese.yml, OBLIGATIONS_OWED_FROM] [src: country_panel.gui:3765]
 - [ ] 平時のうちに、「編隊」パネルの「動員」タブで動員オプションを設定する {#play-option}
   - なぜ: 動員オプションは平時に設定でき、動員時の商品のコストに響く。戦場で切り替えると組織力が一時的に失われることがある（公式の説明） [src: concepts_l_japanese.yml, concept_mobilization_option_desc] [src: alerts_l_japanese.yml, alert_low_organization_active_hint] [src: interfaces_l_japanese.yml, MILITARY_FORMATION_PANEL_MOBILIZATION_TAB]
 - [ ] 将軍が足りなければ「編隊」パネルの「将軍の雇用」ボタンで雇用し、指揮上限が足りなければ将軍のパネルで昇進させる {#play-general}
@@ -245,7 +245,7 @@
 | 行政力の不足／余剰 | 使用量が生産量の2倍で、徴収される税が100%減る（浪費税額 +1）。生産量が使用量の2倍で、州の建設速度 +10%。どちらも定義のコメントによる最大時の値 | [src: 00_code_static_modifiers.txt:573] [src: 00_code_static_modifiers.txt:579] |
 | 権力の不足／余剰 | 使用量が生産量の2倍で、対立側の利益集団の支持 −10・政治運動由来の急進派 +20%。生産量が使用量の2倍で、法律の制定速度 +25% | [src: 00_code_static_modifiers.txt:586] [src: 00_code_static_modifiers.txt:592] [src: 00_code_static_modifiers.txt:593] |
 | 影響力の不足／余剰 | 使用量が生産量の2倍で、威信 −50%。生産量が使用量の2倍で、悪名が薄れる速さ +25%。どちらも定義のコメントによる最大時の値 | [src: 00_code_static_modifiers.txt:600] [src: 00_code_static_modifiers.txt:613] |
-| 金準備の上限 | 基本は年間GDPの0.2倍（最低1000）。超えると重要アクションが出る | [src: 00_defines.txt:541] [src: 00_defines.txt:542] [src: 00_alert_types.txt:836] |
+| 金準備の上限 | 基本は年間GDPの0.2倍（最低1000）。超え、収支が黒字だと重要アクションが出る | [src: 00_defines.txt:541] [src: 00_defines.txt:542] [src: 00_alert_types.txt:836] [src: 00_alert_types.txt:841] |
 | 商品の不足 | 供給が需要の50%を下回ると、使う施設に産出ペナルティ | [src: 00_defines.txt:419] |
 | 市場アクセス | 100%未満で重要アクションが出る | [src: 00_alert_types.txt:927] |
 | 生活水準の期待値 | 州のPOPの25%以上が期待値（最小）を下回ると重要アクションが出る | [src: 00_alert_types.txt:989] |
