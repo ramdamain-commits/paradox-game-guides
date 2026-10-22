@@ -2,7 +2,7 @@
 
 > ゲーム内日本語表示の正本。攻略ガイドの用語はこのファイルを参照して統一する。
 > 出典: `C:\Program Files (x86)\Steam\steamapps\common\Victoria 3\game\localization\japanese\` 配下の各 `.yml` ファイル
-> 確認パッチ: **1.12.4**（2026-03-31 確認）
+> 確認パッチ: **1.12.4**（2026-03-31 確認）。確認パッチは節ごとに違う（末尾の「1.14 チェックリスト用語」の節は 1.14。上の節は 1.12.4 が基本で、1.14 で見直した語だけ個別に直してある）
 
 ---
 
@@ -20,11 +20,11 @@
 | Literacy | 識字率 | 技術伝播速度に影響 |
 | Innovation | 革新 | 技術進歩の速度 |
 
-## 利益団体（Interest Group）
+## 利益集団（Interest Group）
 
 | 英語 | ゲーム内日本語 | 補足 |
 |------|---------------|------|
-| Interest Group | 利益団体 | 略称 IG |
+| Interest Group | 利益集団 | 略称 IG。`concept_interest_group` |
 | Landowners | 地主 | 保守的。農業利益を代表 |
 | Industrialists | 実業家 | 工業化推進派 |
 | Armed Forces | 軍部 | 軍事重視 |
@@ -72,9 +72,9 @@
 | War Goal | 戦争目標 | 戦争で達成すべき目標 |
 | Diplomatic Play | 外交戦 | 戦争前の外交的駆け引き |
 | Battalion | 大隊 | 軍事ユニットの基本単位 |
-| Military Formation | 軍事ユニットグループ | 大隊をまとめた編隊 |
-| Front | 戦線 | 戦闘が行われる前線 |
-| Battle | 戦闘 | 前線上の個別の戦闘 |
+| Military Formation | 編隊 | 大隊をまとめた単位。`concept_military_formation` |
+| Front | 戦線 | 戦域の境界上にある州をまとめたもの。`concept_front` |
+| Battle | 戦闘 | 戦線上の個別の戦闘 |
 | Mobilization | 動員 | 大隊を戦線に配備すること |
 | Occupation | 占領 | 敵州の掌握 |
 | War Exhaustion | 厭戦 | 長期戦で上昇する国民の疲弊度 |
@@ -84,7 +84,7 @@
 | Combat Width | 戦場の幅 | 一度に戦線に参加できる大隊数 |
 | Supply | 供給 | 大隊の維持に必要な補給 |
 | Blockade | 封鎖 | 港の封鎖。貿易・収入に影響 |
-| Command Limit | 指揮限界 | 将軍1人が指揮できる大隊の上限 |
+| Command Limit | 指揮上限 | 将軍1人が指揮できる大隊の上限。`concept_command_limit` |
 | Standing Army | 常備軍 | 常設の職業軍人部隊（技術） |
 | Mandatory Service | 国民皆兵 | 大規模徴兵制の技術 |
 
@@ -496,7 +496,7 @@
 | Liberty Desire | 自由への願望 | 従属国の独立志向度 |
 | Tension | 緊張度 | 外交的な緊張レベル |
 | Sway | 懐柔 | 他国を外交戦に引き込む行動 |
-| Obligation | 義務 | 外交支援等で生じた義理 |
+| Obligation | 恩義 | 外交支援等で生じた義理。`concept_obligation` |
 | Great Power | 列強 | 最上位の国家ランク |
 | Major Power | 大国 | 二番目の国家ランク |
 | Minor Power | （概念のみ） | 中小国家 |
@@ -553,7 +553,7 @@
 
 ## EP2 The Great Wave（日本固有）
 
-日本ガイドで使用する EP2 追加用語。詳細は [vic3-japan-guide.md](vic3-japan-guide.md) の用語対照表を参照。
+日本でプレイすると出る EP2 追加用語。
 
 | 英語 / スクリプトキー | 日本語 | 補足 |
 |------------------|--------|------|
@@ -570,6 +570,107 @@
 | Treaty Port / treaty_port | 条約港 | 列強が強制設置する外交合意 |
 | forced_market_opening | 強制開国 | 条約で市場を強制された時の modifier |
 | Dejima | 出島 | 鎖国中の唯一の取引所建設可能地 |
+
+---
+
+## 1.14 チェックリスト用語（追加）
+
+> `vic3/vic3-play-checklist.md` の8章で使う語のうち、この表に無かった語。確認パッチ: **1.14**（release/1.14.5・ビルド 25629520・2026-10-20 確認）。日本語は `localization/japanese/` の該当キー、英語は `localization/english/` の同キーと一致を確認済み。補足欄はキー名。
+
+| 英語 | ゲーム内日本語 | 補足（キー） |
+|------|---------------|------|
+| Alert | 警告 | `concept_alert_settings_alert` |
+| Important Action | 重要アクション | `concept_alert_settings_important_action` |
+| Angry Important Action | 怒りの重要アクション | `concept_alert_settings_angry_important_action` |
+| Current Situation | 現在の状況 | `SETTING_INPUT_ACTION_CURRENT_SITUATION` |
+| Influence | 影響力 | `concept_influence` |
+| Capacity | キャパシティ | `concept_capacity` |
+| Tax Waste | 浪費税額 | `concept_tax_waste` |
+| Gold Reserves | 金準備 | `concept_gold_reserves` |
+| Loans | 債務 | `concept_loans` |
+| Credit | 信用枠 | `concept_credit` |
+| Default | 債務不履行 | `concept_default` |
+| Taxation Level | 課税レベル | `concept_tax_level` |
+| Consumption Tax | 消費税 | `concept_consumption_tax` |
+| Government Wages | 国家公務員の給金 | `concept_budget_government_wages` |
+| Construction Queue | 建設キュー | `concept_construction_queue` |
+| Investment Pool | 投資プール | `concept_investment_pool` |
+| Government Construction | 政府の建設 | `concept_government_construction` |
+| Private Construction | 民間の建設 | `concept_private_construction` |
+| Government Good | 行政品 | `concept_government_good` |
+| Productivity | 生産性 | `concept_productivity` |
+| Production Method | 方式 | `concept_production_method`。ゲーム内の表記は「方式」（「生産方式」という訳語は無い） |
+| Sell Order | 売り注文 | `concept_sell_order` |
+| Market Access | 市場アクセス | `concept_market_access` |
+| Infrastructure | インフラ | `concept_infrastructure` |
+| Famine | 飢饉 | `concept_famine` |
+| Food Security | 食料保障 | `concept_food_security` |
+| Minimum Expected Standard of Living | 生活水準の期待値（最小） | `concept_expected_sol` |
+| Decree | 布告 | `concept_decree` |
+| Road Maintenance | 道路整備 | `decree_road_maintenance` |
+| Emergency Relief | 緊急救援 | `decree_emergency_relief` |
+| Political Movement | 政治運動 | `concept_political_movement` |
+| Bolster | 強化 | `concept_bolster` |
+| Suppress | 抑圧 | `concept_suppress` |
+| Enactment of Laws | 法律の制定 | `concept_enactment_of_laws` |
+| Enactment Success | 制定成功 | `concept_enactment_success` |
+| Government Reform | 政府改革 | `concept_government_reform` |
+| Illegitimate Government | 非正規政府 | `alert_legitimacy_level_illegitimate_alert_name` |
+| Unstable Government | 不安定な政府 | `legitimacy_level_unacceptable` |
+| Contested Government | 対立する政府 | `alert_legitimacy_level_contested_alert_name` |
+| Legitimate Government | 合法政府 | `legitimacy_level_legitimate` |
+| Righteous Government | 正当なる政府 | `legitimacy_level_righteous` |
+| Technology Spread | 技術の普及 | `concept_technology_spread` |
+| Bureaucracy（技術） | 官僚制 | `tech_bureaucracy`。行政力（Bureaucracy）とは別物。技術名 |
+| Company | 企業 | `concept_company` |
+| Prosperity | 繁栄度 | `concept_prosperity` |
+| Throughput | 生産量 | `concept_throughput` |
+| Journal | ジャーナル | `concept_journal` |
+| Journal Entry | ジャーナル記事 | `concept_journal_entry` |
+| Migration Attraction | 移住求心力 | `concept_migration_pull` |
+| Greener Grass Campaign | 隣の芝は青い運動 | `decree_greener_grass_campaign` |
+| Trade Capacity | 貿易キャパシティ | `concept_trade_capacity` |
+| Investment Level | 投資レベル | `concept_investment_level` |
+| Movement Activism | 運動活動 | `concept_activism` |
+| Radical | 急進派 | `concept_radical` |
+| Loyalist | 体制派 | `concept_loyalist` |
+| Approval | 支持 | `concept_approval` |
+| Political Lobby | 政治的圧力団体 | `concept_political_lobby` |
+| Appeasement | 宥和 | `concept_political_lobby_appeasement` |
+| Strategic Region | 戦略的重要地域 | `concept_strategic_region` |
+| Involvement | 関与 | `concept_involvement` |
+| Interest | 関心 | `concept_interest` |
+| Interest Tier | 関心ランク | `concept_interest_tier` |
+| Diplomatic Lens | 外交レンズ | `concept_diplomatic_lens` |
+| Political Lens | 政治レンズ | `concept_political_lens` |
+| Diplomatic Demand | 外交的要求 | `concept_diplomatic_demand` |
+| Opening Moves | 初動 | `concept_opening_moves` |
+| Diplomatic Maneuvers | 外交工作 | `concept_diplomatic_maneuvers` |
+| Countdown to War | 戦争へのカウントダウン | `concept_countdown_to_war` |
+| Controlled War Goal | 戦争目標を掌握 | `concept_controlled_war_goal` |
+| Training Rate | 訓練率 | `concept_training_rate` |
+| Military Wage | 軍隊の給金 | `concept_military_wage` |
+| Central Identity Pillar | アイデンティティの柱 | `concept_power_bloc_identity` |
+| Principle | 原則 | `concept_power_bloc_principle` |
+| Mandate | 権限 | `concept_power_bloc_mandate` |
+| Power Bloc Leader | 勢力ブロックリーダー | `concept_power_bloc_leader` |
+| Rank | ランク | `concept_rank` |
+| Unrecognized Major Power | 非承認大国 | `concept_unrecognized_major_power` |
+| Loan interest rate | 貸付歩合 | `country_loan_interest_rate_add` |
+| Article | 条項 | `concept_article` |
+| Diplomatic Pact | 外交協定 | `concept_diplomatic_pact` |
+| Non-Fulfillment | 不履行 | `concept_non_fulfillment` |
+| Contravention | 違反 | `concept_contravention` |
+| Mobilization Option | 動員オプション | `concept_mobilization_option` |
+| Organization | 組織力 | `concept_organization` |
+| Naval Mission | 海軍任務 | `concept_naval_mission` |
+| Interception | 迎撃 | `naval_mission_type_intercept` |
+| Sea Node | 海上ノード | `concept_sea_node` |
+| Relations | 関係 | `concept_relations` |
+| Binding Period | 拘束期間 | `concept_binding_period` |
+| Attitude | 態度 | `concept_attitude` |
+| Wealth | 財力 | `concept_wealth` |
+| Primary Culture | 主要文化 | `concept_primary_culture` |
 
 ---
 

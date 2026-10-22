@@ -2,7 +2,9 @@
 """プレイ中チェックリスト（Markdown）の書式と出典を検証する。
 
 使い方: python scripts/check_checklist.py eu5/eu5-play-checklist.md [--game-dir DIR] [--skip-src]
-違反があれば行番号つきで表示して終了コード 1、ゲームディレクトリが無ければ 2 を返す。
+        python scripts/check_checklist.py vic3/vic3-play-checklist.md
+検証するゲームのフォルダは Markdown のパス（eu5/・vic3/）から選ぶ。--game-dir で上書きできる。
+違反があれば行番号つきで表示して終了コード 1、ゲームディレクトリを決められない・見つからないときは 2 を返す。
 """
 from __future__ import annotations
 
@@ -12,7 +14,12 @@ import sys
 from pathlib import Path
 from typing import NamedTuple
 
-DEFAULT_GAME_DIR = Path("C:/Program Files (x86)/Steam/steamapps/common/Europa Universalis V/game")
+REPO_ROOT = Path(__file__).resolve().parents[1]
+# repo 直下のフォルダ名 → そのゲームのインストール先
+GAME_DIRS: dict[str, Path] = {
+    "eu5": Path("C:/Program Files (x86)/Steam/steamapps/common/Europa Universalis V/game"),
+    "vic3": Path("C:/Program Files (x86)/Steam/steamapps/common/Victoria 3/game"),
+}
 MAX_ITEMS = 100
 MAX_CHARS = 20000
 LAST_CHECK_SECTION = 5  # チェック項目を置けるのは 1〜5 章
@@ -101,23 +108,43 @@ def check(text: str, game_files: set[str] | None) -> Result:
     return Result(errors, items, chars)
 
 
+def select_game_dir(markdown: Path, override: Path | None) -> Path | None:
+    """検証するゲームのフォルダを返す。override があれば優先し、無ければ Markdown の置き場所（eu5/・vic3/）で決める。"""
+    if override is not None:
+        return override
+    try:
+        rel = markdown.resolve().relative_to(REPO_ROOT)
+    except ValueError:  # repo の外
+        return None
+    if len(rel.parts) < 2:  # repo 直下のファイル
+        return None
+    return GAME_DIRS.get(rel.parts[0])
+
+
 def main(argv: list[str] | None = None) -> int:
     for stream in (sys.stdout, sys.stderr):
         if hasattr(stream, "reconfigure"):
             stream.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description="チェックリスト Markdown の書式と出典を検証する")
     parser.add_argument("markdown", type=Path)
-    parser.add_argument("--game-dir", type=Path, default=DEFAULT_GAME_DIR)
+    parser.add_argument("--game-dir", type=Path, default=None, help="省略時は Markdown のパス（eu5/・vic3/）から選ぶ")
     parser.add_argument("--skip-src", action="store_true", help="[src:] の実在確認をしない")
     args = parser.parse_args(argv)
 
     text = args.markdown.read_text(encoding="utf-8-sig")
     game_files = None
     if not args.skip_src:
-        if not args.game_dir.is_dir():
-            print(f"ゲームディレクトリが見つからない: {args.game_dir}（--skip-src で省略可）", file=sys.stderr)
+        game_dir = select_game_dir(args.markdown, args.game_dir)
+        if game_dir is None:
+            print(
+                f"ゲームディレクトリを決められない: {args.markdown}（--game-dir で指定するか --skip-src で省略）",
+                file=sys.stderr,
+            )
             return 2
-        game_files = game_file_names(args.game_dir)
+        if not game_dir.is_dir():
+            print(f"ゲームディレクトリが見つからない: {game_dir}（--skip-src で省略可）", file=sys.stderr)
+            return 2
+        game_files = game_file_names(game_dir)
 
     result = check(text, game_files)
     for e in result.errors:
