@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026-10-22 VIC3 攻略をプレイ中チェックリストへ作り直し
+
+### Added
+- `vic3/vic3-play-checklist.md`: どの国でも共通の「いつ・何をするか」をまとめたチェックリスト（1.14 オープンベータ・ビルド 25629520 基準）。`checklist.html?file=vic3/vic3-play-checklist.md` で表示する
+
+### Changed
+- `scripts/check_checklist.py`: Markdown のパス（`eu5/`・`vic3/`）から検証するゲームのフォルダを自動で選ぶようにした
+- テンプレートの模範例を `ck3/ck3-england-1066-guide.md` に差し替えた
+
+### Removed
+- 日本・プロイセンの国別ガイドと MOD 記事（git 履歴から復元可）
+
 ## 2026-10-15 EU5 チェックリストのレビュー指摘の後始末
 
 ### Changed

@@ -1,6 +1,6 @@
 # 新規国別ガイド追加の手順（定型パターン）
 
-> **注意（2026-10-15）:** EU5 は国別ガイドを置かない（`eu5/eu5-play-checklist.md` を正本とする。repo `CLAUDE.md` の「ファイル構成」参照）。この手順は CK3 / VIC3 の国別ガイド追加用。以下の `EU5_ROOT`・`DHE` 等の例は EU5 の走査パスなので、対象ゲームのパスに読み替える。
+> **注意（2026-10-15）:** EU5 と VIC3 は国別ガイドを置かない（`eu5/eu5-play-checklist.md` と `vic3/vic3-play-checklist.md` を正本とする。repo `CLAUDE.md` の「ファイル構成」参照）。この手順は CK3 の国別ガイド追加用。以下の `EU5_ROOT`・`DHE` 等の例は EU5 の走査パスなので、対象ゲームのパスに読み替える。
 
 > 2026-07-03 に CLAUDE.md から分離。章構成の正本は `guide-section-template.md`、Plan 変数は `country-guide-plan-template.md`。
 
@@ -47,7 +47,7 @@ Plan をコミットしたら即 subagent-driven-development で実行。
 ### 4. 執筆フェーズ
 
 - テンプレート（本ファイルのセクション構成）に従い、中間データを元に執筆
-- 模範例: `vic3/vic3-japan-guide.md`
+- 模範例: `ck3/ck3-england-1066-guide.md`
 
 ### 5. 付随更新（必ず4点セットで todo に入れる）
 

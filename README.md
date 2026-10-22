@@ -13,11 +13,10 @@ Paradox Interactive のグランドストラテジーゲーム攻略メモ集。
 
 ### Victoria 3
 
-| 勢力 | ファイル | 難易度 | 対応パッチ |
-|------|----------|--------|-----------|
-| プロイセン | [vic3/vic3-prussia-guide.md](vic3/vic3-prussia-guide.md) | 中級 | 1.12.4 |
-
-**おすすめMOD**: [vic3/vic3-recommended-mods.md](vic3/vic3-recommended-mods.md)（1.12.4 時点）
+| 資料 | ファイル | 概要 | 対応パッチ |
+|------|----------|------|-----------|
+| プレイ中チェックリスト | [vic3/vic3-play-checklist.md](vic3/vic3-play-checklist.md)（[`checklist.html`](https://ramdamain-commits.github.io/paradox-game-guides/checklist.html?file=vic3/vic3-play-checklist.md) で表示） | どの国でも共通の「いつ・何をするか」。チェック状態はブラウザに保存 | 1.14 オープンベータ |
+| 用語対照表 | [vic3/localization-reference.md](https://ramdamain-commits.github.io/paradox-game-guides/viewer.html?file=vic3/localization-reference.md) | ゲーム内日本語訳と英語名の対照 | — |
 
 ### Crusader Kings III
 
@@ -39,7 +38,7 @@ Paradox Interactive のグランドストラテジーゲーム攻略メモ集。
 
 ```
 eu5/          … Europa Universalis V 攻略（プレイ中チェックリスト＋用語対照表）
-vic3/         … Victoria 3 攻略（勢力ガイド + おすすめMOD）
+vic3/         … Victoria 3 攻略（プレイ中チェックリスト＋用語対照表）
 ck3/          … Crusader Kings III 攻略（勢力ガイド + おすすめMOD）
 index.html    … GitHub Pages トップ
 viewer.html   … Markdown ビューア
@@ -56,9 +55,9 @@ CLAUDE.md     … 攻略ガイド作成ルール（章テンプレは docs/templ
 {タイトル略称}/{タイトル略称}-{勢力名}-guide.md
 ```
 
-例: `vic3/vic3-prussia-guide.md`, `ck3/ck3-england-1066-guide.md`
+例: `ck3/ck3-england-1066-guide.md`
 
-EU5 は国別ガイドを置かず、`eu5/eu5-play-checklist.md` を正本とする。
+EU5 と VIC3 は国別ガイドを置かず、`eu5/eu5-play-checklist.md` と `vic3/vic3-play-checklist.md` をそれぞれ正本とする。
 
 ## ガイドの方針
 
