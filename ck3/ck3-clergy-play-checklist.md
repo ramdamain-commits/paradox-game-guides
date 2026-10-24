@@ -135,7 +135,67 @@
 
 ## 5. 定期ルーチン {.routine}
 
+### 毎年
+
+- [ ] 画面上部の国庫にカーソルを合わせ、月の収支が赤字で残りが少なければ、横の「国庫に資金追加」で金を移す（聖界のみ） {#year-treasury}
+  - なぜ: 国庫が0を下回ると債務になり、戦争を宣言できなくなる（公式の説明）。債務の影響は6章 [src: important_actions_l_japanese.yml, action_in_treasury_debt_desc] [src: 00_realm_actions.txt:447] [src: hud.gui:6511] [src: hud.gui:6605]
+- [ ] 宗教指導者（自分以外）の画面を開き、自分が好敵手・宿敵・交戦相手になっていないか、好感度が負でないかを確かめる {#year-head}
+  - なぜ: 好敵手・宿敵・交戦相手なら宗教指導者に直接破門されうる。好感度が負なら、敵対する隣国の統治者の要請でも破門されうる。好感度が50以上なら、前者に当たらない限り警告「破門のリスク」は出ない [src: pam_actions.txt:128] [src: pam_actions.txt:134] [src: pam_actions.txt:154] [src: important_actions_l_japanese.yml, action_excommunication_at_risk_desc]
+- [ ] 称号のウィンドウで継承順位を開き、1位が望む者のままか確かめ、入れ替わっていれば4章「後を託す」の支援を重ねる {#year-heir}
+  - なぜ: 聖職者に後継者がいなくてもゲームは警告を出さず、「聖職者の任命」の順位は候補者スコアで決まる（公式の説明） [src: 00_inheritance_actions.txt:17] [src: succession_laws_l_japanese.yml, clerical_appointment_law_effects]
+
+### 局面が変わったとき
+
+- [ ] 状況「キリスト教会」を開き、新しい局面の名前と、自分の参加者グループ（主勢力（聖職）・副勢力（聖職）・異端（聖職））を確かめる（聖界のみ） {#phase-group}
+  - なぜ: 局面ごとに宗教・臣下・外交・戦争の効果があり、付く効果はグループで違う。主勢力（聖職）は、聖界か神権制で、最も多くの郡を支配するキリスト教の宗派の統治者（公式の説明） [src: pam_christian_situation_l_japanese.yml, the_christian_church_participant_group_christian_clerical_main_power_rulers_desc] [src: pam_christian_situation.txt:69]
+- [ ] 臣下の効果欄の「中央集権化」と「世俗の義務」の行が変わっていれば、教会領のアイコンで貸与の取り分を見直す（聖界のみ） {#phase-lease}
+  - なぜ: 局面で、上位者へ納める割合と、主君の取り分の決まり方（個人の義務か固定義務か）が替わる。数値は1章（公式の説明） [src: pam_christian_situation_l_japanese.yml, situation_parameter_the_christian_church_minimal_centralization] [src: pam_christian_situation.txt:363] [src: 00_theocracy_lease.txt:283]
+- [ ] 効果欄で、コストが下がる行動の行を探し、先に使う（聖界のみ） {#phase-cheap}
+  - なぜ: 暗黒時代は公会議の開催コストが下がり、改宗と十字軍の局面は勅書のコストが50%下がり、聖職叙任権闘争は候補者への支援の敬虔点が半分になる [src: pam_christian_situation_l_japanese.yml, situation_parameter_the_christian_church_cheaper_ecumenical_councils] [src: pam_christian_situation_l_japanese.yml, situation_parameter_the_christian_church_cheaper_bulls] [src: pam_christian_situation.txt:551] [src: pam_christian_situation.txt:869] [src: pam_christian_situation.txt:1492] [src: pam_christian_situation.txt:1331]
+- [ ] 局面が「聖職叙任権闘争」なら、状況の「次回の叙任権会議」までの残りと、投票が教会と王冠のどちらに傾いているかを確かめる（聖界のみ） {#phase-investiture}
+  - なぜ: 期限が来ると叙任権会議が開かれ、「聖職者任命制」の教義が置き換わる。世俗の統治者は開戦か傀儡で聖職者に反対票を強制できる。候補者への支援を使うなら期限の前（公式の説明） [src: pam_christian_situation_l_japanese.yml, CHRISTIAN_CHURCH_INVESTITURE_TIME_REMAINING_TT] [src: pam_christian_situation_l_japanese.yml, CHRISTIAN_CHURCH_INVESTITURE_VOTE_CHURCH_AHEAD]
+
+### 公会議があるとき
+
+- [ ] 主催者なら、第1・第2の討議の選択肢にカーソルを合わせ、可決したときの信条の位置づけを読んでから、議題の信条を中核にする・禁止する・容認する・認知する提案から選ぶ（聖界のみ） {#council-propose}
+  - なぜ: 提案は賛成票が反対票以上で可決する（同数も可決）。流派の中核の信条や教義を取り除く票は、教会分裂の進捗を押し上げる [src: pam_ecumenical_council_events.txt:1533] [src: pam_ecumenical_council_events.txt:1678] [src: pam_ecumenical_council_events.txt:1712] [src: pam_ecumenical_council_events.txt:1735] [src: pam_ecumenical_council_events.txt:4234] [src: pam_christian_situation_l_japanese.yml, CHRISTIAN_CHURCH_SCHISM_PROGRESS_TT]
+- [ ] 議題の提案の通知が来たら、立場を決めて「変革に賛成する」か「反対だ」を選ぶ（聖界のみ） {#council-vote}
+  - なぜ: 投票権は聖職者、領国祭司の傀儡を持つ統治者、主催者にある。選んだ側が革新派か保守派として数えられる（公式の説明） [src: pam_game_concepts_l_japanese.yml, game_concept_ecumenical_council_groups_help] [src: pam_ecumenical_council_events.txt:2387] [src: pam_ecumenical_council_events.txt:2394]
+- [ ] 公会議が終わったら、宗派の画面で議題の信条の位置づけを確かめ、自分の個人的信条が禁止の信条になっていないか見る（聖界のみ） {#council-after}
+  - なぜ: 公会議は信条を容認・禁止・中核に動かし、教義も決める。個人的信条は、中核か容認なら霊的充足度が上がり、禁止なら秘密が生じる（公式の説明） [src: pam_game_concepts_l_japanese.yml, game_concept_ecumenical_council_desc] [src: pam_game_concepts_l_japanese.yml, game_concept_personal_tenet_desc]
+
+### 戦争の前
+
+- [ ] 宣戦する前に、相手が宗教指導者でないか確かめる {#war-head}
+  - なぜ: 宗教指導者と交戦中だと、好敵手や宿敵と同じく、宗教指導者に直接破門されうる（公式の説明） [src: pam_actions.txt:130] [src: important_actions_l_japanese.yml, action_excommunication_at_risk_desc]
+- [ ] 常備軍の連隊の数と規模、傭兵の雇用費を確かめ、聖界の補正を織り込んで兵力を見積もる（聖界のみ） {#war-force}
+  - なぜ: 聖界は常備軍連隊の規模と最大数、騎士の上限が−3、傭兵の雇用費が+200% [src: 02_theocratic_government_types.txt:123] [src: 02_theocratic_government_types.txt:124] [src: 02_theocratic_government_types.txt:125] [src: 02_theocratic_government_types.txt:126] [src: modifiers_l_japanese.yml, MOD_MEN_AT_ARMS_LIMIT] [src: modifiers_l_japanese.yml, MOD_MEN_AT_ARMS_CAP]
+
 ## 6. 困ったとき
+
+**破門された（重要アクション「破門」）**
+- 見る場所: 重要アクションの説明と、修正「最近の破門」が残っているか。残っている間は赦しを求められず、通常は365日続く [src: important_actions_l_japanese.yml, action_excommunicated_recovery_desc] [src: common/scripted_effects/00_religion_effects.txt:541]
+- 打ち手: 悔悛が明けたら、公爵以下は有効な聖職者（上位の聖職者がいなければ宗教指導者）に「改心の宣言」を使う。神権制の領主は献身レベル2以上が要る。宗教指導者に破門された者と、王国か帝国の統治者は、宗教指導者へ請願して「破門の解除」を選ぶ（公式の説明） [src: important_actions_l_japanese.yml, action_excommunicated_recovery_desc] [src: 00_religious_interactions.txt:2893] [src: 11_petition_head_of_faith_triggers.txt:62]
+
+**霊的充足度が低く、ストレスが増える**
+- 見る場所: 宗派のアイコンにカーソルを合わせた数値と内訳。基準は特性の罪と徳で決まる（公式の説明） [src: pam_game_concepts_l_japanese.yml, game_concept_spiritual_fulfillment_desc] [src: hud.gui:3814]
+- 打ち手: 罪の特性を減らし、中核か容認の信条を個人的信条に入れる。聖界は決断「己の罪を告白する」も使う（2章）。−30以下でストレス獲得が10%、−65以下で25%増えるので早めに戻す [src: pam_game_concepts_l_japanese.yml, game_concept_spiritual_fulfillment_desc] [src: 00_spiritual_fulfillment_types.txt:46] [src: 00_spiritual_fulfillment_types.txt:29]
+
+**国庫が0を下回った（重要アクション「あなたは負債を抱えています」）（聖界のみ）**
+- 見る場所: 重要アクションの説明にある債務レベルの影響と、国庫の月の収支 [src: important_actions_l_japanese.yml, action_in_treasury_debt_desc] [src: 00_realm_actions.txt:447]
+- 打ち手: 債務の間は戦争を宣言できず、国庫が要る常備軍を強化できず、領地に腐敗が広がり、封臣が派閥に加わりやすい。軍の解散、常備軍の縮小、宮廷役職の剥奪で支出を減らし、金があれば「国庫に資金追加」で移す（公式の説明） [src: important_actions_l_japanese.yml, action_in_treasury_debt_desc] [src: hud.gui:6605]
+
+**教会分裂の進捗が上がっている（聖界のみ）**
+- 見る場所: 状況「キリスト教会」の「教会分裂の進捗」（n/13） [src: pam_christian_situation_l_japanese.yml, CHRISTIAN_CHURCH_SCHISM_PROGRESS] [src: pam_values.txt:9400]
+- 打ち手: 公会議での中核の信条や教義の削除、王国以上の統治者どうしの流派間の戦争、聖地の改宗や格下げ、他方の流派による流派指導者の殺害が1点ずつ足される。自分で足さないようにし、13に達したら4章の決断を使う（公式の説明） [src: pam_christian_situation_l_japanese.yml, CHRISTIAN_CHURCH_SCHISM_PROGRESS_TT] [src: pam_values.txt:9402] [src: pam_values.txt:9406]
+
+**公会議が開けない、または途中で解散した（聖界のみ）**
+- 見る場所: 活動「公会議」の開始画面に出る失敗理由と、解散のときの通知 [src: ecumenical_council.txt:17] [src: ecumenical_council_activity_l_japanese.yml, ecumenical_council_no_quorum_toast_tt]
+- 打ち手: 理由ごとに直す。前回から25年未満、同じ信仰で別の公会議が開催中、叙任権会議が保留中なら待つ。聖職管区の保持者が信仰全体で5人未満、または出席者が5人未満（主催者が保持者なら4人未満）なら、人数がそろってから開く [src: ecumenical_council.txt:11] [src: ecumenical_council.txt:19] [src: ecumenical_council.txt:22] [src: ecumenical_council.txt:40] [src: ecumenical_council.txt:337] [src: pam_values.txt:1882] [src: pam_scripted_triggers.txt:179]
+
+**「神権制の後継者を指名」が選べない、またはボタンが出ない**
+- 見る場所: 相互作用ウィンドウの赤字の失敗理由。ボタン自体が出ないなら、領国の継承法が「聖職者の任命」か（教皇の「神権選挙制」では出ない） [src: pam_interactions.txt:47] [src: pam_interactions.txt:48]
+- 打ち手: 失敗理由ごとに直す。王朝がなければ決断で創設する。相手は、自分より年上でなく、所領を持たず、同じ信仰で、流派の「聖職者の性別」の教義に合う成人にする（4章「後を託す」） [src: pam_interactions.txt:66] [src: pam_interactions.txt:73] [src: pam_interactions.txt:78] [src: pam_interactions.txt:82] [src: pam_interactions.txt:86]
 
 ## 7. 判断の目安
 
@@ -150,6 +210,9 @@
 | 候補者への支援 | 中程度は敬虔点250でスコア+20、大規模は500で+50。「聖職叙任権闘争」の局面は敬虔点が半分。教皇候補スコアは250で+10（金も払えば+20） | [src: pam_values.txt:2516] [src: pam_values.txt:2520] [src: pam_interactions.txt:1024] [src: pam_interactions.txt:1021] [src: pam_christian_situation.txt:1331] [src: pam_values.txt:1674] [src: pam_values.txt:1673] [src: pam_interactions.txt:15013] |
 | 位を上げる費用 | 管区の創設・拡張は伯爵領1つにつき敬虔点50。枢機卿職の要請は基準1000（宗教指導者より献身レベルが1段高いと−100、低いと+250）で、枢機卿は70人まで。投票への影響は250、敬虔な善行の周知は500 | [src: pam_values.txt:8227] [src: pam_values.txt:8258] [src: pam_values.txt:8745] [src: pam_values.txt:8751] [src: pam_values.txt:8764] [src: 01_puppet_interactions.txt:2333] [src: pam_interactions.txt:14550] [src: pam_decisions.txt:3159] |
 | 教会を動かす費用 | 勅書500、聖戦の誘発は称号が伯爵領100・公爵領200・王国300、王国の聖別は金500と敬虔点750（相手の献身レベル1につき−50）、教会継承の要求は500、王朝の創設は威信点750。公会議は金500で25年に1回、聖職管区の保持者5人が要る | [src: pam_values.txt:10329] [src: pam_values.txt:9811] [src: pam_values.txt:9819] [src: pam_values.txt:9976] [src: pam_values.txt:10069] [src: pam_values.txt:10072] [src: pam_values.txt:8667] [src: pam_decisions.txt:398] [src: pam_values.txt:1911] [src: ecumenical_council.txt:337] [src: pam_values.txt:1882] |
+| 破門と好感度 | 宗教指導者への好感度が50以上なら、好敵手・宿敵・交戦相手でない限り警告は出ない。悔悛は通常365日。神権制の領主の「改心の宣言」は献身レベル2以上 | [src: pam_actions.txt:154] [src: common/scripted_effects/00_religion_effects.txt:541] [src: 00_religious_interactions.txt:2893] |
+| 聖界の軍事補正 | 常備軍連隊の規模・最大数と騎士の上限が−3、傭兵の雇用費が+200% | [src: 02_theocratic_government_types.txt:123] [src: 02_theocratic_government_types.txt:126] |
+| 公会議と教会分裂 | 提案は賛成が反対以上で可決。成立には聖職管区の保持者の出席が5人（主催者が保持者なら4人）。教会分裂の進捗は13で決着。勅書は改宗・十字軍の局面で50%安い | [src: pam_ecumenical_council_events.txt:4234] [src: pam_values.txt:1882] [src: pam_values.txt:1884] [src: pam_values.txt:9400] [src: pam_christian_situation.txt:869] [src: pam_christian_situation.txt:1492] |
 
 ## 8. 用語
 
@@ -164,6 +227,8 @@
 - 聖職称号（Clerical Title）／枢機卿団（College of Cardinals）／枢機卿職（Cardinalate）／教皇候補スコア（Papabile Score）／候補者スコア（Candidate Score）
 - 勅書（Bull）／公会議（Ecumenical Council）／大分裂（Great Schism）／聖戦（Holy War）／傀儡（Puppet）／傀儡使い（Puppeteer）／世俗統治者の傀儡（External Ruler Puppet）
 - 後継者（Heir）／指名後継者（Designated Heir）／代替後継者（Fallback Heir）／王朝（Dynasty）／王朝の当主（Dynast）／栄誉点（Dynasty Prestige）／名声レベル（Prestige Level）
+- 状況（Situation）／主勢力（聖職）（Main Power (Clerical)）／暗黒時代（Saeculum Obscurum）／聖職叙任権闘争（Investiture Controversy）／教会分裂（Schism）／革新派（Innovator）／保守派（Conservative）
+- 好感度（Opinion）／好敵手（Rival）／宿敵（Nemesis）／改心の宣言（Declaration of Repentance）／国庫債務（Treasury Debt）／常備軍（Men-at-Arms）／傭兵（Mercenary）／継承順位（Line of Succession）
 - 通知（スクリプト上の important action。個別のアイコンで出る alert と、一覧に出る action がある）
 
 ## 9. 出典
@@ -177,10 +242,11 @@
 - `common/spiritual_fulfillment/00_spiritual_fulfillment_types.txt`、`common/hook_types/00_hook_types.txt`、`common/modifiers/00_basic_modifiers.txt`
 - `common/defines/00_defines.txt`、`common/script_values/`（`00_basic_values.txt`・`00_title_tiers_values.txt`・`02_religion_values.txt`・`pam_values.txt`）
 - `common/scripted_triggers/`（`00_councillor_triggers.txt`・`00_important_actions_triggers.txt`・`00_law_triggers.txt`・`00_religious_triggers.txt`・`00_scheme_triggers.txt`・`pam_scripted_triggers.txt`）
-- `common/important_actions/`（`00_inheritance_actions.txt`・`pam_actions.txt`）、`common/decisions/dlc_decisions/pam/`（`bulls_decisions.txt`・`pam_decisions.txt`）、`events/dlc/pam/pam_decision_events.txt`
+- `common/important_actions/`（`00_inheritance_actions.txt`・`00_realm_actions.txt`・`pam_actions.txt`）、`common/decisions/dlc_decisions/pam/`（`bulls_decisions.txt`・`pam_decisions.txt`）、`events/dlc/pam/pam_decision_events.txt`
 - `common/character_interactions/`（`00_demand_church_succession_interactions.txt`・`00_puppet_interactions.txt`・`01_puppet_interactions.txt`・`pam_interactions.txt`・`spiritual_counsel_interaction.txt`）
 - `common/domiciles/`（`types/00_domicile_types.txt`・`buildings/11_ecclesiastical_domicile_buildings.txt`）
 - `common/activities/activity_types/ecumenical_council.txt`、`common/situation/situations/pam_christian_situation.txt`、`common/puppets/types/pam_puppet_types.txt`、`common/succession_appointment/clerical_christian.txt`、`common/laws/00_succession_laws.txt`
+- `common/scripted_effects/`（`00_religion_effects.txt`・`pam_ecumenical_council_effects.txt`）、`common/character_interactions/00_religious_interactions.txt`、`common/scripted_triggers/11_petition_head_of_faith_triggers.txt`、`events/activities/ecumenical_council_activity/pam_ecumenical_council_events.txt`
 - `gui/`（`window_character.gui`・`hud.gui`・`window_cardinals.gui`・`window_intrigue.gui`・`interaction_templates.gui`）、`localization/japanese/`（ゲーム概念・重要アクション・チュートリアル・PAM 関連）
 
 ### コミュニティ情報
