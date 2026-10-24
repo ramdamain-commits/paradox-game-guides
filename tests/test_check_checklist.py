@@ -144,8 +144,14 @@ class SelectGameDirTests(unittest.TestCase):
     def test_select_vic3(self):
         self.assertEqual(cc.select_game_dir(cc.REPO_ROOT / "vic3" / "x.md", None), cc.GAME_DIRS["vic3"])
 
+    def test_select_ck3(self):
+        got = cc.select_game_dir(cc.REPO_ROOT / "ck3" / "x.md", None)
+        self.assertEqual(got, cc.GAME_DIRS["ck3"])
+        # GAME_DIRS 自身との比較は値を取り違えても通るため、期待するパスを固定して照合する
+        self.assertEqual(got, Path("C:/Program Files (x86)/Steam/steamapps/common/Crusader Kings III/game"))
+
     def test_select_unknown_folder(self):
-        self.assertIsNone(cc.select_game_dir(cc.REPO_ROOT / "ck3" / "x.md", None))
+        self.assertIsNone(cc.select_game_dir(cc.REPO_ROOT / "docs" / "x.md", None))
 
     def test_select_outside_repo(self):
         with tempfile.TemporaryDirectory() as d:
