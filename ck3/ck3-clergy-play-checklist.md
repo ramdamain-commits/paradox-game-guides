@@ -6,7 +6,7 @@
 ## 1. 開始直後（ポーズ中にやること）
 
 - [ ] 自分のキャラクター画面で、政体名が「聖界」か「神権制」かを確かめる {#start-gov}
-  - なぜ: 政体は宗教で決まり、キリスト教は聖界、ほかの宗教は神権制になる。開始ブックマークの聖職者は聖界だけで、神権制は地図から領主を選んで始めるか、途中で決断「神権制統治を採用する」でなる [src: common/religion/religion_types/00_christianity.txt:5] [src: _religion_types.info:11] [src: 00_bookmarks.txt:1196] [src: pam_decisions.txt:570]
+  - なぜ: 政体は宗教で決まり、キリスト教は聖界、ほかの宗教は神権制になる。開始ブックマークの聖職者は聖界だけで、神権制は地図から領主を選んで始めるか、途中でなる。途中でなるには、神権制になる前の封建制などの伯爵か公爵が、献身レベル「信心深い」以上で敬虔点500と威信点750を払い、決断「神権制統治を採用する」を実行する（組織化された宗派が条件。宗教指導者が聖界の宗派では出ない） [src: common/religion/religion_types/00_christianity.txt:5] [src: _religion_types.info:11] [src: 00_bookmarks.txt:1196] [src: pam_decisions.txt:438] [src: pam_decisions.txt:451] [src: pam_decisions.txt:465] [src: pam_decisions.txt:555] [src: pam_decisions.txt:556] [src: pam_decisions.txt:570]
 - [ ] 宗派の画面で、教義「聖職者の伝統」が「神権制」か「世俗の聖職者」かを確かめる {#start-doctrine}
   - なぜ: 「世俗の聖職者」の宗派には教会領がなく、神権制や聖界になれるのは枢機卿、聖職管区（大司教区）の保持者、所領のない聖職者だけ。そうなら教会領の項目は飛ばす（公式の説明） [src: game_concepts_l_japanese.yml, game_concept_church_property_desc] [src: pam_scripted_triggers.txt:6765] [src: 00_theocracy_lease.txt:6]
 - [ ] 自分のキャラクター画面で、「上位者」と「主君」の肖像を確かめる {#start-superior}
@@ -53,15 +53,13 @@
 - [ ] 宗教上の上位者か下位者の国庫に余裕があれば、「教会の国庫から金を求める」を使う（聖界のみ） {#base-treasury}
   - なぜ: 敬虔点100を払い、相手の国庫から収入に連動する額を得る。フックを使えば断られない。同じ相手には5年に1回。上位者とその上位者、下位者とその下位者まで届く [src: pam_interactions.txt:21651] [src: pam_interactions.txt:21720] [src: pam_interactions.txt:21637] [src: pam_interactions.txt:21760] [src: pam_scripted_triggers.txt:1484]
 - [ ] 下位者に余裕があれば、「下位者に金を求める」を使う {#base-subs}
-  - なぜ: 聖界、枢機卿、聖職管区の保持者、所領のない聖職者が使える。敬虔点100〜250を払って金を得る。1年に1回、同じ相手には5年に1回 [src: pam_interactions.txt:22025] [src: pam_scripted_triggers.txt:6784] [src: pam_values.txt:9759] [src: pam_interactions.txt:22015] [src: pam_interactions.txt:22016]
+  - なぜ: 聖界、枢機卿、聖職管区の保持者、所領のない聖職者が使える。所領を持つ神権制の領主は、枢機卿か聖職管区の保持者でなければ使えない。敬虔点100〜250を払って金を得る。1年に1回、同じ相手には5年に1回 [src: pam_interactions.txt:22025] [src: pam_scripted_triggers.txt:6784] [src: pam_values.txt:9759] [src: pam_interactions.txt:22015] [src: pam_interactions.txt:22016]
 - [ ] 聖職管区の称号を持つなら聖界所領を開き、空きの枠に建造物を建てる（聖界のみ） {#base-estate}
   - なぜ: 建造物は私的な収入、敬虔点、霊的充足度を増やす（公式の説明）。主建造物の聖堂は月に金2と敬虔点0.3 [src: pam_game_concepts_l_japanese.yml, game_concept_ecclesiastical_estate_building_desc] [src: 11_ecclesiastical_domicile_buildings.txt:25] [src: 11_ecclesiastical_domicile_buildings.txt:62] [src: 11_ecclesiastical_domicile_buildings.txt:107] [src: 11_ecclesiastical_domicile_buildings.txt:108] [src: 00_domicile_types.txt, ecclesiastical_domicile]
 - [ ] 封臣がいるなら法律「教会の支配権」を確かめ、条件が揃ったら上げる {#base-authority}
   - なぜ: 段階2は封臣の税と徴募兵の納付+10%、段階3は+25%。段階1・2・3は献身レベル1・2・3以上と、民会・年代記の筆記・神権のイノベーションが要り、上げるたびに20年待つ [src: 00_realm_laws.txt:655] [src: 00_realm_laws.txt:739] [src: common/scripted_triggers/00_law_triggers.txt:629] [src: 00_realm_laws.txt:4]
 - [ ] 神権制か聖界の封臣がいるなら、自分の献身レベルを確かめ、敬虔点を稼ぐ行動で上げる {#base-piety}
   - なぜ: 封臣が納める税は5%＋10%×主君の献身レベル、徴募兵は10%×レベル（宗派が違えばどちらも10%）。敬虔点を獲得するたびに次のレベルへ近づく（公式の説明） [src: theocratic.txt:11] [src: theocratic.txt:21] [src: theocratic.txt:24] [src: theocratic.txt:7] [src: game_concepts_l_japanese.yml, game_concept_piety_desc]
-- [ ] 封建制などの伯爵か公爵なら、献身レベル「信心深い」以上で敬虔点と威信点が貯まったら、決断「神権制統治を採用する」を実行する（神権制のみ） {#base-convert}
-  - なぜ: 敬虔点500と威信点750を払い、献身レベルが1段上がる。組織化された宗派でないと使えず、相続人の好感度は大きく下がる。宗教指導者が聖界の宗派（キリスト教）では出ない [src: pam_decisions.txt:465] [src: pam_decisions.txt:555] [src: pam_decisions.txt:556] [src: pam_decisions.txt:591] [src: pam_decisions.txt:451]
 
 ## 3. 位を上げる
 
