@@ -63,7 +63,75 @@
 
 ## 3. 位を上げる
 
+### 聖職管区の称号を得る
+
+到達目標: 聖職管区の称号を持ち、上位の称号の候補者に入っている状態にする。
+
+- [ ] 通知「新たな聖職管区を要請できる」が出たら、「聖職称号の創設を要請する」を実行する（聖界のみ） {#rank-create}
+  - なぜ: 宗教指導者（いなければ流派指導者）に頼む。主称号が公爵未満の所領持ちで、主君の主称号が王国、自分は管区を持たないときに使える。敬虔点は、首都の属する王国で管区に入っていないキリスト教の伯爵領1つにつき50 [src: 01_puppet_interactions.txt:461] [src: 01_puppet_interactions.txt:464] [src: 01_puppet_interactions.txt:473] [src: 01_puppet_interactions.txt:488] [src: pam_values.txt:8224] [src: pam_values.txt:8227] [src: 00_basic_values.txt:1132] [src: pam_actions.txt:303]
+- [ ] 通知「大司教区の拡張を要請する」が出たら、「聖職称号の拡張を要請する」で隣の公爵領を足す（聖界のみ） {#rank-expand}
+  - なぜ: 管区に隣り合い、管区に入っていない伯爵領を含む公爵領を選ぶ。敬虔点は公爵領内のキリスト教の伯爵領1つにつき50で、同じ要請は5年に1回 [src: pam_scripted_triggers.txt:3498] [src: pam_values.txt:8256] [src: pam_values.txt:8258] [src: 01_puppet_interactions.txt:948] [src: pam_actions.txt:393]
+- [ ] 通知「大司教区の後継者」が出たら、その称号の候補者に「聖職称号の候補者に影響を与える」を使う（聖界のみ） {#rank-candidacy}
+  - なぜ: 管区の称号は、保持者が死ぬと候補者スコアが最も高い者が継ぐ（公式の説明）。中程度の支援は敬虔点250でスコア+20、大規模は500で+50。「聖職叙任権闘争」の局面は敬虔点が半分。管区を持つ者が自分を推せるのは、より上位の称号だけ [src: succession_laws_l_japanese.yml, clerical_appointment_law_effects] [src: pam_interactions.txt:1021] [src: pam_interactions.txt:1024] [src: pam_values.txt:2516] [src: pam_values.txt:2520] [src: pam_christian_situation_l_japanese.yml, situation_parameter_the_christian_church_cheaper_clerical_appointment] [src: pam_scripted_triggers.txt:545] [src: 00_important_actions_triggers.txt:20]
+- [ ] 候補者の一覧を候補者スコア順に並べ、ツールチップの内訳で足りない項目を確かめる {#rank-score}
+  - なぜ: 聖界でも神権制でも、任命制の称号は候補者スコアで決まる。学識の値がそのまま入り、所領を持つ統治者で+25、聖職者で+25、献身レベル2以上ならレベル×10、徳の特性1つにつき+10、罪の特性1つにつき−10。候補に入るのは保持者の評議員・宮廷役職・家臣と同じ管区の聖職者 [src: clerical_christian.txt:12] [src: clerical_christian.txt:18] [src: clerical_christian.txt:133] [src: clerical_christian.txt:143] [src: clerical_christian.txt:180] [src: clerical_christian.txt:202] [src: clerical_christian.txt:213] [src: clerical_christian.txt:233] [src: clerical_christian.txt:238] [src: interaction_templates.gui:3025]
+- [ ] 枢機卿職を目指すなら、宗教指導者に「枢機卿職を要請する」を実行する（聖界のみ） {#rank-cardinal}
+  - なぜ: 聖職者本人が頼む。敬虔点は基準が1000で、宗教指導者より献身レベルが高いと1段につき−100、低いと+250。強いフックを使えば自動で受け入れられる。枢機卿は全体で70人まで [src: 01_puppet_interactions.txt:2299] [src: 01_puppet_interactions.txt:2308] [src: 01_puppet_interactions.txt:2333] [src: 01_puppet_interactions.txt:2391] [src: pam_values.txt:8745] [src: pam_values.txt:8751] [src: pam_values.txt:8764] [src: pam_scripted_triggers.txt:3080] [src: pam_scripted_triggers.txt:3099]
+- [ ] HUD の「枢機卿団」ボタンで画面を開き、「枢機卿団」タブで3つの席の評価、「継承」タブで次の教皇になる可能性を確かめる（聖界のみ） {#rank-college}
+  - なぜ: 教皇が死ぬと、最も多くの支持者を持つ席（民衆派・敬虔派・有力者）で評価が最高の枢機卿が教皇になる。敬虔派は献身レベルと学識、民衆派は名声レベルと外交と枢機卿団内の友人、有力者は自分の流派の伯爵領数と聖地と栄光レベルで決まる（公式の説明） [src: hud.gui:448] [src: window_cardinals.gui:911] [src: cardinals_window_l_japanese.yml, CARDINALS_VIEW_COLLEGE_DESCRIPTION] [src: cardinals_window_l_japanese.yml, theocratic_elective_pious_desc] [src: cardinals_window_l_japanese.yml, theocratic_elective_populist_desc] [src: cardinals_window_l_japanese.yml, theocratic_elective_powerful_desc] [src: cardinals_window_l_japanese.yml, CARDINALS_VIEW_TAB_SUCCESSION]
+- [ ] 評価を上げたい枢機卿に「教皇候補スコアを高める」を使う（聖界のみ） {#rank-papabile}
+  - なぜ: 敬虔点250でスコア+10、金も払えば+20。同じ相手には3年に1回。有力者の席は、敬虔点（差1点につき5）を足して首位に立てる [src: pam_interactions.txt:15013] [src: pam_interactions.txt:15054] [src: pam_interactions.txt:15057] [src: pam_values.txt:1673] [src: pam_values.txt:1674] [src: pam_interactions.txt:14911] [src: pam_values.txt:1631]
+- [ ] 枢機卿で聖界所領に尚書局があるなら、決断「敬虔な善行を広く知らしめる」で教皇職を選ぶ（聖界のみ） {#rank-pious}
+  - なぜ: 敬虔点500で一度だけ使える。教皇職を選ぶと選出スコアが+30され、威信点も得る [src: pam_decisions.txt:3127] [src: pam_decisions.txt:3139] [src: pam_decisions.txt:3143] [src: pam_decisions.txt:3159] [src: pam_decision_events.txt:2142] [src: pam_decision_events.txt:2145] [src: 11_ecclesiastical_domicile_buildings.txt:2105]
+- [ ] 教皇選挙が近いなら、枢機卿に「枢機卿団の投票に影響を与える」を使い、自分の推す者へ投票させる（聖界のみ） {#rank-vote}
+  - なぜ: 献身レベル3以上と敬虔点250が要る。強いフックを使うと確実に通り、相手の票は20年間その候補に固定される。同じ相手には10年に1回 [src: pam_interactions.txt:14512] [src: pam_interactions.txt:14550] [src: pam_interactions.txt:14571] [src: pam_interactions.txt:14598] [src: pam_interactions.txt:14600] [src: pam_interactions.txt:14463]
+
+### 信仰の長への道筋
+
+到達目標: 信仰の長の称号を自分で創るか、任命で継げる位置に付く。
+
+- [ ] 自分の信仰に宗教指導者がいなければ、決断「（宗教指導者）の称号を創設する」を実行する {#rank-hof-create}
+  - なぜ: 聖職的な宗教指導者の信仰は、領国内の聖地1か所以上と献身レベル2（本流の流派以外は3）が要り、敬虔点200（本流以外は2倍）と金（聖界は国庫）を払う。世俗的な宗教指導者の信仰は献身レベル3と敬虔点250。キリスト教は大分裂のあとにだけ出る。宗教指導者は可能なら神権制になる [src: pam_decisions.txt:1160] [src: pam_decisions.txt:1167] [src: pam_decisions.txt:1171] [src: pam_decisions.txt:1172] [src: 00_religious_triggers.txt:1524] [src: 00_religious_triggers.txt:1532] [src: 00_religious_triggers.txt:1535] [src: 00_religious_triggers.txt:1519] [src: 00_religious_triggers.txt:1492] [src: 02_religion_values.txt:4095] [src: 02_religion_values.txt:4097] [src: 02_religion_values.txt:4124] [src: 02_religion_values.txt:4131] [src: 02_theocratic_government_types.txt:2]
+- [ ] 宗教指導者の称号が任命制なら、「宗教指導者の候補者に影響を与える」で自分か頼れる者を押し上げる {#rank-hof-candidacy}
+  - なぜ: 対象は同じ信仰の保持者がいる任命制の称号。敬虔点250でスコア+20、500で+50と、聖職称号の候補者への支援と同じ [src: pam_interactions.txt:1247] [src: pam_scripted_triggers.txt:446] [src: pam_scripted_triggers.txt:454] [src: pam_interactions.txt:1409] [src: pam_interactions.txt:1406] [src: pam_interactions.txt:1444] [src: pam_interactions.txt:1458]
+
 ## 4. 教会を動かす・後を託す
+
+### 教会を動かす
+
+到達目標: 局面を読み、勅書・公会議・聖戦で教会の方向を決める。
+
+- [ ] 決断「キリスト教会を導く」を実行し、状況の局面を進めたい方向へ押す（聖界のみ） {#church-steer}
+  - なぜ: 宗教指導者・流派指導者・枢機卿・管区の保持者などが実行でき、敬虔点250で10年に1回。「聖職叙任権闘争」の最中は出ない。局面ごとに効果が違い、「改宗」「十字軍」は聖戦の誘発が楽に、「聖職叙任権闘争」は候補者への支援が半額になる [src: pam_decisions.txt:1594] [src: pam_decisions.txt:1607] [src: pam_decisions.txt:1610] [src: pam_decisions.txt:1614] [src: pam_decisions.txt:1618] [src: pam_decisions.txt:1636] [src: pam_decisions.txt:1639] [src: pam_christian_situation.txt:920] [src: pam_christian_situation.txt:1331] [src: pam_christian_situation.txt:1538]
+- [ ] 教皇なら、決断「教皇勅書を制定する」で十字軍の招集・異端の宣言・信条の容認か禁止を選ぶ（聖界のみ） {#church-bull}
+  - なぜ: 教会の支配権が段階1以上で、敬虔点500。種類ごとに5年に1回 [src: bulls_decisions.txt:31] [src: bulls_decisions.txt:38] [src: bulls_decisions.txt:40] [src: pam_values.txt:10329] [src: bulls_decisions.txt:256] [src: bulls_decisions.txt:321] [src: bulls_decisions.txt:475] [src: bulls_decisions.txt:736] [src: pam_scripted_triggers.txt:4085]
+- [ ] 同じ信仰の公爵を王にしたいなら、「王国を聖別する」を使う {#church-consecrate}
+  - なぜ: 使えるのは宗教指導者で、宗教指導者がいない信仰では公爵以上の神権制の流派指導者。献身レベル3以上が要り、金（聖界は国庫）500、敬虔点750（相手の献身レベル1につき−50）を払う。相手が神権制なら威信点500も要る。相手は同じ信仰の所領持ちの公爵で、独立しているか主君が皇帝 [src: pam_interactions.txt:23338] [src: pam_interactions.txt:23352] [src: pam_interactions.txt:23407] [src: pam_interactions.txt:23448] [src: pam_values.txt:9976] [src: pam_values.txt:10069] [src: pam_values.txt:10072] [src: pam_values.txt:10118]
+- [ ] 信条や教義を決めるなら、活動「公会議」を主催する（聖界のみ） {#church-council}
+  - なぜ: 主催できるのは聖界の統治者か宗教指導者で、25年に1回。聖職管区の保持者が5人以上出席しないと成立せず（主催者が保持者なら出席者4人以上）、開催地は聖地か大聖堂。費用は金（聖界は国庫）で基本500、時代とともに増える [src: ecumenical_council.txt:9] [src: ecumenical_council.txt:28] [src: ecumenical_council.txt:30] [src: ecumenical_council.txt:337] [src: pam_values.txt:1882] [src: pam_values.txt:1884] [src: pam_scripted_triggers.txt:179] [src: ecumenical_council.txt:134] [src: ecumenical_council.txt:139] [src: pam_values.txt:1911]
+- [ ] 状況「キリスト教会」の大分裂の進行が13に達したら、宗教指導者か流派指導者で王国以上の者は「大分裂を防ぐ」か「大分裂を引き起こす」を実行する（聖界のみ） {#church-schism}
+  - なぜ: 献身レベル4以上・聖地1か所以上・同2か所以上・事前の立場・聖職者の支持7以上の5条件のうち4つが要る [src: pam_values.txt:9400] [src: pam_decisions.txt:2569] [src: pam_decisions.txt:2581] [src: pam_decisions.txt:2604] [src: pam_decisions.txt:2606] [src: pam_decisions.txt:2607] [src: pam_decisions.txt:2633] [src: pam_decisions.txt:2760]
+- [ ] 他の信仰の統治者を攻めさせたいなら、「聖戦の誘発」を使う {#church-holywar}
+  - なぜ: 使えるのは聖界の統治者と宗教指導者。同じ信仰で神権制でない隣の統治者が攻め手になり、敬虔点は対象の称号が伯爵領100・公爵領200・王国300。必要な献身レベルは伯爵領2・公爵領3・王国4で、「主勢力（聖職）」は「改宗」「十字軍」の局面で1段下がる。同じ相手には5年に1回 [src: pam_scripted_triggers.txt:4588] [src: pam_scripted_triggers.txt:4087] [src: pam_values.txt:9811] [src: pam_values.txt:9819] [src: 00_title_tiers_values.txt:3] [src: pam_interactions.txt:12402] [src: pam_interactions.txt:12408] [src: pam_interactions.txt:12426] [src: pam_interactions.txt:12432] [src: pam_interactions.txt:12443] [src: pam_interactions.txt:12446] [src: pam_christian_situation.txt:920] [src: pam_interactions.txt:12309]
+- [ ] 通知「教会継承を要請する」が出たら、「教会継承の要求」を使う {#church-demand}
+  - なぜ: 神権制の領主（宗教指導者を除く）が、同じ信仰の封建制・氏族制・部族制などの統治者に使える。相手が正当な後継者なく死ぬと、領地が代替後継者として自分の主称号の保持者へ渡る。敬虔点500（王国以上は15倍）と国庫の金が要り、献身レベル2以上。選挙制の相手には使えず、同じ相手には10年に1回 [src: 00_demand_church_succession_interactions.txt:15] [src: 00_demand_church_succession_interactions.txt:42] [src: 00_demand_church_succession_interactions.txt:47] [src: 00_demand_church_succession_interactions.txt:55] [src: 00_demand_church_succession_interactions.txt:60] [src: 00_demand_church_succession_interactions.txt:82] [src: pam_values.txt:8667] [src: pam_values.txt:8673] [src: 00_religious_triggers.txt:2838] [src: pam_actions.txt:602]
+- [ ] 通知「世俗統治者を傀儡にできる」が出たら、「世俗統治者を傀儡にする」を実行し、「策略」ウィンドウの「傀儡」タブから行動を命じる {#church-puppet}
+  - なぜ: 傀儡は種類ごとに1人。聖職者の主な条件は自分が相手の封臣であること（特性による別の条件もある）で、相手は聖職者でない所領持ちの統治者（AI）。献身レベル3以上かフックが要り（王国以上は4以上か強いフック）、威信点は相手の称号が伯爵領なら75・公爵領なら150・王国なら225。教会の支配権が高いほど傀儡にしやすい [src: 00_puppet_interactions.txt:708] [src: 00_puppet_interactions.txt:793] [src: pam_scripted_triggers.txt:7113] [src: pam_scripted_triggers.txt:7114] [src: pam_scripted_triggers.txt:7243] [src: pam_scripted_triggers.txt:7244] [src: pam_puppet_types.txt, external_ruler_puppet] [src: window_intrigue.gui:117] [src: laws_l_japanese.yml, church_authority_3_effects]
+
+### 後を託す
+
+到達目標: 自分が死んだあとに操作する人物を決め、継承順位の1位に置く。
+
+- [ ] 領国の継承法が「聖職者の任命」「神権選挙制」「神権制」のどれかを確かめる {#church-law}
+  - なぜ: ゲームは聖職者に後継者がいない警告を出さない。郡以上の聖職者は「聖職者の任命」（候補者スコア最高の者が継ぐ）、教皇は「神権選挙制」、男爵領だけの者や借手は「神権制」で、教義が後継者を決める [src: 00_inheritance_actions.txt:17] [src: 00_inheritance_actions.txt:63] [src: common/scripted_triggers/00_law_triggers.txt:514] [src: common/scripted_triggers/00_law_triggers.txt:521] [src: common/scripted_triggers/00_law_triggers.txt:534] [src: succession_laws_l_japanese.yml, bishop_theocratic_succession_law_effects]
+- [ ] 王朝がなければ、決断「王朝を創設する」を実行する {#church-dynasty}
+  - なぜ: 後継者の指名には自分の王朝が要る。教会の支配権が段階2で、名声レベル3以上、威信点750を払う [src: pam_decisions.txt:375] [src: pam_decisions.txt:380] [src: pam_decisions.txt:383] [src: pam_decisions.txt:398] [src: 00_realm_laws.txt:658] [src: pam_interactions.txt:67] [src: 00_basic_values.txt:1004]
+- [ ] 「神権制の後継者を指名」で後継者を決め、称号の継承順位が1位になったか確かめる {#church-designate}
+  - なぜ: 相手は自分より年下で所領のない同信仰の成人（側近・家族・家臣）で、指名すると養子になる。敬虔点250と、王朝の当主は栄誉点、当主でなければ威信点150。「聖職者の任命」の領国だけで使える。指名と同時に、現在の1位の1.1倍に届くスコアが足される [src: pam_interactions.txt:47] [src: pam_interactions.txt:48] [src: pam_interactions.txt:75] [src: pam_interactions.txt:79] [src: pam_interactions.txt:183] [src: pam_interactions.txt:198] [src: pam_interactions.txt:235] [src: pam_values.txt:9945]
+- [ ] 他の候補者に追い抜かれそうなら、「候補者を支援する」を重ねる {#church-support}
+  - なぜ: 対象は指名後継者・側近・近親。敬虔点250でスコア+20、500で+50。「聖職叙任権闘争」の局面は敬虔点が半分 [src: pam_interactions.txt:480] [src: pam_interactions.txt:485] [src: pam_interactions.txt:545] [src: pam_values.txt:9919] [src: pam_values.txt:9921] [src: pam_values.txt:9924] [src: pam_values.txt:2516] [src: pam_values.txt:2520] [src: pam_values.txt:189]
+- [ ] 教皇なら、通知「枢機卿を任命可能」が出たら「枢機卿を任命」で頼れる者を枢機卿にする（聖界のみ） {#church-cardinal}
+  - なぜ: 次の教皇は枢機卿の中から選ばれる。国庫の金を払い、敬虔点100を得る。同じ相手には10年に1回、枢機卿は70人まで。通知は枢機卿が15人未満の間に出る [src: pam_interactions.txt:4644] [src: pam_interactions.txt:4656] [src: pam_interactions.txt:4668] [src: pam_interactions.txt:4674] [src: pam_actions.txt:933] [src: succession_laws_l_japanese.yml, theocratic_elective_candidates]
 
 ## 5. 定期ルーチン {.routine}
 
@@ -79,6 +147,9 @@
 | 教会の支配権 | 段階2は封臣の納付+10%、段階3は+25%。必要な献身レベルは段階1・2・3で1・2・3。上げたあとは20年待つ | [src: 00_realm_laws.txt:655] [src: 00_realm_laws.txt:739] [src: common/scripted_triggers/00_law_triggers.txt:631] [src: common/scripted_triggers/00_law_triggers.txt:636] [src: common/scripted_triggers/00_law_triggers.txt:641] [src: 00_realm_laws.txt:4] |
 | 封臣の納付（神権制・聖界） | 税は5%＋10%×主君の献身レベル、徴募兵は10%×レベル。宗派が違えばどちらも10% | [src: theocratic.txt:21] [src: theocratic.txt:24] [src: theocratic.txt:11] [src: theocratic.txt:7] |
 | 敬虔点の費用 | 霊的な助言100、教会の国庫から金を求める100、下位者に金を求める100〜250、信仰心を誇示する250、神権制統治の採用500（と威信点750） | [src: 00_basic_values.txt:1133] [src: 00_basic_values.txt:1134] [src: 00_basic_values.txt:1135] [src: spiritual_counsel_interaction.txt:17] [src: pam_interactions.txt:21720] [src: pam_values.txt:9765] [src: pam_values.txt:9766] [src: pam_decisions.txt:555] [src: pam_decisions.txt:556] |
+| 候補者への支援 | 中程度は敬虔点250でスコア+20、大規模は500で+50。「聖職叙任権闘争」の局面は敬虔点が半分。教皇候補スコアは250で+10（金も払えば+20） | [src: pam_values.txt:2516] [src: pam_values.txt:2520] [src: pam_interactions.txt:1024] [src: pam_interactions.txt:1021] [src: pam_christian_situation.txt:1331] [src: pam_values.txt:1674] [src: pam_values.txt:1673] [src: pam_interactions.txt:15013] |
+| 位を上げる費用 | 管区の創設・拡張は伯爵領1つにつき敬虔点50。枢機卿職の要請は基準1000（宗教指導者より献身レベルが1段高いと−100、低いと+250）で、枢機卿は70人まで。投票への影響は250、敬虔な善行の周知は500 | [src: pam_values.txt:8227] [src: pam_values.txt:8258] [src: pam_values.txt:8745] [src: pam_values.txt:8751] [src: pam_values.txt:8764] [src: 01_puppet_interactions.txt:2333] [src: pam_interactions.txt:14550] [src: pam_decisions.txt:3159] |
+| 教会を動かす費用 | 勅書500、聖戦の誘発は称号が伯爵領100・公爵領200・王国300、王国の聖別は金500と敬虔点750（相手の献身レベル1につき−50）、教会継承の要求は500、王朝の創設は威信点750。公会議は金500で25年に1回、聖職管区の保持者5人が要る | [src: pam_values.txt:10329] [src: pam_values.txt:9811] [src: pam_values.txt:9819] [src: pam_values.txt:9976] [src: pam_values.txt:10069] [src: pam_values.txt:10072] [src: pam_values.txt:8667] [src: pam_decisions.txt:398] [src: pam_values.txt:1911] [src: ecumenical_council.txt:337] [src: pam_values.txt:1882] |
 
 ## 8. 用語
 
@@ -90,6 +161,9 @@
 - キリスト教会（The Christian Church）／局面（Chapter）／聖職管区（Clerical Region）／大司教区（Archdiocese）／流派（Rite）／教義（Doctrine）
 - 敬虔点（Piety）／献身レベル（Level of Devotion）／霊的充足度（Spiritual Fulfillment）／個人的信条（Personal Tenet）／個人的信念（Personal Beliefs）
 - 教会の支配権（Church Authority）／フック（Hook）／破門（Excommunication）／威信点（Prestige）／名声レベル（Level of Fame）
+- 聖職称号（Clerical Title）／枢機卿団（College of Cardinals）／枢機卿職（Cardinalate）／教皇候補スコア（Papabile Score）／候補者スコア（Candidate Score）
+- 勅書（Bull）／公会議（Ecumenical Council）／大分裂（Great Schism）／聖戦（Holy War）／傀儡（Puppet）／傀儡使い（Puppeteer）／世俗統治者の傀儡（External Ruler Puppet）
+- 後継者（Heir）／指名後継者（Designated Heir）／代替後継者（Fallback Heir）／王朝（Dynasty）／王朝の当主（Dynast）／栄誉点（Dynasty Prestige）／名声レベル（Prestige Level）
 - 通知（スクリプト上の important action。個別のアイコンで出る alert と、一覧に出る action がある）
 
 ## 9. 出典
@@ -101,11 +175,12 @@
 - `common/religion/religion_types/`（`00_christianity.txt`・`_religion_types.info`）、`common/bookmarks/bookmarks/00_bookmarks.txt`
 - `common/lease_contracts/00_theocracy_lease.txt`、`common/subject_contracts/contracts/theocratic.txt`、`common/laws/00_realm_laws.txt`
 - `common/spiritual_fulfillment/00_spiritual_fulfillment_types.txt`、`common/hook_types/00_hook_types.txt`、`common/modifiers/00_basic_modifiers.txt`
-- `common/defines/00_defines.txt`、`common/script_values/`（`00_basic_values.txt`・`pam_values.txt`）
-- `common/scripted_triggers/`（`00_councillor_triggers.txt`・`00_law_triggers.txt`・`00_scheme_triggers.txt`・`pam_scripted_triggers.txt`）
-- `common/important_actions/pam_actions.txt`、`common/decisions/dlc_decisions/pam/pam_decisions.txt`、`events/dlc/pam/pam_decision_events.txt`
-- `common/character_interactions/`（`pam_interactions.txt`・`spiritual_counsel_interaction.txt`）
+- `common/defines/00_defines.txt`、`common/script_values/`（`00_basic_values.txt`・`00_title_tiers_values.txt`・`02_religion_values.txt`・`pam_values.txt`）
+- `common/scripted_triggers/`（`00_councillor_triggers.txt`・`00_important_actions_triggers.txt`・`00_law_triggers.txt`・`00_religious_triggers.txt`・`00_scheme_triggers.txt`・`pam_scripted_triggers.txt`）
+- `common/important_actions/`（`00_inheritance_actions.txt`・`pam_actions.txt`）、`common/decisions/dlc_decisions/pam/`（`bulls_decisions.txt`・`pam_decisions.txt`）、`events/dlc/pam/pam_decision_events.txt`
+- `common/character_interactions/`（`00_demand_church_succession_interactions.txt`・`00_puppet_interactions.txt`・`01_puppet_interactions.txt`・`pam_interactions.txt`・`spiritual_counsel_interaction.txt`）
 - `common/domiciles/`（`types/00_domicile_types.txt`・`buildings/11_ecclesiastical_domicile_buildings.txt`）
-- `gui/`（`window_character.gui`・`hud.gui`）、`localization/japanese/`（ゲーム概念・重要アクション・チュートリアル・PAM 関連）
+- `common/activities/activity_types/ecumenical_council.txt`、`common/situation/situations/pam_christian_situation.txt`、`common/puppets/types/pam_puppet_types.txt`、`common/succession_appointment/clerical_christian.txt`、`common/laws/00_succession_laws.txt`
+- `gui/`（`window_character.gui`・`hud.gui`・`window_cardinals.gui`・`window_intrigue.gui`・`interaction_templates.gui`）、`localization/japanese/`（ゲーム概念・重要アクション・チュートリアル・PAM 関連）
 
 ### コミュニティ情報
