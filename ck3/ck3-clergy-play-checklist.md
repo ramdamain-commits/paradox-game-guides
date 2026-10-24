@@ -138,30 +138,30 @@
 ### 毎年
 
 - [ ] 画面上部の国庫にカーソルを合わせ、月の収支が赤字で残りが少なければ、横の「国庫に資金追加」で金を移す（聖界のみ） {#year-treasury}
-  - なぜ: 国庫が0を下回ると債務になり、戦争を宣言できなくなる（公式の説明）。債務の影響は6章 [src: important_actions_l_japanese.yml, action_in_treasury_debt_desc] [src: 00_realm_actions.txt:447] [src: hud.gui:6511] [src: hud.gui:6605]
+  - なぜ: 国庫が0を下回ると債務になり、戦争を宣言できない（公式の説明）。影響は6章 [src: important_actions_l_japanese.yml, action_in_treasury_debt_desc] [src: 00_realm_actions.txt:447] [src: hud.gui:6511] [src: hud.gui:6605]
 - [ ] 宗教指導者（自分以外）の画面を開き、自分が好敵手・宿敵・交戦相手になっていないか、好感度が負でないかを確かめる {#year-head}
-  - なぜ: 好敵手・宿敵・交戦相手なら宗教指導者に直接破門されうる。好感度が負なら、敵対する隣国の統治者の要請でも破門されうる。好感度が50以上なら、前者に当たらない限り警告「破門のリスク」は出ない [src: pam_actions.txt:128] [src: pam_actions.txt:134] [src: pam_actions.txt:154] [src: important_actions_l_japanese.yml, action_excommunication_at_risk_desc]
+  - なぜ: 好敵手・宿敵・交戦相手なら宗教指導者に直接破門されうる。好感度が負なら、敵対する隣国の要請でも破門されうる。好感度が50以上なら、前者でない限り警告「破門のリスク」は出ない [src: pam_actions.txt:128] [src: pam_actions.txt:134] [src: pam_actions.txt:154] [src: important_actions_l_japanese.yml, action_excommunication_at_risk_desc]
 - [ ] 称号のウィンドウで継承順位を開き、1位が望む者のままか確かめ、入れ替わっていれば4章「後を託す」の支援を重ねる {#year-heir}
   - なぜ: 聖職者に後継者がいなくてもゲームは警告を出さず、「聖職者の任命」の順位は候補者スコアで決まる（公式の説明） [src: 00_inheritance_actions.txt:17] [src: succession_laws_l_japanese.yml, clerical_appointment_law_effects]
 
 ### 局面が変わったとき
 
-- [ ] 状況「キリスト教会」を開き、新しい局面の名前と、自分の参加者グループ（主勢力（聖職）・副勢力（聖職）・異端（聖職））を確かめる（聖界のみ） {#phase-group}
-  - なぜ: 局面ごとに宗教・臣下・外交・戦争の効果があり、付く効果はグループで違う。主勢力（聖職）は、聖界か神権制で、最も多くの郡を支配するキリスト教の宗派の統治者（公式の説明） [src: pam_christian_situation_l_japanese.yml, the_christian_church_participant_group_christian_clerical_main_power_rulers_desc] [src: pam_christian_situation.txt:69]
-- [ ] 臣下の効果欄の「中央集権化」と「世俗の義務」の行が変わっていれば、教会領のアイコンで貸与の取り分を見直す（聖界のみ） {#phase-lease}
+- [ ] 状況「キリスト教会」を開き、新しい局面の名前と、自分の参加者グループ（主勢力・副勢力・異端の聖職）を確かめる（聖界のみ） {#phase-group}
+  - なぜ: 局面ごとに宗教・臣下・外交・戦争の効果があり、グループで付く効果が違う。主勢力（聖職）は、最も郡の多いキリスト教の宗派の聖界か神権制の統治者（公式の説明） [src: pam_christian_situation_l_japanese.yml, the_christian_church_participant_group_christian_clerical_main_power_rulers_desc] [src: pam_christian_situation.txt:69]
+- [ ] 状況の自分のグループのアイコンにカーソルを合わせ、「臣下」の中央集権化と義務の行が前の局面から変わっていれば、教会領のアイコンで貸与の取り分を見直す（聖界のみ） {#phase-lease}
   - なぜ: 局面で、上位者へ納める割合と、主君の取り分の決まり方（個人の義務か固定義務か）が替わる。数値は1章（公式の説明） [src: pam_christian_situation_l_japanese.yml, situation_parameter_the_christian_church_minimal_centralization] [src: pam_christian_situation.txt:363] [src: 00_theocracy_lease.txt:283]
-- [ ] 効果欄で、コストが下がる行動の行を探し、先に使う（聖界のみ） {#phase-cheap}
-  - なぜ: 暗黒時代は公会議の開催コストが下がり、改宗と十字軍の局面は勅書のコストが50%下がり、聖職叙任権闘争は候補者への支援の敬虔点が半分になる [src: pam_christian_situation_l_japanese.yml, situation_parameter_the_christian_church_cheaper_ecumenical_councils] [src: pam_christian_situation_l_japanese.yml, situation_parameter_the_christian_church_cheaper_bulls] [src: pam_christian_situation.txt:551] [src: pam_christian_situation.txt:869] [src: pam_christian_situation.txt:1492] [src: pam_christian_situation.txt:1331]
-- [ ] 局面が「聖職叙任権闘争」なら、状況の「次回の叙任権会議」までの残りと、投票が教会と王冠のどちらに傾いているかを確かめる（聖界のみ） {#phase-investiture}
-  - なぜ: 期限が来ると叙任権会議が開かれ、「聖職者任命制」の教義が置き換わる。世俗の統治者は開戦か傀儡で聖職者に反対票を強制できる。候補者への支援を使うなら期限の前（公式の説明） [src: pam_christian_situation_l_japanese.yml, CHRISTIAN_CHURCH_INVESTITURE_TIME_REMAINING_TT] [src: pam_christian_situation_l_japanese.yml, CHRISTIAN_CHURCH_INVESTITURE_VOTE_CHURCH_AHEAD]
+- [ ] 状況の「すべてに対する効果」と、自分のグループの「外交」で、コストが下がる行動の行を探し、先に使う（聖界のみ） {#phase-cheap}
+  - なぜ: 暗黒時代は公会議の開催コストが下がる。主勢力（聖職）は、改宗と十字軍の局面で宗教指導者の勅書が50%安く、聖職叙任権闘争では候補者への支援の敬虔点が半分になる [src: pam_christian_situation_l_japanese.yml, situation_parameter_the_christian_church_cheaper_ecumenical_councils] [src: pam_christian_situation_l_japanese.yml, situation_parameter_the_christian_church_cheaper_bulls] [src: pam_christian_situation.txt:551] [src: pam_christian_situation.txt:869] [src: pam_christian_situation.txt:1492] [src: pam_christian_situation.txt:1331]
+- [ ] 局面が「聖職叙任権闘争」なら、「次回の叙任権会議」までの残りと、投票が教会と王冠のどちらに傾くかを確かめる（聖界のみ） {#phase-investiture}
+  - なぜ: 期限が来ると叙任権会議が開かれ、「聖職者任命制」の教義が置き換わる。世俗の統治者は聖職者に反対票を強制できる。候補者への支援は期限の前に（公式の説明） [src: pam_christian_situation_l_japanese.yml, CHRISTIAN_CHURCH_INVESTITURE_TIME_REMAINING_TT] [src: pam_christian_situation_l_japanese.yml, CHRISTIAN_CHURCH_INVESTITURE_VOTE_CHURCH_AHEAD]
 
 ### 公会議があるとき
 
 - [ ] 主催者なら、第1・第2の討議の選択肢にカーソルを合わせ、可決したときの信条の位置づけを読んでから、議題の信条を中核にする・禁止する・容認する・認知する提案から選ぶ（聖界のみ） {#council-propose}
-  - なぜ: 提案は賛成票が反対票以上で可決する（同数も可決）。流派の中核の信条や教義を取り除く票は、教会分裂の進捗を押し上げる [src: pam_ecumenical_council_events.txt:1533] [src: pam_ecumenical_council_events.txt:1678] [src: pam_ecumenical_council_events.txt:1712] [src: pam_ecumenical_council_events.txt:1735] [src: pam_ecumenical_council_events.txt:4234] [src: pam_christian_situation_l_japanese.yml, CHRISTIAN_CHURCH_SCHISM_PROGRESS_TT]
+  - なぜ: 提案は賛成票が反対票以上で可決する（同数も可）。流派の中核の信条や教義を取り除く票は、教会分裂の進捗を押し上げる [src: pam_ecumenical_council_events.txt:1533] [src: pam_ecumenical_council_events.txt:1678] [src: pam_ecumenical_council_events.txt:1712] [src: pam_ecumenical_council_events.txt:1735] [src: pam_ecumenical_council_events.txt:4234] [src: pam_christian_situation_l_japanese.yml, CHRISTIAN_CHURCH_SCHISM_PROGRESS_TT]
 - [ ] 議題の提案の通知が来たら、立場を決めて「変革に賛成する」か「反対だ」を選ぶ（聖界のみ） {#council-vote}
-  - なぜ: 投票権は聖職者、領国祭司の傀儡を持つ統治者、主催者にある。選んだ側が革新派か保守派として数えられる（公式の説明） [src: pam_game_concepts_l_japanese.yml, game_concept_ecumenical_council_groups_help] [src: pam_ecumenical_council_events.txt:2387] [src: pam_ecumenical_council_events.txt:2394]
-- [ ] 公会議が終わったら、宗派の画面で議題の信条の位置づけを確かめ、自分の個人的信条が禁止の信条になっていないか見る（聖界のみ） {#council-after}
+  - なぜ: 投票権は聖職者、領国祭司の傀儡を持つ統治者、主催者にある。選んだ側が革新派か保守派に数えられる（公式の説明） [src: pam_game_concepts_l_japanese.yml, game_concept_ecumenical_council_groups_help] [src: pam_ecumenical_council_events.txt:2387] [src: pam_ecumenical_council_events.txt:2394]
+- [ ] 公会議が終わったら、宗派の画面で議題の信条の位置づけを確かめ、自分の個人的信条が禁止になっていないか見る（聖界のみ） {#council-after}
   - なぜ: 公会議は信条を容認・禁止・中核に動かし、教義も決める。個人的信条は、中核か容認なら霊的充足度が上がり、禁止なら秘密が生じる（公式の説明） [src: pam_game_concepts_l_japanese.yml, game_concept_ecumenical_council_desc] [src: pam_game_concepts_l_japanese.yml, game_concept_personal_tenet_desc]
 
 ### 戦争の前
@@ -179,7 +179,7 @@
 
 **霊的充足度が低く、ストレスが増える**
 - 見る場所: 宗派のアイコンにカーソルを合わせた数値と内訳。基準は特性の罪と徳で決まる（公式の説明） [src: pam_game_concepts_l_japanese.yml, game_concept_spiritual_fulfillment_desc] [src: hud.gui:3814]
-- 打ち手: 罪の特性を減らし、中核か容認の信条を個人的信条に入れる。聖界は決断「己の罪を告白する」も使う（2章）。−30以下でストレス獲得が10%、−65以下で25%増えるので早めに戻す [src: pam_game_concepts_l_japanese.yml, game_concept_spiritual_fulfillment_desc] [src: 00_spiritual_fulfillment_types.txt:46] [src: 00_spiritual_fulfillment_types.txt:29]
+- 打ち手: 罪の特性を減らし、中核か容認の信条を個人的信条に入れる。聖界は決断「己の罪を告白する」も使う（2章）。−30以下でストレス獲得が10%、−65以下で25%、−95以下で50%（キリスト教）増えるので早めに戻す [src: pam_game_concepts_l_japanese.yml, game_concept_spiritual_fulfillment_desc] [src: 00_spiritual_fulfillment_types.txt:46] [src: 00_spiritual_fulfillment_types.txt:29] [src: 00_spiritual_fulfillment_types.txt:5] [src: 00_spiritual_fulfillment_types.txt:7]
 
 **国庫が0を下回った（重要アクション「あなたは負債を抱えています」）（聖界のみ）**
 - 見る場所: 重要アクションの説明にある債務レベルの影響と、国庫の月の収支 [src: important_actions_l_japanese.yml, action_in_treasury_debt_desc] [src: 00_realm_actions.txt:447]
@@ -201,7 +201,7 @@
 
 | 指標 | 目安 | 出典 |
 |---|---|---|
-| 霊的充足度 | 範囲は−100〜100。ストレス獲得は−30以下で+10%、−65以下で+25%。0未満で告白が効き、30以上（「赦免」）で宮廷聖職者、65以上（「安寧」）で流派指導者への親睦工作と「信仰心を誇示する」、95以上（「恩寵」）で宗教指導者への親睦工作 | [src: 00_defines.txt:890] [src: 00_defines.txt:891] [src: 00_spiritual_fulfillment_types.txt:46] [src: 00_spiritual_fulfillment_types.txt:29] [src: pam_actions.txt:694] [src: 00_spiritual_fulfillment_types.txt:62] [src: pam_values.txt:2143] [src: pam_values.txt:2144] |
+| 霊的充足度 | 範囲は−100〜100。ストレス獲得は−30以下で+10%、−65以下で+25%、−95以下で+50%（キリスト教）。0未満で告白が効き、30以上（「赦免」）で宮廷聖職者、65以上（「安寧」）で流派指導者への親睦工作と「信仰心を誇示する」、95以上（「恩寵」）で宗教指導者への親睦工作 | [src: 00_defines.txt:890] [src: 00_defines.txt:891] [src: 00_spiritual_fulfillment_types.txt:46] [src: 00_spiritual_fulfillment_types.txt:29] [src: 00_spiritual_fulfillment_types.txt:5] [src: pam_actions.txt:694] [src: 00_spiritual_fulfillment_types.txt:62] [src: pam_values.txt:2143] [src: pam_values.txt:2144] |
 | 個人的信条の枠 | 基本1。献身レベル4で+1、5でもう+1。外す・入れ替えたあとは1,095日（3年）変えられない | [src: 00_defines.txt:904] [src: 00_defines.txt:906] [src: 00_basic_modifiers.txt:159] [src: 00_basic_modifiers.txt:163] |
 | 貸与の取り分 | 上位者へは、徴募兵が15%、税は聖界で5%（最低限）・10%（中程度）・20%（高度。宗教指導者にも1%）、神権制で25%。主君の上限は税25%・徴募兵50%（聖界の固定義務は税15%） | [src: 00_theocracy_lease.txt:68] [src: 00_theocracy_lease.txt:313] [src: 00_theocracy_lease.txt:142] [src: 00_theocracy_lease.txt:166] [src: 00_theocracy_lease.txt:179] [src: 00_theocracy_lease.txt:207] [src: 00_theocracy_lease.txt:26] [src: 00_theocracy_lease.txt:70] [src: 00_theocracy_lease.txt:212] [src: 00_theocracy_lease.txt:283] |
 | 教会の支配権 | 段階2は封臣の納付+10%、段階3は+25%。必要な献身レベルは段階1・2・3で1・2・3。上げたあとは20年待つ | [src: 00_realm_laws.txt:655] [src: 00_realm_laws.txt:739] [src: common/scripted_triggers/00_law_triggers.txt:631] [src: common/scripted_triggers/00_law_triggers.txt:636] [src: common/scripted_triggers/00_law_triggers.txt:641] [src: 00_realm_laws.txt:4] |
@@ -212,7 +212,7 @@
 | 教会を動かす費用 | 勅書500、聖戦の誘発は称号が伯爵領100・公爵領200・王国300、王国の聖別は金500と敬虔点750（相手の献身レベル1につき−50）、教会継承の要求は500、王朝の創設は威信点750。公会議は金500で25年に1回、聖職管区の保持者5人が要る | [src: pam_values.txt:10329] [src: pam_values.txt:9811] [src: pam_values.txt:9819] [src: pam_values.txt:9976] [src: pam_values.txt:10069] [src: pam_values.txt:10072] [src: pam_values.txt:8667] [src: pam_decisions.txt:398] [src: pam_values.txt:1911] [src: ecumenical_council.txt:337] [src: pam_values.txt:1882] |
 | 破門と好感度 | 宗教指導者への好感度が50以上なら、好敵手・宿敵・交戦相手でない限り警告は出ない。悔悛は通常365日。神権制の領主の「改心の宣言」は献身レベル2以上 | [src: pam_actions.txt:154] [src: common/scripted_effects/00_religion_effects.txt:541] [src: 00_religious_interactions.txt:2893] |
 | 聖界の軍事補正 | 常備軍連隊の規模・最大数と騎士の上限が−3、傭兵の雇用費が+200% | [src: 02_theocratic_government_types.txt:123] [src: 02_theocratic_government_types.txt:126] |
-| 公会議と教会分裂 | 提案は賛成が反対以上で可決。成立には聖職管区の保持者の出席が5人（主催者が保持者なら4人）。教会分裂の進捗は13で決着。勅書は改宗・十字軍の局面で50%安い | [src: pam_ecumenical_council_events.txt:4234] [src: pam_values.txt:1882] [src: pam_values.txt:1884] [src: pam_values.txt:9400] [src: pam_christian_situation.txt:869] [src: pam_christian_situation.txt:1492] |
+| 公会議と教会分裂 | 提案は賛成が反対以上で可決。成立には聖職管区の保持者の出席が5人（主催者が保持者なら4人）。教会分裂の進捗は13で決着。主勢力（聖職）の宗教指導者の勅書は改宗・十字軍の局面で50%安い | [src: pam_ecumenical_council_events.txt:4234] [src: pam_values.txt:1882] [src: pam_values.txt:1884] [src: pam_values.txt:9400] [src: pam_christian_situation.txt:869] [src: pam_christian_situation.txt:1492] |
 
 ## 8. 用語
 
