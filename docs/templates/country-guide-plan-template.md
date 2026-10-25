@@ -1,6 +1,6 @@
 # EU5 ${COUNTRY_JA}攻略ガイド 実装計画
 
-> **注意（2026-10-15）:** EU5 と VIC3 は国別ガイドを置かない（`eu5/eu5-play-checklist.md` と `vic3/vic3-play-checklist.md` を正本とする。repo `CLAUDE.md` の「ファイル構成」参照）。このテンプレートの `EU5_ROOT` や `DHE` 等の走査パスは過去の EU5 国別ガイド用の例なので、CK3 で使うときはゲームのパスに読み替える。中間データの置き場 `{タイトル略称}/data/` は `ck3/data/` 等に置き換える。
+> **注意（2026-10-25）:** EU5・VIC3・CK3 は国別ガイドを置かない（`eu5/eu5-play-checklist.md`・`vic3/vic3-play-checklist.md` と、CK3 の政体ごとのチェックリスト `ck3/ck3-<政体>-play-checklist.md` を正本とする。repo `CLAUDE.md` の「ファイル構成」参照）。このテンプレートの `EU5_ROOT` や `DHE` 等の走査パスは過去の EU5 国別ガイド用の例なので、CK3 で使うときはゲームのパスに読み替える。中間データの置き場 `{タイトル略称}/data/` は `ck3/data/` 等に置き換える。
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 

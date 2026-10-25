@@ -1,7 +1,7 @@
 # Paradox Game Guides — 作業ルール
 
 > **章構成テンプレートの正本は `docs/templates/guide-section-template.md`。** 新規国別ガイド追加の定型手順は `docs/procedures/new-country-guide.md`。このファイルにはルール・制約・スクリプト参照先のみを置く。
-> テンプレート適用の模範例: `ck3/ck3-england-1066-guide.md`
+> テンプレート適用の模範例: git 履歴の `ck3/ck3-england-1066-guide.md`（`6051f96` 時点）
 
 **目次**: [対象ゲームと優先度](#対象ゲームと優先度) / [ファイル構成](#ファイル構成) / [デプロイ](#デプロイ) / [ゲーム横断テンプレート](#ゲーム横断テンプレート分離済み) / [情報ソースと優先順位](#情報ソースと優先順位) / [ゲームスクリプト参照先](#ゲームスクリプト参照先) / [スクリプト参照時のルール](#スクリプト参照時のルール) / [信頼性マーカー](#信頼性マーカー) / [ガイド章追加時のチェックリスト](#ガイド章追加時のチェックリスト) / [バージョン管理](#バージョン管理) / [用語ルール](#用語ルール) / [ローカライズ対照表の管理](#ローカライズ対照表の管理) / [レビュー](#レビュー) / [新規国別ガイド追加の手順](#新規国別ガイド追加の手順分離済み) / [エージェント作業ルール](#エージェント作業ルール)
 
@@ -21,7 +21,7 @@
   localization-reference.md           … ローカライズ対照表（ゲームごとに1つ）
 ```
 
-命名例: `ck3/ck3-england-1066-guide.md`
+命名例: `ck3/ck3-clergy-play-checklist.md`
 
 EU5 は国別ガイドを置かない。`eu5/eu5-play-checklist.md`（`checklist.html` で表示）を正本とし、書式は仕様書 `docs/superpowers/specs/2026-10-13-eu5-checklist-reset-design.md` の3章に従う。コミット前に `python scripts/check_checklist.py eu5/eu5-play-checklist.md` を通す。
 
@@ -29,7 +29,7 @@ VIC3 も国別ガイドを置かない。`vic3/vic3-play-checklist.md`（`checkl
 
 チェックリストを新しく作る・大きく書き直す計画では、本文2万字の上限を章ごとの字数予算に割ってから執筆に入る（項目数の予算だけでは足りない。VIC3 では1〜4章を書き終えた時点で残り約4,300字と分かり、5〜9章とレビュー反映を予算内に押し込む裁定が要った）。
 
-CK3 のプレイ単位はキャラクター/王朝だが、ファイル名は「操作する主要勢力名」で統一する。CK3 は同じ勢力でも開始年で状況が大きく異なるため、**開始年をファイル名に含める**（例: `ck3-england-1066-guide.md`）。
+CK3 も国別ガイドを置かず、政体ごとのチェックリスト `ck3/ck3-<政体の英語名>-play-checklist.md` を正本とする（1本目 `ck3/ck3-clergy-play-checklist.md`）。書式は EU5 と同じ。コミット前に `python scripts/check_checklist.py ck3/<file>` を通す。政体の追加順と残りは設計書 `docs/superpowers/specs/2026-10-24-ck3-clergy-checklist-design.md` の8章。
 
 ---
 
@@ -94,9 +94,18 @@ Steam デフォルト: C:\Program Files (x86)\Steam\steamapps\common\
   common/culture/innovations/    … 文化イノベーション
   common/decisions/              … ディシジョン定義
   events/                        … イベントスクリプト（30+サブディレクトリ）
+  common/governments/02_theocratic_government_types.txt … 神権制の政府タイプ定義
+  By God Alone（聖職者 DLC）の主なファイル:
+    common/decisions/dlc_decisions/pam/              … 聖職者関連の決断
+    common/character_interactions/pam_interactions.txt … 聖職者関連の交流
+    common/scripted_triggers/pam_scripted_triggers.txt … 聖職者関連のトリガー
+    common/game_concepts/pam_game_concepts.txt        … 聖職者関連の概念定義
+
+バージョン確認: ルート直下 `titus_branch.txt`（例 release/1.20.1）
 
 日本語ローカライズ:
   localization/japanese/          … 全ローカライズ（1000+ファイル。パッチで増減するため概数）
+  localization/japanese/dlc/pam/  … By God Alone のローカライズ
 ```
 
 ### VIC3
@@ -262,7 +271,7 @@ Steam デフォルト: C:\Program Files (x86)\Steam\steamapps\common\
 
 - ガイドのリバイズ（構造変更）は sed/Edit の差分編集を優先し、全書き直しは最終手段にする（トークン節約）
 - 全書き直しが必要な場合は、事前に変更前後のセクション見出し比較表をユーザーに提示してから着手する
-- **ガイド追加時は `index.html` にカードを追加する**（ゲームセクション内の `card-list` に `<li>` を追加、リンクは `viewer.html?file=パス` 形式。例外: EU5 のチェックリストは `checklist.html?file=eu5/eu5-play-checklist.md` 形式、VIC3 のチェックリストも `checklist.html?file=vic3/vic3-play-checklist.md` 形式）
+- **ガイド追加時は `index.html` にカードを追加する**（ゲームセクション内の `card-list` に `<li>` を追加、リンクは `viewer.html?file=パス` 形式。例外: EU5 のチェックリストは `checklist.html?file=eu5/eu5-play-checklist.md` 形式、VIC3 のチェックリストも `checklist.html?file=vic3/vic3-play-checklist.md` 形式、CK3 のチェックリストも `checklist.html?file=ck3/ck3-clergy-play-checklist.md` 形式）
 - **ローカライズ対照表の拡充をエージェントに委任するときはカテゴリを3つ以下に分割する**（全カテゴリ一括は走査ファイル数が多すぎてタイムアウトする）
 - **ガイド本体の用語対照表更新と中央 `localization-reference.md` 更新は別タスク**。implementer は本体側を更新し、中央対照表は他ガイドでも使う汎用語（HRE系・PU系・CB系・兵科系）だけをメイン側で転載する。勢力固有用語（黒軍・フサール等）は本体のみで完結させる
 - **implementer 並列で staging ファイルに書かせるとき、ガイド末尾セクション（用語対照表・出典）は担当を1人に絞る**。Section担当者が各自ミニ版の対照表・出典を書くと結合時に本文中央へ重複セクションが残る（例: VIC3ガイド執筆で56行の重複削除が必要になった）。他のSection担当は本文中の`[src: ...]`インライン出典のみとする
