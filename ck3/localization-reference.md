@@ -13,7 +13,7 @@
 | Gold | 金 | 通貨 |
 | Piety | 敬虔点 | 宗教行動に使うリソース |
 | Prestige | 威信点 | 外交・軍事行動に使うリソース |
-| Prestige Level / Fame | 名声レベル | 威信の蓄積段階 |
+| Level of Fame | 名声レベル | 威信の蓄積段階（1.20.1 の英語表示。キーは prestige_level） |
 | Renown | 栄誉点 | 王朝全体のリソース |
 | Stress | ストレス | キャラクターの精神負荷 |
 | Dread | 恐怖 | 封臣への威圧値 |
@@ -255,7 +255,7 @@
 | Tradition | 伝統 | 文化の特徴的なボーナス |
 | Holy War | 聖戦 | 宗教的な開戦事由 |
 | Fervor | 熱意 | 宗派全体の強さの指標 |
-| Head of Faith | 信仰の首長 | 宗派の最高指導者 |
+| Head of Faith | 宗教指導者 | 宗派の最高指導者（1.20.1 のゲーム概念名。旧表記「信仰の首長」は使われていない） |
 | Holy Order | 聖戦騎士団 | 宗教軍事組織 |
 | Holy Site | 聖地 | 宗派の重要な拠点 |
 
@@ -400,6 +400,75 @@
 | Education | 教育 | 子供時代の育成結果 |
 | De Jure | 法的 | 法的・歴史的に帰属すべき領土 |
 | Crown Authority | 王権 | 君主の権力レベル |
+
+## 聖職者（By God Alone・1.20.1 確認）
+
+> 聖職者チェックリスト（`ck3-clergy-play-checklist.md`）で使う語のうち、上の表に無いもの。確認パッチ: **1.20.1**（ビルド 26046173、2026-10-25 確認）。`game_concept_*` のキーで日英を照合した。画面名・局面名・相互作用名は各 `.yml` の表示名
+
+| 英語 | ゲーム内日本語 | 補足 |
+|------|---------------|------|
+| Ecclesiastical | 聖界 | キリスト教の聖職者の政体 |
+| Church Holdings | 教会領 | 領国祭司が統治する寺院領 |
+| Temple Holding | 寺院領 | |
+| Ecclesiastical Estate | 聖界所領 | 聖職管区の称号に付く所領 |
+| Superior | 上位者 | 宗教上の管轄を持つ聖職者 |
+| Spiritual Head of Faith | 聖職的な宗教指導者 | |
+| Temporal Head of Faith | 世俗的な宗教指導者 | |
+| Head of Rite | 流派指導者 | |
+| Cardinal | 枢機卿 | |
+| Lease Contract | 貸与契約 | |
+| Lessee | 借手 | |
+| Church Obligations | 教会の義務 | 借手が上位者に納める分 |
+| Church Centralization | 教会の中央集権化 | 状況「キリスト教会」の局面ごとの設定 |
+| Secular Obligations | 世俗の義務 | 主君の取り分の決まり方 |
+| Personal Obligations | 個人の義務 | |
+| Fixed Obligations | 固定義務 | |
+| Treasury | 国庫 | 統治にしか使えない資産 |
+| The Christian Church | キリスト教会 | 状況（Situation）の名前 |
+| Chapter | 局面 | キリスト教会の状況の段階 |
+| Clerical Region | 聖職管区 | |
+| Eminent Holy Site | 主要聖地 | |
+| Archdiocese | 大司教区 | |
+| Rite | 流派 | 宗派（Faith）の下位区分 |
+| Level of Devotion | 献身レベル | 敬虔点で上がる段階 |
+| Spiritual Fulfillment | 霊的充足度 | −100〜100 |
+| Personal Tenet | 個人的信条 | |
+| Personal Beliefs | 個人的信念 | 個人的信条を選ぶウィンドウの名前 |
+| Church Authority | 教会の支配権 | 領国の法律 |
+| Strong Hook | 強いフック | |
+| Weak Hook | 弱いフック | |
+| Excommunication | 破門 | |
+| Clerical Title | 聖職称号 | |
+| College of Cardinals | 枢機卿団 | |
+| Cardinalate | 枢機卿職 | |
+| Papabile Score | 教皇候補スコア | |
+| Candidate Score | 候補者スコア | 任命制の称号の継承で使う |
+| Bull | 勅書 | |
+| Ecumenical Council | 公会議 | 活動の名前 |
+| Puppet | 傀儡 | |
+| Secular Ruler Puppet | 世俗統治者の傀儡 | |
+| Realm Priest | 領国祭司 | |
+| Realm Priest Puppet | 領国祭司の傀儡 | |
+| Clerical Ruler Puppet | 聖職統治者の傀儡 | |
+| Heir | 後継者 | |
+| Designated Heir | 指名後継者 | |
+| Fallback Heir | 代替後継者 | |
+| Dynasty | 王朝 | |
+| Dynasty Head | 王朝の当主 | |
+| Level of Splendor | 栄光レベル | 栄誉点で上がる王朝の段階 |
+| Situation | 状況 | |
+| Participant Group | 参加者グループ | |
+| Main Power (Clerical) | 主勢力（聖職） | 状況「キリスト教会」の参加者グループ |
+| Saeculum Obscurum | 暗黒時代 | 状況「キリスト教会」の局面名 |
+| Investiture Controversy | 聖職叙任権闘争 | 状況「キリスト教会」の局面名 |
+| Schism | 教会分裂 | 概念名。決断名は「大分裂を防ぐ」「大分裂を引き起こす」 |
+| Innovator | 革新派 | |
+| Conservative | 保守派 | |
+| Rival | 好敵手 | |
+| Nemesis | 宿敵 | |
+| Declaration of Repentance | 改心の宣言 | 破門の解除に使う相互作用 |
+| Terrified | 畏怖 | 恐怖レベル2。キー game_concept_cowed |
+| Line of Succession | 継承順位 | |
 
 ---
 
