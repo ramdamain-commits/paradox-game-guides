@@ -124,7 +124,7 @@
 | education_martial_5 | 無双の軍神 | 軍事 | +3 |
 | education_learning_5 | 博覧強記の託宣者 | 学識 | +3 |
 
-> **1.19変更**: 直轄領上限（Domain Limit）が管理スキル依存から教育特性レベル依存に変更された。詳細は `ck3-systems-guide.md` を参照。
+> **1.19変更**: 直轄領上限（Domain Limit）が管理スキル依存から教育特性レベル依存に変更された。
 
 ### ライフスタイルツリー
 
@@ -423,7 +423,7 @@
 | Secular Obligations | 世俗の義務 | 主君の取り分の決まり方 |
 | Personal Obligations | 個人の義務 | 世俗の義務の種類。主君の取り分が好感度やフックで決まる |
 | Fixed Obligations | 固定義務 | 世俗の義務の種類。主君の取り分が固定の割合になる |
-| Treasury | 国庫 | 統治にしか使えない資産 |
+| Treasury | 国庫 | 政府タイプで有効になる資産（聖界など）。金で払う費用を国庫から払う |
 | The Christian Church | キリスト教会 | 状況（Situation）の名前 |
 | Chapter | 局面 | キリスト教会の状況の段階 |
 | Clerical Region | 聖職管区 | 聖職称号の管轄下にある地理的な区域 |
