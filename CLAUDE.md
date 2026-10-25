@@ -149,6 +149,8 @@ Steam デフォルト: C:\Program Files (x86)\Steam\steamapps\common\
 - パッチで変動しうる数値には、冒頭のパッチ版で一括免責する
 - **EU5 スクリプトファイルは BOM 付きが多く、`grep -cE "^[a-zA-Z_]+ = \{"` 等の行頭アンカー検索は先頭1件を見落とす**。件数を断定する前に `sed 's/^\xEF\xBB\xBF//' file.txt | grep -c ...` で BOM を剥がしてから数える（例: `country_bra.txt`/`country_pru.txt` の先頭進歩がBOMのため未カウントで「全24件」が実際は「全26件」だった。reviewerも同じ見落としをした）
 - **本文中の `[src: ...]` が指すファイル名は、Read/grep で実在確認してからコミットする**（例: 過去staging由来の実在しないファイル名が出典として31箇所混入していたことがある。reviewer委任のチェック観点に「`[src:]` のファイル名が実在するか」を毎回含める）
+- **`scripts/check_checklist.py` は `[src:]` のファイル名しか照合せず、行番号は見ない**（`hud.gui:99999` でも通る）。行番号と値の照合はレビューの依頼に必ず含める
+- **CK3 の政体ラベル（「（聖界のみ）」等）は `has_government` と条件の中身で決め、フラグ名で決めない**。聖界（`ecclesiastical_government`）にも `government_is_theocracy` フラグが付くので、名前に theocratic とあるだけで「神権制のみ」にすると聖界のプレイヤーが使える行動を見落とす
 
 ---
 
