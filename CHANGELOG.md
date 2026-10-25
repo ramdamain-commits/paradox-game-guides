@@ -8,6 +8,7 @@
 ### Changed
 - `scripts/check_checklist.py`: `ck3/` のパスで CK3 のゲームフォルダを選ぶようにした
 - テンプレートの模範例を git 履歴の参照に差し替えた
+- `ck3/localization-reference.md`: 聖職者の用語の節を追加し、Head of Faith の訳を「宗教指導者」に、Level of Fame の英語表示を直した
 - `index.html`・`README.md`・`CLAUDE.md` を、国別ガイドを置かず政体ごとのチェックリストを正本とする構成に合わせた
 
 ### Fixed
