@@ -3,7 +3,8 @@
 
 使い方: python scripts/check_checklist.py eu5/eu5-play-checklist.md [--game-dir DIR] [--skip-src]
         python scripts/check_checklist.py vic3/vic3-play-checklist.md
-検証するゲームのフォルダは Markdown のパス（eu5/・vic3/）から選ぶ。--game-dir で上書きできる。
+        python scripts/check_checklist.py ck3/ck3-clergy-play-checklist.md
+検証するゲームのフォルダは Markdown のパス（eu5/・vic3/・ck3/）から選ぶ。--game-dir で上書きできる。
 違反があれば行番号つきで表示して終了コード 1、ゲームディレクトリを決められない・見つからないときは 2 を返す。
 """
 from __future__ import annotations
@@ -19,6 +20,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 GAME_DIRS: dict[str, Path] = {
     "eu5": Path("C:/Program Files (x86)/Steam/steamapps/common/Europa Universalis V/game"),
     "vic3": Path("C:/Program Files (x86)/Steam/steamapps/common/Victoria 3/game"),
+    "ck3": Path("C:/Program Files (x86)/Steam/steamapps/common/Crusader Kings III/game"),
 }
 MAX_ITEMS = 100
 MAX_CHARS = 20000
@@ -109,7 +111,7 @@ def check(text: str, game_files: set[str] | None) -> Result:
 
 
 def select_game_dir(markdown: Path, override: Path | None) -> Path | None:
-    """検証するゲームのフォルダを返す。override があれば優先し、無ければ Markdown の置き場所（eu5/・vic3/）で決める。"""
+    """検証するゲームのフォルダを返す。override があれば優先し、無ければ Markdown の置き場所（eu5/・vic3/・ck3/）で決める。"""
     if override is not None:
         return override
     try:
@@ -127,7 +129,7 @@ def main(argv: list[str] | None = None) -> int:
             stream.reconfigure(encoding="utf-8")
     parser = argparse.ArgumentParser(description="チェックリスト Markdown の書式と出典を検証する")
     parser.add_argument("markdown", type=Path)
-    parser.add_argument("--game-dir", type=Path, default=None, help="省略時は Markdown のパス（eu5/・vic3/）から選ぶ")
+    parser.add_argument("--game-dir", type=Path, default=None, help="省略時は Markdown のパス（eu5/・vic3/・ck3/）から選ぶ")
     parser.add_argument("--skip-src", action="store_true", help="[src:] の実在確認をしない")
     args = parser.parse_args(argv)
 

@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026-10-25 CK3 攻略を政体ごとのプレイ中チェックリストへ作り直し（1本目: 聖職者）
+
+### Added
+- `ck3/ck3-clergy-play-checklist.md`: 聖職者（聖界・神権制）として遊ぶときの「いつ・何をするか」をまとめたチェックリスト（1.20.1・ビルド 26046173 基準）。`checklist.html?file=ck3/ck3-clergy-play-checklist.md` で表示する
+
+### Changed
+- `scripts/check_checklist.py`: `ck3/` のパスで CK3 のゲームフォルダを選ぶようにした
+- テンプレートの模範例を git 履歴の参照に差し替えた
+- `ck3/localization-reference.md`: 聖職者の用語の節を追加し、Head of Faith の訳を「宗教指導者」に、Level of Fame の英語表示を直した
+- `index.html`・`README.md`・`CLAUDE.md` を、国別ガイドを置かず政体ごとのチェックリストを正本とする構成に合わせた
+
+### Fixed
+- `ck3/localization-reference.md`: 削除済みのシステムガイドへの言及を外し、Treasury の補足を政府タイプの設定に沿った説明に直した
+
+### Removed
+- イングランド1066ガイド・汎用システムガイド・MOD 記事と、システムガイドの設計書・計画（git 履歴から復元可。削除前のコミットは `6051f96`）
+
 ## 2026-10-22 VIC3 チェックリストの軽微修正
 
 ### Fixed
