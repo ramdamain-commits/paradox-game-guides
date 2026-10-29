@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-10-30 EU5 カスティーリャのチェックリストを追加（アップデートの主要国）
+
+### Added
+- `eu5/eu5-castile-play-checklist.md`: 1.4 の主要国カスティーリャで、局面「海峡をめぐる戦い」と「黄金世紀」を勝ち抜く固有の手順（27項目・1.4 正式版＋DLC Across the Pillars 基準）。`checklist.html?file=eu5/eu5-castile-play-checklist.md` で表示する
+- `eu5/localization-reference.md`: カスティーリャの節に、1.4 正式版で確認した用語の表を追加した
+
+### Changed
+- `CLAUDE.md`・`README.md`: EU5 は「国別ガイドを置かない」から「アップデートの主要国に限り国別チェックリストを置く」方針に変えた
+- `index.html`: カスティーリャ チェックリストのカードを追加した
+
 ## 2026-10-29 EU5 チェックリストを 1.4 正式版に合わせて更新
 
 ### Added

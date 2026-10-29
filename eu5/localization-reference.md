@@ -394,6 +394,28 @@
 | flavor_cas.1800 | コムネロスの組織 | 都市反乱連鎖 |
 | flavor_cas.102 | ヌエバ・プランタ法令 | アラゴン法制度改革 |
 
+### 1.4 正式版で確認した用語（カスティーリャ チェックリスト）
+
+> 1.4 正式版（ビルド 26211608）＋ DLC Across the Pillars で `japanese/` と `english/` を突き合わせて確認（2026-10-29）。`eu5-castile-play-checklist.md` で使う語。上の各表は 1.1 期の記録で、1.4 では一部が変わっている（例: 伝統の陸軍士気+15% の進歩は 1.4 では「城塞の地」`cas_a_land_of_castles`）。
+
+| 英語キー | ゲーム内日本語 | 補足 |
+|----------|---------------|------|
+| Battle for the Strait | 海峡をめぐる戦い | 局面 `battle_for_the_strait`（DLC）。局面（Situation）は `game_concept_situation` |
+| Influence over Granada | グラナダへの影響力 | `influence_over_granada`（d009_situations_l_japanese.yml） |
+| Golden Century | 黄金世紀 | 局面 `golden_century`（DLC）。決断「黄金世紀の幕開け」（Usher in the Golden Century, `gc_decision`）でのみ始まる |
+| Flashpoint / Flashpoint Progress | 発火点 / 発火点の進行度 | `game_concept_flashpoint`・`gc_flashpoint_meter` |
+| The Grand Alliance | 大同盟 | `grand_alliance` |
+| European Dominance / Colonial Dominance | ヨーロッパ支配度 / 植民地支配度 | `gc_european_dominance`・`gc_colonial_dominance` |
+| Tributary / Vassal | 朝貢国 / 属国 | 従属国の種類。「貢納国」「封臣」は誤訳 |
+| Iberian Wedding Pact | イベリア婚姻協定 | `diplomatic_status_iberian_wedding_pact_name` |
+| Senior Partner / Union Integration Level | 同君上位国 / 統合レベル | `game_concept_senior_partner`・`game_concept_union_integration_level_short` |
+| Proclaim the Spanish Monarchy | スペイン王国の宣言 | `proclaim_spanish_monarchy`（d009_iberian_union_l_japanese.yml） |
+| Crown of Castile | カスティーリャ王国 | 政府改革 `crown_castile_reform` |
+| Santa Hermandad / Hermandades Concejiles | サンタ・エルマンダー / 市議会同盟 | 政府改革 `cas_santa_hermandad_reform` / 進歩 `cas_santa_hermandad` |
+| A Land of Castles | 城塞の地 | 進歩 `cas_a_land_of_castles` |
+| Flota de Nueva España / Galeones de Tierra Firme | フロタ・デ・ヌエバ・エスパーニャ / ガレオネス・デ・ティエラ・フィルメ | 宝船の遠征（DLC） |
+| Granadan Jinetes / Iberian Jinetes | グラナダのヒネーテ / イベリア軽騎兵 | 連隊タイプ |
+
 ## イベリア文化共通ユニット
 
 | 英語キー | ゲーム内日本語 | 補足 |

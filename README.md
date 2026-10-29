@@ -9,6 +9,7 @@ Paradox Interactive のグランドストラテジーゲーム攻略メモ集。
 | 資料 | ファイル | 概要 | 対応パッチ |
 |------|----------|------|-----------|
 | プレイ中チェックリスト | [eu5/eu5-play-checklist.md](eu5/eu5-play-checklist.md)（[`checklist.html`](https://ramdamain-commits.github.io/paradox-game-guides/checklist.html?file=eu5/eu5-play-checklist.md) で表示） | どの国でも共通の「いつ・何をするか」。チェック状態はブラウザに保存 | 1.4 正式版 |
+| カスティーリャ チェックリスト | [eu5/eu5-castile-play-checklist.md](eu5/eu5-castile-play-checklist.md)（[`checklist.html`](https://ramdamain-commits.github.io/paradox-game-guides/checklist.html?file=eu5/eu5-castile-play-checklist.md) で表示） | 1.4 の主要国。局面「海峡をめぐる戦い」と「黄金世紀」を勝ち抜く固有の手順（DLC「Across the Pillars」が必要） | 1.4 正式版 |
 | 用語対照表 | [eu5/localization-reference.md](https://ramdamain-commits.github.io/paradox-game-guides/viewer.html?file=eu5/localization-reference.md) | ゲーム内日本語訳と英語名の対照 | — |
 
 ### Victoria 3
@@ -35,7 +36,7 @@ Paradox Interactive のグランドストラテジーゲーム攻略メモ集。
 ## 構成
 
 ```
-eu5/          … Europa Universalis V 攻略（プレイ中チェックリスト＋用語対照表）
+eu5/          … Europa Universalis V 攻略（共通と主要国のプレイ中チェックリスト＋用語対照表）
 vic3/         … Victoria 3 攻略（プレイ中チェックリスト＋用語対照表）
 ck3/          … Crusader Kings III 攻略（政体ごとのプレイ中チェックリスト＋用語対照表）
 index.html    … GitHub Pages トップ
@@ -55,7 +56,7 @@ CLAUDE.md     … 攻略ガイド作成ルール（章テンプレは docs/templ
 
 例: `ck3/ck3-clergy-play-checklist.md`
 
-EU5・VIC3・CK3 は国別ガイドを置かず、`eu5/eu5-play-checklist.md`・`vic3/vic3-play-checklist.md`・`ck3/ck3-clergy-play-checklist.md`（CK3 は政体ごと）をそれぞれ正本とする。
+EU5・VIC3・CK3 は国別ガイドを置かず、`eu5/eu5-play-checklist.md`・`vic3/vic3-play-checklist.md`・`ck3/ck3-clergy-play-checklist.md`（CK3 は政体ごと）をそれぞれ正本とする。例外として EU5 は、アップデートの主要国に限り国別のチェックリストを置く（1.4 のカスティーリャ `eu5/eu5-castile-play-checklist.md`）。
 
 ## ガイドの方針
 

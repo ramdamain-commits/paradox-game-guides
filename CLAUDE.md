@@ -23,7 +23,7 @@
 
 命名例: `ck3/ck3-clergy-play-checklist.md`
 
-EU5 は国別ガイドを置かない。`eu5/eu5-play-checklist.md`（`checklist.html` で表示）を正本とし、書式は仕様書 `docs/superpowers/specs/2026-10-13-eu5-checklist-reset-design.md` の3章に従う。コミット前に `python scripts/check_checklist.py eu5/eu5-play-checklist.md` を通す。
+EU5 は `eu5/eu5-play-checklist.md`（`checklist.html` で表示）を共通の正本とし、書式は仕様書 `docs/superpowers/specs/2026-10-13-eu5-checklist-reset-design.md` の3章に従う。国別のものは、**アップデートの主要国に限って**同じ書式のチェックリスト `eu5/eu5-<国の英語名>-play-checklist.md` を置く（2026-10-29 ユーザー決定。1本目は 1.4 のカスティーリャ `eu5/eu5-castile-play-checklist.md`）。国別版は共通版と重複させず、その国固有の流れ（局面・固有の決断・政府改革・進歩）だけを書き、共通版へリンクする。分量の目安は共通版の半分（本文1万字・50項目）まで。コミット前にどちらも `python scripts/check_checklist.py <file>` を通す。
 
 VIC3 も国別ガイドを置かない。`vic3/vic3-play-checklist.md`（`checklist.html` で表示）を正本とし、書式は EU5 と同じ。コミット前に `python scripts/check_checklist.py vic3/vic3-play-checklist.md` を通す（ゲームのフォルダはパスから自動で選ばれる）。
 
@@ -273,7 +273,7 @@ Steam デフォルト: C:\Program Files (x86)\Steam\steamapps\common\
 
 - ガイドのリバイズ（構造変更）は sed/Edit の差分編集を優先し、全書き直しは最終手段にする（トークン節約）
 - 全書き直しが必要な場合は、事前に変更前後のセクション見出し比較表をユーザーに提示してから着手する
-- **ガイド追加時は `index.html` にカードを追加する**（ゲームセクション内の `card-list` に `<li>` を追加、リンクは `viewer.html?file=パス` 形式。例外: EU5 のチェックリストは `checklist.html?file=eu5/eu5-play-checklist.md` 形式、VIC3 のチェックリストも `checklist.html?file=vic3/vic3-play-checklist.md` 形式、CK3 のチェックリストも `checklist.html?file=ck3/ck3-clergy-play-checklist.md` 形式）
+- **ガイド追加時は `index.html` にカードを追加する**（ゲームセクション内の `card-list` に `<li>` を追加、リンクは `viewer.html?file=パス` 形式。例外: EU5 のチェックリストは `checklist.html?file=eu5/eu5-play-checklist.md` 形式（国別版も `checklist.html?file=eu5/eu5-castile-play-checklist.md` 形式）、VIC3 のチェックリストも `checklist.html?file=vic3/vic3-play-checklist.md` 形式、CK3 のチェックリストも `checklist.html?file=ck3/ck3-clergy-play-checklist.md` 形式）
 - **ローカライズ対照表の拡充をエージェントに委任するときはカテゴリを3つ以下に分割する**（全カテゴリ一括は走査ファイル数が多すぎてタイムアウトする）
 - **ガイド本体の用語対照表更新と中央 `localization-reference.md` 更新は別タスク**。implementer は本体側を更新し、中央対照表は他ガイドでも使う汎用語（HRE系・PU系・CB系・兵科系）だけをメイン側で転載する。勢力固有用語（黒軍・フサール等）は本体のみで完結させる
 - **implementer 並列で staging ファイルに書かせるとき、ガイド末尾セクション（用語対照表・出典）は担当を1人に絞る**。Section担当者が各自ミニ版の対照表・出典を書くと結合時に本文中央へ重複セクションが残る（例: VIC3ガイド執筆で56行の重複削除が必要になった）。他のSection担当は本文中の`[src: ...]`インライン出典のみとする
