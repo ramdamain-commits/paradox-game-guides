@@ -242,6 +242,7 @@
 | Trade | 交易 | `game_concept_trade`。市場間の交易品の移動。「交易許容量」は別の語 |
 | Food | 食糧 | `game_concept_food` |
 | Mission | ミッション | `game_concept_mission` |
+| Decision | 決断 | `game_concept_decision`。1.4 正式版（ビルド 26211608）で確認（2026-10-29）。アラートは「決断が利用可能」「固有の決断が利用可能」（interfaces_l_japanese.yml） |
 | Agenda | アジェンダ | `OUTLINER_AGENDA_TITLE`（outliner_l_japanese.yml） |
 | Automation Panel | 「自動化」パネル | `lateralview_automation_entry_name`（lateralviews_l_japanese.yml）。括弧つきで表示される |
 | Country Rank | 国家ランク | `game_concept_country_rank` |

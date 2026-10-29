@@ -1,5 +1,5 @@
 # EU5 プレイ中チェックリスト
-> 対象パッチ: 1.4 オープンベータ（ビルド 25905365）・変動注意 ／ 最終確認日: 2026-10-15
+> 対象パッチ: 1.4「Río Salado」正式版（ビルド 26211608） ／ 最終確認日: 2026-10-29
 
 どの国でも共通の「いつ・何をするか」をまとめたチェックリスト。チェック状態はこのブラウザに保存される。国ごとの事情は扱わない。「（公式の説明）」は、ゲーム内のヒント・チュートリアル・用語説明が根拠で、効果をスクリプトでは確かめていない記述。
 
@@ -83,6 +83,8 @@
   - なぜ: 極端に強い国は避け、同盟したい国の敵を選ぶ。付け替えは政治的影響力を消費する。脅威となるライバルは威信をもたらす（公式の説明） [src: hints_l_japanese.yml, hint_lacks_of_rivals_hint_text_2] [src: hints_l_japanese.yml, hint_has_inadequate_rivals_hint_text_1] [src: hints_l_japanese.yml, hint_has_inadequate_rivals_hint_text_2]
 - [ ] 選択中のミッションを完了したら、「新しいミッションツリーを開始しよう！」の表示から次のツリーを選ぶ {#early-mission}
   - なぜ: ミッションは序盤を導く目標と報酬を出す（公式の説明） [src: alert_descriptions/00_default.txt, start_new_mission] [src: tutorial_l_japanese.yml, lesson_basics_final_desc]
+- [ ] 「決断が利用可能」「固有の決断が利用可能」のアラートが出たら、「決断」パネルで条件と効果を確かめ、実行するか決める {#early-decision}
+  - なぜ: 決断はいつ実行するか（するかどうか）を自分で選べる行動で、1回のキャンペーンで1度しか使えないものもある（公式の説明） [src: alert_descriptions/00_default.txt, can_take_unique_decision] [src: interfaces_l_japanese.yml, ALERT_CAN_TAKE_GENERIC_DECISION_TOOLTIP] [src: game_concepts_l_japanese.yml, game_concept_decision_desc]
 
 ### 拡大の開始
 
@@ -280,7 +282,7 @@
 - 制度（Institution）／受容（Embrace）／進歩（Advance）／時代（Age）
 - 支配度（Control）／近接性（Proximity）／街道（Road）／ロケーション（Location）／中核地（Core）／首都（Capital）
 - 開戦事由（Casus Belli）／州の請求（Claims on Province）／戦争疲弊（War Exhaustion）／人的資源（Manpower）／指揮官（Commander）／同盟（Alliance）／外交アクション（Diplomatic Action）
-- 文化許容量（Cultural Capacity）／交易許容量（Trade Capacity）／外交許容量（Diplomatic Capacity）／食糧（Food）／RGO（Resource Gathering Operations）／ミッション（Mission）／「自動化」パネル（Automation Panel）／アジェンダ（Agenda）
+- 文化許容量（Cultural Capacity）／交易許容量（Trade Capacity）／外交許容量（Diplomatic Capacity）／食糧（Food）／RGO（Resource Gathering Operations）／ミッション（Mission）／決断（Decision）／「自動化」パネル（Automation Panel）／アジェンダ（Agenda）
 - 諜報網（Spy Network）／国家ランク（Country Rank）／公国（Duchy）／王国（Kingdom）／帝国（Empire）／ライバル（Rival）／威信（Prestige）／政治的影響力（Political Influence）／庶民（Commoners）／市民（Burghers）／列強（Great Power）／神聖ローマ帝国（Holy Roman Empire）／ローマ（Rome。教皇の国）／受容文化（Accepted Culture）／容認文化（Tolerated Culture）／主要宗教（Primary Religion）／主要文化（Primary Culture）／総人口（Total Population）
 - 国難（Disaster）／慢心による衰退（Decline of Empire）／革命！（Revolution!）／繁栄度（Prosperity）／反乱軍の弾圧（Rebel Crackdown）／復興への取り組み（Recovery Effort）／戦争疲弊を軽減（Reduce War Exhaustion）
 - 従属国（Subject）／従属国忠誠度（Subject Loyalty）／不忠の従属国（Disloyal Subject）／評価改善（Improve Opinion）／召集軍（Levy）／官僚機構（Bureaucracy）／都市特権（Urban Rights）／自治区特権（Borough Privileges）／啓蒙（Enlightenment）
