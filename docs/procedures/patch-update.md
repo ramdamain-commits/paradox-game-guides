@@ -1,0 +1,36 @@
+# パッチ更新の手順（プレイ中チェックリスト）
+
+ゲームが更新されたときに、チェックリストの `[src:]` と本文の数値を今の版に合わせ直す手順。2026-11-22 の VIC3 1.15.2（出典412件）と EU5 1.4.9（2本・出典336件）で使った。
+
+## 1. 版を確かめる
+
+- `steamapps/appmanifest_<appid>.acf` の `buildid` と `BetaKey` を、チェックリスト冒頭の表記と比べる（VIC3=529340・EU5=3450310）
+- 版の名前は VIC3 が `game/../caligula_branch.txt`、CK3 が `titus_branch.txt`。EU5 は `loading_screen/caesar_branch.txt` が `develop` のままなので、Steam のニュースのパッチノートの日付と `LastUpdated` で照らし合わせる
+- パッチノートは Steam のニュース API から取れる: `https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=<appid>&count=25&maxlength=0&format=json`（BBCode を剥がして `_staging/` に置き、委任先に渡す）
+
+## 2. 出典の中身を一覧にする
+
+```
+python scripts/dump_src.py <チェックリスト.md> --out <出力.txt>
+```
+
+- `!!` は空行・括弧だけ・コメント・存在しない行・見つからないキーを指すもの。`~~` は行頭の定義でなく値の中などで見つかったもの
+- 大型アップデートでは、行番号つきの出典は `!!` が付かなくても、ずれて無関係な行を指していることが多い（VIC3 1.15 は行番号つき227件のうち約130件がずれていた）。EU5 は `[src: ファイル, 識別子]` が中心なので行ずれは起きにくく、値の変化を見るのが主になる
+- 範囲 `file:a-b` は中の閉じ括弧にも `!!` が付く。範囲の両端が定義のブロックに合っていればよい
+
+## 3. 照合を委任する
+
+- 出典の多いチェックリストは、章ごと（出典数がおよそ均等になるよう）に implementer へ分ける。共通の指示書を `_staging/<game>-<ver>-brief.md` に書き、担当範囲だけを指示文で渡す
+- 指示書に必ず書くこと: チェックリスト本体は編集させず、直したい箇所は置換リストの JSON（`md_line`・`old`・`new`・`why`）と報告 Markdown で返させる／本文の字数を増やさない（増えるものは「要判断」に提案文と字数）／訳語は `concept_*` キーで確かめる／パッチノートに当たる変更の洗い出し
+- 並行して同じファイルを Edit させない（読み書きが重なって修正が消える）
+
+## 4. 適用と確認
+
+```
+python scripts/apply_fixes.py <チェックリスト.md> _staging/<fix-A>.json _staging/<fix-B>.json ... [--dry]
+```
+
+- `old` が指定行に1回だけ出ることを確かめてから置換する。1件でも外れたら何も書き込まない
+- 要判断の提案は、メイン側でスクリプトを開いて確かめてから、別の JSON にまとめて同じ方法で適用する
+- 適用後に `check_checklist.py` と `dump_src.py` を通し直し、残った `!!` が意図したもの（コメント行を根拠にしている等）か確かめる
+- 冒頭の対象パッチ・最終確認日、README・index.html・CLAUDE.md の版表記、用語対照表、CHANGELOG を合わせて更新する
