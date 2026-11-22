@@ -1,12 +1,14 @@
 # パッチ更新の手順（プレイ中チェックリスト）
 
-ゲームが更新されたときに、チェックリストの `[src:]` と本文の数値を今の版に合わせ直す手順。2026-11-22 の VIC3 1.15.2（出典412件）と EU5 1.4.9（2本・出典336件）で使った。
+ゲームが更新されたときに、チェックリストの `[src:]` と本文の数値を今の版に合わせ直す手順。2026-11-22 の VIC3 1.15.2（出典412件）と EU5 1.4.9（2本・出典336件）、2026-11-23 の CK3 1.21.0.3（出典561件）で使った。
 
 ## 1. 版を確かめる
 
-- `steamapps/appmanifest_<appid>.acf` の `buildid` と `BetaKey` を、チェックリスト冒頭の表記と比べる（VIC3=529340・EU5=3450310）
-- 版の名前は VIC3 が `game/../caligula_branch.txt`、CK3 が `titus_branch.txt`。EU5 は `loading_screen/caesar_branch.txt` が `develop` のままなので、Steam のニュースのパッチノートの日付と `LastUpdated` で照らし合わせる
+- `steamapps/appmanifest_<appid>.acf` の `buildid` と `BetaKey` を、チェックリスト冒頭の表記と比べる（VIC3=529340・EU5=3450310・CK3=1158310）
+- 版の名前は VIC3 が `game/../caligula_branch.txt`、CK3 が `titus_branch.txt`（`release/1.21.0` までしか出ないので、ホットフィックスの番号は `launcher/launcher-settings.json` の `rawVersion` で見る）。EU5 は `loading_screen/caesar_branch.txt` が `develop` のままなので、Steam のニュースのパッチノートの日付と `LastUpdated` で照らし合わせる
 - パッチノートは Steam のニュース API から取れる: `https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=<appid>&count=25&maxlength=0&format=json`（BBCode を剥がして `_staging/` に置き、委任先に渡す）
+- 大型アップデートの告知は「全文はフォーラムで」として本文が短い。Paradox フォーラムはボット確認（Client Challenge）、各 Wiki は 427 で自動取得を拒否する（2026-11-23 確認）。回避はせず、ゲームファイルを正として照合し、ホットフィックスの告知だけを手掛かりに使う
+- どのファイルが更新で変わったかは、ゲームフォルダのファイルの更新日時で分かる（Steam は変わったファイルだけを書き換える）。出典ファイルごとの更新日を一覧にして委任先に渡すと、前回から変わっていないファイルの照合を省ける（CK3 1.21 は出典の参照先67本のうち51本が更新されていた）
 
 ## 2. 出典の中身を一覧にする
 

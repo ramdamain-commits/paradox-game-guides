@@ -13,7 +13,7 @@
 | Gold | 金 | 通貨 |
 | Piety | 敬虔点 | 宗教行動に使うリソース |
 | Prestige | 威信点 | 外交・軍事行動に使うリソース |
-| Level of Fame | 名声レベル | 威信の蓄積段階（1.20.1 の英語表示。キーは game_concept_prestige_level） |
+| Level of Fame | 名声レベル | 威信の蓄積段階（1.21.0.3 の英語表示。キーは game_concept_prestige_level） |
 | Renown | 栄誉点 | 王朝全体のリソース |
 | Stress | ストレス | キャラクターの精神負荷 |
 | Dread | 恐怖 | 封臣への威圧値 |
@@ -255,7 +255,7 @@
 | Tradition | 伝統 | 文化の特徴的なボーナス |
 | Holy War | 聖戦 | 宗教的な開戦事由 |
 | Fervor | 熱意 | 宗派全体の強さの指標 |
-| Head of Faith | 宗教指導者 | 宗派の最高指導者（1.20.1 のゲーム概念名。旧表記「信仰の首長」は使われていない） |
+| Head of Faith | 宗教指導者 | 宗派の最高指導者（1.21.0.3 のゲーム概念名。旧表記「信仰の首長」は使われていない） |
 | Holy Order | 聖戦騎士団 | 宗教軍事組織 |
 | Holy Site | 聖地 | 宗派の重要な拠点 |
 
@@ -401,9 +401,9 @@
 | De Jure | 法的 | 法的・歴史的に帰属すべき領土 |
 | Crown Authority | 王権 | 君主の権力レベル |
 
-## 聖職者（By God Alone・1.20.1 確認）
+## 聖職者（By God Alone・1.21.0.3 確認）
 
-> 聖職者チェックリスト（`ck3-clergy-play-checklist.md`）で使う語のうち、上の表に無いもの。確認パッチ: **1.20.1**（ビルド 26046173、2026-10-25 確認）。原則として `game_concept_*` のキーで日英を照合した。例外は、好敵手・宿敵（`relation_rival`・`relation_nemesis`）、公会議（`activity_ecumenical_council`）、畏怖（`game_concept_cowed`）のほか、画面名・局面名・相互作用名・参加者グループ名で、これらは各 `.yml` の表示名で照合した
+> 聖職者チェックリスト（`ck3-clergy-play-checklist.md`）で使う語のうち、上の表に無いもの。確認パッチ: **1.21.0.3**（ビルド 26785313、2026-11-23 確認。初版は 1.20.1・2026-10-25）。原則として `game_concept_*` のキーで日英を照合した。例外は、好敵手・宿敵（`relation_rival`・`relation_nemesis`）、公会議（`activity_ecumenical_council`）、畏怖（`game_concept_cowed`）のほか、画面名・局面名・相互作用名・参加者グループ名で、これらは各 `.yml` の表示名で照合した
 
 | 英語 | ゲーム内日本語 | 補足 |
 |------|---------------|------|
