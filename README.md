@@ -8,8 +8,8 @@ Paradox Interactive のグランドストラテジーゲーム攻略メモ集。
 
 | 資料 | ファイル | 概要 | 対応パッチ |
 |------|----------|------|-----------|
-| プレイ中チェックリスト | [eu5/eu5-play-checklist.md](eu5/eu5-play-checklist.md)（[`checklist.html`](https://ramdamain-commits.github.io/paradox-game-guides/checklist.html?file=eu5/eu5-play-checklist.md) で表示） | どの国でも共通の「いつ・何をするか」。チェック状態はブラウザに保存 | 1.4 正式版 |
-| カスティーリャ チェックリスト | [eu5/eu5-castile-play-checklist.md](eu5/eu5-castile-play-checklist.md)（[`checklist.html`](https://ramdamain-commits.github.io/paradox-game-guides/checklist.html?file=eu5/eu5-castile-play-checklist.md) で表示） | 1.4 の主要国。局面「海峡をめぐる戦い」と「黄金世紀」を勝ち抜く固有の手順（DLC「Across the Pillars」が必要） | 1.4 正式版 |
+| プレイ中チェックリスト | [eu5/eu5-play-checklist.md](eu5/eu5-play-checklist.md)（[`checklist.html`](https://ramdamain-commits.github.io/paradox-game-guides/checklist.html?file=eu5/eu5-play-checklist.md) で表示） | どの国でも共通の「いつ・何をするか」。チェック状態はブラウザに保存 | 1.4.9 |
+| カスティーリャ チェックリスト | [eu5/eu5-castile-play-checklist.md](eu5/eu5-castile-play-checklist.md)（[`checklist.html`](https://ramdamain-commits.github.io/paradox-game-guides/checklist.html?file=eu5/eu5-castile-play-checklist.md) で表示） | 1.4 の主要国。局面「海峡をめぐる戦い」と「黄金世紀」を勝ち抜く固有の手順（DLC「Across the Pillars」が必要） | 1.4.9 |
 | 用語対照表 | [eu5/localization-reference.md](https://ramdamain-commits.github.io/paradox-game-guides/viewer.html?file=eu5/localization-reference.md) | ゲーム内日本語訳と英語名の対照 | — |
 
 ### Victoria 3

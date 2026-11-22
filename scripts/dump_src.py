@@ -35,6 +35,15 @@ def index_files(game_dir: Path) -> dict[str, list[Path]]:
     return idx
 
 
+def candidates(raw_name: str, idx) -> list[Path]:
+    """出典のファイル名に対応するパス。"alert_descriptions/00_default.txt" のようにフォルダ付きなら、末尾が一致するものに絞る。"""
+    raw = raw_name.strip().replace("\\", "/")
+    paths = idx.get(raw.rsplit("/", 1)[-1], [])
+    if "/" in raw:
+        paths = [p for p in paths if p.as_posix().endswith("/" + raw)]
+    return paths
+
+
 def pick(paths: list[Path]) -> Path:
     """同名ファイルが複数あるときは日本語ローカライズを優先し、次に dlc 以外を選ぶ。"""
     def rank(p: Path) -> tuple[int, int, str]:
@@ -53,10 +62,10 @@ def resolve(ref: str, idx, game_dir: Path, cache) -> list[str]:
     ref = ref.strip()
     m = LINE_REF_RE.match(ref)
     if m:
-        name = m["file"].strip().rsplit("/", 1)[-1]
-        if name not in idx:
+        paths = candidates(m["file"], idx)
+        if not paths:
             return [f"!! {ref}: ファイルが無い"]
-        path = pick(idx[name])
+        path = pick(paths)
         lines = read_lines(path, cache)
         a = int(m["a"])
         b = int(m["b"] or a)
@@ -72,22 +81,23 @@ def resolve(ref: str, idx, game_dir: Path, cache) -> list[str]:
         return out
     m = KEY_REF_RE.match(ref)
     if m:
-        name = m["file"].strip().rsplit("/", 1)[-1]
         key = m["key"].strip()
-        if name not in idx:
+        paths = candidates(m["file"], idx)
+        if not paths:
             return [f"!! {ref}: ファイルが無い"]
-        path = pick(idx[name])
-        lines = read_lines(path, cache)
-        rel = path.relative_to(game_dir).as_posix()
+        ordered = sorted(paths, key=lambda p: p != pick(paths))
         pat = re.compile(r"^\s*" + re.escape(key) + r"\s*[:=]")
-        for n, line in enumerate(lines, 1):
-            if pat.match(line):
-                return [f"   {rel}:{n}: {line.strip()[:400]}"]
-        # キーが識別子でない（"Contestion Type" 等）ときは部分一致で探す
-        for n, line in enumerate(lines, 1):
-            if key in line:
-                return [f"~~ {rel}:{n}: {line.strip()[:400]}"]
-        return [f"!! {ref}: キーが見つからない（{rel}）"]
+        # 行頭で定義されていない識別子（値の中で使われるもの・"Contestion Type" 等）は語の一致で探す
+        word = re.compile(r"(?<![A-Za-z0-9_])" + re.escape(key) + r"(?![A-Za-z0-9_])")
+        for matcher, mark in ((pat.match, "   "), (word.search, "~~ ")):
+            # 同名ファイルが複数あれば（本体と DLC 等）、すべての候補を探す
+            for path in ordered:
+                rel = path.relative_to(game_dir).as_posix()
+                for n, line in enumerate(read_lines(path, cache), 1):
+                    if matcher(line):
+                        return [f"{mark}{rel}:{n}: {line.strip()[:400]}"]
+        rels = "、".join(p.relative_to(game_dir).as_posix() for p in ordered)
+        return [f"!! {ref}: キーが見つからない（{rels}）"]
     return [f"?? {ref}: 書式を解釈できない"]
 
 

@@ -409,7 +409,7 @@
 | Tributary / Vassal | 朝貢国 / 属国 | 従属国の種類。「貢納国」「封臣」は誤訳 |
 | Iberian Wedding Pact | イベリア婚姻協定 | `diplomatic_status_iberian_wedding_pact_name` |
 | Senior Partner / Union Integration Level | 同君上位国 / 統合レベル | `game_concept_senior_partner`・`game_concept_union_integration_level_short` |
-| Proclaim the Spanish Monarchy | スペイン王国の宣言 | `proclaim_spanish_monarchy`（d009_iberian_union_l_japanese.yml） |
+| Proclaim the Spanish Monarchy | スペイン君主国の樹立を宣言 | `proclaim_spanish_monarchy`（d009_iberian_union_l_japanese.yml） |
 | Crown of Castile | カスティーリャ王国 | 政府改革 `crown_castile_reform` |
 | Santa Hermandad / Hermandades Concejiles | サンタ・エルマンダー / 市議会同盟 | 政府改革 `cas_santa_hermandad_reform` / 進歩 `cas_santa_hermandad` |
 | A Land of Castles | 城塞の地 | 進歩 `cas_a_land_of_castles` |

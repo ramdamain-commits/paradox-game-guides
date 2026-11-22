@@ -1,5 +1,5 @@
 # EU5 プレイ中チェックリスト
-> 対象パッチ: 1.4「Río Salado」正式版（ビルド 26211608） ／ 最終確認日: 2026-10-29
+> 対象パッチ: 1.4.9（ビルド 26655995・2026-11-18 公開） ／ 最終確認日: 2026-11-22
 
 どの国でも共通の「いつ・何をするか」をまとめたチェックリスト。チェック状態はこのブラウザに保存される。国ごとの事情は扱わない。「（公式の説明）」は、ゲーム内のヒント・チュートリアル・用語説明が根拠で、効果をスクリプトでは確かめていない記述。
 
@@ -142,7 +142,7 @@
 - [ ] 進歩「改善された統合」を研究したら、征服地の統合は内閣アクション「地域の統合」で行う {#late-integrate-area}
   - なぜ: この進歩を研究すると「州の統合」は使えなくなり、地域単位の「地域の統合」に置き換わる。進歩は「立憲主義」の次 [src: integrate_province.txt, integrate_province] [src: integrate_area.txt, integrate_area] [src: 3_cabinet_actions_unlocks.txt, integrate_area_advance]
 - [ ] 進歩「統制力の広範な強化」を研究したら、平均支配度が95%未満の地域に、内閣アクション「地域支配を強化」を実行する {#late-control-area}
-  - なぜ: 「州支配を強化」より広い範囲に効き、支配度の上限の引き上げ幅も大きい。ただし毎月の上昇は遅い。数値は7章 [src: increase_control_area.txt, increase_control_area] [src: increase_control.txt, increase_control_province] [src: 0_age_of_absolutism.txt, increase_control_area_advance]
+  - なぜ: 「州支配を強化」より広い範囲に効くが、上限の引き上げ幅は小さく、毎月の上昇も遅い。数値は7章 [src: increase_control_area.txt, increase_control_area] [src: increase_control.txt, increase_control_province] [src: 0_age_of_absolutism.txt, increase_control_area_advance]
 - [ ] 進歩「緊張の緩和」を研究したら、他国の敵対心が残っているとき内閣アクション「懸念の軽減」を実行する {#late-alleviate}
   - なぜ: 敵対心は他国の評価を下げ、外交に消極的にさせるが、時間とともに薄れる（公式の説明）。このアクションは敵対心の減少を毎月速める [src: game_concepts_l_japanese.yml, game_concept_antagonism_desc] [src: government_l_japanese.yml, alleviate_concerns_desc] [src: alleviate_concerns.txt, alleviate_concerns]
 
@@ -254,7 +254,7 @@
 
 | 指標 | 目安 | 出典 |
 |---|---|---|
-| 時代の開始年 | ルネサンス1342／発見1437／宗教改革1537／絶対主義1637／革命1737 | [src: age/00_default.txt, age_2_renaissance 〜 age_6_revolutions] |
+| 時代の開始年 | ルネサンス1342／発見1437／宗教改革1537／絶対主義1637／革命1737 | [src: age/00_default.txt, age_2_renaissance] [src: age/00_default.txt, age_3_discovery] [src: age/00_default.txt, age_4_reformation] [src: age/00_default.txt, age_5_absolutism] [src: age/00_default.txt, age_6_revolutions] |
 | 安定度 | 0以下で対処を始める／−50以下は深刻 | [src: scripted_hints.txt, hint_low_stability] [src: scripted_hints.txt, hint_very_low_stability] |
 | 政府力（正統性など） | 50未満で「政府の強化」を検討する | [src: scripted_hints.txt, hint_low_legitimacy] |
 | 階級の満足度 | 50%未満は不満（ペナルティ側）／25%未満の階級は召集軍を提供しなくなる（公式の説明）。定義値は25%（エンジン側での使われ方は未確認） | [src: 00_defines.txt, LOW_SATISFACTION_THRESHOLD] [src: scripted_hints.txt, hint_unhappy_estates] [src: 00_defines.txt, ESTATE_LEVY_SATISFACTION_THRESHOLD] [src: hints_l_japanese.yml, hint_estates_hint_text_1] |
@@ -266,8 +266,8 @@
 | 従属国忠誠度 | 50未満で不忠（開戦事由「不忠の従属国」も50未満の従属国に使える）。時代補正は絶対主義−10／革命−30 | [src: 00_defines.txt, TOO_DISLOYAL_THRESHOLD] [src: disloyal_subject.txt, cb_disloyal_subject] [src: age/00_default.txt, age_5_absolutism] [src: age/00_default.txt, age_6_revolutions] |
 | 国難「革命！」の引き金 | 啓蒙を受容した国で、庶民と市民の満足度がともに35%未満 | [src: revolution_disaster.txt, can_start] |
 | 専門化の都市特権 | 指定品の生産+20〜30%、生産効率−5%、付与に政治的影響力20 | [src: 01_discovery.txt, royal_tooling_rights] [src: 01_discovery.txt, royal_textile_rights] [src: default_values.txt, town_right_efficiency_penalty] [src: 00_hardcoded.txt, grant_town_rights] |
-| 地方総督府 | 近接性の供給源80。建設できる数は基本1で、進歩と王国・帝国のランクで増える。首都との街道が必要 | [src: capital_buildings.txt, local_governor] [src: country.txt, country_base_values] [src: 1_building_unlocks.txt, local_governor_advance] [src: country_ranks/00_default.txt, rank_kingdom] [src: country_ranks/00_default.txt, rank_empire] |
-| 支配度強化の内閣アクション | 州版は最大支配度に+10ポイント（現在値の10%増ではない）・毎月+1%、地域版は最大支配度に+15ポイント・毎月+0.5% | [src: increase_control.txt, increase_control_province] [src: increase_control_area.txt, increase_control_area] |
+| 地方総督府 | 近接性の供給源80。建設できる数は基本1（建物「移動王宮の座」も1つ使う）で、進歩と王国・帝国のランクで増える。首都との街道が必要 | [src: capital_buildings.txt, local_governor] [src: country.txt, country_base_values] [src: 1_building_unlocks.txt, local_governor_advance] [src: country_ranks/00_default.txt, rank_kingdom] [src: country_ranks/00_default.txt, rank_empire] |
+| 支配度強化の内閣アクション | 州版は最大支配度に+10ポイント（現在値の10%増ではない）・毎月+1%、地域版は最大支配度に+5ポイント・毎月+0.5% | [src: increase_control.txt, increase_control_province] [src: increase_control_area.txt, increase_control_area] |
 
 ## 8. 用語
 
