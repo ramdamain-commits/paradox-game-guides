@@ -672,6 +672,18 @@
 | Wealth | 財力 | `concept_wealth` |
 | Primary Culture | 主要文化 | `concept_primary_culture` |
 
+## 1.15 チェックリスト用語（追加）
+
+1.15.2（ビルド 26763837）の日本語ローカライズで確認した。
+
+| English | 日本語 | キー |
+|---------|--------|------|
+| Enforced War Goal | 執行した戦争目標（短縮形: 執行） | `concept_enforced_war_goal` / `concept_enforced_war_goal_short` |
+| Stalemate | こう着状態 | `WAR_PANEL_STALEMATE_COUNTDOWN_TOOLTIP`・`alert_war_stalemate_alert_name` |
+| Target | 標的国 | `concept_target` |
+| World Market Hub | 世界市場ハブ（短縮形: ハブ） | `concept_world_market_hub` / `concept_world_market_hub_short` |
+| World Market Access | 世界市場アクセス | `concept_world_market_access` |
+
 ---
 
 ## 運用ルール

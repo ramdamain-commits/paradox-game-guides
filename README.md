@@ -16,7 +16,7 @@ Paradox Interactive のグランドストラテジーゲーム攻略メモ集。
 
 | 資料 | ファイル | 概要 | 対応パッチ |
 |------|----------|------|-----------|
-| プレイ中チェックリスト | [vic3/vic3-play-checklist.md](vic3/vic3-play-checklist.md)（[`checklist.html`](https://ramdamain-commits.github.io/paradox-game-guides/checklist.html?file=vic3/vic3-play-checklist.md) で表示） | どの国でも共通の「いつ・何をするか」。チェック状態はブラウザに保存 | 1.14 オープンベータ |
+| プレイ中チェックリスト | [vic3/vic3-play-checklist.md](vic3/vic3-play-checklist.md)（[`checklist.html`](https://ramdamain-commits.github.io/paradox-game-guides/checklist.html?file=vic3/vic3-play-checklist.md) で表示） | どの国でも共通の「いつ・何をするか」。チェック状態はブラウザに保存 | 1.15.2 |
 | 用語対照表 | [vic3/localization-reference.md](https://ramdamain-commits.github.io/paradox-game-guides/viewer.html?file=vic3/localization-reference.md) | ゲーム内日本語訳と英語名の対照 | — |
 
 ### Crusader Kings III
