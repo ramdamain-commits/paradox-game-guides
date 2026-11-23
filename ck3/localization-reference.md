@@ -33,10 +33,12 @@
 
 | 英語 | ゲーム内日本語 | 補足 |
 |------|---------------|------|
-| Feudal | 封建政体 | 西欧の標準 |
-| Tribal | 部族政体 | 未開発地域の政体 |
-| Clan | 氏族政体 | イスラム圏の標準 |
-| Republic | 共和政体 | 都市共和国 |
+| Feudal | 封建制 | 西欧の標準（`feudal_government`。1.21.0.3 で確認） |
+| Tribal | 部族制 | 未開発地域の政体（`tribal_government`） |
+| Clan | 氏族制 | イスラム圏の標準（`clan_government`） |
+| Republic | 共和制 | 都市共和国（`republic_government`） |
+| Merchant | 交易商人 | 所領なしで商会を動かす政体（`merchant_government`。Silk & Silver） |
+| Administrative | 官僚制 | `administrative_government` |
 | Theocracy | 神権制 | 宗教指導者が統治 |
 
 ## 評議会
@@ -475,6 +477,48 @@
 | Righteous | 正当 | 宗派どうしの関係の段階の名前（`game_concept_faith_righteous`） |
 | Tips | ヒント | 画面上部のボタン。開くと通知の一覧が出る（`ACTIONS_TT`） |
 | Important Action | 通知 | このチェックリストでの呼び名。ヒントの一覧に出る action と、個別のアイコンで出る alert の総称（スクリプト上の名前。ゲーム内の表示名ではない） |
+
+## 交易商人（Silk & Silver・1.21.0.3 確認）
+
+> 交易商人チェックリスト（`ck3-merchant-play-checklist.md`）で使う語。確認パッチ: **1.21.0.3**（ビルド 26785313、2026-11-23 確認）。原則として `game_concept_*` のキーで日英を照合した。商会規模の段階名と商会方針（法）の名前は法のキー（`company_size_*`・`company_purpose_*`）、風土の段階名は `game_concept_company_sentiment_*`、「風土」はタブのキー `COMPANY_DIRECTION_TAB_BUTTON` で照合した
+
+| 英語 | ゲーム内日本語 | 補足 |
+|------|---------------|------|
+| Company | 商会 | 交易商人の事業体 |
+| Domicile | 本拠地 | 商会の拠点 |
+| Associate | 商会員 | 商会に属する人物 |
+| Trader | 交易担当者 | 交易路に割り当てる商会員 |
+| Merchant Family | 交易商家 | 交易に従事する家 |
+| Patrician | パトリシアン | 「共和国に加わる」で交易商家ごとなる立場 |
+| Company Size | 商会規模 | 新興事業・交易組織・有力商会・交易帝国（`company_size_*`） |
+| Acumen | 洞察力 | 交易で稼いだ金の累計。商会規模の条件 |
+| Company Purpose | 商会方針 | 法。交易担当者・職人・金貸し・隊商長（`company_purpose_*`）。方針「交易担当者」は人物の交易担当者（Trader）と同じ訳語 |
+| Company Direction | 商会方針 | `game_concept_company_sentiment`。「家」画面の「風土」タブに出る。段階は拝金主義・打算・中庸・栄達志向・貴族化 |
+| Company Direction Stance | 商会方針姿勢 | 風土の段階のこと |
+| Direction | 風土 | 「家」画面のタブ名（`COMPANY_DIRECTION_TAB_BUTTON`） |
+| Patron | 後援者 | 本拠地のある領地の支配者 |
+| Client Contract | 従属商人契約 | 後援者との契約。税率・交易支援・婚姻支援など |
+| Merchant Charter | 交易特許状 | 後援者が従属商人の1人に与える文書 |
+| Profit Route | 営利交易路 | 金を稼ぐ交易路 |
+| Commission Route | 委託交易路 | 依頼を受けて運用する交易路 |
+| Primary Good | 主要商品 | 交易路の一番左の交易品 |
+| Goods Category | 商品カテゴリー | 交易品の分類 |
+| Trade Expertise | 交易知識 | カテゴリーごとの交易経験 |
+| Competitiveness | 競争力 | 市場での取り分を決める値 |
+| Market Share | 市場占有率 | |
+| Market Toll | 市場税 | 市場での販売にかかる税 |
+| Trade Monopoly | 交易独占権 | |
+| Capacity | 容量 | 交易路で運べる量 |
+| Trade Route Length | 交易路距離 | |
+| Trade Opportunity | 交易機会 | 交易契約の1つ（工作） |
+| Luxury Contract | 特別契約 | 交易契約の1つ（遠方への移動） |
+| Direction Contract | 方針契約 | 風土が下がったときに出る契約 |
+| Patron Contract | 後援者契約 | 後援者に対する工作の契約 |
+| Seize Realm | 領国奪取 | 交易商人の開戦事由 |
+| Level of Fame | 名声レベル | `game_concept_prestige_level` |
+| Prestige | 威信点 | `game_concept_prestige` |
+| Renown | 栄誉点 | `game_concept_dynasty_prestige` |
+| Company Succession | 商会継承 | 交易商人の継承法（`merchant_succession_law`） |
 
 ---
 

@@ -29,7 +29,7 @@ VIC3 も国別ガイドを置かない。`vic3/vic3-play-checklist.md`（`checkl
 
 チェックリストを新しく作る・大きく書き直す計画では、本文2万字の上限を章ごとの字数予算に割ってから執筆に入る（項目数の予算だけでは足りない。VIC3 では1〜4章を書き終えた時点で残り約4,300字と分かり、5〜9章とレビュー反映を予算内に押し込む裁定が要った）。
 
-CK3 も国別ガイドを置かず、政体ごとのチェックリスト `ck3/ck3-<政体の英語名>-play-checklist.md` を正本とする（1本目 `ck3/ck3-clergy-play-checklist.md`）。書式は EU5 と同じ。コミット前に `python scripts/check_checklist.py ck3/<file>` を通す。政体の追加順と残りは設計書 `docs/superpowers/specs/2026-10-24-ck3-clergy-checklist-design.md` の8章。
+CK3 も国別ガイドを置かず、政体ごとのチェックリスト `ck3/ck3-<政体の英語名>-play-checklist.md` を正本とする（1本目 `ck3/ck3-clergy-play-checklist.md`、2本目 `ck3/ck3-merchant-play-checklist.md`）。書式は EU5 と同じ。コミット前に `python scripts/check_checklist.py ck3/<file>` を通す。政体の追加順と残りは設計書 `docs/superpowers/specs/2026-10-24-ck3-clergy-checklist-design.md` の8章。
 
 ---
 
@@ -100,12 +100,20 @@ Steam デフォルト: C:\Program Files (x86)\Steam\steamapps\common\
     common/character_interactions/pam_interactions.txt … 聖職者関連の交流
     common/scripted_triggers/pam_scripted_triggers.txt … 聖職者関連のトリガー
     common/game_concepts/pam_game_concepts.txt        … 聖職者関連の概念定義
+  Silk & Silver（交易商人・共和制 DLC、ファイル名の接頭辞 gdp）の主なファイル:
+    common/decisions/dlc_decisions/gdp/                       … 交易商人・共和制の決断
+    common/character_interactions/11_gdp_merchant_interactions.txt … 交易商人の交流
+    common/laws/00_realm_laws.txt                             … 商会規模・商会方針（法）
+    common/house_unities/00_house_unities.txt                … 風土（merchant_house_unity）
+    common/defines/00_defines.txt の NTrade                  … 交易路の初期値・交易知識
+    common/script_values/gdp_merchant_values.txt             … 交易商人の各種の値
 
 バージョン確認: ルート直下 `titus_branch.txt`（例 release/1.21.0）。ホットフィックスまでの番号は `launcher/launcher-settings.json` の `rawVersion`（例 1.21.0.3）
 
 日本語ローカライズ:
   localization/japanese/          … 全ローカライズ（1000+ファイル。パッチで増減するため概数）
   localization/japanese/dlc/pam/  … By God Alone のローカライズ
+  localization/japanese/dlc/gdp/  … Silk & Silver のローカライズ（交易の画面は localization/japanese/trade/）
 ```
 
 ### VIC3
@@ -142,6 +150,7 @@ Steam デフォルト: C:\Program Files (x86)\Steam\steamapps\common\
 - **EU5 のプレイ中チェックリスト（`eu5/eu5-play-checklist.md`）は 1.4.9（ビルド 26655995・2026-11-18 公開）が基準**（2026-11-22 に 1.4 正式版のビルド 26211608 から照合し直した）。1.4 オープンベータを基準にしていた期間の例外は 2026-10-29 に終わった（全数値と `[src:]` を正式版で照合し直した）。作業を再開するたびに `steamapps/appmanifest_3450310.acf` の `buildid` と `BetaKey` を冒頭の表記と照合し、変わっていたら `[src:]` の実在と数値を照合し直してから進む。ベータのブランチに入ったままだと正式版が配信されても更新されない（2026-10-29 は `1.4-open-beta` の 10-23 ビルドで止まっており、`public` へ切り替えて取得した）
 - **VIC3 のプレイ中チェックリスト（`vic3/vic3-play-checklist.md`）は 1.15.2 安定版（ビルド 26763837・2026-11-19 公開）が基準**。1.14 オープンベータを基準にしていた期間の例外は 2026-11-22 に終わった（`[src:]` の全件を 1.15.2 で照合し直した）。作業を再開するたびに `steamapps/appmanifest_529340.acf` の `buildid` と `BetaKey` を冒頭の表記と照合し、変わっていたら `[src:]` の実在と数値を照合し直してから進む
 - **CK3 の聖職者チェックリスト（`ck3/ck3-clergy-play-checklist.md`）は 1.21.0.3（ビルド 26785313・2026-11-19 公開）が基準**（2026-11-23 に 1.20.1 のビルド 26046173 から `[src:]` の全件を照合し直した）。作業を再開するたびに `steamapps/appmanifest_1158310.acf` の `buildid` と `BetaKey` を冒頭の表記と照合し、変わっていたら `[src:]` の実在と数値を照合し直してから進む
+- **CK3 の交易商人チェックリスト（`ck3/ck3-merchant-play-checklist.md`）も 1.21.0.3（ビルド 26785313）が基準**（2026-11-23 作成）。照合の手順は聖職者版と同じ
 - **パッチ更新は `docs/procedures/patch-update.md` の手順で行う**（`scripts/dump_src.py` で各 `[src:]` の今の中身を一覧にし、委任先には本体を編集させず置換リストで返させ、`scripts/apply_fixes.py` でまとめて適用する）。大型アップデートでは `!!` の付かない行番号つき出典もずれていることがある
 - **前セッションの `[src:]` マーカーも誤りうる前提で、書き直し時は全数値を再検証する**。`[src:]` がローカライズ yml を指しているだけでメカニクス未検証のケースに注意（yml は名称の裏取りであって効果値の裏取りではない）
 - **ステータスの訳語は本文に書く前に `concept_*` ローカライズキーで確認する**（例: VIC3 Authority は正式には `concept_authority = "権力"` だが「権威」と誤訳しIGトレイト表だけ訳語が分裂していたことがある。ステータス名は1ガイド内で統一する）
@@ -275,7 +284,7 @@ Steam デフォルト: C:\Program Files (x86)\Steam\steamapps\common\
 
 - ガイドのリバイズ（構造変更）は sed/Edit の差分編集を優先し、全書き直しは最終手段にする（トークン節約）
 - 全書き直しが必要な場合は、事前に変更前後のセクション見出し比較表をユーザーに提示してから着手する
-- **ガイド追加時は `index.html` にカードを追加する**（ゲームセクション内の `card-list` に `<li>` を追加、リンクは `viewer.html?file=パス` 形式。例外: EU5 のチェックリストは `checklist.html?file=eu5/eu5-play-checklist.md` 形式（国別版も `checklist.html?file=eu5/eu5-castile-play-checklist.md` 形式）、VIC3 のチェックリストも `checklist.html?file=vic3/vic3-play-checklist.md` 形式、CK3 のチェックリストも `checklist.html?file=ck3/ck3-clergy-play-checklist.md` 形式）
+- **ガイド追加時は `index.html` にカードを追加する**（ゲームセクション内の `card-list` に `<li>` を追加、リンクは `viewer.html?file=パス` 形式。例外: EU5 のチェックリストは `checklist.html?file=eu5/eu5-play-checklist.md` 形式（国別版も `checklist.html?file=eu5/eu5-castile-play-checklist.md` 形式）、VIC3 のチェックリストも `checklist.html?file=vic3/vic3-play-checklist.md` 形式、CK3 のチェックリストも `checklist.html?file=ck3/ck3-clergy-play-checklist.md` 形式（交易商人版も同じ））
 - **ローカライズ対照表の拡充をエージェントに委任するときはカテゴリを3つ以下に分割する**（全カテゴリ一括は走査ファイル数が多すぎてタイムアウトする）
 - **ガイド本体の用語対照表更新と中央 `localization-reference.md` 更新は別タスク**。implementer は本体側を更新し、中央対照表は他ガイドでも使う汎用語（HRE系・PU系・CB系・兵科系）だけをメイン側で転載する。勢力固有用語（黒軍・フサール等）は本体のみで完結させる
 - **implementer 並列で staging ファイルに書かせるとき、ガイド末尾セクション（用語対照表・出典）は担当を1人に絞る**。Section担当者が各自ミニ版の対照表・出典を書くと結合時に本文中央へ重複セクションが残る（例: VIC3ガイド執筆で56行の重複削除が必要になった）。他のSection担当は本文中の`[src: ...]`インライン出典のみとする

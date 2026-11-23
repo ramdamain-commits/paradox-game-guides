@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026-11-23 CK3 交易商人チェックリストを追加（政体別シリーズ2本目）
+
+### Added
+- `ck3/ck3-merchant-play-checklist.md`: Silk & Silver の交易商人（`merchant_government`）のプレイ中チェックリスト。1.21.0.3（ビルド 26785313）基準で49項目。開始直後・交易の基盤づくり・商会を大きくする・所領と後を託す・定期ルーチン・困ったとき・判断の目安・用語・出典の9章。数値はすべてスクリプトの行で裏付け、3名レビューの指摘を反映した
+- `docs/superpowers/specs/2026-11-23-ck3-merchant-checklist-design.md`: 2本目の設計書（対象の決定、章ごとの字数予算、確認済みの訳語）
+
+### Changed
+- `docs/superpowers/specs/2026-10-24-ck3-clergy-checklist-design.md`: 8章の政体の順番表に、1.21 で入った Silk & Silver の交易商人（2本目）と共和制（3本目）を足した
+- `ck3/localization-reference.md`: 交易商人の節を足し、政体の表の訳をゲーム内の表記（封建制・部族制・氏族制・共和制）に直した
+- `index.html`・`README.md`・`CLAUDE.md`: 交易商人チェックリストを追加した
+
 ## 2026-11-23 CK3 聖職者チェックリストを 1.21.0.3 に合わせて更新
 
 ### Changed

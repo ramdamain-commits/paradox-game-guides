@@ -24,6 +24,7 @@ Paradox Interactive のグランドストラテジーゲーム攻略メモ集。
 | 資料 | ファイル | 概要 | 対応パッチ |
 |------|----------|------|-----------|
 | 聖職者（聖界・神権制）チェックリスト | [ck3/ck3-clergy-play-checklist.md](ck3/ck3-clergy-play-checklist.md)（[`checklist.html`](https://ramdamain-commits.github.io/paradox-game-guides/checklist.html?file=ck3/ck3-clergy-play-checklist.md) で表示） | 聖職者として遊ぶときの「いつ・何をするか」。チェック状態はブラウザに保存 | 1.21.0.3 |
+| 交易商人チェックリスト | [ck3/ck3-merchant-play-checklist.md](ck3/ck3-merchant-play-checklist.md)（[`checklist.html`](https://ramdamain-commits.github.io/paradox-game-guides/checklist.html?file=ck3/ck3-merchant-play-checklist.md) で表示） | 交易商人（Silk & Silver）として遊ぶときの「いつ・何をするか」。チェック状態はブラウザに保存 | 1.21.0.3 |
 | 用語対照表 | [ck3/localization-reference.md](https://ramdamain-commits.github.io/paradox-game-guides/viewer.html?file=ck3/localization-reference.md) | ゲーム内日本語訳と英語名の対照 | — |
 
 ## GitHub Pages
