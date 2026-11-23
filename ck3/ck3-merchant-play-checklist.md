@@ -93,7 +93,55 @@
 
 ## 5. 定期ルーチン {.routine}
 
+### 毎年
+
+- [ ] 「交易」画面の「交易路」タブで、交易路ごとの月の利益を見比べ、落ちた交易路を組み替える {#year-profit}
+  - なぜ: 利益は交易路ごとに「/月」で出る。落ちた原因は6章 [src: window_trade.gui:1312] [src: trade_windows_l_japanese.yml, TRADE_ROUTE_ENTRY_ACTUAL_PROFIT]
+- [ ] 「交易知識」タブで、レベルが下がっているカテゴリーがないか確かめる {#year-expertise}
+  - なぜ: 主要交易品で扱っていないカテゴリーは、毎月15ずつ減る [src: window_trade.gui:120] [src: 00_defines.txt:2047]
+- [ ] 洞察力が次の商会規模の条件に届いていないか確かめる {#year-size}
+  - なぜ: 届いても自動では上がらない。条件は7章、手順は3章 [src: 00_realm_laws.txt:3732] [src: 00_defines.txt:1892] [src: 00_defines.txt:1893]
+- [ ] 「家」画面の「風土」タブで、段階が狙いの側にあるか確かめる {#year-sentiment}
+  - なぜ: 借金や婚姻で段階が動く（1章・2章）。段階の効果は7章 [src: house_view_l_japanese.yml, COMPANY_DIRECTION_TAB_BUTTON] [src: gdp_merchant_values.txt:1026]
+- [ ] 称号を持たない商会員の子がいるか確かめる {#year-heir}
+  - なぜ: 「商会継承」で商会を継げるのはその条件を満たす者だけ（4章） [src: 00_succession_laws.txt:2141] [src: succession_laws_l_japanese.yml, merchant_succession_law_effects]
+
+### 2年ごと
+
+- [ ] 決断「交易機会を探し求める」を実行する {#two-opportunity}
+  - なぜ: 待ちが2年で、交易担当者のいる交易路を強める工作が出る（2章） [src: gdp_merchant_trade_opportunity_values.txt:4] [src: gdp_merchant_decisions_l_japanese.yml, seek_trade_opportunity_decision_tooltip]
+
+### 通知が出たとき
+
+- [ ] 「交易機会がある」「特別契約が利用可能」「方針契約が利用可能」が出たら、開いて受けるかを決める {#notice-contracts}
+  - なぜ: どれも工作か移動を伴い、失敗・中止で契約も失敗する（2章） [src: merchant_actions.txt:357] [src: merchant_actions.txt:409] [src: merchant_actions.txt:442] [src: gdp_game_concepts_l_japanese.yml, game_concept_trade_opportunity_desc]
+- [ ] 「商会の移転」が出たら、移転先の後援者と市場の繁栄度を見て、移るかを決める {#notice-move}
+  - なぜ: 商会規模が後援者の格に対して大きすぎるときか、近くにもっと繁栄した市場があるときに出る。移ると後援者が替わり、今の従属商人契約は終わる（公式の説明） [src: merchant_actions.txt:665] [src: merchant_actions.txt:729] [src: gdp_interactions_l_japanese.yml, action_move_company_size_desc] [src: gdp_game_concepts_l_japanese.yml, game_concept_client_contract_desc]
+
+### 戦争の前
+
+- [ ] 所持金が−50未満でないか確かめる {#war-debt}
+  - なぜ: 商会が借金を抱えている間は宣戦できない（公式の説明） [src: gdp_merchant_values.txt:1020] [src: gdp_interactions_l_japanese.yml, action_merchant_company_in_debt_desc]
+- [ ] 傭兵の雇用費を見積もり、金を確保してから宣戦する {#war-merc}
+  - なぜ: 常備兵を持てず、傭兵の雇用費が2倍（4章） [src: 00_government_types.txt:1585] [src: 00_government_types.txt:1589]
+
 ## 6. 困ったとき
+
+**商会が借金を抱えた（通知「商会の負債」）**
+- 見る場所: 通知の説明にある借金レベルの追加の影響と、所持金の月の収支 [src: merchant_actions.txt:237] [src: gdp_interactions_l_japanese.yml, action_merchant_company_in_debt_desc]
+- 打ち手: 借金の間は宣戦できず、6か月ごとに風土が拝金主義側へ5動き、12か月続くと洞察力が500減る。赤字の交易路を外し、建設を待ち、貸した相手には「返済を要求する」 [src: gdp_merchant_values.txt:1027] [src: gdp_merchant_values.txt:1021] [src: gdp_merchant_values.txt:1018] [src: gdp_interactions_l_japanese.yml, demand_repayment_interaction_desc]
+
+**交易路の利益が落ちた**
+- 見る場所: 交易路の「/月」と、「交易路」タブの「競合相手」 [src: window_trade.gui:1312] [src: window_trade.gui:773]
+- 打ち手: 競り負けているなら交易担当者を「競争を管理」にし、「市場税の特例を求める」か「交易を独占する」を使う。それでも駄目なら別の市場へ組み替える（2章・3章） [src: 00_trade_tasks.txt:15] [src: 11_gdp_merchant_interactions.txt:9854] [src: 11_gdp_merchant_interactions.txt:4181]
+
+**交易特許状が要請できない**
+- 見る場所: 「交易特許状を要請する」の説明に出る失敗理由 [src: 11_gdp_merchant_interactions.txt:5099]
+- 打ち手: 後援者が公爵未満なら「商会の移転」で格の高い後援者の下へ移る。商会規模が足りなければ上げる。ほかの従属商人が特許状を持っていれば要請できない。ただし、その特許状が後援者に対して濫用されたものなら数えない（3章） [src: 11_gdp_merchant_interactions.txt:5102] [src: gdp_merchant_triggers.txt:2997] [src: 11_gdp_merchant_interactions.txt:5125] [src: 11_gdp_merchant_interactions.txt:5132]
+
+**家の成員どうしの好感度が下がっている**
+- 見る場所: 「風土」タブの段階。拝金主義は−20、打算は−10 [src: 00_house_unities.txt:278] [src: 00_house_unities.txt:334]
+- 打ち手: 貴族の家と婚姻し、家長なら決断「贅沢を奨励する」で貴族化側へ大きく傾ける。打算では、ほかの統治者に商会員を引き抜かれやすい（公式の説明） [src: gdp_reactive_advice_l_japanese.yml, reactive_advice_company_direction_panel_desc] [src: gdp_game_concepts_l_japanese.yml, game_concept_company_sentiment_positive_actions_desc] [src: gdp_game_concepts_l_japanese.yml, game_concept_company_sentiment_fractious_desc]
 
 ## 7. 判断の目安
 
@@ -117,6 +165,6 @@
 - `common/decisions/dlc_decisions/gdp/`（`gdp_merchant_decisions.txt`・`gdp_visit_holding_decision.txt`）、`common/character_interactions/`（`11_gdp_merchant_interactions.txt`・`00_modifiy_vassal_contract.txt`）、`common/important_actions/merchant_actions.txt`
 - `gui/window_my_realm.gui`、`gui/window_trade.gui`
 - `common/laws/00_succession_laws.txt`（`merchant_succession_law`）、`common/casus_belli_types/gdp_merchant_wars.txt`（領国奪取）、`common/scripted_triggers/gdp_merchant_triggers.txt`、`common/scripted_effects/gdp_merchant_scripted_effects.txt`
-- ローカライズ: `localization/japanese/dlc/gdp/`（`gdp_game_concepts_l_japanese.yml`・`gdp_interactions_l_japanese.yml`・`gdp_merchant_decisions_l_japanese.yml`・`gdp_visit_holding_decision_event_l_japanese.yml`）、`localization/japanese/succession_laws_l_japanese.yml`、`localization/japanese/tutorial/gdp_reactive_advice_l_japanese.yml`、`localization/japanese/gui/house_view_l_japanese.yml`
+- ローカライズ: `localization/japanese/dlc/gdp/`（`gdp_game_concepts_l_japanese.yml`・`gdp_interactions_l_japanese.yml`・`gdp_merchant_decisions_l_japanese.yml`・`gdp_visit_holding_decision_event_l_japanese.yml`）、`localization/japanese/succession_laws_l_japanese.yml`、`localization/japanese/trade/trade_windows_l_japanese.yml`、`localization/japanese/tutorial/gdp_reactive_advice_l_japanese.yml`、`localization/japanese/gui/house_view_l_japanese.yml`
 
 ### コミュニティ情報
