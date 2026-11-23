@@ -147,10 +147,34 @@
 
 | 指標 | 目安 | 出典 |
 |---|---|---|
+| 商会方針の変更 | 「交易担当者」からは無料、ほかからは威信500。変えたあと5年は変えられない | [src: 00_realm_laws.txt:3921] [src: 00_realm_laws.txt:22] [src: 00_realm_laws.txt:5] |
+| 方針「交易担当者」 | 近親者の好感度+10、主君の好感度+30、交易知識の伸び+10%（全カテゴリー） | [src: 00_realm_laws.txt:3952] [src: 00_realm_laws.txt:3953] [src: 00_realm_laws.txt:3954] |
+| 方針「職人」 | 交易知識+20%: 高級品・本・繊維・衣服・染料・ミョウバン・石材。本拠地の建設費（金）−20%。特性「交易商人」の職人の道+15% | [src: 00_realm_laws.txt:4017] [src: 00_realm_laws.txt:4018] [src: 00_realm_laws.txt:4024] [src: 00_realm_laws.txt:4025] [src: trade_system_l_japanese.yml, trade_category_stone] |
+| 方針「金貸し」 | 交易知識+20%: 貴金属・宝石・卑金属・穀物・肉類・木工資材。金貸しの道+15%。交流「戦争を後援する」と開戦事由「領国奪取」が使える | [src: 00_realm_laws.txt:4146] [src: 00_realm_laws.txt:4151] [src: 00_realm_laws.txt:4152] [src: 00_realm_laws.txt:4112] [src: 11_gdp_merchant_interactions.txt:3949] [src: 00_realm_laws.txt:4115] |
+| 方針「隊商長」 | 交易知識+20%: 高級消費財・香料・医薬品・嗜好品・酒類・塩・役畜。隊商長の道+15%。文化によるマイナスの好感度を無視する。特別契約が出る | [src: 00_realm_laws.txt:4288] [src: 00_realm_laws.txt:4294] [src: 00_realm_laws.txt:4295] [src: 00_realm_laws.txt:4296] [src: gdp_game_concepts_l_japanese.yml, game_concept_luxury_contract_desc] |
+| 商会規模 | 交易組織は洞察力1,000で競争力+20・交易路の長さ+4・栄誉点+0.25/月。有力商会は5,000で+30・+8・+0.5。交易帝国は17,000で+40・+10・+0.75。上げるたびに威信300、上げたあと5年は次へ進めない | [src: 00_defines.txt:1891] [src: 00_defines.txt:1892] [src: 00_defines.txt:1893] [src: 00_realm_laws.txt:3751] [src: 00_realm_laws.txt:3752] [src: 00_realm_laws.txt:3753] [src: 00_realm_laws.txt:3818] [src: 00_realm_laws.txt:3819] [src: 00_realm_laws.txt:3820] [src: 00_realm_laws.txt:3885] [src: 00_realm_laws.txt:3886] [src: 00_realm_laws.txt:3887] [src: 00_realm_laws.txt:23] [src: 00_realm_laws.txt:4] |
+| 風土の段階 | 初期値0（中庸）。拝金主義: 家の成員の好感度−20・後援者の好感度+20・競争力+25%。打算: −10・競争力+10%。中庸: 補正なし。栄達志向: +10・ライフスタイル経験+5%・威信+10%・栄誉点+0.05/月。貴族化: +20・威信+25%・栄誉点+0.1/月 | [src: 00_house_unities.txt:224] [src: 00_house_unities.txt:278] [src: 00_house_unities.txt:279] [src: 00_house_unities.txt:281] [src: 00_house_unities.txt:334] [src: 00_house_unities.txt:336] [src: 00_house_unities.txt:382] [src: 00_house_unities.txt:383] [src: 00_house_unities.txt:384] [src: 00_house_unities.txt:385] [src: 00_house_unities.txt:428] [src: 00_house_unities.txt:429] [src: 00_house_unities.txt:430] [src: modifiers_l_japanese.yml, MOD_MONTHLY_DYNASTY_PRESTIGE] |
+| 従属商人契約の税 | 無税0%・低税率10%（既定）・中税率20%・高税率30% | [src: merchant.txt:8] [src: merchant.txt:20] [src: merchant.txt:41] [src: merchant.txt:62] |
+| 交易担当者の任務 | 技能の値が5・8・13・21を境に5段階。最低〜最高で、競争を管理は競争力+5〜25%、取引を交渉は交易知識の伸び+5〜25%、隊商を監督は輸送量+2〜10% | [src: 00_trade_tasks.txt:12] [src: 00_trade_tasks.txt:16] [src: 00_trade_tasks.txt:20] [src: 00_trade_tasks.txt:36] [src: 00_trade_tasks.txt:40] [src: 00_trade_tasks.txt:53] [src: 00_trade_tasks.txt:57] |
+| 交易路の初期値 | 営利交易路1本、1本あたり市場3つ・交易品1つ・輸送量35・長さ10 | [src: 00_defines.txt:2006] [src: 00_defines.txt:2011] [src: 00_defines.txt:2014] [src: 00_defines.txt:2017] [src: 00_defines.txt:2005] |
+| 交易知識 | 主要交易品のカテゴリーに月15貯まり、150ごとに1レベル。扱わないカテゴリーは月15減る | [src: 00_defines.txt:2046] [src: 00_defines.txt:2048] [src: 00_defines.txt:2047] |
+| 借金 | 所持金−50未満。12か月で洞察力−500、その後6か月ごとに風土が拝金主義側へ5 | [src: gdp_merchant_values.txt:1020] [src: gdp_merchant_values.txt:1021] [src: gdp_merchant_values.txt:1018] [src: gdp_merchant_values.txt:1027] [src: gdp_merchant_values.txt:1026] |
+| 仕上げの決断 | 名声レベル3、特性「交易商人」の該当の道100、商会規模が交易組織以上、交易知識レベル25のカテゴリー、威信1,500 | [src: gdp_merchant_decisions.txt:1885] [src: gdp_merchant_decisions.txt:1889] [src: gdp_merchant_decisions.txt:1893] [src: gdp_merchant_triggers.txt:1934] [src: 00_basic_values.txt:1055] |
+| 領国奪取 | 方針「金貸し」で使える。伯爵領は名声レベル2、公爵領は3、王国は4 | [src: gdp_merchant_wars.txt:20] [src: gdp_merchant_wars.txt:16] [src: gdp_merchant_wars.txt:186] [src: gdp_merchant_wars.txt:360] |
 
 ## 8. 用語
 
-完全版は [用語対照表](localization-reference.md)。
+完全版は [用語対照表](viewer.html?file=ck3/localization-reference.md)。
+
+- 交易商人（Merchant）／商会（Company）／本拠地（Domicile）／商会員（Associate）／交易担当者（Trader）／交易商家（Merchant Family）／パトリシアン（Patrician）
+- 商会規模（Company Size）: 新興事業・交易組織・有力商会・交易帝国／洞察力（Acumen）
+- **「商会方針」は3つの別のものに使われる**: 法としての商会方針（Company Purpose。「交易担当者」「職人」「金貸し」「隊商長」）、「家」画面の「風土」タブに出る商会方針（Company Direction。拝金主義・打算・中庸・栄達志向・貴族化）、決断「商会方針を定める」。このページでは前者を「商会方針」、後者を「風土」と書く
+- 方針「交易担当者」と、交易路に割り当てる人物の「交易担当者」（Trader）は同じ訳語で別のもの
+- 後援者（Patron）／従属商人契約（Client Contract）／交易特許状（Merchant Charter）
+- 交易路（Trade Route）／営利交易路（Profit Route）／委託交易路（Commission Route）／市場（Market）／市場税（Market Toll）／市場占有率（Market Share）
+- 交易品（Trade Good）／主要交易品（Primary Good）／商品カテゴリー（Goods Category）／交易知識（Trade Expertise）／競争力（Competitiveness）／交易独占権（Trade Monopoly）
+- 交易契約（Trade Contract）: 交易機会（Trade Opportunity）・特別契約（Luxury Contract）・方針契約（Direction Contract）・後援者契約（Patron Contract）
+- 貸し付け（Loan）／領国奪取（Seize Realm）／名声レベル（Level of Fame）／商会継承（Company Succession）
 
 ## 9. 出典
 
@@ -165,6 +189,8 @@
 - `common/decisions/dlc_decisions/gdp/`（`gdp_merchant_decisions.txt`・`gdp_visit_holding_decision.txt`）、`common/character_interactions/`（`11_gdp_merchant_interactions.txt`・`00_modifiy_vassal_contract.txt`）、`common/important_actions/merchant_actions.txt`
 - `gui/window_my_realm.gui`、`gui/window_trade.gui`
 - `common/laws/00_succession_laws.txt`（`merchant_succession_law`）、`common/casus_belli_types/gdp_merchant_wars.txt`（領国奪取）、`common/scripted_triggers/gdp_merchant_triggers.txt`、`common/scripted_effects/gdp_merchant_scripted_effects.txt`
-- ローカライズ: `localization/japanese/dlc/gdp/`（`gdp_game_concepts_l_japanese.yml`・`gdp_interactions_l_japanese.yml`・`gdp_merchant_decisions_l_japanese.yml`・`gdp_visit_holding_decision_event_l_japanese.yml`）、`localization/japanese/succession_laws_l_japanese.yml`、`localization/japanese/trade/trade_windows_l_japanese.yml`、`localization/japanese/tutorial/gdp_reactive_advice_l_japanese.yml`、`localization/japanese/gui/house_view_l_japanese.yml`
+- ローカライズ: `localization/japanese/dlc/gdp/`（`gdp_game_concepts_l_japanese.yml`・`gdp_interactions_l_japanese.yml`・`gdp_merchant_decisions_l_japanese.yml`・`gdp_visit_holding_decision_event_l_japanese.yml`）、`localization/japanese/succession_laws_l_japanese.yml`、`localization/japanese/trade/`（`trade_windows_l_japanese.yml`・`trade_system_l_japanese.yml`）、`localization/japanese/modifiers/modifiers_l_japanese.yml`、`localization/japanese/tutorial/gdp_reactive_advice_l_japanese.yml`、`localization/japanese/gui/house_view_l_japanese.yml`
 
 ### コミュニティ情報
+
+- なし（Silk & Silver の配信から日が浅く、本文はスクリプトとゲーム内の説明だけで書いた）
