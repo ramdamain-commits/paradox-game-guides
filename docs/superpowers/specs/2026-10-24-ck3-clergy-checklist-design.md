@@ -187,10 +187,14 @@ python -m unittest discover -s tests
 | 順 | 政体（ゲーム内の名前） | 追加した DLC |
 |---|---|---|
 | 1（本書） | 聖界・神権制 | By God Alone |
-| 2 | 天上・律令制・惣領制（中華圏・日本） | All Under Heaven |
-| 3 | 遊牧・遊牧集団 | Khans of the Steppe |
-| 4 | 官僚制・冒険者 | Roads to Power |
-| 5 | 封建制・氏族制・部族制 | 本体 |
+| 2 | 交易商人（設計書 `2026-11-23-ck3-merchant-checklist-design.md`） | Silk & Silver（1.21） |
+| 3 | 共和制 | Silk & Silver（1.21） |
+| 4 | 天上・律令制・惣領制（中華圏・日本） | All Under Heaven |
+| 5 | 遊牧・遊牧集団 | Khans of the Steppe |
+| 6 | 官僚制・冒険者 | Roads to Power |
+| 7 | 封建制・氏族制・部族制 | 本体 |
+
+2026-11-23 追記: 1.21（2026-11-18）で Silk & Silver（`dlc031_ep5`）が入り、交易商人と共和制がプレイ可能になった（`00_rules.txt` の `playable_republics`、`00_bookmarks.txt` の `requires_dlc_flag = silk_and_silver`）。ユーザーの指示（最近追加された順）に従い2番目に入れ、仕組みが大きく違うため2本に分けた（ユーザー決定）。マンダラ・ワヌア・科挙制・科挙制ハン国がどの DLC のものかは未確認のまま。
 
 ## 9. 範囲外
 
