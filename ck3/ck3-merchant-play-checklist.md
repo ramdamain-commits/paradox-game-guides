@@ -57,7 +57,39 @@
 
 ## 3. 商会を大きくする
 
+- [ ] 洞察力が1,000に届いたら、「領国」画面で商会規模を「交易組織」に上げる {#grow-size}
+  - なぜ: 洞察力は交易で稼いだ金の累計で、使っても減らない（公式の説明）。上げると競争力+20・交易路の長さ+4。費用は威信300で、上げたあと5年は次へ進めない。上の段階の条件は7章 [src: 00_defines.txt:1891] [src: 00_realm_laws.txt:3732] [src: 00_realm_laws.txt:3751] [src: 00_realm_laws.txt:3752] [src: 00_realm_laws.txt:23] [src: 00_realm_laws.txt:3759] [src: gdp_game_concepts_l_japanese.yml, game_concept_trade_acumen_desc]
+- [ ] 後援者が公爵以上なら、「交易特許状を要請する」 {#grow-charter}
+  - なぜ: 特許状を持てる従属商人は後援者ごとに1人。商会規模は交易組織以上（後援者が王なら有力商会、皇帝なら交易帝国）が要る。費用は威信150（王は2倍、皇帝は3倍）、同じ相手には10年あける [src: 11_gdp_merchant_interactions.txt:5102] [src: 11_gdp_merchant_interactions.txt:5079] [src: 11_gdp_merchant_interactions.txt:5146] [src: 11_gdp_merchant_interactions.txt:5154] [src: 11_gdp_merchant_interactions.txt:5161] [src: gdp_merchant_triggers.txt:2997]
+- [ ] 特許状を得たら、決断「現地へ直接投資する」か「特許状の権限を濫用する」を使う {#grow-charter-use}
+  - なぜ: 投資は金を出して建物と繁栄度を上げ、濫用は金を絞り取って競争力を上げる（公式の説明）。濫用すると秘密「約束を破る者」を抱える。どちらも名声レベル2以上、5年に1回 [src: gdp_merchant_decisions.txt:354] [src: gdp_merchant_decisions.txt:371] [src: gdp_merchant_decisions.txt:225] [src: gdp_merchant_decisions.txt:242] [src: gdp_merchant_decisions.txt:300] [src: gdp_merchant_scripted_effects.txt:6116] [src: gdp_merchant_decisions_l_japanese.yml, abuse_charter_authority_decision_tooltip] [src: gdp_merchant_decisions_l_japanese.yml, benevolent_charter_authority_decision_tooltip]
+- [ ] 所持金が−25以下の領主に「金を貸し付ける」 {#grow-loan}
+  - なぜ: 見返りは強いフック（返しきれない借金なら弱いフック）。利子は明示25%・隠して15%・無利子（好感度が上がる）から選ぶ。同じ相手には10年あける [src: 11_gdp_merchant_interactions.txt:2767] [src: gdp_merchant_values.txt:1546] [src: gdp_merchant_values.txt:1603] [src: gdp_merchant_values.txt:1607] [src: 11_gdp_merchant_interactions.txt:2716] [src: gdp_interactions_l_japanese.yml, loan_money_interaction_desc]
+- [ ] 競り合いの激しい市場では、市場の持ち主に「交易を独占する」で交易独占権を買う {#grow-monopoly}
+  - なぜ: 独占権のある市場では、保有者どうしでしか競争力を比べない（公式の説明）。同じ相手には8か月あける [src: gdp_game_concepts_l_japanese.yml, game_concept_trade_competitiveness_desc] [src: 11_gdp_merchant_interactions.txt:4181] [src: 11_gdp_merchant_interactions.txt:4238]
+- [ ] 同じ家の別の商会は「商会を統合する」で吸収する {#grow-merge}
+  - なぜ: 相手の商業網を解体し、その市場で自分の競争力を上げる（公式の説明）。5年に1回、同じ相手には15年あける [src: gdp_interactions_l_japanese.yml, merge_company_interaction_desc] [src: 11_gdp_merchant_interactions.txt:6868] [src: 11_gdp_merchant_interactions.txt:6869]
+- [ ] ほかの家の商会は「敵対的買収を試みる」（工作）で奪うかを決める {#grow-takeover}
+  - なぜ: 自分の商会規模が相手の家長以上でないと使えず、一度使うと50年使えない [src: 11_gdp_merchant_interactions.txt:7465] [src: 11_gdp_merchant_interactions.txt:7416]
+- [ ] 条件がそろったら、方針に合った仕上げの決断（「隊商商人としての名声を確立する」など）を実行する {#grow-capstone}
+  - なぜ: 名声レベル3以上、特性「交易商人」の方針と同じ道が100以上、商会規模が交易組織以上、どれかの商品カテゴリーの交易知識がレベル25以上。費用は威信1,500 [src: gdp_merchant_decisions.txt:1883] [src: gdp_merchant_decisions.txt:1885] [src: gdp_merchant_decisions.txt:1889] [src: gdp_merchant_decisions.txt:1893] [src: gdp_merchant_triggers.txt:1934] [src: gdp_merchant_decisions.txt:1912] [src: 00_basic_values.txt:1055]
+
 ## 4. 所領と後を託す
+
+- [ ] 後継者にしたい子を、称号を持たない商会員として手元に置く {#land-heir}
+  - なぜ: 継承法「商会継承」では、商会は最年長の子（いなければ近い親族）のうち、称号を持たない商会員が継ぐ。「後継者を指名」もできる [src: 00_succession_laws.txt:2113] [src: 00_succession_laws.txt:2137] [src: 00_succession_laws.txt:2141] [src: 00_succession_laws.txt:2143] [src: succession_laws_l_japanese.yml, merchant_succession_law_effects]
+- [ ] 戦争の前に、傭兵を雇う金を確保する {#land-army}
+  - なぜ: 交易商人は常備兵を持てず、傭兵の雇用費が2倍になる [src: 00_government_types.txt:1585] [src: 00_government_types.txt:1589]
+- [ ] 所領を得る道を、「共和国に加わる」「土地を購入」「領国奪取」「私有地を取得する」から選ぶ {#land-route}
+  - なぜ: 共和国に加わると商会を保ったままパトリシアンになる。土地の購入は所領を持つ支配者に、領国奪取は共和国を樹立する道、私有地は商会を解散して封臣になる道（公式の説明） [src: gdp_interactions_l_japanese.yml, merchant_join_republic_interaction_desc] [src: gdp_interactions_l_japanese.yml, merchant_purchase_land_interaction_desc] [src: gdp_game_concepts_l_japanese.yml, game_concept_seize_realm_cb_desc] [src: gdp_interactions_l_japanese.yml, merchant_procure_estate_interaction_desc]
+- [ ] 共和国の支配者に「共和国に加わる」を送る {#land-republic}
+  - なぜ: 名声レベル2以上が要る。交易商家ごとパトリシアンになり、商会・交易路・交易独占権は残る（公式の説明）。金（150＋商会規模ごとに100）を添えられる。同じ相手には10年あける [src: 11_gdp_merchant_interactions.txt:2092] [src: 11_gdp_merchant_interactions.txt:2054] [src: gdp_merchant_values.txt:152] [src: gdp_interactions_l_japanese.yml, merchant_join_republic_interaction_desc]
+- [ ] 封建制などの領主に「土地を購入」を送る {#land-purchase}
+  - なぜ: 伯爵領は金200、公爵領は500に中の伯爵領ごと200を足した額に、自分の文化の時代で0.5〜2倍を掛ける。官僚制・共和制などの相手には送れない。同じ相手には10年あける [src: gdp_merchant_values.txt:37] [src: gdp_merchant_values.txt:41] [src: gdp_merchant_values.txt:46] [src: gdp_merchant_values.txt:3] [src: 11_gdp_merchant_interactions.txt:1231] [src: 11_gdp_merchant_interactions.txt, merchant_purchase_land_interaction]
+- [ ] 方針が「金貸し」なら、開戦事由「領国奪取」で領地を奪うかを決める {#land-seize}
+  - なぜ: 伯爵領は名声レベル2、公爵領は3、王国は4が要る。勝つと共和国を樹立する。「債務者に参戦を強要する」で、強いフックを使って借り手を味方にできる（公式の説明） [src: gdp_merchant_wars.txt:16] [src: gdp_merchant_wars.txt:20] [src: gdp_merchant_wars.txt:186] [src: gdp_merchant_wars.txt:360] [src: gdp_game_concepts_l_japanese.yml, game_concept_seize_realm_cb_desc]
+- [ ] 官僚制などの領主の下に入るなら、「私有地を取得する」を送る {#land-estate}
+  - なぜ: 名声レベル2以上、商会規模が交易組織以上が要る。商会を解散し、私有地と貴族家の称号を得て無領の封臣になる（公式の説明）。同じ相手には10年あける [src: 11_gdp_merchant_interactions.txt:2460] [src: 11_gdp_merchant_interactions.txt:2463] [src: 11_gdp_merchant_interactions.txt:2417] [src: gdp_interactions_l_japanese.yml, merchant_procure_estate_interaction_desc]
 
 ## 5. 定期ルーチン {.routine}
 
@@ -84,6 +116,7 @@
 - `common/script_values/`（`00_basic_values.txt`・`gdp_domicile_values.txt`・`gdp_merchant_values.txt`・`gdp_merchant_trade_opportunity_values.txt`）、`common/modifiers/gdp_merchant_trade_opportunity_modifiers.txt`
 - `common/decisions/dlc_decisions/gdp/`（`gdp_merchant_decisions.txt`・`gdp_visit_holding_decision.txt`）、`common/character_interactions/`（`11_gdp_merchant_interactions.txt`・`00_modifiy_vassal_contract.txt`）、`common/important_actions/merchant_actions.txt`
 - `gui/window_my_realm.gui`、`gui/window_trade.gui`
-- ローカライズ: `localization/japanese/dlc/gdp/`（`gdp_game_concepts_l_japanese.yml`・`gdp_visit_holding_decision_event_l_japanese.yml`）、`localization/japanese/tutorial/gdp_reactive_advice_l_japanese.yml`、`localization/japanese/gui/house_view_l_japanese.yml`
+- `common/laws/00_succession_laws.txt`（`merchant_succession_law`）、`common/casus_belli_types/gdp_merchant_wars.txt`（領国奪取）、`common/scripted_triggers/gdp_merchant_triggers.txt`、`common/scripted_effects/gdp_merchant_scripted_effects.txt`
+- ローカライズ: `localization/japanese/dlc/gdp/`（`gdp_game_concepts_l_japanese.yml`・`gdp_interactions_l_japanese.yml`・`gdp_merchant_decisions_l_japanese.yml`・`gdp_visit_holding_decision_event_l_japanese.yml`）、`localization/japanese/succession_laws_l_japanese.yml`、`localization/japanese/tutorial/gdp_reactive_advice_l_japanese.yml`、`localization/japanese/gui/house_view_l_japanese.yml`
 
 ### コミュニティ情報
